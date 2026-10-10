@@ -35,8 +35,8 @@ export function possibleFlags(story: Story): Record<string, Set<string>> {
       const carried = [
         ...into[id],
         ...flagsSet(choice.effects),
-        ...(choice.npcScenario ? (story.scenarios[choice.npcScenario]?.remember ?? []) : []),
-        ...(choice.allyScenario ? (story.scenarios[choice.allyScenario]?.remember ?? []) : []),
+        ...(choice.npcScenario ? [`said:${choice.npcScenario}`, ...(story.scenarios[choice.npcScenario]?.remember ?? [])] : []),
+        ...(choice.allyScenario ? [`said:${choice.allyScenario}`, ...(story.scenarios[choice.allyScenario]?.remember ?? [])] : []),
       ];
       let grew = false;
       for (const f of carried) {
@@ -95,6 +95,12 @@ export function auditStory(story: Story): AuditIssue[] {
   const possible = possibleFlags(story);
   const dead = (where: string, scene: string, conditions: Condition[] | undefined) => {
     for (const c of conditions ?? []) {
+      if (c.kind === "said" && !possible[scene].has(`said:${c.scenario}`)) {
+        issues.push({ kind: "dead-condition", where, message: `${where} needs the Elder to have heard "${c.scenario}", which no path to "${scene}" can trigger` });
+      }
+      if (c.kind === "since" && !possible[scene].has(c.flag)) {
+        issues.push({ kind: "dead-condition", where, message: `${where} counts decisions since "${c.flag}", which no path to "${scene}" can set` });
+      }
       if (isFlag(c) && c.is !== false && !possible[scene].has(c.flag)) {
         issues.push({ kind: "dead-condition", where, message: `${where} needs flag "${c.flag}", which no path to "${scene}" can set` });
       }
@@ -123,6 +129,9 @@ export function auditStory(story: Story): AuditIssue[] {
     const at = triggers[scenario.id] ?? [];
     scenario.memory?.forEach((m, i) => {
       for (const c of m.when) {
+        if (c.kind === "said" && at.length > 0 && at.every((s) => !possible[s].has(`said:${c.scenario}`))) {
+          issues.push({ kind: "dead-condition", where: `memory ${i} of "${scenario.id}"`, message: `memory ${i} of "${scenario.id}" needs "${c.scenario}" to have been heard, which no path to its trigger can do` });
+        }
         if (isFlag(c) && c.is !== false && at.length > 0 && at.every((s) => !possible[s].has(c.flag))) {
           issues.push({
             kind: "dead-condition",

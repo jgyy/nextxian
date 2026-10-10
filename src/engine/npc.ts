@@ -245,6 +245,10 @@ export function conditionsHold(conditions: Condition[] | undefined, state: Condi
         return moodFor(state.npc) === c.is;
       case "scene":
         return (state.sceneId ?? "").startsWith(c.prefix);
+      case "count": {
+        const v = Object.entries(state.flags).filter(([flag, on]) => on && flag.startsWith(c.prefix)).length;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
     }
   });
 }

@@ -675,8 +675,8 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
     remember: ["stopped_signing"],
     memory: [
       {
-        when: [{ kind: "said", scenario: "WITNESS_SIGNING", within: 6 }],
-        line: "You watched the signing once without a word, and this time you stop the pen. The witness has become an interruption. The Law does not forgive either, though I find I have forgiven you already.",
+        when: [{ kind: "flag", flag: "watched_from_pillar" }],
+        line: "You stood at the pillar and watched the ring close without a word, and now you stop the pen. The witness has become an interruption. The Law does not forgive either, though I find I have forgiven you already.",
       },
     ],
   },

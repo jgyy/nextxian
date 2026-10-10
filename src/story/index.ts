@@ -33,6 +33,7 @@ import { withBonds } from "./fixes/bonds";
 import { echoesOne } from "./fixes/echoes-1";
 import { rumourFlow, rumourScenes } from "./fixes/rumours";
 import { remarksOne, scenariosOne } from "./fixes/remarks-1";
+import { books } from "./books";
 
 /**
  * The story in reading order. Side paths sit after the chapter they branch from and
@@ -111,10 +112,27 @@ function patch(groups: { name: string; scenes: Scene[] }[]): { name: string; sce
   return groups.map((g) => ({ ...g, scenes: g.scenes.map((s) => patched.get(s.id)!) }));
 }
 
-export const chapters: { name: string; scenes: Scene[] }[] = [
+/** The arcs of every later book, parsed. Each arc becomes a chapter group in the word-count report. */
+const bookGroups = books.flatMap((book) =>
+  book.arcs.map((arc) => ({
+    name: `${book.name} · ${arc.name}`,
+    scenes: parseScenes(arc.scenes, `${book.id}/${arc.id}`).map(withBonds),
+  })),
+);
+
+const rawChapters: { name: string; scenes: Scene[] }[] = [
   ...patch(assembled),
   { name: "Interludes: What the Sect Says", scenes: interludes.map(withBonds) },
+  ...bookGroups,
 ];
+
+/** Echoes written inside the books can land on any scene, including those of Book One. */
+const bookEchoes = books.flatMap((book) => book.arcs.flatMap((arc) => (arc.echoes ? parseEchoes(arc.echoes, `${book.id}/${arc.id}/echoes`) : [])));
+export const chapters: { name: string; scenes: Scene[] }[] = (() => {
+  if (bookEchoes.length === 0) return rawChapters;
+  const echoed = new Map(applyEchoes(rawChapters.flatMap((c) => c.scenes), bookEchoes).map((s) => [s.id, s]));
+  return rawChapters.map((c) => ({ ...c, scenes: c.scenes.map((s) => echoed.get(s.id)!) }));
+})();
 
 const scenes = chapters.flatMap((c) => c.scenes);
 
@@ -126,7 +144,13 @@ export const story: Story = {
   scenarios: {
     ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios }),
     ...Object.fromEntries(parseScenarios(scenariosOne, "scenarios-1").map((x) => [x.id, x])),
+    ...Object.fromEntries(
+      books.flatMap((book) => book.arcs.flatMap((arc) => (arc.scenarios ? parseScenarios(arc.scenarios, `${book.id}/${arc.id}/scenarios`) : []))).map((x) => [x.id, x]),
+    ),
   },
   companions,
-  remarks: parseRemarks(remarksOne, "remarks-1"),
+  remarks: [
+    ...parseRemarks(remarksOne, "remarks-1"),
+    ...books.flatMap((book) => book.arcs.flatMap((arc) => (arc.remarks ? parseRemarks(arc.remarks, `${book.id}/${arc.id}/remarks`) : []))),
+  ],
 };

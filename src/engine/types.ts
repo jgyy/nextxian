@@ -40,7 +40,9 @@ export type Condition =
   /** The Elder's face, as `moodFor` reads it. */
   | { kind: "mood"; is: Mood }
   /** The scene the player is standing in starts with this text. */
-  | { kind: "scene"; prefix: string };
+  | { kind: "scene"; prefix: string }
+  /** How many flags that start with this text are on. Arcs count their finished parts this way. */
+  | { kind: "count"; prefix: string; min?: number; max?: number };
 
 export type Effect =
   | { kind: "setFlag"; flag: string; value?: boolean }

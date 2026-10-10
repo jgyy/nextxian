@@ -57,3 +57,5 @@
 {"cat": "time-loop", "where": "src/story/chapter-3.ts", "note": "Dragging Lin Yuan out of the smoke sent the player back to a scene of him still sitting at his desk before the fire; it now leads out to the report.", "n": 1}
 {"cat": "time-loop", "where": "src/story/chapter-3.ts", "note": "Shouting for the wardens replayed Ren Qiao's first confrontation after the fire had already started; it now leads out to the report.", "n": 1}
 {"cat": "time-loop", "where": "src/story/chapter-3.ts", "note": "Returning up the chute from the vault looped back to the chute's first scene; it now leads out to the report.", "n": 1}
+{"cat": "dead-condition", "where": "src/story/npc/elder-su-side-paths.ts", "note": "REQUEST_VILLAGE remembered that the player had asked for a night in the same breath, but the two requests are alternatives in one scene; it now remembers the name the gate disciple gave.", "n": 1}
+{"cat": "dead-condition", "where": "src/story/npc/elder-su.ts", "note": "REFUSE_SEALING remembered that the player had watched the signing, but watching and refusing are alternatives in one scene; it now remembers the watch from the pillar.", "n": 1}

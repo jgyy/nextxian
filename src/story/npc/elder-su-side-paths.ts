@@ -19,8 +19,8 @@ export const elderSuSidePaths: Record<string, NpcScenario> = {
     },
     memory: [
       {
-        when: [{ kind: "said", scenario: "REQUEST_NIGHT", within: 3 }],
-        line: "You asked for a night a moment ago, and now you ask for a village. The Law can grant you one of them. It cannot grant you both, and I am tired of counting the time you ask for.",
+        when: [{ kind: "flag", flag: "knows_gu_name" }],
+        line: "My gate disciple tells me you asked after Gu Hanzhen by name, and now you ask to see where he was born. The Law can spare you an afternoon. It cannot spare you the question of why you want one.",
       },
     ],
   },

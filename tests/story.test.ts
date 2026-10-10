@@ -846,8 +846,8 @@ describe("the side paths of the new scenes", () => {
     expect(after.history).toEqual(["REQUEST_VILLAGE", "REPORT_VILLAGE"]);
   });
 
-  it("lets the Elder answer a request for the village with a memory of a request for a night", () => {
-    const after = pick(deciding("mission", fresh({ history: ["REQUEST_NIGHT"] })), "ask_village_leave");
+  it("lets the Elder answer a request for the village with a memory of the name the gate disciple gave", () => {
+    const after = pick(deciding("mission", fresh({ flags: { knows_gu_name: true } })), "ask_village_leave");
     expect(reactionLine(after)).toBe(story.scenarios.REQUEST_VILLAGE.memory?.[0].line);
   });
 

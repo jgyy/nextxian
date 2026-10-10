@@ -14,7 +14,7 @@ import type { Choice, ChoiceTone, Condition, Effect, Mood, NpcMetric, NpcScenari
  *     // a comment
  *
  * Conditions are joined with `&`: `flag`, `!flag`, `insight>=12`, `karma<=-10`, `trust>=20`, `realm>=2`, `roads>=3`,
- * `bond:ren>=10`, `since:flag>=4`, `decisions>=30`, `mood:afraid`, `scene:prefix`, `said:SCENARIO`, `tone:deceit>=3/6`.
+ * `bond:ren>=10`, `since:flag>=4`, `decisions>=30`, `mood:afraid`, `scene:prefix`, `count:flag_prefix>=3`, `said:SCENARIO`, `tone:deceit>=3/6`.
  * Effects are separated by spaces: `+flag`, `-flag`, `karma+3`, `cult+4`, `trust-2`, `bond:ren+5`, `npc:ID`, `ally:ID`.
  * Unless the effects start with `=`, a choice also gets the small stat drift that goes with its tone.
  */
@@ -63,6 +63,9 @@ export function parseConditions(source: string, where: string): Condition[] {
       const mood = t.slice(5) as Mood;
       if (!MOODS.includes(mood)) throw new MarkupError(where, `unknown mood "${mood}"`);
       out.push({ kind: "mood", is: mood });
+    } else if (t.startsWith("count:")) {
+      const { name, ...rest } = bounds(t.slice(6), where);
+      out.push({ kind: "count", prefix: name, ...rest });
     } else if (t.startsWith("scene:")) {
       out.push({ kind: "scene", prefix: t.slice(6) });
     } else if (t.startsWith("said:")) {
