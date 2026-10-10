@@ -18,5 +18,12 @@ The mist has stayed low for forty days. Whatever you did on the Sealing Night, y
 > quiet | Watch from the Ash Bridge, and learn their faces before they learn yours. | censors_entry
 > inquiry | Ask Lin Yuan what the Concord’s white sash means, and meet them knowing. | censors_entry
 > mercy | Fetch the cook, who has set out rice for twelve, and walk down together. | censors_entry
+
+=== hub_b2_road | The Willow Reach
+(temporary hub)
+> truth | Wait. | hub_b2_road
+> quiet | Wait. | hub_b2_road
+> mercy | Wait. | hub_b2_road
+> inquiry | Wait. | hub_b2_road
 `,
 };
