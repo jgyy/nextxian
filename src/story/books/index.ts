@@ -33,6 +33,7 @@ import { pao } from "./b3/pao";
 import { fifth } from "./b3/fifth";
 import { ninesails } from "./b3/ninesails";
 import { frame4 } from "./b4/frame";
+import { frame5 } from "./b5/frame";
 import { chain } from "./b3/chain";
 import { border } from "./b4/border";
 import { stones } from "./b4/stones";
@@ -49,6 +50,7 @@ import { roots } from "./b4/roots";
 import { tomb } from "./b4/tomb";
 import { mill } from "./b4/mill";
 import { voice } from "./b4/voice";
+import { skiff } from "./b5/skiff";
 
 /**
  * The books after the first, in reading order. Each book lists its arcs; the story index parses them, adds their scenes
@@ -69,5 +71,10 @@ export const books: Book[] = [
     id: "b4",
     name: "Book Four: The Ash Steppe",
     arcs: [frame4, border, stones, glass, caravan, storm, camp, wolves, bone, vigil, court, kurultai, roots, tomb, mill, voice],
+  },
+  {
+    id: "b5",
+    name: "Book Five: The Glass Sea",
+    arcs: [frame5, skiff],
   },
 ];
