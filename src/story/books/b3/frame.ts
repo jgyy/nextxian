@@ -40,6 +40,8 @@ The Elder has taken rooms at the Ferryman’s Rest. The Censors who came with yo
 +[c] count:card_>=4 | Four brown cards lie in your sleeve, warm from handling, and each of them wants the others.
 +[c] count:card_>=2 | Two brown cards lie in your sleeve. They have begun to hum when they touch.
 +[c] count:card_>=1 | A brown card lies in your sleeve, warm from handling.
++[d] b3q_house | The hill above the town is quiet, and its windows are open, and a child is spinning on the grass.
++[d] b3q_forge | A small black seal that asks lies on your palm in memory, warm as a coal.
 +[d] b3q_keeners | The lament runs in your head in nine verses, seven of them written down.
 +[d] b3q_ward | Cooper Lane smells of boiled linen and, faintly, of something blue.
 +[d] b3q_harbour | Ke-er’s name is under your fingers, still, a groove in the limestone you will not forget.
@@ -52,5 +54,7 @@ The Elder has taken rooms at the Ferryman’s Rest. The Censors who came with yo
 > quiet | Climb the spur to the Salt Lamp. | lamp_entry |  | !b3q_lamp & count:b3q_>=2 | You have been to the Lamp, or you have not yet learned enough of the town to climb it.
 > truth | Walk the length of Cooper Lane to the dye-works. | ward_entry |  | !b3q_ward & count:b3q_>=2 | You have been to the Ward, or you have not yet learned enough of the town to find it.
 > mercy | Climb the ladder to the Sing-Loft above the fish market. | keeners_entry |  | !b3q_keeners & count:b3q_>=2 | You have sung with the keeners, or you have not yet learned enough of the town to find the loft.
+> force | Take the ferry to the Salt Works, and ask for the seal-wright. | forge_entry |  | !b3q_forge & b3q_ferry | You have not yet crossed the bay with the ferrywoman, or you have already met the seal-wright.
+> mercy | Climb the hill road to the House of Gentle Hands, where a boy has gone alone. | house_entry |  | !b3q_house & b3q_ward & count:b3q_>=3 | The House stands closed to you until the Ward has told you what it knows, or you have already been.
 `,
 };
