@@ -21,6 +21,7 @@ The mist has stayed low for forty days. Whatever you did on the Sealing Night, y
 
 === hub_b2_road | The Reach of Many Landings
 The river does not hurry. For thirty-six days it carries the barge past waterside towns, each with its jetty and its grey-flagged toll-hut, each with something to say. The Censors keep a schedule that allows for delay, as long as the delay is the right kind. Duan Wuyi calls it “the courtesy of the road.”
++ b2_censors_done | Duan Wuyi’s notes on your mountain ride in a locked case on the barge, and he checks the lock each morning.
 + b2r_willow | Behind you, a child with a cloth satchel is still waving from a jetty at Willow Reach.
 + b2r_assize | The salt pans at Kuan Landing are a white line on the horizon, and a court of salt is already sinking into the town.
 + b2r_pagoda | The drowned pagoda keeps its lantern lit, in case you should come back.
@@ -36,7 +37,7 @@ The river does not hurry. For thirty-six days it carries the barge past watersid
 
 === hub_b2_city | Qinglian Ford
 (temporary hub)
-> truth | Wait. | hub_b2_city
+> truth | The Silk Quarter. | silk_entry |  | !b2q_silk | You have been through the quarter.
 > quiet | Wait. | hub_b2_city
 > mercy | Wait. | hub_b2_city
 > inquiry | Wait. | hub_b2_city

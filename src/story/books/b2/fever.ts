@@ -382,6 +382,7 @@ The great wheel still turns, and the mill still grinds, and the market is loud. 
 +[seller] fever_a3_took_ledger | The dust-seller's ledger is in your sleeve, four hundred names with the dates they began.
 +[seller] fever_a3_took_bribe | The dust-seller's purse is in your sleeve. It is heavier than you remember.
 +[su] fever_su_read | The Elder has begun to read her own mail.
++ fever_a2_dam | A dam was begun at the second bend of the river. No one yet knows if it will hold.
 + fever_woke_some | Some of the town woke, and some chose not to. No one can say which was braver.
 +[ren] fever_a2_warden_ally | The warden with the key walked off with a jar under her arm, to show her old comrades what it was.
 > truth | Say goodbye to Master Yao, and promise to send word. | fever_close2

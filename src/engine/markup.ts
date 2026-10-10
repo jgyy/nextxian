@@ -179,6 +179,20 @@ export function parseScenes(source: string, file = "markup"): Scene[] {
       scene.paragraphs.push(line);
     }
   });
+  // `+` as a choice's destination means the next scene written below it, and `^` means the same destination as the
+  // choice above it. They keep a long run of scenes from repeating every id.
+  scenes.forEach((scene, i) => {
+    scene.choices.forEach((choice, c) => {
+      if (choice.next === "+") {
+        const following = scenes[i + 1];
+        if (!following) throw new MarkupError(file, `scene "${scene.id}" has a choice that goes to the next scene, but none follows`);
+        choice.next = following.id;
+      } else if (choice.next === "^") {
+        if (c === 0) throw new MarkupError(file, `the first choice of "${scene.id}" cannot repeat a destination above it`);
+        choice.next = scene.choices[c - 1].next;
+      }
+    });
+  });
   return scenes;
 }
 
