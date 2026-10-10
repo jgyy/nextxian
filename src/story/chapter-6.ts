@@ -56,6 +56,15 @@ export const chapterSix: Scene[] = [
       "\"Every disciple of the Law learns to bow before the tablets,\" she says. \"We are taught that the dead are patient, that they will wait until we are ready to speak their names again. I have bowed before this one every morning for fifteen years. I have never once said her name.\" Her voice does not break. It simply stops, the way a bell stops when someone puts a hand on it.",
       "The silence stretches. Somewhere in the courtyard beyond the memorial, a warden’s lantern goes by, and its light moves across the tablets in a slow arc, lighting up one name after another before it fades. For a moment the hollow in the paint catches the glow and looks almost like a wound that is trying to close.",
     ],
+    interjections: [
+      {
+        when: [
+          { kind: "flag", flag: "lied_about_seal" },
+          { kind: "flag", flag: "lied_to_eye" },
+        ],
+        line: "Two lies, Wanderer. One at my gate about the jade, and one to my mirror in the sutra hall. I have been counting them the way the masters count the sealing names. Do not give me a third to count.",
+      },
+    ],
     choices: [
       {
         id: "press_for_sealing_night",

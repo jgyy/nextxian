@@ -10,14 +10,21 @@ import { chapterEight } from "./chapter-8";
 import { chapterNine } from "./chapter-9";
 import { chapterTen } from "./chapter-10";
 import { chapterEleven } from "./chapter-11";
+import { herbMarketScenes } from "./side-herb-market";
+import { lanternStairScenes } from "./side-lantern-stair";
 import { elderSu, elderSuScenarios } from "./npc/elder-su";
 
-/** The story in reading order. Word counts and reports group scenes by these chapters. */
+/**
+ * The story in reading order. Side paths sit after the chapter they branch from and
+ * rejoin the main line. Word counts and reports group scenes by these chapters.
+ */
 export const chapters: { name: string; scenes: Scene[] }[] = [
   { name: "Chapter 1: The Stolen Seal", scenes: chapterOne },
+  { name: "Side Path: The Herb Market", scenes: herbMarketScenes },
   { name: "Chapter 2: The Crimson Abyss", scenes: chapterTwo },
   { name: "Chapter 3: The Ash Archive", scenes: chapterThree },
   { name: "Chapter 4: The Sutra Door", scenes: chapterFour },
+  { name: "Side Path: The Lantern Stair", scenes: lanternStairScenes },
   { name: "Chapter 5: The Blood Lotus Sutra", scenes: chapterFive },
   { name: "Chapter 6: The Jade Eye", scenes: chapterSix },
   { name: "Chapter 7: The Tribunal of Bells", scenes: chapterSeven },

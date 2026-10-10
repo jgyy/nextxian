@@ -15,6 +15,15 @@ export const chapterEight: Scene[] = [
       "The abyss path begins where the mountain splits, exactly as it did on the day you first came to find Gu Hanzhen. The cleft is wider than you remember. Red mist pours up from its depths in slow, heavy breaths, and the air is thick with the iron smell of blood that has been left to dry on stone. The path winds down the edge of the cleft, narrow and steep, with no railing and no light except the one you carry.",
       "Gu Hanzhen is not with you. The Elder kept him in the Law Hall, under guard, with a promise that his name would be read aloud at the next session of the tribunal. You have her word on it. You are not sure yet whether that is worth anything.",
     ],
+    interjections: [
+      {
+        when: [
+          { kind: "flag", flag: "told_truth" },
+          { kind: "flag", flag: "lied_about_seal" },
+        ],
+        line: "You told me the truth in one hall and a lie in the next, all within the same week. The Law can forgive a liar, but it does not know what to do with someone who has done both. Choose which one you carry down the mountain.",
+      },
+    ],
     choices: [
       {
         id: "take_rope",

@@ -2,10 +2,23 @@ import { describe, expect, it } from "vitest";
 import { story, chapters } from "@/story";
 import { validateStory, MIN_CHOICES, MIN_NPC_SCENARIOS } from "@/engine/validate";
 import { choose, createGame, currentBeat, getChoices, getScene } from "@/engine/game";
-import { moodFor, tierFor } from "@/engine/npc";
-import type { GameState, LogEntry, Tier } from "@/engine/types";
+import { moodFor, tierFor, tierShiftLine, TIER_SHIFT_DOWN, TIER_SHIFT_UP } from "@/engine/npc";
+import type { Choice, GameState, LogEntry, Tier } from "@/engine/types";
 
 const TIERS: Tier[] = ["hostile", "wary", "neutral", "warm", "devoted"];
+
+/** Her reply to the player's latest choice: the first NPC line after it, before any attitude comment. */
+function reactionLine(state: GameState): string | undefined {
+  const lastPlayer = state.log.map((e) => e.kind).lastIndexOf("player");
+  return state.log.slice(lastPlayer + 1).find((e) => e.kind === "npc")?.text;
+}
+
+/** The flags a choice needs before it can be picked. */
+function flagsFor(choice: Choice): Record<string, boolean> {
+  return Object.fromEntries(
+    (choice.requires ?? []).filter((c) => c.kind === "flag" && (c.is ?? true)).map((c) => [(c as { flag: string }).flag, true]),
+  );
+}
 
 /** Every scene id reachable from the start by following choice links, ignoring conditions. */
 function reachableScenes(): Set<string> {
@@ -53,7 +66,7 @@ describe("story integrity", () => {
     const ids = chapters.flatMap((c) => c.scenes.map((s) => s.id));
     expect(new Set(ids).size).toBe(ids.length);
     expect(ids.sort()).toEqual(Object.keys(story.scenes).sort());
-    expect(chapters).toHaveLength(11);
+    expect(chapters).toHaveLength(13);
   });
 
   it("has five endings, all reachable", () => {
@@ -73,14 +86,11 @@ describe("reactive NPC", () => {
 
   it("answers the same scenario differently across trust tiers", () => {
     for (const scenario of Object.values(story.scenarios)) {
+      const { sceneId, choiceId, flags } = locate(scenario.id);
       const seen = new Set<string>();
       for (const trust of [-60, -20, 0, 30, 70]) {
-        const after = choose(
-          story,
-          { ...withNpc(trust), sceneId: findSceneUsing(scenario.id) },
-          findChoiceUsing(scenario.id),
-        );
-        const npcLine = after.log.filter((e) => e.kind === "npc").at(-1)?.text;
+        const after = choose(story, { ...withNpc(trust, flags), sceneId }, choiceId);
+        const npcLine = reactionLine(after);
         expect(npcLine, scenario.id).toBeDefined();
         seen.add(npcLine as string);
       }
@@ -95,9 +105,50 @@ describe("reactive NPC", () => {
       { ...withNpc(0, { lied_about_seal: true }), sceneId: "return_hall" },
       "full_truth",
     );
-    const lineOf = (s: GameState) => s.log.filter((e) => e.kind === "npc").at(-1)?.text;
-    expect(lineOf(remembered)).not.toBe(lineOf(plain));
-    expect(lineOf(remembered)).toContain("lied to me once");
+    expect(reactionLine(remembered)).not.toBe(reactionLine(plain));
+    expect(reactionLine(remembered)).toContain("lied to me once");
+  });
+
+  it("comments when a choice moves her to a warmer attitude", () => {
+    // Trust 10 is neutral. Honest account adds 8, which reaches 18 and the warm tier.
+    const after = choose(story, { ...withNpc(10), sceneId: "law_hall" }, "honest_account");
+    const npc = after.log.filter((e) => e.kind === "npc");
+    expect(npc).toHaveLength(2);
+    expect(npc.at(-1)?.text).toBe(TIER_SHIFT_UP.warm);
+  });
+
+  it("comments when a choice cools her to a colder attitude", () => {
+    // Trust 20 is warm. Threatening her subtracts 12, which leaves 8 and the neutral tier.
+    const after = choose(story, { ...withNpc(20), sceneId: "law_hall" }, "threaten_expose");
+    expect(after.log.filter((e) => e.kind === "npc").at(-1)?.text).toBe(TIER_SHIFT_DOWN.neutral);
+  });
+
+  it("stays quiet about her attitude when the tier does not change", () => {
+    // Trust 0 to 8 stays neutral, so she gives only her scenario reply.
+    const after = choose(story, { ...withNpc(0), sceneId: "law_hall" }, "honest_account");
+    expect(after.log.filter((e) => e.kind === "npc")).toHaveLength(1);
+  });
+
+  it("has a distinct, non-empty attitude line for every tier she can move into", () => {
+    const lines = [...Object.values(TIER_SHIFT_UP), ...Object.values(TIER_SHIFT_DOWN)] as string[];
+    expect(lines.every((l) => l.trim().length > 0)).toBe(true);
+    expect(new Set(lines).size).toBe(lines.length);
+    expect(tierShiftLine("neutral", "neutral")).toBeUndefined();
+  });
+
+  it("notices two lies and says so when the player reaches the painted name", () => {
+    const state: GameState = {
+      ...withNpc(0, { lied_about_seal: true, lied_to_eye: true }),
+      sceneId: "jade_eye_return",
+    };
+    const after = choose(story, state, "kneel_at_tablets");
+    expect(after.log.some((e) => e.kind === "npc" && e.text.startsWith("Two lies"))).toBe(true);
+  });
+
+  it("remarks on lamp oil on the player's sleeve when the jade-eye scene opens", () => {
+    const state: GameState = { ...withNpc(0, { pocketed_wick: true }), sceneId: "sutra_hall" };
+    const after = choose(story, state, "speak_to_jade_eye");
+    expect(after.log.some((e) => e.kind === "npc" && e.text.includes("lamp oil"))).toBe(true);
   });
 
   it("moves trust in the direction of the scenario", () => {
@@ -172,6 +223,48 @@ describe("player choices", () => {
   });
 });
 
+describe("side paths", () => {
+  it("opens the herb market from the Elder's mission and rejoins the abyss with the rumour", () => {
+    let game: GameState = { ...createGame(story), sceneId: "mission", npc: { trust: 0, respect: 0, fear: 10, suspicion: 30 } };
+    const route = ["prepare_at_market", "buy_frostleaf", "ask_about_elder_sister", "keep_rumor_close", "report_rumor_to_jade_eye"];
+    for (const id of route) game = choose(story, game, id);
+    expect(game.sceneId).toBe("abyss_entry");
+    expect(game.flags.accepted_mission).toBe(true);
+    expect(game.npc.trust).toBe(-3);
+    expect(reactionLine(game)).toBe(
+      story.scenarios.REPORT_RUMOR.lines[tierFor(0)],
+    );
+  });
+
+  it("keeps the rumour report locked until the player has heard something in the lane", () => {
+    const views = getChoices(getScene(story, "market_return"), createGame(story));
+    const report = views.find((v) => v.choice.id === "report_rumor_to_jade_eye");
+    expect(report?.available).toBe(false);
+    expect(report?.hint).toMatch(/lane/);
+  });
+
+  it("opens the lantern stair from Gu's cell and returns to the sutra hall with the names", () => {
+    const route = ["follow_lantern_keeper", "take_lantern", "ask_about_mengjiao_lamp", "read_names_on_wall", "carry_names_back"];
+    let game: GameState = { ...createGame(story), sceneId: "sutra_gu_cell" };
+    for (const id of route) game = choose(story, game, id);
+    expect(game.sceneId).toBe("sutra_hall");
+    expect(game.flags.read_lamp_names).toBe(true);
+    expect(game.flags.entered_lantern_stair).toBe(true);
+  });
+
+  it("lets the Elder hear about the lamps only after the player has been down the stair", () => {
+    const base = { ...createGame(story), sceneId: "sutra_jade_eye" };
+    const locked = getChoices(getScene(story, "sutra_jade_eye"), base).find(
+      (v) => v.choice.id === "tell_elder_about_lamps",
+    );
+    expect(locked?.available).toBe(false);
+
+    const after = choose(story, { ...base, flags: { entered_lantern_stair: true } }, "tell_elder_about_lamps");
+    expect(after.npc.trust).toBe(3);
+    expect(after.npc.suspicion).toBe(28);
+  });
+});
+
 describe("visual novel stage", () => {
   const entry = (kind: LogEntry["kind"], text: string): LogEntry => ({ kind, text });
 
@@ -200,14 +293,10 @@ describe("visual novel stage", () => {
   });
 });
 
-/** Finds a scene and choice that trigger the given NPC scenario. */
-function findSceneUsing(scenarioId: string): string {
+/** Finds the first scene and choice that trigger the given NPC scenario, with the flags that choice needs. */
+function locate(scenarioId: string): { sceneId: string; choiceId: string; flags: Record<string, boolean> } {
   const scene = Object.values(story.scenes).find((s) => s.choices.some((c) => c.npcScenario === scenarioId));
   if (!scene) throw new Error(`no scene uses ${scenarioId}`);
-  return scene.id;
-}
-
-function findChoiceUsing(scenarioId: string): string {
-  const scene = Object.values(story.scenes).find((s) => s.choices.some((c) => c.npcScenario === scenarioId));
-  return scene!.choices.find((c) => c.npcScenario === scenarioId)!.id;
+  const choice = scene.choices.find((c) => c.npcScenario === scenarioId)!;
+  return { sceneId: scene.id, choiceId: choice.id, flags: flagsFor(choice) };
 }

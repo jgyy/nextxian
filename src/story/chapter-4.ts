@@ -192,6 +192,11 @@ export const chapterFour: Scene[] = [
         next: "sutra_hall",
         effects: [{ kind: "addStat", stat: "karma", amount: -3 }],
       },
+      {
+        id: "follow_lantern_keeper",
+        label: "Ask Ren Qiao which stair leads to the lamps, and follow it down into the dark.",
+        next: "lantern_stair",
+      },
     ],
   },
   {
