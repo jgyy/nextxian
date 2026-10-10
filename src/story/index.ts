@@ -25,12 +25,14 @@ import { quarryScenes } from "./side-quarry";
 import { healerScenes } from "./side-healer";
 import { hermitScenes } from "./side-hermit";
 import { bridgeScenes } from "./side-bridge";
+import { roadGroups, roadScenarios, waysideEntrances } from "./roads";
+import { elderSuRealm, elderSuRealmScenes } from "./npc/elder-su-realm";
 
 /**
  * The story in reading order. Side paths sit after the chapter they branch from and
  * rejoin the main line. Word counts and reports group scenes by these chapters.
  */
-export const chapters: { name: string; scenes: Scene[] }[] = [
+const mainLine: { name: string; scenes: Scene[] }[] = [
   { name: "Chapter 1: The Stolen Seal", scenes: chapterOne },
   { name: "Side Path: The Foothill Village", scenes: villageScenes },
   { name: "Side Path: The Herb Market", scenes: herbMarketScenes },
@@ -56,6 +58,20 @@ export const chapters: { name: string; scenes: Scene[] }[] = [
   { name: "Chapter 11: The Judgment", scenes: chapterEleven },
 ];
 
+/**
+ * Each wayside opens from one scene of the main line, which gains one more choice, and its group of
+ * roads follows the chapter it belongs to.
+ */
+export const chapters: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
+  const scenes = elderSuRealmScenes(c.scenes).map((scene) => {
+    const entrance = waysideEntrances[scene.id];
+    return entrance ? { ...scene, choices: [...scene.choices, entrance] } : scene;
+  });
+  const chapter = /^Chapter (\d+):/.exec(c.name);
+  const groups = chapter ? roadGroups.filter((g) => g.chapter === Number(chapter[1])) : [];
+  return [{ ...c, scenes }, ...groups.map(({ name, scenes: roads }) => ({ name, scenes: roads }))];
+});
+
 const scenes = chapters.flatMap((c) => c.scenes);
 
 export const story: Story = {
@@ -63,5 +79,5 @@ export const story: Story = {
   startSceneId: "gate",
   npc: elderSu,
   scenes: Object.fromEntries(scenes.map((s) => [s.id, s])),
-  scenarios: { ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths },
+  scenarios: elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios }),
 };

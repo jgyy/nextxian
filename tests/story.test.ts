@@ -107,7 +107,7 @@ describe("story integrity", () => {
     const ids = chapters.flatMap((c) => c.scenes.map((s) => s.id));
     expect(new Set(ids).size).toBe(ids.length);
     expect(ids.sort()).toEqual(Object.keys(story.scenes).sort());
-    expect(chapters).toHaveLength(23);
+    expect(chapters).toHaveLength(33);
   });
 
   it("has five endings, all reachable", () => {
@@ -365,10 +365,10 @@ describe("reactive NPC", () => {
 });
 
 describe("player choices", () => {
-  it("starts at the gate with four or more options", () => {
+  it("starts at the gate with the four first options and the road down to the pilgrims", () => {
     const game = createGame(story);
     expect(game.sceneId).toBe("gate");
-    expect(getChoices(getScene(story, "gate"), game)).toHaveLength(4);
+    expect(getChoices(getScene(story, "gate"), game)).toHaveLength(5);
   });
 
   it("reaches the Sisters' Dao ending through the sealing choice", () => {

@@ -7,6 +7,7 @@ import { restoreGame } from "@/engine/save";
 import { TONE_INFO } from "@/engine/tone";
 import type { GameState, LogEntry, Story } from "@/engine/types";
 import { chapters } from "@/story";
+import { CultivationPanel } from "./CultivationPanel";
 import { NpcPanel } from "./NpcPanel";
 import { StatsPanel } from "./StatsPanel";
 import { ToneLegend } from "./ToneLegend";
@@ -38,6 +39,12 @@ function Entry({ entry }: { entry: LogEntry }) {
   switch (entry.kind) {
     case "heading":
       return <h2 className="scene-title">{entry.text}</h2>;
+    case "realm":
+      return (
+        <p className="realm-line" role="status">
+          {entry.text}
+        </p>
+      );
     case "narration":
       return <p className="narration">{entry.text}</p>;
     case "player":
@@ -204,6 +211,7 @@ export function GameView({ story }: { story: Story }) {
 
         <aside className="side" aria-label="Characters and stats">
           <NpcPanel profile={story.npc} npc={game.npc} lastLine={lastNpcLine} manner={mannerOf(game.tones)} />
+          <CultivationPanel game={game} />
           <StatsPanel stats={game.stats} tones={game.tones} />
         </aside>
       </div>

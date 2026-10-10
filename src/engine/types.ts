@@ -26,12 +26,18 @@ export type Condition =
    * The player made decisions of this tone. `min` is how many (default 1), and `within`
    * looks only at the last N decisions. Page turns are not decisions, so they do not count.
    */
-  | { kind: "tone"; tone: ChoiceTone; min?: number; within?: number };
+  | { kind: "tone"; tone: ChoiceTone; min?: number; within?: number }
+  /** The player's cultivation realm, as an index into `REALMS`. 0 is Mortal. */
+  | { kind: "realm"; min?: number; max?: number }
+  /** How many side roads the player has finished (flags starting `road_done_`). */
+  | { kind: "roads"; min?: number; max?: number };
 
 export type Effect =
   | { kind: "setFlag"; flag: string; value?: boolean }
   | { kind: "addStat"; stat: PlayerStat; amount: number }
-  | { kind: "addNpc"; metric: NpcMetric; amount: number };
+  | { kind: "addNpc"; metric: NpcMetric; amount: number }
+  /** Cultivation points on top of the small gain every decision already brings. */
+  | { kind: "addCultivation"; amount: number };
 
 /** The NPC reaction tiers, derived from trust. */
 export type Tier = "hostile" | "wary" | "neutral" | "warm" | "devoted";
@@ -101,7 +107,7 @@ export interface Story {
 }
 
 export interface LogEntry {
-  kind: "narration" | "heading" | "player" | "npc";
+  kind: "narration" | "heading" | "player" | "npc" | "realm";
   text: string;
   speaker?: string;
 }
@@ -115,6 +121,10 @@ export interface GameState {
   history: string[];
   /** The tone of each decision the player has made, oldest first. The `tone` condition reads it. */
   tones: ChoiceTone[];
+  /** Cultivation points earned so far. They only grow. */
+  cultivation: number;
+  /** Index of the player's current realm in `REALMS`. The player starts as a Mortal (0). */
+  realm: number;
   log: LogEntry[];
   visited: string[];
 }

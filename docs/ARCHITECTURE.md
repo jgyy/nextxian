@@ -7,12 +7,14 @@ flowchart LR
   subgraph Story["src/story (content)"]
     C["chapter-1..11.ts<br/>eleven chapters"]
     SD["side-*.ts<br/>twelve side paths"]
-    NPC["npc/elder-su.ts, elder-su-reactions.ts,<br/>elder-su-side-paths.ts<br/>58 scenarios"]
+    RD["roads/<br/>forty side roads, 1,010 scenes"]
+    NPC["npc/elder-su*.ts<br/>98 scenarios, realm memories"]
   end
   subgraph Engine["src/engine (pure logic)"]
     G["game.ts<br/>createGame / choose / getChoices"]
     N["npc.ts<br/>tierFor / moodFor / respectTierFor / mannerOf / reactToScenario"]
     TN["tone.ts<br/>six tones and their names"]
+    CU["cultivation.ts<br/>eight realms, gains, heart demon"]
     V["validate.ts<br/>validateStory: 200-word scene cap, four choices, headings"]
     SV["save.ts<br/>restoreGame"]
     W["words.ts<br/>countWords"]
@@ -23,23 +25,25 @@ flowchart LR
     TL["ToneLegend.tsx<br/>what each colour means"]
     NP["NpcPanel.tsx<br/>portrait, mood, her read of you"]
     SP["StatsPanel.tsx<br/>stats and recent decisions"]
+    CP["CultivationPanel.tsx<br/>realm, progress, ladder"]
   end
-  C & SD & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> N
   G --> TN
+  G --> CU
   V -. checked in tests .-> S
   V --> W
   G --> GV
   GV --> TL
   GV --> SV
-  GV --> NP & SP
+  GV --> NP & SP & CP
   GV -->|localStorage save| Storage[("Browser storage")]
 ```
 
 ## Turn flow
 
-Every choice goes through the same path. A decision logs the player’s line, records its tone, and lets the Elder react before the next scene is entered, so her line is the last thing the player reads before the new text. There is no other kind of step: a scene that continues from another is reached by a choice like any other.
+Every choice goes through the same path. A decision logs the player’s line, records its tone, earns cultivation, and lets the Elder react before the next scene is entered, so her line is the last thing the player reads before the new text. There is no other kind of step: a scene that continues from another is reached by a choice like any other.
 
 ```mermaid
 sequenceDiagram
@@ -56,8 +60,9 @@ sequenceDiagram
     N-->>E: line, tier
     E->>E: apply scenario delta, remember flags, append to history
   end
-  E->>E: apply choice.effects
-  E->>E: say one attitude comment, if any: tier, mood, respect, then manner
+  E->>E: apply choice.effects (stats, flags, addCultivation)
+  E->>E: add the tone's cultivation points, break through one realm if earned
+  E->>E: say one attitude comment, if any: realm, tier, mood, respect, then manner
   E->>E: enter next scene, add extras and interjections whose conditions hold
   E-->>UI: new GameState
   UI->>UI: render log, choices and NPC panel
@@ -112,9 +117,86 @@ flowchart TD
   R --> J["rejoins the main line"]
 ```
 
+## Cultivation
+
+Every player begins as a Mortal. Each decision earns points by its tone, and an `addCultivation` effect adds more at key moments (the cultivator’s way at a road’s crisis, resting at a road’s end, the hidden route). When the points reach the next realm’s threshold the player breaks through, one realm per decision at most. The breakthrough is its own log entry, shown in gold, and the Elder remarks on it.
+
+```mermaid
+stateDiagram-v2
+  [*] --> Mortal
+  Mortal --> QiCondensation: 20 points
+  QiCondensation --> FoundationEstablishment: 80 points
+  FoundationEstablishment --> CoreFormation: 200 points, karma at least -30
+  CoreFormation --> NascentSoul: 380 points, karma at least -30
+  NascentSoul --> SpiritSevering: 620 points, karma at least -30
+  SpiritSevering --> DaoSeeking: 920 points, karma at least -30
+  DaoSeeking --> Ascendant: 1300 points, karma at least -30
+```
+
+From Core Formation upward a heart demon blocks the next realm while karma is below −30. Points keep gathering, and the breakthrough happens on the first decision after karma recovers.
+
+```mermaid
+flowchart TD
+  C[player picks a choice] --> E[apply effects, including addCultivation]
+  E --> G[add TONE_GAIN for the choice's tone]
+  G --> P{points reach the next threshold?}
+  P -- no --> D[stay in this realm]
+  P -- yes --> H{next realm is Core Formation or above,<br/>and karma below -30?}
+  H -- yes --> HD[heart demon: points keep gathering, realm holds]
+  H -- no --> B[realm + 1, log the breakthrough]
+  B --> EL[the Elder names the new realm]
+```
+
+| Tone | Points per decision |
+| --- | --- |
+| quiet, inquiry, truth, mercy | 2 |
+| force, deceit | 1 |
+
+The realm also gates content and reactions. A `realm` condition reads it for choices, extras, interjections and NPC memory lines. The Elder remarks on a mortal at the Law Hall and the abyss, and on a cultivator at the archive, the tribunal and the judgment. Her memory lines for twelve scenarios (a confession, a lie, a threat and so on) change once the player has reached Foundation Establishment, though a flag the player set still wins.
+
+## Side roads
+
+Ten waysides branch off the main line, one from the first scene of each chapter from the gate to the sealing night. That scene gains one choice, and the wayside returns to it. Each wayside offers four roads, and each road is 25 scenes built by `buildRoad` from a short spec (place, keeper, relic, omen, secret, four things to approach) and the shared wording in `lexicon.ts`. 40 roads × 25 scenes plus 10 waysides is 1,010 scenes.
+
+```mermaid
+flowchart TD
+  M["main-line scene<br/>one extra choice"] --> W["wayside<br/>four roads, closed once walked"]
+  W --> E["road entry<br/>four approaches, four different tones"]
+  E --> A0["approach 1<br/>five scenes"]
+  E --> A1["approach 2<br/>five scenes"]
+  E --> A2["approach 3<br/>five scenes"]
+  E --> A3["approach 4<br/>five scenes"]
+  A2 -. "Insight 12" .-> H["hidden route<br/>three scenes, reveals the secret"]
+  A0 --> R["return scene<br/>report, say nothing, rest, keep the relic"]
+  A1 --> R
+  A2 --> R
+  A3 --> R
+  H --> R
+  R --> W
+  W -->|leave| M
+```
+
+Each approach scene has four choices in four different tones. The fourth scene of each approach, the crisis, also offers the cultivator’s way, which needs a realm that rises with the wayside (Qi Condensation for the first three, Foundation Establishment for the next four, Core Formation for the last three).
+
+```mermaid
+sequenceDiagram
+  participant P as Player
+  participant R as road return scene
+  participant E as choose()
+  participant N as the Elder
+  P->>R: Report the road to the Elder
+  R->>E: choose("report")
+  E->>N: REPORT_ROAD_X, memory first, then trust tier
+  N-->>E: found secret, kept relic, run of lies, many roads, cultivator, or tier line
+  E->>E: set road_done_X, return to the wayside
+  E-->>P: the wayside, where she remarks on how many roads you have walked
+```
+
+The `roads` condition counts the `road_done_*` flags, so the Elder can speak to the number of roads walked. Because every interjection counts toward a scene’s 200-word cap whether or not it shows, those remarks live on the waysides, one each, instead of on the return scenes.
+
 ## Chapter and side path map
 
-Reading order is set in `src/story/index.ts`. Chapters are the main line. Side paths branch from a scene and rejoin it, and the Elder reacts to what they report.
+Reading order is set in `src/story/index.ts`. Chapters are the main line. Side paths branch from a scene and rejoin it, and the Elder reacts to what they report. The ten wayside groups of side roads follow their chapters and are omitted from the map below.
 
 ```mermaid
 flowchart LR
@@ -195,13 +277,16 @@ stateDiagram-v2
 
 ## Attitude shifts, manner and pattern interjections
 
-Only one attitude comment is said per choice, in a fixed order. When a choice moves her to another tier, that comes first. When only her face changes, that comes next. If her respect moves into a new band, she says so. When the player’s recent decisions settle on one tone, she names that manner. After the comment, interjections whose conditions combine flags, her reaction history and the tones of the player’s decisions can speak as the next scene opens.
+Only one attitude comment is said per choice, in a fixed order. When a choice carries the player into a higher realm, that comes first. Otherwise, when a choice moves her to another tier, that comes next. When only her face changes, that comes next. If her respect moves into a new band, she says so. When the player’s recent decisions settle on one tone, she names that manner. After the comment, interjections whose conditions combine flags, her reaction history and the tones of the player’s decisions can speak as the next scene opens.
 
 ```mermaid
 flowchart TD
   P[player picks a choice] --> R[reactToScenario: memory line or tier line]
   R --> D[apply scenario delta and effects]
-  D --> T{tier changed?}
+  D --> CG[add cultivation, maybe break through]
+  CG --> RM{realm rose?}
+  RM -- yes --> RML[realmShiftLine: she names the new realm]
+  RM -- no --> T{tier changed?}
   T -- yes --> TL[tierShiftLine: from, to]
   T -- no --> M{mood changed?}
   M -- yes --> ML[moodShiftLine: her face changed]
@@ -210,6 +295,7 @@ flowchart TD
   RS -- no --> K{manner changed?}
   K -- yes --> KL[mannerShiftLine: she names the pattern]
   K -- no --> E[enter next scene]
+  RML --> E
   TL --> E
   ML --> E
   RL --> E
@@ -234,7 +320,7 @@ stateDiagram-v2
 
 Every NPC scenario she reacts to is appended to `history`, in order. A `said` condition reads that list: `min` counts how many times a scenario appears, and `within` looks only at her last N reactions. `within: 1` is “what she just heard”. A `tone` condition reads the same way over the tones of the player’s decisions, so `min: 3, within: 4` is “three of the last four decisions were deceit”. A `flag` condition reads what the player has set, and an `npc` condition reads her metrics, so respect can shape a memory line too. Memory overrides are checked in order, so flag memories written by earlier choices still win over the newer history and tone lines.
 
-Every one of the 58 scenarios has at least one memory override, so her reply to the same choice can differ with the path the player has taken.
+Every one of the 98 scenarios has at least one memory override, so her reply to the same choice can differ with the path the player has taken.
 
 ```mermaid
 flowchart LR
@@ -292,11 +378,11 @@ flowchart TD
 
 ## Saves
 
-A save is the whole `GameState` in `localStorage`, written after every choice. Loading goes through `restoreGame`, which rejects a save that points at a scene the story does not have, and gives a save from before the reaction history or the decision tones an empty `history` or `tones`, so older progress still loads. Scene ids of the earlier page turns are still scenes, so older saves that stood on one still load.
+A save is the whole `GameState`, including `cultivation` and `realm`, in `localStorage`, written after every choice. Loading goes through `restoreGame`, which rejects a save that points at a scene the story does not have, and gives a save from before the reaction history or the decision tones an empty `history` or `tones`, and one from before cultivation zero points as a Mortal, so older progress still loads. Scene ids of the earlier page turns are still scenes, so older saves that stood on one still load.
 
 ## Scenarios
 
-The Elder reacts to fifty-eight scenarios. Each has five tier lines and at least one memory override. Some of them match on what she has just heard (`said`), on the flags the player has set, on the tones of recent decisions (`tone`), or on her respect (`npc`). Scenes can also carry NPC interjections, which she speaks unprompted when her metrics, flags, history or tones cross a threshold. Her attitude-shift lines (eight of them), respect-shift lines (four), mood-shift lines (seven, one per mood) and manner lines (six, one per tone) sit in `src/engine/npc.ts`.
+The Elder reacts to ninety-eight scenarios: the fifty-eight written by hand and forty road reports generated from the road specs. Each has five tier lines and at least one memory override. Some of them match on what she has just heard (`said`), on the flags the player has set, on the tones of recent decisions (`tone`), or on her respect (`npc`). Scenes can also carry NPC interjections, which she speaks unprompted when her metrics, flags, history or tones cross a threshold. Her attitude-shift lines (eight of them), respect-shift lines (four), mood-shift lines (seven, one per mood), manner lines (six, one per tone) and realm-shift lines (seven, one per realm above Mortal) sit in `src/engine/npc.ts`. Her realm-aware memories and scene remarks sit in `src/story/npc/elder-su-realm.ts`.
 
 The scenarios are in `src/story/npc/elder-su.ts`, the reactions added for choices she used to let pass are in `src/story/npc/elder-su-reactions.ts`, and the reactions to the five newest side paths are in `src/story/npc/elder-su-side-paths.ts`. The table lists the scenarios whose memory overrides matter most to a playthrough, and the source has the rest.
 
@@ -337,6 +423,6 @@ The scenarios are in `src/story/npc/elder-su.ts`, the reactions added for choice
 
 ## Quality gates
 
-- `npm test` checks that every decision has at least four choices and a tone, that every scene has a heading, that every link resolves, that there are at least forty NPC scenarios, that each scenario produces one reply per trust tier it can reach, that every `said` and `tone` condition names something real, that no scene body or NPC line runs over its cap, that the respect bands and their lines are distinct, that the side paths open and rejoin, and that the colour legend defines all six tones in both themes.
+- `npm test` checks that every decision has at least four choices and a tone, that every scene has a heading, that every link resolves, that there are at least forty NPC scenarios, that each scenario produces one reply per trust tier it can reach, that every `said` and `tone` condition names something real, that no scene body or NPC line runs over its cap, that the respect bands and their lines are distinct, that the side paths open and rejoin, that every road has 25 scenes within the word cap, that the cultivator’s way and hidden routes are gated, that realms, breakthroughs and the heart demon behave, that old saves load as a Mortal, and that the colour legend defines all six tones in both themes.
 - `npm run word-count` reports player-facing words against the 1,000,000-word goal, with the largest scene body against its 200-word cap.
 - CI (`.github/workflows/ci.yml`) runs lint, typecheck, tests, word count, and the production build.

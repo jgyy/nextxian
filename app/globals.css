@@ -955,6 +955,95 @@ button.ghost[aria-expanded="true"] {
   border: 1px solid var(--tone);
 }
 
+/* ── Cultivation ──────────────────────────────────────────── */
+
+.cultivation h2 {
+  margin: 2px 0 10px;
+  font-family: var(--brush);
+  font-size: 1.35rem;
+  color: var(--gilt);
+}
+
+.realm-bar {
+  display: block;
+  flex: none;
+  width: 100%;
+}
+
+.fill-realm {
+  background: linear-gradient(90deg, var(--gilt-soft), var(--gilt));
+}
+
+.realm-note {
+  margin: 8px 0 0;
+  font-size: 0.88rem;
+}
+
+.heart-demon {
+  margin: 10px 0 0;
+  padding: 8px 12px;
+  font-size: 0.88rem;
+  border-left: 3px solid var(--cinnabar);
+  background: rgba(209, 73, 61, 0.1);
+  border-radius: 0 10px 10px 0;
+}
+
+.ladder {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 0.84rem;
+}
+
+.ladder li {
+  padding: 2px 0 2px 18px;
+  position: relative;
+  color: var(--muted);
+}
+
+.ladder li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--panel-edge);
+}
+
+.ladder li[data-state="passed"]::before {
+  background: var(--gilt-soft);
+  border-color: var(--gilt-soft);
+}
+
+.ladder li[data-state="current"] {
+  color: var(--gilt);
+  font-weight: 600;
+}
+
+.ladder li[data-state="current"]::before {
+  background: var(--gilt);
+  border-color: var(--gilt);
+  box-shadow: 0 0 8px var(--gilt);
+}
+
+/* A breakthrough interrupts the scene in gold, so it cannot be missed. */
+.realm-line {
+  margin: 16px 0;
+  padding: 12px 16px;
+  font-family: var(--brush);
+  font-size: 1.12rem;
+  color: var(--gilt);
+  border: 1px solid var(--gilt-soft);
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(217, 181, 106, 0.16), rgba(217, 181, 106, 0.03));
+  animation: ink-in 0.6s ease both;
+}
+
 /* ── Focus and motion ─────────────────────────────────────── */
 
 :focus-visible {
