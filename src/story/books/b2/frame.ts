@@ -24,6 +24,6 @@ The mist has stayed low for forty days. Whatever you did on the Sealing Night, y
 > truth | The Willow Reach. | willow_entry | | !b2r_willow | You have already walked this reach.
 > quiet | Kuan Landing. | assize_entry |  | !b2r_assize | You have already sat in that court.
 > mercy | The Drowned Pagoda. | pagoda_entry |  | !b2r_pagoda | You have already taken that tea.
-> inquiry | Wait. | hub_b2_road
+> inquiry | The Censor’s Chessboard. | barge_entry |  | !b2r_barge | You have already played those games.
 `,
 };
