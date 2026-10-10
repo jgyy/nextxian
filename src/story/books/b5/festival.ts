@@ -678,7 +678,7 @@ She laughs, and bursts into tears.
 
 // ---------------------------------------------------------------- close
 === festival_close | The Eighth Night
-The lanterns begin to go out towards dawn. The drums are slowing. Pilgrims are asleep in heaps on the grass, wrapped in blankets, with children in their laps. The seven of the mourning-shop sit in a ring round the embers, in their veils or without them, a loose tangle of arms and legs and sleepy murmurs. Moth is asleep across three laps. Ash sits among them with her hands in her sleeves.
+The lanterns begin to go out towards dawn. Pilgrims sleep in heaps on the grass. The seven of the mourning-shop sit round the embers, in their veils or without them, a loose tangle of arms and legs. Moth is asleep across three laps. Ash sits among them with her hands in her sleeves.
 +[how] festival_told | You refused a gift that was never named, and were given the lid.
 +[how] festival_brawl | Two hundred Wardens sat down and ate dumplings with the people they came to arrest.
 +[how] festival_masks | Nine strangers danced through a cordon of Wardens in a tiger, a crane and a pig.
@@ -698,7 +698,7 @@ The Elder comes to find you. She has a cup in each hand, and she gives you one. 
 > inquiry | Ask who will go. | festival_close2 | +b5q_festival
 
 === festival_close2 | Who Will Go
-They decide it at dawn, in a council of seventeen, sitting in a ring on the wet grass. It is not orderly. Bao Er interrupts. Tian shouts. Moth requires to be fed. Ash, who has been quiet, at last lifts a hand.
+They decide it at dawn, in a council of seventeen, sitting in a ring on the wet grass. It is not orderly. Bao Er interrupts. Tian shouts. Moth requires to be fed. Ash at last lifts a hand.
 “Not all,” she says. “If we all go, nobody guards the camp. The Wardens will return. The Cribs will be restocked. The tithe will resume.” She looks round. “I propose a division.”
 “Of what?”
 “Of labour.” She smiles. “It is something I know. I have run a mourning-shop for fifteen years.”
