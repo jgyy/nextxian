@@ -39,7 +39,7 @@ The river does not hurry. For thirty-six days it carries the barge past watersid
 (temporary hub)
 > truth | The Silk Quarter. | silk_entry |  | !b2q_silk | You have been through the quarter.
 > quiet | The Archive of Nine. | nine_entry |  | !b2q_nine | You have climbed the tower.
-> mercy | Wait. | hub_b2_city
+> mercy | The Festival of Floating Names. | lanterns_entry |  | !b2q_lanterns | You have floated your lanterns.
 > inquiry | Wait. | hub_b2_city
 `,
 };
