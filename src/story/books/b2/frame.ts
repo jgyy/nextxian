@@ -19,11 +19,26 @@ The mist has stayed low for forty days. Whatever you did on the Sealing Night, y
 > inquiry | Ask Lin Yuan what the Concord’s white sash means, and meet them knowing. | censors_entry
 > mercy | Fetch the cook, who has set out rice for twelve, and walk down together. | censors_entry
 
-=== hub_b2_road | The Willow Reach
+=== hub_b2_road | The Reach of Many Landings
+The river does not hurry. For thirty-six days it carries the barge past waterside towns, each with its jetty and its grey-flagged toll-hut, each with something to say. The Censors keep a schedule that allows for delay, as long as the delay is the right kind. Duan Wuyi calls it “the courtesy of the road.”
++ b2r_willow | Behind you, a child with a cloth satchel is still waving from a jetty at Willow Reach.
++ b2r_assize | The salt pans at Kuan Landing are a white line on the horizon, and a court of salt is already sinking into the town.
++ b2r_pagoda | The drowned pagoda keeps its lantern lit, in case you should come back.
++ b2r_barge | A boy with black hands is writing in the air on the foredeck, and no one asks him to stop.
++ b2r_fever | At Green Mill, a row of blue flowers is coming up beside the great wheel.
++ departed | The mountain is a grey tooth far behind. Qinglian Ford is still twenty days ahead.
+> truth | Put in at Willow Reach, where the river is narrow and the toll is a name. | willow_entry |  | !b2r_willow | You have already crossed at Willow Reach.
+> inquiry | Put in at Kuan Landing, where the assize is sitting and the tide will not turn. | assize_entry |  | !b2r_assize | You have already sat in that court.
+> mercy | Row out to the Drowned Pagoda, where a cup is poured for you. | pagoda_entry |  | !b2r_pagoda | You have already taken that tea.
+> quiet | Sit down to chess with the Censor-General, and see what he says. | barge_entry |  | !b2r_barge | You have already played those games.
+> truth | Put in at Green Mill, where a town has stopped speaking. | fever_entry |  | !b2r_fever | You have already woken Green Mill.
+> quiet | Press on to Qinglian Ford. | hub_b2_city |  | count:b2r_>=3 | Walk at least three of the waterside roads before you reach the city.
+
+=== hub_b2_city | Qinglian Ford
 (temporary hub)
-> truth | The Willow Reach. | willow_entry | | !b2r_willow | You have already walked this reach.
-> quiet | Kuan Landing. | assize_entry |  | !b2r_assize | You have already sat in that court.
-> mercy | The Drowned Pagoda. | pagoda_entry |  | !b2r_pagoda | You have already taken that tea.
-> inquiry | The Censor’s Chessboard. | barge_entry |  | !b2r_barge | You have already played those games.
+> truth | Wait. | hub_b2_city
+> quiet | Wait. | hub_b2_city
+> mercy | Wait. | hub_b2_city
+> inquiry | Wait. | hub_b2_city
 `,
 };
