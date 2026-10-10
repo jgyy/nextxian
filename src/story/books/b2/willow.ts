@@ -387,7 +387,7 @@ You did not see her cross. You heard the planks, and a very quiet voice repeatin
 +[appr] willow_a4 | You sat beside a child and learned a tune, and the whole jetty hums it now.
 + willow_sat_with_sui | Madam Sui sent a bowl of rice down to the barge, wrapped in green cloth.
 + willow_name_back | Behind you on the bank, a girl with a cloth satchel is waving with both arms.
-+ willow_hao_proud | Hao Lan is still pink to the ears, and has not put down her brush.
++ willow_hao_proud | Hao Lan is still pink to the ears.
 + willow_whistle | The willow whistle is a small weight at your belt. You have not yet blown it.
 + willow_river_spoken_gu | Gu hums the river’s name under his breath, so softly that he does not know he does.
 > truth | Tell her you would carry her over a hundred planks. | hub_b2_road | +b2r_willow npc:SU_WILLOW_PLANK
