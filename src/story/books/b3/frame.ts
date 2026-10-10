@@ -40,6 +40,8 @@ The Elder has taken rooms at the Ferryman’s Rest. The Censors who came with yo
 +[c] count:card_>=4 | Four brown cards lie in your sleeve, warm from handling, and each of them wants the others.
 +[c] count:card_>=2 | Two brown cards lie in your sleeve. They have begun to hum when they touch.
 +[c] count:card_>=1 | A brown card lies in your sleeve, warm from handling.
++[d] b3q_keeners | The lament runs in your head in nine verses, seven of them written down.
++[d] b3q_ward | Cooper Lane smells of boiled linen and, faintly, of something blue.
 +[d] b3q_harbour | Ke-er’s name is under your fingers, still, a groove in the limestone you will not forget.
 +[d] b3q_mourning | There is a black ribbon in your sleeve, and a woman’s voice that said nothing you could answer.
 +[d] b3q_ferry | The ferryman’s rope is still wound on your wrist, two turns, a knot you cannot undo.
@@ -48,5 +50,7 @@ The Elder has taken rooms at the Ferryman’s Rest. The Censors who came with yo
 > mercy | Find the mourning-shop at the top of Bell Lane. | mourning_entry |  | !b3q_mourning & count:b3q_>=1 | You have been to the mourning-shop, or you have not yet learned enough of the town to find it.
 > inquiry | Take the ferry across the bay. | ferry_entry |  | !b3q_ferry & count:b3q_>=1 | You have taken that ferry, or you have not yet learned enough of the town to find it.
 > quiet | Climb the spur to the Salt Lamp. | lamp_entry |  | !b3q_lamp & count:b3q_>=2 | You have been to the Lamp, or you have not yet learned enough of the town to climb it.
+> truth | Walk the length of Cooper Lane to the dye-works. | ward_entry |  | !b3q_ward & count:b3q_>=2 | You have been to the Ward, or you have not yet learned enough of the town to find it.
+> mercy | Climb the ladder to the Sing-Loft above the fish market. | keeners_entry |  | !b3q_keeners & count:b3q_>=2 | You have sung with the keeners, or you have not yet learned enough of the town to find the loft.
 `,
 };
