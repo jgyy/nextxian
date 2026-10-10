@@ -127,8 +127,8 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
     remember: ["stole_scroll"],
     memory: [
       {
-        when: [{ kind: "flag", flag: "honored_ancestors" }],
-        line: "You knelt before the tablets, and then you came back for the scroll on the same shelf. A thief who bows is still a thief. Put it down while you still can, Wanderer, because I will not ask a second time.",
+        when: [{ kind: "flag", flag: "sneaked_in" }],
+        line: "You came in by the side gate, and then you reached for the scroll on the ancestors’ shelf. A thief who sneaks in is still a thief. Put it down while you still can, Wanderer, because I will not ask a second time.",
       },
     ],
   },
@@ -447,8 +447,8 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
     remember: ["reported_through_eye"],
     memory: [
       {
-        when: [{ kind: "flag", flag: "lied_to_eye" }],
-        line: "You lied to my mirror once already. Now you report to it in the same steady voice. I can hear the difference, even if the mirror cannot.",
+        when: [{ kind: "said", scenario: "LIE_ABOUT_SEAL" }],
+        line: "You lied to me once already, in my own hall. Now you report to my mirror in the same steady voice. I can hear the difference, even if the mirror cannot.",
       },
     ],
   },
@@ -465,8 +465,8 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
     },
     memory: [
       {
-        when: [{ kind: "flag", flag: "read_the_sutra" }],
-        line: "You say the book is only a book, and you have read the first page with your own eyes. My mirror saw your lips move over the red ink. Do not lie to me twice.",
+        when: [{ kind: "flag", flag: "studied_lotus" }],
+        line: "You say the book is only a book, and you sat in the reading room and studied its technique line by line. My mirror saw your lips move over the red ink. Do not lie to me twice.",
       },
     ],
     remember: ["lied_to_eye"],
@@ -857,8 +857,8 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
         line: "You used the mist in a sparring bout, to win a bout you could have lost cleanly. The sutra teaches the technique, and the Law forbids it, and you knew both when you did it. I will hear you account for the mist before the sealing, Wanderer.",
       },
       {
-        when: [{ kind: "flag", flag: "boasted" }],
-        line: "You boasted about the bout, and the court repeated it to me before you did. Pride is a small sin, but you have collected too many small sins this week to call them small.",
+        when: [{ kind: "flag", flag: "mocked_forms" }],
+        line: "You mocked the court’s forms, and the court repeated it to me before you did. Pride is a small sin, but you have collected too many small sins this week to call them small.",
       },
     ],
     remember: ["reported_bout"],

@@ -43,9 +43,9 @@ export const ALLIES: Record<ChoiceTone, string[]> = {
 /** The first paragraph of an approach scene, by stage (0 to 4). Four variants each. */
 export const STAGE_OPEN: string[][] = [
   [
-    "You turn toward {focus}, and the way narrows as you go. {Place} is quieter here than at its edge, and {omen} follows you like a stray dog.",
-    "The path to {focus} runs behind {place}, where paving gives way to packed earth. Few have walked it this season, and {omen} marks the way better than any signpost.",
-    "It takes the rest of the morning to reach {focus}. All the while {omen} thickens, and the people of {place} watch you from doorways they do not quite step out of.",
+    "You turn toward {focus}, and the way narrows as you go. {Place} is quieter here than at its edge, and {omen} follows you like a stray dog. {Keeper} is said to keep watch there.",
+    "The path to {focus} runs behind {place}, where paving gives way to packed earth. Few have walked it this season, and {omen} marks the way better than any signpost. {Keeper} is said to keep the end of it.",
+    "It takes the rest of the morning to reach {focus}. All the while {omen} thickens, and the people of {place} watch you from doorways they do not quite step out of. {Keeper} is the only one who does not look away.",
     "{Keeper} has told you where to find {focus}, but not why. You follow the directions and find the last turning unmarked, exactly as {kname} said it would be.",
   ],
   [
@@ -62,7 +62,7 @@ export const STAGE_OPEN: string[][] = [
   ],
   [
     "Now the matter has an edge. {Obstacle} is at your back and {ally} is at your side, and in front of you lies {relic}, which the whole of {place} has been pretending not to know about.",
-    "You can see the shape of it at last: {secret}. The knowledge is heavy, and everyone who might share it is watching to see what you do with it.",
+    "You can see the shape of it at last, though not yet all its edges. The knowledge is heavy, and everyone who might share it is watching to see what you do with it.",
     "{Kname} sets {relic} on the table between you. “Everyone here has a reason to want this gone,” says {kname}. “I would like to hear yours before I decide whose side the night is on.”",
     "The lamps gutter. For three breaths {place} is silent, and you understand that whatever you do next will be remembered here long after you have gone.",
   ],

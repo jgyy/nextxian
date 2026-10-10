@@ -89,7 +89,7 @@ export function createGame(story: Story): GameState {
  * and NPC interjections are added only when their conditions hold, so the NPC
  * can speak up about what the player has become.
  */
-function enterScene(story: Story, state: GameState, scene: Scene): GameState {
+export function enterScene(story: Story, state: GameState, scene: Scene): GameState {
   const taken = new Set<string>();
   const extra = (scene.extras ?? [])
     .filter((x) => {

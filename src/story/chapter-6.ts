@@ -201,7 +201,7 @@ export const chapterSix: Scene[] = [
     title: "The Night of the Sealing",
     paragraphs: [
       "She tells it with her eyes on the altar, and her voice is so flat it is almost a recitation. Fifteen years ago, the Sealing Jade was set into the cracked altar by the Law Hall’s oldest masters. The mist below the sect had been rising for a season, and the masters wanted a living disciple to stand at the top of the abyss path and hold the seal in place with her own qi.",
-      "Mengjiao was chosen. She was the best of the Su line and the most stubborn, and she had already spent a year studying the mountain’s wounds in secret. The masters did not ask her opinion. They asked the Elder of the Law Hall to sign the order that would send her down the path with the jade, and the Elder signed it, because the order said the sect would survive only if one of the Su line paid the price.",
+      "Mengjiao was chosen. She was the best of the Su line and the most stubborn, and she had already spent a year studying the mountain’s wounds in secret. The masters did not ask her opinion. They asked the Law Hall’s Registrar, who was Su Wanru then and not yet Elder, to sign the orders that would send fourteen others down the path with the jade. She signed all fourteen, and the masters sealed Mengjiao’s order themselves, because the order said the sect would survive only if one of the Su line paid the price.",
     ],
     choices: [
       {
@@ -309,7 +309,7 @@ export const chapterSix: Scene[] = [
     id: "jade_eye_letter",
     title: "The Letter Held for the Elder",
     paragraphs: [
-      "The Elder takes the letter with both hands, the way a disciple takes a sacred scroll from a master. She does not unroll it. She simply holds it, feeling the thin paper and the silk fold around it, and her face slowly becomes younger in the lamplight, the face of a sixteen-year-old girl who was told that her sister had gone out on the roof again and would not be coming back down.",
+      "The Elder takes the letter with both hands, the way a disciple takes a sacred scroll from a master. She does not unroll it. She simply holds it, feeling the thin paper and the silk fold around it, and her face slowly becomes younger in the lamplight, the face of a young woman who was told that her sister had gone out on the roof again and would not be coming back down.",
       "She reads it standing up. Her lips move on the words. When she reaches the line about the sun on the desk, she stops and presses her knuckles to her mouth. When she reaches the line about the stars, she closes her eyes and does not open them again for a long time. The lamp burns down a finger’s width before she speaks.",
     ],
     choices: [

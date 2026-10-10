@@ -45,7 +45,7 @@ export const chapterFour: Scene[] = [
     title: "The Key That Fits",
     paragraphs: [
       "The bronze key from Lin Yuan’s packet sits in your palm, its lotus bud cold against your skin. It fits the keyhole with a small click that you feel in your teeth. Then nothing happens. The gate stays shut. The mist continues to pour down the cliff in slow, patient threads, and somewhere inside the rock a bell rings once, very softly, as if it is asking whether you are ready.",
-      "Ren Qiao stands three steps below you on the stair. He has not climbed farther than the memorial in fifteen years, and he keeps his eyes fixed on the stone at his feet as though looking higher would make the wall move. \"The Law Hall calls this the Sutra Door,\" he says. \"The disciples call it the Gate That Listens. I have never heard anyone say what it wants in return for opening.\"",
+      "Ren Qiao stands three steps below you on the stair. He has not stood at this door in fifteen years, and he keeps his eyes fixed on the stone at his feet as though looking higher would make the wall move. \"The Law Hall calls this the Sutra Door,\" he says. \"The disciples call it the Gate That Listens. I have never heard anyone say what it wants in return for opening.\"",
     ],
     choices: [
       {

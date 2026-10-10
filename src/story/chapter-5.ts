@@ -266,7 +266,7 @@ export const chapterFive: Scene[] = [
     title: "The Roof Beneath the Stars",
     paragraphs: [
       "The hall dissolves. You are standing on the roof of the Law Hall, on the same slope of grey tile you climbed on the night of the archive, but the sky above you is clear and full of stars, and the stars are very close. A girl sits beside you with her knees drawn up. She has a braid over one shoulder and a silver comb pinned to the back of her head, and she is pointing up at a cluster of stars that look like a lotus.",
-      "\"That one is the abyss,\" she says. \"It is not a hole. It is just very far away and very sad.\" Her voice is Mengjiao’s, and it is young and clear and certain of itself. Beside her, a smaller figure sits with his arms around his knees and says nothing. It is a girl of perhaps nine. She has the same grey eyes as the Elder, and she is staring at the stars with a fear she has not learned to hide.",
+      "\"That one is the abyss,\" she says. \"It is not a hole. It is just very far away and very sad.\" Her voice is Mengjiao’s, and it is young and clear and certain of itself. Beside her, a taller figure sits with her arms around her knees and says nothing. It is a girl of perhaps sixteen. She has the same grey eyes as the Elder, and she is staring at the stars with a fear she has not learned to hide.",
     ],
     choices: [
       {

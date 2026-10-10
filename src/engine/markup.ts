@@ -250,3 +250,41 @@ export function parseRemarks(source: string, file = "markup"): Remark[] {
   });
   return out;
 }
+
+export interface Echo {
+  scene: string;
+  extra: NonNullable<Scene["extras"]>[number];
+}
+
+/**
+ * Parses echoes: paragraphs added to scenes that already exist, so a decision made earlier can show up later.
+ *
+ *     >> target_scene | group-or-dash | conditions | The paragraph.
+ */
+export function parseEchoes(source: string, file = "markup"): Echo[] {
+  const out: Echo[] = [];
+  source.split("\n").forEach((raw, i) => {
+    const line = raw.trim();
+    if (!line || line.startsWith("//")) return;
+    const where = `${file}:${i + 1}`;
+    if (!line.startsWith(">> ")) throw new MarkupError(where, "an echo is `>> scene | group | conditions | text`");
+    const [scene, group, cond, ...text] = line.slice(3).split(" | ").map((x) => x.trim());
+    if (!scene || !group || !cond || text.length === 0) throw new MarkupError(where, "an echo is `>> scene | group | conditions | text`");
+    out.push({
+      scene,
+      extra: { when: parseConditions(cond, where), paragraphs: [text.join(" | ")], ...(group !== "-" ? { group } : {}) },
+    });
+  });
+  return out;
+}
+
+/** Adds each echo to its scene. Throws when an echo points at a scene that does not exist. */
+export function applyEchoes(scenes: Scene[], echoes: Echo[]): Scene[] {
+  const byId = new Map(scenes.map((s) => [s.id, { ...s, extras: [...(s.extras ?? [])] }]));
+  for (const echo of echoes) {
+    const target = byId.get(echo.scene);
+    if (!target) throw new Error(`echo points at missing scene "${echo.scene}"`);
+    target.extras.push(echo.extra);
+  }
+  return scenes.map((s) => byId.get(s.id)!);
+}

@@ -13,11 +13,11 @@ export const chapterTwo: Scene[] = [
     choices: [
       {
         id: "spare_gu",
-        label: "Lower your blade and let Gu Hanzhen run.",
+        label: "Lower your blade and let Gu Hanzhen speak.",
         tone: "mercy",
         next: "abyss_truth",
         npcScenario: "SHOW_MERCY",
-        effects: [{ kind: "addStat", stat: "karma", amount: 6 }],
+        effects: [{ kind: "setFlag", flag: "spared_gu" }, { kind: "addStat", stat: "karma", amount: 6 }],
       },
       {
         id: "strike_gu",
@@ -32,7 +32,7 @@ export const chapterTwo: Scene[] = [
       },
       {
         id: "call_lotus",
-        label: "Call up your black lotus to push the mist back from the ledge.",
+        label: "Reach for the cold black seed you have carried since childhood, and let it push the mist back from the ledge.",
         tone: "force",
         next: "abyss_truth",
         npcScenario: "REVEAL_DEMONIC_QI",
@@ -117,14 +117,10 @@ export const chapterTwo: Scene[] = [
     id: "return_hall",
     title: "Back in the Law Hall",
     paragraphs: [
-      "The rain has stopped by the time you return. Elder Su is waiting in the Law Hall, exactly where you left her. Her ledger is closed. Beside it, the Sealing Jade rests on a lacquered tray if you brought it, or the tray sits empty if you did not.",
+      "The rain has stopped by the time you return. Elder Su is waiting in the Law Hall, exactly where you left her. Her ledger is closed. Beside it stands a lacquered tray, and on it the Sealing Jade if you brought it, or nothing if you did not.",
       "\"Speak,\" she says. \"I have heard the abyss in my dreams for fifteen years. Tell me what you found there, and do not tell me what the Law wants to hear.\"",
     ],
     extras: [
-      {
-        when: [{ kind: "flag", flag: "fled_with_jade" }],
-        paragraphs: ["You are not here. The tray is empty. Only the echo of a bell remains."],
-      },
       {
         when: [{ kind: "flag", flag: "brought_gu" }],
         paragraphs: ["Gu Hanzhen stands behind you, his head bowed, his sleeve still torn."],

@@ -146,9 +146,9 @@ describe("the Elder and the realm", () => {
 
   it("remarks on a mortal at the Law Hall, and not on a Qi Condenser", () => {
     const mortal = choose(story, fresh(), "bow_and_state");
-    expect(npcLines(mortal).some((l) => l.includes("no qi in you at all"))).toBe(true);
+    expect(npcLines(mortal).some((l) => l.includes("no qi gathered"))).toBe(true);
     const adept = choose(story, { ...fresh(), realm: 1 }, "bow_and_state");
-    expect(npcLines(adept).some((l) => l.includes("no qi in you at all"))).toBe(false);
+    expect(npcLines(adept).some((l) => l.includes("no qi gathered"))).toBe(false);
   });
 });
 

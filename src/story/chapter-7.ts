@@ -312,7 +312,7 @@ export const chapterSeven: Scene[] = [
     id: "tribunal_crowd_2",
     title: "Fifteen Sealing Orders",
     paragraphs: [
-      "\"These are the sealing orders,\" he says. His voice is thin, but it carries. \"They were sent to the archive fifteen years ago and held there, unopened, because no one in the Law Hall wanted them read. The Elder’s signature is on fourteen of them. The masters’ seals are on all of them. My mother’s name is on the fifteenth, and it was crossed out before the ink dried.\"",
+      "\"These are the sealing orders,\" he says. His voice is thin, but it carries. \"They were sent to the archive fifteen years ago and held there, unopened, because no one in the Law Hall wanted them read. The Elder’s signature is on fourteen of them. The masters’ seals are on all of them. The fifteenth is Mengjiao’s, and there is no Elder’s name on it at all. My mother’s mark is beside it, crossed out before the ink dried. She would not witness it.\"",
       "The masters’ faces tighten. Hu Jingyan’s teacup goes still in his trembling hand. Lian Sheng stands up and says something sharp and furious, and her words are lost in the sudden roar that rises from the lower terraces. The disciples are talking now, all of them, and the sound is so loud that the wind seems to stop to listen.",
       "Gu Hanzhen is staring at the papers with his mouth open. Ren Qiao has stepped out from the edge of the terrace. He is holding his lantern again, and the flame is burning steady and bright, and he is looking directly at the masters with an expression you have never seen on a warden’s face before.",
     ],

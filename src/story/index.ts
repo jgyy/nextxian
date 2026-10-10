@@ -25,8 +25,14 @@ import { quarryScenes } from "./side-quarry";
 import { healerScenes } from "./side-healer";
 import { hermitScenes } from "./side-hermit";
 import { bridgeScenes } from "./side-bridge";
-import { roadGroups, roadScenarios, waysideEntrances } from "./roads";
+import { roadGroups, roadScenarios, waysideBackScene, waysideEntrances } from "./roads";
 import { elderSuRealm, elderSuRealmScenes } from "./npc/elder-su-realm";
+import { applyEchoes, parseEchoes, parseRemarks, parseScenarios, parseScenes } from "@/engine/markup";
+import { companions } from "./companions";
+import { withBonds } from "./fixes/bonds";
+import { echoesOne } from "./fixes/echoes-1";
+import { rumourFlow, rumourScenes } from "./fixes/rumours";
+import { remarksOne, scenariosOne } from "./fixes/remarks-1";
 
 /**
  * The story in reading order. Side paths sit after the chapter they branch from and
@@ -62,15 +68,53 @@ const mainLine: { name: string; scenes: Scene[] }[] = [
  * Each wayside opens from one scene of the main line, which gains one more choice, and its group of
  * roads follows the chapter it belongs to.
  */
-export const chapters: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
+const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
   const scenes = elderSuRealmScenes(c.scenes).map((scene) => {
     const entrance = waysideEntrances[scene.id];
     return entrance ? { ...scene, choices: [...scene.choices, entrance] } : scene;
   });
   const chapter = /^Chapter (\d+):/.exec(c.name);
   const groups = chapter ? roadGroups.filter((g) => g.chapter === Number(chapter[1])) : [];
-  return [{ ...c, scenes }, ...groups.map(({ name, scenes: roads }) => ({ name, scenes: roads }))];
+  return [
+    { ...c, scenes },
+    ...groups.map(({ name, scenes: roads, wayside }) => {
+      // The wayside hub sits first in its group. Coming back from it lands on a scene of its own, not on the origin.
+      const origin = scenes.find((s) => waysideEntrances[s.id]?.next === wayside);
+      return { name, scenes: origin ? [...roads, waysideBackScene(wayside, origin)] : roads };
+    }),
+  ];
 });
+
+/** The interludes in which the sect talks about what the player has done. */
+const interludes = parseScenes(rumourScenes, "rumours").map((scene) => {
+  const flow = rumourFlow.find((f) => f.id === scene.id);
+  if (!flow) throw new Error(`interlude "${scene.id}" has no entry in rumourFlow`);
+  return { ...scene, choices: scene.choices.map((c) => ({ ...c, next: flow.next })) };
+});
+
+/**
+ * Applies what the later passes add to the hand-written chapters: interludes spliced into the flow, echoes of
+ * earlier decisions, and bond changes for the companions.
+ */
+function patch(groups: { name: string; scenes: Scene[] }[]): { name: string; scenes: Scene[] }[] {
+  const all = groups.flatMap((g) => g.scenes);
+  const byId = new Map(all.map((s) => [s.id, s]));
+  for (const flow of rumourFlow) {
+    for (const [from, to] of flow.edges) {
+      const scene = byId.get(from);
+      if (!scene) throw new Error(`interlude edge starts at missing scene "${from}"`);
+      byId.set(from, { ...scene, choices: scene.choices.map((c) => (c.next === to ? { ...c, next: flow.id } : c)) });
+    }
+  }
+  const echoed = applyEchoes([...byId.values()], parseEchoes(echoesOne, "echoes-1"));
+  const patched = new Map(echoed.map((s) => [s.id, withBonds(s)]));
+  return groups.map((g) => ({ ...g, scenes: g.scenes.map((s) => patched.get(s.id)!) }));
+}
+
+export const chapters: { name: string; scenes: Scene[] }[] = [
+  ...patch(assembled),
+  { name: "Interludes: What the Sect Says", scenes: interludes.map(withBonds) },
+];
 
 const scenes = chapters.flatMap((c) => c.scenes);
 
@@ -79,5 +123,10 @@ export const story: Story = {
   startSceneId: "gate",
   npc: elderSu,
   scenes: Object.fromEntries(scenes.map((s) => [s.id, s])),
-  scenarios: elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios }),
+  scenarios: {
+    ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios }),
+    ...Object.fromEntries(parseScenarios(scenariosOne, "scenarios-1").map((x) => [x.id, x])),
+  },
+  companions,
+  remarks: parseRemarks(remarksOne, "remarks-1"),
 };

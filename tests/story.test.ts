@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { story, chapters } from "@/story";
 import { validateStory, MAX_LINE_WORDS, MAX_SCENE_WORDS, MIN_CHOICES, MIN_NPC_SCENARIOS, sceneBodyWords } from "@/engine/validate";
-import { choose, createGame, currentBeat, getChoices, getScene } from "@/engine/game";
+import { choose, createGame, currentBeat, enterScene, getChoices, getScene } from "@/engine/game";
 import {
   conditionsHold,
   RESPECT_SHIFT,
@@ -61,7 +61,16 @@ function deciding(sceneId: string, state: GameState): GameState {
 
 /** Makes the named decision. Routes name every choice they take, including the opening ones of a scene. */
 function pick(state: GameState, choiceId: string): GameState {
-  return choose(story, state, choiceId);
+  return skipInterludes(choose(story, state, choiceId));
+}
+
+/** The interludes are gossip between chapters. A player reads them and moves on, and so do the route tests. */
+function skipInterludes(state: GameState): GameState {
+  let current = state;
+  while (current.sceneId.startsWith("rumours_")) {
+    current = enterScene(story, current, getScene(story, getScene(story, current.sceneId).choices[0].next));
+  }
+  return current;
 }
 
 /** Makes each named decision in turn. */
@@ -107,7 +116,7 @@ describe("story integrity", () => {
     const ids = chapters.flatMap((c) => c.scenes.map((s) => s.id));
     expect(new Set(ids).size).toBe(ids.length);
     expect(ids.sort()).toEqual(Object.keys(story.scenes).sort());
-    expect(chapters).toHaveLength(33);
+    expect(chapters).toHaveLength(34);
   });
 
   it("has five endings, all reachable", () => {

@@ -221,7 +221,7 @@ export const chapterThree: Scene[] = [
     id: "archive_roof",
     title: "The Eaves in the Rain",
     paragraphs: [
-      "The tiles are slick with three days of rain. You set your palms on the ridge and let your qi settle into your fingertips, thin and cold, the way your first teacher taught you to hold a branch in a storm. Each step up the slope is a small argument between your boots and the stone. The wind carries the bell-sound from somewhere below, faint and wrong.",
+      "The tiles are slick with the week’s rain. You set your palms on the ridge and let your qi settle into your fingertips, thin and cold, the way your first teacher taught you to hold a branch in a storm. Each step up the slope is a small argument between your boots and the stone. The wind carries the bell-sound from somewhere below, faint and wrong.",
       "Halfway up, you hear a warden’s voice on the bridge below. He is talking to someone who does not answer. You press flat to the tiles and wait until the lantern light slides away across the courtyard, then you continue, one hand after another, until the skylight over the east stacks is within reach.",
       "The glass is clouded with old soot, but it opens on a hinge. Through the gap you see the stacks as a deep canyon of drawers, lit by a single lamp left burning on a reading table. Its flame bends toward the opening, as if it has been waiting for air. Dust rises in the draft, glittering in the light like the scattered pieces of a broken mirror.",
     ],
@@ -328,7 +328,7 @@ export const chapterThree: Scene[] = [
     id: "archive_ash_chute_2",
     title: "The Cellar Grate",
     paragraphs: [
-      "Scratched into the stone beside the bars are rows of names. Some are cut neatly, some scrawled in a hurry, and a few are scarred so deep the scratches look like claw marks. Beside each name is a mark that could be a date, or a count of days, or a tally of something that was not allowed to stop. You recognise the last mark. It is the same mark carved beside the altar in the memorial, the one that looked like a cracked circle.",
+      "Scratched into the stone beside the bars are rows of names. Some are cut neatly, some scrawled in a hurry, and a few are scarred so deep the scratches look like claw marks. Beside each name is a mark that could be a date, or a count of days, or a tally of something that was not allowed to stop. The last mark is a cracked circle.",
       "A draft comes through a second passage to the left. It is cooler than the air in the cellar and carries the smell of cedar and the faint sweetness of rot. Somewhere down that passage a voice is humming, a low tune with no words. It stops the moment you hold your breath.",
       "Above the grate, the stacks are quiet. You can climb up through the bars into the archive, or you can follow the cold draft toward the vault, or you can stop to read the names carefully before anything else happens. The chute is the only way back to the hill, and you do not know how long it will stay unguarded.",
     ],
@@ -355,9 +355,9 @@ export const chapterThree: Scene[] = [
       },
       {
         id: "crawl_back_up",
-        label: "Crawl back up the chute and return to the gate before you are missed.",
+        label: "Crawl back up the chute and come in by the front doors, ash and all, with the order in your hand.",
         tone: "quiet",
-        next: "archive_gate",
+        next: "archive_front",
         effects: [{ kind: "addStat", stat: "karma", amount: -1 }],
       },
     ],
@@ -367,7 +367,7 @@ export const chapterThree: Scene[] = [
     title: "The Keeper of Keys",
     paragraphs: [
       "Lin Yuan sits with the ring of keys in both hands, turning it slowly as though the iron might tell him something. His ink has dried on the page. He is not much older than the disciples you trained beside at the outer gate, but his face has the grey tiredness of someone who has counted too many nights without sleep.",
-      "\"My mother was a disciple of the Law Hall,\" he says quietly, without being asked. \"She was expelled eighteen years ago for bringing a child into the sect without a registration. The Elder signed the order herself. I was the child. The Law Hall let me stay, as long as I worked in the archive and never asked questions about who the drawers belonged to.\"",
+      "\"My mother was a disciple of the Law Hall,\" he says quietly, without being asked. \"She was expelled fifteen years ago, the week after the Sealing, for refusing to witness the fifteenth order. The Registrar signed her expulsion herself. I was the child. The Law Hall let me stay, as long as I worked in the archive and never asked questions about who the drawers belonged to.\"",
       "He lifts the key ring and sets it on the desk between you. One key is larger than the rest, black iron with a crescent on its bow. \"This opens the Index drawers on the lower shelves. It does not open the Elder’s own cabinet. It also does not open anything if the wardens think I gave it to you. If they ask, I will say I was asleep.\"",
     ],
     choices: [
@@ -670,7 +670,7 @@ export const chapterThree: Scene[] = [
         id: "copy_letter",
         label: "Copy every line into your own notebook in the same order, leaving the original untouched.",
         tone: "inquiry",
-        next: "archive_stacks",
+        next: "archive_ledger",
         effects: [{ kind: "setFlag", flag: "copied_letter" }],
       },
     ],
@@ -680,8 +680,8 @@ export const chapterThree: Scene[] = [
     title: "The Ledger of the Sealing",
     paragraphs: [
       "The ledger of punishments is kept in a long cabinet at the end of the cold aisle. Its drawers are older than the others, and their wood has warped with damp until some of them will not open at all. You pull the one marked with the year of the Sealing, and it slides out with a groan that makes the lamps flicker.",
-      "Fourteen names are written on the page. Fourteen disciples were sent to the abyss path on the night the jade was first set into the altar. The Law called it a cleansing. Each name is followed by a single word, sealed. Beneath the names is a line of small print that you have to lean close to read: Orders signed and witnessed by the Elder of the Law Hall, Su Wanru.",
-      "Her signature is there, neat and upright, the same hand that signs the Law Hall’s daily register. It is beside every name on the page. The ink on the last name is slightly darker than the others, as though she pressed harder when she came to Mengjiao’s line. You remember her thumb resting on the ledger in the Law Hall, pressing hard on a single line.",
+      "Fourteen names are written on the page. Fourteen disciples were sent to the abyss path on the night the jade was first set into the altar. The Law called it a cleansing. Each name is followed by a single word, sealed. Beneath the names is a line of small print that you have to lean close to read: Orders signed and witnessed by the Registrar of the Law Hall, Su Wanru. Below that, in another hand, a fifteenth line stands alone: Su Mengjiao, by the masters’ seal.",
+      "Her signature is there, neat and upright, beside every name on the page. The ink on the fourteenth name is darker than the others, as though she pressed harder at the last line she signed. You remember her thumb on the ledger in the Law Hall, pressing a single line.",
     ],
     choices: [
       {
@@ -755,7 +755,7 @@ export const chapterThree: Scene[] = [
     title: "The Warden’s Lantern",
     paragraphs: [
       "Ren Qiao comes around the end of the row with the lantern held high. He does not hurry. The light finds your sleeves first, then your face, then the drawers behind you, and he stops with his head tilted as if he is listening for a lie in the air. He has the look of a man who was taught early that the Law does not need to be loud to be obeyed.",
-      "\"You are not on the list,\" he says. \"The Elder sent nobody to the archive today. I checked with the gate at dawn. And yet the skylight is open, and there is ash on the bridge, and I have a clerk who cannot stop shaking his hands.\"",
+      "\"You are not on the list,\" he says. \"Whatever order you carry, it named the front doors, and the Elder sent nobody to the roof. I checked with the gate at dawn. And yet the skylight is open, and there is ash on the bridge, and I have a clerk who cannot stop shaking his hands.\"",
       "He sets the lantern on the nearest shelf. The flame stands straight. In the quiet, you can see his face properly for the first time. He is older than you assumed, with a scar across the bridge of his nose and a warden’s stillness in his shoulders. His eyes go to the card in your hand, then to the letter sleeve, then back to your face.",
     ],
     choices: [
@@ -821,7 +821,7 @@ export const chapterThree: Scene[] = [
         id: "slip_down_chute",
         label: "Tell him you will come to the Law Hall in the morning, then slip down the ash chute the moment he turns.",
         tone: "deceit",
-        next: "archive_ash_chute",
+        next: "archive_report",
         effects: [{ kind: "addStat", stat: "karma", amount: -2 }],
       },
     ],
@@ -883,7 +883,7 @@ export const chapterThree: Scene[] = [
         id: "drag_clerk_out",
         label: "Drag Lin Yuan out of the smoke by the collar and make for the front doors.",
         tone: "mercy",
-        next: "archive_clerk",
+        next: "archive_report",
         effects: [{ kind: "addStat", stat: "karma", amount: 5 }],
       },
       {
@@ -900,7 +900,7 @@ export const chapterThree: Scene[] = [
         id: "call_wardens",
         label: "Run to the bridge and shout for the wardens with Ren Qiao, before the whole wing goes up.",
         tone: "truth",
-        next: "archive_warden",
+        next: "archive_report",
         effects: [{ kind: "addStat", stat: "karma", amount: 2 }],
       },
     ],
@@ -980,7 +980,7 @@ export const chapterThree: Scene[] = [
         id: "back_to_chute",
         label: "Return the way you came, through the cold draft and back up the chute.",
         tone: "quiet",
-        next: "archive_ash_chute",
+        next: "archive_report",
       },
       {
         id: "follow_jade_vein",

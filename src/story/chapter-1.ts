@@ -70,7 +70,7 @@ export const chapterOne: Scene[] = [
       },
       {
         id: "bribe_gate",
-        label: "Press a spirit stone into his palm for the rest of the story.",
+        label: "Press a spirit stone into his palm and ask him to remember nothing of you.",
         tone: "deceit",
         next: "law_hall",
         effects: [
