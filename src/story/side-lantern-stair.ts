@@ -15,16 +15,34 @@ export const lanternStairScenes: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_why_wrong_visitor",
+        label: "Ask the old woman why the lamps are lit only for the wrong kind of visitor.",
+        tone: "inquiry",
         next: "lantern_stair_2",
-        page: true,
+      },
+      {
+        id: "bow_to_keeper",
+        label: "Bow to the old woman, and say that you mean her no harm.",
+        tone: "mercy",
+        next: "lantern_stair_2",
+      },
+      {
+        id: "pocket_unlit_lamp",
+        label: "Pocket one of the unlit lamps from the hooks while she is not looking.",
+        tone: "deceit",
+        next: "lantern_stair_2",
+      },
+      {
+        id: "say_who_sent_you",
+        label: "Step closer to the lamps and tell her exactly who sent you down here.",
+        tone: "truth",
+        next: "lantern_stair_2",
       },
     ],
   },
   {
     id: "lantern_stair_2",
-    title: "",
+    title: "Old Lin’s Blue Flame",
     paragraphs: [
       "Wicks hang from the ceiling on strings, each one tagged with a name in faded ink. Some of the tags have been scratched out. One of them, close to your hand, reads Su Mengjiao, and it is the only tag in the niche that has been polished smooth by someone’s thumb.",
     ],

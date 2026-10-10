@@ -15,16 +15,34 @@ export const sisterShrineScenes: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_if_shrine_has_name",
+        label: "Ask the attendant whether the shrine has a name, and wait for his answer.",
+        tone: "inquiry",
         next: "shrine_gate_2",
-        page: true,
+      },
+      {
+        id: "keep_directions_secret",
+        label: "Thank the attendant, and say nothing about the path to anyone at the Law Hall.",
+        tone: "deceit",
+        next: "shrine_gate_2",
+      },
+      {
+        id: "stride_down_path",
+        label: "Stride along the path, your footsteps loud on the flagstones.",
+        tone: "force",
+        next: "shrine_gate_2",
+      },
+      {
+        id: "tell_law_maps_shame",
+        label: "Tell the attendant that the Law Hall should be ashamed of its own maps.",
+        tone: "truth",
+        next: "shrine_gate_2",
       },
     ],
   },
   {
     id: "shrine_gate_2",
-    title: "",
+    title: "The Shrine Without a Name",
     paragraphs: [
       "Beyond the wall, someone has swept a small square of ground clean. In the middle of it stands a shrine no taller than your waist. It has no tablet and no name carved above it. Three small bowls sit on the stone, and one of them still holds the grey remains of incense.",
     ],
@@ -67,16 +85,34 @@ export const sisterShrineScenes: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_shen_laundress",
+        label: "Ask Shen how she came to be a laundress in the Law Hall.",
+        tone: "inquiry",
         next: "shrine_garden_2",
-        page: true,
+      },
+      {
+        id: "help_scrub_silently",
+        label: "Offer to help her scrub the stones, without asking her anything at all.",
+        tone: "mercy",
+        next: "shrine_garden_2",
+      },
+      {
+        id: "tell_shen_who_you_are",
+        label: "Tell Shen who you are, and why you have climbed up the hill.",
+        tone: "truth",
+        next: "shrine_garden_2",
+      },
+      {
+        id: "demand_who_keeps_shrine",
+        label: "Demand that Shen tell you who keeps this shrine lit, and why.",
+        tone: "force",
+        next: "shrine_garden_2",
       },
     ],
   },
   {
     id: "shrine_garden_2",
-    title: "",
+    title: "Shen’s Brush",
     paragraphs: [
       "\"They built this after the sealing,\" she says. \"The disciples who loved her. The Law Hall would not let her name be cut into the archive wall, so we cut it into the hill instead, where the mist can see it and the masters cannot.\" She taps the stone at the foot of the shrine. The letters are so worn that you can read them only with your fingertips: a small, neat, careful hand, carved by someone who was trying not to be heard.",
     ],
@@ -159,16 +195,34 @@ export const sisterShrineScenes: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "light_second_incense",
+        label: "Light a second stick of incense for the fifteenth name.",
+        tone: "mercy",
         next: "shrine_vigil_2",
-        page: true,
+      },
+      {
+        id: "call_down_to_shen",
+        label: "Call down the hill to Shen and ask whether she will come up and sit with you.",
+        tone: "truth",
+        next: "shrine_vigil_2",
+      },
+      {
+        id: "sit_back_to_stone",
+        label: "Sit with your back to the stone and wait for the incense to finish burning.",
+        tone: "quiet",
+        next: "shrine_vigil_2",
+      },
+      {
+        id: "pretend_to_pray",
+        label: "Pretend to pray, so that nobody on the terraces asks what you are doing up here.",
+        tone: "deceit",
+        next: "shrine_vigil_2",
       },
     ],
   },
   {
     id: "shrine_vigil_2",
-    title: "",
+    title: "Pearwood Shavings",
     paragraphs: [
       "When Shen finally climbs up, she carries a folded square of linen. She does not hand it to you. She sets it on the offering table beside the comb and smooths it flat. Inside are a dozen curls of pearwood shavings, the kind a carver leaves behind when making something small. \"Her first hairpin,\" she says. \"She carved it the year before the sealing, and it came out crooked. I kept the shavings, because I could not bear to throw her mistakes away.\"",
     ],

@@ -14,32 +14,68 @@ export const chapterSeven: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "wait_for_elder_speak",
+        label: "Keep your eyes on the bell and wait for the Elder to speak first.",
+        tone: "quiet",
         next: "tribunal_summons_2",
-        page: true,
+      },
+      {
+        id: "find_watching_faces",
+        label: "Look across the terraces and find the faces that are watching you most closely.",
+        tone: "inquiry",
+        next: "tribunal_summons_2",
+      },
+      {
+        id: "bow_as_law_demands",
+        label: "Step forward onto the terrace and bow to the Elder, as the Law demands.",
+        tone: "mercy",
+        next: "tribunal_summons_2",
+      },
+      {
+        id: "call_verdict_decided",
+        label: "Call out to the masters that the verdict was decided before dawn.",
+        tone: "force",
+        next: "tribunal_summons_2",
       },
     ],
   },
   {
     id: "tribunal_summons_2",
-    title: "",
+    title: "Gu on His Knees",
     paragraphs: [
       "On a raised dais at the top of the steps sit the masters of the Law. There are six of them, the oldest in the sect, and their robes are the colour of ash. Two of them you recognise from the ledger, because their seals appear on the orders beside Elder Su’s. At the centre of the dais, in a plain chair of pale jade, sits the Elder herself, her hair pinned up for the first time since you met her, the silver comb placed exactly where it should be.",
       "Gu Hanzhen is already kneeling at the foot of the steps, his hands bound loosely behind his back with a cord of red silk. The warden at his side is not Ren Qiao, and that is the first thing that frightens you. Ren Qiao is standing at the far edge of the terrace with his lantern unlit, looking at the ground.",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_why_ren_qiao_moved",
+        label: "Ask the warden why Ren Qiao has been moved from the steps.",
+        tone: "inquiry",
         next: "tribunal_summons_3",
-        page: true,
+      },
+      {
+        id: "ask_moment_with_gu",
+        label: "Ask the Elder for a moment to speak to Gu Hanzhen before the trial begins.",
+        tone: "mercy",
+        next: "tribunal_summons_3",
+      },
+      {
+        id: "tell_warden_gu_innocent",
+        label: "Tell the warden that Gu Hanzhen has done nothing the Law can punish.",
+        tone: "truth",
+        next: "tribunal_summons_3",
+      },
+      {
+        id: "wait_for_masters_move",
+        label: "Keep your distance and wait for the masters to make the first move.",
+        tone: "quiet",
+        next: "tribunal_summons_3",
       },
     ],
   },
   {
     id: "tribunal_summons_3",
-    title: "",
+    title: "Forty White Steps",
     paragraphs: [
       "The Elder lifts one hand. The disciples fall silent, one terrace at a time, until the only sound left is the wind moving through the columns. \"The accused will come forward,\" she says, without raising her voice. \"The Law will hear the truth, and then the Law will ring the bell.\"",
     ],
@@ -94,16 +130,34 @@ export const chapterSeven: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_whose_seal_order",
+        label: "Ask Hu Jingyan whose seal is on the order that sent Mengjiao down the path.",
+        tone: "inquiry",
         next: "tribunal_masters_2",
-        page: true,
+      },
+      {
+        id: "archive_never_opened",
+        label: "Tell Hu Jingyan that the archive was never opened, and that you saw nothing there.",
+        tone: "deceit",
+        next: "tribunal_masters_2",
+      },
+      {
+        id: "bell_rang_from_fear",
+        label: "Tell Hu Jingyan the bell rang because the masters were afraid of what it might say.",
+        tone: "truth",
+        next: "tribunal_masters_2",
+      },
+      {
+        id: "stare_down_lian_sheng",
+        label: "Stare down Lian Sheng until she looks away from the Elder.",
+        tone: "force",
+        next: "tribunal_masters_2",
       },
     ],
   },
   {
     id: "tribunal_masters_2",
-    title: "",
+    title: "Lian Sheng’s Question",
     paragraphs: [
       "Lian Sheng turns at last, very slowly. \"You are clever,\" she says. \"That is a dangerous quality in an outsider. We were clever once, too, fifteen years ago, when we decided that a living cultivator could hold the seal better than an iron chain. We were right, you know. The mist has been quiet since then. Would you like to tell the disciples that our cleverness was a crime?\"",
       "Behind them, the Elder has not moved. Her eyes are fixed on the masters, and her hands rest on the arms of the jade chair with a stillness that looks like a warning. You understand that she is waiting to see what you will say, and that the masters are waiting for the same thing.",
@@ -151,16 +205,34 @@ export const chapterSeven: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "describe_archive_fully",
+        label: "Describe the archive exactly, from the gate to the stacks, leaving no gaps.",
+        tone: "truth",
         next: "tribunal_testimony_2",
-        page: true,
+      },
+      {
+        id: "ask_bell_allowed_silent",
+        label: "Ask the Elder whether the bell is allowed to stay silent when she orders it to ring.",
+        tone: "inquiry",
+        next: "tribunal_testimony_2",
+      },
+      {
+        id: "hold_breath_for_disciples",
+        label: "Say nothing, and let the disciples hold their breath for you.",
+        tone: "quiet",
+        next: "tribunal_testimony_2",
+      },
+      {
+        id: "law_lied_fifteen_years",
+        label: "Tell the Elder that the Law has lied to these disciples for fifteen years.",
+        tone: "force",
+        next: "tribunal_testimony_2",
       },
     ],
   },
   {
     id: "tribunal_testimony_2",
-    title: "",
+    title: "What the Second Accused Saw",
     paragraphs: [
       "Gu Hanzhen lifts his head from the steps. His voice is hoarse, but he speaks clearly. \"The second accused saw Su Mengjiao on the stair,\" he says. \"She told the second accused that the seal was tired. She asked him to tell the Elder that she was not dead. He has been trying to tell the Law that for three days, and the Law has been ringing the bell over his head ever since.\"",
       "A ripple runs through the upper terrace. A few disciples stand up. Others sit down. One of the masters, a broad man with a bald head and a gold clasp at his collar, rises from his chair with a sharp exhalation of disapproval. The Elder does not look at him. She is still looking at you, and her eyes are grey and bright and utterly unreadable.",
@@ -211,16 +283,34 @@ export const chapterSeven: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "stand_between_lin_masters",
+        label: "Step between Lin Yuan and the masters, so that no one can silence him.",
+        tone: "mercy",
         next: "tribunal_crowd_2",
-        page: true,
+      },
+      {
+        id: "ask_who_crossed_out",
+        label: "Ask Lin Yuan who wrote the crossed-out name on the fifteenth order.",
+        tone: "inquiry",
+        next: "tribunal_crowd_2",
+      },
+      {
+        id: "hold_place_let_argue",
+        label: "Hold your place on the steps and let the crowd argue without you.",
+        tone: "quiet",
+        next: "tribunal_crowd_2",
+      },
+      {
+        id: "shout_masters_liars",
+        label: "Shout over the crowd that the masters are liars, and make them listen.",
+        tone: "force",
+        next: "tribunal_crowd_2",
       },
     ],
   },
   {
     id: "tribunal_crowd_2",
-    title: "",
+    title: "Fifteen Sealing Orders",
     paragraphs: [
       "\"These are the sealing orders,\" he says. His voice is thin, but it carries. \"They were sent to the archive fifteen years ago and held there, unopened, because no one in the Law Hall wanted them read. The Elder’s signature is on fourteen of them. The masters’ seals are on all of them. My mother’s name is on the fifteenth, and it was crossed out before the ink dried.\"",
       "The masters’ faces tighten. Hu Jingyan’s teacup goes still in his trembling hand. Lian Sheng stands up and says something sharp and furious, and her words are lost in the sudden roar that rises from the lower terraces. The disciples are talking now, all of them, and the sound is so loud that the wind seems to stop to listen.",
@@ -276,16 +366,34 @@ export const chapterSeven: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_can_bell_lie",
+        label: "Ask the Elder whether the bell is ever allowed to lie.",
+        tone: "inquiry",
         next: "tribunal_bell_rule_2",
-        page: true,
+      },
+      {
+        id: "fold_hands_wait_bell",
+        label: "Keep your hands folded and wait for the bell to finish its question.",
+        tone: "quiet",
+        next: "tribunal_bell_rule_2",
+      },
+      {
+        id: "bell_decides_only_known",
+        label: "Tell the Elder that the bell cannot decide anything she has not already decided.",
+        tone: "truth",
+        next: "tribunal_bell_rule_2",
+      },
+      {
+        id: "raise_hand_stop_bell",
+        label: "Walk toward the bell and raise your hand, as if you would stop it.",
+        tone: "force",
+        next: "tribunal_bell_rule_2",
       },
     ],
   },
   {
     id: "tribunal_bell_rule_2",
-    title: "",
+    title: "The Question for the Bell",
     paragraphs: [
       "The Elder lifts her voice over the hum. \"The question is this: did Su Mengjiao go willingly into the mist, or did the Law send her there?\" The bell swells. It rings once, low and clear. Then it rings a second time, and the second note is harder and sharper and tilts toward the masters. A murmur runs through the crowd, like the sound of a crowd turning its head in unison.",
       "The masters look at one another. Lian Sheng’s hand tightens on the arm of her chair. Hu Jingyan begins to speak, but the bell rings again, louder, and the words die in his throat. The Elder has not lowered her voice. She is still looking at the crowd, and in her eyes there is something that you did not expect to see there at all. It is not triumph. It is grief, and beneath the grief, a cold, patient anger that has waited fifteen years to be spent.",
@@ -333,16 +441,34 @@ export const chapterSeven: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "count_white_with_elder",
+        label: "Stand at the foot of the steps and count the white stones alongside the Elder.",
+        tone: "inquiry",
         next: "tribunal_vote_2",
-        page: true,
+      },
+      {
+        id: "drop_white_stone",
+        label: "Walk to the bowl and drop your own white stone in, without a word.",
+        tone: "truth",
+        next: "tribunal_vote_2",
+      },
+      {
+        id: "tell_gu_rise",
+        label: "Tell Gu Hanzhen to rise, because the verdict is almost in.",
+        tone: "mercy",
+        next: "tribunal_vote_2",
+      },
+      {
+        id: "turn_from_bowl",
+        label: "Turn away from the bowl and wait for the masters to speak.",
+        tone: "quiet",
+        next: "tribunal_vote_2",
       },
     ],
   },
   {
     id: "tribunal_vote_2",
-    title: "",
+    title: "The Stones Are Counted",
     paragraphs: [
       "The masters do not vote. They sit in silence on the dais, their faces grey with a kind of slow astonishment, as they watch the line of disciples climb past them one by one. Lian Sheng alone keeps her hands folded in her lap, and her eyes never leave the Elder’s face.",
       "When the last stone falls, the bowl is almost evenly divided. The Elder stands and counts them in silence, moving her lips, touching each stone with one fingertip. Then she looks up at you, and her expression is so open that it hurts to see it.",

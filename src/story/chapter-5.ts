@@ -14,32 +14,69 @@ export const chapterFive: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "step_onto_red_water",
+        label: "Step out onto the red water and walk toward the dais.",
+        tone: "force",
         next: "sutra_hall_2",
-        page: true,
+      },
+      {
+        id: "read_hand_carvings",
+        label: "Stop at the threshold and read the carvings of hands along the walls.",
+        tone: "inquiry",
+        next: "sutra_hall_2",
+        effects: [{ kind: "addStat", stat: "insight", amount: 1 }],
+      },
+      {
+        id: "hold_breath_wait",
+        label: "Hold your breath against the warm air and wait for it to clear.",
+        tone: "quiet",
+        next: "sutra_hall_2",
+      },
+      {
+        id: "tell_empty_hall",
+        label: "Tell the empty hall who sent you down here, and why you have come.",
+        tone: "truth",
+        next: "sutra_hall_2",
       },
     ],
   },
   {
     id: "sutra_hall_2",
-    title: "",
+    title: "The Jade Mirror",
     paragraphs: [
       "Set into the floor at the base of the dais is a round mirror of pale green jade, polished so bright that it throws a clear image of the ceiling up through the water. In the centre of the mirror is a small dark circle, no larger than a thumbnail. It looks like an eye, and it is open. It is watching you the way a cat watches a bird it has not yet decided to catch.",
       "You know what it is. The mission scene in the Law Hall described it: a mirror of polished jade that hums softly, through which the Elder would follow your path down the mountain. The mirror is humming now. The sound is so low you feel it in the soles of your boots before you hear it.",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "cover_mirror_sleeve",
+        label: "Cover the mirror with your sleeve, so that the eye cannot see you.",
+        tone: "deceit",
         next: "sutra_hall_3",
-        page: true,
+      },
+      {
+        id: "stare_back_at_eye",
+        label: "Stare back into the dark circle until it blinks first.",
+        tone: "force",
+        next: "sutra_hall_3",
+      },
+      {
+        id: "recall_elder_orders",
+        label: "Recall the Elder’s instructions from the mission, and check each one against the room.",
+        tone: "inquiry",
+        next: "sutra_hall_3",
+      },
+      {
+        id: "kneel_wait_for_hum",
+        label: "Kneel beside the mirror and wait for its hum to settle.",
+        tone: "quiet",
+        next: "sutra_hall_3",
       },
     ],
   },
   {
     id: "sutra_hall_3",
-    title: "",
+    title: "The Book in Silk",
     paragraphs: [
       "The book on the dais is the Blood Lotus Sutra. You are sure of it before you read the title, the way you are sure of a face in a crowd. The silk binding is faded to the colour of dried blood. The pages are not paper. They look like thin sheets of pale skin, stretched and dried and stitched together with black thread. And as you walk toward the dais, one page lifts on its own, turning slowly in the air, as if it has been waiting for a reader to notice.",
       "Behind you, the stair has gone quiet. Ren Qiao is not there. You turned around once and saw only the mist on the stones, and when you turned back, the way was gone and there was only the water. Someone has decided that this is a place you must enter alone.",
@@ -87,16 +124,34 @@ export const chapterFive: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "count_petals_until_quiet",
+        label: "Close your eyes and count the bronze petals until the voice fades.",
+        tone: "quiet",
         next: "sutra_temptation_2",
-        page: true,
+      },
+      {
+        id: "ask_page_what_it_wants",
+        label: "Ask the page what it wants from a reader who is only curious.",
+        tone: "inquiry",
+        next: "sutra_temptation_2",
+      },
+      {
+        id: "refuse_its_kindness",
+        label: "Tell the voice plainly that you do not want its kindness.",
+        tone: "truth",
+        next: "sutra_temptation_2",
+      },
+      {
+        id: "order_voice_silent",
+        label: "Slap the page shut and order the voice to be silent.",
+        tone: "force",
+        next: "sutra_temptation_2",
       },
     ],
   },
   {
     id: "sutra_temptation_2",
-    title: "",
+    title: "The Penciled Warning",
     paragraphs: [
       "Your qi stirs in answer. You feel it rise through your chest and settle in your throat, warm and sweet, the same taste you noticed on the threshold. It is not unpleasant. That is what frightens you most. The sutra does not force. It waits, the way a good host waits for a guest to take off their cloak.",
       "At the edge of your sight, the jade eye in the floor dims for an instant and then flares. The Elder is watching. You can feel her watching the same way you can feel a draft from an open window, cold and exact, measuring how far you have gone before you stop.",
@@ -142,16 +197,34 @@ export const chapterFive: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "skip_eighth_method",
+        label: "Read the first seven methods carefully and skip the eighth entirely.",
+        tone: "quiet",
         next: "sutra_pages_2",
-        page: true,
+      },
+      {
+        id: "ask_which_name",
+        label: "Ask the page which name it would take from you first.",
+        tone: "inquiry",
+        next: "sutra_pages_2",
+      },
+      {
+        id: "push_book_away",
+        label: "Stop reading and push the book away across the water.",
+        tone: "force",
+        next: "sutra_pages_2",
+      },
+      {
+        id: "refuse_price_aloud",
+        label: "Tell the empty air that you refuse to pay the price of any method.",
+        tone: "truth",
+        next: "sutra_pages_2",
       },
     ],
   },
   {
     id: "sutra_pages_2",
-    title: "",
+    title: "The Price in Memory",
     paragraphs: [
       "The margin of the page holds a note in Mengjiao’s quick hand. It is short and bitter. I chose my own name, and the mist kept it. It has never given it back. Wanru, if you ever read this, do not choose your name. Let the Law choose it for you, as it always does.",
       "You understand now what the eighth method really asks for. It is not power. It is a payment, made in memory. The sutra wants you to forget something important so it can teach you something dangerous. Your mind makes a quick, cold calculation of what you could spare: a childhood song, a face, a particular afternoon in the outer courtyard. The calculation is easy. That is the problem.",
@@ -197,16 +270,34 @@ export const chapterFive: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_girl_her_name",
+        label: "Ask the younger girl what her name is, though you already know it.",
+        tone: "inquiry",
         next: "sutra_trance_2",
-        page: true,
+      },
+      {
+        id: "sit_beside_girl",
+        label: "Sit beside the girl in silence and let her be afraid alongside you.",
+        tone: "mercy",
+        next: "sutra_trance_2",
+      },
+      {
+        id: "tell_sister_law_truth",
+        label: "Tell Mengjiao plainly what the Law Hall has done to her name.",
+        tone: "truth",
+        next: "sutra_trance_2",
+      },
+      {
+        id: "break_vision_by_will",
+        label: "Shake the vision loose by sheer force of will, and break its silence.",
+        tone: "force",
+        next: "sutra_trance_2",
       },
     ],
   },
   {
     id: "sutra_trance_2",
-    title: "",
+    title: "The Girl Who Asks",
     paragraphs: [
       "\"Wanru, you have to stop being afraid of the height,\" Mengjiao says. \"You can see the whole sect from here. Look at the bells. Look at how the mist moves around them. It is not trying to hurt anyone. It is only trying to count us too.\" The younger girl shakes her head, and her braid swings like a bell rope. \"Then why do they keep the names?\" she asks. \"If the mist is only counting, why does the Law write everything down?\"",
       "Mengjiao does not answer for a long time. When she does, her voice has changed. It is quieter and older, and it is not directed at her sister at all. It is directed at you. \"Because the Law is afraid that someone will call the names back,\" she says. \"And someone always does.\"",
@@ -253,16 +344,34 @@ export const chapterFive: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "claim_nothing_new",
+        label: "Tell the Elder you have seen nothing the Law does not already know.",
+        tone: "deceit",
         next: "sutra_jade_eye_2",
-        page: true,
+      },
+      {
+        id: "describe_pages_exactly",
+        label: "Describe the sutra’s pages exactly as you see them, without softening anything.",
+        tone: "truth",
+        next: "sutra_jade_eye_2",
+      },
+      {
+        id: "ask_what_she_heard",
+        label: "Ask the Elder what she heard on the night of the Sealing.",
+        tone: "inquiry",
+        next: "sutra_jade_eye_2",
+      },
+      {
+        id: "refuse_while_watched",
+        label: "Tell her you will not answer while she watches you like a prisoner.",
+        tone: "force",
+        next: "sutra_jade_eye_2",
       },
     ],
   },
   {
     id: "sutra_jade_eye_2",
-    title: "",
+    title: "The Silence at the Stair",
     paragraphs: [
       "Behind the voice, faintly, there is a second sound. It is the clink of a small porcelain cup set down on a wooden tray, and then the sound of someone sighing. The Elder is at her desk, in the Law Hall, watching a mirror and drinking tea she has forgotten to sip. You can picture her hair loose on her shoulders and the silver comb set beside the ledger.",
       "The mirror pulses. Somewhere beyond the sutra hall, very far away, the bell of the Law Hall rings once, and the sound comes down through the rock like a stone dropped into a well. The Elder has heard it too. You hear her breath catch and then steady.",
@@ -270,16 +379,34 @@ export const chapterFive: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "mist_answered_same_voice",
+        label: "Tell her the mist answered you in the same silence it gave her.",
+        tone: "truth",
         next: "sutra_jade_eye_3",
-        page: true,
+      },
+      {
+        id: "ask_describe_silence",
+        label: "Ask her to describe the silence she has listened to for fifteen years.",
+        tone: "inquiry",
+        next: "sutra_jade_eye_3",
+      },
+      {
+        id: "offer_her_tea",
+        label: "Offer her a cup of tea across the water, as though she were in the room.",
+        tone: "mercy",
+        next: "sutra_jade_eye_3",
+      },
+      {
+        id: "cover_eye_palm",
+        label: "Close the mirror’s eye with your palm and end the call.",
+        tone: "force",
+        next: "sutra_jade_eye_3",
       },
     ],
   },
   {
     id: "sutra_jade_eye_3",
-    title: "",
+    title: "Tell Her What You Read",
     paragraphs: [],
     choices: [
       {
@@ -357,32 +484,69 @@ export const chapterFive: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "brace_and_watch_water",
+        label: "Brace your feet on the dais and watch the water rise without retreating.",
+        tone: "quiet",
         next: "sutra_mengjiao_voice_2",
-        page: true,
+      },
+      {
+        id: "reach_for_her_face",
+        label: "Reach through the water toward her face before it breaks apart.",
+        tone: "mercy",
+        next: "sutra_mengjiao_voice_2",
+      },
+      {
+        id: "ask_is_mengjiao",
+        label: "Ask the figure at once whether she is Mengjiao, and wait for the answer.",
+        tone: "inquiry",
+        next: "sutra_mengjiao_voice_2",
+      },
+      {
+        id: "drive_water_back",
+        label: "Drive the rising water back with a burst of your qi.",
+        tone: "force",
+        next: "sutra_mengjiao_voice_2",
+        effects: [{ kind: "addStat", stat: "qi", amount: 2 }],
       },
     ],
   },
   {
     id: "sutra_mengjiao_voice_2",
-    title: "",
+    title: "Wanru’s Clean Mirror",
     paragraphs: [
       "\"Wanru always did keep the mirror clean,\" Mengjiao says, in a voice you have heard already in the vision and on the page. \"She used to polish it every morning before breakfast. I told her the mirror would never answer a clean face. It answers only what is true, and the truth is usually grimy.\" She smiles without warmth. \"You came down the stair. Nobody comes down the stair. Did the Law send you, or did the mist?\"",
       "She waits for your answer with the patience of someone who has already heard every possible reply. The water around her knees glints red and gold. Somewhere far behind you, the Law Hall bell rings a second time, and the sound seems to come from a great distance, as if the whole sect is turning in its sleep to listen.",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "admit_law_sent_you",
+        label: "Admit that you came down the stair because the Law sent you.",
+        tone: "truth",
         next: "sutra_mengjiao_voice_3",
-        page: true,
+      },
+      {
+        id: "say_mist_sent_you",
+        label: "Tell her the mist sent you, and that you did not choose the stair yourself.",
+        tone: "deceit",
+        next: "sutra_mengjiao_voice_3",
+      },
+      {
+        id: "ask_what_mirror_answers",
+        label: "Ask her what the mirror answers, if it only ever answers what is true.",
+        tone: "inquiry",
+        next: "sutra_mengjiao_voice_3",
+      },
+      {
+        id: "let_bell_ring_out",
+        label: "Say nothing, and let the bell ring out until she gives up waiting for you.",
+        tone: "quiet",
+        next: "sutra_mengjiao_voice_3",
       },
     ],
   },
   {
     id: "sutra_mengjiao_voice_3",
-    title: "",
+    title: "The Price Is the Listener",
     paragraphs: [
       "\"I will tell you something before you decide,\" Mengjiao says. \"The sutra is a lie. Not all of it. The method is real, and the mist does answer. But the price was never a name. The price is the one who hears the answer. Whoever climbs this stair must stay on it forever, listening, and the Law has always been very eager for someone to stay.\"",
     ],

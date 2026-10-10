@@ -14,16 +14,35 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "walk_east_wing",
+        label: "Walk the long way round the east wing, reading the order aloud as you go.",
+        tone: "truth",
         next: "archive_gate_2",
-        page: true,
+      },
+      {
+        id: "study_soot",
+        label: "Slow your steps and study the soot-black walls for old marks.",
+        tone: "inquiry",
+        next: "archive_gate_2",
+        effects: [{ kind: "addStat", stat: "insight", amount: 1 }],
+      },
+      {
+        id: "wait_in_mist",
+        label: "Hang back in the mist and wait for the morning to lift.",
+        tone: "quiet",
+        next: "archive_gate_2",
+      },
+      {
+        id: "order_in_sleeve",
+        label: "Tuck the order inside your sleeve and approach without being seen.",
+        tone: "deceit",
+        next: "archive_gate_2",
       },
     ],
   },
   {
     id: "archive_gate_2",
-    title: "",
+    title: "The Warden on the Bridge",
     paragraphs: [
       "The main doors are cedar, banded with iron and sealed with a talisman that glows a cold blue whenever the wind pushes against it. Beyond the doors you can hear a sound like breathing. It is the sound of paper settling on paper, thousands of pages shifting in their drawers, as if the building is turning over in its sleep.",
       "A warden stands on the stone bridge that leads to the doors. He is broad in the shoulders and carries a lantern even though the morning is already bright. His name, you learn when he speaks, is Ren Qiao. He keeps the bridge and the doors, and he has been ordered to let no one through without a seal.",
@@ -31,16 +50,35 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "show_order",
+        label: "Hand over the Elder’s order and let Ren Qiao read it himself.",
+        tone: "truth",
         next: "archive_gate_3",
-        page: true,
+      },
+      {
+        id: "ask_about_index",
+        label: "Ask Ren Qiao what the Index is before you show him anything.",
+        tone: "inquiry",
+        next: "archive_gate_3",
+        effects: [{ kind: "addStat", stat: "insight", amount: 1 }],
+      },
+      {
+        id: "offer_to_wait",
+        label: "Bow, and offer to wait on the steps until he is satisfied.",
+        tone: "mercy",
+        next: "archive_gate_3",
+      },
+      {
+        id: "push_past_warden",
+        label: "Push past him toward the doors while he is still speaking.",
+        tone: "force",
+        next: "archive_gate_3",
       },
     ],
   },
   {
     id: "archive_gate_3",
-    title: "",
+    title: "Ren Qiao’s Question",
     paragraphs: [
       "You have the order. You also have the eaves above you, wet and steep, and the old ash chute that runs down the hill beneath the wing. A clerk with a ring of keys is somewhere inside, presumably eating his supper while the wardens watch the doors. Each way in carries a different kind of risk, and the warden’s lantern swings slowly back and forth, measuring your patience.",
     ],
@@ -83,16 +121,35 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "read_nearest_label",
+        label: "Walk straight to the nearest drawer and read its bronze label.",
+        tone: "inquiry",
         next: "archive_front_2",
-        page: true,
+        effects: [{ kind: "addStat", stat: "insight", amount: 1 }],
+      },
+      {
+        id: "ask_who_rang",
+        label: "Ask the warden who is ringing the bell, though no one has touched it.",
+        tone: "inquiry",
+        next: "archive_front_2",
+      },
+      {
+        id: "hand_on_hilt",
+        label: "Keep a hand on your hilt and move through the drawers without a word.",
+        tone: "force",
+        next: "archive_front_2",
+      },
+      {
+        id: "stand_and_listen",
+        label: "Stand still in the doorway and listen to the bell until it stops.",
+        tone: "quiet",
+        next: "archive_front_2",
       },
     ],
   },
   {
     id: "archive_front_2",
-    title: "",
+    title: "Lin Yuan at the Desk",
     paragraphs: [
       "A young man in grey sits at a writing desk near the entrance. He looks up with the terror of someone who has been caught doing nothing wrong for a very long time. His ink is still wet on the page before him. He is Lin Yuan, the keeper of keys, and he reads your order aloud in a voice that cracks on the seal.",
       "\"The Elder’s hand,\" he says. \"Yes. But the Index of the Departed opens only when the Elder herself stands before it, or when a witness of the Law stands in her place. I cannot open that cabinet on a piece of paper, even hers. I am sorry. I would open it if I could.\"",
@@ -100,16 +157,34 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "claim_elder_sent",
+        label: "Tell him the Elder sent you herself, and hope he does not check.",
+        tone: "deceit",
         next: "archive_front_3",
-        page: true,
+      },
+      {
+        id: "ask_black_hood",
+        label: "Ask him to describe the man in the black hood who came yesterday.",
+        tone: "inquiry",
+        next: "archive_front_3",
+      },
+      {
+        id: "thank_and_return",
+        label: "Thank him, and say you will come back when the Elder can attend.",
+        tone: "mercy",
+        next: "archive_front_3",
+      },
+      {
+        id: "plain_purpose",
+        label: "Tell him plainly that you are here to read the Index on the Elder’s order.",
+        tone: "truth",
+        next: "archive_front_3",
       },
     ],
   },
   {
     id: "archive_front_3",
-    title: "",
+    title: "Among the Drawers",
     paragraphs: [
       "The lamps flicker. Somewhere deeper in the stacks, a drawer slides shut with a soft click, and the sound lingers in the air like a held breath. Lin Yuan looks toward it and does not finish his sentence.",
     ],
@@ -152,16 +227,35 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "climb_on_ridge",
+        label: "Climb carefully and keep your weight on the ridge, away from the loose tiles.",
+        tone: "quiet",
         next: "archive_roof_2",
-        page: true,
+      },
+      {
+        id: "steady_tiles_qi",
+        label: "Draw a thread of qi into your fingers to hold the slick tiles.",
+        tone: "force",
+        next: "archive_roof_2",
+      },
+      {
+        id: "crawl_gutter",
+        label: "Crawl along the gutter, where the warden’s lantern will not reach.",
+        tone: "deceit",
+        next: "archive_roof_2",
+      },
+      {
+        id: "read_soot_glass",
+        label: "Pause and read the soot on the glass before you open the skylight.",
+        tone: "inquiry",
+        next: "archive_roof_2",
+        effects: [{ kind: "addStat", stat: "insight", amount: 2 }],
       },
     ],
   },
   {
     id: "archive_roof_2",
-    title: "",
+    title: "Through the Skylight",
     paragraphs: [
       "The lamp is not the only thing down there. A line of wet footprints leads from the door to the reading table, and they are fresh. Someone was here a moment ago, and they have not yet come back. You can hear soft breathing among the drawers, and it does not match the rhythm of the rain.",
       "Your qi trembles in your fingertips. You can drop through the opening into the canyon of drawers, or you can wait on the ridge until the breathing passes. You could still climb back down to the front doors and admit that you tried a clever thing and failed at it, or you could try to find the warden’s path and follow it.",
@@ -205,16 +299,34 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "count_bars",
+        label: "Brush the ash from your sleeves and count the iron bars along the wall.",
+        tone: "inquiry",
         next: "archive_ash_chute_2",
-        page: true,
+      },
+      {
+        id: "press_to_grate",
+        label: "Press your face to the grate and listen to the paper shifting above.",
+        tone: "quiet",
+        next: "archive_ash_chute_2",
+      },
+      {
+        id: "test_bars",
+        label: "Test each iron bar with your hands until one of them gives.",
+        tone: "force",
+        next: "archive_ash_chute_2",
+      },
+      {
+        id: "call_up",
+        label: "Call out, so that whoever is above knows someone has fallen in.",
+        tone: "truth",
+        next: "archive_ash_chute_2",
       },
     ],
   },
   {
     id: "archive_ash_chute_2",
-    title: "",
+    title: "The Cellar Grate",
     paragraphs: [
       "Scratched into the stone beside the bars are rows of names. Some are cut neatly, some scrawled in a hurry, and a few are scarred so deep the scratches look like claw marks. Beside each name is a mark that could be a date, or a count of days, or a tally of something that was not allowed to stop. You recognise the last mark. It is the same mark carved beside the altar in the memorial, the one that looked like a cracked circle.",
       "A draft comes through a second passage to the left. It is cooler than the air in the cellar and carries the smell of cedar and the faint sweetness of rot. Somewhere down that passage a voice is humming, a low tune with no words. It stops the moment you hold your breath.",
@@ -260,16 +372,35 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "take_key_quietly",
+        label: "Thank him, take the key without a word, and slip it into your sleeve.",
+        tone: "deceit",
         next: "archive_clerk_2",
-        page: true,
+      },
+      {
+        id: "spare_the_clerk",
+        label: "Tell him you will not put him in danger for the sake of one drawer.",
+        tone: "mercy",
+        next: "archive_clerk_2",
+      },
+      {
+        id: "ask_guarded_drawers",
+        label: "Ask what the wardens guard so closely in the lower shelves.",
+        tone: "inquiry",
+        next: "archive_clerk_2",
+        effects: [{ kind: "addStat", stat: "insight", amount: 1 }],
+      },
+      {
+        id: "tell_truth_of_order",
+        label: "Tell him the truth about why the Elder sent you into the archive.",
+        tone: "truth",
+        next: "archive_clerk_2",
       },
     ],
   },
   {
     id: "archive_clerk_2",
-    title: "",
+    title: "The Black Iron Key",
     paragraphs: [
       "You understand what he is risking. You also understand that he will not offer the key twice. The question is what he wants in return, and whether he is brave enough to say it.",
       "\"I want my mother’s name to stay out of the Law’s ledgers,\" he says. \"That is all. I do not want a pardon for her, or an apology. Only to be left alone with what I already know.\"",
@@ -326,16 +457,34 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "open_for_wanru",
+        label: "Break the thread and open the scroll marked For Wanru.",
+        tone: "inquiry",
         next: "archive_stacks_2",
-        page: true,
+      },
+      {
+        id: "search_su_line",
+        label: "Leave the scroll where it leans and search the rows for the Su line.",
+        tone: "inquiry",
+        next: "archive_stacks_2",
+      },
+      {
+        id: "pocket_scroll",
+        label: "Pocket the scroll before anyone in the building sees it.",
+        tone: "deceit",
+        next: "archive_stacks_2",
+      },
+      {
+        id: "right_the_lamp",
+        label: "Set the fallen lamp upright before its oil spreads any further.",
+        tone: "mercy",
+        next: "archive_stacks_2",
       },
     ],
   },
   {
     id: "archive_stacks_2",
-    title: "",
+    title: "The Scroll for Wanru",
     paragraphs: [
       "The stacks branch in four directions. The Index of the Departed lies somewhere past the first row, where the bronze labels grow brighter with polish. The letters are deeper in the right-hand rows, behind a screen of carved cedar. The ledger of punishments is down the left aisle, where the air is colder and the lamps burn low. The lamp on the floor is still warm, and its flame is only a bead of light in a dark wick.",
       "You need to decide where to go first, because the archive has many keepers and only one of them has been kind so far. The warden on the bridge will count the hours. Lin Yuan will count the drawers. The Elder, who sent you here, will count the days until you come back with an answer she can use.",
@@ -382,16 +531,35 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "copy_entry",
+        label: "Copy the entry word for word into the margin of your own notes.",
+        tone: "inquiry",
         next: "archive_index_2",
-        page: true,
+        effects: [{ kind: "addStat", stat: "insight", amount: 2 }],
+      },
+      {
+        id: "close_drawer_gently",
+        label: "Read the card twice, then close the drawer as gently as you found it.",
+        tone: "quiet",
+        next: "archive_index_2",
+      },
+      {
+        id: "take_card",
+        label: "Lift the card out of its drawer and keep it for yourself.",
+        tone: "deceit",
+        next: "archive_index_2",
+      },
+      {
+        id: "say_her_name",
+        label: "Say her name aloud, something the Law has never once bothered to do.",
+        tone: "mercy",
+        next: "archive_index_2",
       },
     ],
   },
   {
     id: "archive_index_2",
-    title: "",
+    title: "The Card of Su Mengjiao",
     paragraphs: [
       "Beneath the entry, in a different ink, someone has added a second line. It is so faint you have to tilt the card toward the lamp to read it. Letter received by the Law Hall; held for the Elder’s eyes alone.",
       "Your breath catches. The Elder told the sect her sister died in the mist. The card says Mengjiao went into the mist on her own, and that her last words were held for the Elder. Someone has been keeping those words from Elder Su for fifteen years, and the Index suggests that someone was the Law Hall itself.",
@@ -438,16 +606,34 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "read_letter_aloud",
+        label: "Read the letter aloud to the empty stacks, so that it is heard at last.",
+        tone: "truth",
         next: "archive_letter_2",
-        page: true,
+      },
+      {
+        id: "read_twice_for_hand",
+        label: "Read every line twice, learning the shape of her hand as you go.",
+        tone: "inquiry",
+        next: "archive_letter_2",
+      },
+      {
+        id: "fold_letter_away",
+        label: "Fold the letter back into its silk and walk on without reading further.",
+        tone: "quiet",
+        next: "archive_letter_2",
+      },
+      {
+        id: "hide_letter",
+        label: "Hide the letter inside your robe, out of sight of the Law Hall.",
+        tone: "deceit",
+        next: "archive_letter_2",
       },
     ],
   },
   {
     id: "archive_letter_2",
-    title: "",
+    title: "Mengjiao’s Warning",
     paragraphs: [
       "If they punish me for this, do not argue with them. Keep the bars counted and the lamps lit, and when the mist rises again, remember that I tried to bring back the light. The last page is with the Index. Read it when you are alone. I cannot write the rest without the risk of it being read by someone else.",
       "The letter ends there. Below the last line, the paper is stained with a dark brown circle, as if a cup was set down on it while the ink was still wet. The date beside the signature is the night of the Sealing.",
@@ -499,16 +685,34 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "read_names_aloud",
+        label: "Read the fourteen names aloud, one after another, the way the dead should be called.",
+        tone: "mercy",
         next: "archive_ledger_2",
-        page: true,
+      },
+      {
+        id: "trace_signature",
+        label: "Trace the Elder’s signature beside each name with your fingertip.",
+        tone: "inquiry",
+        next: "archive_ledger_2",
+      },
+      {
+        id: "tear_out_page",
+        label: "Tear out the page that carries Mengjiao’s name before the wardens can see it.",
+        tone: "force",
+        next: "archive_ledger_2",
+      },
+      {
+        id: "close_ledger",
+        label: "Close the ledger and carry on as though you have seen nothing at all.",
+        tone: "deceit",
+        next: "archive_ledger_2",
       },
     ],
   },
   {
     id: "archive_ledger_2",
-    title: "",
+    title: "Fourteen Names",
     paragraphs: [
       "The room is silent except for the soft sound of paper settling in the drawers. Somewhere near the door, a warden’s boots pass slowly across the stone and stop. They do not come in. The ledger holds you the way a tomb holds the people it buries, patiently and without any sympathy for the living.",
       "There is a loose sheet tucked into the back of the cabinet. It is the copy of a sealing order, unsigned, with a space left blank for the Elder’s seal. A note in the margin, in Lin Yuan’s careful hand, reads: The Elder signs all sealings herself. She has never once asked for a second copy.",
@@ -556,16 +760,34 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "skylight_was_open",
+        label: "Tell him the skylight was already open when you arrived in the archive.",
+        tone: "deceit",
         next: "archive_warden_2",
-        page: true,
+      },
+      {
+        id: "show_order_wait",
+        label: "Show him the Elder’s order and wait for his judgment in silence.",
+        tone: "truth",
+        next: "archive_warden_2",
+      },
+      {
+        id: "ask_what_hidden",
+        label: "Ask him what he has been ordered to keep hidden in this building.",
+        tone: "inquiry",
+        next: "archive_warden_2",
+      },
+      {
+        id: "law_not_yours",
+        label: "Stand your ground and tell him the Law is not his to enforce tonight.",
+        tone: "force",
+        next: "archive_warden_2",
       },
     ],
   },
   {
     id: "archive_warden_2",
-    title: "",
+    title: "Ren Qiao’s Lantern",
     paragraphs: [
       "\"Fifteen years ago,\" he says slowly, \"I stood on this bridge on the night of the Sealing. I was seventeen. I watched the Law carry fourteen people to the abyss path, and I held the lantern for them. One of them was a girl who used to teach me the qi exercises in the outer courtyard, when the other boys were too proud to ask. Her name was Mengjiao. I have not said it aloud since.\"",
       "He lowers his voice until it is almost gentle. \"So tell me what you are, and what you are doing with her name.\"",
@@ -614,16 +836,35 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "save_oldest_scrolls",
+        label: "Gather the oldest scrolls at your feet and carry them toward the door.",
+        tone: "mercy",
         next: "archive_fire_2",
-        page: true,
+      },
+      {
+        id: "run_for_index",
+        label: "Run for the Index drawers before the smoke closes off the way.",
+        tone: "inquiry",
+        next: "archive_fire_2",
+      },
+      {
+        id: "smother_with_qi",
+        label: "Call on your own qi to smother the flames before they reach the drawers.",
+        tone: "force",
+        next: "archive_fire_2",
+        effects: [{ kind: "addStat", stat: "qi", amount: 2 }],
+      },
+      {
+        id: "climb_out_skylight",
+        label: "Leave everything behind and climb out through the skylight.",
+        tone: "quiet",
+        next: "archive_fire_2",
       },
     ],
   },
   {
     id: "archive_fire_2",
-    title: "",
+    title: "The Fire Spreads",
     paragraphs: [
       "Lin Yuan appears at the end of the row, coughing, his veil pulled up over his nose. He sees the flames and freezes, and for a moment he looks exactly like a boy who has seen the mist come up the mountain again.",
     ],
@@ -674,16 +915,35 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "pocket_shard",
+        label: "Take the shard and leave the lacquered boxes sealed behind you.",
+        tone: "deceit",
         next: "archive_vault_2",
-        page: true,
+      },
+      {
+        id: "break_next_seal",
+        label: "Break the seal on the next box as well, to see what else is kept here.",
+        tone: "force",
+        next: "archive_vault_2",
+      },
+      {
+        id: "hand_on_jade",
+        label: "Lay your palm on the shard and listen for the hum that it does not make.",
+        tone: "inquiry",
+        next: "archive_vault_2",
+        effects: [{ kind: "addStat", stat: "qi", amount: 1 }],
+      },
+      {
+        id: "reseal_and_report",
+        label: "Reseal the box and promise the Elder you will report exactly what you found.",
+        tone: "truth",
+        next: "archive_vault_2",
       },
     ],
   },
   {
     id: "archive_vault_2",
-    title: "",
+    title: "The Shard of Jade",
     paragraphs: [
       "The shard is not the Sealing Jade. It is a piece of it, broken away, and kept. The Law Hall has been keeping a piece of the seal in a box where no one would look, which means that the seal in the altar may not be whole. It may never have been whole.",
       "The humming starts again, close to your ear. This time it has a word in it, too soft to make out. Then the vault is still, and the shard in your palm is only a cold stone.",
@@ -722,6 +982,13 @@ export const chapterThree: Scene[] = [
         tone: "quiet",
         next: "archive_ash_chute",
       },
+      {
+        id: "follow_jade_vein",
+        label: "Follow the pale vein in the wall behind the cellar shelves, down into the rock.",
+        tone: "inquiry",
+        effects: [{ kind: "setFlag", flag: "visited_quarry" }],
+        next: "quarry_mouth",
+      },
     ],
   },
   {
@@ -733,16 +1000,35 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "study_circles",
+        label: "Study the circles in her margins until you could draw one yourself.",
+        tone: "inquiry",
         next: "archive_reading_room_2",
-        page: true,
+        effects: [{ kind: "addStat", stat: "insight", amount: 2 }],
+      },
+      {
+        id: "leave_papers",
+        label: "Leave the papers exactly as they lie, and do not disturb her work.",
+        tone: "quiet",
+        next: "archive_reading_room_2",
+      },
+      {
+        id: "take_top_sheet",
+        label: "Take the top sheet with her strokes on it and fold it into your sleeve.",
+        tone: "deceit",
+        next: "archive_reading_room_2",
+      },
+      {
+        id: "read_by_her_lamp",
+        label: "Sit at her table and read by her lamp until the first bell of dawn.",
+        tone: "mercy",
+        next: "archive_reading_room_2",
       },
     ],
   },
   {
     id: "archive_reading_room_2",
-    title: "",
+    title: "Her Circles",
     paragraphs: [
       "The Blood Lotus technique is described on the third sheet. It is not a single set of movements. It is a conversation: the cultivator opens a meridian, offers the mist a thread of their own qi, and then listens for the mist’s answer. Mengjiao has written that the mist does not want to be fed. It wants to be heard. Her last note, in the same bright hand, reads: The abyss is not hungry. It is grieving.",
       "You feel the word from the vault pressing at the back of your mind, and for a moment you almost understand it. The room is warm now, though the lamp is the only heat in it. The shutters rattle softly, as if someone outside has just stopped trying to open them.",
@@ -792,16 +1078,34 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "tell_everything_in_order",
+        label: "Tell her everything you found, in the order you found it.",
+        tone: "truth",
         next: "archive_report_2",
-        page: true,
+      },
+      {
+        id: "archive_was_empty",
+        label: "Tell her the archive was empty and that you saw nothing of note.",
+        tone: "deceit",
+        next: "archive_report_2",
+      },
+      {
+        id: "ask_why_no_sleep",
+        label: "Ask her, gently, why she has not slept at all tonight.",
+        tone: "mercy",
+        next: "archive_report_2",
+      },
+      {
+        id: "refuse_until_answered",
+        label: "Refuse to answer until she tells you what the Blood Lotus really is.",
+        tone: "force",
+        next: "archive_report_2",
       },
     ],
   },
   {
     id: "archive_report_2",
-    title: "",
+    title: "Questions for the Wanderer",
     paragraphs: [],
     extras: [
       {
@@ -869,16 +1173,34 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "call_to_door",
+        label: "Open the door a crack and call out to whoever is standing there.",
+        tone: "truth",
         next: "archive_rest_2",
-        page: true,
+      },
+      {
+        id: "count_pauses",
+        label: "Lie still in the dark and count the pauses between each footstep.",
+        tone: "inquiry",
+        next: "archive_rest_2",
+      },
+      {
+        id: "wait_till_gone",
+        label: "Stay quiet on the cold bed until the footsteps fade away.",
+        tone: "quiet",
+        next: "archive_rest_2",
+      },
+      {
+        id: "follow_walker",
+        label: "Slip out through the paper window and follow the walker in the dark.",
+        tone: "deceit",
+        next: "archive_rest_2",
       },
     ],
   },
   {
     id: "archive_rest_2",
-    title: "",
+    title: "The Footsteps Pause",
     paragraphs: [
       "The footsteps stop again outside your door. A shadow crosses the paper, and then a folded scrap of paper slides under the frame and lies still on the floor. You can see a few characters written on it in dark ink. They say only: Come if you are awake.",
     ],
@@ -922,16 +1244,34 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "tell_of_vault",
+        label: "Tell her plainly what you saw in the cellar vault beneath the stacks.",
+        tone: "truth",
         next: "archive_night_visit_2",
-        page: true,
+      },
+      {
+        id: "ask_if_slept",
+        label: "Ask her whether she has slept at all, or whether she will not even try.",
+        tone: "mercy",
+        next: "archive_night_visit_2",
+      },
+      {
+        id: "wait_for_her",
+        label: "Say nothing, and wait in the cold for her to speak first.",
+        tone: "quiet",
+        next: "archive_night_visit_2",
+      },
+      {
+        id: "demand_blood_lotus",
+        label: "Demand that she explain the Blood Lotus Sutra to you, here and now.",
+        tone: "force",
+        next: "archive_night_visit_2",
       },
     ],
   },
   {
     id: "archive_night_visit_2",
-    title: "",
+    title: "The Elder’s Window",
     paragraphs: [
       "\"Mengjiao used to climb out of this window,\" she says. \"Every night, for a year, when she was twelve and I was sixteen. She told me the stars were better from the roof. I never went up to see them with her. I was afraid of the height. Afterward I was afraid of nothing else, and that is the reason I became what I am.\"",
     ],
@@ -977,16 +1317,34 @@ export const chapterThree: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "take_cloak_thanks",
+        label: "Take the grey cloak and thank Ren Qiao for it, quietly and sincerely.",
+        tone: "mercy",
         next: "archive_dawn_2",
-        page: true,
+      },
+      {
+        id: "ask_will_walk",
+        label: "Ask Ren Qiao whether he will walk to the sutra door beside you.",
+        tone: "inquiry",
+        next: "archive_dawn_2",
+      },
+      {
+        id: "hide_bronze_key",
+        label: "Keep the bronze key hidden in your palm and say nothing to the Law Hall.",
+        tone: "deceit",
+        next: "archive_dawn_2",
+      },
+      {
+        id: "hold_key_up",
+        label: "Hold the bronze key up where he can see it and say the door is yours to open.",
+        tone: "force",
+        next: "archive_dawn_2",
       },
     ],
   },
   {
     id: "archive_dawn_2",
-    title: "",
+    title: "The Bronze Key",
     paragraphs: [
       "The sutra door lies at the top of the inner stair, past the memorial and beyond the last of the Law’s bells. You can see its outline from here, a narrow red gate set into the living cliff, with a mist that never quite clears from its threshold. It is not far. It has never been far. The Law Hall has simply never allowed anyone to walk there.",
     ],

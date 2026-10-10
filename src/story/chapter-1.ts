@@ -297,6 +297,14 @@ export const chapterOne: Scene[] = [
         next: "market_lane",
         effects: [{ kind: "setFlag", flag: "asked_for_market_leave" }],
       },
+      {
+        id: "ask_village_leave",
+        label: "Ask the Elder’s leave to visit the foothill village where Gu Hanzhen was born, before you go down.",
+        tone: "truth",
+        npcScenario: "REQUEST_VILLAGE",
+        effects: [{ kind: "setFlag", flag: "visited_village" }],
+        next: "village_gate",
+      },
     ],
   },
 ];

@@ -584,34 +584,6 @@ h2 {
 }
 
 /* A continuation page: the reader turns the page instead of deciding. */
-.page-turn {
-  margin-top: 20px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.page-turn button {
-  font: inherit;
-  color: var(--text);
-  background: linear-gradient(90deg, var(--panel-raised), var(--panel));
-  border: 1px solid var(--gilt-soft);
-  border-radius: 999px;
-  padding: 10px 26px;
-  cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.page-turn button::after {
-  content: " ›";
-  color: var(--gilt);
-}
-
-.page-turn button:hover,
-.page-turn button:focus-visible {
-  border-color: var(--gilt);
-  color: var(--gilt);
-}
-
 .choice-label {
   position: relative;
   z-index: 1;

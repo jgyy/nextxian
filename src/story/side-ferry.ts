@@ -93,16 +93,34 @@ export const stillWaterScenes: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "read_blank_stones",
+        label: "Read every blank stone down the row before you move on.",
+        tone: "inquiry",
         next: "ferry_far_shore_2",
-        page: true,
+      },
+      {
+        id: "kneel_by_blank_stone",
+        label: "Kneel beside the nearest blank stone and say nothing at all.",
+        tone: "quiet",
+        next: "ferry_far_shore_2",
+      },
+      {
+        id: "demand_boatman_fares",
+        label: "Call down to the boatman and demand to know who sends him these fares.",
+        tone: "force",
+        next: "ferry_far_shore_2",
+      },
+      {
+        id: "hide_wick_sleeve",
+        label: "Hide the wick you carry under your sleeve before anyone notices it.",
+        tone: "deceit",
+        next: "ferry_far_shore_2",
       },
     ],
   },
   {
     id: "ferry_far_shore_2",
-    title: "",
+    title: "Blank Stones and a Wick",
     paragraphs: [
       "The stone says: Su Mengjiao, who was not poured quietly. Beneath it, in smaller characters, someone has added a line that is not a name at all: The lake may keep her, but it will not keep her silent. Beside the stone lies a bundle of half-burned wicks, tied with red thread, as though someone came up the shelf with a lamp and went back down without it.",
     ],

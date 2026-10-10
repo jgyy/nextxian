@@ -125,6 +125,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You took the scroll from the ancestors' shelf. Only someone desperate, or very brave, would do that. Which are you?",
     },
     remember: ["stole_scroll"],
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "honored_ancestors" }],
+        line: "You knelt before the tablets, and then you came back for the scroll on the same shelf. A thief who bows is still a thief. Put it down while you still can, Wanderer, because I will not ask a second time.",
+      },
+    ],
   },
   REVEAL_DEMONIC_QI: {
     id: "REVEAL_DEMONIC_QI",
@@ -138,6 +144,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "The black lotus bloomed in your meridians, and you let it wither. I have never seen anyone do that. Be careful; the next bloom may not wait for you.",
     },
     remember: ["demonic_glimpsed"],
+    memory: [
+      {
+        when: [{ kind: "tone", tone: "force", min: 3, within: 4 }],
+        line: "You have answered me with force three times running, and now you call the black lotus in front of me. I no longer have to guess what you will do next. That is the most frightening thing about you.",
+      },
+    ],
   },
   ASK_FORBIDDEN_ART: {
     id: "ASK_FORBIDDEN_ART",
@@ -186,6 +198,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You knelt before my family's tablet. Some of the names there are mine, and you have honoured them more than my own sister ever did.",
     },
     remember: ["honored_ancestors"],
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "stole_scroll" }],
+        line: "You stole from these tablets, and now you kneel before them. Penance is not innocence. The dead can tell the difference, even if the Law cannot.",
+      },
+    ],
   },
   REFUSE_TASK: {
     id: "REFUSE_TASK",
@@ -237,6 +255,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "Mengjiao. You said her name as though it were a flower, not a crime. Nobody has done that in fifteen years. Thank you for giving her back to me, even for a moment.",
     },
     remember: ["exposed_elder"],
+    memory: [
+      {
+        when: [{ kind: "said", scenario: "ASK_TABLET", within: 5 }],
+        line: "You asked me about the painted name, and now you say her name aloud in my hall. The memorial has heard you both. So have I, and I did not stop either of you.",
+      },
+    ],
   },
   SWEAR_OATH: {
     id: "SWEAR_OATH",
@@ -288,6 +312,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You promise a clerk his mother’s peace. That is the promise I should have made fifteen years ago, and did not.",
     },
     remember: ["protected_clerk"],
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "stole_scroll" }],
+        line: "You stole from my shelves and then spoke for a clerk. The archive has keepers and thieves, and I cannot always tell which one you are being in any given hour.",
+      },
+    ],
   },
   REPORT_LETTER: {
     id: "REPORT_LETTER",
@@ -358,6 +388,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You confessed the fire before anyone asked. That is the courage the archive was built to remember. I will remember it too.",
     },
     remember: ["confessed_fire"],
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "lied_about_seal" }],
+        line: "You denied the seal once, and now you confess a fire. I believe the second confession more than I believed the first denial, and I do not like finding that I do.",
+      },
+    ],
   },
   NIGHT_VISIT: {
     id: "NIGHT_VISIT",
@@ -371,6 +407,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You knocked on my shutter at midnight to tell me what my sister wrote. Few would walk across a courtyard for a ghost. You did.",
     },
     remember: ["visited_at_night"],
+    memory: [
+      {
+        when: [{ kind: "said", scenario: "THREATEN", within: 6 }],
+        line: "You threatened me in the sutra hall, and now you come to my window at night to tell me the truth. Threats and confidences are a strange pair to carry under one roof. I will hear the confidence first.",
+      },
+    ],
   },
   SHARD_CALL: {
     id: "SHARD_CALL",
@@ -384,6 +426,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "The shard carried my name down into the mist, and my sister answered it. I thought I had lost that voice forever. Thank you.",
     },
     remember: ["called_through_shard"],
+    memory: [
+      {
+        when: [{ kind: "said", scenario: "JADE_EYE_REPORT", within: 6 }],
+        line: "You reported to me through the jade eye, and now you call me through a broken piece of the seal. There are two ways you can speak to me. I do not yet know which one to trust.",
+      },
+    ],
   },
   JADE_EYE_REPORT: {
     id: "JADE_EYE_REPORT",
@@ -397,6 +445,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You described the red water as though I were standing beside you. For a moment I was. Thank you for letting me see it.",
     },
     remember: ["reported_through_eye"],
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "lied_to_eye" }],
+        line: "You lied to my mirror once already. Now you report to it in the same steady voice. I can hear the difference, even if the mirror cannot.",
+      },
+    ],
   },
   JADE_EYE_LIE: {
     id: "JADE_EYE_LIE",
@@ -429,6 +483,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You want to burn the book that took my sister. Then burn it, and let the mist know we are no longer afraid to forget.",
     },
     remember: ["offered_to_burn"],
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "visited_shrine" }],
+        line: "You want the sutra burned, and you have already lit incense for the sister it was written against. Decide whether you are mourning her or condemning her, Wanderer. The fire will not wait for you to decide both.",
+      },
+    ],
   },
   SUTRA_STUDY: {
     id: "SUTRA_STUDY",
@@ -442,6 +502,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You will study the sutra so that no one in this sect ever has to fall through its pages alone. Then teach it to me too, when you are ready.",
     },
     remember: ["wants_sutra"],
+    memory: [
+      {
+        when: [{ kind: "tone", tone: "inquiry", min: 3, within: 4 }],
+        line: "You have been asking questions in nearly every answer, and now you want to study the sutra itself. A questioner who reads the forbidden page does not come back from it unchanged.",
+      },
+    ],
   },
   ASK_TABLET: {
     id: "ASK_TABLET",
@@ -455,6 +521,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You asked about the painted name as though it still belonged to someone. It does. Thank you for asking her question, and mine.",
     },
     remember: ["asked_about_tablet"],
+    memory: [
+      {
+        when: [{ kind: "said", scenario: "HONOR_ANCESTORS", within: 4 }],
+        line: "You knelt at the tablets, and then you asked after the painted name. You bowed to the dead before you asked about them. I notice the order, and I notice that it matters to you.",
+      },
+    ],
   },
   CHALLENGE_LAW_WITH_ELDER: {
     id: "CHALLENGE_LAW_WITH_ELDER",
@@ -468,6 +540,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You would stand against the Law with me, and I would not have to stand alone. That is a gift I did not think I would be given.",
     },
     remember: ["challenged_law_with_elder"],
+    memory: [
+      {
+        when: [{ kind: "said", scenario: "APPEAL_TO_DISCIPLES", within: 6 }],
+        line: "You challenged the Law before the disciples, and now you challenge it to my face. A challenge repeated is a campaign, Wanderer. I have fought campaigns, and I know how they end.",
+      },
+    ],
   },
   ACCEPT_DESCENT: {
     id: "ACCEPT_DESCENT",
@@ -500,6 +578,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You gave the disciples a voice they did not know they had. I should have done that fifteen years ago, when I had the chance.",
     },
     remember: ["appealed_to_disciples"],
+    memory: [
+      {
+        when: [{ kind: "npc", metric: "respect", min: 30 }],
+        line: "You speak to the disciples and they listen, and you have earned that with your own words. Do not waste it on a crowd that will forget you by the next bell.",
+      },
+    ],
   },
   SHOW_SEALING_ORDER: {
     id: "SHOW_SEALING_ORDER",
@@ -513,6 +597,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "The orders were read, and my name was read with them. I hoped someone would do that for me. I did not expect it would be you.",
     },
     remember: ["read_sealing_orders"],
+    memory: [
+      {
+        when: [{ kind: "said", scenario: "APPEAL_TO_DISCIPLES", within: 4 }],
+        line: "You made them listen, and now you show them the orders. You are not only showing paper now. You are showing the sect what I signed, and they are watching my hand as well as yours.",
+      },
+    ],
   },
   CHALLENGE_BELL_RULE: {
     id: "CHALLENGE_BELL_RULE",
@@ -545,6 +635,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You defended the boy, the sister, and the sect in one breath. I did not believe a single voice could carry so much. Yours did.",
     },
     remember: ["testified_for_gu"],
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "spared_gu" }],
+        line: "You spared him, and now you testify for him. The mercy has become a witness, and I did not expect the Law to be asked to listen to one.",
+      },
+    ],
   },
   WITNESS_SIGNING: {
     id: "WITNESS_SIGNING",
@@ -558,6 +654,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You stood beside my hand when it wrote my name, and you saw the moment I hesitated. That moment is the only part of the night I am proud of.",
     },
     remember: ["witnessed_signing"],
+    memory: [
+      {
+        when: [{ kind: "tone", tone: "quiet", min: 3, within: 4 }],
+        line: "You have stood silent through most of this, and now you watch me sign in silence too. I wonder whether you are a witness or only a bystander, and whether the sect will ever be able to tell the difference.",
+      },
+    ],
   },
   REFUSE_SEALING: {
     id: "REFUSE_SEALING",
@@ -571,6 +673,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       devoted: "You refused to let me sign my sister’s name away. I did not know I wanted someone to stop me until your hand touched the brush.",
     },
     remember: ["stopped_signing"],
+    memory: [
+      {
+        when: [{ kind: "said", scenario: "WITNESS_SIGNING", within: 6 }],
+        line: "You watched the signing once without a word, and this time you stop the pen. The witness has become an interruption. The Law does not forgive either, though I find I have forgiven you already.",
+      },
+    ],
   },
   MENGJIAO_WORDS: {
     id: "MENGJIAO_WORDS",

@@ -3,7 +3,7 @@
  * choice labels, NPC lines, and endings. Run with `npm run word-count`.
  */
 import { story, chapters } from "../src/story";
-import { MANNER_SHIFT, MOOD_SHIFT, TIER_SHIFT_DOWN, TIER_SHIFT_UP } from "../src/engine/npc";
+import { MANNER_SHIFT, MOOD_SHIFT, RESPECT_SHIFT, TIER_SHIFT_DOWN, TIER_SHIFT_UP } from "../src/engine/npc";
 import { MAX_SCENE_WORDS, sceneBodyWords } from "../src/engine/validate";
 import { countWords } from "../src/engine/words";
 import type { Scene } from "../src/engine/types";
@@ -32,6 +32,7 @@ function npcWords(): number {
     ...Object.values(TIER_SHIFT_DOWN),
     ...Object.values(MOOD_SHIFT),
     ...Object.values(MANNER_SHIFT),
+    ...Object.values(RESPECT_SHIFT),
   ].reduce((n, line) => n + countWords(line ?? ""), 0);
   return scenarios + shifts;
 }

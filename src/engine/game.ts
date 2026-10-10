@@ -1,4 +1,14 @@
-import { conditionsHold, mannerShiftLine, moodFor, moodShiftLine, reactToScenario, tierFor, tierShiftLine } from "./npc";
+import {
+  conditionsHold,
+  mannerShiftLine,
+  moodFor,
+  moodShiftLine,
+  reactToScenario,
+  respectShiftLine,
+  respectTierFor,
+  tierFor,
+  tierShiftLine,
+} from "./npc";
 import type {
   Choice,
   ChoiceView,
@@ -39,14 +49,6 @@ export function getScene(story: Story, id: string): Scene {
   return scene;
 }
 
-/**
- * A passage is a page of a scene that runs on to the next page. Its only option is a page
- * turn, which is not a decision, so passages are exempt from the four-option rule.
- */
-export function isPassage(scene: Scene): boolean {
-  return scene.choices.length === 1 && scene.choices[0].page === true;
-}
-
 /** Starts a new game at the story's opening scene. */
 export function createGame(story: Story): GameState {
   const empty: GameState = {
@@ -74,11 +76,9 @@ function enterScene(story: Story, state: GameState, scene: Scene): GameState {
   const interjections = (scene.interjections ?? [])
     .filter((x) => conditionsHold(x.when, state))
     .map((x) => ({ kind: "npc" as const, speaker: story.npc.name, text: x.line }));
-  // A continuation page has no title, so it adds no heading of its own.
-  const heading = scene.title ? [{ kind: "heading" as const, text: scene.title }] : [];
   const log = [
     ...state.log,
-    ...heading,
+    { kind: "heading" as const, text: scene.title },
     ...[...scene.paragraphs, ...extra].map((text) => ({ kind: "narration" as const, text })),
     ...interjections,
   ];
@@ -115,8 +115,8 @@ export function getChoices(scene: Scene, state: GameState): ChoiceView[] {
 }
 
 /**
- * Applies the player's choice: logs it, lets the NPC react, applies effects,
- * then enters the next scene. Throws if the choice is unknown or locked.
+ * Applies the player's choice: logs it, records its tone, lets the NPC react, applies
+ * effects, then enters the next scene. Throws if the choice is unknown or locked.
  */
 export function choose(story: Story, state: GameState, choiceId: string): GameState {
   const scene = getScene(story, state.sceneId);
@@ -125,10 +125,6 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
   if (!conditionsHold(choice.requires, state)) {
     throw new Error(`Choice "${choiceId}" is locked`);
   }
-  // A page turn only carries the reader on through a long scene. It is not a decision,
-  // so nothing is logged, nothing is remembered and the Elder does not react.
-  if (choice.page) return enterScene(story, state, getScene(story, choice.next));
-  if (!choice.tone) throw new Error(`Choice "${choiceId}" has no tone`);
 
   let next: GameState = {
     ...state,
@@ -163,14 +159,16 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
 /**
  * If the choice moved the Elder to another attitude tier, she says so. If only her
  * face changed, because fear or suspicion took hold or let go, she says that instead.
- * If the player's manner has settled on a new tone, she names it. Only one of these
- * is said per choice. The line goes after her reply, so it is the last thing the
- * player reads before the next scene.
+ * If her respect for the player moved into another band, she says so. If the player's
+ * manner has settled on a new tone, she names it. Only one of these is said per choice.
+ * The line goes after her reply, so it is the last thing the player reads before the
+ * next scene.
  */
 function noticeAttitude(story: Story, before: GameState, after: GameState): GameState {
   const line =
     tierShiftLine(tierFor(before.npc.trust), tierFor(after.npc.trust)) ??
     moodShiftLine(moodFor(before.npc), moodFor(after.npc)) ??
+    respectShiftLine(respectTierFor(before.npc.respect), respectTierFor(after.npc.respect)) ??
     mannerShiftLine(before.tones, after.tones);
   if (!line) return after;
   return { ...after, log: [...after.log, { kind: "npc", speaker: story.npc.name, text: line }] };

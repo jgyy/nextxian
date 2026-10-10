@@ -53,16 +53,34 @@ export const bellFoundryScenes: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "watch_rod_turn",
+        label: "Watch the rod turn in the furnace until its heart runs white.",
+        tone: "quiet",
         next: "foundry_floor_2",
-        page: true,
+      },
+      {
+        id: "ask_years_pouring",
+        label: "Ask how many years Kuang has poured bronze for the Law Hall.",
+        tone: "inquiry",
+        next: "foundry_floor_2",
+      },
+      {
+        id: "tell_kuang_law_lies",
+        label: "Tell Kuang that the Law Hall is lying to the sect about the names.",
+        tone: "truth",
+        next: "foundry_floor_2",
+      },
+      {
+        id: "demand_names_poured",
+        label: "Demand that Kuang tell you exactly which names he was ordered to pour.",
+        tone: "force",
+        next: "foundry_floor_2",
       },
     ],
   },
   {
     id: "foundry_floor_2",
-    title: "",
+    title: "The Mould and the Fifteenth Name",
     paragraphs: [
       "A bell mould stands against the wall, its inner face scored with lines of letters reversed like a reflection. You can read them if you hold your breath. The first fourteen are masters’ names, and you recognise two of them from the sealing orders. The fifteenth is Su Mengjiao. Someone has tried to scrape it out of the clay with a blade, and the scratches stop just short of the last stroke, as though the hand holding the blade could not finish the job.",
     ],
@@ -106,16 +124,34 @@ export const bellFoundryScenes: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "read_every_column",
+        label: "Turn the pages slowly and read every column, the Rim column included.",
+        tone: "inquiry",
         next: "foundry_ledger_2",
-        page: true,
+      },
+      {
+        id: "ask_fifteenth_own_page",
+        label: "Ask Kuang why the fifteenth bell has a page of its own.",
+        tone: "inquiry",
+        next: "foundry_ledger_2",
+      },
+      {
+        id: "red_line_true",
+        label: "Tell Kuang that the red line is the only true thing in the whole book.",
+        tone: "truth",
+        next: "foundry_ledger_2",
+      },
+      {
+        id: "slide_book_back",
+        label: "Slide the book back toward him, untouched, and step away from the bench.",
+        tone: "quiet",
+        next: "foundry_ledger_2",
       },
     ],
   },
   {
     id: "foundry_ledger_2",
-    title: "",
+    title: "The Red Line",
     paragraphs: [
       "Kuang watches you read without interrupting. When you look up, he says: \"I did not write the red line. I found it there the morning after. I never learned who wrote it, and I never asked. A caster who asks too many questions about his own bells does not keep his furnace.\"",
     ],
@@ -159,16 +195,34 @@ export const bellFoundryScenes: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "walk_humming_rows",
+        label: "Walk between the rows in silence and let the humming bronze speak for itself.",
+        tone: "quiet",
         next: "foundry_bell_hall_2",
-        page: true,
+      },
+      {
+        id: "read_nearest_rim",
+        label: "Climb the steps beside the nearest bell and read its rim by the lamp.",
+        tone: "inquiry",
+        next: "foundry_bell_hall_2",
+      },
+      {
+        id: "bow_to_unread_names",
+        label: "Stop at the first bell and bow to the names you cannot yet read.",
+        tone: "mercy",
+        next: "foundry_bell_hall_2",
+      },
+      {
+        id: "pry_rim_away",
+        label: "Pry the first bell’s rim away from its frame with the edge of your blade.",
+        tone: "force",
+        next: "foundry_bell_hall_2",
       },
     ],
   },
   {
     id: "foundry_bell_hall_2",
-    title: "",
+    title: "The Silk on the Fifteenth Bell",
     paragraphs: [
       "The fifteenth bell is the largest, and it hangs at the far end of the hall in an iron frame of its own. Nobody has polished it. Someone has tied a strip of white silk to its clapper, and the silk moves a little in a draught you cannot feel.",
     ],

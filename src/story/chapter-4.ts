@@ -14,32 +14,69 @@ export const chapterFour: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "press_palm_lacquer",
+        label: "Press your palm to the lacquer and feel for a pulse behind the red wood.",
+        tone: "inquiry",
         next: "sutra_door_2",
-        page: true,
+        effects: [{ kind: "addStat", stat: "insight", amount: 1 }],
+      },
+      {
+        id: "kneel_at_threshold",
+        label: "Kneel on the threshold and wait for the mist to show you its mood.",
+        tone: "quiet",
+        next: "sutra_door_2",
+      },
+      {
+        id: "brush_mist_aside",
+        label: "Brush the threads of mist aside with your sleeve, as though they were cobwebs.",
+        tone: "force",
+        next: "sutra_door_2",
+      },
+      {
+        id: "speak_plainly_gate",
+        label: "Speak plainly to the gate and say why you have come.",
+        tone: "truth",
+        next: "sutra_door_2",
       },
     ],
   },
   {
     id: "sutra_door_2",
-    title: "",
+    title: "The Key That Fits",
     paragraphs: [
       "The bronze key from Lin Yuan’s packet sits in your palm, its lotus bud cold against your skin. It fits the keyhole with a small click that you feel in your teeth. Then nothing happens. The gate stays shut. The mist continues to pour down the cliff in slow, patient threads, and somewhere inside the rock a bell rings once, very softly, as if it is asking whether you are ready.",
       "Ren Qiao stands three steps below you on the stair. He has not climbed farther than the memorial in fifteen years, and he keeps his eyes fixed on the stone at his feet as though looking higher would make the wall move. \"The Law Hall calls this the Sutra Door,\" he says. \"The disciples call it the Gate That Listens. I have never heard anyone say what it wants in return for opening.\"",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_what_gate_wants",
+        label: "Ask Ren Qiao what the disciples say the gate wants in return.",
+        tone: "inquiry",
         next: "sutra_door_3",
-        page: true,
+      },
+      {
+        id: "offer_key_to_warden",
+        label: "Offer Ren Qiao the key, and let him try the lock before you do.",
+        tone: "mercy",
+        next: "sutra_door_3",
+      },
+      {
+        id: "turn_key_quietly",
+        label: "Turn the key again without telling Ren Qiao anything about it.",
+        tone: "deceit",
+        next: "sutra_door_3",
+      },
+      {
+        id: "admit_no_one_knows",
+        label: "Admit to Ren Qiao that the Elder knows nothing of this key.",
+        tone: "truth",
+        next: "sutra_door_3",
       },
     ],
   },
   {
     id: "sutra_door_3",
-    title: "",
+    title: "Three Ways to Begin",
     paragraphs: [
       "You have several ways to begin. You could turn the key again and hope the second try is different. You could read the carvings around the frame, which are thick with characters and some of them are fresh. You could call on the mist with your own qi, the way Mengjiao’s letter described, and listen for an answer. Or you could stand still and wait for Ren Qiao to offer advice, since he is the only person here who has ever known the Law’s secrets from the outside.",
       "The bell rings again, and this time the threads of mist shiver in a pattern that looks almost like a hand opening. The gate does not move. But the keyhole, which was dark a moment ago, now shows the faint shape of a lotus petal, glowing as if lit from behind.",
@@ -84,16 +121,35 @@ export const chapterFour: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "trace_lowest_band",
+        label: "Trace the lowest band with your fingers, one name at a time.",
+        tone: "mercy",
         next: "sutra_inscriptions_2",
-        page: true,
+      },
+      {
+        id: "study_oldest_band",
+        label: "Study the oldest band first, though it is the hardest to read.",
+        tone: "inquiry",
+        next: "sutra_inscriptions_2",
+        effects: [{ kind: "addStat", stat: "insight", amount: 2 }],
+      },
+      {
+        id: "copy_fresh_name",
+        label: "Copy down the freshly cut name before the wardens notice the chisel marks.",
+        tone: "deceit",
+        next: "sutra_inscriptions_2",
+      },
+      {
+        id: "wait_for_carvings",
+        label: "Stand back and wait for the carvings to explain themselves.",
+        tone: "quiet",
+        next: "sutra_inscriptions_2",
       },
     ],
   },
   {
     id: "sutra_inscriptions_2",
-    title: "",
+    title: "The Struck-Through Name",
     paragraphs: [
       "The name is Su Mengjiao. Beside it, someone has added a line in the Law’s script, but the phrase has been struck through and replaced. The new phrase reads simply: Returned to the gate. It is not the phrase of a death. It is the phrase of a homecoming.",
       "The middle band is harder. The curves have been worn by a century of fingers, and the meaning sits behind them like a tune you half remember. Mengjiao’s handwriting from the archive comes back to you. Her circles, her impatient strokes, the way she wrote the word for listening. You recognise the same character cut into the lintel, and you realise she carved it herself, years after she was supposed to be dead.",
@@ -101,16 +157,34 @@ export const chapterFour: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "read_struck_phrase",
+        label: "Lay your hand over the struck-through phrase and read it again, slowly.",
+        tone: "inquiry",
         next: "sutra_inscriptions_3",
-        page: true,
+      },
+      {
+        id: "say_homecoming_aloud",
+        label: "Say the word homecoming aloud, so that the stone hears it spoken.",
+        tone: "truth",
+        next: "sutra_inscriptions_3",
+      },
+      {
+        id: "pass_name_quietly",
+        label: "Pass over the name without a word and keep your thoughts to yourself.",
+        tone: "quiet",
+        next: "sutra_inscriptions_3",
+      },
+      {
+        id: "say_seen_name_before",
+        label: "Tell Ren Qiao you have seen this name before, and say nothing more.",
+        tone: "deceit",
+        next: "sutra_inscriptions_3",
       },
     ],
   },
   {
     id: "sutra_inscriptions_3",
-    title: "",
+    title: "A Homecoming on the Gate",
     paragraphs: [
       "Behind you on the stair, Ren Qiao shifts his weight and clears his throat. He has been reading too, and he has not liked what he found. \"That is not the Law’s language,\" he says quietly. \"The Law would never carve a homecoming on a gate it guards. Someone wanted this door to be found.\"",
     ],
@@ -154,32 +228,68 @@ export const chapterFour: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "push_more_qi",
+        label: "Push more qi into the thread, to see how deep the mist goes.",
+        tone: "force",
         next: "sutra_mist_call_2",
-        page: true,
+      },
+      {
+        id: "hold_thread_still",
+        label: "Hold your thread steady, breathe slowly, and let the mist decide.",
+        tone: "quiet",
+        next: "sutra_mist_call_2",
+      },
+      {
+        id: "answer_with_question",
+        label: "Answer the mist with a question of your own.",
+        tone: "inquiry",
+        next: "sutra_mist_call_2",
+      },
+      {
+        id: "withdraw_and_tell",
+        label: "Withdraw your qi at once and tell Ren Qiao exactly what you are doing.",
+        tone: "truth",
+        next: "sutra_mist_call_2",
       },
     ],
   },
   {
     id: "sutra_mist_call_2",
-    title: "",
+    title: "Who Calls",
     paragraphs: [
       "For a moment you cannot tell where your body ends. You feel the cliff breathing under your knees, the stair breathing beneath it, the bells sleeping inside the stone. You hear a voice that is not Mengjiao’s and not your own, saying the same word over and over until it becomes a question: Who calls. You answer without thinking. You say your name, and then, after a pause you did not intend, you say hers.",
       "The mist answers by lifting. A column of white fog rises from the threshold to the height of the gate and opens like a pair of hands. Between the fingers you see a staircase going up into a red haze, and at the top of it a pool of still water, and in the water the reflection of a woman in grey robes who is looking straight at you.",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "take_back_words",
+        label: "Take back your words and say nothing else to the mist.",
+        tone: "quiet",
         next: "sutra_mist_call_3",
-        page: true,
+      },
+      {
+        id: "ask_who_it_is",
+        label: "Ask the voice who it is, and what it wants from you in return.",
+        tone: "inquiry",
+        next: "sutra_mist_call_3",
+      },
+      {
+        id: "call_her_louder",
+        label: "Call out Mengjiao’s name again, louder, until the mist answers.",
+        tone: "force",
+        next: "sutra_mist_call_3",
+      },
+      {
+        id: "speak_her_gently",
+        label: "Speak her name gently, as if you were comforting someone who is afraid.",
+        tone: "mercy",
+        next: "sutra_mist_call_3",
       },
     ],
   },
   {
     id: "sutra_mist_call_3",
-    title: "",
+    title: "The Reflection in the Water",
     paragraphs: [
       "The reflection smiles. You do not know her face, and yet you know it at once. It is Elder Su’s face, younger by fifteen years, and it has a tear track on its cheek that looks painted in lacquer. The mist closes. The reflection stays for an instant longer, long enough to mouth one word, and then the stair beneath you is only stone again, cold and grey, and your palm is bleeding a little where the qi left you.",
       "Ren Qiao is staring at you from the stair. His lantern has gone out. \"Your eyes went white,\" he says. \"Only for a breath. I thought you were being taken.\"",
@@ -224,16 +334,34 @@ export const chapterFour: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "walk_lotus_steps",
+        label: "Walk carefully down the wet lotus steps, one at a time.",
+        tone: "quiet",
         next: "sutra_stair_2",
-        page: true,
+      },
+      {
+        id: "touch_each_bell",
+        label: "Touch each stone bell as you pass it, and feel its tremor in your fingers.",
+        tone: "inquiry",
+        next: "sutra_stair_2",
+      },
+      {
+        id: "slip_past_bells",
+        label: "Slip past the bells in the shadows, so that your own shadow does not wake them.",
+        tone: "deceit",
+        next: "sutra_stair_2",
+      },
+      {
+        id: "name_yourself_to_bells",
+        label: "Speak your name aloud to the bells, so they know who has come down.",
+        tone: "truth",
+        next: "sutra_stair_2",
       },
     ],
   },
   {
     id: "sutra_stair_2",
-    title: "",
+    title: "The Divided Stair",
     paragraphs: [
       "Halfway down, the stair divides. The left branch is lit by a lamp burning in an iron cage, and you can hear someone talking to themselves in a low, pleasant voice that does not sound frightened at all. The right branch goes straight down toward the sound of water and a faint red light. Between them, set in the rock, is a small niche with a bowl of cold millet and a slip of paper that says only: Eat, then continue.",
       "Ren Qiao stops at the division and looks at the niche for a long time. He does not touch the bowl. \"I have carried food to the cells on this stair for twelve years,\" he says. \"I never once went farther than the lamp. The Law told me the sutra hall was no place for a warden. I believed them, because it was easier.\"",
@@ -279,32 +407,68 @@ export const chapterFour: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "tell_gu_truth",
+        label: "Tell him the truth: you have come for the sutra, and for the girl whose name he knows.",
+        tone: "truth",
         next: "sutra_gu_cell_2",
-        page: true,
+      },
+      {
+        id: "ask_gu_gently",
+        label: "Ask him gently how long he has been kept in the lamplight.",
+        tone: "mercy",
+        next: "sutra_gu_cell_2",
+      },
+      {
+        id: "ask_about_grey_girl",
+        label: "Ask him about the girl in grey robes he says he followed down the stair.",
+        tone: "inquiry",
+        next: "sutra_gu_cell_2",
+      },
+      {
+        id: "tell_gu_be_silent",
+        label: "Tell him sharply to keep his secrets, since you have no time for them.",
+        tone: "force",
+        next: "sutra_gu_cell_2",
       },
     ],
   },
   {
     id: "sutra_gu_cell_2",
-    title: "",
+    title: "The Names the Law Forgets",
     paragraphs: [
       "You tell him the truth, which is that you were sent to find a record and you took a wrong turn on the stair. He laughs, once, a short bitter sound that ends in a cough. \"Wrong turns are the only kind this mountain allows,\" he says. \"I took one three nights before the jade vanished. I thought I was following a girl in grey robes. She told me the seal was tired and wanted to sleep.\"",
       "He leans forward so that the lamplight falls across his face and shows the new lines beside his eyes. \"Su Mengjiao,\" he says quietly. \"Do you know what she told me at the end? She said the Law Hall had been feeding the abyss for fifteen years, a little at a time, with the names of the sealed. The mist does not want the jade. It wants to be remembered by name, and the Law has been careful to remember only the names it wants forgotten.\"",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_about_seal_without_jade",
+        label: "Ask Gu what Mengjiao said about holding the seal without the jade.",
+        tone: "inquiry",
         next: "sutra_gu_cell_3",
-        page: true,
+      },
+      {
+        id: "promise_to_read_name",
+        label: "Promise him you will find someone who will read his name aloud.",
+        tone: "mercy",
+        next: "sutra_gu_cell_3",
+      },
+      {
+        id: "repeat_law_account",
+        label: "Repeat exactly what the Law Hall told you about the seal, word for word.",
+        tone: "truth",
+        next: "sutra_gu_cell_3",
+      },
+      {
+        id: "pretend_no_name",
+        label: "Pretend you have never heard the name Mengjiao, and walk away.",
+        tone: "deceit",
+        next: "sutra_gu_cell_3",
       },
     ],
   },
   {
     id: "sutra_gu_cell_3",
-    title: "",
+    title: "Mirror and Warning",
     paragraphs: [
       "Ren Qiao, standing at the top of the stair with his cold lantern, makes a small sound of protest. Gu does not look at him. He is looking at you, and his eyes are wet, and his hands are clasped so tightly that the knuckles have gone white.",
       "\"If you go to the sutra hall,\" he says, \"you will find her book on the dais, and beside it a mirror that the Elder can see through. Do not let the mirror speak first. Speak first yourself. The mist listens to whoever is braver, and the mirror listens to whoever is more afraid.\"",
@@ -355,16 +519,34 @@ export const chapterFour: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "count_outer_rows",
+        label: "Count the bells from the outer rows inward, the way the Law counts its dead.",
+        tone: "inquiry",
         next: "sutra_bell_wall_2",
-        page: true,
+      },
+      {
+        id: "kneel_before_central",
+        label: "Kneel before the central bell and bow your head to Mengjiao.",
+        tone: "mercy",
+        next: "sutra_bell_wall_2",
+      },
+      {
+        id: "strike_central_bell",
+        label: "Strike the central bell with your knuckle, to see whether it answers.",
+        tone: "force",
+        next: "sutra_bell_wall_2",
+      },
+      {
+        id: "take_rubbing_quietly",
+        label: "Take a rubbing of the names without anyone seeing you do it.",
+        tone: "deceit",
+        next: "sutra_bell_wall_2",
       },
     ],
   },
   {
     id: "sutra_bell_wall_2",
-    title: "",
+    title: "The Voice in the Bell",
     paragraphs: [
       "The water sound is louder here. It comes from a channel cut into the floor along the base of the wall, and the water is red, or perhaps it only reflects the red light rising from the sutra hall below. The bells do not tremble when you approach. The central bell is perfectly still, as though it is holding its breath, and when you lean close to read the inscription beneath it, you hear a faint voice from inside the metal.",
       "It says your name. It says it in the voice of a young woman who is laughing at something only she can see. Then it says a second name, which you do not know, and the laughter stops. The second name is Wanru.",

@@ -19,6 +19,12 @@ import { stillWaterScenes } from "./side-ferry";
 import { sparringCourtScenes } from "./side-sparring-court";
 import { elderSu, elderSuScenarios } from "./npc/elder-su";
 import { elderSuReactions } from "./npc/elder-su-reactions";
+import { elderSuSidePaths } from "./npc/elder-su-side-paths";
+import { villageScenes } from "./side-village";
+import { quarryScenes } from "./side-quarry";
+import { healerScenes } from "./side-healer";
+import { hermitScenes } from "./side-hermit";
+import { bridgeScenes } from "./side-bridge";
 
 /**
  * The story in reading order. Side paths sit after the chapter they branch from and
@@ -26,15 +32,20 @@ import { elderSuReactions } from "./npc/elder-su-reactions";
  */
 export const chapters: { name: string; scenes: Scene[] }[] = [
   { name: "Chapter 1: The Stolen Seal", scenes: chapterOne },
+  { name: "Side Path: The Foothill Village", scenes: villageScenes },
   { name: "Side Path: The Herb Market", scenes: herbMarketScenes },
   { name: "Side Path: The Pavilion of Stone Wagers", scenes: pavilionScenes },
+  { name: "Side Path: The Healer’s Hall", scenes: healerScenes },
   { name: "Chapter 2: The Crimson Abyss", scenes: chapterTwo },
+  { name: "Side Path: The Eastern Peak", scenes: hermitScenes },
   { name: "Chapter 3: The Ash Archive", scenes: chapterThree },
+  { name: "Side Path: The Quarry Under the Archive", scenes: quarryScenes },
   { name: "Side Path: The Sister’s Shrine", scenes: sisterShrineScenes },
   { name: "Chapter 4: The Sutra Door", scenes: chapterFour },
   { name: "Side Path: The Lantern Stair", scenes: lanternStairScenes },
   { name: "Chapter 5: The Blood Lotus Sutra", scenes: chapterFive },
   { name: "Chapter 6: The Jade Eye", scenes: chapterSix },
+  { name: "Side Path: The Cloud Gap Bridge", scenes: bridgeScenes },
   { name: "Side Path: The Sparring Court", scenes: sparringCourtScenes },
   { name: "Chapter 7: The Tribunal of Bells", scenes: chapterSeven },
   { name: "Side Path: The Bell Foundry", scenes: bellFoundryScenes },
@@ -52,5 +63,5 @@ export const story: Story = {
   startSceneId: "gate",
   npc: elderSu,
   scenes: Object.fromEntries(scenes.map((s) => [s.id, s])),
-  scenarios: { ...elderSuScenarios, ...elderSuReactions },
+  scenarios: { ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths },
 };
