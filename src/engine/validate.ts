@@ -1,11 +1,27 @@
+import { isPassage } from "./game";
+import { isTone } from "./tone";
 import { countWords } from "./words";
-import type { Condition, Story, Tier } from "./types";
+import type { Condition, Scene, Story, Tier } from "./types";
 
 export const MIN_CHOICES = 4;
 export const MIN_NPC_SCENARIOS = 40;
-/** No single block of body text (a paragraph or an NPC line) may run longer than this. */
-export const MAX_BODY_WORDS = 200;
+/**
+ * The most body text one scene may hold. Narration, every extra paragraph and every NPC
+ * interjection count, all at once, so the cap holds whatever the player has become.
+ */
+export const MAX_SCENE_WORDS = 200;
+/** No single NPC line (a tier line, a memory line or an attitude comment) may run longer than this. */
+export const MAX_LINE_WORDS = 200;
 const TIERS: Tier[] = ["hostile", "wary", "neutral", "warm", "devoted"];
+
+/** Body text a scene can show at once, counting every extra paragraph and interjection as if it shows. */
+export function sceneBodyWords(scene: Scene): number {
+  return (
+    scene.paragraphs.reduce((n, p) => n + countWords(p), 0) +
+    (scene.extras ?? []).reduce((n, x) => n + x.paragraphs.reduce((m, p) => m + countWords(p), 0), 0) +
+    (scene.interjections ?? []).reduce((n, x) => n + countWords(x.line), 0)
+  );
+}
 
 /** Every condition in the story, with a note on where it sits, for reference checks. */
 function conditionsIn(story: Story): { where: string; condition: Condition }[] {
@@ -35,30 +51,48 @@ export function validateStory(story: Story): string[] {
 
   const capped = (where: string, text: string) => {
     const words = countWords(text);
-    if (words > MAX_BODY_WORDS) problems.push(`${where} has ${words} words; the limit is ${MAX_BODY_WORDS}`);
+    if (words > MAX_LINE_WORDS) problems.push(`${where} has ${words} words; the limit is ${MAX_LINE_WORDS}`);
   };
 
+  // A continuation page is reached by a page turn. Only those may have no title.
+  const continuations = new Set(
+    Object.values(scenes).flatMap((s) => s.choices.filter((c) => c.page).map((c) => c.next)),
+  );
+
   for (const scene of Object.values(scenes)) {
-    if (scene.ending === undefined && scene.choices.length < MIN_CHOICES) {
+    const pageTurns = scene.choices.filter((c) => c.page);
+    if (pageTurns.length > 0 && !isPassage(scene)) {
+      problems.push(`scene "${scene.id}" mixes a page turn with other options`);
+    }
+    if (scene.ending === undefined && !isPassage(scene) && scene.choices.length < MIN_CHOICES) {
       problems.push(`scene "${scene.id}" has ${scene.choices.length} choices; needs ${MIN_CHOICES}`);
     }
     if (scene.ending !== undefined && scene.choices.length > 0) {
       problems.push(`ending scene "${scene.id}" should not have choices`);
     }
-    scene.paragraphs.forEach((p, i) => capped(`scene "${scene.id}" paragraph ${i + 1}`, p));
-    for (const x of scene.extras ?? []) {
-      x.paragraphs.forEach((p, i) => capped(`scene "${scene.id}" extra paragraph ${i + 1}`, p));
+    if (scene.title === "" && !continuations.has(scene.id)) {
+      problems.push(`scene "${scene.id}" has no title but is not a continuation page`);
+    }
+    const body = sceneBodyWords(scene);
+    if (body > MAX_SCENE_WORDS) {
+      problems.push(`scene "${scene.id}" has ${body} words of body text; the limit is ${MAX_SCENE_WORDS}`);
     }
     for (const x of scene.interjections ?? []) {
       if (!x.line || x.line.trim() === "") {
         problems.push(`scene "${scene.id}" has an empty NPC interjection`);
       }
-      capped(`an NPC interjection in "${scene.id}"`, x.line);
     }
     const ids = new Set<string>();
     for (const choice of scene.choices) {
       if (ids.has(choice.id)) problems.push(`duplicate choice id "${choice.id}" in "${scene.id}"`);
       ids.add(choice.id);
+      if (choice.page) {
+        if (choice.tone !== undefined || choice.npcScenario || choice.effects || choice.requires) {
+          problems.push(`page turn "${choice.id}" in "${scene.id}" should carry no tone, reaction, effects or conditions`);
+        }
+      } else if (!isTone(choice.tone)) {
+        problems.push(`choice "${choice.id}" in "${scene.id}" has no valid tone`);
+      }
       if (!scenes[choice.next]) {
         problems.push(`choice "${choice.id}" in "${scene.id}" points to missing scene "${choice.next}"`);
       }
@@ -87,6 +121,9 @@ export function validateStory(story: Story): string[] {
   for (const { where, condition } of conditionsIn(story)) {
     if (condition.kind === "said" && !scenarios[condition.scenario]) {
       problems.push(`${where} refers to missing NPC scenario "${condition.scenario}"`);
+    }
+    if (condition.kind === "tone" && !isTone(condition.tone)) {
+      problems.push(`${where} refers to an unknown tone "${String(condition.tone)}"`);
     }
   }
 

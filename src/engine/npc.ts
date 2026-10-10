@@ -1,4 +1,5 @@
-import type { Condition, GameState, Mood, NpcScenario, NpcState, Tier } from "./types";
+import { CHOICE_TONES } from "./tone";
+import type { ChoiceTone, Condition, GameState, Mood, NpcScenario, NpcState, Tier } from "./types";
 
 /** Tiers from coldest to warmest. Used to tell whether a change moved her up or down. */
 const TIER_ORDER: Tier[] = ["hostile", "wary", "neutral", "warm", "devoted"];
@@ -61,6 +62,38 @@ export function moodShiftLine(from: Mood, to: Mood): string | undefined {
   return from === to ? undefined : MOOD_SHIFT[to];
 }
 
+/** A tone is the player's manner once this many of the last decisions share it. */
+export const MANNER_WINDOW = 4;
+export const MANNER_NEED = 3;
+
+/**
+ * What she says when the player's manner changes. When most of the last few decisions
+ * share a tone, she names it. Keyed by the manner she sees now.
+ */
+export const MANNER_SHIFT: Record<ChoiceTone, string> = {
+  truth: "Three of your last four answers have been plain, and I have started listening for the thing you are not saying. I cannot find it. That frightens me more than a lie would, because a lie I could at least weigh.",
+  mercy: "Most of your recent answers have been kindnesses, or pleas for them. The Law calls that softness, and I am not yet sure the Law is right about everything. Be careful, Wanderer, that mercy does not become the only tool you own.",
+  inquiry: "You have been asking, reading and searching in most of your answers lately. A person who questions so much is either preparing to judge someone or preparing to be judged. I would like to know which of the two you are becoming.",
+  deceit: "Three of your last four answers were lies, or close kin to lies. I have stopped asking whether a thing you say is true. I have begun asking why you need it to be false, and that question is worse for both of us.",
+  force: "Three of your last four answers reached for threat or force. The Law Hall has watched many men do that. It has never once watched one of them get what he wanted without paying for it later, with interest.",
+  quiet: "Most of your recent answers have been silence, waiting or quiet departures. Silence is not innocence, Wanderer. I notice when a person waits for me to decide a thing on their behalf, and I notice that you have been doing it often.",
+};
+
+/** The tone that makes up most of the last few decisions, or undefined when none does yet. */
+export function mannerOf(tones: ChoiceTone[]): ChoiceTone | undefined {
+  const recent = tones.slice(-MANNER_WINDOW);
+  return CHOICE_TONES.find((t) => recent.filter((x) => x === t).length >= MANNER_NEED);
+}
+
+/**
+ * The line she speaks when the player's manner changes to a new tone, or undefined when it
+ * did not change. A pattern is named once, so she does not repeat herself on every choice.
+ */
+export function mannerShiftLine(before: ChoiceTone[], after: ChoiceTone[]): string | undefined {
+  const to = mannerOf(after);
+  return to !== undefined && to !== mannerOf(before) ? MANNER_SHIFT[to] : undefined;
+}
+
 /**
  * Fear and suspicion override trust for the face she shows. A frightened or
  * suspicious elder looks that way even when her trust is high.
@@ -94,7 +127,7 @@ export interface NpcReaction {
  */
 export function reactToScenario(
   scenario: NpcScenario,
-  state: Pick<GameState, "npc" | "flags" | "stats" | "history">,
+  state: Pick<GameState, "npc" | "flags" | "stats" | "history" | "tones">,
 ): NpcReaction {
   const tier = tierFor(state.npc.trust);
   const memory = scenario.memory?.find((m) => conditionsHold(m.when, state));
@@ -108,7 +141,7 @@ export function reactToScenario(
 /** True when every condition holds. An empty or missing list always holds. */
 export function conditionsHold(
   conditions: Condition[] | undefined,
-  state: Pick<GameState, "stats" | "npc" | "flags" | "history">,
+  state: Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones">,
 ): boolean {
   return (conditions ?? []).every((c) => {
     switch (c.kind) {
@@ -126,6 +159,11 @@ export function conditionsHold(
         const h = state.history;
         const recent = c.within === undefined ? h : h.slice(Math.max(0, h.length - c.within));
         return recent.filter((id) => id === c.scenario).length >= (c.min ?? 1);
+      }
+      case "tone": {
+        const t = state.tones;
+        const recent = c.within === undefined ? t : t.slice(Math.max(0, t.length - c.within));
+        return recent.filter((x) => x === c.tone).length >= (c.min ?? 1);
       }
     }
   });

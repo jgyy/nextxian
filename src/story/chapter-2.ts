@@ -14,6 +14,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "spare_gu",
         label: "Lower your blade and let Gu Hanzhen run.",
+        tone: "mercy",
         next: "abyss_truth",
         npcScenario: "SHOW_MERCY",
         effects: [{ kind: "addStat", stat: "karma", amount: 6 }],
@@ -21,6 +22,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "strike_gu",
         label: "Strike Gu down and take the Sealing Jade from his robes.",
+        tone: "force",
         next: "abyss_truth",
         effects: [
           { kind: "setFlag", flag: "struck_gu" },
@@ -31,6 +33,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "call_lotus",
         label: "Call up your black lotus to push the mist back from the ledge.",
+        tone: "force",
         next: "abyss_truth",
         npcScenario: "REVEAL_DEMONIC_QI",
         effects: [
@@ -41,6 +44,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "interrogate",
         label: "Hold your blade at his throat and demand to know who really took the jade.",
+        tone: "force",
         next: "abyss_truth",
         effects: [
           { kind: "setFlag", flag: "interrogated_gu" },
@@ -60,6 +64,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "recover_jade",
         label: "Take the Sealing Jade from Gu and carry it back to the Law Hall.",
+        tone: "truth",
         next: "return_hall",
         npcScenario: "COMPLETE_TASK",
         effects: [
@@ -70,6 +75,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "keep_secret",
         label: "Keep what Gu told you to yourself and report only that he is the thief.",
+        tone: "deceit",
         next: "return_hall",
         effects: [
           { kind: "setFlag", flag: "keeps_secret" },
@@ -79,6 +85,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "vanish_with_jade",
         label: "Take the jade for yourself and vanish into the mist.",
+        tone: "deceit",
         next: "ending_fallen",
         effects: [
           { kind: "setFlag", flag: "fled_with_jade" },
@@ -89,6 +96,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "bring_gu_along",
         label: "Offer Gu a place at your side, and walk out of the abyss together.",
+        tone: "mercy",
         next: "return_hall",
         effects: [
           { kind: "setFlag", flag: "brought_gu" },
@@ -118,6 +126,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "tell_sister",
         label: "Tell her what you learned about her sister, Su Mengjiao.",
+        tone: "force",
         next: "archive_gate",
         npcScenario: "EXPOSE_HER_SECRET",
         effects: [{ kind: "setFlag", flag: "knows_sister" }],
@@ -125,6 +134,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "swear_loyalty",
         label: "Swear a Dao oath to serve the Law Hall and her.",
+        tone: "truth",
         next: "archive_gate",
         npcScenario: "SWEAR_OATH",
         effects: [{ kind: "addStat", stat: "karma", amount: 4 }],
@@ -132,6 +142,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "frame_gu",
         label: "Tell her that Gu Hanzhen alone took the jade and fled.",
+        tone: "deceit",
         next: "archive_gate",
         npcScenario: "LIE_ABOUT_SEAL",
         effects: [{ kind: "addStat", stat: "karma", amount: -6 }],
@@ -139,6 +150,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "submit_judgment",
         label: "Kneel and submit to whatever judgment the Law demands.",
+        tone: "mercy",
         next: "archive_gate",
         npcScenario: "ACCEPT_PUNISHMENT",
         effects: [{ kind: "addStat", stat: "insight", amount: 4 }],
@@ -146,6 +158,7 @@ export const chapterTwo: Scene[] = [
       {
         id: "full_truth",
         label: "Tell her the whole truth, including what you did wrong in the abyss.",
+        tone: "truth",
         next: "archive_gate",
         npcScenario: "HONEST_ACCOUNT",
         effects: [{ kind: "addStat", stat: "karma", amount: 5 }],

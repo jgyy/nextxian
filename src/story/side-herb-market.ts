@@ -18,26 +18,37 @@ export const herbMarketScenes: Scene[] = [
       {
         id: "buy_frostleaf",
         label: "Buy a bundle of frostleaf with the coins you carry, and ask Madam Hu for a fair weight.",
+        tone: "quiet",
         next: "market_seller",
         effects: [{ kind: "setFlag", flag: "bought_frostleaf" }, { kind: "addStat", stat: "qi", amount: 3 }],
       },
       {
         id: "ask_about_jade",
         label: "Ask the vendors whether anyone has been selling a stone that hums.",
+        tone: "inquiry",
         next: "market_seller",
         effects: [{ kind: "setFlag", flag: "asked_market_jade" }, { kind: "addStat", stat: "insight", amount: 2 }],
       },
       {
         id: "listen_to_crowd",
         label: "Stand at the edge of the crowd and listen to everything they are saying about the Law Hall.",
+        tone: "inquiry",
         next: "market_rumors",
         effects: [{ kind: "addStat", stat: "insight", amount: 3 }],
       },
       {
         id: "barter_talisman",
         label: "Trade a spare charm for a talisman of plain yellow paper, and do not ask what it does.",
+        tone: "quiet",
         next: "market_seller",
         effects: [{ kind: "setFlag", flag: "bartered_talisman" }, { kind: "addStat", stat: "karma", amount: -2 }],
+      },
+      {
+        id: "follow_the_clatter",
+        label: "Follow the clatter of stone tiles behind the stalls to a pavilion over the ravine.",
+        tone: "inquiry",
+        next: "pavilion_gate",
+        effects: [{ kind: "setFlag", flag: "visited_pavilion" }],
       },
     ],
   },
@@ -53,24 +64,28 @@ export const herbMarketScenes: Scene[] = [
       {
         id: "ask_about_elder_sister",
         label: "Ask her what the lane remembers of the Elder’s sister, Su Mengjiao.",
+        tone: "inquiry",
         next: "market_rumors",
         effects: [{ kind: "setFlag", flag: "heard_of_mengjiao_market" }, { kind: "addStat", stat: "insight", amount: 2 }],
       },
       {
         id: "pay_fair_price",
         label: "Pay the price she asks without haggling, and add a coin for the child’s kite.",
+        tone: "mercy",
         next: "market_rumors",
         effects: [{ kind: "addStat", stat: "karma", amount: 2 }],
       },
       {
         id: "haggle_hard",
         label: "Haggle until she gives you the frostleaf for half of what it is worth.",
+        tone: "force",
         next: "market_rumors",
         effects: [{ kind: "setFlag", flag: "haggled_hard" }, { kind: "addStat", stat: "karma", amount: -3 }],
       },
       {
         id: "ask_for_wick",
         label: "Ask for a lamp wick that burns without smoke, the kind the lantern keepers use beneath the sutra door.",
+        tone: "inquiry",
         next: "market_rumors",
         effects: [{ kind: "setFlag", flag: "bought_wick" }, { kind: "addStat", stat: "qi", amount: 1 }],
       },
@@ -88,6 +103,7 @@ export const herbMarketScenes: Scene[] = [
       {
         id: "repeat_rumor_loudly",
         label: "Repeat the boy’s story about the mist calling wardens by name, loud enough for the next stall to hear.",
+        tone: "force",
         next: "market_return",
         effects: [
           { kind: "setFlag", flag: "heard_market_rumor" },
@@ -98,12 +114,14 @@ export const herbMarketScenes: Scene[] = [
       {
         id: "keep_rumor_close",
         label: "Keep the rumours to yourself, and remember the one detail they all agreed on.",
+        tone: "quiet",
         next: "market_return",
         effects: [{ kind: "setFlag", flag: "heard_market_rumor" }, { kind: "addStat", stat: "insight", amount: 2 }],
       },
       {
         id: "write_rumor_down",
         label: "Write the rumours on the back of a spare talisman, so that you will not forget them.",
+        tone: "inquiry",
         next: "market_return",
         effects: [
           { kind: "setFlag", flag: "heard_market_rumor" },
@@ -114,6 +132,7 @@ export const herbMarketScenes: Scene[] = [
       {
         id: "walk_away_from_gossip",
         label: "Walk away from the gossip and climb back toward the gate before the lanterns are lit.",
+        tone: "quiet",
         next: "market_return",
       },
     ],
@@ -130,6 +149,7 @@ export const herbMarketScenes: Scene[] = [
       {
         id: "report_rumor_to_jade_eye",
         label: "Tell the jade-eye what the market has been saying about the sect, and about the mist that calls wardens by name.",
+        tone: "truth",
         next: "abyss_entry",
         requires: [{ kind: "flag", flag: "heard_market_rumor" }],
         lockedHint: "Requires something you heard in the lane and kept.",
@@ -139,6 +159,7 @@ export const herbMarketScenes: Scene[] = [
       {
         id: "report_supplies_to_jade_eye",
         label: "Tell the jade-eye that you bought frostleaf and charms, and that your supplies are in good order.",
+        tone: "truth",
         next: "abyss_entry",
         npcScenario: "REPORT_SUPPLIES",
         effects: [{ kind: "setFlag", flag: "accepted_mission" }, { kind: "addStat", stat: "qi", amount: 2 }],
@@ -146,6 +167,7 @@ export const herbMarketScenes: Scene[] = [
       {
         id: "hide_market_from_jade_eye",
         label: "Tell the jade-eye the market was empty, and that nothing below the gate concerns the sect.",
+        tone: "deceit",
         next: "abyss_entry",
         npcScenario: "HIDE_MARKET",
         effects: [{ kind: "setFlag", flag: "accepted_mission" }],
@@ -153,8 +175,18 @@ export const herbMarketScenes: Scene[] = [
       {
         id: "go_down_in_silence",
         label: "Say nothing to the mirror and go down the abyss path with what you bought.",
+        tone: "quiet",
         next: "abyss_entry",
         effects: [{ kind: "setFlag", flag: "accepted_mission" }, { kind: "addStat", stat: "insight", amount: 1 }],
+      },
+      {
+        id: "report_pavilion_to_jade_eye",
+        label: "Tell the jade-eye about the stone tables behind the stalls, and what you did there.",
+        tone: "truth",
+        next: "abyss_entry",
+        requires: [{ kind: "flag", flag: "visited_pavilion" }],
+        lockedHint: "Requires that you have been to the stone tables behind the stalls.",
+        npcScenario: "REPORT_WAGER",
       },
     ],
   },

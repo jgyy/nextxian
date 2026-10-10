@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { choose, createGame, currentBeat, getChoices, getScene } from "@/engine/game";
+import { choose, createGame, currentBeat, getChoices, getScene, isPassage } from "@/engine/game";
+import { mannerOf } from "@/engine/npc";
 import { restoreGame } from "@/engine/save";
+import { TONE_INFO } from "@/engine/tone";
 import type { GameState, LogEntry, Story } from "@/engine/types";
 import { chapters } from "@/story";
 import { NpcPanel } from "./NpcPanel";
 import { StatsPanel } from "./StatsPanel";
+import { ToneLegend } from "./ToneLegend";
 
 const SAVE_KEY = "nextxian:save:v1";
 
@@ -62,17 +65,23 @@ export function GameView({ story }: { story: Story }) {
   const [showBacklog, setShowBacklog] = useState(false);
   const stage = useRef<HTMLDivElement>(null);
   const backlogEnd = useRef<HTMLDivElement>(null);
+  // Set when the last action turned a page, so the stage shows the new text rather than the top.
+  const turnedPage = useRef(false);
 
   const scene = getScene(story, game.sceneId);
   const choices = getChoices(scene, game);
   const ended = scene.ending !== undefined;
+  const paging = isPassage(scene);
   const beat = currentBeat(game.log);
   const chapterName = chapters.find((c) => c.scenes.some((s) => s.id === scene.id))?.name.split(":")[0];
   const lastNpcLine = [...game.log].reverse().find((e) => e.kind === "npc")?.text;
 
-  // A new beat starts at the top of the stage. The backlog keeps its newest line in view.
+  // A new beat starts at the top of the stage. A page turn shows the text it just added.
   useEffect(() => {
-    stage.current?.scrollTo({ top: 0, behavior: "smooth" });
+    const el = stage.current;
+    if (!el) return;
+    el.scrollTo({ top: turnedPage.current ? el.scrollHeight : 0, behavior: "smooth" });
+    turnedPage.current = false;
   }, [game.log.length]);
 
   useEffect(() => {
@@ -80,6 +89,7 @@ export function GameView({ story }: { story: Story }) {
   }, [showBacklog, game.log.length]);
 
   function pick(choiceId: string) {
+    turnedPage.current = isPassage(scene);
     const next = choose(story, game, choiceId);
     setGame(next);
     setNotice(writeSave(next) ? null : "Progress is not being saved in this browser.");
@@ -87,6 +97,7 @@ export function GameView({ story }: { story: Story }) {
 
   function restart() {
     const fresh = createGame(story);
+    turnedPage.current = false;
     setGame(fresh);
     setShowBacklog(false);
     setNotice(writeSave(fresh) ? null : "Progress is not being saved in this browser.");
@@ -95,6 +106,7 @@ export function GameView({ story }: { story: Story }) {
   function load() {
     const saved = readSave(story);
     if (saved) {
+      turnedPage.current = false;
       setGame(saved);
       setNotice("Loaded your last saved game.");
     } else {
@@ -164,19 +176,28 @@ export function GameView({ story }: { story: Story }) {
                 Play again
               </button>
             </div>
+          ) : paging ? (
+            <section className="page-turn" aria-label="Continue reading">
+              <button type="button" onClick={() => pick(choices[0].choice.id)}>
+                Continue
+              </button>
+            </section>
           ) : (
             <section className="choices" aria-label="Your options">
               <p className="eyebrow">What do you do?</p>
+              <ToneLegend />
               <ol>
                 {choices.map(({ choice, available, hint }) => (
                   <li key={choice.id}>
                     <button
                       type="button"
+                      data-tone={choice.tone}
                       onClick={() => pick(choice.id)}
                       disabled={!available}
                       aria-describedby={hint ? `hint-${choice.id}` : undefined}
                     >
                       <span className="choice-label">{choice.label}</span>
+                      {choice.tone && <span className="tone-tag">{TONE_INFO[choice.tone].name}</span>}
                     </button>
                     {hint && (
                       <p id={`hint-${choice.id}`} className="hint">
@@ -197,8 +218,8 @@ export function GameView({ story }: { story: Story }) {
         </main>
 
         <aside className="side" aria-label="Characters and stats">
-          <NpcPanel profile={story.npc} npc={game.npc} lastLine={lastNpcLine} />
-          <StatsPanel stats={game.stats} />
+          <NpcPanel profile={story.npc} npc={game.npc} lastLine={lastNpcLine} manner={mannerOf(game.tones)} />
+          <StatsPanel stats={game.stats} tones={game.tones} />
         </aside>
       </div>
     </div>

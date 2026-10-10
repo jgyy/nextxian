@@ -11,12 +11,14 @@ import { chapterNine } from "./chapter-9";
 import { chapterTen } from "./chapter-10";
 import { chapterEleven } from "./chapter-11";
 import { herbMarketScenes } from "./side-herb-market";
+import { pavilionScenes } from "./side-pavilion";
 import { lanternStairScenes } from "./side-lantern-stair";
 import { sisterShrineScenes } from "./side-sister-shrine";
 import { bellFoundryScenes } from "./side-bell-foundry";
 import { stillWaterScenes } from "./side-ferry";
 import { sparringCourtScenes } from "./side-sparring-court";
 import { elderSu, elderSuScenarios } from "./npc/elder-su";
+import { elderSuReactions } from "./npc/elder-su-reactions";
 
 /**
  * The story in reading order. Side paths sit after the chapter they branch from and
@@ -25,6 +27,7 @@ import { elderSu, elderSuScenarios } from "./npc/elder-su";
 export const chapters: { name: string; scenes: Scene[] }[] = [
   { name: "Chapter 1: The Stolen Seal", scenes: chapterOne },
   { name: "Side Path: The Herb Market", scenes: herbMarketScenes },
+  { name: "Side Path: The Pavilion of Stone Wagers", scenes: pavilionScenes },
   { name: "Chapter 2: The Crimson Abyss", scenes: chapterTwo },
   { name: "Chapter 3: The Ash Archive", scenes: chapterThree },
   { name: "Side Path: The Sister’s Shrine", scenes: sisterShrineScenes },
@@ -49,5 +52,5 @@ export const story: Story = {
   startSceneId: "gate",
   npc: elderSu,
   scenes: Object.fromEntries(scenes.map((s) => [s.id, s])),
-  scenarios: elderSuScenarios,
+  scenarios: { ...elderSuScenarios, ...elderSuReactions },
 };

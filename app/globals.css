@@ -19,6 +19,13 @@
   --gilt: #d9b56a;
   --gilt-soft: #b89a57;
   --mist: #c9d6cf;
+  /* One colour per kind of decision. Each is also named on the stage, so colour is never the only cue. */
+  --tone-truth: #7fd3b0;
+  --tone-mercy: #8ec5f2;
+  --tone-inquiry: #e8c46f;
+  --tone-deceit: #b596f0;
+  --tone-force: #f0705e;
+  --tone-quiet: #b9c6bf;
   --radius: 14px;
   --serif: "Songti SC", "STSong", "Noto Serif CJK SC", "Noto Serif SC", "Source Han Serif SC", "Georgia", serif;
   --brush: "KaiTi", "STKaiti", "Kaiti SC", "Noto Serif CJK SC", "Noto Serif SC", serif;
@@ -42,6 +49,12 @@
     --gilt: #8b6a25;
     --gilt-soft: #a8843f;
     --mist: #4d5b53;
+    --tone-truth: #2a7559;
+    --tone-mercy: #2b6aa3;
+    --tone-inquiry: #8a6418;
+    --tone-deceit: #6a3fa8;
+    --tone-force: #b03a2e;
+    --tone-quiet: #56635c;
     color-scheme: light;
   }
 }
@@ -469,6 +482,136 @@ h2 {
   border-color: var(--panel-edge);
 }
 
+/* Each tone's colour, read by the legend, the decisions, the manner dots and the Elder's read. */
+[data-tone="truth"] {
+  --tone: var(--tone-truth);
+}
+
+[data-tone="mercy"] {
+  --tone: var(--tone-mercy);
+}
+
+[data-tone="inquiry"] {
+  --tone: var(--tone-inquiry);
+}
+
+[data-tone="deceit"] {
+  --tone: var(--tone-deceit);
+}
+
+[data-tone="force"] {
+  --tone: var(--tone-force);
+}
+
+[data-tone="quiet"] {
+  --tone: var(--tone-quiet);
+}
+
+/* A decision wears its tone: an edge strip, the number badge, the border and a faint wash on hover. */
+.choices button[data-tone] {
+  border-color: color-mix(in srgb, var(--tone) 65%, transparent);
+  box-shadow: inset 4px 0 0 var(--tone);
+}
+
+.choices button[data-tone]::before {
+  color: var(--tone);
+  border-color: color-mix(in srgb, var(--tone) 60%, transparent);
+}
+
+.choices button[data-tone]::after {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--tone) 20%, transparent), transparent 70%);
+}
+
+.choices button[data-tone]:hover:not(:disabled),
+.choices button[data-tone]:focus-visible {
+  border-color: var(--tone);
+  box-shadow: inset 4px 0 0 var(--tone), 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.choices button:disabled[data-tone] {
+  border-color: var(--panel-edge);
+  box-shadow: none;
+}
+
+.choices button:disabled[data-tone]::before {
+  color: var(--muted);
+  border-color: var(--panel-edge);
+}
+
+.tone-tag {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tone, var(--muted));
+}
+
+/* The colour legend, shown above the options. */
+.tone-legend {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0 0 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 16px;
+  border-bottom: 1px dashed var(--rule);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.tone-legend li {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+}
+
+.tone-legend .swatch {
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: var(--tone);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tone) 22%, transparent);
+}
+
+.tone-legend strong {
+  color: var(--tone);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* A continuation page: the reader turns the page instead of deciding. */
+.page-turn {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.page-turn button {
+  font: inherit;
+  color: var(--text);
+  background: linear-gradient(90deg, var(--panel-raised), var(--panel));
+  border: 1px solid var(--gilt-soft);
+  border-radius: 999px;
+  padding: 10px 26px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.page-turn button::after {
+  content: " ›";
+  color: var(--gilt);
+}
+
+.page-turn button:hover,
+.page-turn button:focus-visible {
+  border-color: var(--gilt);
+  color: var(--gilt);
+}
+
 .choice-label {
   position: relative;
   z-index: 1;
@@ -681,6 +824,22 @@ button.ghost[aria-expanded="true"] {
   color: var(--gilt);
 }
 
+/* The Elder's read of the player's manner, in the tone that has settled. */
+.read {
+  margin: 0 0 12px;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.read strong {
+  color: var(--gilt);
+  font-weight: 600;
+}
+
+.read[data-tone] strong {
+  color: var(--tone);
+}
+
 .tier[data-tier="hostile"] strong {
   color: var(--cinnabar);
 }
@@ -789,6 +948,41 @@ button.ghost[aria-expanded="true"] {
   font-size: 1.15rem;
 }
 
+/* The player's own latest decisions, one dot each, in the colour of their tone. */
+.decisions {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--rule);
+}
+
+.decisions-label {
+  margin: 0 0 8px;
+  font-size: 0.84rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.dots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dots .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px dashed var(--panel-edge);
+}
+
+.dots .dot[data-tone] {
+  background: var(--tone);
+  border: 1px solid var(--tone);
+}
+
 /* ── Focus and motion ─────────────────────────────────────── */
 
 :focus-visible {
@@ -866,5 +1060,11 @@ button.ghost[aria-expanded="true"] {
   }
   .choices button {
     padding-left: 52px;
+  }
+}
+
+@media (max-width: 420px) {
+  .tone-legend {
+    grid-template-columns: 1fr;
   }
 }

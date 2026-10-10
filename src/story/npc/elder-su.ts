@@ -8,10 +8,11 @@ export const elderSu: NpcProfile = {
 };
 
 /**
- * Forty-three scenarios. Each has five tier lines (hostile → devoted) and optional
- * memory overrides for things the player did earlier in the story, or for what she
- * has just heard from them (`said`). Attitude shifts and unprompted interjections
- * live in the engine and in the scenes.
+ * Forty-four scenarios. Each has five tier lines (hostile → devoted) and optional
+ * memory overrides for things the player did earlier in the story, for what she has
+ * just heard from them (`said`), or for the tones of their recent decisions (`tone`).
+ * Seven more are in `elder-su-reactions.ts`. Attitude shifts and unprompted
+ * interjections live in the engine and in the scenes.
  */
 export const elderSuScenarios: Record<string, NpcScenario> = {
   GIFT_HERB: {
@@ -25,6 +26,9 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       warm: "Frostleaf, and fresh. You remembered that a Law Hall burns through qi. Sit. We will talk while it steeps.",
       devoted: "You bring me frostleaf in the rain, unasked. Few outer disciples have ever thought of me as a person rather than a gate. I will remember this.",
     },
+    memory: [
+      { when: [{ kind: "tone", tone: "deceit", min: 2, within: 3 }], line: "A gift from a liar. I will take the herb, because it is fresh, and I will test it for poison before I forget what you were like at the gate." },
+    ],
   },
   HONEST_ACCOUNT: {
     id: "HONEST_ACCOUNT",
@@ -46,6 +50,7 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
         when: [{ kind: "said", scenario: "HONEST_ACCOUNT", min: 2 }],
         line: "This is the third time you have told me the truth in this sect. I believed the first two. I am beginning to think you will keep doing it, and that frightens me more than a lie would.",
       },
+      { when: [{ kind: "tone", tone: "force", min: 2, within: 3 }], line: "You have raised a blade in your voice twice in three answers, and now you tell me the plain truth. I believe you. I do not believe the blade has gone home with it." },
     ],
     remember: ["told_truth"],
   },
@@ -65,6 +70,7 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
         when: [{ kind: "said", scenario: "HONEST_ACCOUNT", within: 1 }],
         line: "You told me the truth a moment ago, and now you take it back. I can hold one of those answers, Wanderer. I cannot hold both of them at once.",
       },
+      { when: [{ kind: "tone", tone: "deceit", min: 3, within: 4 }], line: "Another lie. I have stopped checking your words one at a time. You lie in patterns now, and a pattern is easier for an elder to hear than a single lie. I can hear this one from across the hall." },
     ],
     remember: ["lied_about_seal"],
   },
@@ -84,6 +90,7 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
         when: [{ kind: "said", scenario: "THREATEN", min: 2 }],
         line: "Threats again. This is the third time you have reached for the same weapon. I am beginning to think it is the only one you own, and that you are afraid to set it down.",
       },
+      { when: [{ kind: "tone", tone: "quiet", min: 3, within: 4 }], line: "You have said nothing and moved a great deal for four answers together. Now you threaten me. Silence followed by a threat is a pattern I would prefer not to learn." },
     ],
   },
   SHOW_MERCY: {
@@ -102,6 +109,7 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
         when: [{ kind: "said", scenario: "THREATEN", within: 1 }],
         line: "You threatened me, and then you spared him. Mercy that follows a threat is still a threat that has decided to wait. I will remember which one came first.",
       },
+      { when: [{ kind: "tone", tone: "mercy", min: 3, within: 4 }], line: "Mercy again. Most of your recent answers have been sparing, pleading or kneeling. The Law will call that weakness, and I am beginning to suspect it is the one thing you own that the Law does not. Keep it, and keep your eyes open." },
     ],
     remember: ["spared_gu"],
   },
@@ -142,6 +150,9 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       warm: "You want to understand the forbidden, not wield it. That is a rarer wish. I will teach you what the Law Hall fears in it.",
       devoted: "You ask about the Blood Lotus the way a student asks about a wound: to learn how to heal it. I will tell you what I know, though it hurts me to remember.",
     },
+    memory: [
+      { when: [{ kind: "tone", tone: "inquiry", min: 3, within: 4 }], line: "You have been asking, reading and searching for four answers together. Now you ask me about the sutra. Put the question you are really here to ask, and stop circling the pit." },
+    ],
     remember: ["asked_forbidden"],
   },
   INSULT_SECT: {

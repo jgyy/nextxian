@@ -8,29 +8,34 @@ flowchart LR
     C1[chapter-1..2.ts]
     C3[chapter-3..10.ts<br/>eight chapters]
     C11[chapter-11.ts<br/>judgment and endings]
-    SD[side paths<br/>herb market, lantern stair,<br/>shrine, court, foundry, ferry]
+    SD[side paths<br/>herb market, pavilion of stone wagers,<br/>lantern stair, shrine, court, foundry, ferry]
     NPC[npc/elder-su.ts<br/>forty-four scenarios]
+    NR[npc/elder-su-reactions.ts<br/>seven more scenarios]
   end
   subgraph Engine["src/engine (pure logic)"]
-    G[game.ts<br/>createGame / choose / getChoices]
-    N[npc.ts<br/>tierFor / moodFor / reactToScenario]
-    V[validate.ts<br/>validateStory, 200-word cap]
+    G[game.ts<br/>createGame / choose / getChoices / isPassage]
+    N[npc.ts<br/>tierFor / moodFor / mannerOf / reactToScenario]
+    TN[tone.ts<br/>six tones and their names]
+    V[validate.ts<br/>validateStory, 200-word scene cap]
     SV[save.ts<br/>restoreGame]
     W[words.ts<br/>countWords]
     T[types.ts]
   end
   subgraph UI["src/components + app/"]
-    GV[GameView.tsx<br/>VN stage + backlog]
-    NP[NpcPanel.tsx<br/>portrait + mood]
-    SP[StatsPanel.tsx]
+    GV[GameView.tsx<br/>VN stage, choices, Continue, backlog]
+    TL[ToneLegend.tsx<br/>what each colour means]
+    NP[NpcPanel.tsx<br/>portrait, mood, her read of you]
+    SP[StatsPanel.tsx<br/>stats and recent decisions]
   end
-  C1 & C3 & C11 & SD & NPC --> S[story/index.ts]
+  C1 & C3 & C11 & SD & NPC & NR --> S[story/index.ts]
   S --> G
   G --> N
-  G --> A[tierShiftLine or moodShiftLine<br/>attitude comments]
+  G --> TN
+  G --> A[tierShiftLine, moodShiftLine or mannerShiftLine<br/>attitude comments]
   V -. checked in tests .-> S
   V --> W
   G --> GV
+  GV --> TL
   GV --> SV
   GV --> NP & SP
   GV -->|localStorage save| Storage[(Browser storage)]
@@ -38,7 +43,7 @@ flowchart LR
 
 ## Turn flow
 
-Every choice goes through the same path. The NPC reacts before the next scene is entered, so her line is the last thing the player reads before the new text.
+Every choice goes through the same path. A decision logs the player's line, records its tone, and lets the NPC react before the next scene is entered, so her line is the last thing the player reads before the new text. A page turn does none of that: it only carries the reader on through a long scene.
 
 ```mermaid
 sequenceDiagram
@@ -49,21 +54,69 @@ sequenceDiagram
   P->>UI: clicks an option
   UI->>E: choose(story, state, choiceId)
   E->>E: check choice.requires (throws if locked)
-  E->>E: log the player's line
-  opt choice.npcScenario set
-    E->>N: pick line from history, flags, then trust tier
-    N-->>E: line, tier
-    E->>E: apply scenario delta, remember flags, append to history
+  alt page turn (Continue)
+    E->>E: enter the next page of the same scene, nothing logged
+  else decision
+    E->>E: log the player's line and record its tone
+    opt choice.npcScenario set
+      E->>N: pick line from history, flags, tones, then trust tier
+      N-->>E: line, tier
+      E->>E: apply scenario delta, remember flags, append to history
+    end
+    E->>E: apply choice.effects
+    E->>E: say one attitude comment, if any: tier, then mood, then manner
+    E->>E: enter next scene, add extras whose conditions hold
   end
-  E->>E: apply choice.effects
-  E->>E: enter next scene, add extras whose conditions hold
   E-->>UI: new GameState
   UI->>UI: render log, choices and NPC panel
 ```
 
+## Choice tones
+
+Every decision has one of six tones. The tone sets the colour of the option, its tag, and its dot in the player's recent decisions. The Elder keeps count of the tones too, so a pattern of decisions changes what she says. A page turn has no tone, because it is not a decision.
+
+```mermaid
+flowchart LR
+  D[every decision] --> T[truth<br/>plain speech, confession, sincere pledges]
+  D --> M[mercy<br/>sparing, pleading, kneeling, giving]
+  D --> I[inquiry<br/>asking, reading, studying, searching]
+  D --> DE[deceit<br/>lies, evasions, sneaking, pocketing]
+  D --> F[force<br/>threats, challenges, insults, forbidden power]
+  D --> Q[quiet<br/>waiting, resting, travelling, moving on]
+  P[page turn<br/>Continue] -. no tone .- X[not a decision]
+```
+
+## Scene cap and pages
+
+A scene's body text is every paragraph, every extra paragraph and every NPC interjection, counted all at once, because any of them can show. That total is capped at 200 words. A scene that runs longer is split into pages. Each page but the last ends with a Continue page turn, and the last page holds the choices, the ending if there is one, and the interjections. The first page keeps the scene's id, so every link into the scene still lands on its opening text.
+
+```mermaid
+flowchart TD
+  S[scene body:<br/>paragraphs + every extra + every interjection] --> C{over 200 words?}
+  C -- no --> ONE[one page with its choices]
+  C -- yes --> SPLIT[split at paragraph boundaries,<br/>packed up to 200 words per page]
+  SPLIT --> P1[page 1: keeps the scene id and title]
+  SPLIT --> PM[middle pages: no title, one Continue]
+  SPLIT --> PL[last page: no title, the choices,<br/>the extras, interjections and ending]
+  P1 -- Continue --> PM
+  PM -- Continue --> PL
+```
+
+```mermaid
+sequenceDiagram
+  participant P as Player
+  participant G as choose()
+  P->>G: Continue (page turn)
+  G->>G: enter the next page, no heading if untitled
+  G-->>P: more narration on the same stage, no choice logged
+  P->>G: Continue on the last page
+  G->>G: enter the page with the decisions
+  G-->>P: the options, coloured by tone
+```
+
 ## NPC attitude model
 
-Trust chooses the tier. Memory flags can override the tier line when the NPC remembers something the player did earlier, and the reaction history can override it when she has just heard something from the player (see below).
+Trust chooses the tier. Memory flags can override the tier line when the NPC remembers something the player did earlier, and the reaction history and recent tones can override it when she has just heard something or the player has been choosing in a pattern (see below).
 
 ```mermaid
 stateDiagram-v2
@@ -90,23 +143,38 @@ stateDiagram-v2
   Suspicious --> Afraid: fear ≥ 50
 ```
 
-## Attitude shifts and pattern interjections
+## Attitude shifts, manner and pattern interjections
 
-When a choice crosses a tier boundary, the Elder speaks once more after her reply, so the change is the last thing the player reads. When only her face changes (fear or suspicion takes hold or lets go), she says so instead. Scenes can also carry interjections whose conditions combine flags and her reaction history, so she notices patterns in what the player has done.
+When a choice crosses a tier boundary, the Elder speaks once more after her reply, so the change is the last thing the player reads. When only her face changes (fear or suspicion takes hold or lets go), she says so instead. When the player's recent decisions settle on one tone, she names that manner. Only one of these comments is said per choice, in that order. Scenes can also carry interjections whose conditions combine flags, her reaction history and the tones of the player's decisions, so she notices patterns in what the player has done.
 
 ```mermaid
 flowchart TD
-  P[player picks a choice] --> R[reactToScenario: memory line or tier line]
+  P[player picks a decision] --> R[reactToScenario: memory line or tier line]
   R --> D[apply scenario delta and effects]
   D --> T{tier changed?}
   T -- yes --> TL[tierShiftLine from → to]
   T -- no --> M{mood changed?}
   M -- yes --> ML[moodShiftLine: her face changed]
-  M -- no --> E[enter next scene]
+  M -- no --> K{manner changed?}
+  K -- yes --> KL[mannerShiftLine: she names the pattern]
+  K -- no --> E[enter next page]
   TL --> E
   ML --> E
-  E --> I{interjections whose<br/>flags and history all hold}
+  KL --> E
+  E --> I{interjections whose<br/>flags, history and tones all hold}
   I --> SAY[she speaks unprompted]
+```
+
+A manner is the tone that makes up at least three of the player's last four decisions. She names it once, when it first forms, so a steady pattern is not repeated on every choice.
+
+```mermaid
+stateDiagram-v2
+  [*] --> NoManner
+  NoManner --> Manner: one tone is 3 of the last 4 decisions
+  Manner --> NoManner: no tone is 3 of the last 4
+  Manner --> OtherManner: another tone becomes 3 of the last 4
+  OtherManner --> NoManner: no tone is 3 of the last 4
+  OtherManner --> Manner: one tone is 3 of the last 4
 ```
 
 ```mermaid
@@ -125,17 +193,17 @@ sequenceDiagram
 
 ## Reaction memory
 
-Every NPC scenario she reacts to is appended to `history`, in order. A `said` condition reads that list: `min` counts how many times a scenario appears, and `within` looks only at her last N reactions. `within: 1` is "what she just heard". Memory overrides are checked in order, so flag memories written by earlier choices still win over the newer history lines.
+Every NPC scenario she reacts to is appended to `history`, in order. A `said` condition reads that list: `min` counts how many times a scenario appears, and `within` looks only at her last N reactions. `within: 1` is "what she just heard". A `tone` condition reads the same way over the tones of the player's decisions, so `min: 3, within: 4` is "three of the last four decisions were deceit". Memory overrides are checked in order, so flag memories written by earlier choices still win over the newer history and tone lines.
 
 ```mermaid
 flowchart LR
-  A[choose: npcScenario] --> H[history before this reaction]
+  A[choose: npcScenario] --> H[history and tones before this reaction]
   H --> RM{memory lines, first match}
-  RM -- a flag or said condition holds --> ML[memory line]
+  RM -- a flag, said or tone condition holds --> ML[memory line]
   RM -- none holds --> TL[tier line]
   ML --> REC[append scenario id to history]
   TL --> REC
-  REC --> LATER[later said conditions read it]
+  REC --> LATER[later said and tone conditions read it]
 ```
 
 A contradiction is the clearest case. If the player tells the truth and then denies it with nothing else in between, the denial answers differently:
@@ -155,26 +223,27 @@ sequenceDiagram
   N-->>G: "You told me the truth a moment ago…"
 ```
 
-## Body text cap
+## Length caps
 
-Every block of body text the player reads at once is capped at 200 words. That covers narration paragraphs, extra paragraphs, NPC interjections, and every NPC line. `validateStory` reports any block over the cap, and the test suite fails until it is split. The count uses `countWords`, the same counter the word-count report uses.
+Every scene is capped at 200 words of body text, and so is every NPC line: each tier line, memory line and attitude comment. `validateStory` reports any scene or line over its cap, and the test suite fails until it is split or shortened. The count uses `countWords`, the same counter the word-count report uses.
 
 ```mermaid
 flowchart LR
-  T[paragraph, extra, interjection or NPC line] --> C{over 200 words?}
+  T[scene body or NPC line] --> C{over 200 words?}
   C -- yes --> P[validateStory reports it]
   C -- no --> OK[passes]
-  P --> F[npm test fails until it is split]
+  P --> F[npm test fails until it is split or shortened]
 ```
 
 ## Chapter map
 
-Reading order is set in `src/story/index.ts`. Each chapter ends by linking into the next one's first scene. The judgment in chapter eleven has five endings, and the Sisters’ Dao ending needs Mengjiao freed on the Sealing Night. Six side paths branch from the main line and rejoin it.
+Reading order is set in `src/story/index.ts`. Each chapter ends by linking into the next one's first scene. The judgment in chapter eleven has five endings, and the Sisters’ Dao ending needs Mengjiao freed on the Sealing Night. Seven side paths branch from the main line and rejoin it.
 
 ```mermaid
 flowchart LR
   C1[1 The Stolen Seal] --> C2[2 The Crimson Abyss]
   C1 -. prepare at the market .-> SM[Side: The Herb Market] -. rejoins at the abyss path .-> C2
+  SM -. follow the clatter .-> SP[Side: The Pavilion of Stone Wagers] -. rejoins at the market report .-> SM
   C2 --> C3[3 The Ash Archive]
   C3 -. ask the attendant .-> SS[Side: The Sister’s Shrine] -. rejoins at the sutra door .-> C4
   C3 --> C4[4 The Sutra Door]
@@ -199,7 +268,7 @@ flowchart LR
 
 ## Visual novel stage
 
-The stage shows only the current beat. `currentBeat` starts at the player’s latest choice, so the previous scene is hidden. The backlog shows the full log.
+The stage shows only the current beat. `currentBeat` starts at the player's latest choice, so the previous scene is hidden. Continue pages add their text to the same beat, and the stage scrolls to the new text. The backlog shows the full log.
 
 ```mermaid
 flowchart TD
@@ -213,24 +282,24 @@ flowchart TD
 
 ## Saves
 
-A save is the whole `GameState` in `localStorage`, written after every choice. Loading goes through `restoreGame`, which rejects a save that points at a scene the story does not have, and gives a save from before the reaction history an empty `history`, so older progress still loads.
+A save is the whole `GameState` in `localStorage`, written after every choice and every page turn. Loading goes through `restoreGame`, which rejects a save that points at a scene the story does not have, and gives a save from before the reaction history or the decision tones an empty `history` or `tones`, so older progress still loads.
 
 ## Scenarios
 
-The Elder reacts to forty-four scenarios. Each has five tier lines. Some have memory overrides, and some of those match on what she has just heard (`said`). Scenes can also carry NPC interjections, which she speaks unprompted when her metrics, flags, or history cross a threshold. Her attitude-shift lines (eight of them) and mood-shift lines (seven, one per mood) sit in `src/engine/npc.ts`.
+The Elder reacts to fifty-one scenarios. Each has five tier lines. Some have memory overrides, and some of those match on what she has just heard (`said`), on the flags the player has set, or on the tones of recent decisions (`tone`). Scenes can also carry NPC interjections, which she speaks unprompted when her metrics, flags, history or tones cross a threshold. Her attitude-shift lines (eight of them), mood-shift lines (seven, one per mood) and manner lines (six, one per tone) sit in `src/engine/npc.ts`.
 
-The table lists the original fifteen. The other twenty-nine are in `src/story/npc/elder-su.ts`. The newest come from the side paths: `REPORT_RUMOR`, `REPORT_SUPPLIES`, `HIDE_MARKET`, `REPORT_LAMP_PASSAGE`, `REPORT_SHRINE`, `SHOW_CASTING_LEDGER`, `REPORT_FERRY`, and `REPORT_BOUT`.
+The scenarios are in `src/story/npc/elder-su.ts`, and the seven newest, which react to choices she used to let pass, are in `src/story/npc/elder-su-reactions.ts`: `REQUEST_NIGHT`, `OFFER_TO_FETCH_GU`, `PLEAD_FOR_PARDON`, `ACCEPT_EXILE`, `CLAIM_SEAT`, `SEIZE_JADE` and `REPORT_WAGER`. The table lists the scenarios whose memory overrides matter most to a playthrough, and the source has the rest.
 
 | Scenario | Triggered by | Memory override |
 | --- | --- | --- |
-| GIFT_HERB | Offering a spirit herb at the gate | — |
-| HONEST_ACCOUNT | Telling the truth | `lied_about_seal`; or a third honest account (`said`) |
-| LIE_ABOUT_SEAL | Denying the theft | the truth just before (`said` within 1) |
-| THREATEN | Threatening the elder | a third threat (`said` min 2) |
-| SHOW_MERCY | Sparing Gu Hanzhen | a threat just before (`said` within 1) |
+| GIFT_HERB | Offering a spirit herb at the gate | a run of deceit (`tone` deceit, 2 of the last 3) |
+| HONEST_ACCOUNT | Telling the truth | `lied_about_seal`; a third honest account (`said`); a blade in the voice (`tone` force, 2 of the last 3) |
+| LIE_ABOUT_SEAL | Denying the theft | the truth just before (`said` within 1); a run of lies (`tone` deceit, 3 of the last 4) |
+| THREATEN | Threatening the elder | a third threat (`said` min 2); silence and then a threat (`tone` quiet, 3 of the last 4) |
+| SHOW_MERCY | Sparing Gu Hanzhen | a threat just before (`said` within 1); a run of mercy (`tone` mercy, 3 of the last 4) |
+| ASK_FORBIDDEN_ART | Asking about the Blood Lotus Sutra | a run of questions (`tone` inquiry, 3 of the last 4) |
 | STEAL_SCROLL | Taking the Heavenly Scroll | — |
 | REVEAL_DEMONIC_QI | Using the black lotus | — |
-| ASK_FORBIDDEN_ART | Asking about the Blood Lotus Sutra | — |
 | INSULT_SECT | Mocking the Law | a repeated insult (`said` min 1) |
 | HONOR_ANCESTORS | Kneeling at the tablets | — |
 | REFUSE_TASK | Refusing the mission | `stole_scroll` |
@@ -243,9 +312,16 @@ The table lists the original fifteen. The other twenty-nine are in `src/story/np
 | REPORT_FERRY | Telling her what the ferryman charges | `paid_with_name`, `refused_ferry` |
 | REPORT_SHRINE | Telling her about the shrine | `lit_shrine`, `took_comb` |
 | REPORT_BOUT | Telling her about the sparring court | `used_mist`, `boasted` |
+| REQUEST_NIGHT | Asking for a night before the abyss | a run of waiting (`tone` quiet, 3 of the last 4) |
+| OFFER_TO_FETCH_GU | Offering to find Gu alone | `spared_gu` |
+| PLEAD_FOR_PARDON | Pleading at the dais | `spared_gu`; a run of lies (`tone` deceit, 2 of the last 4) |
+| ACCEPT_EXILE | Accepting exile in silence | a run of force (`tone` force, 2 of the last 4) |
+| CLAIM_SEAT | Claiming her seat | `exposed_elder` |
+| SEIZE_JADE | Seizing the Sealing Jade | `lied_about_seal` |
+| REPORT_WAGER | Reporting the stone tables | `paid_bo_lan`, `broke_tang_table`, `cheated_at_tiles` with `confessed_loaded_tile`, a run of force, a run of mercy |
 
 ## Quality gates
 
-- `npm test` checks that every decision has at least four choices, that every link resolves, that there are at least ten NPC scenarios, that each scenario produces five distinct replies, that every `said` condition names a real scenario, and that no body text runs over 200 words.
-- `npm run word-count` reports player-facing words against the 1,000,000-word goal.
+- `npm test` checks that every decision has at least four choices and a tone, that every page turn carries nothing else, that every link resolves, that there are at least forty NPC scenarios, that each scenario produces one reply per trust tier it can reach, that every `said` and `tone` condition names something real, that no scene body or NPC line runs over its cap, and that the colour legend defines all six tones in both themes.
+- `npm run word-count` reports player-facing words against the 1,000,000-word goal, with the largest scene body against its 200-word cap.
 - CI (`.github/workflows/ci.yml`) runs lint, typecheck, tests, word count, and the production build.
