@@ -33,13 +33,21 @@ The river does not hurry. For thirty-six days it carries the barge past watersid
 > mercy | Row out to the Drowned Pagoda, where a cup is poured for you. | pagoda_entry |  | !b2r_pagoda | You have already taken that tea.
 > quiet | Sit down to chess with the Censor-General, and see what he says. | barge_entry |  | !b2r_barge | You have already played those games.
 > truth | Put in at Green Mill, where a town has stopped speaking. | fever_entry |  | !b2r_fever | You have already woken Green Mill.
-> quiet | Press on to Qinglian Ford. | hub_b2_city |  | count:b2r_>=3 | Walk at least three of the waterside roads before you reach the city.
+> quiet | Press on to Qinglian Ford. | qing_arrive |  | count:b2r_>=3 | Walk at least three of the waterside roads before you reach the city.
 
 === hub_b2_city | Qinglian Ford
-(temporary hub)
-> truth | The Silk Quarter. | silk_entry |  | !b2q_silk | You have been through the quarter.
-> quiet | The Archive of Nine. | nine_entry |  | !b2q_nine | You have climbed the tower.
-> mercy | The Festival of Floating Names. | lanterns_entry |  | !b2q_lanterns | You have floated your lanterns.
-> inquiry | The Crane Stairs. | stairs_entry |  | !b2q_stairs | You have already climbed.
+The Guesthouse of Nine Moons has paper windows, and through them the city goes about its business as if no one in it were waiting to be judged. Six days remain before the Assembly sits. The Censors do not forbid you the town. Duan Wuyi says only that a witness who has seen nothing has nothing to say.
++ b2_qinglian | The Water Gate is behind you, and the lantern chain over it is already being strung for the festival.
++ b2q_silk | A bolt of plain silk is folded on the sill, a gift from a quarter that now knows your face.
++ b2q_nine | The bone-lamp's pale glow still sits at the back of your eyes when you close them.
++ b2q_lanterns | A paper lantern with a name on it bobs somewhere downriver, and you know whose.
++ b2q_stairs | Your legs still ache from the Crane Stairs, and the Elder has stopped teasing you about it.
++ b2q_vault | Ink is under your nails that will not wash out, and no one has asked why.
+> truth | The Silk Quarter, where the weavers have a petition. | silk_entry |  | !b2q_silk | You have been through the quarter.
+> quiet | The Archive of Nine, in its tower of bone-white stone. | nine_entry |  | !b2q_nine | You have climbed the tower.
+> mercy | The Festival of Floating Names, on the nine canals. | lanterns_entry |  | !b2q_lanterns | You have floated your lanterns.
+> inquiry | The Crane Stairs, where precedence is fought for. | stairs_entry |  | !b2q_stairs | You have already climbed.
+> force | The Ledger Hall, and what lies beneath it. | vault_entry |  | !b2q_vault & count:b2q_>=2 | Learn the city a little first, or you have been below already.
+> truth | Take your seat in the Round Hall. The Assembly is sitting. | asm_entry |  | count:b2q_>=4 | The Assembly will not sit until you have walked four of the city's roads.
 `,
 };
