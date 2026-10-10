@@ -291,7 +291,7 @@ She goes to look. She goes alone. She crosses the shop in the stillness left by 
 She stops.
 “Zhu,” she says. “Did the woman in black ever bring a second child?”
 Master Zhu looks into the middle distance, with his good eye, for a long time.
-“She brought a girl of nine,” he says at last. “It was fifteen years ago. She stayed a week. She mended a toy. I thought she was a visitor.”
+“She brought a girl of nine,” he says at last. “It was twelve years ago. She stayed a week. She mended a toy. I thought she was a visitor.”
 > deceit | Say nothing. | mender_close | +mender_hao_asked
 > truth | Say Hao Lan’s name. | mender_close | +mender_hao_asked
 > mercy | Go to her. | mender_close | +mender_hao_asked

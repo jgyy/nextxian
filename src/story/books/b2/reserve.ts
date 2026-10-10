@@ -78,7 +78,7 @@ IX.
 > inquiry | Ask who wrote the number. | reserve_b2
 
 === reserve_b2 | The Eight
-“There were eight others,” says the Elder. “I saved one, a boy of four who is asleep on a mountain with a ring of keys. The other seven I believed lost. I want that understood before I tell you what became of them. I wore that belief for twelve years like a collar, and it was false.”
+“There were eight others,” says the Elder. “I saved one, a boy of two who is asleep on a mountain with a ring of keys. The other seven I believed lost. I want that understood before I tell you what became of them. I wore that belief for twelve years like a collar, and it was false.”
 She touches the comb in her hair.
 “Madam Ash raised them. She was a Censor, you know. A good one. She was struck for refusing to sign the Great Sealing, and she walked out of the fire with her sleeve burning, and she found that the Law Hall’s reserve cots were still warm. She took the seven who were left. She raised them as her own, in a house on the Salt Coast, under the cover of a mourning-shop.”
 Hao Lan has woken. She sits up without a sound, her satchel in her arms, and listens.

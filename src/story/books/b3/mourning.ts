@@ -245,20 +245,20 @@ There is a pause.
 === mourning_a3s4 | The First Pattern
 “For a woman called Ling,” says Madam Ash.
 The shop is perfectly still.
-“I drew the pattern the year she was struck. I was her clerk. I wrote the order for her name to be removed. I did not know what I was doing. I was twenty-three, and I thought I was a good servant of the Concord.” She runs her thumb along the edge of the album. “I drew nine servants for her, and eight had faces. I did not know why. The ninth I left blank. I found out later. She had nine pupils, and the ninth had not yet come.”
+“The Order of the Torn Page draws her household. It is the oldest custom the Lotus keeps. Eight pupils with faces, and the ninth blank, because her ninth never came.” She runs her thumb along the edge of the album. “I inherited the pattern when I joined. I drew it for years without knowing what it was for. I thought it was a charm.”
 Your mouth is dry.
-“I have drawn that pattern every day for forty-one years,” says Madam Ash. “I have not been able to stop. I think it is the only prayer I know.”
-> deceit | Ask if she wrote the order. | mourning_a3s5
+“Then I walked into a burning dormitory,” says Madam Ash, “and there were nine cots, and two of them were empty. I have drawn that pattern every day since. I have not been able to stop. I think it is the only prayer I know.”
+> deceit | Ask what she did before the fire. | mourning_a3s5
 > truth | Ask what Ling was like. | mourning_a3s5
 > quiet | Take Hao Lan’s hand. | mourning_a3s5
 > inquiry | Ask where Ling is now. | mourning_a3s5
 
 === mourning_a3s5 | The Clerk
-“Yes,” says Madam Ash. She says it with great plainness. “I wrote it. I am telling you because you asked, and because I do not lie to customers. I wrote the order that struck her. I signed it at the foot. I was a clerk of the Seventh Chancery, and I was proud of my hand.”
+“I was a clerk,” says Madam Ash. She says it with great plainness. “I am telling you because you asked, and because I do not lie to customers. I was a clerk of the Seventh Chancery, and then a Censor, and I was proud of my hand.”
 She lays the album on the counter and folds her hands over it.
-“It was not a great crime. It was a paper. It was the sort of paper that I wrote ten times a day. I had no idea that I was writing the first stroke of the abyss.”
+“The year before the Sealing, I drafted a rota. A very dull paper. It assigned the east dormitory of the Law Hall to the Concord’s care, for the reserve. It listed nine cots. I wrote the number myself. I had no idea what I was writing. I thought it was a boarding school.”
 She lifts her eyes.
-“I have been trying to unwrite it since. It is the only reason I joined the Lotus. It is the only reason I walked out of the fire.” She smiles, but it is a small and broken smile. “Do you wish to cancel the order, madam? I will understand if you do.”
+“I walked out of the fire with seven children, and a number I had written on every one of their rails.” She smiles, but it is a small and broken smile. “Do you wish to cancel the order, madam? I will understand if you do.”
 > deceit | Say you wish to continue. | mourning_a3s6
 > truth | Say that you are not a customer. | mourning_a3s6
 > quiet | Say nothing. | mourning_a3s6

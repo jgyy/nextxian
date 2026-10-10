@@ -40,6 +40,10 @@ The Elder has taken rooms at the Ferryman’s Rest. The Censors who came with yo
 +[c] count:card_>=4 | Four brown cards lie in your sleeve, warm from handling, and each of them wants the others.
 +[c] count:card_>=2 | Two brown cards lie in your sleeve. They have begun to hum when they touch.
 +[c] count:card_>=1 | A brown card lies in your sleeve, warm from handling.
++[d] b3q_stacks | A brown card with no numeral lies in your sleeve, and the Elder has not stopped looking at it.
++[d] b3q_tidedoor | The spring ebb is behind you, and the Library hums at the back of your mind like a hive.
++[d] b3q_lotus | A black minute-book lies closed in a cellar under the lamp, and your name is in it.
++[d] b3q_sixth | A white cup with a chipped rim sits on a sill in the Ferryman’s Rest, beside a drawing.
 +[d] b3q_house | The hill above the town is quiet, and its windows are open, and a child is spinning on the grass.
 +[d] b3q_forge | A small black seal that asks lies on your palm in memory, warm as a coal.
 +[d] b3q_keeners | The lament runs in your head in nine verses, seven of them written down.
@@ -56,5 +60,9 @@ The Elder has taken rooms at the Ferryman’s Rest. The Censors who came with yo
 > mercy | Climb the ladder to the Sing-Loft above the fish market. | keeners_entry |  | !b3q_keeners & count:b3q_>=2 | You have sung with the keeners, or you have not yet learned enough of the town to find the loft.
 > force | Take the ferry to the Salt Works, and ask for the seal-wright. | forge_entry |  | !b3q_forge & b3q_ferry | You have not yet crossed the bay with the ferrywoman, or you have already met the seal-wright.
 > mercy | Climb the hill road to the House of Gentle Hands, where a boy has gone alone. | house_entry |  | !b3q_house & b3q_ward & count:b3q_>=3 | The House stands closed to you until the Ward has told you what it knows, or you have already been.
+> inquiry | Find Hao Lan on the sea steps, writing the same two characters over and over. | sixth_entry |  | !b3q_sixth & b3q_mourning | She has already said it, or you have not yet met the woman who can answer her.
+> truth | Go down to the cellar under the lamp, where the Hollow Lotus has been summoned. | lotus_entry |  | !b3q_lotus & b3q_mourning & b3q_lamp & count:b3q_>=5 | The Court has not yet been convened, or has already sat.
+> force | Go down to the foot of the Wall at the spring ebb, when the Library opens. | tidedoor_entry |  | !b3q_tidedoor & b3q_lamp & count:b3q_>=6 | The ebb has not yet come, or the Library is not yet a thing you can find.
+> inquiry | Go down the steps under the sign that says PLEASE DO NOT READ THE DEAD ALOUD. | stacks_entry |  | !b3q_stacks & b3q_tidedoor | You have not yet been in the Library, or you have already walked its Stacks.
 `,
 };

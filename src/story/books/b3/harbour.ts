@@ -133,7 +133,7 @@ It is not loud. It belongs to a heavy, bearded man in a grey tunic, who has come
 > inquiry | Ask on whose authority the Wall is guarded. | harbour_a2s3
 
 === harbour_a2s3 | The Warden
-“By the authority of the Harbour Board,” says Warden Lu, “which has employed my family to keep this stone shut for forty years. Which has not yet been asked, in all that time, to open it.” He stands with his hands loose at his sides. He does not threaten. He has the air of a man who has had this conversation in his head every morning.
+“By the authority of the Harbour Board,” says Warden Lu, “which has employed my family to keep this stone shut for nineteen years. Which has not yet been asked, in all that time, to open it.” He stands with his hands loose at his sides. He does not threaten. He has the air of a man who has had this conversation in his head every morning.
 “I do not want trouble,” he says. “I have a wife. I have a son who plays the flute. I have a mortgage on a boat. But I will not let you open the block. It is the one thing I was told never to do.”
 “Who told you?” says Mei Qiu.
 “My grandfather.” His eyes drop. “He said the Concord told him. He said there was a girl under there who was still listening. He said if anyone let her out, the Wall would fall.”
@@ -283,7 +283,7 @@ Little Adze raises his hand.
 Before you leave, Carver Sun takes you aside. She waits until Mei Qiu has gone ahead, and Gu has gone to look at the boats. She speaks very quietly.
 “There is a block at the north end,” she says. “The last on the lowest course. It is not carved. It has a plaque of bronze, with two characters. I did not cut them. The Warden’s family put them there.”
 She grips your wrist with a hand like a root.
-“Do not let the Inspector go near it without you. The Warden’s family have kept that stone shut for forty years, and I do not know why. But I carved her name, and I know what is in the water behind it, and I do not think she is sleeping.”
+“Do not let the Inspector go near it without you. The Warden’s family have kept that stone shut for nineteen years, and I do not know why. But I carved her name, and I know what is in the water behind it, and I do not think she is sleeping.”
 > deceit | Promise to be with Mei. | harbour_close
 > truth | Thank her for the warning. | harbour_close
 > quiet | Go. | harbour_close

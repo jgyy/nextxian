@@ -25,6 +25,10 @@ import { ward } from "./b3/ward";
 import { keeners } from "./b3/keeners";
 import { forge } from "./b3/forge";
 import { house } from "./b3/house";
+import { sixth } from "./b3/sixth";
+import { lotus } from "./b3/lotus";
+import { tidedoor } from "./b3/tidedoor";
+import { stacks } from "./b3/stacks";
 
 /**
  * The books after the first, in reading order. Each book lists its arcs; the story index parses them, adds their scenes
@@ -39,6 +43,6 @@ export const books: Book[] = [
   {
     id: "b3",
     name: "Book Three: The Drowned Library",
-    arcs: [frame3, coast, mender, harbour, mourning, ferry, lamp, ward, keeners, forge, house],
+    arcs: [frame3, coast, mender, harbour, mourning, ferry, lamp, ward, keeners, forge, house, sixth, lotus, tidedoor, stacks],
   },
 ];

@@ -358,7 +358,7 @@ You turn.
 === coast_a4s8 | A Mirror in the Valley
 “She had a mirror from her mother,” says the Elder. “A little round bronze one with a lotus on the back. She used to catch the morning sun on it and flash it across the valley to my window. Three short, two long. It meant: I am awake. It meant: are you awake. It meant: good morning, Registrar.”
 Her face has softened. It is a face you have never seen on her.
-“I said it back. I had a mirror of my own, from a Censor friend. I was thirty-one and she was nine, and for one summer I had a friend who was not part of the Law Hall.” She stops. “I thought it was the loneliest year of my life. It was the happiest.”
+“I said it back. I had a mirror of my own, from a Censor friend. I was twenty-seven and she was nine, and for one summer I had a friend who was not part of the Law Hall.” She stops. “I thought it was the loneliest year of my life. It was the happiest.”
 The harbour is coming up out of the dark.
 > quiet | Say nothing, and look at the harbour. | coast_close | +coast_qiu_signal
 > truth | Say you want to meet her. | coast_close | +coast_qiu_signal
