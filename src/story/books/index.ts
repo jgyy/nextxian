@@ -62,6 +62,7 @@ import { crib } from "./b5/crib";
 import { fang } from "./b5/fang";
 import { clerk } from "./b5/clerk";
 import { ladder } from "./b5/ladder";
+import { festival } from "./b5/festival";
 
 /**
  * The books after the first, in reading order. Each book lists its arcs; the story index parses them, adds their scenes
@@ -86,6 +87,6 @@ export const books: Book[] = [
   {
     id: "b5",
     name: "Book Five: The Glass Sea",
-    arcs: [frame5, skiff, singing, wreck, mirage, gale, furnace, pilgrims, tithe, crib, fang, clerk, ladder],
+    arcs: [frame5, skiff, singing, wreck, mirage, gale, furnace, pilgrims, tithe, crib, fang, clerk, ladder, festival],
   },
 ];
