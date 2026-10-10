@@ -40,6 +40,9 @@ The Elder has taken rooms at the Ferryman’s Rest. The Censors who came with yo
 +[c] count:card_>=4 | Four brown cards lie in your sleeve, warm from handling, and each of them wants the others.
 +[c] count:card_>=2 | Two brown cards lie in your sleeve. They have begun to hum when they touch.
 +[c] count:card_>=1 | A brown card lies in your sleeve, warm from handling.
++[d] b3q_sails | Nine grey sails lie off the bar, patient as vultures, and the town counts its dead.
++[d] b3q_fifth | The saint’s room is open to the Well, and a child with a lemon’s name sits in the chair.
++[d] b3q_pao | A jar that asks who is there sits in your pack, and hums when you do not.
 +[d] b3q_stacks | A brown card with no numeral lies in your sleeve, and the Elder has not stopped looking at it.
 +[d] b3q_tidedoor | The spring ebb is behind you, and the Library hums at the back of your mind like a hive.
 +[d] b3q_lotus | A black minute-book lies closed in a cellar under the lamp, and your name is in it.
@@ -52,17 +55,62 @@ The Elder has taken rooms at the Ferryman’s Rest. The Censors who came with yo
 +[d] b3q_mourning | There is a black ribbon in your sleeve, and a woman’s voice that said nothing you could answer.
 +[d] b3q_ferry | The ferryman’s rope is still wound on your wrist, two turns, a knot you cannot undo.
 +[d] b3q_lamp | The lighthouse blinks twice on the horizon, in a pattern you now know.
-> truth | Walk the length of the Wall, and read what is carved there. | harbour_entry |  | !b3q_harbour | You have read the Wall.
-> mercy | Find the mourning-shop at the top of Bell Lane. | mourning_entry |  | !b3q_mourning & count:b3q_>=1 | You have been to the mourning-shop, or you have not yet learned enough of the town to find it.
-> inquiry | Take the ferry across the bay. | ferry_entry |  | !b3q_ferry & count:b3q_>=1 | You have taken that ferry, or you have not yet learned enough of the town to find it.
-> quiet | Climb the spur to the Salt Lamp. | lamp_entry |  | !b3q_lamp & count:b3q_>=2 | You have been to the Lamp, or you have not yet learned enough of the town to climb it.
-> truth | Walk the length of Cooper Lane to the dye-works. | ward_entry |  | !b3q_ward & count:b3q_>=2 | You have been to the Ward, or you have not yet learned enough of the town to find it.
-> mercy | Climb the ladder to the Sing-Loft above the fish market. | keeners_entry |  | !b3q_keeners & count:b3q_>=2 | You have sung with the keeners, or you have not yet learned enough of the town to find the loft.
-> force | Take the ferry to the Salt Works, and ask for the seal-wright. | forge_entry |  | !b3q_forge & b3q_ferry | You have not yet crossed the bay with the ferrywoman, or you have already met the seal-wright.
-> mercy | Climb the hill road to the House of Gentle Hands, where a boy has gone alone. | house_entry |  | !b3q_house & b3q_ward & count:b3q_>=3 | The House stands closed to you until the Ward has told you what it knows, or you have already been.
-> inquiry | Find Hao Lan on the sea steps, writing the same two characters over and over. | sixth_entry |  | !b3q_sixth & b3q_mourning | She has already said it, or you have not yet met the woman who can answer her.
-> truth | Go down to the cellar under the lamp, where the Hollow Lotus has been summoned. | lotus_entry |  | !b3q_lotus & b3q_mourning & b3q_lamp & count:b3q_>=5 | The Court has not yet been convened, or has already sat.
-> force | Go down to the foot of the Wall at the spring ebb, when the Library opens. | tidedoor_entry |  | !b3q_tidedoor & b3q_lamp & count:b3q_>=6 | The ebb has not yet come, or the Library is not yet a thing you can find.
-> inquiry | Go down the steps under the sign that says PLEASE DO NOT READ THE DEAD ALOUD. | stacks_entry |  | !b3q_stacks & b3q_tidedoor | You have not yet been in the Library, or you have already walked its Stacks.
+> truth | Walk the length of the Wall, and read what is carved there. | harbour_entry |  | !b3q_harbour & !b3q_sails | You have read the Wall.
+> mercy | Find the mourning-shop at the top of Bell Lane. | mourning_entry |  | !b3q_mourning & count:b3q_>=1 & !b3q_sails | You have been to the mourning-shop, or you have not yet learned enough of the town to find it.
+> inquiry | Take the ferry across the bay. | ferry_entry |  | !b3q_ferry & count:b3q_>=1 & !b3q_sails | You have taken that ferry, or you have not yet learned enough of the town to find it.
+> quiet | Climb the spur to the Salt Lamp. | lamp_entry |  | !b3q_lamp & count:b3q_>=2 & !b3q_sails | You have been to the Lamp, or you have not yet learned enough of the town to climb it.
+> truth | Walk the length of Cooper Lane to the dye-works. | ward_entry |  | !b3q_ward & count:b3q_>=2 & !b3q_sails | You have been to the Ward, or you have not yet learned enough of the town to find it.
+> mercy | Climb the ladder to the Sing-Loft above the fish market. | keeners_entry |  | !b3q_keeners & count:b3q_>=2 & !b3q_sails | You have sung with the keeners, or you have not yet learned enough of the town to find the loft.
+> force | Take the ferry to the Salt Works, and ask for the seal-wright. | forge_entry |  | !b3q_forge & b3q_ferry & !b3q_sails | You have not yet crossed the bay with the ferrywoman, or you have already met the seal-wright.
+> mercy | Climb the hill road to the House of Gentle Hands, where a boy has gone alone. | house_entry |  | !b3q_house & b3q_ward & count:b3q_>=3 & !b3q_sails | The House stands closed to you until the Ward has told you what it knows, or you have already been.
+> inquiry | Find Hao Lan on the sea steps, writing the same two characters over and over. | sixth_entry |  | !b3q_sixth & b3q_mourning & !b3q_sails | She has already said it, or you have not yet met the woman who can answer her.
+> truth | Go down to the cellar under the lamp, where the Hollow Lotus has been summoned. | lotus_entry |  | !b3q_lotus & b3q_mourning & b3q_lamp & count:b3q_>=5 & !b3q_sails | The Court has not yet been convened, or has already sat.
+> force | Go down to the foot of the Wall at the spring ebb, when the Library opens. | tidedoor_entry |  | !b3q_tidedoor & b3q_lamp & count:b3q_>=6 & !b3q_sails | The ebb has not yet come, or the Library is not yet a thing you can find.
+> inquiry | Go down the steps under the sign that says PLEASE DO NOT READ THE DEAD ALOUD. | stacks_entry |  | !b3q_stacks & b3q_tidedoor & !b3q_sails | You have not yet been in the Library, or you have already walked its Stacks.
+> mercy | Find the gallery that smells of rain on hot stone, where the banned songs are kept. | pao_entry |  | !b3q_pao & b3q_stacks & !b3q_sails | You have not yet walked the Stacks, or you have already sung in the gallery.
+> truth | Take the Well stair down, nine hundred and ninety-nine steps, to the saint’s room. | fifth_entry |  | !b3q_fifth & b3q_stacks & b3q_pao & !b3q_sails | You have not yet earned the Reader's trust, or you have already stood at the saint's desk.
+> force | Go up on the Wall at first light, where the bells are ringing for the fleet. | ninesails_entry |  | !b3q_sails & count:b3q_>=8 | The fleet has not yet come, or has already come.
+> force | The chain is closing. Go down to the last block on the Wall. | chain_entry |  | b3q_sails & !b3q_chain | The fleet has not yet come.
+
+=== b3_close | What the Coast Gave
+The fleet is gone by evening. It goes out on the ebb, nine sails in a long curved line, with a signal-flag at every masthead that says Returning. The Wall watches it go. The harbour is full of boats. Somebody has hung bunting along the quay, out of sheer excitement, and nobody has the heart to take it down.
++[w] chain_unwritten | A hundred and four names sank into the Wall like rain, and the town woke up knowing them.
++[w] chain_ke_er_chose | A child under the stone said not mine, and the whole Wall sang it.
++[w] chain_duan_freed | An old Admiral gave up his sword, and a Censor-General walked down a gangplank.
++[w] chain_forced | Seven anchor-rings lie open on the waterline, and nobody will touch them.
++[w] chain_asked_wound | The last link said it would go home.
++[c] count:card_>=8 | Eight brown cards lie in your sleeve, and the ninth is the one you were given.
++[c] count:card_>=5 | Five or six brown cards lie in your sleeve, and they hum when they touch.
+Madam Ash has given the Elder a room at the back of the shop. Hao Lan has a desk by the window. Lu Yan has a cot and a patient and a roof garden that is turning blue. The Wall hums. In a month, Mei Qiu will have a window cut for her sister.
+It is the end of the Salt Coast. You can feel it, as you can feel the end of a tide. Something has been done here, and something is about to begin.
+> truth | Walk the length of the Wall one last time. | b3_close2
+> mercy | Go and say goodbye to Ah Zhi. | b3_close2
+> quiet | Sit on the sea steps with the Elder. | b3_close2
+> inquiry | Ask Hao Lan what is in the post. | b3_close2
+
+=== b3_close2 | A Message from the Mountain
+The pigeon comes at dusk. It flutters down onto the sill of the Ferryman’s Rest, wet and grey, with a tin tube strapped to its leg and a streak of ash across its breast. Mother Tiao finds it. She brings it up the stairs with an expression of deep suspicion, holding it at arm’s length.
+“It’s for the old lady,” she says. “I don’t trust it.”
+The tube holds a scrap of rice-paper no bigger than a thumb. The writing on it is minute and cramped and has been done in a great hurry, by a hand that shakes. The Elder holds it to the lamp and reads it aloud, in a flat dry voice.
+“‘Elder. Master Lian and Master Hu have returned with the Second Order and forty guards. They hold the Law Hall. They have asked for the keys. I have locked myself in the Ash Archive with Old Lin and the cat. They are at the door. They say they will wait. I have food for eleven days. —L.Y.’”
+She puts the paper down.
+“Lin Yuan,” she says.
+> truth | Say you must go back. | b3_close3
+> mercy | Take the Elder’s hand. | b3_close3
+> quiet | Look at the pigeon. | b3_close3
+> inquiry | Ask how far. | b3_close3
+
+=== b3_close3 | Which Way Home
+“Nine hundred miles,” says Hao Lan. She has the map out on the bed, weighted at the corners with Mother Tiao’s teacups. “By the river road, it is forty days. By the Assembly’s post-road, thirty. By the Ash Steppe, if the Steppe will let us, eighteen.”
+“Will it?” says Gu.
+“It is not a place that lets,” says Madam Ash. She is sitting in the corner with her hands folded, a black shape against the lamp. “It is a place that decides. The Listeners keep it. They are the last of the Order of the Torn Page. They do not care for the Concord, or for me.” She almost smiles. “But I know the way in. I have a letter. It is eleven years old.”
+“Who is it to?”
+“The woman who will decide.”
+Everyone looks at the Elder. She is staring at the pigeon on the sill.
+“We go,” she says. “At first light.” Her voice is quite steady. “I have kept the wrong things long enough.”
+> truth | Say you are ready. | b4_gate
+> mercy | Say goodbye to the town. | b4_gate
+> quiet | Pack. | b4_gate
+> inquiry | Ask Madam Ash for the letter. | b4_gate
 `,
 };

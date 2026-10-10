@@ -105,3 +105,7 @@ Yu Ling wrote one line on the back of every reserve card in the year before she 
 | VII | Keep what is small. | Keep (Tian) |
 | VIII | Open what is shut. | Open (Lin Yuan) |
 | IX | She will ask. Answer her. | Answer (the player) |
+
+### Ages and years (fixed in Book Three)
+
+On the Sealing Night (fifteen years before the story) the Elder was 28 and the nine children were: I Ah Zhi 10, II Lu Yan 9, III Bao Er 8, IV Qiu 9, V Shu Ning 8, VI Hao Lan 6, VII Tian 4, VIII Lin Yuan 2, IX the Wanderer 5. Hao Lan was placed in the Tidewall Chancery by Madam Ash three years later, at nine, through Wen Rui. Mei Qiu was 9 when her sister Ke-er (11) was sealed under the Salt Coast, nineteen years before the story. Yu Ling lived seven hundred years ago, at the founding of the Azure Cloud Sect; she wrote the Nine Cards, which lay on the rails of the Law Hall’s reserve cots from reserve to reserve until the Elder took IX and VIII off them on the Sealing Night. The Drowned Library (the Annex of Struck Leaves) was founded by Yu Ling and flooded in the Great Tide, 180 years ago; its paper staff stayed.
