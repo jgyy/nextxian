@@ -1,5 +1,9 @@
+import { REALMS } from "./cultivation";
 import { CHOICE_TONES } from "./tone";
 import type { ChoiceTone, Condition, GameState, Mood, NpcScenario, NpcState, RespectTier, Tier } from "./types";
+
+/** Flags starting with this mark a finished side road. The `roads` condition counts them. */
+export const ROAD_DONE_PREFIX = "road_done_";
 
 /** Tiers from coldest to warmest. Used to tell whether a change moved her up or down. */
 const TIER_ORDER: Tier[] = ["hostile", "wary", "neutral", "warm", "devoted"];
@@ -94,6 +98,30 @@ export function mannerShiftLine(before: ChoiceTone[], after: ChoiceTone[]): stri
   return to !== undefined && to !== mannerOf(before) ? MANNER_SHIFT[to] : undefined;
 }
 
+/**
+ * What she says when the player breaks through to a new realm. Keyed by the realm they arrive at, so
+ * a player who skips ahead still gets a line that fits. She always styles them by their new realm.
+ */
+export const REALM_SHIFT: Record<number, string> = {
+  1: "There is qi in you now. I felt it from across the hall, thin as a spider’s thread. You are no longer a mortal, Wanderer, and the Law has fewer excuses for you.",
+  2: "A foundation. Most of my disciples spend years on that floor, and you laid it between one bell and the next. Do not mistake speed for depth. Depth is what holds when the mist comes up.",
+  3: "A core, and a bright one. The hall’s lamps leaned toward you when it formed. Power of that kind is not a gift, Wanderer. It is a debt that has not yet been named.",
+  4: "A nascent soul. I have met four people who could say that in my lifetime, and I buried two of them. Walk carefully. Everything that lives longer than it should is hunted by what has already died.",
+  5: "You have severed your spirit from your own name. I cannot tell any longer whether I am speaking to the person who climbed my steps or to something that borrowed her shoes. I choose to believe it is still you.",
+  6: "You are seeking the Dao. I am only an elder of a small sect with a locked hall and a missing seal, and I have nothing left to teach you. I can only ask that you remember who held the door.",
+  7: "Ascendant. The Azure Cloud Sect will write your name on a tablet no one will be able to reach. I would rather have kept the mortal who stood dripping at my gate. I did not know I would say so.",
+};
+
+/** The line for a breakthrough to a higher realm, or undefined when the realm did not change. */
+export function realmShiftLine(from: number, to: number): string | undefined {
+  return to > from ? REALM_SHIFT[to] : undefined;
+}
+
+/** How she names the player at their realm: "mortal", "Qi Condenser" and so on. */
+export function styleFor(realm: number): string {
+  return REALMS[Math.min(Math.max(realm, 0), REALMS.length - 1)].styled;
+}
+
 /** The band her respect falls in. Respect is earned by what she sees the player do, and it gates some choices. */
 export function respectTierFor(respect: number): RespectTier {
   if (respect <= -25) return "contempt";
@@ -151,7 +179,7 @@ export interface NpcReaction {
  */
 export function reactToScenario(
   scenario: NpcScenario,
-  state: Pick<GameState, "npc" | "flags" | "stats" | "history" | "tones">,
+  state: Pick<GameState, "npc" | "flags" | "stats" | "history" | "tones"> & { realm?: number },
 ): NpcReaction {
   const tier = tierFor(state.npc.trust);
   const memory = scenario.memory?.find((m) => conditionsHold(m.when, state));
@@ -165,7 +193,7 @@ export function reactToScenario(
 /** True when every condition holds. An empty or missing list always holds. */
 export function conditionsHold(
   conditions: Condition[] | undefined,
-  state: Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones">,
+  state: Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones"> & { realm?: number },
 ): boolean {
   return (conditions ?? []).every((c) => {
     switch (c.kind) {
@@ -188,6 +216,14 @@ export function conditionsHold(
         const t = state.tones;
         const recent = c.within === undefined ? t : t.slice(Math.max(0, t.length - c.within));
         return recent.filter((x) => x === c.tone).length >= (c.min ?? 1);
+      }
+      case "realm": {
+        const v = state.realm ?? 0;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "roads": {
+        const v = Object.entries(state.flags).filter(([flag, on]) => on && flag.startsWith(ROAD_DONE_PREFIX)).length;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
       }
     }
   });

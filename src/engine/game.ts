@@ -1,8 +1,10 @@
+import { gainCultivation, TONE_GAIN } from "./cultivation";
 import {
   conditionsHold,
   mannerShiftLine,
   moodFor,
   moodShiftLine,
+  realmShiftLine,
   reactToScenario,
   respectShiftLine,
   respectTierFor,
@@ -58,6 +60,8 @@ export function createGame(story: Story): GameState {
     flags: {},
     history: [],
     tones: [],
+    cultivation: 0,
+    realm: 0,
     log: [],
     visited: [],
   };
@@ -94,6 +98,8 @@ export function applyEffects(state: GameState, effects: Effect[] = []): GameStat
         const value = clamp(s.stats[effect.stat] + effect.amount, STAT_RANGE[effect.stat]);
         return { ...s, stats: { ...s.stats, [effect.stat]: value } };
       }
+      case "addCultivation":
+        return { ...s, cultivation: s.cultivation + effect.amount };
       case "addNpc": {
         const value = clamp(s.npc[effect.metric] + effect.amount, NPC_RANGE[effect.metric]);
         return { ...s, npc: { ...s.npc, [effect.metric]: value } };
@@ -152,12 +158,14 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
   }
 
   next = applyEffects(next, choice.effects);
+  next = gainCultivation(next, TONE_GAIN[choice.tone]);
   next = noticeAttitude(story, state, next);
   return enterScene(story, next, getScene(story, choice.next));
 }
 
 /**
- * If the choice moved the Elder to another attitude tier, she says so. If only her
+ * If the choice carried the player into a higher cultivation realm, she says so first. Otherwise,
+ * if the choice moved the Elder to another attitude tier, she says so. If only her
  * face changed, because fear or suspicion took hold or let go, she says that instead.
  * If her respect for the player moved into another band, she says so. If the player's
  * manner has settled on a new tone, she names it. Only one of these is said per choice.
@@ -166,6 +174,7 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
  */
 function noticeAttitude(story: Story, before: GameState, after: GameState): GameState {
   const line =
+    realmShiftLine(before.realm, after.realm) ??
     tierShiftLine(tierFor(before.npc.trust), tierFor(after.npc.trust)) ??
     moodShiftLine(moodFor(before.npc), moodFor(after.npc)) ??
     respectShiftLine(respectTierFor(before.npc.respect), respectTierFor(after.npc.respect)) ??
