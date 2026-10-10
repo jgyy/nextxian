@@ -1,4 +1,4 @@
-import type { Condition, GameState, NpcScenario, NpcState, Tier } from "./types";
+import type { Condition, GameState, Mood, NpcScenario, NpcState, Tier } from "./types";
 
 /** Maps the NPC's trust score to the tier that picks which line she speaks. */
 export function tierFor(trust: number): Tier {
@@ -7,6 +7,27 @@ export function tierFor(trust: number): Tier {
   if (trust < 15) return "neutral";
   if (trust < 50) return "warm";
   return "devoted";
+}
+
+/**
+ * Fear and suspicion override trust for the face she shows. A frightened or
+ * suspicious elder looks that way even when her trust is high.
+ */
+export function moodFor(npc: NpcState): Mood {
+  if (npc.fear >= 50) return "afraid";
+  if (npc.suspicion >= 65) return "suspicious";
+  switch (tierFor(npc.trust)) {
+    case "hostile":
+      return "furious";
+    case "wary":
+      return "guarded";
+    case "neutral":
+      return "stern";
+    case "warm":
+      return "softened";
+    case "devoted":
+      return "tender";
+  }
 }
 
 export interface NpcReaction {

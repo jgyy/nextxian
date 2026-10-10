@@ -5,9 +5,9 @@ The game is split into a pure story engine and a thin React shell. The engine ha
 ```mermaid
 flowchart LR
   subgraph Story["src/story (content)"]
-    C1[chapter-1.ts]
-    C2[chapter-2.ts]
-    C3[chapter-3.ts]
+    C1[chapter-1..2.ts]
+    C3[chapter-3..10.ts<br/>eight new chapters]
+    C11[chapter-11.ts<br/>judgment and endings]
     NPC[npc/elder-su.ts]
   end
   subgraph Engine["src/engine (pure logic)"]
@@ -17,13 +17,14 @@ flowchart LR
     T[types.ts]
   end
   subgraph UI["src/components + app/"]
-    GV[GameView.tsx]
-    NP[NpcPanel.tsx]
+    GV[GameView.tsx<br/>VN stage + backlog]
+    NP[NpcPanel.tsx<br/>portrait + mood]
     SP[StatsPanel.tsx]
   end
-  C1 & C2 & C3 & NPC --> S[story/index.ts]
+  C1 & C3 & C11 & NPC --> S[story/index.ts]
   S --> G
   G --> N
+  N --> M[moodFor]
   V -. checked in tests .-> S
   G --> GV
   GV --> NP & SP
@@ -72,9 +73,49 @@ stateDiagram-v2
   Hostile --> Wary: trust > -40
 ```
 
+## Chapter map
+
+Reading order is set in `src/story/index.ts`. Each chapter ends by linking into the next one's first scene. The judgment in chapter eleven has five endings, and the Sisters’ Dao ending needs Mengjiao freed on the Sealing Night.
+
+```mermaid
+flowchart LR
+  C1[1 The Stolen Seal] --> C2[2 The Crimson Abyss]
+  C2 --> C3[3 The Ash Archive]
+  C3 --> C4[4 The Sutra Door]
+  C4 --> C5[5 The Blood Lotus Sutra]
+  C5 --> C6[6 The Jade Eye]
+  C6 --> C7[7 The Tribunal of Bells]
+  C7 --> C8[8 The Second Descent]
+  C8 --> C9[9 The Mist Remembers Mengjiao]
+  C9 --> C10[10 The Sealing Night]
+  C10 --> C11[11 The Judgment]
+  C11 --> E1[Long Road Down]
+  C11 --> E2[Law Remembers Mercy]
+  C11 --> E3[Black Lotus Blooms]
+  C11 --> E4[Keeper of Bars]
+  C11 --> E5[Sisters Dao]
+  C10 -. freed Mengjiao .-> C11
+```
+
+## Visual novel stage
+
+The stage shows only the current beat. `currentBeat` starts at the player’s latest choice, so the previous scene is hidden. The backlog shows the full log.
+
+```mermaid
+flowchart TD
+  L[game.log] --> B{any player entry?}
+  B -- no --> F[show whole log]
+  B -- yes --> S[slice from last player entry]
+  S --> V[VN stage]
+  L --> K[Backlog toggle]
+  K --> A[full log]
+```
+
 ## Scenarios
 
-The Elder reacts to fifteen scenarios. Each has five tier lines. Some have memory overrides.
+The Elder reacts to thirty-six scenarios. Each has five tier lines. Some have memory overrides. Scenes can also carry NPC interjections, which she speaks unprompted when her metrics or flags cross a threshold.
+
+The table lists the original fifteen. The other twenty-one are in `src/story/npc/elder-su.ts`.
 
 | Scenario | Triggered by | Memory override |
 | --- | --- | --- |

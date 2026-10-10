@@ -4,6 +4,7 @@ import type {
   ChoiceView,
   Effect,
   GameState,
+  LogEntry,
   NpcMetric,
   NpcState,
   PlayerStat,
@@ -48,18 +49,26 @@ export function createGame(story: Story): GameState {
     log: [],
     visited: [],
   };
-  return enterScene(empty, getScene(story, story.startSceneId));
+  return enterScene(story, empty, getScene(story, story.startSceneId));
 }
 
-/** Appends a scene's text to the log and records it as visited. */
-function enterScene(state: GameState, scene: Scene): GameState {
+/**
+ * Appends a scene's text to the log and records it as visited. Extra paragraphs
+ * and NPC interjections are added only when their conditions hold, so the NPC
+ * can speak up about what the player has become.
+ */
+function enterScene(story: Story, state: GameState, scene: Scene): GameState {
   const extra = (scene.extras ?? [])
     .filter((x) => conditionsHold(x.when, state))
     .flatMap((x) => x.paragraphs);
+  const interjections = (scene.interjections ?? [])
+    .filter((x) => conditionsHold(x.when, state))
+    .map((x) => ({ kind: "npc" as const, speaker: story.npc.name, text: x.line }));
   const log = [
     ...state.log,
     { kind: "heading" as const, text: scene.title },
     ...[...scene.paragraphs, ...extra].map((text) => ({ kind: "narration" as const, text })),
+    ...interjections,
   ];
   return { ...state, sceneId: scene.id, log, visited: [...state.visited, scene.id] };
 }
@@ -129,7 +138,7 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
   }
 
   next = applyEffects(next, choice.effects);
-  return enterScene(next, getScene(story, choice.next));
+  return enterScene(story, next, getScene(story, choice.next));
 }
 
 export function applyNpcDelta(npc: NpcState, delta: Partial<NpcState>): NpcState {
@@ -138,4 +147,16 @@ export function applyNpcDelta(npc: NpcState, delta: Partial<NpcState>): NpcState
     out[key] = clamp(npc[key] + (delta[key] ?? 0), NPC_RANGE[key]);
   }
   return out;
+}
+
+/**
+ * The part of the log the visual novel stage shows. It starts at the player's
+ * latest choice, so earlier scenes stay out of view until the player opens the
+ * backlog. Before any choice, it starts at the first scene.
+ */
+export function currentBeat(log: LogEntry[]): LogEntry[] {
+  for (let i = log.length - 1; i >= 0; i--) {
+    if (log[i].kind === "player") return log.slice(i);
+  }
+  return log;
 }

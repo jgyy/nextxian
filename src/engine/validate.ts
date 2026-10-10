@@ -1,7 +1,7 @@
 import type { Story, Tier } from "./types";
 
 export const MIN_CHOICES = 4;
-export const MIN_NPC_SCENARIOS = 10;
+export const MIN_NPC_SCENARIOS = 25;
 const TIERS: Tier[] = ["hostile", "wary", "neutral", "warm", "devoted"];
 
 /** Returns a list of problems in the story. An empty list means the story is sound. */
@@ -19,6 +19,11 @@ export function validateStory(story: Story): string[] {
     }
     if (scene.ending !== undefined && scene.choices.length > 0) {
       problems.push(`ending scene "${scene.id}" should not have choices`);
+    }
+    for (const x of scene.interjections ?? []) {
+      if (!x.line || x.line.trim() === "") {
+        problems.push(`scene "${scene.id}" has an empty NPC interjection`);
+      }
     }
     const ids = new Set<string>();
     for (const choice of scene.choices) {

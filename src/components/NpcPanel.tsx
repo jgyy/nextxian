@@ -1,5 +1,5 @@
-import type { NpcMetric, NpcProfile, NpcState } from "@/engine/types";
-import { tierFor } from "@/engine/npc";
+import type { Mood, NpcMetric, NpcProfile, NpcState } from "@/engine/types";
+import { moodFor, tierFor } from "@/engine/npc";
 import { NPC_RANGE } from "@/engine/game";
 
 const TIER_LABEL = {
@@ -9,6 +9,16 @@ const TIER_LABEL = {
   warm: "Warm",
   devoted: "Devoted",
 } as const;
+
+const MOOD_LABEL: Record<Mood, string> = {
+  furious: "Furious",
+  afraid: "Afraid",
+  suspicious: "Suspicious",
+  guarded: "Guarded",
+  stern: "Stern",
+  softened: "Softened",
+  tender: "Tender",
+};
 
 const METRIC_LABEL: Record<NpcMetric, string> = {
   trust: "Trust",
@@ -32,13 +42,26 @@ export function NpcPanel({
   lastLine?: string;
 }) {
   const tier = tierFor(npc.trust);
+  const mood = moodFor(npc);
   return (
     <section className="card npc-card" aria-labelledby="npc-name">
-      <p className="eyebrow">Companion of the story</p>
-      <h2 id="npc-name">{profile.name}</h2>
-      <p className="muted">{profile.title}</p>
+      <div className="portrait-row">
+        <div className={`portrait mood-${mood}`} data-mood={mood} aria-hidden="true">
+          <span className="portrait-glyph">苏</span>
+        </div>
+        <div className="npc-id">
+          <p className="eyebrow">Companion of the story</p>
+          <h2 id="npc-name">{profile.name}</h2>
+          <p className="muted">{profile.title}</p>
+        </div>
+      </div>
+
       <p className="tier" data-tier={tier}>
-        Attitude: <strong>{TIER_LABEL[tier]}</strong>
+        Attitude <strong>{TIER_LABEL[tier]}</strong>
+        <span className="sep" aria-hidden="true">
+          ·
+        </span>
+        Mood <strong className="mood-word">{MOOD_LABEL[mood]}</strong>
       </p>
 
       <dl className="meters">
