@@ -502,10 +502,10 @@ His voice breaks. He clears his throat.
 “You’re doing fine,” says Moth, with her mouth full.
 Tian bursts out laughing. He wipes his nose on his sleeve. Then, abruptly, he pulls a brown card from his shirt and thrusts it at you, scowling.
 “Here. Seven. Keep what is small. Take it. I don’t need it any more. I’ve got the original.”
-> truth | Take it. | hub_b3_coast | +card_7 +b3q_house
-> mercy | Hug him. | hub_b3_coast | +card_7 +b3q_house
-> quiet | Pocket it. | hub_b3_coast | +card_7 +b3q_house
-> inquiry | Ask what the original is. | hub_b3_coast | +card_7 +b3q_house
+> truth | Take it. | hub_b3_coast | +card_7 +b3q_house bond:tian+3
+> mercy | Hug him. | hub_b3_coast | +card_7 +b3q_house bond:tian+3
+> quiet | Pocket it. | hub_b3_coast | +card_7 +b3q_house bond:tian+3
+> inquiry | Ask what the original is. | hub_b3_coast | +card_7 +b3q_house bond:tian+3
 `,
   scenarios: String.raw`
 $ SU_HOUSE_CHILDREN | trust+4 respect+2 fear+2 | elder | The Elder sees the dormitory of forty children who have been given a tea that takes their names.

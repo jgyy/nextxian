@@ -467,10 +467,10 @@ She squeezes your arm.
 “Come on. If Mother sees me weeping in the lane she will charge me for the lamp.”
 She laughs, and runs, and the lane takes her.
 You stand under the lamp. The wind brings the smell of salt and old paper. Up on the spur, above the roofs, the lighthouse is dark.
-> truth | Walk down to the quay. | hub_b3_coast | +b3q_mourning
-> quiet | Stay a moment longer in the lamplight. | hub_b3_coast | +b3q_mourning
-> mercy | Go back to the inn, and tell the Elder. | hub_b3_coast | +b3q_mourning
-> inquiry | Look up at the lighthouse. | hub_b3_coast | +b3q_mourning
+> truth | Walk down to the quay. | hub_b3_coast | +b3q_mourning bond:ash+3
+> quiet | Stay a moment longer in the lamplight. | hub_b3_coast | +b3q_mourning bond:ash+3
+> mercy | Go back to the inn, and tell the Elder. | hub_b3_coast | +b3q_mourning bond:ash+3
+> inquiry | Look up at the lighthouse. | hub_b3_coast | +b3q_mourning bond:ash+3
 `,
   scenarios: String.raw`
 $ SU_MOURNING_ASH | trust+3 respect+2 fear+3 | elder | The Elder hears what Madam Ash said of the fire and of the choice at the door.

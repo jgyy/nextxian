@@ -487,10 +487,10 @@ She sniffs.
 “It took you to show me. You held a broken thing and asked it what it wanted. That’s all. That is the whole of the craft.” She presses the card into your hand. “I don’t say thank you. I think I’ve said it in other ways.”
 The card is warm from her pocket. It joins the others with a click like a latch.
 “I’m going to ask the chain,” she says. “Before I break it. I’m going to give it the courtesy.” She almost smiles. “Don’t tell anyone I said that.”
-> truth | Promise. | hub_b3_coast | +b3q_forge
-> mercy | Bow. | hub_b3_coast | +b3q_forge
-> quiet | Leave her to the forge. | hub_b3_coast | +b3q_forge
-> inquiry | Ask when she will come to the Wall. | hub_b3_coast | +b3q_forge
+> truth | Promise. | hub_b3_coast | +b3q_forge bond:shu+3
+> mercy | Bow. | hub_b3_coast | +b3q_forge bond:shu+3
+> quiet | Leave her to the forge. | hub_b3_coast | +b3q_forge bond:shu+3
+> inquiry | Ask when she will come to the Wall. | hub_b3_coast | +b3q_forge bond:shu+3
 `,
   scenarios: String.raw`
 $ SU_FORGE_TEST | trust+3 respect+4 | elder | The Elder hears how a broken seal asked to be asked, and how a seal-wright made a chain that unwrites.

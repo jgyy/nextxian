@@ -532,10 +532,10 @@ Duan Wuyi unties the cord himself. It falls on the sand. Fang rubs his wrists. H
 “Thank you,” he says.
 He turns and walks down to the pinnace, and steps in, and sits with his hands in his lap. The Lotus fishermen row him out. The little boat dwindles across the grey water toward the flagship.
 He does not look back.
-> truth | Watch him go. | b3_close
-> mercy | Wave. | b3_close
-> quiet | Turn away. | b3_close
-> inquiry | Ask Duan what he will do. | b3_close
+> truth | Watch him go. | b3_close | bond:mei+2 bond:duan+2 bond:kou+1
+> mercy | Wave. | b3_close | bond:mei+2 bond:duan+2 bond:kou+1
+> quiet | Turn away. | b3_close | bond:mei+2 bond:duan+2 bond:kou+1
+> inquiry | Ask Duan what he will do. | b3_close | bond:mei+2 bond:duan+2 bond:kou+1
 
 `,
   scenarios: String.raw`

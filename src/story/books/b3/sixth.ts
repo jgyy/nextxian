@@ -496,10 +496,10 @@ The card is soft and warm. The numeral is VI. On the back, the faded line, in a 
 You hold it with the others, six now, in a fan. They click, one by one, into place.
 “Go on,” says Hao Lan. “The Concord will be here in a week. Someone should draft a list of what to take.”
 She is already reaching for a fresh sheet of paper.
-> truth | Promise to return it. | hub_b3_coast | +b3q_sixth
-> mercy | Thank her. | hub_b3_coast | +b3q_sixth
-> quiet | Leave her to write. | hub_b3_coast | +b3q_sixth
-> inquiry | Ask if she is still a Censor. | hub_b3_coast | +b3q_sixth
+> truth | Promise to return it. | hub_b3_coast | +b3q_sixth bond:hao+3
+> mercy | Thank her. | hub_b3_coast | +b3q_sixth bond:hao+3
+> quiet | Leave her to write. | hub_b3_coast | +b3q_sixth bond:hao+3
+> inquiry | Ask if she is still a Censor. | hub_b3_coast | +b3q_sixth bond:hao+3
 
 `,
   scenarios: String.raw`

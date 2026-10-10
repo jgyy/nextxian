@@ -468,10 +468,10 @@ The card is warm. It fits against the others with a faint, small click.
 “You must go,” she says. “The Concord is coming in nine days. I will keep the light. I will watch the sea. And when the tide is at the lowest, I will flash. You will know.”
 She tilts the mirror, and a bright spot of gold dances across the glass. Three short, two long.
 Good morning, says the Lamp.
-> truth | Flash it back. | hub_b3_coast | +b3q_lamp
-> mercy | Say good night. | hub_b3_coast | +b3q_lamp
-> quiet | Bow, and go. | hub_b3_coast | +b3q_lamp
-> inquiry | Ask how she will know you are listening. | hub_b3_coast | +b3q_lamp
+> truth | Flash it back. | hub_b3_coast | +b3q_lamp bond:qiu+3
+> mercy | Say good night. | hub_b3_coast | +b3q_lamp bond:qiu+3
+> quiet | Bow, and go. | hub_b3_coast | +b3q_lamp bond:qiu+3
+> inquiry | Ask how she will know you are listening. | hub_b3_coast | +b3q_lamp bond:qiu+3
 `,
   scenarios: String.raw`
 $ SU_LAMP_MIRROR | trust+5 respect+2 fear-3 | elder | The Elder answers a mirror across fifteen years and climbs four hundred stairs to a girl who said good morning.

@@ -468,10 +468,10 @@ You take the card. It is faded and soft. It fits against the others with a click
 “Go on,” she says. “I have a ward to run. Tell the Elder she may visit. Tell her to wash her hands.”
 She almost smiles.
 “Tell her I do not hate her. It is not nearly so interesting as that. I think I am merely tired.”
-> truth | Promise to tell her. | hub_b3_coast | +b3q_ward
-> mercy | Hug her. | hub_b3_coast | +b3q_ward
-> quiet | Bow, and leave. | hub_b3_coast | +b3q_ward
-> inquiry | Ask about the House of Gentle Hands. | hub_b3_coast | +b3q_ward
+> truth | Promise to tell her. | hub_b3_coast | +b3q_ward bond:luyan+3
+> mercy | Hug her. | hub_b3_coast | +b3q_ward bond:luyan+3
+> quiet | Bow, and leave. | hub_b3_coast | +b3q_ward bond:luyan+3
+> inquiry | Ask about the House of Gentle Hands. | hub_b3_coast | +b3q_ward bond:luyan+3
 `,
   scenarios: String.raw`
 $ SU_WARD_SHIFT | trust+3 respect+3 | elder | The Elder watches the player take a shift in the Dust Ward and sees her own old seal on the dust.

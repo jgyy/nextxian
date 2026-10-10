@@ -461,10 +461,10 @@ She rubs her nose.
 “I have to learn the ninth,” she says. “There is a ninth. There is always a ninth.” She looks at the sea. “I wonder what it says.”
 The card is warm. It fits against the others with a small, quiet click.
 “Go on,” she says. “I need to practise.”
-> truth | Promise to bring the ninth. | hub_b3_coast | +b3q_keeners
-> mercy | Hug her. | hub_b3_coast | +b3q_keeners
-> quiet | Leave her singing. | hub_b3_coast | +b3q_keeners
-> inquiry | Ask what the ninth might be. | hub_b3_coast | +b3q_keeners
+> truth | Promise to bring the ninth. | hub_b3_coast | +b3q_keeners bond:baoer+3
+> mercy | Hug her. | hub_b3_coast | +b3q_keeners bond:baoer+3
+> quiet | Leave her singing. | hub_b3_coast | +b3q_keeners bond:baoer+3
+> inquiry | Ask what the ninth might be. | hub_b3_coast | +b3q_keeners bond:baoer+3
 `,
   scenarios: String.raw`
 $ SU_KEENERS_LAMENT | trust+4 respect+2 | elder | The Elder listens to the choir keen the struck by name in a loft above the fish market.

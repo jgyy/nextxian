@@ -456,10 +456,10 @@ She presses the card into your hand.
 “You will want it,” she says. “For whatever comes. I do not think it is mine to keep.”
 It is soft as cloth. On the front, a numeral: I. On the back, in a faded hand, the line you know. You hold it for a moment against the card marked IX. They fit. You can feel it: a small, strange snick, like a key in a lock.
 “Come back and see me,” says Ah Zhi. “When you have found the rest. I will have a new boat by then. She will be called the Debt Paid.”
-> truth | Promise. | hub_b3_coast | +b3q_ferry
-> mercy | Hug her. | hub_b3_coast | +b3q_ferry
-> quiet | Tuck the cards away. | hub_b3_coast | +b3q_ferry
-> inquiry | Ask where Shu Ning is. | hub_b3_coast | +b3q_ferry
+> truth | Promise. | hub_b3_coast | +b3q_ferry bond:ahzhi+3
+> mercy | Hug her. | hub_b3_coast | +b3q_ferry bond:ahzhi+3
+> quiet | Tuck the cards away. | hub_b3_coast | +b3q_ferry bond:ahzhi+3
+> inquiry | Ask where Shu Ning is. | hub_b3_coast | +b3q_ferry bond:ahzhi+3
 `,
   scenarios: String.raw`
 $ SU_FERRY_SQUALL | trust+3 respect+3 fear-1 | elder | The Elder hears how Ah Zhi went over the side for a drowning child.

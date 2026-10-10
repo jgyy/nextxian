@@ -517,10 +517,10 @@ It is not a bow of fear. It is the bow of a staff to a Head Archivist, or a stud
 Mi stops. She lifts her small chin.
 “Thank you,” she says, in her clear carrying voice. “It is good to be back. I have been away a hundred and eighty years.”
 Then she walks up the aisle between the desks, in her too-big tunic, with her lamp held high, and the pens begin, softly, one by one, to write.
-> truth | Follow her. | hub_b3_coast
-> mercy | Hold the Elder’s arm. | hub_b3_coast
-> quiet | Look back. | hub_b3_coast
-> inquiry | Ask Hao Lan what she heard from the bay. | hub_b3_coast
+> truth | Follow her. | hub_b3_coast | bond:mi+3
+> mercy | Hold the Elder’s arm. | hub_b3_coast | bond:mi+3
+> quiet | Look back. | hub_b3_coast | bond:mi+3
+> inquiry | Ask Hao Lan what she heard from the bay. | hub_b3_coast | bond:mi+3
 
 `,
   scenarios: String.raw`

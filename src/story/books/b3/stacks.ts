@@ -525,10 +525,10 @@ You stare at it.
 She points. On the brown paper tag, in a small clerk’s hand you have seen on a hundred ledgers, is a note: Keep for the boy. —S.W.
 The Elder has gone absolutely white.
 “I did that,” she says. “Fifteen years ago. The night of the Sealing. I took it off the rail with the boy, and I put it in a drawer.” She puts her hand to her mouth. “I forgot I had done it.”
-> truth | Give her the card. | hub_b3_coast | +b3q_stacks +card_8
-> mercy | Hold her hand. | hub_b3_coast | +b3q_stacks +card_8
-> quiet | Pocket the card. | hub_b3_coast | +b3q_stacks +card_8
-> inquiry | Ask where Lin Yuan is. | hub_b3_coast | +b3q_stacks +card_8
+> truth | Give her the card. | hub_b3_coast | +b3q_stacks +card_8 bond:mi+3
+> mercy | Hold her hand. | hub_b3_coast | +b3q_stacks +card_8 bond:mi+3
+> quiet | Pocket the card. | hub_b3_coast | +b3q_stacks +card_8 bond:mi+3
+> inquiry | Ask where Lin Yuan is. | hub_b3_coast | +b3q_stacks +card_8 bond:mi+3
 
 `,
   scenarios: String.raw`

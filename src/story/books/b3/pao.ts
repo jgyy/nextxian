@@ -501,10 +501,10 @@ She grins.
 Behind her, at the desk, the paper-ghost has lifted her head. The ink moves. It writes, in small neat characters on her blank face, a line of music: nine bars, a rising fifth, and an open end.
 Then a word. Welcome.
 The lamp flickers. The jars hum their chord. And somewhere in the Library, far below, at the very bottom of the Well, a door that has been shut for seven hundred years makes a sound like a lock turning.
-> truth | Listen. | hub_b3_coast
-> mercy | Look down. | hub_b3_coast
-> quiet | Take Bao Er’s hand. | hub_b3_coast
-> inquiry | Ask the Reader what she heard. | hub_b3_coast
+> truth | Listen. | hub_b3_coast | bond:baoer+2
+> mercy | Look down. | hub_b3_coast | bond:baoer+2
+> quiet | Take Bao Er’s hand. | hub_b3_coast | bond:baoer+2
+> inquiry | Ask the Reader what she heard. | hub_b3_coast | bond:baoer+2
 
 `,
   scenarios: String.raw`

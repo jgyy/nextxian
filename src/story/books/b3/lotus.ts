@@ -513,10 +513,10 @@ You find that you are smiling. You cross the cellar and sit beside her at the lo
 “It is.”
 “I made it at noon.”
 You drink it. It is very bitter and very old, and it is the best tea you have ever had. Above, through the roof, you hear the faint hum of a mirror-signal. Three short, two long. Good night.
-> truth | Drink. | hub_b3_coast
-> mercy | Say good night. | hub_b3_coast
-> quiet | Stay. | hub_b3_coast
-> inquiry | Ask her about the fleet. | hub_b3_coast
+> truth | Drink. | hub_b3_coast | bond:ash+2
+> mercy | Say good night. | hub_b3_coast | bond:ash+2
+> quiet | Stay. | hub_b3_coast | bond:ash+2
+> inquiry | Ask her about the fleet. | hub_b3_coast | bond:ash+2
 
 `,
   scenarios: String.raw`

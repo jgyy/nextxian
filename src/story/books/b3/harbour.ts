@@ -441,10 +441,10 @@ She stands. The iron bar swings down at her side.
 “I am done with arithmetic. I will be your Inspector, if you will have me. Not the Concord’s. Yours. I will keep the seals you tell me to keep, and break the ones you tell me to break, and I will not count.”
 She holds out the bar, hilt first.
 “Take it,” she says. “It was the first thing the Concord gave me after. I have carried it nineteen years. I mean to give it to someone who knows what it weighs.”
-> truth | Take the bar, and say you will carry it. | hub_b3_coast | +b3q_harbour
-> quiet | Take it without a word. | hub_b3_coast | +b3q_harbour
-> mercy | Close her hand around it again, and say she should keep it. | hub_b3_coast | +b3q_harbour
-> inquiry | Ask her what it weighs. | hub_b3_coast | +b3q_harbour
+> truth | Take the bar, and say you will carry it. | hub_b3_coast | +b3q_harbour bond:mei+3
+> quiet | Take it without a word. | hub_b3_coast | +b3q_harbour bond:mei+3
+> mercy | Close her hand around it again, and say she should keep it. | hub_b3_coast | +b3q_harbour bond:mei+3
+> inquiry | Ask her what it weighs. | hub_b3_coast | +b3q_harbour bond:mei+3
 `,
   scenarios: String.raw`
 $ SU_HARBOUR_WALL | trust+4 respect+3 | elder | The Elder hears that the Wall is an invoice, and that a child is behind its last block.
