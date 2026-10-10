@@ -32,5 +32,20 @@ The Listeners are everywhere, and nowhere. A rider on a distant rise. A thread o
 > mercy | Follow the glitter on the southern horizon to the Glass Orchard. | glass_entry |  | !b4q_glass | You have already been to the Orchard.
 > quiet | Ride out to meet the salt caravan whose bells you can hear. | caravan_entry |  | !b4q_caravan | The caravan has already gone by.
 > inquiry | Turn the cart toward the black wall on the western horizon. | storm_entry |  | !b4q_storm | The storm has already blown through.
+> deceit | Follow the Listeners’ smoke north to the great ring of tents where the Matriarch sits. | camp_entry |  | !b4q_camp & count:b4q_>=5 | You have not yet learned where the Winter Camp is pitched.
+
+=== hub_b4_b | The Second Week
+The Winter Camp is a week behind you, and the Steppe has changed. The grass is shorter, the sky higher, the wind sharper. The hills have begun. Low folds of tawny rock heave up out of the plain, with dry riverbeds between them, and here and there a stunted pine. The Listeners’ camps are fewer, and farther apart, and quieter. Twice you pass a ruined fort.
+The Garrison’s presence is thicker. Patrols of grey riders on the skyline. A signal-tower on a hill. A Hush bell, hung in a gibbet beside the road, tolling at noon. Temur rides with his white hat pulled low. Sarnai has stopped chattering. The Matriarch’s tent follows two days behind, with her clan and her wolves.
++[d] b4q_camp | Ren Qiao rides at the cart’s tail beside a small hard woman in leather, and neither speaks, and neither leaves.
++[d] b4q_wolves | Two hundred and eleven mounds lie behind you at Black Ford, and a she-wolf sits on a ridge, watching.
++[d] b4q_bone | A grey slip of paper with a broker’s name on it is folded in your sleeve.
++[d] b4q_vigil | A stub of candle, still warm, is in Hao Lan’s satchel beside her pencil.
++[d] b4q_court | A black-felted widow’s lamb has taken to following the cart.
+> truth | Turn the cart toward the howling in the northern hills. | wolves_entry |  | !b4q_wolves | You have already answered the wolves.
+> mercy | Turn the cart south toward the dry lake whose white crust shines on the horizon. | bone_entry |  | !b4q_bone | You have already walked the Bone Market.
+> quiet | Follow the line of women in black who are walking east along the Fort road. | vigil_entry |  | !b4q_vigil | You have already kept the vigil.
+> inquiry | Ride to the ring of nine stones where the clans have gathered to judge a man. | court_entry |  | !b4q_court | The Court of Grass has already sat.
+> deceit | Ride on east, into the broken hills, where the fort is. | hub_b4_c |  | count:b4q_>=10 | You have not yet seen all there is to see on the road.
 `,
 };
