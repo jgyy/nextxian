@@ -21,7 +21,7 @@ The mist has stayed low for forty days. Whatever you did on the Sealing Night, y
 
 === hub_b2_road | The Willow Reach
 (temporary hub)
-> truth | Wait. | hub_b2_road
+> truth | The Willow Reach. | willow_entry | | !b2r_willow | You have already walked this reach.
 > quiet | Wait. | hub_b2_road
 > mercy | Wait. | hub_b2_road
 > inquiry | Wait. | hub_b2_road

@@ -157,7 +157,7 @@ export function parseScenes(source: string, file = "markup"): Scene[] {
         ...(speaker && speaker !== "elder" ? { speaker } : {}),
       });
     } else if (line.startsWith("> ")) {
-      const [tone, label, next, fx = "", req = "", hint = ""] = line.slice(2).split(" | ").map((x) => x.trim());
+      const [tone, label, next, fx = "", req = "", hint = ""] = line.slice(2).split(/\s*\|\s*/).map((x) => x.trim());
       if (!isTone(tone)) throw new MarkupError(where, `unknown tone "${tone}"`);
       if (!label || !next) throw new MarkupError(where, "a choice is `> tone | label | next | effects | requires | hint`");
       const parsed = parseEffects(fx, where);
@@ -204,7 +204,7 @@ export function parseScenarios(source: string, file = "markup"): NpcScenario[] {
     const where = `${file}:${i + 1}`;
     if (!line || line.startsWith("//")) return;
     if (line.startsWith("$ ")) {
-      const [id, delta = "", who = "elder", ...summary] = line.slice(2).split(" | ").map((x) => x.trim());
+      const [id, delta = "", who = "elder", ...summary] = line.slice(2).split(/\s*\|\s*/).map((x) => x.trim());
       const { effects } = parseEffects(delta, where);
       const d: Partial<NpcState> = {};
       for (const e of effects) {
@@ -242,7 +242,7 @@ export function parseRemarks(source: string, file = "markup"): Remark[] {
     if (!line || line.startsWith("//")) return;
     const where = `${file}:${i + 1}`;
     if (!line.startsWith("% ")) throw new MarkupError(where, "a remark is `% id | conditions | speaker | line`");
-    const [id, cond, speaker, ...text] = line.slice(2).split(" | ").map((x) => x.trim());
+    const [id, cond, speaker, ...text] = line.slice(2).split(/\s*\|\s*/).map((x) => x.trim());
     if (!id || text.length === 0) throw new MarkupError(where, "a remark is `% id | conditions | speaker | line`");
     out.push({
       id,
@@ -271,7 +271,7 @@ export function parseEchoes(source: string, file = "markup"): Echo[] {
     if (!line || line.startsWith("//")) return;
     const where = `${file}:${i + 1}`;
     if (!line.startsWith(">> ")) throw new MarkupError(where, "an echo is `>> scene | group | conditions | text`");
-    const [scene, group, cond, ...text] = line.slice(3).split(" | ").map((x) => x.trim());
+    const [scene, group, cond, ...text] = line.slice(3).split(/\s*\|\s*/).map((x) => x.trim());
     if (!scene || !group || !cond || text.length === 0) throw new MarkupError(where, "an echo is `>> scene | group | conditions | text`");
     out.push({
       scene,
