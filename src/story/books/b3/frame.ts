@@ -37,6 +37,9 @@ Through the shutters comes the sound of the sea, and under it, thin and steady, 
 Tidewall is a harbour behind a wall. The wall is forty feet high and a mile long, built of pale limestone, and every block of it is carved with a name. The harbour-folk walk under it with their hats off. They do not seem to know that they are doing it. Behind the wall the town climbs a hill in tiers of whitewashed houses and tarred roofs, and at the top, on a spur of black rock, a lighthouse that is never lit by day stands over everything like a held breath.
 The Elder has taken rooms at the Ferryman’s Rest. The Censors who came with you, Mei Qiu among them, are watching the quay. The tide is out, and the harbour is a plain of wet sand strewn with paper.
 +[d] b3_arrived | You came into Tidewall under a sky the colour of old tin, and nobody on the quay asked who you were.
++[c] count:card_>=4 | Four brown cards lie in your sleeve, warm from handling, and each of them wants the others.
++[c] count:card_>=2 | Two brown cards lie in your sleeve. They have begun to hum when they touch.
++[c] count:card_>=1 | A brown card lies in your sleeve, warm from handling.
 +[d] b3q_harbour | Ke-er’s name is under your fingers, still, a groove in the limestone you will not forget.
 +[d] b3q_mourning | There is a black ribbon in your sleeve, and a woman’s voice that said nothing you could answer.
 +[d] b3q_ferry | The ferryman’s rope is still wound on your wrist, two turns, a knot you cannot undo.

@@ -173,10 +173,10 @@ The Elder has the tag in her hand.
 “There is something on the back,” she says. “I did not tell you. I did not tell you because I had not decided whether it was kind.”
 She turns the card over. In faded brown ink, in a hand you do not know, a single line has been written.
 She holds it out to you.
-> truth | Read it. | reserve_d3
-> quiet | Ask her to read it aloud. | reserve_d3
-> mercy | Ask her whether she wants you to. | reserve_d3
-> inquiry | Hold it to the light. | reserve_d3
+> truth | Read it. | reserve_d3 | +card_9
+> quiet | Ask her to read it aloud. | reserve_d3 | +card_9
+> mercy | Ask her whether she wants you to. | reserve_d3 | +card_9
+> inquiry | Hold it to the light. | reserve_d3 | +card_9
 
 === reserve_d3 | What It Said
 It reads: She will ask. Answer her.

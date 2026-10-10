@@ -433,10 +433,10 @@ The coast lies below the last ridge like a bowl of pale ash. A road, white with 
 “I have no right to tell you what to do,” says Master Zhu. “But I will tell you what I tell my apprentices. Never mend a thing for the person who broke it. They will only break it again.”
 He gives you a small lacquered box. In it is a tide-key, a flat disc of bone on a cord, with a character on it.
 “Show that to the keeper of the Lamp.”
-> truth | Thank him. | mender_close2
-> quiet | Bow, and take the key. | mender_close2
-> mercy | Ask him to look after himself. | mender_close2
-> inquiry | Ask what character is on the key. | mender_close2
+> truth | Thank him. | mender_close2 | +mender_has_key
+> quiet | Bow, and take the key. | mender_close2 | +mender_has_key
+> mercy | Ask him to look after himself. | mender_close2 | +mender_has_key
+> inquiry | Ask what character is on the key. | mender_close2 | +mender_has_key
 
 === mender_close2 | Tidewall from Above
 The road is steep, and it takes the rest of the day. The salt crust crackles underfoot. Gulls wheel overhead. As the ridge falls behind you the town opens out below, white and tiered, climbing the hill in rooftops to a black spur with a dark tower. The Wall stands out into the bay, pale as a bone, carved from end to end.

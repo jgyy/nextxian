@@ -89,3 +89,19 @@ Yu Ling’s message, written on the back of every reserve card: *She will ask. A
 ## Book Three: The Drowned Library (the Salt Coast)
 
 Arrival is by the sea road (Mei’s coast guard) or the hill road (the Cinnabar seal-mender), according to `reserve_chose_sea` / `reserve_chose_hills`; both converge at **Tidewall**, a harbour town behind a wall of carved names. The Drowned Library is the sunken Fifth Floor annex of the Concord, where struck names wash up as wet paper at the spring tides. The Concord’s fleet under Inspector Fang arrives at the end of the book.
+
+### The Nine Cards (Yu Ling’s message)
+
+Yu Ling wrote one line on the back of every reserve card in the year before she tore her page. Read in cot order they are one vow. The player holds IX from Book Two; each sibling’s card is earned in that sibling’s arc (flag `card_1` to `card_8`). Book Six lets the player perform every verb whose card they hold.
+
+| Cot | Card | Verb |
+| --- | --- | --- |
+| I | Carry what is heavy. | Carry (Ah Zhi) |
+| II | Mend what is torn. | Mend (Lu Yan) |
+| III | Sing what is struck. | Sing (Bao Er) |
+| IV | Light what is dark. | Light (Qiu) |
+| V | Seal only what asks. | Seal (Shu Ning) |
+| VI | Write what is true. | Write (Hao Lan) |
+| VII | Keep what is small. | Keep (Tian) |
+| VIII | Open what is shut. | Open (Lin Yuan) |
+| IX | She will ask. Answer her. | Answer (the player) |

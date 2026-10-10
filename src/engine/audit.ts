@@ -59,10 +59,12 @@ export function possibleFlags(story: Story): Record<string, Set<string>> {
 export function flagUsage(story: Story): { set: Set<string>; read: Set<string> } {
   const set = new Set<string>();
   const read = new Set<string>();
+  const prefixes = new Set<string>();
   const reads = (conditions: Condition[] | undefined) => {
     for (const c of conditions ?? []) {
       if (isFlag(c)) read.add(c.flag);
       else if (c.kind === "since") read.add(c.flag);
+      else if (c.kind === "count") prefixes.add(c.prefix);
     }
   };
   for (const scene of Object.values(story.scenes)) {
@@ -78,6 +80,8 @@ export function flagUsage(story: Story): { set: Set<string>; read: Set<string> }
     scenario.memory?.forEach((m) => reads(m.when));
   }
   for (const remark of story.remarks ?? []) reads(remark.when);
+  // A `count` condition reads every flag that starts with its prefix.
+  for (const flag of set) if ([...prefixes].some((p) => flag.startsWith(p))) read.add(flag);
   return { set, read };
 }
 
