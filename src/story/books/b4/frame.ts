@@ -60,5 +60,21 @@ The Listeners are with you now. The Matriarch’s tent follows, with its nine fi
 > quiet | Ride toward the mound on the plain with a ring of nine iron posts. | tomb_entry |  | !b4q_tomb & b4q_kurultai | The nine fires have not yet agreed to show you.
 > inquiry | Ride toward the smoke and the iron chimneys of the Dust Mill. | mill_entry |  | !b4q_mill & b4q_kurultai | You do not yet know what is at the end of the smoke.
 > deceit | Climb the last rise, where a voice is humming in the wind. | voice_entry |  | count:b4q_>=14 & !b4q_voice | The voice is not yet loud enough to follow.
+
+=== b4_close | The Edge of the Grass
+They see you off at dawn, on the last rise, with nine fires burning. There is no ceremony. The Listeners do not do ceremony. They come in ones and twos through the grey light and press things into your hands: a skin of fermented milk, a knotted cord, a bag of dried curd, a small carved horse. Choijin signs something. His apprentice weeps. Tsetseg gives the Elder a pane of green glass the size of a palm, without a word, and goes away chewing.
++[d] b4q_kurultai | Nine thousand voices said the nine verbs aloud, and a deaf bell-founder smiled.
++[d] b4q_roots | A girl who was never written is learning the alphabet in a grey coat three sizes too large.
++[d] b4q_tomb | A red glass key is warm in your pocket, and it hums when you think of a hollow.
++[d] b4q_mill | Two hundred and eleven people woke in a barn, and a steel bell is cold in the cart.
++[d] b4q_voice | A tune with no words sits in your chest beside the cold black seed.
+Tamar sits on her felts at the top of the rise, in her red coat, with her face to the east. She does not rise. She is smiling.
+“Go down to the sea of glass,” she says. “Take Odval. She has been wanting to go somewhere for nineteen years, and she has run out of hills to sit on.” She lifts a hand. “Take Temur, too, who will be unbearable otherwise. And take my sister’s tea.”
+“Your sister’s—”
+“She sent a pot,” says Tamar. “It is as bad as ever.”
+> truth | Bow to her. | b5_gate
+> mercy | Kneel and take her hand. | b5_gate
+> quiet | Take the tea. | b5_gate
+> inquiry | Ask her what she heard, when the bell rang. | b5_gate
 `,
 };

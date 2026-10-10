@@ -47,6 +47,8 @@ import { court } from "./b4/court";
 import { kurultai } from "./b4/kurultai";
 import { roots } from "./b4/roots";
 import { tomb } from "./b4/tomb";
+import { mill } from "./b4/mill";
+import { voice } from "./b4/voice";
 
 /**
  * The books after the first, in reading order. Each book lists its arcs; the story index parses them, adds their scenes
@@ -66,6 +68,6 @@ export const books: Book[] = [
   {
     id: "b4",
     name: "Book Four: The Ash Steppe",
-    arcs: [frame4, border, stones, glass, caravan, storm, camp, wolves, bone, vigil, court, kurultai, roots, tomb],
+    arcs: [frame4, border, stones, glass, caravan, storm, camp, wolves, bone, vigil, court, kurultai, roots, tomb, mill, voice],
   },
 ];
