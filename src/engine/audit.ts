@@ -145,7 +145,7 @@ export function auditStory(story: Story): AuditIssue[] {
   return issues;
 }
 
-/** The scenes that sit on a loop, found with Tarjan's strongly connected components, ignoring edges into wayside hubs. */
+/** The scenes that sit on a loop, found with Tarjan's strongly connected components, ignoring edges into hubs (waysides and the `hub_` scenes of the books). */
 export function sceneLoops(story: Story): string[] {
   const ids = Object.keys(story.scenes);
   const index = new Map<string, number>();
@@ -154,7 +154,7 @@ export function sceneLoops(story: Story): string[] {
   const stack: string[] = [];
   const loops: string[] = [];
   let counter = 0;
-  const edges = (id: string) => story.scenes[id].choices.map((c) => c.next).filter((n) => story.scenes[n] && !n.startsWith("wayside_"));
+  const edges = (id: string) => story.scenes[id].choices.map((c) => c.next).filter((n) => story.scenes[n] && !n.startsWith("wayside_") && !n.startsWith("hub_"));
   // Iterative Tarjan, so a long chain of scenes cannot overflow the call stack.
   for (const root of ids) {
     if (index.has(root)) continue;

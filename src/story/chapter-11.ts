@@ -1,4 +1,19 @@
-import type { Scene } from "@/engine/types";
+import type { Choice, Scene } from "@/engine/types";
+
+/** How Book One closes: four ways to spend the last quiet days, each of which leads to the arrival of the Concord. */
+function BOOK_ONE_CLOSE(ending: "sisters" | "redeemed" | "sovereign"): Choice[] {
+  const first = {
+    sisters: "Sit with the sisters in the courtyard while they read the names, and learn how it is done.",
+    redeemed: "Walk the abyss rim with Gu Hanzhen and count how far the mist has drawn back.",
+    sovereign: "Sit in the chair of pale jade and read the ledger your predecessor kept for fifteen years.",
+  }[ending];
+  return [
+    { id: "close_truth", label: first, tone: "truth", next: "b2_gate" },
+    { id: "close_inquiry", label: "Go down to the Ash Archive and ask Lin Yuan what the Concord keeps in its own ledgers.", tone: "inquiry", next: "b2_gate" },
+    { id: "close_quiet", label: "Stand at the gate in the evening and watch the river until the sail is close enough to read.", tone: "quiet", next: "b2_gate" },
+    { id: "close_mercy", label: "Ask the cook to set an extra bowl at every table. Guests are coming, and no one has eaten well in a month.", tone: "mercy", next: "b2_gate" },
+  ];
+}
 
 /** Chapter Eleven: The Judgment, and the five endings. */
 export const chapterEleven: Scene[] = [
@@ -16,6 +31,7 @@ export const chapterEleven: Scene[] = [
         tone: "mercy",
         npcScenario: "PLEAD_FOR_PARDON",
         next: "ending_redeemed",
+        effects: [{ kind: "setFlag", flag: "end1_redeemed" }],
         requires: [{ kind: "npc", metric: "trust", min: 15 }],
         lockedHint: "Requires Elder Su's trust of 15 or more.",
       },
@@ -40,6 +56,7 @@ export const chapterEleven: Scene[] = [
         tone: "force",
         npcScenario: "CLAIM_SEAT",
         next: "ending_sovereign",
+        effects: [{ kind: "setFlag", flag: "end1_sovereign" }],
         requires: [
           { kind: "npc", metric: "respect", min: 40 },
           { kind: "stat", stat: "insight", min: 30 },
@@ -51,6 +68,7 @@ export const chapterEleven: Scene[] = [
         label: "Tell the Elder that her sister is waiting at the top of the stair, and go to fetch her.",
         tone: "truth",
         next: "ending_sisters",
+        effects: [{ kind: "setFlag", flag: "end1_sisters" }],
         requires: [{ kind: "flag", flag: "freed_mengjiao" }],
         lockedHint: "Requires that you freed Mengjiao from the chains on the Sealing Night.",
       },
@@ -72,7 +90,7 @@ export const chapterEleven: Scene[] = [
   },
   {
     id: "ending_sisters",
-    title: "Ending: The Sisters’ Dao",
+    title: "The Sisters’ Dao",
     paragraphs: [
       "The stair is long, and the mist does not try to stop you. When you reach the top, Mengjiao is standing in the sutra gate with her braid over one shoulder, looking out at the Law Hall as though she has never seen it before. She turns when she hears your steps. Her face is thin, and her eyes are bright, and she is smiling the way the girl on the roof smiled at the stars.",
       "Elder Su is waiting in the memorial. She does not speak. She simply crosses the floor, past the tablets and the hollow in the white paint, and takes her sister’s hands in both of her own. For a long time they stand like that, two grey robes in the lamplight, saying nothing at all. Then Mengjiao begins to speak the names of the sealed, one at a time, and Wanru speaks them with her, and the mist in the abyss lowers its voice to listen.",
@@ -109,19 +127,19 @@ export const chapterEleven: Scene[] = [
     title: "The Names Read Every Night",
     paragraphs: [
       "The Law Hall does not forgive quickly, and the sect will argue about the names for years. But the names are read every night now, in the open courtyard, and the bells are rung only when there is something true to say. The Crimson Abyss no longer rises. It breathes slowly, like a sleeper who has been told a good story and is finally willing to dream.",
+      "For forty days it is the quietest the mountain has been in your lifetime. Then a grey-sailed barge is seen far down the river, coming up against the current, and the bells of the Law Hall, which have been rung only for truth, ring once to say that someone has come to audit it.",
     ],
-    choices: [],
-    ending: "Ending: The Sisters’ Dao",
+    choices: BOOK_ONE_CLOSE("sisters"),
   },
   {
     id: "ending_redeemed",
-    title: "Ending: The Law Remembers Mercy",
+    title: "The Law Remembers Mercy",
     paragraphs: [
       "Elder Su listens to your plea without interrupting. When you finish, she takes the Sealing Jade from its tray and sets it back into the cracked altar in the Law Hall. \"Mercy is not a crack in the Law,\" she says. \"It is the thing the Law was built to hold.\"",
       "Gu Hanzhen is released into the care of the sect. You are assigned to repair the abyss seal under her eye, and the mist recedes by a single pace each season. The sect does not forgive quickly, but it does not forget the one who stood in the rain and told the truth.",
+      "On the fortieth day a grey-sailed barge is seen far down the river, coming up against the current. The bells of the Law Hall ring once to say that someone has come to audit the mercy you were granted.",
     ],
-    choices: [],
-    ending: "Ending: The Law Remembers Mercy",
+    choices: BOOK_ONE_CLOSE("redeemed"),
   },
   {
     id: "ending_exile",
@@ -145,12 +163,12 @@ export const chapterEleven: Scene[] = [
   },
   {
     id: "ending_sovereign",
-    title: "Ending: The Keeper of Bars",
+    title: "The Keeper of Bars",
     paragraphs: [
       "Elder Su gives you the ledger, the comb, and the chair of pale jade without a word. The bars of the Law are yours to count now. You count them every night, and some nights you open one. Gu Hanzhen becomes your steward. Su Mengjiao's name is carved back into the memorial, beside the others, and no one is allowed to say it aloud unless they have earned the right.",
-      "The mist no longer rises from the abyss. Whether that is because you hold the seal, or because you have finally learned what it costs to hold anything at all, the sect does not ask.",
+      "The mist has stopped rising from the abyss. Whether that is because you hold the seal, or because you have finally learned what it costs to hold anything at all, the sect does not ask.",
+      "On the fortieth day a grey-sailed barge is seen far down the river, coming up against the current. The bells of the Law Hall ring once, and the chair of pale jade is suddenly the loneliest place on the mountain.",
     ],
-    choices: [],
-    ending: "Ending: The Keeper of Bars",
+    choices: BOOK_ONE_CLOSE("sovereign"),
   },
 ];

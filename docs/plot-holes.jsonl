@@ -59,3 +59,12 @@
 {"cat": "time-loop", "where": "src/story/chapter-3.ts", "note": "Returning up the chute from the vault looped back to the chute's first scene; it now leads out to the report.", "n": 1}
 {"cat": "dead-condition", "where": "src/story/npc/elder-su-side-paths.ts", "note": "REQUEST_VILLAGE remembered that the player had asked for a night in the same breath, but the two requests are alternatives in one scene; it now remembers the name the gate disciple gave.", "n": 1}
 {"cat": "dead-condition", "where": "src/story/npc/elder-su.ts", "note": "REFUSE_SEALING remembered that the player had watched the signing, but watching and refusing are alternatives in one scene; it now remembers the watch from the pillar.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "Book One's three good endings now open Book Two, and each leaves a flag so the sequel can remember which one the player reached.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "Same: the sovereign ending leaves end1_sovereign.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "Same: the sisters' ending leaves end1_sisters.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "The sisters' ending closed the story for good with the abyss at peace, although Book Two needs the Concord to arrive; it now ends with the barge on the river.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "The redeemed ending closed the story with the abyss repaired; it now ends with the Concord's barge on the river.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "The sovereign ending closed the story with the abyss sealed for good; it now ends with the Concord's barge on the river.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "Book One's good endings are no longer endings, so their headings lose the 'Ending:' prefix.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "Same.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "Same.", "n": 1}
