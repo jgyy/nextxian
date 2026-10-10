@@ -50,6 +50,13 @@ export const herbMarketScenes: Scene[] = [
         next: "pavilion_gate",
         effects: [{ kind: "setFlag", flag: "visited_pavilion" }],
       },
+      {
+        id: "follow_bitter_smell",
+        label: "Follow the smell of bitter roots down the lane behind the stalls, to a low hall with its shutters open.",
+        tone: "mercy",
+        effects: [{ kind: "setFlag", flag: "visited_healer" }],
+        next: "healer_gate",
+      },
     ],
   },
   {

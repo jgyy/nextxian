@@ -14,32 +14,68 @@ export const chapterNine: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "count_voices_climbing",
+        label: "Count the voices aloud as you climb, so that none of them is left behind.",
+        tone: "mercy",
         next: "mist_remembers_2",
-        page: true,
+      },
+      {
+        id: "ask_mist_be_quiet",
+        label: "Ask the mist to be quiet while you climb up through the grey.",
+        tone: "quiet",
+        next: "mist_remembers_2",
+      },
+      {
+        id: "push_harder_climb",
+        label: "Tell yourself that the climb is only a matter of breath, and push harder.",
+        tone: "force",
+        next: "mist_remembers_2",
+      },
+      {
+        id: "which_name_forgotten",
+        label: "Think back over the names and ask which of them you would have forgotten.",
+        tone: "inquiry",
+        next: "mist_remembers_2",
       },
     ],
   },
   {
     id: "mist_remembers_2",
-    title: "",
+    title: "Three Bells",
     paragraphs: [
       "\"The bell has rung three times since you went down,\" he says. \"Once for the masters, who are hiding in their rooms. Once for the disciples, who are standing in the courtyard waiting to see if you come back alive. And once for the Elder, who has not left her hall since the tribunal. She asked me to tell you that she is waiting. She did not say for what.\"",
       "You walk with him back toward the Law Hall. The disciples in the courtyard watch you come down the path, and their faces change as you pass. Some look away. Some stare. A few bow their heads, very slightly, the way one bows to a person who has been through a terrible ordeal and has come back with something valuable in their hands. You do not know whether they know what you carry, but they know that you are carrying something.",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_elder_exact_words",
+        label: "Ask Ren Qiao what the Elder said, word for word, as near as he can recall.",
+        tone: "inquiry",
         next: "mist_remembers_3",
-        page: true,
+      },
+      {
+        id: "share_names_with_warden",
+        label: "Tell Ren Qiao the names you carry, so that he can hear them too.",
+        tone: "mercy",
+        next: "mist_remembers_3",
+      },
+      {
+        id: "tell_warden_ledge_truth",
+        label: "Tell Ren Qiao exactly what you found at the ledge, without softening it.",
+        tone: "truth",
+        next: "mist_remembers_3",
+      },
+      {
+        id: "walk_ahead_silent",
+        label: "Walk ahead of him across the courtyard and say nothing to the staring disciples.",
+        tone: "quiet",
+        next: "mist_remembers_3",
       },
     ],
   },
   {
     id: "mist_remembers_3",
-    title: "",
+    title: "The Doors of the Law Hall",
     paragraphs: [
       "The Law Hall is quiet. Its great doors stand open, and the lamps inside have been lit for the whole night. At the far end of the hall, the Elder sits in her jade chair, hands folded in her lap, and she is not looking at the door. She is looking at the empty altar, as though it might speak first if she waited long enough.",
     ],
@@ -85,16 +121,34 @@ export const chapterNine: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "read_names_faster",
+        label: "Read the names faster, so that the masters have no chance to interrupt you.",
+        tone: "force",
         next: "mist_names_read_2",
-        page: true,
+      },
+      {
+        id: "read_names_slowly",
+        label: "Read the names slowly, pausing after each one for the family who will never hear it.",
+        tone: "mercy",
+        next: "mist_names_read_2",
+      },
+      {
+        id: "ask_hu_why_law_keeps",
+        label: "Ask Hu Jingyan why he thinks the names belong to the Law.",
+        tone: "inquiry",
+        next: "mist_names_read_2",
+      },
+      {
+        id: "admit_asked_to_read",
+        label: "Admit to the hall that you have read these names only because someone asked you to.",
+        tone: "truth",
+        next: "mist_names_read_2",
       },
     ],
   },
   {
     id: "mist_names_read_2",
-    title: "",
+    title: "Read Every One",
     paragraphs: [
       "The Elder does not look at him. \"The names are not the Law’s,\" she says. \"They were never the Law’s. They belonged to the people who wore them, and to the people who loved them, and to the mist, which has been keeping them for fifteen years in the only memory the sect would not burn.\" She turns her head toward the masters, and for the first time her voice rises. \"Read the rest, Wanderer. Read every one.\"",
     ],
@@ -142,16 +196,34 @@ export const chapterNine: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_hu_what_drinking",
+        label: "Watch Hu Jingyan’s cup shake and ask what he has been drinking all these years.",
+        tone: "inquiry",
         next: "mist_masters_fall_2",
-        page: true,
+      },
+      {
+        id: "let_masters_go",
+        label: "Stand aside and let the masters go, since the names have already been spoken.",
+        tone: "mercy",
+        next: "mist_masters_fall_2",
+      },
+      {
+        id: "masters_answer_names",
+        label: "Shout to the masters that they will answer for every name they signed.",
+        tone: "force",
+        next: "mist_masters_fall_2",
+      },
+      {
+        id: "let_elder_decide_masters",
+        label: "Say nothing, and let the Elder decide what is to be done with the masters.",
+        tone: "quiet",
+        next: "mist_masters_fall_2",
       },
     ],
   },
   {
     id: "mist_masters_fall_2",
-    title: "",
+    title: "Doors and Masters",
     paragraphs: [
       "The Elder stands. She is smaller than she was when the tribunal began, and yet she seems taller. \"No,\" she says. \"I did not. I wrote my own name beneath theirs and told myself that was enough.\" Her voice cracks on the last word, and she does not try to mend it.",
       "The courtyard outside has begun to murmur. You can hear the disciples moving closer to the doors, their footsteps soft on the white stone. A few of them are calling names, the same names you read, and the calling spreads through the crowd like a fire moving through dry grass. The mist is rising behind them, slowly, pouring over the courtyard wall in red-tinged waves that taste of iron and tears.",
@@ -198,16 +270,34 @@ export const chapterNine: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "repeat_message_exact",
+        label: "Repeat Mengjiao’s message word for word, without adding anything of your own.",
+        tone: "truth",
         next: "mist_wanru_message_2",
-        page: true,
+      },
+      {
+        id: "bring_grief_and_words",
+        label: "Tell the Elder that you have brought her sister’s grief as well as her sister’s words.",
+        tone: "mercy",
+        next: "mist_wanru_message_2",
+      },
+      {
+        id: "ask_roof_stories",
+        label: "Ask the Elder what she and her sister used to talk about on the roof.",
+        tone: "inquiry",
+        next: "mist_wanru_message_2",
+      },
+      {
+        id: "keep_last_words_back",
+        label: "Keep Mengjiao’s last words to yourself, and say only what the mist allows.",
+        tone: "deceit",
+        next: "mist_wanru_message_2",
       },
     ],
   },
   {
     id: "mist_wanru_message_2",
-    title: "",
+    title: "The Sealing Order",
     paragraphs: [
       "\"She always did talk to the mist,\" Elder Su says softly. \"When we were children, she would sit on the roof and tell it stories until the stars came out. I used to think she was mad. I used to think the Law was right to watch her.\" She lifts one hand and lets it fall. \"Tell her I heard the message. Tell her I will read the names. Tell her it is not enough, and that I know it is not, and that I will read them anyway, every night, for the rest of my life.\"",
       "Then she reaches into the sleeve of her robe and takes out a thin folded paper, yellow with age. She holds it out to you without looking at it. \"This is the sealing order,\" she says. \"The original. The one the masters never sent to the archive. My name is on it. Hers is not. I have carried it for fifteen years, in case someone ever asked me to prove I was there.\"",

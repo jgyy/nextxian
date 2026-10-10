@@ -1,4 +1,3 @@
-import { isPassage } from "./game";
 import { isTone } from "./tone";
 import { countWords } from "./words";
 import type { Condition, Scene, Story, Tier } from "./types";
@@ -54,24 +53,15 @@ export function validateStory(story: Story): string[] {
     if (words > MAX_LINE_WORDS) problems.push(`${where} has ${words} words; the limit is ${MAX_LINE_WORDS}`);
   };
 
-  // A continuation page is reached by a page turn. Only those may have no title.
-  const continuations = new Set(
-    Object.values(scenes).flatMap((s) => s.choices.filter((c) => c.page).map((c) => c.next)),
-  );
-
   for (const scene of Object.values(scenes)) {
-    const pageTurns = scene.choices.filter((c) => c.page);
-    if (pageTurns.length > 0 && !isPassage(scene)) {
-      problems.push(`scene "${scene.id}" mixes a page turn with other options`);
-    }
-    if (scene.ending === undefined && !isPassage(scene) && scene.choices.length < MIN_CHOICES) {
+    if (scene.ending === undefined && scene.choices.length < MIN_CHOICES) {
       problems.push(`scene "${scene.id}" has ${scene.choices.length} choices; needs ${MIN_CHOICES}`);
     }
     if (scene.ending !== undefined && scene.choices.length > 0) {
       problems.push(`ending scene "${scene.id}" should not have choices`);
     }
-    if (scene.title === "" && !continuations.has(scene.id)) {
-      problems.push(`scene "${scene.id}" has no title but is not a continuation page`);
+    if (scene.title.trim() === "") {
+      problems.push(`scene "${scene.id}" has no title`);
     }
     const body = sceneBodyWords(scene);
     if (body > MAX_SCENE_WORDS) {
@@ -86,11 +76,7 @@ export function validateStory(story: Story): string[] {
     for (const choice of scene.choices) {
       if (ids.has(choice.id)) problems.push(`duplicate choice id "${choice.id}" in "${scene.id}"`);
       ids.add(choice.id);
-      if (choice.page) {
-        if (choice.tone !== undefined || choice.npcScenario || choice.effects || choice.requires) {
-          problems.push(`page turn "${choice.id}" in "${scene.id}" should carry no tone, reaction, effects or conditions`);
-        }
-      } else if (!isTone(choice.tone)) {
+      if (!isTone(choice.tone)) {
         problems.push(`choice "${choice.id}" in "${scene.id}" has no valid tone`);
       }
       if (!scenes[choice.next]) {

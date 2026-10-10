@@ -79,16 +79,34 @@ export const chapterEleven: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "climb_steady_steps",
+        label: "Climb the stair steadily, one lotus step at a time, and do not look down.",
+        tone: "quiet",
         next: "ending_sisters_2",
-        page: true,
+      },
+      {
+        id: "call_her_name_up",
+        label: "Call Mengjiao’s name up the stair, so that she knows you are coming.",
+        tone: "truth",
+        next: "ending_sisters_2",
+      },
+      {
+        id: "wait_at_sutra_gate",
+        label: "Stop at the sutra gate and wait, so that she does not have to hurry for you.",
+        tone: "mercy",
+        next: "ending_sisters_2",
+      },
+      {
+        id: "ask_mist_last_answer",
+        label: "Ask the mist for one more answer before you climb any higher.",
+        tone: "inquiry",
+        next: "ending_sisters_2",
       },
     ],
   },
   {
     id: "ending_sisters_2",
-    title: "",
+    title: "The Names Read Every Night",
     paragraphs: [
       "The Law Hall does not forgive quickly, and the sect will argue about the names for years. But the names are read every night now, in the open courtyard, and the bells are rung only when there is something true to say. The Crimson Abyss no longer rises. It breathes slowly, like a sleeper who has been told a good story and is finally willing to dream.",
     ],

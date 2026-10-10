@@ -1,5 +1,5 @@
 import { CHOICE_TONES } from "./tone";
-import type { ChoiceTone, Condition, GameState, Mood, NpcScenario, NpcState, Tier } from "./types";
+import type { ChoiceTone, Condition, GameState, Mood, NpcScenario, NpcState, RespectTier, Tier } from "./types";
 
 /** Tiers from coldest to warmest. Used to tell whether a change moved her up or down. */
 const TIER_ORDER: Tier[] = ["hostile", "wary", "neutral", "warm", "devoted"];
@@ -92,6 +92,30 @@ export function mannerOf(tones: ChoiceTone[]): ChoiceTone | undefined {
 export function mannerShiftLine(before: ChoiceTone[], after: ChoiceTone[]): string | undefined {
   const to = mannerOf(after);
   return to !== undefined && to !== mannerOf(before) ? MANNER_SHIFT[to] : undefined;
+}
+
+/** The band her respect falls in. Respect is earned by what she sees the player do, and it gates some choices. */
+export function respectTierFor(respect: number): RespectTier {
+  if (respect <= -25) return "contempt";
+  if (respect < 25) return "unregarded";
+  if (respect < 50) return "weighed";
+  return "respected";
+}
+
+/**
+ * What she says when her respect moves into a new band. Keyed by the band she arrives at, so a
+ * change in either direction has a line that fits.
+ */
+export const RESPECT_SHIFT: Record<RespectTier, string> = {
+  contempt: "I have stopped giving you the benefit of my doubt. The Law does not weigh the words of someone it has already decided to condemn. You made that decision easy for me, and I am not proud of how quickly I took it.",
+  unregarded: "I am no longer weighing what you say. That is not the same as ignoring it. I am waiting to see whether there is anything in your words worth the trouble of the scale.",
+  weighed: "I have begun to weigh what you say before I answer. Not every word has passed, but enough of them have that I notice the ones that do not.",
+  respected: "You have reached a place in my reckoning that very few outsiders ever reach. I will not flatter you by pretending it is easy to keep. Keep it anyway, Wanderer.",
+};
+
+/** The line for a change of respect band, or undefined when the band stayed the same. */
+export function respectShiftLine(from: RespectTier, to: RespectTier): string | undefined {
+  return from === to ? undefined : RESPECT_SHIFT[to];
 }
 
 /**

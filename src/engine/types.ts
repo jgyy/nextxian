@@ -36,6 +36,9 @@ export type Effect =
 /** The NPC reaction tiers, derived from trust. */
 export type Tier = "hostile" | "wary" | "neutral" | "warm" | "devoted";
 
+/** How much she respects the player, in four bands. Her comments change when the band does. */
+export type RespectTier = "contempt" | "unregarded" | "weighed" | "respected";
+
 /** The NPC's visible mood, derived from her metrics. Drives her portrait and caption. */
 export type Mood = "furious" | "afraid" | "suspicious" | "guarded" | "stern" | "softened" | "tender";
 
@@ -56,13 +59,8 @@ export interface NpcScenario {
 export interface Choice {
   id: string;
   label: string;
-  /** The kind of decision. It sets the option's colour, and every decision needs one. */
-  tone?: ChoiceTone;
-  /**
-   * A page turn carries the reader on to the next page of the same scene. It is not a
-   * decision, so it has no tone, no reaction and no effects.
-   */
-  page?: true;
+  /** The kind of decision. It sets the option's colour, and the Elder counts it. */
+  tone: ChoiceTone;
   next: string;
   requires?: Condition[];
   /** Shown beside a locked choice explaining what is missing. */
@@ -73,7 +71,7 @@ export interface Choice {
 
 export interface Scene {
   id: string;
-  /** Empty on a continuation page, which has no heading of its own. */
+  /** The heading shown above the scene. Every scene has one. */
   title: string;
   paragraphs: string[];
   /** Paragraphs added only when their conditions hold. */

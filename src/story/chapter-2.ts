@@ -103,6 +103,14 @@ export const chapterTwo: Scene[] = [
           { kind: "addStat", stat: "karma", amount: 5 },
         ],
       },
+      {
+        id: "climb_to_hermit",
+        label: "Leave the abyss for a while and climb the eastern peak to the old master who taught the Su sisters.",
+        tone: "inquiry",
+        npcScenario: "ASK_HERMIT",
+        effects: [{ kind: "setFlag", flag: "visited_hermit" }],
+        next: "hermit_foot",
+      },
     ],
   },
   {

@@ -14,32 +14,68 @@ export const chapterSix: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "rise_and_approach",
+        label: "Rise slowly and walk toward the Elder without speaking a word.",
+        tone: "quiet",
         next: "jade_eye_return_2",
-        page: true,
+      },
+      {
+        id: "ask_about_mirror",
+        label: "Ask her at once whether the mirror in the sutra hall has been speaking to her too.",
+        tone: "inquiry",
+        next: "jade_eye_return_2",
+      },
+      {
+        id: "hide_burned_fingers",
+        label: "Keep your burned fingers hidden in your sleeves, so she cannot see them.",
+        tone: "deceit",
+        next: "jade_eye_return_2",
+      },
+      {
+        id: "admit_sutra_spoke",
+        label: "Tell her the sutra hall spoke to you, and that you did not choose to listen.",
+        tone: "truth",
+        next: "jade_eye_return_2",
       },
     ],
   },
   {
     id: "jade_eye_return_2",
-    title: "",
+    title: "The Scraped Hollow",
     paragraphs: [
       "She does not turn when you rise. She is looking at the tablet nearest the altar, and you can see the name on it even from here, carved in the Law’s straight script and then painted over in white. The white paint has been scraped away around one character, leaving a small bright hollow in the middle of the name.",
       "\"You came up the stair,\" she says. \"The sutra hall does not let people leave without a price, so I have assumed you paid one. I can see it in your hands. You are holding your fingers as if they had been burned.\" She finally turns, and her grey eyes move over you slowly, checking each part of you the way she checked the ledgers on the first day. \"Did she speak to you?\"",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "show_burned_fingers",
+        label: "Admit that you paid the price, and show her the burns on your fingers.",
+        tone: "truth",
         next: "jade_eye_return_3",
-        page: true,
+      },
+      {
+        id: "ask_is_she_hidden",
+        label: "Ask her plainly whether Mengjiao is the one she has been hiding from.",
+        tone: "inquiry",
+        next: "jade_eye_return_3",
+      },
+      {
+        id: "kneel_to_tablets",
+        label: "Kneel to the tablets to show her that you have not come here to fight.",
+        tone: "mercy",
+        next: "jade_eye_return_3",
+      },
+      {
+        id: "law_cannot_decide_sister",
+        label: "Tell her the Law does not get to decide who is allowed to speak to a sister.",
+        tone: "force",
+        next: "jade_eye_return_3",
       },
     ],
   },
   {
     id: "jade_eye_return_3",
-    title: "",
+    title: "Did She Speak to You?",
     paragraphs: [
       "You have a choice in how to answer, and it matters. The Elder has been watching you through the jade eye, and she knows the sutra hall better than any living disciple. Anything you say now she will weigh against what she has already seen. A lie will be measured. A truth will be measured too, but it may be given more weight, if you can find the courage to say it plainly.",
     ],
@@ -88,16 +124,34 @@ export const chapterSix: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_why_first_char_stayed",
+        label: "Ask her why the white paint did not cover the first character as well.",
+        tone: "inquiry",
         next: "jade_eye_tablets_2",
-        page: true,
+      },
+      {
+        id: "tell_her_you_heard_voice",
+        label: "Tell her you have heard her sister’s voice in the sutra hall.",
+        tone: "truth",
+        next: "jade_eye_tablets_2",
+      },
+      {
+        id: "let_her_think_unknown",
+        label: "Let her believe you have never heard the name before today.",
+        tone: "deceit",
+        next: "jade_eye_tablets_2",
+      },
+      {
+        id: "demand_why_scraped",
+        label: "Demand that she explain why she came back at night and scraped the name clean.",
+        tone: "force",
+        next: "jade_eye_tablets_2",
       },
     ],
   },
   {
     id: "jade_eye_tablets_2",
-    title: "",
+    title: "Bowing Every Morning",
     paragraphs: [
       "\"Every disciple of the Law learns to bow before the tablets,\" she says. \"We are taught that the dead are patient, that they will wait until we are ready to speak their names again. I have bowed before this one every morning for fifteen years. I have never once said her name.\" Her voice does not break. It simply stops, the way a bell stops when someone puts a hand on it.",
       "The silence stretches. Somewhere in the courtyard beyond the memorial, a warden’s lantern goes by, and its light moves across the tablets in a slow arc, lighting up one name after another before it fades. For a moment the hollow in the paint catches the glow and looks almost like a wound that is trying to close.",
@@ -151,32 +205,68 @@ export const chapterSix: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_who_the_masters_were",
+        label: "Ask who the masters were, and why none of them stood at the altar that night.",
+        tone: "inquiry",
         next: "jade_eye_sealing_night_2",
-        page: true,
+      },
+      {
+        id: "say_not_sect_choice",
+        label: "Tell her that the choice was never the sect’s to make, and that she knows it.",
+        tone: "truth",
+        next: "jade_eye_sealing_night_2",
+      },
+      {
+        id: "stand_and_listen",
+        label: "Stand quietly, the way disciples stand at a funeral, and listen to every word.",
+        tone: "quiet",
+        next: "jade_eye_sealing_night_2",
+      },
+      {
+        id: "masters_must_answer",
+        label: "Tell her that the masters should answer for the order, not the Elder alone.",
+        tone: "force",
+        next: "jade_eye_sealing_night_2",
       },
     ],
   },
   {
     id: "jade_eye_sealing_night_2",
-    title: "",
+    title: "The Ink That Would Not Flow",
     paragraphs: [
       "\"I did not know she had been studying the sutra,\" Elder Su says. \"I found out that night, when the masters brought her to the altar and she spoke to them in the Blood Lotus language. She said the seal could hold without a living body if someone would listen to the mist. The masters called her a heretic. They ordered the wardens to take her down the path in chains, and I was ordered to witness it.\"",
       "Her hands, which have rested calm against the tablet, begin to shake. She folds them behind her back so that you cannot see. \"Mengjiao looked at me from the top of the path,\" she says. \"She did not beg. She told me that I had always been the one who counted the bars. She said I should count her too, if I wanted to be accurate.\" A long breath. \"I wrote the number fourteen in the ledger that night. I did not write hers. I could not make the ink go down.\"",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_last_words",
+        label: "Ask her what Mengjiao said to her from the top of the path.",
+        tone: "inquiry",
         next: "jade_eye_sealing_night_3",
-        page: true,
+      },
+      {
+        id: "believe_she_forgave",
+        label: "Tell her you believe Mengjiao forgave her, even if the Law never did.",
+        tone: "mercy",
+        next: "jade_eye_sealing_night_3",
+      },
+      {
+        id: "ink_proves_nothing",
+        label: "Tell her the ink proves nothing, because the order was still signed.",
+        tone: "force",
+        next: "jade_eye_sealing_night_3",
+      },
+      {
+        id: "let_lamp_burn_down",
+        label: "Say nothing, and let the lamp burn down while she shakes.",
+        tone: "quiet",
+        next: "jade_eye_sealing_night_3",
       },
     ],
   },
   {
     id: "jade_eye_sealing_night_3",
-    title: "",
+    title: "Counting the Bars",
     paragraphs: [
       "The lamp flickers as a draft moves across the floor, and the shadows of the tablets stretch and bend. For a moment the Elder looks exactly as she must have looked on that night, frozen at the top of a path, watching someone she loves walk down into the mist.",
     ],
@@ -224,16 +314,34 @@ export const chapterSix: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "watch_her_read",
+        label: "Watch her face as she reads, and say nothing to interrupt her.",
+        tone: "quiet",
         next: "jade_eye_letter_2",
-        page: true,
+      },
+      {
+        id: "letter_never_for_law",
+        label: "Tell her the letter was never meant to reach the Law Hall at all.",
+        tone: "truth",
+        next: "jade_eye_letter_2",
+      },
+      {
+        id: "ask_sun_on_desk",
+        label: "Ask her what the sun on the desk meant to the two of them, long ago.",
+        tone: "inquiry",
+        next: "jade_eye_letter_2",
+      },
+      {
+        id: "slide_letter_into_robe",
+        label: "Slide the letter back into your robe, and keep it until she asks for it.",
+        tone: "deceit",
+        next: "jade_eye_letter_2",
       },
     ],
   },
   {
     id: "jade_eye_letter_2",
-    title: "",
+    title: "The Last Page the Law Kept",
     paragraphs: [
       "\"This was sent to the Law Hall,\" she says. \"I can see the mark of the Index on the seal. Someone opened it, and someone sealed it again, and someone put it in a drawer where I would never be allowed to find it. I have been the Elder of this hall for twelve years, and I have been running my own house with a locked door.\"",
       "She turns over the last page and finds the blank space beneath the signature, the stain of the cup, the single word in the margin she had not noticed before. Read. She reads it aloud, her voice gone thin, and then she sets the letter down on the altar as gently as if it might break. \"I was supposed to read the last page,\" she says, very quietly. \"But I was never given the last page. The Law kept it.\"",
@@ -281,16 +389,34 @@ export const chapterSix: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_to_see_ledger",
+        label: "Ask her to show you the second ledger, the one she has never shown anyone.",
+        tone: "inquiry",
         next: "jade_eye_confession_2",
-        page: true,
+      },
+      {
+        id: "promise_keep_secret",
+        label: "Promise to keep her second ledger from the tribunal, and from the masters.",
+        tone: "mercy",
+        next: "jade_eye_confession_2",
+      },
+      {
+        id: "law_will_read_it",
+        label: "Tell her the Law will read that ledger one day, whether she wants it to or not.",
+        tone: "truth",
+        next: "jade_eye_confession_2",
+      },
+      {
+        id: "carry_ledger_away",
+        label: "Lift the second ledger from the desk while she is looking out of the window.",
+        tone: "deceit",
+        next: "jade_eye_confession_2",
       },
     ],
   },
   {
     id: "jade_eye_confession_2",
-    title: "",
+    title: "Her Second Ledger",
     paragraphs: [
       "She opens it to a page near the middle. The handwriting is shaky, and the ink has run in places where tears have fallen. The entry is dated the night of the Sealing, and it contains only a few lines. I signed the fourteenth name. I did not sign hers. I wrote mine beneath it instead, so that someone would have to read it and know I was there too.",
       "\"The Law did not punish me for the omission,\" she says. \"It did not notice. It never looks at the Elder’s own signature, only at the names beneath it. I have been waiting fifteen years for someone to ask me why I wrote my own name instead of hers.\"",
@@ -340,16 +466,34 @@ export const chapterSix: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "hand_can_be_refused",
+        label: "Tell her that a hand is only a hand, and that it can be refused.",
+        tone: "truth",
         next: "jade_eye_accusation_2",
-        page: true,
+      },
+      {
+        id: "where_palm_kept",
+        label: "Ask her where she thinks the palm of the Law is kept now.",
+        tone: "inquiry",
+        next: "jade_eye_accusation_2",
+      },
+      {
+        id: "stand_between_window",
+        label: "Stand between her and the window, so that the wardens cannot see her face.",
+        tone: "mercy",
+        next: "jade_eye_accusation_2",
+      },
+      {
+        id: "law_deserves_blade",
+        label: "Tell her the Law deserves nothing but the blade it was forged with.",
+        tone: "force",
+        next: "jade_eye_accusation_2",
       },
     ],
   },
   {
     id: "jade_eye_accusation_2",
-    title: "",
+    title: "The Tribunal Bell",
     paragraphs: [
       "Outside, faintly, the bell of the Law Hall begins to ring. It is not the evening bell. It is the single deep note the sect uses only for judgments, the one the disciples fear more than any sword. It rings once, then again, and the second note seems to come from inside the walls rather than from the tower.",
       "\"That is the tribunal bell,\" the Elder says. \"It has not rung in fifteen years. It was rung for Mengjiao.\" She takes a breath and lets it out slowly. \"Someone has decided to ring it for you.\"",
@@ -397,16 +541,34 @@ export const chapterSix: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "tear_summons",
+        label: "Tear the summons in half and tell the warden to carry that back to the masters.",
+        tone: "force",
         next: "jade_eye_bell_2",
-        page: true,
+      },
+      {
+        id: "tell_ren_qiao_truth",
+        label: "Tell Ren Qiao the truth about the seal, and about the letter you carry.",
+        tone: "truth",
+        next: "jade_eye_bell_2",
+      },
+      {
+        id: "ask_which_masters",
+        label: "Ask Ren Qiao which masters were chosen, and why those particular ones.",
+        tone: "inquiry",
+        next: "jade_eye_bell_2",
+      },
+      {
+        id: "thank_quietly_wait",
+        label: "Thank Ren Qiao quietly, and say nothing more until the dawn bell.",
+        tone: "quiet",
+        next: "jade_eye_bell_2",
       },
     ],
   },
   {
     id: "jade_eye_bell_2",
-    title: "",
+    title: "Gu Hanzhen at the Steps",
     paragraphs: [
       "You go out into the courtyard. The mist has thickened over the Law Hall, and the outlines of the buildings have softened into grey shapes like paintings left in the rain. Disciples are gathering at the edges of the square in small quiet groups, talking behind their hands, and when they see you they fall silent and turn away, one by one, as if you were already a shadow.",
       "Gu Hanzhen is standing at the foot of the steps. He has been released from the stair cells for the tribunal, and he looks thinner than before, his mended sleeve fraying at the cuff. When he sees you he lifts one hand, very slightly, and then lowers it again, as if he is not sure whether he is allowed to greet you in front of the others.",
@@ -445,6 +607,13 @@ export const chapterSix: Scene[] = [
         label: "Walk round the bell tower to the sparring court, where the outer disciples are still practising under the summons.",
         tone: "quiet",
         next: "court_gate",
+      },
+      {
+        id: "cross_cloud_bridge",
+        label: "Cross the rope bridge over the Cloud Gap, where the outer disciples are being tested.",
+        tone: "force",
+        effects: [{ kind: "setFlag", flag: "visited_bridge" }],
+        next: "bridge_head",
       },
     ],
   },

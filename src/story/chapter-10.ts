@@ -14,32 +14,68 @@ export const chapterTen: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "read_blank_line",
+        label: "Hold the original sealing order up to the light and read the blank line.",
+        tone: "inquiry",
         next: "sealing_night_2",
-        page: true,
+      },
+      {
+        id: "stand_still_let_memory",
+        label: "Stand still and let the memory show you everything it wants to show.",
+        tone: "quiet",
+        next: "sealing_night_2",
+      },
+      {
+        id: "step_toward_altar",
+        label: "Step forward toward the altar before the memory can pull you away.",
+        tone: "force",
+        next: "sealing_night_2",
+      },
+      {
+        id: "not_here_to_judge",
+        label: "Tell the empty hall that you did not come here to judge anyone.",
+        tone: "truth",
+        next: "sealing_night_2",
       },
     ],
   },
   {
     id: "sealing_night_2",
-    title: "",
+    title: "The Young Elder at the Altar",
     paragraphs: [
       "\"This is the night of the Sealing,\" a voice says behind you. It is the Elder’s voice, but it has no weariness in it now. It is the voice of a woman who has not yet learned how much a single signature can cost. \"Witness it, or you will never believe what it cost.\" You turn, and the Elder is standing beside you, young and straight-backed, her eyes wide and dry, watching the kneeling woman at the altar as though she were watching a stranger.",
       "On the altar, the Sealing Jade rests in a bed of black silk. It is whole, and it is very beautiful, pale green with a deep inner glow. Beside it lies a stack of grey orders, and the top one is blank except for a single line at the bottom: Signed by the Elder of the Law Hall, before witnesses.",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_what_she_sees",
+        label: "Ask the young Elder what she sees when she looks at the jade.",
+        tone: "inquiry",
         next: "sealing_night_3",
-        page: true,
+      },
+      {
+        id: "ask_older_stop_memory",
+        label: "Tell the older Elder that you cannot bear to watch this, and ask her to stop it.",
+        tone: "mercy",
+        next: "sealing_night_3",
+      },
+      {
+        id: "order_can_be_refused",
+        label: "Tell the older Elder that the order is still blank for anyone who wants to refuse it.",
+        tone: "truth",
+        next: "sealing_night_3",
+      },
+      {
+        id: "tear_blank_order",
+        label: "Snatch the blank order from the altar and tear it in half.",
+        tone: "force",
+        next: "sealing_night_3",
       },
     ],
   },
   {
     id: "sealing_night_3",
-    title: "",
+    title: "Witnessing the Sealing",
     paragraphs: [
       "No one in the room looks at the jade. They look at the brush in the young Elder’s hand, and at the blank line on the order, and at the single space where her name should go. The masters are waiting. The mist is waiting. Outside the great doors, very far away, a bell is beginning to ring its long, slow note.",
     ],
@@ -95,16 +131,34 @@ export const chapterTen: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "count_strokes_needed",
+        label: "Watch the second stroke fall and count how many strokes her name will need.",
+        tone: "inquiry",
         next: "sealing_altar_2",
-        page: true,
+      },
+      {
+        id: "call_order_refusable",
+        label: "Call out to the masters that the order can still be refused.",
+        tone: "truth",
+        next: "sealing_altar_2",
+      },
+      {
+        id: "stay_silent_beside_master",
+        label: "Stay silent beside the gold-clasped master and let him speak for the Law.",
+        tone: "quiet",
+        next: "sealing_altar_2",
+      },
+      {
+        id: "shout_over_masters",
+        label: "Shout over the masters and break the silence of the ring.",
+        tone: "force",
+        next: "sealing_altar_2",
       },
     ],
   },
   {
     id: "sealing_altar_2",
-    title: "",
+    title: "The Blank Order",
     paragraphs: [
       "The young Elder looks up. Her eyes find yours, across the ring of masters, and for a single heartbeat she seems to see you, really see you, a stranger from the future who has come to watch her make the choice she has spent fifteen years trying to undo. Her lips move. You cannot hear the words, but you know what they are, because they are the words the Elder spoke to you at the window at night: I wrote my own name instead.",
     ],
@@ -151,16 +205,34 @@ export const chapterTen: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_mist_what_told",
+        label: "Speak to Mengjiao across the cleft and ask what the mist has told her.",
+        tone: "inquiry",
         next: "sealing_path_2",
-        page: true,
+      },
+      {
+        id: "plead_loosen_chains",
+        label: "Plead with the masters to loosen the chains on Mengjiao’s wrists.",
+        tone: "mercy",
+        next: "sealing_path_2",
+      },
+      {
+        id: "stand_at_back_witnesses",
+        label: "Stand at the back of the witnesses and keep your eyes on the jade.",
+        tone: "quiet",
+        next: "sealing_path_2",
+      },
+      {
+        id: "draw_sword_on_masters",
+        label: "Step onto the lip of the cleft and face the masters with your blade drawn.",
+        tone: "force",
+        next: "sealing_path_2",
       },
     ],
   },
   {
     id: "sealing_path_2",
-    title: "",
+    title: "Mengjiao in Chains",
     paragraphs: [
       "\"You are going to give me the seal,\" she says. \"And then you are going to watch me walk into the mist with it, so the Law can say that a Su died holding the lock. That is what you want, and you have called it a sacrifice, because the word sounds better than murder in the mouth of an elder.\"",
       "The masters say nothing. One of them lifts the jade and holds it out to her, but she does not reach for it. She turns instead to the young Elder, who has followed the procession to the cleft with the signed order still clutched in her hand. Mengjiao’s voice softens. \"Wanru,\" she says. \"You can still walk away. The Law cannot make you stand at the top of the path if you refuse to stand there.\"",
@@ -207,16 +279,34 @@ export const chapterTen: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "find_weak_link",
+        label: "Watch the cracked links in the iron and note exactly where the weak place is.",
+        tone: "inquiry",
         next: "sealing_choice_2",
-        page: true,
+      },
+      {
+        id: "look_away_from_chains",
+        label: "Look away from the chains, because you cannot bear to see her held like this.",
+        tone: "quiet",
+        next: "sealing_choice_2",
+      },
+      {
+        id: "admit_cannot_save",
+        label: "Tell Mengjiao honestly that you do not yet know how to save her.",
+        tone: "truth",
+        next: "sealing_choice_2",
+      },
+      {
+        id: "tear_at_link",
+        label: "Tear at the nearest link with your bare hands, before the masters can react.",
+        tone: "force",
+        next: "sealing_choice_2",
       },
     ],
   },
   {
     id: "sealing_choice_2",
-    title: "",
+    title: "The Cracked Iron",
     paragraphs: [
       "The masters are waiting for the signal to step forward and push her into the mist. The young Elder is staring at the signed order in her hand as though the ink has begun to bleed through the paper. The wind pulls at the hem of your robe. You can feel the cracked iron under your palm when you lean close, and you know that you have only a few heartbeats before the masters decide that the witness has seen enough.",
     ],
@@ -262,16 +352,34 @@ export const chapterTen: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_mirror_meant",
+        label: "Ask the Elder what she meant by a mirror that waited for someone to watch.",
+        tone: "inquiry",
         next: "sealing_return_2",
-        page: true,
+      },
+      {
+        id: "not_only_one_signed",
+        label: "Tell her that she was not the only one who signed the order that night.",
+        tone: "truth",
+        next: "sealing_return_2",
+      },
+      {
+        id: "let_her_hold_sleeve",
+        label: "Keep your sleeve still in her hand, and let her hold it for as long as she needs.",
+        tone: "mercy",
+        next: "sealing_return_2",
+      },
+      {
+        id: "pull_sleeve_free",
+        label: "Pull your sleeve free from her grip and step away from the altar.",
+        tone: "force",
+        next: "sealing_return_2",
       },
     ],
   },
   {
     id: "sealing_return_2",
-    title: "",
+    title: "Out Through the Great Doors",
     paragraphs: [
       "The bell has stopped ringing. The courtyard is silent except for the murmur of the disciples who have gathered at the doors, and the sound of Ren Qiao’s boots as he walks toward the hall with a lantern in his hand. The Elder turns to you and lifts her chin. Her eyes are grey and bright and utterly steady.",
       "\"The Law will decide now,\" she says. \"It always does, eventually. But this time, the Law will have to decide with the whole truth on the table, and not one page of it hidden in a drawer. Come, Wanderer. The judgment is waiting for you, and so is Mengjiao, if she has chosen to come back up the stair.\"",

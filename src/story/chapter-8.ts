@@ -14,32 +14,68 @@ export const chapterEight: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "bow_and_accept_terms",
+        label: "Bow to the Elder and accept her terms without argument.",
+        tone: "mercy",
         next: "descent_return_2",
-        page: true,
+      },
+      {
+        id: "ask_if_mengjiao_refuses",
+        label: "Ask the Elder what the Law will do if Mengjiao does not want to come back.",
+        tone: "inquiry",
+        next: "descent_return_2",
+      },
+      {
+        id: "vow_truth_not_name",
+        label: "Tell the Elder you will bring back the truth, not a name, whatever it costs you.",
+        tone: "truth",
+        next: "descent_return_2",
+      },
+      {
+        id: "pocket_sealing_order",
+        label: "Pocket the grey sealing order before the Elder can take it back.",
+        tone: "deceit",
+        next: "descent_return_2",
       },
     ],
   },
   {
     id: "descent_return_2",
-    title: "",
+    title: "Ren Qiao at the Rope",
     paragraphs: [
       "Ren Qiao is waiting at the top of the abyss path with a rope coiled over his shoulder and a fresh lantern in his hand. He has changed his cloak and his face is hard, but he gives you the lantern without a word, and when you take it he says only, \"The mist knows the way better than I do. Let it lead you, and do not let it talk too much.\"",
       "The abyss path begins where the mountain splits, exactly as it did on the day you first came to find Gu Hanzhen. The cleft is wider than you remember. Red mist pours up from its depths in slow, heavy breaths, and the air is thick with the iron smell of blood that has been left to dry on stone. The path winds down the edge of the cleft, narrow and steep, with no railing and no light except the one you carry.",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_who_walked_cleft",
+        label: "Ask Ren Qiao how many wardens have ever walked down into the cleft.",
+        tone: "inquiry",
         next: "descent_return_3",
-        page: true,
+      },
+      {
+        id: "take_lantern_silently",
+        label: "Take the lantern without a word, and let him decide what he owes you.",
+        tone: "quiet",
+        next: "descent_return_3",
+      },
+      {
+        id: "tell_warden_distrust",
+        label: "Tell Ren Qiao plainly that you do not trust the Elder’s terms.",
+        tone: "truth",
+        next: "descent_return_3",
+      },
+      {
+        id: "refuse_rope_outright",
+        label: "Refuse the rope outright, and tell him you will not be tied to the Law.",
+        tone: "force",
+        next: "descent_return_3",
       },
     ],
   },
   {
     id: "descent_return_3",
-    title: "",
+    title: "The Rope and the Lantern",
     paragraphs: [
       "Gu Hanzhen is not with you. The Elder kept him in the Law Hall, under guard, with a promise that his name would be read aloud at the next session of the tribunal. You have her word on it. You are not sure yet whether that is worth anything.",
     ],
@@ -97,32 +133,68 @@ export const chapterEight: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "count_steps_on_rock",
+        label: "Keep one hand on the rock and count your steps, as you were taught.",
+        tone: "quiet",
         next: "descent_mist_2",
-        page: true,
+      },
+      {
+        id: "listen_for_breath_source",
+        label: "Listen closely to the breathing and try to tell where it comes from.",
+        tone: "inquiry",
+        next: "descent_mist_2",
+      },
+      {
+        id: "press_on_faster",
+        label: "Press on faster, before the mist can slow your pulse any further.",
+        tone: "force",
+        next: "descent_mist_2",
+      },
+      {
+        id: "call_to_breathing",
+        label: "Call out to whatever breathes below and ask it to show itself.",
+        tone: "truth",
+        next: "descent_mist_2",
       },
     ],
   },
   {
     id: "descent_mist_2",
-    title: "",
+    title: "Voices in the Red",
     paragraphs: [
       "Voices drift out of the mist. They are faint at first, then clearer, and then you can hear them as if they were speaking inside your skull. There are fourteen of them. You can count them, one for each name on the ledger, and each voice is a little younger than the last, as if the Law had been sending its children down the path in order of their birth. They are not asking for help. They are only saying their own names, over and over, in the same flat tone a clerk uses when reading a register aloud.",
       "Among the voices, one is singing. It is the same tune you heard in the vault, wordless and low, and it grows louder as you descend until it is the only sound left in the mist. You have heard that tune before, on a roof beneath the stars, sung by a girl with a silver comb in her hair.",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "speak_names_back",
+        label: "Speak the names back into the mist, one by one, so that each is answered.",
+        tone: "mercy",
         next: "descent_mist_3",
-        page: true,
+      },
+      {
+        id: "count_unnamed_voices",
+        label: "Count the voices and note how many have not yet said their names.",
+        tone: "inquiry",
+        next: "descent_mist_3",
+      },
+      {
+        id: "silence_voices_qi",
+        label: "Silence the voices with your qi and push on toward the singing.",
+        tone: "force",
+        next: "descent_mist_3",
+      },
+      {
+        id: "walk_on_silent",
+        label: "Keep your mouth shut and walk on through the voices without answering.",
+        tone: "quiet",
+        next: "descent_mist_3",
       },
     ],
   },
   {
     id: "descent_mist_3",
-    title: "",
+    title: "The Figure on the Ledge",
     paragraphs: [
       "The path bends sharply to the left, and the mist thins for a moment. Ahead, you can see a ledge the width of two shoulders, and on it a figure is standing with its back to you, looking out over the cleft as though it is waiting for someone to come up the path from the other side.",
     ],
@@ -166,16 +238,34 @@ export const chapterEight: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "hear_small_details",
+        label: "Listen to each name in turn, and hear the small details the ledger left out.",
+        tone: "inquiry",
         next: "descent_voices_2",
-        page: true,
+      },
+      {
+        id: "lift_lantern_for_voices",
+        label: "Lift your lantern so the voices can see the light of the living.",
+        tone: "mercy",
+        next: "descent_voices_2",
+      },
+      {
+        id: "tell_names_forgotten",
+        label: "Tell the voices the Law will never read their names again, and let them go.",
+        tone: "truth",
+        next: "descent_voices_2",
+      },
+      {
+        id: "shout_voices_quiet",
+        label: "Shout over the voices until they stop, so that you can think clearly.",
+        tone: "force",
+        next: "descent_voices_2",
       },
     ],
   },
   {
     id: "descent_voices_2",
-    title: "",
+    title: "The Fourteenth Name",
     paragraphs: [
       "The fourteenth name belongs to a girl of fifteen who was sent down the path on the night of the Sealing, only a few hours before Mengjiao. She speaks only once, and what she says is not a name. She says: The Elder counted me too, but she counted me wrong. I was not dead. I was only listening.",
       "The mist settles. The voices are gone, but the grey remains, pooled around your boots like a tide that has gone out and left its water behind. Ahead, the ledge is clear, and the figure standing on it has turned around at last. It is not a ghost. It is a living woman in old Azure Cloud grey, with a braid over one shoulder and a silver comb in her hair, and she is smiling at you as though she has been waiting all her life for someone to finally hear her.",
@@ -221,16 +311,34 @@ export const chapterEight: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "step_along_ledge",
+        label: "Step carefully along the ledge, keeping your back to the cleft wall.",
+        tone: "quiet",
         next: "descent_ledge_2",
-        page: true,
+      },
+      {
+        id: "ask_about_coin",
+        label: "Ask Mengjiao how the bronze coin came to be left in the crack.",
+        tone: "inquiry",
+        next: "descent_ledge_2",
+      },
+      {
+        id: "wanru_waited_for_voice",
+        label: "Tell Mengjiao that Wanru has waited fifteen years to hear from her.",
+        tone: "mercy",
+        next: "descent_ledge_2",
+      },
+      {
+        id: "take_her_by_wrist",
+        label: "Tell Mengjiao that you have come only to talk, then take her by the wrist.",
+        tone: "deceit",
+        next: "descent_ledge_2",
       },
     ],
   },
   {
     id: "descent_ledge_2",
-    title: "",
+    title: "Mengjiao Turns",
     paragraphs: [
       "You say that it does, and she laughs softly, a warm sound that does not match the grey around her. \"Good,\" she says. \"Pain is the only proof we have that we are still listening. The Law forgot that long ago. It counts names and forgets the people who wore them.\"",
       "She turns. Her eyes are dark and clear, and in them there is nothing of the wild thing the Law described in its ledgers. She looks tired, the way a long-distance runner looks tired, carefully and without complaint. \"I have been down here for fifteen years,\" she says. \"Keeping the seal the only way I know how. Would you like to see how?\"",
@@ -277,32 +385,68 @@ export const chapterEight: Scene[] = [
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_other_half",
+        label: "Ask how the other half of the jade ended up in the cleft.",
+        tone: "inquiry",
         next: "descent_mengjiao_2",
-        page: true,
+      },
+      {
+        id: "kneel_hand_over_bowl",
+        label: "Kneel beside her and lay your own hand over the water in the bowl.",
+        tone: "mercy",
+        next: "descent_mengjiao_2",
+      },
+      {
+        id: "tell_law_decided",
+        label: "Tell Mengjiao that the Law has already decided what it will do with her.",
+        tone: "truth",
+        next: "descent_mengjiao_2",
+      },
+      {
+        id: "lift_shard_from_water",
+        label: "Lift the shard from the water before she has a chance to stop you.",
+        tone: "deceit",
+        next: "descent_mengjiao_2",
       },
     ],
   },
   {
     id: "descent_mengjiao_2",
-    title: "",
+    title: "The Holes in the Seal",
     paragraphs: [
       "The water in the bowl ripples. Images rise from it, faint and fleeting: the altar in the Law Hall, the masters at their desks, the Elder at her window with a silver comb in her hand. The mist answers each image with a soft, low note, and the note sounds like forgiveness, though you are not sure whether it is forgiving her or the Law.",
       "\"The seal does not need a body,\" Mengjiao says. \"It needs a voice. Someone who will speak the names of the sealed every night, so the mist knows it has not been forgotten. I have been doing it for fifteen years. The Law has been doing the opposite. Every name they erase is a hole in the seal. That is why the mist is rising. It is not hungry. It is counting the holes.\"",
     ],
     choices: [
       {
-        id: "continue",
-        label: "Continue",
+        id: "ask_seal_needs",
+        label: "Ask her what the seal needs, if it does not need a body to hold it.",
+        tone: "inquiry",
         next: "descent_mengjiao_3",
-        page: true,
+      },
+      {
+        id: "believe_every_name",
+        label: "Tell her you believe every name she has spoken, and that you will remember them.",
+        tone: "mercy",
+        next: "descent_mengjiao_3",
+      },
+      {
+        id: "law_never_reads_names",
+        label: "Tell her the Law will never allow the names to be read within its hall.",
+        tone: "truth",
+        next: "descent_mengjiao_3",
+      },
+      {
+        id: "elder_hears_everything",
+        label: "Tell her the Elder will hear every word, whether she likes it or not.",
+        tone: "force",
+        next: "descent_mengjiao_3",
       },
     ],
   },
   {
     id: "descent_mengjiao_3",
-    title: "",
+    title: "A Message for Wanru",
     paragraphs: [
       "She looks up at you, and for the first time her voice shakes. \"Wanru will not come down here,\" she says. \"She is too proud, and too frightened of the height. But you can bring her a message. You can tell her that the names are still here, and that they are waiting to be read aloud in the Law Hall. Will you do that?\"",
     ],
