@@ -38,7 +38,7 @@ The river does not hurry. For thirty-six days it carries the barge past watersid
 === hub_b2_city | Qinglian Ford
 (temporary hub)
 > truth | The Silk Quarter. | silk_entry |  | !b2q_silk | You have been through the quarter.
-> quiet | Wait. | hub_b2_city
+> quiet | The Archive of Nine. | nine_entry |  | !b2q_nine | You have climbed the tower.
 > mercy | Wait. | hub_b2_city
 > inquiry | Wait. | hub_b2_city
 `,
