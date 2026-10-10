@@ -10,6 +10,7 @@ import { fever } from "./b2/fever";
 import { silk } from "./b2/silk";
 import { nine } from "./b2/nine";
 import { lanterns } from "./b2/lanterns";
+import { stairs } from "./b2/stairs";
 
 /**
  * The books after the first, in reading order. Each book lists its arcs; the story index parses them, adds their scenes
@@ -19,6 +20,6 @@ export const books: Book[] = [
   {
     id: "b2",
     name: "Book Two: The River of Ledgers",
-    arcs: [frame, censors, departure, willow, assize, pagoda, barge, fever, silk, nine, lanterns],
+    arcs: [frame, censors, departure, willow, assize, pagoda, barge, fever, silk, nine, lanterns, stairs],
   },
 ];

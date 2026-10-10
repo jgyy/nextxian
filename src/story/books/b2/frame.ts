@@ -40,6 +40,6 @@ The river does not hurry. For thirty-six days it carries the barge past watersid
 > truth | The Silk Quarter. | silk_entry |  | !b2q_silk | You have been through the quarter.
 > quiet | The Archive of Nine. | nine_entry |  | !b2q_nine | You have climbed the tower.
 > mercy | The Festival of Floating Names. | lanterns_entry |  | !b2q_lanterns | You have floated your lanterns.
-> inquiry | Wait. | hub_b2_city
+> inquiry | The Crane Stairs. | stairs_entry |  | !b2q_stairs | You have already climbed.
 `,
 };
