@@ -11,8 +11,8 @@ import {
   REPORT_LINES,
   REPORT_MEMORY,
   RETURN_CHOICES,
-  RETURN_CRISIS_FORCE,
-  RETURN_CRISIS_MERCY,
+  RETURN_APPROACH,
+  RETURN_CRISIS,
   RETURN_FOUND_SECRET,
   RETURN_OPEN,
   RETURN_USED_QI,
@@ -97,6 +97,7 @@ function sceneTones(mode: ChoiceTone, stage: number, approach: number): ChoiceTo
 
 export const roadFlag = (id: string, name: string) => `${id}_${name}`;
 export const doneFlag = (id: string) => `${ROAD_DONE_PREFIX}${id}`;
+export const reportedFlag = (id: string) => roadFlag(id, "reported");
 export const reportScenarioId = (id: string) => `REPORT_ROAD_${id.toUpperCase()}`;
 
 /** Builds the 25 scenes of one road: entry, four approaches of five beats, a hidden route of three, and a return. */
@@ -139,7 +140,6 @@ export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
       const choices: Choice[] = sceneTones(mode, stage, a).map((tone, c) => {
         const effects: Effect[] = [...TONE_EFFECTS[tone]];
         if (stage === 3) effects.push({ kind: "setFlag", flag: roadFlag(id, `crisis_${tone}`) });
-        if (stage === 4) effects.push({ kind: "setFlag", flag: roadFlag(id, `finished_${a}`) });
         return {
           id: tone,
           label: fill(pick(CHOICE_LABEL[tone], seed + c * 2 + 3), slots),
@@ -214,9 +214,17 @@ export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
     title: `${spec.title}: The Way Back`,
     paragraphs: open,
     extras: [
+      ...modes.map((mode, a) => ({
+        when: [{ kind: "flag" as const, flag: roadFlag(id, `approach_${a}`) }],
+        paragraphs: [fill(RETURN_APPROACH[mode], { ...base, focus: spec.focus[a] })],
+        group: "approach",
+      })),
+      ...(Object.keys(RETURN_CRISIS) as ChoiceTone[]).map((tone) => ({
+        when: [{ kind: "flag" as const, flag: roadFlag(id, `crisis_${tone}`) }],
+        paragraphs: [fill(RETURN_CRISIS[tone], base)],
+        group: "crisis",
+      })),
       { when: [{ kind: "flag", flag: roadFlag(id, "found_secret") }], paragraphs: [fill(RETURN_FOUND_SECRET, base)] },
-      { when: [{ kind: "flag", flag: roadFlag(id, "crisis_force") }], paragraphs: [fill(RETURN_CRISIS_FORCE, base)] },
-      { when: [{ kind: "flag", flag: roadFlag(id, "crisis_mercy") }], paragraphs: [fill(RETURN_CRISIS_MERCY, base)] },
       { when: [{ kind: "flag", flag: roadFlag(id, "used_qi") }], paragraphs: [fill(RETURN_USED_QI, base)] },
     ],
     choices: [
@@ -266,6 +274,6 @@ export function buildReport(spec: RoadSpec, ctx: RoadContext): NpcScenario {
       { when: [{ kind: "roads", min: 10 }], line: fill(REPORT_MEMORY.roads, slots) },
       { when: [{ kind: "realm", min: 2 }], line: fill(REPORT_MEMORY.realm, slots) },
     ],
-    remember: [roadFlag(id, "reported")],
+    remember: [reportedFlag(id)],
   };
 }

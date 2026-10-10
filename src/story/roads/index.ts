@@ -1,6 +1,7 @@
 import { REALMS } from "@/engine/cultivation";
 import type { Choice, NpcScenario, Scene } from "@/engine/types";
-import { approachModes, buildReport, buildRoad, doneFlag, type RoadSpec } from "./build";
+import { approachModes, buildReport, buildRoad, doneFlag, fill, reportedFlag, type RoadSpec } from "./build";
+import { WAYSIDE_AFTER } from "./lexicon";
 import { roadsOne } from "./specs-1";
 import { roadsTwo } from "./specs-2";
 
@@ -170,6 +171,18 @@ function waysideScene(w: Wayside, roads: { spec: RoadSpec; index: number }[]): S
     id: w.id,
     title: w.title,
     paragraphs: w.paragraphs,
+    // Once a road is done the wayside remembers whether the Elder was told, one alternative per road.
+    extras: roads.flatMap(({ spec }) => {
+      const slots = { place: spec.place, kname: spec.kname };
+      return [
+        { when: [{ kind: "flag" as const, flag: reportedFlag(spec.id) }], paragraphs: [fill(WAYSIDE_AFTER.reported, slots)], group: spec.id },
+        {
+          when: [{ kind: "flag" as const, flag: doneFlag(spec.id) }, { kind: "flag" as const, flag: reportedFlag(spec.id), is: false }],
+          paragraphs: [fill(WAYSIDE_AFTER.silent, slots)],
+          group: spec.id,
+        },
+      ];
+    }),
     interjections: [{ when: [{ kind: "roads", min: w.remark.roads }], line: w.remark.line }],
     choices,
   };

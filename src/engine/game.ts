@@ -21,6 +21,7 @@ import type {
   NpcState,
   PlayerStat,
   PlayerStats,
+  NpcScenario,
   Scene,
   Story,
 } from "./types";
@@ -39,10 +40,20 @@ export const NPC_RANGE: Record<NpcMetric, [number, number]> = {
 };
 
 export const INITIAL_STATS: PlayerStats = { qi: 20, karma: 0, insight: 10 };
+export const BOND_RANGE: [number, number] = [-100, 100];
+
+/** Decisions that must pass between one unprompted remark and the next. */
+export const REMARK_GAP = 3;
+
 export const INITIAL_NPC: NpcState = { trust: 0, respect: 0, fear: 10, suspicion: 30 };
 
 export function clamp(value: number, [lo, hi]: [number, number]): number {
   return Math.min(hi, Math.max(lo, value));
+}
+
+/** The name shown for a speaker: a companion's id gives their name, and no id means the Elder. */
+export function speakerName(story: Story, id?: string): string {
+  return (id && story.companions?.[id]?.name) || story.npc.name;
 }
 
 export function getScene(story: Story, id: string): Scene {
@@ -62,6 +73,11 @@ export function createGame(story: Story): GameState {
     tones: [],
     cultivation: 0,
     realm: 0,
+    bonds: {},
+    decisions: 0,
+    flagAt: {},
+    remarked: [],
+    lastRemark: -REMARK_GAP,
     log: [],
     visited: [],
   };
@@ -74,12 +90,19 @@ export function createGame(story: Story): GameState {
  * can speak up about what the player has become.
  */
 function enterScene(story: Story, state: GameState, scene: Scene): GameState {
+  const taken = new Set<string>();
   const extra = (scene.extras ?? [])
-    .filter((x) => conditionsHold(x.when, state))
+    .filter((x) => {
+      if (!conditionsHold(x.when, state)) return false;
+      if (x.group === undefined) return true;
+      if (taken.has(x.group)) return false;
+      taken.add(x.group);
+      return true;
+    })
     .flatMap((x) => x.paragraphs);
   const interjections = (scene.interjections ?? [])
     .filter((x) => conditionsHold(x.when, state))
-    .map((x) => ({ kind: "npc" as const, speaker: story.npc.name, text: x.line }));
+    .map((x) => ({ kind: "npc" as const, speaker: speakerName(story, x.speaker), text: x.line }));
   const log = [
     ...state.log,
     { kind: "heading" as const, text: scene.title },
@@ -92,8 +115,19 @@ function enterScene(story: Story, state: GameState, scene: Scene): GameState {
 export function applyEffects(state: GameState, effects: Effect[] = []): GameState {
   return effects.reduce<GameState>((s, effect) => {
     switch (effect.kind) {
-      case "setFlag":
-        return { ...s, flags: { ...s.flags, [effect.flag]: effect.value ?? true } };
+      case "setFlag": {
+        const on = effect.value ?? true;
+        const fresh = on && s.flags[effect.flag] !== true;
+        return {
+          ...s,
+          flags: { ...s.flags, [effect.flag]: on },
+          flagAt: fresh ? { ...s.flagAt, [effect.flag]: s.decisions } : s.flagAt,
+        };
+      }
+      case "addBond": {
+        const value = clamp((s.bonds[effect.npc] ?? 0) + effect.amount, BOND_RANGE);
+        return { ...s, bonds: { ...s.bonds, [effect.npc]: value } };
+      }
       case "addStat": {
         const value = clamp(s.stats[effect.stat] + effect.amount, STAT_RANGE[effect.stat]);
         return { ...s, stats: { ...s.stats, [effect.stat]: value } };
@@ -136,31 +170,60 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
     ...state,
     log: [...state.log, { kind: "player", text: choice.label }],
     tones: [...state.tones, choice.tone],
+    decisions: state.decisions + 1,
   };
 
-  if (choice.npcScenario) {
-    const scenario = story.scenarios[choice.npcScenario];
-    if (!scenario) throw new Error(`Unknown NPC scenario "${choice.npcScenario}"`);
-    const reaction = reactToScenario(scenario, next);
-    next = {
-      ...next,
-      log: [
-        ...next.log,
-        { kind: "npc", speaker: story.npc.name, text: reaction.line },
-      ],
-      npc: applyNpcDelta(next.npc, scenario.delta),
-      flags: {
-        ...next.flags,
-        ...Object.fromEntries((scenario.remember ?? []).map((f) => [f, true])),
-      },
-      history: [...next.history, scenario.id],
-    };
+  let spoke = false;
+  for (const id of [choice.npcScenario, choice.allyScenario]) {
+    if (!id) continue;
+    const scenario = story.scenarios[id];
+    if (!scenario) throw new Error(`Unknown NPC scenario "${id}"`);
+    next = react(story, next, scenario);
+    spoke = true;
   }
 
   next = applyEffects(next, choice.effects);
   next = gainCultivation(next, TONE_GAIN[choice.tone]);
+  const beforeAttitude = next.log.length;
   next = noticeAttitude(story, state, next);
-  return enterScene(story, next, getScene(story, choice.next));
+  spoke = spoke || next.log.length > beforeAttitude;
+  const entered = enterScene(story, next, getScene(story, choice.next));
+  return spoke ? entered : remark(story, entered);
+}
+
+/** One NPC scenario: the line, the change in feeling, and what they remember. A companion's scenario moves their bond. */
+function react(story: Story, state: GameState, scenario: NpcScenario): GameState {
+  const reaction = reactToScenario(scenario, state);
+  const entry = { kind: "npc" as const, speaker: speakerName(story, scenario.npc), text: reaction.line };
+  const remembered = (scenario.remember ?? []).filter((f) => state.flags[f] !== true);
+  const base: GameState = {
+    ...state,
+    log: [...state.log, entry],
+    flags: { ...state.flags, ...Object.fromEntries((scenario.remember ?? []).map((f) => [f, true])) },
+    flagAt: { ...state.flagAt, ...Object.fromEntries(remembered.map((f) => [f, state.decisions])) },
+    history: [...state.history, scenario.id],
+  };
+  if (scenario.npc) {
+    const amount = Object.values(scenario.delta).reduce((n, v) => n + (v ?? 0), 0);
+    return applyEffects(base, [{ kind: "addBond", npc: scenario.npc, amount }]);
+  }
+  return { ...base, npc: applyNpcDelta(base.npc, scenario.delta) };
+}
+
+/**
+ * After the new scene is entered, somebody may speak up on their own: the first remark whose conditions hold,
+ * if enough decisions have passed since the last one. A remark is said once, so nobody repeats themselves.
+ */
+function remark(story: Story, state: GameState): GameState {
+  if (state.decisions - state.lastRemark < REMARK_GAP) return state;
+  const found = (story.remarks ?? []).find((r) => !state.remarked.includes(r.id) && conditionsHold(r.when, state));
+  if (!found) return state;
+  return {
+    ...state,
+    remarked: [...state.remarked, found.id],
+    lastRemark: state.decisions,
+    log: [...state.log, { kind: "npc", speaker: speakerName(story, found.speaker), text: found.line }],
+  };
 }
 
 /**

@@ -16,6 +16,11 @@ export function restoreGame(saved: unknown, story: Story): GameState | null {
     ...game,
     cultivation,
     realm: typeof game.realm === "number" ? game.realm : realmForPoints(cultivation),
+    bonds: game.bonds && typeof game.bonds === "object" ? game.bonds : {},
+    decisions: typeof game.decisions === "number" ? game.decisions : game.tones?.length ?? 0,
+    flagAt: game.flagAt && typeof game.flagAt === "object" ? game.flagAt : {},
+    remarked: Array.isArray(game.remarked) ? game.remarked : [],
+    lastRemark: typeof game.lastRemark === "number" ? game.lastRemark : -3,
     history: Array.isArray(game.history) ? game.history : [],
     tones: Array.isArray(game.tones) ? game.tones : [],
   };

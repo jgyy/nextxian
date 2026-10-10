@@ -15,9 +15,18 @@ const TIERS: Tier[] = ["hostile", "wary", "neutral", "warm", "devoted"];
 
 /** Body text a scene can show at once, counting every extra paragraph and interjection as if it shows. */
 export function sceneBodyWords(scene: Scene): number {
+  // Alternatives in one group never show together, so a group counts as its longest member.
+  const grouped = new Map<string, number>();
+  let loose = 0;
+  for (const x of scene.extras ?? []) {
+    const words = x.paragraphs.reduce((m, p) => m + countWords(p), 0);
+    if (x.group === undefined) loose += words;
+    else grouped.set(x.group, Math.max(grouped.get(x.group) ?? 0, words));
+  }
   return (
     scene.paragraphs.reduce((n, p) => n + countWords(p), 0) +
-    (scene.extras ?? []).reduce((n, x) => n + x.paragraphs.reduce((m, p) => m + countWords(p), 0), 0) +
+    loose +
+    [...grouped.values()].reduce((n, w) => n + w, 0) +
     (scene.interjections ?? []).reduce((n, x) => n + countWords(x.line), 0)
   );
 }
@@ -113,8 +122,46 @@ export function validateStory(story: Story): string[] {
     }
   }
 
+  const companions = story.companions ?? {};
+  const knownSpeaker = (id: string | undefined) => id === undefined || companions[id] !== undefined;
+  for (const scene of Object.values(scenes)) {
+    for (const x of scene.interjections ?? []) {
+      if (!knownSpeaker(x.speaker)) problems.push(`scene "${scene.id}" has an interjection by unknown speaker "${x.speaker}"`);
+    }
+    for (const choice of scene.choices) {
+      if (choice.allyScenario && !scenarios[choice.allyScenario]) {
+        problems.push(`choice "${choice.id}" in "${scene.id}" uses missing ally scenario "${choice.allyScenario}"`);
+      }
+      for (const effect of choice.effects ?? []) {
+        if (effect.kind === "addBond" && !companions[effect.npc]) {
+          problems.push(`choice "${choice.id}" in "${scene.id}" changes the bond of unknown companion "${effect.npc}"`);
+        }
+      }
+    }
+  }
+  for (const scenario of Object.values(scenarios)) {
+    if (!knownSpeaker(scenario.npc)) problems.push(`NPC scenario "${scenario.id}" belongs to unknown companion "${scenario.npc}"`);
+  }
+  for (const { where, condition } of conditionsIn(story)) {
+    if (condition.kind === "bond" && !companions[condition.npc]) {
+      problems.push(`${where} reads the bond of unknown companion "${condition.npc}"`);
+    }
+  }
+  const remarkIds = new Set<string>();
+  for (const remark of story.remarks ?? []) {
+    if (remarkIds.has(remark.id)) problems.push(`duplicate remark id "${remark.id}"`);
+    remarkIds.add(remark.id);
+    if (!knownSpeaker(remark.speaker)) problems.push(`remark "${remark.id}" has unknown speaker "${remark.speaker}"`);
+    capped(`remark "${remark.id}"`, remark.line);
+    for (const condition of remark.when) {
+      if (condition.kind === "bond" && !companions[condition.npc]) {
+        problems.push(`remark "${remark.id}" reads the bond of unknown companion "${condition.npc}"`);
+      }
+    }
+  }
+
   const used = new Set(
-    Object.values(scenes).flatMap((s) => s.choices.map((c) => c.npcScenario).filter(Boolean)),
+    Object.values(scenes).flatMap((s) => s.choices.flatMap((c) => [c.npcScenario, c.allyScenario]).filter(Boolean)),
   );
   if (Object.keys(scenarios).length < MIN_NPC_SCENARIOS) {
     problems.push(`story defines ${Object.keys(scenarios).length} NPC scenarios; needs ${MIN_NPC_SCENARIOS}`);

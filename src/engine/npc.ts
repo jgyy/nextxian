@@ -179,9 +179,9 @@ export interface NpcReaction {
  */
 export function reactToScenario(
   scenario: NpcScenario,
-  state: Pick<GameState, "npc" | "flags" | "stats" | "history" | "tones"> & { realm?: number },
+  state: ConditionState,
 ): NpcReaction {
-  const tier = tierFor(state.npc.trust);
+  const tier = tierFor(scenario.npc ? (state.bonds?.[scenario.npc] ?? 0) : state.npc.trust);
   const memory = scenario.memory?.find((m) => conditionsHold(m.when, state));
   return {
     line: memory ? memory.line : scenario.lines[tier],
@@ -190,11 +190,12 @@ export function reactToScenario(
   };
 }
 
+/** What a condition may read. Everything past the first five fields is optional so older callers and saves still work. */
+export type ConditionState = Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones"> &
+  Partial<Pick<GameState, "realm" | "bonds" | "decisions" | "flagAt" | "sceneId">>;
+
 /** True when every condition holds. An empty or missing list always holds. */
-export function conditionsHold(
-  conditions: Condition[] | undefined,
-  state: Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones"> & { realm?: number },
-): boolean {
+export function conditionsHold(conditions: Condition[] | undefined, state: ConditionState): boolean {
   return (conditions ?? []).every((c) => {
     switch (c.kind) {
       case "flag":
@@ -225,6 +226,25 @@ export function conditionsHold(
         const v = Object.entries(state.flags).filter(([flag, on]) => on && flag.startsWith(ROAD_DONE_PREFIX)).length;
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
       }
+      case "bond": {
+        const v = state.bonds?.[c.npc];
+        if (v === undefined) return false;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "since": {
+        const at = state.flagAt?.[c.flag];
+        if (state.flags[c.flag] !== true || at === undefined) return false;
+        const v = (state.decisions ?? 0) - at;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "decisions": {
+        const v = state.decisions ?? 0;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "mood":
+        return moodFor(state.npc) === c.is;
+      case "scene":
+        return (state.sceneId ?? "").startsWith(c.prefix);
     }
   });
 }
