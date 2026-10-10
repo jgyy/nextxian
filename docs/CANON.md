@@ -66,3 +66,26 @@ Each book after the first is a region and a hub. The player chooses which arcs t
 - A companion appears with `bond:id` effects. A choice that changes a bond should be one the companion would notice.
 - Do not state a secret before the scene that reveals it.
 - Do not use a bare name before the character is introduced.
+
+## The Nine Cots (fixed in Book Two, used from Book Three)
+
+Nine children were seeded with the black lotus in the east dormitory of the Law Hall, numbered I to IX on brown cards. The player is IX. On the Sealing Night the Elder carried IX out in a basket, then went back and carried out one more, VIII, a boy of four. VIII is **Lin Yuan**, who is now the Keeper of Keys and does not know it. The other seven were taken from the burning dormitory by Madam Ash (Hui Niang), a Censor struck for refusing to sign the Great Sealing, and raised in a mourning-shop on the Salt Coast.
+
+| Cot | Name | What they became |
+| --- | --- | --- |
+| I | Ah Zhi | Keeps a ferry at the Tidewall. Practical, funny, drowning slowly in other people’s debts. |
+| II | Lu Yan | A physician. Tired, honest, treats the dust-sick. |
+| III | Bao Er | A singer and a smuggler. Loud, loving, lies for fun. |
+| IV | Qiu | Keeps the Salt Lamp, the lighthouse. Speaks little, sees the whole coast. |
+| V | Shu Ning | A seal-forger, trained by Ash’s old colleagues. Precise, bitter, brilliant. |
+| VI | Hao Lan | Placed by Ash among the Censors at nine, as Scribe Tong’s keeper and Duan Wuyi’s clerk. Does not know. |
+| VII | Tian | The youngest. Fierce. Has been told that IX is the reason the others were left to burn. |
+| VIII | Lin Yuan | Raised by the Elder as a keeper of keys. |
+
+Only the player’s seed woke. The others sleep. Ash’s rule is that nothing offered to a child is a gift, so she has waited fifteen years for IX to be able to refuse her.
+
+Yu Ling’s message, written on the back of every reserve card: *She will ask. Answer her.*
+
+## Book Three: The Drowned Library (the Salt Coast)
+
+Arrival is by the sea road (Mei’s coast guard) or the hill road (the Cinnabar seal-mender), according to `reserve_chose_sea` / `reserve_chose_hills`; both converge at **Tidewall**, a harbour town behind a wall of carved names. The Drowned Library is the sunken Fifth Floor annex of the Concord, where struck names wash up as wet paper at the spring tides. The Concord’s fleet under Inspector Fang arrives at the end of the book.

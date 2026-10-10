@@ -78,7 +78,7 @@ IX.
 > inquiry | Ask who wrote the number. | reserve_b2
 
 === reserve_b2 | The Eight
-“There were eight others,” says the Elder. “I did not save them. I want that understood before I tell you what became of them. I saved one, and I lost seven, and the eighth I found, twelve years later, in a house I did not expect.”
+“There were eight others,” says the Elder. “I saved one, a boy of four who is asleep on a mountain with a ring of keys. The other seven I believed lost. I want that understood before I tell you what became of them. I wore that belief for twelve years like a collar, and it was false.”
 She touches the comb in her hair.
 “Madam Ash raised them. She was a Censor, you know. A good one. She was struck for refusing to sign the Great Sealing, and she walked out of the fire with her sleeve burning, and she found that the Law Hall’s reserve cots were still warm. She took the seven who were left. She raised them as her own, in a house on the Salt Coast, under the cover of a mourning-shop.”
 Hao Lan has woken. She sits up without a sound, her satchel in her arms, and listens.
@@ -129,8 +129,19 @@ Mei Qiu says, unexpectedly, “The left. I know the coast guard. I know their sc
 Hao Lan says, “The right. The Cinnabar Peak has a seal-mender who owes me a favour.”
 > truth | The left, to the sea, where Ash is. | reserve_c3 | +reserve_chose_sea
 > quiet | The right, through the willows. | reserve_c3 | +reserve_chose_hills
-> mercy | Ask the Elder. | reserve_c3
-> inquiry | Ask Yue Zhaoning what she would do. | reserve_c3
+> mercy | Ask the Elder. | reserve_c3a
+> inquiry | Ask Yue Zhaoning what she would do. | reserve_c3a
+
+=== reserve_c3a | Two Opinions
+The Elder shakes her head. “I have said what I think of deciding for others.” Yue Zhaoning only shrugs, and spits over the side.
+“If it were my boat,” she says, “and it is, I would go where the people who are looking for me are not. That is the hills. But I have never been much for hiding. I like to be seen by the right people.”
+Mei Qiu leans forward. “The sea,” she says again. “Ash is there. Ash has the other seven. The Cinnabar Peak has a lock and a debt. The sea has a family.”
+Hao Lan says nothing. She looks at the water. She has gone very quiet since the word seven.
+The boat drifts. The fork is coming.
+> truth | Take the left channel, to the sea. | reserve_c3 | +reserve_chose_sea
+> quiet | Take the right, under the willows. | reserve_c3 | +reserve_chose_hills
+> mercy | Go to the sea, for the sake of the family. | reserve_c3 | +reserve_chose_sea
+> inquiry | Go to the hills, and ask the mender what he knows. | reserve_c3 | +reserve_chose_hills
 
 === reserve_c3 | The Elder Decides
 “I am not going to decide,” says the Elder. “I have decided for you for twenty years. I find it is not an improvement.” She takes a breath. “But I will say that a person who is asked where she wishes to go, and says nowhere, is in a worse state than one who goes the wrong way. I should like you to choose, and to be wrong if you must.”
@@ -208,9 +219,6 @@ She is looking at the sea.
 > quiet | Take the pole from Yue Zhaoning, and push. | b3_gate |
 > inquiry | Ask the sea what it wants. | b3_gate |
 
-=== b3_gate | The Salt Coast
-#end The River Ends
-(Book Three begins here.)
 `,
   scenarios: String.raw`
 $ SU_RESERVE_TAG | trust+5 respect+3 fear+2 | elder | The Elder gives the player the tag from the basket and tells the story of the Sealing Night.

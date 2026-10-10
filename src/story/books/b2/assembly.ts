@@ -385,7 +385,7 @@ He does not look at Lian Sheng. Lian Sheng rises, unhurried, with a bundle of pa
 
 === asm_d3s3 | The Register
 Lian Sheng lays the register on the table with a flat soft thump. It is a thick volume bound in grey cloth, stained at the corners. She opens it to a marked page. Her finger rests on a line.
-“Nine children were seeded with the black lotus by the masters of the Law Hall in the year before the Sealing,” she says. “As a reserve, in case the first failed. Eight were removed on the night of the Sealing, by a person within the sect. One was removed separately. The ninth.”
+“Nine children were seeded with the black lotus by the masters of the Law Hall in the year before the Sealing,” she says. “As a reserve, in case the first failed. Eight were removed from the dormitory on the night of the Sealing, by persons not recorded. The ninth was carried out separately.”
 She taps the line.
 “Withdrawn. Not struck. Not recorded. Not found.”
 She turns. She looks, not at the Elder, but at the witness's bench.
@@ -399,7 +399,7 @@ She turns. She looks, not at the Elder, but at the witness's bench.
 There is a scar across your left palm. You have had it since childhood. It is thin and white and runs from the base of the thumb to the edge of the hand. Your teacher in the river-village said it was a burn from a lamp you reached for as a baby.
 The Assembly sees it. A hush falls across three hundred delegates. In the first row, the delegate of the Alchemy Peak leans forward, her face avid. At the high table, Duan Wuyi has closed his eyes.
 Beside you, the Elder rises. She rises as a tree rises from a field, slowly, with a kind of terrible grace.
-“I am the one who hid her,” she says. “I am the Registrar who signed a fifteenth line that was not on the page. I took nine children out of the Law Hall on the night of the Sealing. I should like the Assembly to note that I did not do it for the sect.”
+“I am the one who hid her,” she says. “I am the Registrar who signed a fifteenth line that was not on the page. I took two children out of the Law Hall on the night of the Sealing, and I was too late for the rest. I should like the Assembly to note that I did not do it for the sect.”
 Her voice is perfectly clear.
 “I did it because she had a hand that would not stop reaching for the lamp.”
 > truth | Stand beside her. | + | +asm_stood_beside_su
