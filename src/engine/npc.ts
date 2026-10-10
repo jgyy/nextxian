@@ -42,6 +42,26 @@ export function tierShiftLine(from: Tier, to: Tier): string | undefined {
 }
 
 /**
+ * What she says when her face changes but her tier does not. That happens when fear
+ * or suspicion takes over her expression, or drains away again. Keyed by the mood she
+ * arrives at, so each line works whatever she was feeling before.
+ */
+export const MOOD_SHIFT: Record<Mood, string> = {
+  afraid: "Something in what you just said has frightened me, and I do not frighten easily. Give me a moment to set my hands flat on the table before I speak again.",
+  suspicious: "I have started counting your words the way I count the lamps before the bell. I cannot yet tell whether the fault is in your voice or in my own memory.",
+  furious: "The fear has gone and left only anger behind it. I would rather have had the fear. Fear at least knows when to stop.",
+  guarded: "The fear has drained out of me and left me guarded again. Do not take that for forgiveness. It is only the return of my spine.",
+  stern: "I have set down whatever was shaking in me. What is left is the Law, and it is stern, and it is listening.",
+  softened: "Something in my face has loosened without my leave. I did not give it permission to do that. Continue, and I will try to keep it from showing.",
+  tender: "I am no longer guarding my face, and I do not know when I stopped. It is a foolish thing for an elder to feel, and I feel it anyway.",
+};
+
+/** The line for a change of face, or undefined when her mood stayed the same. */
+export function moodShiftLine(from: Mood, to: Mood): string | undefined {
+  return from === to ? undefined : MOOD_SHIFT[to];
+}
+
+/**
  * Fear and suspicion override trust for the face she shows. A frightened or
  * suspicious elder looks that way even when her trust is high.
  */
@@ -74,7 +94,7 @@ export interface NpcReaction {
  */
 export function reactToScenario(
   scenario: NpcScenario,
-  state: Pick<GameState, "npc" | "flags" | "stats">,
+  state: Pick<GameState, "npc" | "flags" | "stats" | "history">,
 ): NpcReaction {
   const tier = tierFor(state.npc.trust);
   const memory = scenario.memory?.find((m) => conditionsHold(m.when, state));
@@ -88,7 +108,7 @@ export function reactToScenario(
 /** True when every condition holds. An empty or missing list always holds. */
 export function conditionsHold(
   conditions: Condition[] | undefined,
-  state: Pick<GameState, "stats" | "npc" | "flags">,
+  state: Pick<GameState, "stats" | "npc" | "flags" | "history">,
 ): boolean {
   return (conditions ?? []).every((c) => {
     switch (c.kind) {
@@ -101,6 +121,11 @@ export function conditionsHold(
       case "npc": {
         const v: NpcState[typeof c.metric] = state.npc[c.metric];
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "said": {
+        const h = state.history;
+        const recent = c.within === undefined ? h : h.slice(Math.max(0, h.length - c.within));
+        return recent.filter((id) => id === c.scenario).length >= (c.min ?? 1);
       }
     }
   });

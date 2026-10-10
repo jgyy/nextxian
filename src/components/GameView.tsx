@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { choose, createGame, currentBeat, getChoices, getScene } from "@/engine/game";
+import { restoreGame } from "@/engine/save";
 import type { GameState, LogEntry, Story } from "@/engine/types";
 import { chapters } from "@/story";
 import { NpcPanel } from "./NpcPanel";
@@ -13,9 +14,7 @@ const SAVE_KEY = "nextxian:save:v1";
 function readSave(story: Story): GameState | null {
   try {
     const raw = window.localStorage.getItem(SAVE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as GameState;
-    return parsed && typeof parsed.sceneId === "string" && story.scenes[parsed.sceneId] ? parsed : null;
+    return raw ? restoreGame(JSON.parse(raw), story) : null;
   } catch {
     return null;
   }

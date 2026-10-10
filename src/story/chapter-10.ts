@@ -15,6 +15,16 @@ export const chapterTen: Scene[] = [
       "On the altar, the Sealing Jade rests in a bed of black silk. It is whole, and it is very beautiful, pale green with a deep inner glow. Beside it lies a stack of grey orders, and the top one is blank except for a single line at the bottom: Signed by the Elder of the Law Hall, before witnesses.",
       "No one in the room looks at the jade. They look at the brush in the young Elder’s hand, and at the blank line on the order, and at the single space where her name should go. The masters are waiting. The mist is waiting. Outside the great doors, very far away, a bell is beginning to ring its long, slow note.",
     ],
+    interjections: [
+      {
+        when: [{ kind: "flag", flag: "paid_with_name" }],
+        line: "There is river water in your sleeve, Wanderer, and it has not dried. Whatever you gave the lake, you did not carry it back out. Stand where I can see you, and do not let the masters see that your hands are shaking.",
+      },
+      {
+        when: [{ kind: "flag", flag: "refused_ferry" }],
+        line: "You refused the boatman, and the lake remembers every refusal it has ever heard. Tonight it is listening through the open doors. Keep your voice low, and do not refuse me the same way.",
+      },
+    ],
     choices: [
       {
         id: "step_into_the_ring",
@@ -165,6 +175,12 @@ export const chapterTen: Scene[] = [
       "\"I saw it,\" she says, very quietly. \"I saw what you did, or failed to do, at the top of the path. The mirror does not lie. It never did. It only waited for someone to watch long enough.\" She looks at the altar, where the Sealing Jade should be and is not, because it has been on a lacquer tray in the sutra hall for fifteen years. \"I wrote my name beneath hers that night. Tonight I would write it again, if you had not stood there and asked me to remember why.\"",
       "The bell has stopped ringing. The courtyard is silent except for the murmur of the disciples who have gathered at the doors, and the sound of Ren Qiao’s boots as he walks toward the hall with a lantern in his hand. The Elder turns to you and lifts her chin. Her eyes are grey and bright and utterly steady.",
       "\"The Law will decide now,\" she says. \"It always does, eventually. But this time, the Law will have to decide with the whole truth on the table, and not one page of it hidden in a drawer. Come, Wanderer. The judgment is waiting for you, and so is Mengjiao, if she has chosen to come back up the stair.\"",
+    ],
+    interjections: [
+      {
+        when: [{ kind: "said", scenario: "THREATEN", min: 2 }],
+        line: "Threats again, on the night of the sealing. You have reached for the same weapon so often that I could draw it for you. I am no longer afraid of it. I am only tired of watching you hold it.",
+      },
     ],
     choices: [
       {

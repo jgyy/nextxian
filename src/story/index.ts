@@ -12,6 +12,10 @@ import { chapterTen } from "./chapter-10";
 import { chapterEleven } from "./chapter-11";
 import { herbMarketScenes } from "./side-herb-market";
 import { lanternStairScenes } from "./side-lantern-stair";
+import { sisterShrineScenes } from "./side-sister-shrine";
+import { bellFoundryScenes } from "./side-bell-foundry";
+import { stillWaterScenes } from "./side-ferry";
+import { sparringCourtScenes } from "./side-sparring-court";
 import { elderSu, elderSuScenarios } from "./npc/elder-su";
 
 /**
@@ -23,13 +27,17 @@ export const chapters: { name: string; scenes: Scene[] }[] = [
   { name: "Side Path: The Herb Market", scenes: herbMarketScenes },
   { name: "Chapter 2: The Crimson Abyss", scenes: chapterTwo },
   { name: "Chapter 3: The Ash Archive", scenes: chapterThree },
+  { name: "Side Path: The Sister’s Shrine", scenes: sisterShrineScenes },
   { name: "Chapter 4: The Sutra Door", scenes: chapterFour },
   { name: "Side Path: The Lantern Stair", scenes: lanternStairScenes },
   { name: "Chapter 5: The Blood Lotus Sutra", scenes: chapterFive },
   { name: "Chapter 6: The Jade Eye", scenes: chapterSix },
+  { name: "Side Path: The Sparring Court", scenes: sparringCourtScenes },
   { name: "Chapter 7: The Tribunal of Bells", scenes: chapterSeven },
+  { name: "Side Path: The Bell Foundry", scenes: bellFoundryScenes },
   { name: "Chapter 8: The Second Descent", scenes: chapterEight },
   { name: "Chapter 9: The Mist Remembers Mengjiao", scenes: chapterNine },
+  { name: "Side Path: The Ferry of Still Water", scenes: stillWaterScenes },
   { name: "Chapter 10: The Sealing Night", scenes: chapterTen },
   { name: "Chapter 11: The Judgment", scenes: chapterEleven },
 ];

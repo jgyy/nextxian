@@ -8,9 +8,10 @@ export const elderSu: NpcProfile = {
 };
 
 /**
- * Forty scenarios. Each has five tier lines (hostile → devoted) and optional
- * memory overrides for things the player did earlier in the story. Attitude
- * shifts and unprompted interjections live in the engine and in the scenes.
+ * Forty-three scenarios. Each has five tier lines (hostile → devoted) and optional
+ * memory overrides for things the player did earlier in the story, or for what she
+ * has just heard from them (`said`). Attitude shifts and unprompted interjections
+ * live in the engine and in the scenes.
  */
 export const elderSuScenarios: Record<string, NpcScenario> = {
   GIFT_HERB: {
@@ -41,6 +42,10 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
         when: [{ kind: "flag", flag: "lied_about_seal" }],
         line: "You lied to me once already. Now the truth arrives at my hall, late and unasked. I will weigh it, but I will not forget the first lie.",
       },
+      {
+        when: [{ kind: "said", scenario: "HONEST_ACCOUNT", min: 2 }],
+        line: "This is the third time you have told me the truth in this sect. I believed the first two. I am beginning to think you will keep doing it, and that frightens me more than a lie would.",
+      },
     ],
     remember: ["told_truth"],
   },
@@ -55,6 +60,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       warm: "I want to believe you. Be careful that I do not believe you too easily, or the sect will pay for my kindness.",
       devoted: "If you say you did not take it, then someone else did. I will look for them with you, and I will not let my faith in you blind me.",
     },
+    memory: [
+      {
+        when: [{ kind: "said", scenario: "HONEST_ACCOUNT", within: 1 }],
+        line: "You told me the truth a moment ago, and now you take it back. I can hold one of those answers, Wanderer. I cannot hold both of them at once.",
+      },
+    ],
     remember: ["lied_about_seal"],
   },
   THREATEN: {
@@ -68,6 +79,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       warm: "You threaten me, then look ashamed of it. I think you were frightened for someone, and it came out sideways.",
       devoted: "Threatening me to protect the sect's secret is the wrong way to save it, but I hear what it cost you to say it. Who are you really protecting?",
     },
+    memory: [
+      {
+        when: [{ kind: "said", scenario: "THREATEN", min: 2 }],
+        line: "Threats again. This is the third time you have reached for the same weapon. I am beginning to think it is the only one you own, and that you are afraid to set it down.",
+      },
+    ],
   },
   SHOW_MERCY: {
     id: "SHOW_MERCY",
@@ -80,6 +97,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       warm: "You let him run. Good. Mercy that costs you something is the only kind I believe in.",
       devoted: "You spared the boy I was ready to condemn. I was prepared to be wrong about him, and you made me glad to be wrong.",
     },
+    memory: [
+      {
+        when: [{ kind: "said", scenario: "THREATEN", within: 1 }],
+        line: "You threatened me, and then you spared him. Mercy that follows a threat is still a threat that has decided to wait. I will remember which one came first.",
+      },
+    ],
     remember: ["spared_gu"],
   },
   STEAL_SCROLL: {
@@ -132,6 +155,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       warm: "You call the Law a cage. I have said the same thing in private for twenty years. Do not say it in public, but know you are not alone in thinking it.",
       devoted: "A cage, you say. Then I am its keeper, and I have been counting the bars for years. Tell me which bar you would open.",
     },
+    memory: [
+      {
+        when: [{ kind: "said", scenario: "INSULT_SECT", min: 1 }],
+        line: "You mocked the Law once already, and now you do it again in the same hall. The first insult was a mistake. The second is a habit, and habits are what the Law was built to punish.",
+      },
+    ],
     remember: ["insulted_sect"],
   },
   HONOR_ANCESTORS: {
@@ -485,6 +514,12 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       warm: "You struck the bell for my sister’s name. I felt the sound in my ribs, and for one moment the sect was only a room of listeners.",
       devoted: "You rang the bell for Mengjiao in the Hall of Bells. Fifteen years of silence broke, and she heard it in the mist. Thank you.",
     },
+    memory: [
+      {
+        when: [{ kind: "said", scenario: "SHOW_CASTING_LEDGER", within: 1 }],
+        line: "You showed the disciples the names the bells carry, and then you struck the bell itself. You are not challenging the Law, Wanderer. You are challenging the metal that keeps its promises. I hear the difference, and I am afraid of how well you have learned to build a case.",
+      },
+    ],
     remember: ["challenged_bell"],
   },
   TESTIFY_FOR_GU: {
@@ -620,5 +655,93 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       },
     ],
     remember: ["reported_lamp_passage"],
+  },
+  REPORT_SHRINE: {
+    id: "REPORT_SHRINE",
+    summary: "The player tells the Elder about the hillside shrine below the archive.",
+    delta: { trust: 4, respect: 2, fear: -2, suspicion: -2 },
+    lines: {
+      hostile: "A shrine to my sister behind my own archive, built by the disciples I sent away? You are telling me the Law has a back door, and that you walked through it. I will have it bricked up by morning, and you will help the wardens do it.",
+      wary: "You found a place where my sister is still named, and you bring it to me as though it were a debt. I will take the debt. I do not yet know whether I want to be paid for it.",
+      neutral: "A shrine below the archive. Someone has been burning incense for fifteen years, and the Law Hall never noticed. I find that more shameful than any ledger I have signed.",
+      warm: "You went to the place the disciples built for her, and you did not laugh at it. Thank you. One day I will walk down that path myself, once the sect has stopped watching the back of my head.",
+      devoted: "Someone lit a light for my sister every year while I kept the Law. You carried that smoke up the stair and set it on my table. I do not know how to thank you without weeping, so I will say it plainly: thank you, Wanderer.",
+    },
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "lit_shrine" }],
+        line: "You lit incense for her, and then you told me. A living hand did for her what I would not do. Do not ask me to be grateful for it. I am, but I will not say so in front of the disciples.",
+      },
+      {
+        when: [{ kind: "flag", flag: "took_comb" }],
+        line: "You took her comb from the altar, and now you describe the shrine to me as though you had only looked at it. Give the comb back, or tell me plainly that you will keep it. I can bear a theft. I cannot bear a careless account of one.",
+      },
+    ],
+    remember: ["reported_shrine"],
+  },
+  SHOW_CASTING_LEDGER: {
+    id: "SHOW_CASTING_LEDGER",
+    summary: "The player shows the disciples the names poured into the bells, from the casting book.",
+    delta: { trust: 1, respect: 5, fear: 6, suspicion: 3 },
+    lines: {
+      hostile: "A ledger from the foundry, read out in front of my disciples. Kuang should have been paid to forget, and you have made him remember in public. Put it away before the masters decide you are the one who should be cast.",
+      wary: "You hold up the names as though they were proof. They are proof. They are also my handwriting on half of those bells, and the disciples can count as well as I can.",
+      neutral: "The casting book. I did not know Kuang still kept it. Fifteen names in a clerk’s ink, and a red line I did not write. Show me the red line again, Wanderer, and tell me whose hand you think it is.",
+      warm: "Fifteen names poured into bronze and hung over the sect for fifteen years, so the sect would hear them every time it rang. You were right to show them. Let the disciples hear what the bells have been saying.",
+      devoted: "You have read the bells aloud to the people who rang them. My sister was never quiet, not even in metal. I am proud of that, and ashamed to be proud of it, and I will carry both feelings to the sealing.",
+    },
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "tore_casting_page" }],
+        line: "You tore a page from the casting book, and now you bring me what it says from memory, as though a missing page were evidence. Show me the page, or stop asking the absence to speak for you.",
+      },
+    ],
+    remember: ["showed_casting_ledger"],
+  },
+  REPORT_FERRY: {
+    id: "REPORT_FERRY",
+    summary: "The player tells the Elder what the boatman of still water charges for the dead.",
+    delta: { trust: 2, respect: 2, fear: 5, suspicion: 2 },
+    lines: {
+      hostile: "The boatman charges the dead in names and the living in promises? You went across the still water to bargain with my sister’s ghost, and you came back with wet sleeves. Go into the hall before I decide the mist has chosen you.",
+      wary: "You crossed the lake and came back talking about fares. The lake is not a market, Wanderer. Whatever it took from you, do not offer it a second time.",
+      neutral: "The ferry of still water. My teachers said it was a story for children who could not sleep. A boatman who charges in names. Keep your answer short inside the hall, and do not let the lake speak through you.",
+      warm: "You went down to the water and came back with the fare still in your hands, which means you chose what to give it. The dead do not like to be bargained with. I think you bargained well, and I am glad you did.",
+      devoted: "The boatman still carries names across the lake, and you asked him for one back. Mengjiao always said the mist was counting. Tonight you have made it count something kind. Go on, and bring me the rest of it.",
+    },
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "paid_with_name" }],
+        line: "You gave the lake her name, and then you came up the steps and told me about the fare as if it were a ledger entry. I will hear the rest of this in the hall, and I will not interrupt you until the lamps are lit.",
+      },
+      {
+        when: [{ kind: "flag", flag: "refused_ferry" }],
+        line: "You refused to pay the lake. You have refused the Law before, Wanderer, and it cost me a great deal to keep forgiving you. Do not refuse the dead as well. They have had enough of refusal.",
+      },
+    ],
+    remember: ["reported_ferry"],
+  },
+  REPORT_BOUT: {
+    id: "REPORT_BOUT",
+    summary: "The player tells the Elder through the jade eye about the bout in the sparring court.",
+    delta: { trust: 1, respect: 3, fear: 2, suspicion: -1 },
+    lines: {
+      hostile: "You fought in the outer court and then report it to my eye as though the Law Hall were a sparring ring. A brawl is a brawl, even when the disciple wears a braid and calls it a bout. Keep your fists to yourself until I say otherwise.",
+      wary: "You stood on the earth against a senior disciple and came back to tell me about it. I want to know why you needed to be bruised before you would speak to me honestly.",
+      neutral: "A bout in the outer court. The disciples are restless tonight, and every one of them wants to strike something. Tell me what it taught you, and do not make a sermon of it.",
+      warm: "You took a blow in the outer court and came to tell me, which is more than most of my disciples would do. Stand your ground in the hall the way you stood on the earth, and I will not have to worry about you.",
+      devoted: "You let the court see what it costs to hold ground. Qin will remember your name, and so will I. Go to the summons with your shoulder aching and your head up.",
+    },
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "used_mist" }],
+        line: "You used the mist in a sparring bout, to win a bout you could have lost cleanly. The sutra teaches the technique, and the Law forbids it, and you knew both when you did it. I will hear you account for the mist before the sealing, Wanderer.",
+      },
+      {
+        when: [{ kind: "flag", flag: "boasted" }],
+        line: "You boasted about the bout, and the court repeated it to me before you did. Pride is a small sin, but you have collected too many small sins this week to call them small.",
+      },
+    ],
+    remember: ["reported_bout"],
   },
 };

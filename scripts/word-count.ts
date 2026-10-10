@@ -3,14 +3,11 @@
  * choice labels, NPC lines, and endings. Run with `npm run word-count`.
  */
 import { story, chapters } from "../src/story";
-import { TIER_SHIFT_DOWN, TIER_SHIFT_UP } from "../src/engine/npc";
+import { MOOD_SHIFT, TIER_SHIFT_DOWN, TIER_SHIFT_UP } from "../src/engine/npc";
+import { countWords } from "../src/engine/words";
 import type { Scene } from "../src/engine/types";
 
 export const WORD_GOAL = 1_000_000;
-
-export function countWords(text: string): number {
-  return text.split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
-}
 
 function sceneWords(scene: Scene): number {
   return (
@@ -29,10 +26,11 @@ function npcWords(): number {
     const memory = (s.memory ?? []).reduce((m, x) => m + countWords(x.line), 0);
     return n + tiers + memory;
   }, 0);
-  const shifts = [...Object.values(TIER_SHIFT_UP), ...Object.values(TIER_SHIFT_DOWN)].reduce(
-    (n, line) => n + countWords(line ?? ""),
-    0,
-  );
+  const shifts = [
+    ...Object.values(TIER_SHIFT_UP),
+    ...Object.values(TIER_SHIFT_DOWN),
+    ...Object.values(MOOD_SHIFT),
+  ].reduce((n, line) => n + countWords(line ?? ""), 0);
   return scenarios + shifts;
 }
 
@@ -54,7 +52,7 @@ export function report(): number {
   return total;
 }
 
-// Only print when run directly, so tests can import countWords.
+// Only print when run directly, so other modules can import report().
 if (process.argv[1] && process.argv[1].endsWith("word-count.ts")) {
   report();
 }

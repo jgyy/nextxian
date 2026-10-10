@@ -159,6 +159,11 @@ export const chapterNine: Scene[] = [
         npcScenario: "ACCEPT_PUNISHMENT",
         effects: [{ kind: "setFlag", flag: "returned_order" }, { kind: "addStat", stat: "karma", amount: 2 }],
       },
+      {
+        id: "take_the_ferry",
+        label: "Walk down to the black boat at the edge of the still water, and ask what it carries across before you enter the hall.",
+        next: "ferry_dock",
+      },
     ],
   },
 ];
