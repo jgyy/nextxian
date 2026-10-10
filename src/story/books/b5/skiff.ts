@@ -260,7 +260,7 @@ They raise it that evening on the pole. It is a plain strip of green, with no de
 “I don’t know.”
 “Not yet.” He claps you on the shoulder. “You have the right to sell one skiff to whomever you choose.”
 “I don’t want to sell.”
-“Then you may buy.” He winks. “It’s in the rules. Three skiffs, three hulls, a lawful price.” He names a figure. It is exactly the amount in your purse.
+“Then you may buy.” He winks. “It’s in the rules. Gerel’s three, Light, Sail and Return. A lawful price.” He names a figure. It is exactly the amount in your purse.
 The Gull is standing at the foot of the pole, looking up. He has not left.
 “I would like to sail with you,” he says gruffly. “As pilot. If you’ll have me.”
 > force | Accept. | skiff_a2s9
@@ -550,8 +550,7 @@ Over the child’s head, he looks at you.
 “I’ll watch her.”
 “You’ll watch the sail. She’ll watch herself.” He ruffles her hair roughly. “That is the arrangement.”
 She is trembling with joy. She cannot speak. She stands beside her small black skiff in the red dusk, with a bandaged arm and a gap-toothed grin, looking at the plain.
-He sells you the three skiffs for forty silver, then, at last, with a dry apology. They are old, patched, honest hulls, and not nearly as fast as the Inspector’s. But they are sound. Light, Sail and Return are not among them. They are not for sale.
-“I will sell you what is for sale,” says Ochir. “That’s all a Wright can do.”
+He sells you the three skiffs for forty silver and a promise. They are old, honest hulls, and not as fast as the Inspector’s: Light, Sail and Return, that were his daughter’s. “A skiff is no use on a nail,” he says. “Let them be wet.”
 > mercy | Thank him. | skiff_close | +skiff_taught
 > truth | Pay. | skiff_close | +skiff_taught
 > quiet | Take the tiller. | skiff_close | +skiff_taught

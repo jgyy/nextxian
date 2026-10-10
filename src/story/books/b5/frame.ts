@@ -32,6 +32,6 @@ At night the glass begins to hum.
 > quiet | Follow the line of masts frozen in the glass on the horizon. | wreck_entry |  | !b5q_wreck & b5q_skiff | You cannot sail until you have a skiff.
 > inquiry | Steer toward the white towers that rise from the mirage. | mirage_entry |  | !b5q_mirage & b5q_skiff | You cannot sail until you have a skiff.
 > deceit | Reef the sails against the black wall of wind to the north. | gale_entry |  | !b5q_gale & b5q_skiff | You cannot sail until you have a skiff.
-> force | Run for the far shore, where the smoke of the furnaces stands against the sky. | hub_b5_b |  | count:b5q_>=5 | The far shore is still beyond the horizon.
+> force | Run for the far shore, where the smoke of the furnaces stands against the sky. | furnace_entry |  | !b5q_furnace & count:b5q_>=5 | The far shore is still beyond the horizon.
 `,
 };
