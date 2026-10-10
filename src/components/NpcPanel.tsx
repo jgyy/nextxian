@@ -1,6 +1,7 @@
-import type { Mood, NpcMetric, NpcProfile, NpcState } from "@/engine/types";
+import type { ChoiceTone, Mood, NpcMetric, NpcProfile, NpcState } from "@/engine/types";
 import { moodFor, tierFor } from "@/engine/npc";
 import { NPC_RANGE } from "@/engine/game";
+import { TONE_INFO } from "@/engine/tone";
 
 const TIER_LABEL = {
   hostile: "Hostile",
@@ -36,10 +37,13 @@ export function NpcPanel({
   profile,
   npc,
   lastLine,
+  manner,
 }: {
   profile: NpcProfile;
   npc: NpcState;
   lastLine?: string;
+  /** The tone of the player's recent decisions, once one has settled. */
+  manner?: ChoiceTone;
 }) {
   const tier = tierFor(npc.trust);
   const mood = moodFor(npc);
@@ -62,6 +66,10 @@ export function NpcPanel({
           ·
         </span>
         Mood <strong className="mood-word">{MOOD_LABEL[mood]}</strong>
+      </p>
+
+      <p className="read" data-tone={manner}>
+        Her read of you <strong>{manner ? TONE_INFO[manner].name : "has no pattern yet"}</strong>
       </p>
 
       <dl className="meters">

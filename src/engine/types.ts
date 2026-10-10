@@ -6,6 +6,12 @@ export type PlayerStats = Record<PlayerStat, number>;
 export type NpcMetric = "trust" | "respect" | "fear" | "suspicion";
 export type NpcState = Record<NpcMetric, number>;
 
+/**
+ * The kind of decision a player makes. Each tone has its own colour on the stage, and the
+ * Elder keeps count of them, so a pattern of decisions changes what she says.
+ */
+export type ChoiceTone = "truth" | "mercy" | "inquiry" | "deceit" | "force" | "quiet";
+
 /** Flags are the game's memory: set by choices, read by conditions, and written by the NPC. */
 export type Condition =
   | { kind: "flag"; flag: string; is?: boolean }
@@ -15,7 +21,12 @@ export type Condition =
    * She reacted to this scenario. `min` is how many times it must appear (default 1).
    * `within` looks only at her last N reactions, so `within: 1` means "what she just heard".
    */
-  | { kind: "said"; scenario: string; min?: number; within?: number };
+  | { kind: "said"; scenario: string; min?: number; within?: number }
+  /**
+   * The player made decisions of this tone. `min` is how many (default 1), and `within`
+   * looks only at the last N decisions. Page turns are not decisions, so they do not count.
+   */
+  | { kind: "tone"; tone: ChoiceTone; min?: number; within?: number };
 
 export type Effect =
   | { kind: "setFlag"; flag: string; value?: boolean }
@@ -45,6 +56,13 @@ export interface NpcScenario {
 export interface Choice {
   id: string;
   label: string;
+  /** The kind of decision. It sets the option's colour, and every decision needs one. */
+  tone?: ChoiceTone;
+  /**
+   * A page turn carries the reader on to the next page of the same scene. It is not a
+   * decision, so it has no tone, no reaction and no effects.
+   */
+  page?: true;
   next: string;
   requires?: Condition[];
   /** Shown beside a locked choice explaining what is missing. */
@@ -55,6 +73,7 @@ export interface Choice {
 
 export interface Scene {
   id: string;
+  /** Empty on a continuation page, which has no heading of its own. */
   title: string;
   paragraphs: string[];
   /** Paragraphs added only when their conditions hold. */
@@ -96,6 +115,8 @@ export interface GameState {
   flags: Record<string, boolean>;
   /** Ids of the NPC scenarios she has reacted to, oldest first. The `said` condition reads it. */
   history: string[];
+  /** The tone of each decision the player has made, oldest first. The `tone` condition reads it. */
+  tones: ChoiceTone[];
   log: LogEntry[];
   visited: string[];
 }

@@ -9,6 +9,52 @@ export const chapterEleven: Scene[] = [
       "Elder Su rises from the jade chair for the first time since you arrived. She is smaller than you remembered, and sharper. \"The Law has a single question,\" she says. \"What will you do now that you know the truth?\"",
       "The Law Hall is silent. Outside, the mist is moving up the mountain, slow and patient, as if it has all the time in the world.",
     ],
+    choices: [
+      {
+        id: "plead_mercy",
+        label: "Plead for Gu's pardon and your own, on the strength of what you have done.",
+        tone: "mercy",
+        npcScenario: "PLEAD_FOR_PARDON",
+        next: "ending_redeemed",
+        requires: [{ kind: "npc", metric: "trust", min: 15 }],
+        lockedHint: "Requires Elder Su's trust of 15 or more.",
+      },
+      {
+        id: "accept_exile",
+        label: "Accept exile in silence and walk back down the mountain.",
+        tone: "mercy",
+        npcScenario: "ACCEPT_EXILE",
+        next: "ending_exile",
+      },
+      {
+        id: "seize_jade",
+        label: "Seize the Sealing Jade and flee into the Crimson Abyss.",
+        tone: "force",
+        npcScenario: "SEIZE_JADE",
+        next: "ending_fallen",
+        effects: [{ kind: "setFlag", flag: "seized_jade" }],
+      },
+      {
+        id: "claim_seat",
+        label: "Claim the Law Hall's seat as her successor.",
+        tone: "force",
+        npcScenario: "CLAIM_SEAT",
+        next: "ending_sovereign",
+        requires: [
+          { kind: "npc", metric: "respect", min: 40 },
+          { kind: "stat", stat: "insight", min: 30 },
+        ],
+        lockedHint: "Requires respect 40+ with the elder and insight 30+.",
+      },
+      {
+        id: "bring_sister",
+        label: "Tell the Elder that her sister is waiting at the top of the stair, and go to fetch her.",
+        tone: "truth",
+        next: "ending_sisters",
+        requires: [{ kind: "flag", flag: "freed_mengjiao" }],
+        lockedHint: "Requires that you freed Mengjiao from the chains on the Sealing Night.",
+      },
+    ],
     interjections: [
       {
         when: [{ kind: "npc", metric: "suspicion", min: 65 }],
@@ -23,43 +69,6 @@ export const chapterEleven: Scene[] = [
         line: "Mengjiao’s chains were broken on the Sealing Night. I saw it in the mirror. I have been waiting for someone to tell me that she is not still there, on the path.",
       },
     ],
-    choices: [
-      {
-        id: "plead_mercy",
-        label: "Plead for Gu's pardon and your own, on the strength of what you have done.",
-        next: "ending_redeemed",
-        requires: [{ kind: "npc", metric: "trust", min: 15 }],
-        lockedHint: "Requires Elder Su's trust of 15 or more.",
-      },
-      {
-        id: "accept_exile",
-        label: "Accept exile in silence and walk back down the mountain.",
-        next: "ending_exile",
-      },
-      {
-        id: "seize_jade",
-        label: "Seize the Sealing Jade and flee into the Crimson Abyss.",
-        next: "ending_fallen",
-        effects: [{ kind: "setFlag", flag: "seized_jade" }],
-      },
-      {
-        id: "claim_seat",
-        label: "Claim the Law Hall's seat as her successor.",
-        next: "ending_sovereign",
-        requires: [
-          { kind: "npc", metric: "respect", min: 40 },
-          { kind: "stat", stat: "insight", min: 30 },
-        ],
-        lockedHint: "Requires respect 40+ with the elder and insight 30+.",
-      },
-      {
-        id: "bring_sister",
-        label: "Tell the Elder that her sister is waiting at the top of the stair, and go to fetch her.",
-        next: "ending_sisters",
-        requires: [{ kind: "flag", flag: "freed_mengjiao" }],
-        lockedHint: "Requires that you freed Mengjiao from the chains on the Sealing Night.",
-      },
-    ],
   },
   {
     id: "ending_sisters",
@@ -67,6 +76,20 @@ export const chapterEleven: Scene[] = [
     paragraphs: [
       "The stair is long, and the mist does not try to stop you. When you reach the top, Mengjiao is standing in the sutra gate with her braid over one shoulder, looking out at the Law Hall as though she has never seen it before. She turns when she hears your steps. Her face is thin, and her eyes are bright, and she is smiling the way the girl on the roof smiled at the stars.",
       "Elder Su is waiting in the memorial. She does not speak. She simply crosses the floor, past the tablets and the hollow in the white paint, and takes her sister’s hands in both of her own. For a long time they stand like that, two grey robes in the lamplight, saying nothing at all. Then Mengjiao begins to speak the names of the sealed, one at a time, and Wanru speaks them with her, and the mist in the abyss lowers its voice to listen.",
+    ],
+    choices: [
+      {
+        id: "continue",
+        label: "Continue",
+        next: "ending_sisters_2",
+        page: true,
+      },
+    ],
+  },
+  {
+    id: "ending_sisters_2",
+    title: "",
+    paragraphs: [
       "The Law Hall does not forgive quickly, and the sect will argue about the names for years. But the names are read every night now, in the open courtyard, and the bells are rung only when there is something true to say. The Crimson Abyss no longer rises. It breathes slowly, like a sleeper who has been told a good story and is finally willing to dream.",
     ],
     choices: [],

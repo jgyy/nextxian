@@ -3,7 +3,8 @@
  * choice labels, NPC lines, and endings. Run with `npm run word-count`.
  */
 import { story, chapters } from "../src/story";
-import { MOOD_SHIFT, TIER_SHIFT_DOWN, TIER_SHIFT_UP } from "../src/engine/npc";
+import { MANNER_SHIFT, MOOD_SHIFT, TIER_SHIFT_DOWN, TIER_SHIFT_UP } from "../src/engine/npc";
+import { MAX_SCENE_WORDS, sceneBodyWords } from "../src/engine/validate";
 import { countWords } from "../src/engine/words";
 import type { Scene } from "../src/engine/types";
 
@@ -30,6 +31,7 @@ function npcWords(): number {
     ...Object.values(TIER_SHIFT_UP),
     ...Object.values(TIER_SHIFT_DOWN),
     ...Object.values(MOOD_SHIFT),
+    ...Object.values(MANNER_SHIFT),
   ].reduce((n, line) => n + countWords(line ?? ""), 0);
   return scenarios + shifts;
 }
@@ -49,6 +51,8 @@ export function report(): number {
   console.log(`${"Total".padEnd(40)} ${total.toLocaleString("en-US").padStart(10)}`);
   console.log(`${"Goal".padEnd(40)} ${WORD_GOAL.toLocaleString("en-US").padStart(10)}`);
   console.log(`${"Progress".padEnd(40)} ${((total / WORD_GOAL) * 100).toFixed(2).padStart(9)}%`);
+  const largest = Math.max(...Object.values(story.scenes).map(sceneBodyWords));
+  console.log(`${`Largest scene body (cap ${MAX_SCENE_WORDS})`.padEnd(40)} ${largest.toLocaleString("en-US").padStart(10)}`);
   return total;
 }
 

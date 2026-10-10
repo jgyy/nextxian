@@ -14,16 +14,19 @@ export const chapterOne: Scene[] = [
       {
         id: "bow_and_state",
         label: "Bow, give your name, and ask to see the Law Hall.",
+        tone: "mercy",
         next: "law_hall",
       },
       {
         id: "ask_gossip",
         label: "Ask the disciple what has happened on the mountain.",
+        tone: "inquiry",
         next: "gate_gossip",
       },
       {
         id: "offer_herb",
         label: "Offer him a spirit herb to carry in to the Law Hall as a gift.",
+        tone: "mercy",
         next: "law_hall",
         npcScenario: "GIFT_HERB",
         effects: [{ kind: "setFlag", flag: "gifted_herb" }, { kind: "addStat", stat: "insight", amount: 2 }],
@@ -31,6 +34,7 @@ export const chapterOne: Scene[] = [
       {
         id: "side_gate",
         label: "Slip through the side gate while the disciple is looking the other way.",
+        tone: "deceit",
         next: "memorial",
         effects: [
           { kind: "setFlag", flag: "sneaked_in" },
@@ -50,12 +54,14 @@ export const chapterOne: Scene[] = [
       {
         id: "go_to_law_hall",
         label: "Thank him and go straight to the Law Hall.",
+        tone: "quiet",
         next: "law_hall",
         effects: [{ kind: "setFlag", flag: "knows_gu_name" }],
       },
       {
         id: "ask_gu",
         label: "Ask him to describe Gu Hanzhen, so you know who you are looking for.",
+        tone: "inquiry",
         next: "law_hall",
         effects: [
           { kind: "setFlag", flag: "knows_gu_name" },
@@ -65,6 +71,7 @@ export const chapterOne: Scene[] = [
       {
         id: "bribe_gate",
         label: "Press a spirit stone into his palm for the rest of the story.",
+        tone: "deceit",
         next: "law_hall",
         effects: [
           { kind: "setFlag", flag: "bribed_gate" },
@@ -74,6 +81,7 @@ export const chapterOne: Scene[] = [
       {
         id: "leave_for_memorial",
         label: "Leave him to his umbrella and head for the memorial hall first.",
+        tone: "quiet",
         next: "memorial",
       },
     ],
@@ -96,6 +104,7 @@ export const chapterOne: Scene[] = [
       {
         id: "kneel",
         label: "Kneel before the ancestral tablets and honour the dead.",
+        tone: "mercy",
         next: "law_hall",
         npcScenario: "HONOR_ANCESTORS",
         effects: [{ kind: "setFlag", flag: "honored_ancestors" }, { kind: "addStat", stat: "karma", amount: 4 }],
@@ -103,6 +112,7 @@ export const chapterOne: Scene[] = [
       {
         id: "study_altar",
         label: "Study the cracked altar closely and memorise every mark on it.",
+        tone: "inquiry",
         next: "law_hall",
         effects: [
           { kind: "setFlag", flag: "saw_altar" },
@@ -112,6 +122,7 @@ export const chapterOne: Scene[] = [
       {
         id: "take_scroll",
         label: "Take the Heavenly Scroll from the shelf.",
+        tone: "deceit",
         next: "scroll_theft",
         npcScenario: "STEAL_SCROLL",
         effects: [{ kind: "setFlag", flag: "stole_scroll" }, { kind: "addStat", stat: "karma", amount: -8 }],
@@ -119,6 +130,7 @@ export const chapterOne: Scene[] = [
       {
         id: "read_altar_qi",
         label: "Draw a thread of your own qi across the altar to read what is left behind.",
+        tone: "force",
         next: "law_hall",
         npcScenario: "REVEAL_DEMONIC_QI",
         effects: [
@@ -140,18 +152,21 @@ export const chapterOne: Scene[] = [
       {
         id: "hide_and_walk",
         label: "Hide the scroll in your sleeve and walk out as if you belonged there.",
+        tone: "deceit",
         next: "law_hall",
         effects: [{ kind: "setFlag", flag: "hid_scroll" }, { kind: "addStat", stat: "karma", amount: -4 }],
       },
       {
         id: "drop_and_claim",
         label: "Drop the scroll on the floor and say you were searching for the thief.",
+        tone: "deceit",
         next: "law_hall",
         effects: [{ kind: "setFlag", flag: "dropped_scroll" }, { kind: "addStat", stat: "insight", amount: 4 }],
       },
       {
         id: "read_lines",
         label: "Read two lines aloud before the lantern reaches you.",
+        tone: "inquiry",
         next: "law_hall",
         effects: [
           { kind: "setFlag", flag: "read_scroll" },
@@ -162,6 +177,7 @@ export const chapterOne: Scene[] = [
       {
         id: "fight_warden",
         label: "Put out the lantern with a gust of qi and run for the side door.",
+        tone: "force",
         next: "law_hall",
         effects: [
           { kind: "setFlag", flag: "fought_warden" },
@@ -192,6 +208,7 @@ export const chapterOne: Scene[] = [
       {
         id: "honest_account",
         label: "Tell her exactly what you saw and what you did, without excuses.",
+        tone: "truth",
         next: "mission",
         npcScenario: "HONEST_ACCOUNT",
         effects: [{ kind: "addStat", stat: "karma", amount: 3 }],
@@ -199,6 +216,7 @@ export const chapterOne: Scene[] = [
       {
         id: "deny_seal",
         label: "Tell her you had nothing to do with the Sealing Jade.",
+        tone: "deceit",
         next: "mission",
         npcScenario: "LIE_ABOUT_SEAL",
         effects: [{ kind: "addStat", stat: "karma", amount: -4 }],
@@ -206,6 +224,7 @@ export const chapterOne: Scene[] = [
       {
         id: "mock_law",
         label: "Tell her the Law is a cage that keeps the sect blind.",
+        tone: "force",
         next: "mission",
         npcScenario: "INSULT_SECT",
         effects: [{ kind: "addStat", stat: "karma", amount: -2 }],
@@ -213,6 +232,7 @@ export const chapterOne: Scene[] = [
       {
         id: "ask_sutra",
         label: "Ask her what she knows about the forbidden Blood Lotus Sutra.",
+        tone: "inquiry",
         next: "mission",
         npcScenario: "ASK_FORBIDDEN_ART",
         effects: [{ kind: "addStat", stat: "insight", amount: 5 }],
@@ -220,6 +240,7 @@ export const chapterOne: Scene[] = [
       {
         id: "threaten_expose",
         label: "Tell her you know a secret the sect would rather keep buried, and you will tell it unless she cooperates.",
+        tone: "force",
         next: "mission",
         npcScenario: "THREATEN",
         effects: [{ kind: "addStat", stat: "karma", amount: -8 }],
@@ -237,12 +258,14 @@ export const chapterOne: Scene[] = [
       {
         id: "accept_mission",
         label: "Accept the task and go down the abyss path.",
+        tone: "quiet",
         next: "abyss_entry",
         effects: [{ kind: "setFlag", flag: "accepted_mission" }],
       },
       {
         id: "refuse_mission",
         label: "Refuse, and tell her you will not be her hound.",
+        tone: "force",
         next: "ending_exile",
         npcScenario: "REFUSE_TASK",
         effects: [{ kind: "setFlag", flag: "refused_mission" }],
@@ -250,12 +273,16 @@ export const chapterOne: Scene[] = [
       {
         id: "ask_time",
         label: "Ask for one night to prepare, then go down at first light.",
+        tone: "quiet",
+        npcScenario: "REQUEST_NIGHT",
         next: "abyss_entry",
         effects: [{ kind: "addStat", stat: "qi", amount: 5 }],
       },
       {
         id: "offer_self",
         label: "Offer to find Gu Hanzhen yourself, alone, without the wardens.",
+        tone: "mercy",
+        npcScenario: "OFFER_TO_FETCH_GU",
         next: "abyss_entry",
         effects: [
           { kind: "setFlag", flag: "volunteered" },
@@ -265,6 +292,8 @@ export const chapterOne: Scene[] = [
       {
         id: "prepare_at_market",
         label: "Ask leave to buy supplies at the herb market below the gate before you go down.",
+        tone: "quiet",
+        npcScenario: "REQUEST_NIGHT",
         next: "market_lane",
         effects: [{ kind: "setFlag", flag: "asked_for_market_leave" }],
       },
