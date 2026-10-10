@@ -169,6 +169,11 @@ export const chapterSeven: Scene[] = [
         next: "tribunal_bell_rule",
         effects: [{ kind: "addStat", stat: "qi", amount: 2 }, { kind: "addStat", stat: "karma", amount: 1 }],
       },
+      {
+        id: "slip_to_foundry",
+        label: "Slip behind the dais while the crowd is shouting, toward the ring of hammers rising from under the Law Hall.",
+        next: "foundry_gate",
+      },
     ],
   },
   {
@@ -220,6 +225,15 @@ export const chapterSeven: Scene[] = [
       "The masters do not vote. They sit in silence on the dais, their faces grey with a kind of slow astonishment, as they watch the line of disciples climb past them one by one. Lian Sheng alone keeps her hands folded in her lap, and her eyes never leave the Elder’s face.",
       "When the last stone falls, the bowl is almost evenly divided. The Elder stands and counts them in silence, moving her lips, touching each stone with one fingertip. Then she looks up at you, and her expression is so open that it hurts to see it.",
       "\"The Law counts its stones,\" she says quietly, \"and the Law has always counted fairly. It is only the masters who ever counted falsely.\" She takes a breath. \"The sect has spoken. The question is now mine to answer.\"",
+    ],
+    interjections: [
+      {
+        when: [
+          { kind: "said", scenario: "HONEST_ACCOUNT", within: 3 },
+          { kind: "said", scenario: "LIE_ABOUT_SEAL", within: 3 },
+        ],
+        line: "You denied the seal under the bell, and asked my leave a moment later. I heard both answers, Wanderer. The disciples were counting stones while I was counting you, and I am not yet certain which of us counted more truly.",
+      },
     ],
     choices: [
       {

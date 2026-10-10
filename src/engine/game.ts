@@ -1,4 +1,4 @@
-import { conditionsHold, reactToScenario, tierFor, tierShiftLine } from "./npc";
+import { conditionsHold, moodFor, moodShiftLine, reactToScenario, tierFor, tierShiftLine } from "./npc";
 import type {
   Choice,
   ChoiceView,
@@ -46,6 +46,7 @@ export function createGame(story: Story): GameState {
     stats: { ...INITIAL_STATS },
     npc: { ...INITIAL_NPC },
     flags: {},
+    history: [],
     log: [],
     visited: [],
   };
@@ -134,21 +135,25 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
         ...next.flags,
         ...Object.fromEntries((scenario.remember ?? []).map((f) => [f, true])),
       },
+      history: [...next.history, scenario.id],
     };
   }
 
   next = applyEffects(next, choice.effects);
-  next = noticeAttitudeShift(story, state, next);
+  next = noticeAttitude(story, state, next);
   return enterScene(story, next, getScene(story, choice.next));
 }
 
 /**
- * If the choice moved the Elder to another attitude tier, she says so. The line
- * goes after her reply, so the change is the last thing the player reads before
- * the next scene.
+ * If the choice moved the Elder to another attitude tier, she says so. If only her
+ * face changed, because fear or suspicion took hold or let go, she says that instead.
+ * The line goes after her reply, so the change is the last thing the player reads
+ * before the next scene.
  */
-function noticeAttitudeShift(story: Story, before: GameState, after: GameState): GameState {
-  const line = tierShiftLine(tierFor(before.npc.trust), tierFor(after.npc.trust));
+function noticeAttitude(story: Story, before: GameState, after: GameState): GameState {
+  const line =
+    tierShiftLine(tierFor(before.npc.trust), tierFor(after.npc.trust)) ??
+    moodShiftLine(moodFor(before.npc), moodFor(after.npc));
   if (!line) return after;
   return { ...after, log: [...after.log, { kind: "npc", speaker: story.npc.name, text: line }] };
 }

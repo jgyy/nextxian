@@ -177,6 +177,10 @@ export const chapterFive: Scene[] = [
         when: [{ kind: "flag", flag: "read_lamp_names" }],
         line: "You read the names on the lamp wall. Then you know which squares are blank, and that is more than the Law Hall has ever admitted to knowing. I will not ask you to recite them to me.",
       },
+      {
+        when: [{ kind: "flag", flag: "lit_shrine" }],
+        line: "Incense, Wanderer. There is no incense on the archive side of this sect, and yet there is a faint smoke on your sleeve. Tell me where you have been before someone else tells me, and does it less kindly.",
+      },
     ],
     choices: [
       {
@@ -214,6 +218,14 @@ export const chapterFive: Scene[] = [
         requires: [{ kind: "flag", flag: "entered_lantern_stair" }],
         lockedHint: "Requires that you have been down the lantern stair beneath the sutra door.",
         npcScenario: "REPORT_LAMP_PASSAGE",
+      },
+      {
+        id: "tell_elder_about_shrine",
+        label: "Tell her about the hillside shrine below the archive, where someone still keeps a light for her sister.",
+        next: "sutra_mengjiao_voice",
+        requires: [{ kind: "flag", flag: "visited_shrine" }],
+        lockedHint: "Requires a visit to the shrine behind the archive.",
+        npcScenario: "REPORT_SHRINE",
       },
     ],
   },

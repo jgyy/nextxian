@@ -683,6 +683,11 @@ export const chapterThree: Scene[] = [
         next: "sutra_door",
         effects: [{ kind: "setFlag", flag: "warden_escort" }, { kind: "addStat", stat: "karma", amount: 2 }],
       },
+      {
+        id: "ask_about_old_shrine",
+        label: "Ask the sleepy attendant whether anything below the archive still honours the forgotten.",
+        next: "shrine_gate",
+      },
     ],
   },
 ];

@@ -286,6 +286,11 @@ export const chapterSix: Scene[] = [
         next: "tribunal_summons",
         effects: [{ kind: "addStat", stat: "qi", amount: 4 }, { kind: "addStat", stat: "karma", amount: 1 }],
       },
+      {
+        id: "train_in_the_court",
+        label: "Walk round the bell tower to the sparring court, where the outer disciples are still practising under the summons.",
+        next: "court_gate",
+      },
     ],
   },
 ];

@@ -1,9 +1,21 @@
 import { describe, expect, it } from "vitest";
 import { story, chapters } from "@/story";
-import { validateStory, MIN_CHOICES, MIN_NPC_SCENARIOS } from "@/engine/validate";
+import { validateStory, MAX_BODY_WORDS, MIN_CHOICES, MIN_NPC_SCENARIOS } from "@/engine/validate";
 import { choose, createGame, currentBeat, getChoices, getScene } from "@/engine/game";
-import { moodFor, tierFor, tierShiftLine, TIER_SHIFT_DOWN, TIER_SHIFT_UP } from "@/engine/npc";
-import type { Choice, GameState, LogEntry, Tier } from "@/engine/types";
+import {
+  conditionsHold,
+  moodFor,
+  moodShiftLine,
+  MOOD_SHIFT,
+  reactToScenario,
+  tierFor,
+  tierShiftLine,
+  TIER_SHIFT_DOWN,
+  TIER_SHIFT_UP,
+} from "@/engine/npc";
+import { restoreGame } from "@/engine/save";
+import { countWords } from "@/engine/words";
+import type { Choice, Condition, GameState, LogEntry, Mood, Tier } from "@/engine/types";
 
 const TIERS: Tier[] = ["hostile", "wary", "neutral", "warm", "devoted"];
 
@@ -66,7 +78,7 @@ describe("story integrity", () => {
     const ids = chapters.flatMap((c) => c.scenes.map((s) => s.id));
     expect(new Set(ids).size).toBe(ids.length);
     expect(ids.sort()).toEqual(Object.keys(story.scenes).sort());
-    expect(chapters).toHaveLength(13);
+    expect(chapters).toHaveLength(17);
   });
 
   it("has five endings, all reachable", () => {
@@ -290,6 +302,279 @@ describe("visual novel stage", () => {
     const headings = after.log.filter((e) => e.kind === "heading").map((e) => e.text);
     expect(headings).toContain("Chapter One: The Stolen Seal");
     expect(currentBeat(after.log)[0].kind).toBe("player");
+  });
+});
+
+describe("NPC memory of her own reactions", () => {
+  const fresh = (extra: Partial<GameState> = {}): GameState => ({ ...createGame(story), ...extra });
+
+  it("records each NPC scenario she reacts to, and nothing else", () => {
+    const after = choose(story, fresh({ sceneId: "law_hall" }), "honest_account");
+    expect(after.history).toEqual(["HONEST_ACCOUNT"]);
+    const quiet = choose(story, fresh({ sceneId: "mission" }), "ask_time");
+    expect(quiet.history).toEqual([]);
+  });
+
+  it("counts earlier reactions with `said`, and `within` looks only at the most recent ones", () => {
+    const state = fresh({ history: ["THREATEN", "GIFT_HERB", "THREATEN"] });
+    const said = (c: Condition) => conditionsHold([c], state);
+    expect(said({ kind: "said", scenario: "THREATEN" })).toBe(true);
+    expect(said({ kind: "said", scenario: "THREATEN", min: 2 })).toBe(true);
+    expect(said({ kind: "said", scenario: "THREATEN", min: 3 })).toBe(false);
+    expect(said({ kind: "said", scenario: "THREATEN", within: 1 })).toBe(true);
+    expect(said({ kind: "said", scenario: "GIFT_HERB", within: 1 })).toBe(false);
+    expect(said({ kind: "said", scenario: "GIFT_HERB", within: 2 })).toBe(true);
+    expect(said({ kind: "said", scenario: "GIFT_HERB", within: 0 })).toBe(false);
+  });
+
+  it("remembers a third threat and says so, but not the first", () => {
+    const third = reactToScenario(story.scenarios.THREATEN, fresh({ history: ["THREATEN", "THREATEN"] }));
+    expect(third.remembered).toBe(true);
+    expect(third.line).toMatch(/third time/);
+    const first = reactToScenario(story.scenarios.THREATEN, fresh({ history: ["THREATEN"] }));
+    expect(first.remembered).toBe(false);
+  });
+
+  it("contradicts a denial that comes straight after an honest account", () => {
+    const reaction = reactToScenario(story.scenarios.LIE_ABOUT_SEAL, fresh({ history: ["HONEST_ACCOUNT"] }));
+    expect(reaction.remembered).toBe(true);
+    expect(reaction.line).toMatch(/cannot hold both/);
+  });
+
+  it("notices a lie and a truth given within the same few answers under the bell", () => {
+    const state = fresh({ sceneId: "tribunal_bell_rule", history: ["LIE_ABOUT_SEAL"] });
+    const after = choose(story, state, "ask_elder_permission");
+    expect(after.sceneId).toBe("tribunal_vote");
+    expect(after.log.some((e) => e.kind === "npc" && e.text.startsWith("You denied the seal under the bell"))).toBe(true);
+  });
+
+  it("speaks on the sealing night once the player has made the third threat", () => {
+    const state = fresh({ sceneId: "sealing_choice", history: ["THREATEN", "THREATEN"] });
+    const after = choose(story, state, "take_jade_instead");
+    expect(after.sceneId).toBe("sealing_return");
+    expect(after.log.some((e) => e.kind === "npc" && e.text.startsWith("Threats again, on the night"))).toBe(true);
+  });
+
+  it("gives every memory-driven NPC scenario a memory line that differs from its tier lines", () => {
+    for (const scenario of Object.values(story.scenarios)) {
+      const tiers = TIERS.map((t) => scenario.lines[t]);
+      for (const m of scenario.memory ?? []) expect(tiers, scenario.id).not.toContain(m.line);
+    }
+  });
+});
+
+describe("mood shifts", () => {
+  it("comments when fear takes over her face without changing her tier", () => {
+    // Trust 0 stays neutral. Showing the sealing order adds 8 fear, which takes her from 45 to 53: afraid.
+    const state: GameState = {
+      ...createGame(story),
+      sceneId: "tribunal_crowd",
+      npc: { trust: 0, respect: 0, fear: 45, suspicion: 30 },
+    };
+    const after = choose(story, state, "show_sealing_order");
+    const npc = after.log.filter((e) => e.kind === "npc").map((e) => e.text);
+    expect(npc.at(-1)).toBe(MOOD_SHIFT.afraid);
+  });
+
+  it("gives the tier comment the last word when her tier and her face change together", () => {
+    // Trust 20 is warm. Threatening her drops trust to 8 (neutral) and pushes fear to 51 (afraid).
+    const state: GameState = {
+      ...createGame(story),
+      sceneId: "law_hall",
+      npc: { trust: 20, respect: 0, fear: 45, suspicion: 30 },
+    };
+    const after = choose(story, state, "threaten_expose");
+    const npc = after.log.filter((e) => e.kind === "npc").map((e) => e.text);
+    expect(npc.at(-1)).toBe(TIER_SHIFT_DOWN.neutral);
+    expect(npc).not.toContain(MOOD_SHIFT.afraid);
+  });
+
+  it("has a distinct, non-empty line for every mood, and none when the mood stays put", () => {
+    const moods: Mood[] = ["furious", "afraid", "suspicious", "guarded", "stern", "softened", "tender"];
+    const lines = moods.map((m) => MOOD_SHIFT[m]);
+    expect(lines.every((l) => l.trim().length > 0)).toBe(true);
+    expect(new Set(lines).size).toBe(moods.length);
+    expect(moodShiftLine("stern", "stern")).toBeUndefined();
+    expect(moodShiftLine("stern", "afraid")).toBe(MOOD_SHIFT.afraid);
+  });
+});
+
+describe("body text cap", () => {
+  const words = (n: number) => Array.from({ length: n }, () => "word").join(" ");
+  const withGatePara = (paragraph: string) => ({
+    ...story,
+    scenes: { ...story.scenes, gate: { ...story.scenes.gate, paragraphs: [paragraph] } },
+  });
+
+  it("caps every paragraph, extra paragraph and interjection in the story", () => {
+    for (const scene of Object.values(story.scenes)) {
+      const blocks = [
+        ...scene.paragraphs,
+        ...(scene.extras ?? []).flatMap((x) => x.paragraphs),
+        ...(scene.interjections ?? []).map((x) => x.line),
+      ];
+      for (const block of blocks) expect(countWords(block), scene.id).toBeLessThanOrEqual(MAX_BODY_WORDS);
+    }
+  });
+
+  it("caps every NPC line and attitude comment in the story", () => {
+    const lines = [
+      ...Object.values(story.scenarios).flatMap((s) => [
+        ...Object.values(s.lines),
+        ...(s.memory ?? []).map((m) => m.line),
+      ]),
+      ...Object.values(TIER_SHIFT_UP),
+      ...Object.values(TIER_SHIFT_DOWN),
+      ...Object.values(MOOD_SHIFT),
+    ];
+    for (const line of lines) expect(countWords(line ?? "")).toBeLessThanOrEqual(MAX_BODY_WORDS);
+  });
+
+  it("accepts a paragraph of exactly the cap, and reports one word over it", () => {
+    expect(validateStory(withGatePara(words(MAX_BODY_WORDS)))).toEqual([]);
+    const problems = validateStory(withGatePara(words(MAX_BODY_WORDS + 1)));
+    expect(problems).toEqual([expect.stringMatching(/paragraph 1 has 201 words; the limit is 200/)]);
+  });
+
+  it("flags a said condition that names an NPC scenario the story does not define", () => {
+    const broken: typeof story = {
+      ...story,
+      scenes: {
+        ...story.scenes,
+        gate: {
+          ...story.scenes.gate,
+          interjections: [{ when: [{ kind: "said", scenario: "NOPE" }], line: "Nothing." }],
+        },
+      },
+    };
+    expect(validateStory(broken).join("\n")).toMatch(/missing NPC scenario "NOPE"/);
+  });
+});
+
+describe("saved games", () => {
+  it("gives a save from before the history existed an empty history", () => {
+    const old: Partial<GameState> = { ...createGame(story) };
+    delete old.history;
+    const restored = restoreGame(old, story);
+    expect(restored?.history).toEqual([]);
+    expect(restored?.sceneId).toBe("gate");
+  });
+
+  it("keeps the history of a save that has one", () => {
+    const saved = JSON.parse(JSON.stringify({ ...createGame(story), history: ["THREATEN"] }));
+    expect(restoreGame(saved, story)?.history).toEqual(["THREATEN"]);
+  });
+
+  it("refuses saves that do not point at a scene in this story", () => {
+    expect(restoreGame(null, story)).toBeNull();
+    expect(restoreGame("gate", story)).toBeNull();
+    expect(restoreGame({ ...createGame(story), sceneId: "nowhere" }, story)).toBeNull();
+  });
+});
+
+describe("new side paths", () => {
+  const at = (sceneId: string, extra: Partial<GameState> = {}): GameState => ({
+    ...createGame(story),
+    sceneId,
+    ...extra,
+  });
+
+  it("opens the sister’s shrine from the archive and returns to the sutra door", () => {
+    let game = at("archive_dawn");
+    for (const id of ["ask_about_old_shrine", "follow_mulberry_path", "ask_shen_about_her", "light_incense", "ask_shen_to_stay", "keep_shrine_secret"]) {
+      game = choose(story, game, id);
+    }
+    expect(game.sceneId).toBe("sutra_door");
+    expect(game.flags.visited_shrine).toBe(true);
+    expect(game.flags.lit_shrine).toBe(true);
+  });
+
+  it("lets the Elder hear about the shrine only after a visit, and then reacts to what it found", () => {
+    const locked = getChoices(getScene(story, "sutra_jade_eye"), at("sutra_jade_eye")).find(
+      (v) => v.choice.id === "tell_elder_about_shrine",
+    );
+    expect(locked?.available).toBe(false);
+
+    const after = choose(story, at("sutra_jade_eye", { flags: { visited_shrine: true, lit_shrine: true } }), "tell_elder_about_shrine");
+    expect(after.history).toEqual(["REPORT_SHRINE"]);
+    expect(reactionLine(after)).toBe(story.scenarios.REPORT_SHRINE.memory?.[0].line);
+  });
+
+  it("slips from the trial into the bell foundry and brings back the names to the bell rule", () => {
+    let game = at("tribunal_crowd");
+    for (const id of ["slip_to_foundry", "follow_the_hammers", "ask_kuang_about_names", "copy_the_casting_book", "carry_the_copy_forward"]) {
+      game = choose(story, game, id);
+    }
+    expect(game.sceneId).toBe("tribunal_bell_rule");
+    expect(game.history.at(-1)).toBe("SHOW_CASTING_LEDGER");
+    expect(game.flags.showed_casting_ledger).toBe(true);
+  });
+
+  it("keeps the foundry’s copy of the names locked until the player has made one", () => {
+    const locked = getChoices(getScene(story, "foundry_return"), at("foundry_return")).find(
+      (v) => v.choice.id === "carry_the_copy_forward",
+    );
+    expect(locked?.available).toBe(false);
+    expect(locked?.hint).toMatch(/copy/);
+  });
+
+  it("has the bell names come back to her at the second descent", () => {
+    const after = choose(story, at("tribunal_vote", { flags: { read_bell_names: true } }), "trust_elder_verdict");
+    expect(after.sceneId).toBe("descent_return");
+    expect(after.log.some((e) => e.kind === "npc" && e.text.startsWith("The bells rang fifteen times"))).toBe(true);
+  });
+
+  it("keeps the vigil at the shrine when the player lights the incense, and carries a shaving home", () => {
+    const vigil = choose(story, at("shrine_offering"), "light_incense");
+    expect(vigil.sceneId).toBe("shrine_vigil");
+    const back = choose(story, vigil, "take_a_shaving");
+    expect(back.sceneId).toBe("shrine_return");
+    expect(back.flags.took_shaving).toBe(true);
+  });
+
+  it("reads the rim of every bell in the dark hall, and touches the fifteenth", () => {
+    let game = at("foundry_ledger");
+    for (const id of ["read_names_aloud", "touch_the_fifteenth_bell"]) game = choose(story, game, id);
+    expect(game.sceneId).toBe("foundry_return");
+    expect(game.flags.read_bell_names).toBe(true);
+    expect(game.flags.touched_fifteenth_bell).toBe(true);
+  });
+
+  it("counts the faces across the water and walks the far shore before the fare", () => {
+    let game = at("ferry_crossing");
+    game = choose(story, game, "count_the_passengers");
+    expect(game.sceneId).toBe("ferry_far_shore");
+    game = choose(story, game, "return_to_the_boat");
+    expect(game.sceneId).toBe("ferry_fare");
+    expect(game.flags.counted_passengers).toBe(true);
+  });
+
+  it("trains in the sparring court, holds its ground, and reports the bout to the eye", () => {
+    let game = at("jade_eye_bell");
+    for (const id of ["train_in_the_court", "accept_the_challenge", "hold_your_ground", "report_bout"]) {
+      game = choose(story, game, id);
+    }
+    expect(game.sceneId).toBe("tribunal_summons");
+    expect(game.flags.held_ground).toBe(true);
+    expect(game.history.at(-1)).toBe("REPORT_BOUT");
+    expect(game.flags.reported_bout).toBe(true);
+  });
+
+  it("keeps the mist technique in the court locked until the sutra has been read", () => {
+    const locked = getChoices(getScene(story, "court_bout"), at("court_bout")).find((v) => v.choice.id === "use_the_mist");
+    expect(locked?.available).toBe(false);
+    expect(locked?.hint).toMatch(/Blood Lotus Sutra/);
+  });
+
+  it("crosses the still water, pays the fare in a name, and tells the Elder on the steps", () => {
+    let game = at("mist_wanru_message");
+    for (const id of ["take_the_ferry", "ask_for_passage", "watch_the_reflections", "give_mengjiao_name", "tell_elder_of_ferry"]) {
+      game = choose(story, game, id);
+    }
+    expect(game.sceneId).toBe("sealing_night");
+    expect(game.flags.paid_with_name).toBe(true);
+    expect(game.history.at(-1)).toBe("REPORT_FERRY");
+    expect(game.log.some((e) => e.kind === "npc" && e.text.includes("river water"))).toBe(true);
   });
 });
 

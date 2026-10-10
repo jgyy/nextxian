@@ -23,6 +23,10 @@ export const chapterEight: Scene[] = [
         ],
         line: "You told me the truth in one hall and a lie in the next, all within the same week. The Law can forgive a liar, but it does not know what to do with someone who has done both. Choose which one you carry down the mountain.",
       },
+      {
+        when: [{ kind: "flag", flag: "read_bell_names" }],
+        line: "The bells rang fifteen times while you read the names in the foundry. I heard the count from the Law Hall, and I did not stop it. Do not read them again on the ledge. The mist does not need to hear them twice.",
+      },
     ],
     choices: [
       {

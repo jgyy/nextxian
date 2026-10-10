@@ -10,7 +10,12 @@ export type NpcState = Record<NpcMetric, number>;
 export type Condition =
   | { kind: "flag"; flag: string; is?: boolean }
   | { kind: "stat"; stat: PlayerStat; min?: number; max?: number }
-  | { kind: "npc"; metric: NpcMetric; min?: number; max?: number };
+  | { kind: "npc"; metric: NpcMetric; min?: number; max?: number }
+  /**
+   * She reacted to this scenario. `min` is how many times it must appear (default 1).
+   * `within` looks only at her last N reactions, so `within: 1` means "what she just heard".
+   */
+  | { kind: "said"; scenario: string; min?: number; within?: number };
 
 export type Effect =
   | { kind: "setFlag"; flag: string; value?: boolean }
@@ -89,6 +94,8 @@ export interface GameState {
   stats: PlayerStats;
   npc: NpcState;
   flags: Record<string, boolean>;
+  /** Ids of the NPC scenarios she has reacted to, oldest first. The `said` condition reads it. */
+  history: string[];
   log: LogEntry[];
   visited: string[];
 }
