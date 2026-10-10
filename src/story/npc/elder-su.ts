@@ -8,8 +8,9 @@ export const elderSu: NpcProfile = {
 };
 
 /**
- * Fifteen scenarios. Each has five tier lines (hostile → devoted) and optional
- * memory overrides for things the player did earlier in the story.
+ * Forty scenarios. Each has five tier lines (hostile → devoted) and optional
+ * memory overrides for things the player did earlier in the story. Attitude
+ * shifts and unprompted interjections live in the engine and in the scenes.
  */
 export const elderSuScenarios: Record<string, NpcScenario> = {
   GIFT_HERB: {
@@ -543,5 +544,81 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       },
     ],
     remember: ["spoke_mengjiao_words"],
+  },
+  REPORT_RUMOR: {
+    id: "REPORT_RUMOR",
+    summary: "The player repeats a rumour from the herb market to the Elder through the jade-eye.",
+    delta: { trust: -3, respect: -2, fear: 4, suspicion: 5 },
+    lines: {
+      hostile: "Market gossip, carried up my own mountain and handed to me as news. You have made the Law Hall a story for the stalls. Stop repeating it before I have you stopped.",
+      wary: "The lane has a long tongue, and you have brought me a piece of it. I will check every word against the wardens’ reports before it shapes a single order.",
+      neutral: "A rumour from the market. Rumours are the sect’s weather, Wanderer. I have learned to dress for them, not to believe them. Tell me which part you think is true.",
+      warm: "You listened to the lane and then came back to tell me what it said, including the parts that frightened you. Most who go down the market return with nothing but prices.",
+      devoted: "The lane’s talk reached you, and you brought it to me instead of letting it rot between the stalls. A mistake repeated honestly is easier to correct than a rumour kept in silence. Thank you.",
+    },
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "spread_rumor" }],
+        line: "You repeated the boy’s story loudly in the lane, and now it runs ahead of you up the stairs. Whatever you believe about the mist, you have turned the Law Hall’s fear into a market song.",
+      },
+    ],
+    remember: ["reported_rumor"],
+  },
+  REPORT_SUPPLIES: {
+    id: "REPORT_SUPPLIES",
+    summary: "The player reports the frostleaf and charms bought below the gate, through the jade-eye.",
+    delta: { trust: 2, respect: 2, fear: -1, suspicion: -3 },
+    lines: {
+      hostile: "Frostleaf and paper charms. You spend your supplies in my lane and call it preparation. Go down the path and bring back the jade before I start counting your coins.",
+      wary: "Supplies, you say. I will check the receipts when you return, and I will check your sleeves for the smell of the lane. Do not make me look twice.",
+      neutral: "Frostleaf and charms, with a fair account of both. Good. A disciple who prepares properly is a disciple who comes back to be judged.",
+      warm: "You bought what you needed and told me exactly what it cost. I wish more of the sect were so plain about their purses, and so careful about their lungs.",
+      devoted: "You report the frostleaf as though it were a gift to me. I will remember the bundle you carried up the mountain, for the Law’s sake, and for mine.",
+    },
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "bartered_talisman" }],
+        line: "You traded a charm in the lane and call it supplies. My eye saw the yellow paper before you said a word. Keep your bargains honest, and I will keep mine.",
+      },
+    ],
+    remember: ["reported_supplies"],
+  },
+  HIDE_MARKET: {
+    id: "HIDE_MARKET",
+    summary: "The player tells the jade-eye that nothing in the market concerns the sect.",
+    delta: { trust: -5, respect: -2, fear: 2, suspicion: 8 },
+    lines: {
+      hostile: "Nothing in the market concerns the sect? The lane is full of this sect’s name, painted on every charm. You lie to my eye and expect me to look away.",
+      wary: "The market was empty of the sect, you say. The market has never once been empty of the sect. I will hear the rest of the story from the stalls, not from you.",
+      neutral: "You say nothing below the gate concerns us. Keep telling me that, and I will have to decide whether it is a lie or only a habit of the mountain.",
+      warm: "You are shielding the lane from me, or shielding me from the lane. I cannot tell which, and I suspect neither can you. Be careful with that kind of kindness.",
+      devoted: "You hid the market from my eye to spare me its noise. I will forgive that once, and I will remember that you tried.",
+    },
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "bartered_talisman" }],
+        line: "You bartered for a charm in the lane, then told my eye the market was empty. The yellow paper on your wrist says otherwise. Do not lie to me about small things, Wanderer. The small lies grow.",
+      },
+    ],
+    remember: ["hid_market"],
+  },
+  REPORT_LAMP_PASSAGE: {
+    id: "REPORT_LAMP_PASSAGE",
+    summary: "The player tells the jade-eye about the lantern stair, the keeper, and the names on the wall.",
+    delta: { trust: 3, respect: 3, fear: 4, suspicion: -2 },
+    lines: {
+      hostile: "Lanterns under the sutra door, and an old woman who keeps my sister’s name in oil? You went down a stair I never gave you and came back talking about it. Do not lead the Law to the lamps.",
+      wary: "The lamp stair, the wick, the names on the wall. You bring me a map of places I have tried hard not to look at. I will decide whether to read it, and I will decide alone.",
+      neutral: "The lantern keeper. I had forgotten she was still down there. Thank you for remembering her for me, even if you did it through a mirror.",
+      warm: "You went down to the lamps and came back to tell me what the keeper said. That is the kind of report I can use. The Law never listened to the lamps, and it should have.",
+      devoted: "Old Lin still keeps a light for my sister. You found her, and you gave me the light back in your own words. Fifteen years, and someone still lights the stair for Mengjiao. I will say it plainly: thank you.",
+    },
+    memory: [
+      {
+        when: [{ kind: "flag", flag: "read_lamp_names" }],
+        line: "You read the names on the wall, and then you read them to my mirror. You know which squares are blank now. Keep reading them, Wanderer. The blank ones are where the sect keeps its shame.",
+      },
+    ],
+    remember: ["reported_lamp_passage"],
   },
 };

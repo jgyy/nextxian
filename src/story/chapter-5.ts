@@ -168,6 +168,16 @@ export const chapterFive: Scene[] = [
       "The mirror pulses. Somewhere beyond the sutra hall, very far away, the bell of the Law Hall rings once, and the sound comes down through the rock like a stone dropped into a well. The Elder has heard it too. You hear her breath catch and then steady.",
       "\"The mist is answering you,\" she says, and her voice has gone very quiet. \"It answered me once, too. Fifteen years ago, on the night of the Sealing, when I stood at the top of the stair and called for my sister. It did not answer with words. It answered with a silence, and I have been listening to that silence ever since. Be careful, Wanderer. The silence has a way of asking for company.\"",
     ],
+    interjections: [
+      {
+        when: [{ kind: "flag", flag: "pocketed_wick" }],
+        line: "There is lamp oil on your sleeve, Wanderer. My eye sees the hall, not the stair beneath it, so tell me where else you have been before I hear it from the wardens.",
+      },
+      {
+        when: [{ kind: "flag", flag: "read_lamp_names" }],
+        line: "You read the names on the lamp wall. Then you know which squares are blank, and that is more than the Law Hall has ever admitted to knowing. I will not ask you to recite them to me.",
+      },
+    ],
     choices: [
       {
         id: "tell_elder_truth",
@@ -196,6 +206,14 @@ export const chapterFive: Scene[] = [
         next: "sutra_mengjiao_voice",
         npcScenario: "THREATEN",
         effects: [{ kind: "addStat", stat: "karma", amount: -4 }],
+      },
+      {
+        id: "tell_elder_about_lamps",
+        label: "Tell her about the lantern stair, the keeper, and the names on the wall, so the mirror hears what the lamps have been saying.",
+        next: "sutra_mengjiao_voice",
+        requires: [{ kind: "flag", flag: "entered_lantern_stair" }],
+        lockedHint: "Requires that you have been down the lantern stair beneath the sutra door.",
+        npcScenario: "REPORT_LAMP_PASSAGE",
       },
     ],
   },

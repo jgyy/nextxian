@@ -1,7 +1,7 @@
 import type { Story, Tier } from "./types";
 
 export const MIN_CHOICES = 4;
-export const MIN_NPC_SCENARIOS = 25;
+export const MIN_NPC_SCENARIOS = 40;
 const TIERS: Tier[] = ["hostile", "wary", "neutral", "warm", "devoted"];
 
 /** Returns a list of problems in the story. An empty list means the story is sound. */

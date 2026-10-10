@@ -262,6 +262,12 @@ export const chapterOne: Scene[] = [
           { kind: "addNpc", metric: "respect", amount: 3 },
         ],
       },
+      {
+        id: "prepare_at_market",
+        label: "Ask leave to buy supplies at the herb market below the gate before you go down.",
+        next: "market_lane",
+        effects: [{ kind: "setFlag", flag: "asked_for_market_leave" }],
+      },
     ],
   },
 ];

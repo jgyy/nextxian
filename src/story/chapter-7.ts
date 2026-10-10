@@ -15,6 +15,15 @@ export const chapterSeven: Scene[] = [
       "Gu Hanzhen is already kneeling at the foot of the steps, his hands bound loosely behind his back with a cord of red silk. The warden at his side is not Ren Qiao, and that is the first thing that frightens you. Ren Qiao is standing at the far edge of the terrace with his lantern unlit, looking at the ground.",
       "The Elder lifts one hand. The disciples fall silent, one terrace at a time, until the only sound left is the wind moving through the columns. \"The accused will come forward,\" she says, without raising her voice. \"The Law will hear the truth, and then the Law will ring the bell.\"",
     ],
+    interjections: [
+      {
+        when: [
+          { kind: "flag", flag: "stole_scroll" },
+          { kind: "flag", flag: "spared_gu" },
+        ],
+        line: "You stole from my shelves and then let the boy you were sent to hunt walk free. I cannot yet decide which of those two acts I am sentencing, and the masters will want my answer before the bell rings.",
+      },
+    ],
     choices: [
       {
         id: "climb_alone",

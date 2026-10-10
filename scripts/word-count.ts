@@ -3,6 +3,7 @@
  * choice labels, NPC lines, and endings. Run with `npm run word-count`.
  */
 import { story, chapters } from "../src/story";
+import { TIER_SHIFT_DOWN, TIER_SHIFT_UP } from "../src/engine/npc";
 import type { Scene } from "../src/engine/types";
 
 export const WORD_GOAL = 1_000_000;
@@ -23,11 +24,16 @@ function sceneWords(scene: Scene): number {
 }
 
 function npcWords(): number {
-  return Object.values(story.scenarios).reduce((n, s) => {
+  const scenarios = Object.values(story.scenarios).reduce((n, s) => {
     const tiers = Object.values(s.lines).reduce((m, l) => m + countWords(l), 0);
     const memory = (s.memory ?? []).reduce((m, x) => m + countWords(x.line), 0);
     return n + tiers + memory;
   }, 0);
+  const shifts = [...Object.values(TIER_SHIFT_UP), ...Object.values(TIER_SHIFT_DOWN)].reduce(
+    (n, line) => n + countWords(line ?? ""),
+    0,
+  );
+  return scenarios + shifts;
 }
 
 export function report(): number {

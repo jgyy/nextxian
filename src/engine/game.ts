@@ -1,4 +1,4 @@
-import { conditionsHold, reactToScenario } from "./npc";
+import { conditionsHold, reactToScenario, tierFor, tierShiftLine } from "./npc";
 import type {
   Choice,
   ChoiceView,
@@ -138,7 +138,19 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
   }
 
   next = applyEffects(next, choice.effects);
+  next = noticeAttitudeShift(story, state, next);
   return enterScene(story, next, getScene(story, choice.next));
+}
+
+/**
+ * If the choice moved the Elder to another attitude tier, she says so. The line
+ * goes after her reply, so the change is the last thing the player reads before
+ * the next scene.
+ */
+function noticeAttitudeShift(story: Story, before: GameState, after: GameState): GameState {
+  const line = tierShiftLine(tierFor(before.npc.trust), tierFor(after.npc.trust));
+  if (!line) return after;
+  return { ...after, log: [...after.log, { kind: "npc", speaker: story.npc.name, text: line }] };
 }
 
 export function applyNpcDelta(npc: NpcState, delta: Partial<NpcState>): NpcState {
