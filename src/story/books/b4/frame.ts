@@ -47,5 +47,18 @@ The Garrison’s presence is thicker. Patrols of grey riders on the skyline. A s
 > quiet | Follow the line of women in black who are walking east along the Fort road. | vigil_entry |  | !b4q_vigil | You have already kept the vigil.
 > inquiry | Ride to the ring of nine stones where the clans have gathered to judge a man. | court_entry |  | !b4q_court | The Court of Grass has already sat.
 > deceit | Ride on east, into the broken hills, where the fort is. | hub_b4_c |  | count:b4q_>=10 | You have not yet seen all there is to see on the road.
+
+=== hub_b4_c | The Last Week
+Three days later the grass begins to burn. Not with fire: it turns, the silver of the plain going copper and then the colour of rust, as the land climbs toward the mountains. The wind is cold and dry. The air smells of stone. On the eastern horizon, very faint and blue, a line of peaks floats like a cloud, and beneath them, a long way off, a single column of smoke goes straight up into the sky.
+The Listeners are with you now. The Matriarch’s tent follows, with its nine fires; Odval rides in the cart with a hand on the Elder’s sleeve; Temur has put his white hat back on. Every night a different clan brings a gift to the cart. A blanket. A pair of boots. A name.
++[d] b4q_kurultai | Nine thousand voices said the nine verbs aloud, and one bell rang back.
++[d] b4q_roots | A black ribbon has been tied round the hilt of a Listener’s knife, and nobody will say who tied it.
++[d] b4q_tomb | There is red dust in the creases of the cards that will not shake out.
++[d] b4q_mill | A broken steel bell hangs from the tail of the cart, and the horses will not pass it without a toss of the head.
+> truth | Go back to the Great Ring, where the clans have not yet struck their tents. | kurultai_entry |  | !b4q_kurultai | The Kurultai has already spoken.
+> mercy | Follow the line of black ribbons to the camp at the foot of the red cliff. | roots_entry |  | !b4q_roots & b4q_kurultai | The Kurultai has not yet said you may.
+> quiet | Ride toward the mound on the plain with a ring of nine iron posts. | tomb_entry |  | !b4q_tomb & b4q_kurultai | The nine fires have not yet agreed to show you.
+> inquiry | Ride toward the smoke and the iron chimneys of the Dust Mill. | mill_entry |  | !b4q_mill & b4q_kurultai | You do not yet know what is at the end of the smoke.
+> deceit | Climb the last rise, where a voice is humming in the wind. | voice_entry |  | count:b4q_>=14 & !b4q_voice | The voice is not yet loud enough to follow.
 `,
 };
