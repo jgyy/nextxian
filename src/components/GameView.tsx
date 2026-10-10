@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { choose, createGame, getChoices, getScene } from "@/engine/game";
-import type { GameState, Story } from "@/engine/types";
+import { choose, createGame, currentBeat, getChoices, getScene } from "@/engine/game";
+import type { GameState, LogEntry, Story } from "@/engine/types";
+import { chapters } from "@/story";
 import { NpcPanel } from "./NpcPanel";
 import { StatsPanel } from "./StatsPanel";
 
@@ -30,19 +31,54 @@ function writeSave(state: GameState): boolean {
   }
 }
 
+/** Renders one log entry. The same markup serves the stage and the backlog. */
+function Entry({ entry }: { entry: LogEntry }) {
+  switch (entry.kind) {
+    case "heading":
+      return <h2 className="scene-title">{entry.text}</h2>;
+    case "narration":
+      return <p className="narration">{entry.text}</p>;
+    case "player":
+      return (
+        <p className="player-line">
+          <span className="marker" aria-hidden="true">
+            You
+          </span>
+          {entry.text}
+        </p>
+      );
+    case "npc":
+      return (
+        <figure className="npc-line">
+          <figcaption>{entry.speaker}</figcaption>
+          <blockquote>{entry.text}</blockquote>
+        </figure>
+      );
+  }
+}
+
 export function GameView({ story }: { story: Story }) {
   const [game, setGame] = useState<GameState>(() => createGame(story));
   const [notice, setNotice] = useState<string | null>(null);
-  const logEnd = useRef<HTMLDivElement>(null);
+  const [showBacklog, setShowBacklog] = useState(false);
+  const stage = useRef<HTMLDivElement>(null);
+  const backlogEnd = useRef<HTMLDivElement>(null);
 
   const scene = getScene(story, game.sceneId);
   const choices = getChoices(scene, game);
   const ended = scene.ending !== undefined;
+  const beat = currentBeat(game.log);
+  const chapterName = chapters.find((c) => c.scenes.some((s) => s.id === scene.id))?.name.split(":")[0];
   const lastNpcLine = [...game.log].reverse().find((e) => e.kind === "npc")?.text;
 
+  // A new beat starts at the top of the stage. The backlog keeps its newest line in view.
   useEffect(() => {
-    logEnd.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    stage.current?.scrollTo({ top: 0, behavior: "smooth" });
   }, [game.log.length]);
+
+  useEffect(() => {
+    if (showBacklog) backlogEnd.current?.scrollIntoView({ block: "end" });
+  }, [showBacklog, game.log.length]);
 
   function pick(choiceId: string) {
     const next = choose(story, game, choiceId);
@@ -53,6 +89,7 @@ export function GameView({ story }: { story: Story }) {
   function restart() {
     const fresh = createGame(story);
     setGame(fresh);
+    setShowBacklog(false);
     setNotice(writeSave(fresh) ? null : "Progress is not being saved in this browser.");
   }
 
@@ -69,9 +106,14 @@ export function GameView({ story }: { story: Story }) {
   return (
     <div className="shell">
       <header className="masthead">
-        <div>
-          <p className="eyebrow">A xianxia tale</p>
-          <h1>{story.title}</h1>
+        <div className="title-block">
+          <span className="seal-stamp" aria-hidden="true">
+            赤渊
+          </span>
+          <div>
+            <p className="eyebrow">A xianxia tale</p>
+            <h1>{story.title}</h1>
+          </div>
         </div>
         <div className="actions">
           <button type="button" className="ghost" onClick={load}>
@@ -84,41 +126,35 @@ export function GameView({ story }: { story: Story }) {
       </header>
 
       <div className="layout">
-        <main className="story" aria-label="Story">
-          <div className="log">
-            {game.log.map((entry, i) => {
-              switch (entry.kind) {
-                case "heading":
-                  return (
-                    <h2 key={i} className="scene-title">
-                      {entry.text}
-                    </h2>
-                  );
-                case "narration":
-                  return (
-                    <p key={i} className="narration">
-                      {entry.text}
-                    </p>
-                  );
-                case "player":
-                  return (
-                    <p key={i} className="player-line">
-                      <span className="marker" aria-hidden="true">
-                        You
-                      </span>
-                      {entry.text}
-                    </p>
-                  );
-                case "npc":
-                  return (
-                    <figure key={i} className="npc-line">
-                      <figcaption>{entry.speaker}</figcaption>
-                      <blockquote>{entry.text}</blockquote>
-                    </figure>
-                  );
-              }
-            })}
-            <div ref={logEnd} />
+        <main className="novel" aria-label="Story">
+          <div className="stage-frame">
+            <div className="stage-bar">
+              <p className="stage-chapter">{chapterName}</p>
+              <button
+                type="button"
+                className="ghost small"
+                aria-expanded={showBacklog}
+                aria-controls="backlog"
+                onClick={() => setShowBacklog((open) => !open)}
+              >
+                {showBacklog ? "Close backlog" : "Backlog"}
+              </button>
+            </div>
+
+            {showBacklog ? (
+              <div id="backlog" className="backlog" role="log" aria-label="Full story so far">
+                {game.log.map((entry, i) => (
+                  <Entry key={i} entry={entry} />
+                ))}
+                <div ref={backlogEnd} />
+              </div>
+            ) : (
+              <div ref={stage} className="stage" aria-live="polite">
+                {beat.map((entry, i) => (
+                  <Entry key={i} entry={entry} />
+                ))}
+              </div>
+            )}
           </div>
 
           {ended ? (
@@ -141,7 +177,7 @@ export function GameView({ story }: { story: Story }) {
                       disabled={!available}
                       aria-describedby={hint ? `hint-${choice.id}` : undefined}
                     >
-                      {choice.label}
+                      <span className="choice-label">{choice.label}</span>
                     </button>
                     {hint && (
                       <p id={`hint-${choice.id}`} className="hint">

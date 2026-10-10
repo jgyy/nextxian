@@ -1,10 +1,24 @@
 import { describe, expect, it } from "vitest";
-import { story } from "@/story";
+import { story, chapters } from "@/story";
 import { validateStory, MIN_CHOICES, MIN_NPC_SCENARIOS } from "@/engine/validate";
-import { choose, createGame, getChoices, getScene } from "@/engine/game";
-import type { GameState, Tier } from "@/engine/types";
+import { choose, createGame, currentBeat, getChoices, getScene } from "@/engine/game";
+import { moodFor, tierFor } from "@/engine/npc";
+import type { GameState, LogEntry, Tier } from "@/engine/types";
 
 const TIERS: Tier[] = ["hostile", "wary", "neutral", "warm", "devoted"];
+
+/** Every scene id reachable from the start by following choice links, ignoring conditions. */
+function reachableScenes(): Set<string> {
+  const seen = new Set<string>();
+  const queue = [story.startSceneId];
+  while (queue.length) {
+    const id = queue.shift()!;
+    if (seen.has(id)) continue;
+    seen.add(id);
+    for (const choice of story.scenes[id].choices) queue.push(choice.next);
+  }
+  return seen;
+}
 
 describe("story integrity", () => {
   it("passes validation", () => {
@@ -18,7 +32,7 @@ describe("story integrity", () => {
     }
   });
 
-  it("defines at least ten reactive NPC scenarios", () => {
+  it("defines at least the required number of reactive NPC scenarios", () => {
     expect(Object.keys(story.scenarios).length).toBeGreaterThanOrEqual(MIN_NPC_SCENARIOS);
   });
 
@@ -27,6 +41,26 @@ describe("story integrity", () => {
       const lines = TIERS.map((t) => scenario.lines[t]);
       expect(new Set(lines).size, scenario.id).toBe(TIERS.length);
     }
+  });
+
+  it("reaches every scene from the start", () => {
+    const reachable = reachableScenes();
+    const unreachable = Object.keys(story.scenes).filter((id) => !reachable.has(id));
+    expect(unreachable).toEqual([]);
+  });
+
+  it("lists chapters in reading order and covers every scene exactly once", () => {
+    const ids = chapters.flatMap((c) => c.scenes.map((s) => s.id));
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(ids.sort()).toEqual(Object.keys(story.scenes).sort());
+    expect(chapters).toHaveLength(11);
+  });
+
+  it("has five endings, all reachable", () => {
+    const endings = Object.values(story.scenes).filter((s) => s.ending !== undefined);
+    expect(endings).toHaveLength(5);
+    const reachable = reachableScenes();
+    for (const ending of endings) expect(reachable.has(ending.id), ending.id).toBe(true);
   });
 });
 
@@ -81,6 +115,25 @@ describe("reactive NPC", () => {
     expect(plead?.hint).toMatch(/trust/);
     expect(() => choose(story, { ...withNpc(0), sceneId: "judgment" }, "plead_mercy")).toThrow(/locked/);
   });
+
+  it("lets the NPC speak unprompted when her suspicion crosses a threshold", () => {
+    const suspicious: GameState = {
+      ...withNpc(0),
+      sceneId: "judgment",
+      npc: { trust: 0, respect: 0, fear: 0, suspicion: 80 },
+    };
+    const entered = choose(story, { ...suspicious, sceneId: "sealing_return" }, "follow_elder_to_judgment");
+    const interjected = entered.log.filter((e) => e.kind === "npc" && e.text.includes("watching my hands"));
+    expect(interjected).toHaveLength(1);
+    expect(interjected[0].speaker).toBe(story.npc.name);
+  });
+
+  it("gives a different mood when she is afraid than when she is only angry", () => {
+    expect(moodFor({ trust: 60, respect: 0, fear: 60, suspicion: 0 })).toBe("afraid");
+    expect(moodFor({ trust: -60, respect: 0, fear: 0, suspicion: 0 })).toBe("furious");
+    expect(moodFor({ trust: 60, respect: 0, fear: 0, suspicion: 0 })).toBe("tender");
+    expect(tierFor(60)).toBe("devoted");
+  });
 });
 
 describe("player choices", () => {
@@ -90,15 +143,60 @@ describe("player choices", () => {
     expect(getChoices(getScene(story, "gate"), game)).toHaveLength(4);
   });
 
-  it("reaches an ending from a normal playthrough", () => {
+  it("reaches the Sisters' Dao ending through the sealing choice", () => {
     let game = createGame(story);
-    const route = ["bow_and_state", "honest_account", "accept_mission", "spare_gu", "recover_jade", "full_truth", "plead_mercy"];
+    const route = [
+      "bow_and_state", "honest_account", "accept_mission", "spare_gu", "recover_jade",
+      "full_truth", "go_front", "search_quietly", "to_the_index", "report_index_entry",
+      "report_letter", "sleep_on", "go_at_bell", "turn_key_again", "copy_all_bands",
+      "go_down_right", "touch_central_bell", "read_the_sutra", "resist_the_voice",
+      "tell_elder_sister", "offer_mengjiao_hand", "tell_of_mengjiao", "press_for_sealing_night",
+      "accept_confession", "praise_her_courage", "greet_gu", "kneel_with_gu", "testify_for_gu",
+      "let_bell_decide", "trust_elder_verdict", "trust_lantern", "walk_to_ledge",
+      "ask_how_she_keeps_seal", "promise_message", "carry_names_in", "read_all_fifteen",
+      "let_masters_go", "take_original_order", "step_into_the_ring", "elder_refuses",
+      "stay_back_path", "cut_chains", "follow_elder_to_judgment", "bring_sister",
+    ];
     for (const id of route) game = choose(story, game, id);
-    expect(getScene(story, game.sceneId).ending).toBe("Ending: The Law Remembers Mercy");
+    expect(getScene(story, game.sceneId).ending).toBe("Ending: The Sisters’ Dao");
+    expect(game.flags.freed_mengjiao).toBe(true);
+  });
+
+  it("locks the Sisters’ Dao ending unless Mengjiao was freed", () => {
+    const judgment = getChoices(getScene(story, "judgment"), { ...createGame(story), sceneId: "judgment" });
+    expect(judgment.find((v) => v.choice.id === "bring_sister")?.available).toBe(false);
   });
 
   it("rejects unknown choices", () => {
     expect(() => choose(story, createGame(story), "nope")).toThrow(/Unknown choice/);
+  });
+});
+
+describe("visual novel stage", () => {
+  const entry = (kind: LogEntry["kind"], text: string): LogEntry => ({ kind, text });
+
+  it("shows the whole log before any choice has been made", () => {
+    const log = [entry("heading", "A"), entry("narration", "one")];
+    expect(currentBeat(log)).toEqual(log);
+  });
+
+  it("hides earlier scenes once the player has chosen", () => {
+    const log = [
+      entry("heading", "Old scene"),
+      entry("narration", "old text"),
+      entry("player", "the choice"),
+      entry("npc", "her reply"),
+      entry("heading", "New scene"),
+      entry("narration", "new text"),
+    ];
+    expect(currentBeat(log).map((e) => e.text)).toEqual(["the choice", "her reply", "New scene", "new text"]);
+  });
+
+  it("keeps the full log in the game state for the backlog", () => {
+    const after = choose(story, createGame(story), "bow_and_state");
+    const headings = after.log.filter((e) => e.kind === "heading").map((e) => e.text);
+    expect(headings).toContain("Chapter One: The Stolen Seal");
+    expect(currentBeat(after.log)[0].kind).toBe("player");
   });
 });
 

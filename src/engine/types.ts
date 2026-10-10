@@ -20,6 +20,9 @@ export type Effect =
 /** The NPC reaction tiers, derived from trust. */
 export type Tier = "hostile" | "wary" | "neutral" | "warm" | "devoted";
 
+/** The NPC's visible mood, derived from her metrics. Drives her portrait and caption. */
+export type Mood = "furious" | "afraid" | "suspicious" | "guarded" | "stern" | "softened" | "tender";
+
 export interface NpcScenario {
   id: string;
   /** Short author-facing description of what the player did. */
@@ -52,6 +55,11 @@ export interface Scene {
   /** Paragraphs added only when their conditions hold. */
   extras?: { when: Condition[]; paragraphs: string[] }[];
   choices: Choice[];
+  /**
+   * Lines the NPC speaks on her own when the scene opens and the conditions hold.
+   * They appear after the scene text, so she reacts to what the player has become.
+   */
+  interjections?: { when: Condition[]; line: string }[];
   /** Present on ending scenes. The value is the ending's heading. */
   ending?: string;
 }
