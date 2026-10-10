@@ -29,6 +29,11 @@ export const INTROS: Record<string, string> = {
   archive_clerk: "lin",
   sutra_mengjiao_voice: "mengjiao",
   descent_ledge: "mengjiao",
+  censors_entry: "duan",
+  censors_a1s1: "hao",
+  censors_a2s1: "hao",
+  censors_a3s1: "hao",
+  censors_a4s1: "hao",
 };
 
 /** Adds the bond effects and the introductions to a scene's choices. */

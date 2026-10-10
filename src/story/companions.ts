@@ -23,6 +23,20 @@ export const companions: Record<string, Companion> = {
     description: "A clerk raised by the archive that expelled his mother, who knows where every drawer is and what each one costs.",
     glyph: "林",
   },
+  duan: {
+    id: "duan",
+    name: "Duan Wuyi",
+    title: "Censor-General of the Concord",
+    description: "A soft-spoken judge who has read nine hundred pages of the law of liens and believes a rule is only a kindness when it holds.",
+    glyph: "段",
+  },
+  hao: {
+    id: "hao",
+    name: "Hao Lan",
+    title: "Junior Censor",
+    description: "A twenty-three-year-old Censor who sketches what she cannot say and has not yet learned to lie.",
+    glyph: "郝",
+  },
   mengjiao: {
     id: "mengjiao",
     name: "Su Mengjiao",
