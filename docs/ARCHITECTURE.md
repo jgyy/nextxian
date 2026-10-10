@@ -8,7 +8,8 @@ flowchart LR
     C1[chapter-1..2.ts]
     C3[chapter-3..10.ts<br/>eight new chapters]
     C11[chapter-11.ts<br/>judgment and endings]
-    NPC[npc/elder-su.ts]
+    SP[side-herb-market.ts<br/>side-lantern-stair.ts]
+    NPC[npc/elder-su.ts<br/>forty scenarios]
   end
   subgraph Engine["src/engine (pure logic)"]
     G[game.ts<br/>createGame / choose / getChoices]
@@ -21,10 +22,11 @@ flowchart LR
     NP[NpcPanel.tsx<br/>portrait + mood]
     SP[StatsPanel.tsx]
   end
-  C1 & C3 & C11 & NPC --> S[story/index.ts]
+  C1 & C3 & C11 & SP & NPC --> S[story/index.ts]
   S --> G
   G --> N
   N --> M[moodFor]
+  G --> A[tierShiftLine<br/>attitude comments]
   V -. checked in tests .-> S
   G --> GV
   GV --> NP & SP
@@ -73,6 +75,36 @@ stateDiagram-v2
   Hostile --> Wary: trust > -40
 ```
 
+## Attitude shifts and pattern interjections
+
+When a choice crosses a tier boundary, the Elder speaks once more after her reply, so the change is the last thing the player reads. Scenes can also carry interjections whose conditions combine several flags, so she notices patterns in what the player has done.
+
+```mermaid
+flowchart TD
+  P[player picks a choice] --> R[reactToScenario: tier line or memory line]
+  R --> D[apply scenario delta and effects]
+  D --> T{tier changed?}
+  T -- no --> E[enter next scene]
+  T -- yes --> L[tierShiftLine from → to]
+  L --> E
+  E --> I{interjections whose<br/>flags all hold}
+  I --> SAY[she speaks unprompted]
+```
+
+```mermaid
+sequenceDiagram
+  participant P as Player
+  participant G as choose()
+  participant N as NPC engine
+  P->>G: honest_account (trust 10, neutral)
+  G->>N: reactToScenario (trust tier is neutral)
+  N-->>G: neutral reply
+  G->>G: trust +8 → 18
+  G->>N: tierShiftLine(neutral, warm)
+  N-->>G: "I notice I have started to listen…"
+  G-->>P: reply, then attitude comment
+```
+
 ## Chapter map
 
 Reading order is set in `src/story/index.ts`. Each chapter ends by linking into the next one's first scene. The judgment in chapter eleven has five endings, and the Sisters’ Dao ending needs Mengjiao freed on the Sealing Night.
@@ -80,8 +112,10 @@ Reading order is set in `src/story/index.ts`. Each chapter ends by linking into 
 ```mermaid
 flowchart LR
   C1[1 The Stolen Seal] --> C2[2 The Crimson Abyss]
+  C1 -. prepare at the market .-> SM[Side: The Herb Market] -. rejoins at the abyss path .-> C2
   C2 --> C3[3 The Ash Archive]
   C3 --> C4[4 The Sutra Door]
+  C4 -. follow the lamp keeper .-> SL[Side: The Lantern Stair] -. rejoins at the sutra hall .-> C5
   C4 --> C5[5 The Blood Lotus Sutra]
   C5 --> C6[6 The Jade Eye]
   C6 --> C7[7 The Tribunal of Bells]
@@ -113,9 +147,9 @@ flowchart TD
 
 ## Scenarios
 
-The Elder reacts to thirty-six scenarios. Each has five tier lines. Some have memory overrides. Scenes can also carry NPC interjections, which she speaks unprompted when her metrics or flags cross a threshold.
+The Elder reacts to forty scenarios. Each has five tier lines. Some have memory overrides. Scenes can also carry NPC interjections, which she speaks unprompted when her metrics or flags cross a threshold. Her attitude-shift lines (eight of them) sit in `src/engine/npc.ts`.
 
-The table lists the original fifteen. The other twenty-one are in `src/story/npc/elder-su.ts`.
+The table lists the original fifteen. The other twenty-five are in `src/story/npc/elder-su.ts`. The four newest come from the side paths: `REPORT_RUMOR`, `REPORT_SUPPLIES`, `HIDE_MARKET`, and `REPORT_LAMP_PASSAGE`.
 
 | Scenario | Triggered by | Memory override |
 | --- | --- | --- |

@@ -7,7 +7,8 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 ## Features
 
 - **Visual novel stage.** Each choice clears the screen to the new beat. Earlier text stays out of view until you open the backlog.
-- **Reactive NPC.** Elder Su has 36 scenarios. Each one has five lines chosen by her trust level. Earlier choices override lines through memory flags, so a lie in Chapter One comes back later. She also speaks unprompted when her suspicion, fear, or your past choices cross a threshold, and her portrait shows her mood.
+- **Reactive NPC.** Elder Su has 40 scenarios. Each one has five lines chosen by her trust level. Earlier choices override lines through memory flags, so a lie in Chapter One comes back later. She comments when a choice moves her to a warmer or colder attitude, and she speaks unprompted when her suspicion, fear, or a pattern in your past choices crosses a threshold (two lies, a theft followed by a sparing, a truth and a lie in the same week). Her portrait shows her mood.
+- **Side paths.** Two optional detours branch from the main line and rejoin it: the herb market below the gate, where rumours can be carried back to the Elder, and the lantern stair under the sutra door, where a keeper remembers Mengjiao.
 - **Four or more options at every decision.** Options with unmet requirements stay visible, marked, and explain what is missing.
 - **Multiple endings.** Five endings depend on trust, respect, insight, and your choices. One refusal ends the story early.
 - **Saves in your browser.** Progress is written to `localStorage` after every choice. Storage errors never stop play.
@@ -18,6 +19,9 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 ![Locked options](docs/screenshots/05-judgment-locked-options.png)
 ![Ending](docs/screenshots/06-ending-desktop.png)
 ![Mobile](docs/screenshots/07-mobile.png)
+![Attitude shift](docs/screenshots/08-attitude-shift-desktop.png)
+![Side path: herb market](docs/screenshots/09-herb-market-desktop.png)
+![Side path: lantern stair](docs/screenshots/10-lantern-stair-desktop.png)
 
 ## Getting started
 
@@ -52,4 +56,4 @@ scripts/      word-count tool
 
 ## Status
 
-The engine, NPC system, visual novel UI, and eleven chapters are in place: the original three-part storyline plus eight new chapters (Ash Archive, Sutra Door, Blood Lotus Sutra, Jade Eye, Tribunal of Bells, Second Descent, Mist Remembers Mengjiao, Sealing Night). The story is about 29,100 words, which is **2.91%** of the 1,000,000-word goal. Adding content means adding scenes to `src/story/chapter-*.ts`, registering new chapters in `src/story/index.ts`, and the validator and word count update automatically.
+The engine, NPC system, visual novel UI, and eleven chapters are in place: the original three-part storyline plus eight new chapters (Ash Archive, Sutra Door, Blood Lotus Sutra, Jade Eye, Tribunal of Bells, Second Descent, Mist Remembers Mengjiao, Sealing Night). Two side paths (Herb Market, Lantern Stair) branch from the main line. The story is about 32,200 words, which is **3.22%** of the 1,000,000-word goal. Adding content means adding scenes to `src/story/chapter-*.ts` or a new side-path file, registering new chapters in `src/story/index.ts`, and the validator and word count update automatically.
