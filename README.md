@@ -7,6 +7,8 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 ## Features
 
 - **Wealth, a pack, holdings and cultivation speed.** Spirit stones are the coin of the whole story. You start with a purse that your papers and your trade set, the sect pays you a stipend while you live on its mountain, and the morning the barge leaves the river steps it stops: from then on you pay your own keep, and a cultivator above Qi Condensation eats stones. Goods in your pack (a lamp, a mat, a charm, a seal) and holdings you lease (a stall, a bench, a cave) quicken your cultivation, a pill carries you over the next realm’s threshold, and a purse too light for your keep makes you Unfed and a fifth slower. Every choice that spends or earns shows its price before you pick it.
+- **Talent, Dao and six starting points.** Cultivation now shapes the story. You choose one of eight **talents** (five single roots, mixed, heaven-marked, late bloom) that set your speed, one of nine **Daos** (alchemy, forging, talisman, formation, beast, sword, healing, fate, or the open hand) that give a passive rule and a mastery that grows from Novice to Grandmaster as you walk its roads, and one of six **origins** (the river village, a porter, a rogue, a ruined heir, a Concord courier, a sect’s exile), each with its own prologue, purse and way in. Forty **Dao Roads**, 1,000+ scenes, read your talent, Dao, mastery and origin; the Elder, the companions and the heart demon do too.
+- **63 price labels fixed.** See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md). The fourth pass found 63 Fortune Road labels naming a different price from the one the purse paid, and says plainly that this is well short of 1,000.
 - **Forty Fortune Roads, 1,025 more scenes.** Ten new waysides, one at each of ten places the main line stops, from the stalls at the foot of the gate stair to the fair at the foot of the mountain. Each has four roads of 25 scenes, each written in its own words: twenty situations, a hidden route, a way back, and a keeper who sells one good and leases one holding. Prices follow the road’s realm. A pill is sold only to a hero of the road’s realm, a lease only to a hero who has it, and the job a mortal cannot do pays three days’ wages to a hero who can.
 - **Accounts on the road.** Five short scenes stop the company at the river steps and the gates of Books Three to Six to count: the Elder reads your realm against what the road expects, notes if you are Unfed or quick, and lets you spend, share or sit the night. Each of the seven endings closes on the purse and the holdings.
 - **Goods that stand in for a realm.** At three of Book Six’s wards a charm, a seal or a shard of glass takes the place of one realm. Each is used up by the choice that spends it.
@@ -29,6 +31,27 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 - **Saves in your browser.** Progress is written to `localStorage` after every choice. Storage errors never stop play. Saves from before the Elder kept a reaction history, or before decisions had tones, still load.
 
 ![Scene with no Continue](docs/screenshots/02-no-continue-desktop.png)
+
+### Talent, Dao and origin
+
+![Creation: origin, talent and Dao](docs/screenshots/60-creation-origin-talent-dao-desktop.png)
+![An exile breaks through, and the talent and Dao are named in the log](docs/screenshots/61-exile-breakthrough-desktop.png)
+![A ruined heir’s creation](docs/screenshots/62-creation-heir-desktop.png)
+![The heir’s prologue](docs/screenshots/63-heir-prologue-desktop.png)
+![A courier’s prologue on a phone](docs/screenshots/64-courier-prologue-mobile.png)
+
+```mermaid
+flowchart LR
+  O["Origin (6)"] --> P["Prologue scene"] --> G["gate"]
+  O --> W["starting purse"]
+  T["Talent (8)"] --> V["cultivation speed, realm-gated"]
+  D["Dao (9)"] --> R["passive rule"]
+  D --> M["mastery: Novice to Grandmaster"]
+  M --> DR["40 Dao Roads"]
+  T --> DR
+  O --> DR
+  T --> HD["heart-demon karma line"]
+```
 
 ### Your character
 
@@ -197,6 +220,6 @@ scripts/         word count, story check, simulator
 
 The engine, NPC system, cultivation realms, visual novel UI, six books and their endings are in place and playable from the first scene to seven endings. Every scene stands on its own: no page turns, a heading on every scene, four or more tone-tagged choices at every decision, and a 200-word cap on every scene body.
 
-The story has 5,881 scenes (9 endings) and 25,951 choices, with 256 NPC scenarios and 262 unprompted remarks. The word count is 1,369,319, which is **136.9%** of the 1,000,000-word goal. The count adds up every variant of a line that can be shown (every dress, birth and realm a keeper can react to), so it overstates what one playthrough reads. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md): this pass fixed 1,743 inconsistencies, of which 64 contradict the setting, the hero or the purse and 1,678 are lines a player read twice, and the ledger says plainly which is which.
+The story has 6,936 scenes and about 30,000 choices, with 256 NPC scenarios and 262 unprompted remarks. The word count is 1,848,317, which is **184.8%** of the 1,000,000-word goal. The count adds up every variant of a line that can be shown (every dress, birth and realm a keeper can react to), so it overstates what one playthrough reads. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md): this pass fixed 1,743 inconsistencies, of which 64 contradict the setting, the hero or the purse and 1,678 are lines a player read twice, and the ledger says plainly which is which.
 
 The side roads of Book One are assembled from templates and read more uniformly than the hand-written chapters. The Book V finale and Book VI are compact (about 8,000 words) next to the sixteen-arc hubs before them, and are the obvious place to add more. The books and the canon are described in [docs/CANON.md](docs/CANON.md). Adding content means adding an arc under `src/story/books/<book>/`, registering it in `src/story/books/index.ts`, and running `npm run check`.
