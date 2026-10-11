@@ -6,7 +6,7 @@ export const roadsStalls: RoadSpec3[] = [
   {
     id: "lamp_oil",
     title: "The Lamp-Oil Seller",
-    place: "the lamp-oil stall at the foot of the stair",
+    place: "the lamp-oil stall",
     keeper: "the oil-seller Fenglan",
     kname: "Fenglan",
     relic: "a brass oil-measure dented by a thrown coin",
@@ -57,7 +57,7 @@ export const roadsStalls: RoadSpec3[] = [
   {
     id: "talisman_press",
     title: "The Talisman Press",
-    place: "the talisman press behind the tea-stall",
+    place: "the talisman press",
     keeper: "the printer’s widow Xiulan",
     kname: "Xiulan",
     relic: "a woodblock carved with a ward no one living can read",
@@ -108,7 +108,7 @@ export const roadsStalls: RoadSpec3[] = [
   {
     id: "root_seller",
     title: "The Bitter-Root Seller",
-    place: "the root-seller’s stall below the stair",
+    place: "the root-seller’s stall",
     keeper: "the herb-woman Tingfang",
     kname: "Tingfang",
     relic: "a pestle whose bowl was worn through by one lifetime of grinding",
@@ -159,7 +159,7 @@ export const roadsStalls: RoadSpec3[] = [
   {
     id: "sandal_mender",
     title: "The Sandal Mender",
-    place: "the sandal-mender’s bench under the stair",
+    place: "the sandal-mender’s bench",
     keeper: "the cobbler Tiegen",
     kname: "Tiegen",
     relic: "a leather awl with a bone handle carved with tiny stairs",
@@ -212,7 +212,7 @@ export const roadsStalls: RoadSpec3[] = [
   {
     id: "merit_window",
     title: "The Almoner’s Window",
-    place: "the almoner’s window in the Law Hall’s east wing",
+    place: "the almoner’s window",
     keeper: "the almoner Kaiyan",
     kname: "Kaiyan",
     relic: "an ivory abacus whose beads were worn to the shape of a thumb",
@@ -263,7 +263,7 @@ export const roadsStalls: RoadSpec3[] = [
   {
     id: "pawn_row",
     title: "The Salvage Pawnbroker",
-    place: "the pawnbroker’s shop on Pawn Row",
+    place: "the pawnbroker’s shop",
     keeper: "the pawnbroker Jinhai",
     kname: "Jinhai",
     relic: "a jade loupe cracked across the lens",
@@ -314,7 +314,7 @@ export const roadsStalls: RoadSpec3[] = [
   {
     id: "ink_stone",
     title: "The Ink-Stone Cutter",
-    place: "the ink-stone cutter’s yard",
+    place: "the ink-stone yard",
     keeper: "the stone-cutter Shiqi",
     kname: "Shiqi",
     relic: "a slab of ink-stone whose pool was cut in the shape of a closed eye",
@@ -365,7 +365,7 @@ export const roadsStalls: RoadSpec3[] = [
   {
     id: "dormitory_dispensary",
     title: "The Dormitory Dispensary",
-    place: "the dispensary in the east dormitory",
+    place: "the dormitory dispensary",
     keeper: "the dispenser Lanxi",
     kname: "Lanxi",
     relic: "a glass dropper stoppered with a plug of beeswax",

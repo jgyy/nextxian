@@ -5,6 +5,10 @@ import { bandBounds } from "../roads2/hero-lex";
 import { buildReport3, buildRoad3, doneFlag3, holdingAsset, pricesFor, reportedFlag3, wareItem, type RoadSpec3 } from "./build";
 import { WORK_DAY } from "./lexicon";
 import { roadsStalls } from "./specs-1";
+import { roadsMerit } from "./specs-2";
+import { roadsDeparture } from "./specs-3";
+import { roadsCoast } from "./specs-4";
+import { roadsHome } from "./specs-5";
 
 export interface Wayside3 {
   id: string;
@@ -53,9 +57,121 @@ export const WAYSIDES3: Wayside3[] = [
     flavour: "mountain",
     remark: "You have been through every window on the east stair. I did not know that the almonry kept a second book until a clerk apologised to me for it. I thank you for making her.",
   },
+  {
+    id: "wayside_fortune_merit",
+    title: "Fortune Roads: The Merit Exchange",
+    paragraphs: [
+      "Past the memorial, in the colonnade below the sutra door, the sect holds a market it does not admit to. Merit is bought and sold under the arches: incense, caves, copies, pills, each priced in what the buyer can least afford to lose.",
+      "Four counters keep their lamps lit for a cultivator who has risen a little. Each asks what you are worth, and none of them says so aloud.",
+    ],
+    back: "You come back to the foot of the inner stair with the colonnade’s murmur behind you. The sutra door is where you left it, red in the cliff, and the mist at its threshold has not moved.",
+    origin: "archive_dawn_2",
+    label: "Turn aside at the memorial colonnade, where merit is bought and sold, before you climb to the sutra door.",
+    realm: 2,
+    flavour: "mountain",
+    remark: "Four counters under the colonnade, and you have walked every one. I walk past them each morning on my way to the Hall and have never once stopped. I begin to think that was a decision, and not a good one.",
+  },
+  {
+    id: "wayside_fortune_steps",
+    title: "Fortune Roads: The Bell-Step Night Market",
+    paragraphs: [
+      "When the last echo of the bell dies, the steps below the tower begin to glow. Lamps are hung on poles, mats are unrolled, and the sect’s disciples come down in twos and threes with their sleeves held tight.",
+      "Four of the stalls have been waiting for you. Each trades in a currency the Hall does not stock, and each can tell what your cultivation is worth to them.",
+    ],
+    back: "You climb back up through the courtyard with the market’s lamps dying behind you. The Law Hall is dark, and the mist has thickened, and nobody has noticed you were gone.",
+    origin: "jade_eye_bell_2",
+    label: "Slip down the bell steps to the night market that grows when the bell stops.",
+    realm: 2,
+    flavour: "mountain",
+    remark: "The bell steps at night. I have forbidden the market eleven times and attended it once, in disguise, thirty years ago. You have been to all four stalls. I will not ask what you bought.",
+  },
+  {
+    id: "wayside_fortune_leaving",
+    title: "Fortune Roads: The Departure Sale",
+    paragraphs: [
+      "On the last night before a party leaves the mountain, the lower court becomes a sale. Disciples sell what they cannot carry, wardens sell what they should not own, and everything is cheaper than it will be tomorrow.",
+      "Four of the sellers have set their lamps toward you. Each has something a traveller will need, and each knows that you will not pass this way again.",
+    ],
+    back: "You climb out of the lower court with your arms fuller than you came. The Law Hall lamps are going out in order, east wing first, and the wind still smells of rain.",
+    origin: "hub_departure",
+    label: "Go down to the departure sale in the lower court, where the mountain sells what it cannot carry.",
+    realm: 2,
+    flavour: "mountain",
+    remark: "You have done your shopping, and well. I notice that you have bought nothing for the Elder. I shall not take it amiss. I have not packed for myself either, and for the same reason.",
+  },
+  {
+    id: "wayside_fortune_clerks",
+    title: "Fortune Roads: The Clerks’ Bazaar",
+    paragraphs: [
+      "Outside the Assembly’s dome the clerks of Qinglian Ford have set up a bazaar of their own. Quills are cut, fees are brokered, seals are warmed, and everything on sale was once someone else’s favour.",
+      "Four of the stalls are quieter than the rest. Each trades in what a Core cultivator can do for them, and each has already priced it.",
+    ],
+    back: "You come back through the Assembly’s crowd with the bazaar’s noise still in your ears. The witness bench is where you left it, and the candle on the table has burned a finger lower.",
+    origin: "hub_asm_witnesses",
+    label: "Leave the Witness Bench for the clerks’ bazaar under the dome, where favours are priced.",
+    realm: 3,
+    flavour: "road",
+    remark: "The Concord’s clerks hold more of its power than its Censors, and they are cheaper to deal with. You have dealt with four. I should have thought to do so years ago.",
+  },
+  {
+    id: "wayside_fortune_quays",
+    title: "Fortune Roads: The Tidewall Quays",
+    paragraphs: [
+      "Before the boat is made fast the quays are already shouting. The brokers of the Salt Coast price a stranger by the cut of their sleeves and the smell of their qi, and none of them has ever lost money by guessing.",
+      "Four of the stalls send a boy to the gangplank. Each has something the salt does not spoil, and each would like a cultivator’s coin.",
+    ],
+    back: "You come back to the boat with the quays’ gulls screaming over the mast. The salt has dried white on your sleeves, and the Elder is waiting at the rail with an expression you cannot read.",
+    origin: "b3_gate",
+    label: "Step onto the quays before the boat is made fast, where the brokers of the Salt Coast are already pricing you.",
+    realm: 3,
+    flavour: "road",
+    remark: "The Salt Coast sells everything, and four of its brokers have sold something to you. I used to think commerce was a form of dishonesty. I am beginning to think it is a form of conversation.",
+  },
+  {
+    id: "wayside_fortune_caravans",
+    title: "Fortune Roads: The Caravan Ground",
+    paragraphs: [
+      "Where the coast road meets the grass a ground has been trampled flat, and caravans from nine clans camp there to trade before the long ride. Their tents are felt, their prices are fixed by custom, and their customs are older than coin.",
+      "Four of the tents have been waiting for a cultivator. The Listeners cannot be lied to, and the traders have learned to price honesty.",
+    ],
+    back: "You ride back to the column across the trampled ground, and the traders’ fires burn low behind you. The grass has already begun to close over the tracks of the caravans.",
+    origin: "b4_gate",
+    label: "Turn aside at the caravan ground, where the clans of the grass trade before the long ride.",
+    realm: 4,
+    flavour: "road",
+    remark: "You have traded in four tents and told the truth in every one. The Listeners will have noticed. They do not say so. They simply stop quoting you the price for outsiders.",
+  },
+  {
+    id: "wayside_fortune_salvage",
+    title: "Fortune Roads: The Glass-Shore Yards",
+    paragraphs: [
+      "At the edge of the Glass Sea the salvagers have raised their yards: a grinder’s tent, a mirror-cutter’s shed, a skiff-wright’s slip, a stall of broken plates. Nothing here is made. Everything is cut out of what the glass will give.",
+      "Four yards have sent a runner to your pony. Each prices a cultivator’s qi against the glass, and each is waiting to see what you can pay in.",
+    ],
+    back: "You ride back from the yards with the sea’s long glare in your eyes. The skiff track is a grey thread across the plate, and your pack is a different weight than when you left.",
+    origin: "b5_gate",
+    label: "Ride down to the salvage yards at the edge of the glass, before you set out across the plates.",
+    realm: 5,
+    flavour: "road",
+    remark: "The Glass Sea does not forgive a bad bargain. You have made four good ones. I shall remember that when I am next tempted to say that you have no head for money.",
+  },
+  {
+    id: "wayside_fortune_fair",
+    title: "Fortune Roads: The Fair at the Foot",
+    paragraphs: [
+      "At the foot of the mountain, where the road home begins, the villages hold a fair. They have held it for a hundred years on the strength of the sect’s custom, and this year they have nothing to sell the sect but its own past.",
+      "Four of the stalls are open late. Each deals in what a returning cultivator might want to carry up the mountain, and each is a little frightened of the answer.",
+    ],
+    back: "You come back to the tea-stall as the fair’s lamps are doused one by one. The mountain stands above you, dark and enormous, and the Elder has not moved from the step.",
+    origin: "b6_gate",
+    label: "Go down to the fair at the foot of the mountain, before the last climb home.",
+    realm: 6,
+    flavour: "road",
+    remark: "The fair at the foot, and you have bought from all four stalls. I remember when you had a handful of stones and a hole in your sleeve. I find I am proud, and I shall not say so a second time.",
+  },
 ];
 
-const SPECS3: RoadSpec3[] = [...roadsStalls];
+const SPECS3: RoadSpec3[] = [...roadsStalls, ...roadsMerit, ...roadsDeparture, ...roadsCoast, ...roadsHome];
 const PER_WAYSIDE = 4;
 export const BACK3 = (origin: string) => `back3_${origin}`;
 

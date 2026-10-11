@@ -15,7 +15,7 @@ export const DRESS: Record<Attire, string[]> = {
     "{Kname} sees mended hemp and assumes you cannot pay. It is a mistake you are free to correct or to use.",
   ],
   traveller: [
-    "{Kname} reads the salt and mud in your oiled cloak and asks only which road you came by. A traveller is the one guest {place} never turns away.",
+    "{Kname} reads the mud and road-dust in your oiled cloak and asks only which road you came by. A traveller is the one guest {place} never turns away.",
     "Your travelling cloak says you will be gone by morning. {Kname} treats you with the cheerful carelessness reserved for the passing.",
     "{Kname} sniffs your cloak, names the province it has seen rain in, and is right. It makes the rest of your story harder to improve.",
     "A traveller’s pack gets a traveller’s welcome here: warm water, a bowl of whatever is on, and one honest question.",
