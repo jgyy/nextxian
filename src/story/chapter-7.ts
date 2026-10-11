@@ -77,7 +77,7 @@ export const chapterSeven: Scene[] = [
     id: "tribunal_summons_3",
     title: "Forty White Steps",
     paragraphs: [
-      "The Elder lifts one hand. The disciples fall silent, one terrace at a time, until the only sound left is the wind moving through the columns. \"The accused will come forward,\" she says, without raising her voice. \"The Law will hear the truth, and then the Law will ring the bell.\"",
+      "The Elder lifts one hand. The disciples fall silent, one terrace at a time, until the only sound left is the wind moving through the columns. “The accused will come forward,” she says, without raising her voice. “The Law will hear the truth, and then the Law will ring the bell.”",
     ],
     choices: [
       {
@@ -125,8 +125,8 @@ export const chapterSeven: Scene[] = [
     title: "The Masters of the Dais",
     paragraphs: [
       "The oldest of the masters is a thin, stooping man named Hu Jingyan, whose hands shake so badly that his teacup rattles against its saucer every time he lifts it. He watches you approach with the bright, unforgiving interest of an old scholar examining a poorly copied text. The second master, a woman named Lian Sheng with a face like carved walnut, does not look at you at all. She is studying the Elder instead, and her expression is careful and hungry.",
-      "\"You are the outsider who entered the Ash Archive,\" Hu Jingyan says. His voice is thin but carries well across the terrace. \"You are the one who went down the sutra stair and returned with your eyes white. You are the one who has been speaking to the jade eye, and who has been called to this hall by a bell that has not rung for fifteen years. Do you know why it rang for you?\"",
-      "\"Because someone wants the masters to see me,\" you answer. \"And because someone wants the Elder to see the masters.\"",
+      "“You are the outsider who entered the Ash Archive,” Hu Jingyan says. His voice is thin but carries well across the terrace. “You are the one who went down the sutra stair and returned with your eyes white. You are the one who has been speaking to the jade eye, and who has been called to this hall by a bell that has not rung for fifteen years. Do you know why it rang for you?”",
+      "“Because someone wants the masters to see me,” you answer. “And because someone wants the Elder to see the masters.”",
     ],
     choices: [
       {
@@ -159,7 +159,7 @@ export const chapterSeven: Scene[] = [
     id: "tribunal_masters_2",
     title: "Lian Sheng’s Question",
     paragraphs: [
-      "Lian Sheng turns at last, very slowly. \"You are clever,\" she says. \"That is a dangerous quality in an outsider. We were clever once, too, fifteen years ago, when we decided that a living cultivator could hold the seal better than an iron chain. We were right, you know. The mist has been quiet since then. Would you like to tell the disciples that our cleverness was a crime?\"",
+      "Lian Sheng turns at last, very slowly. “You are clever,” she says. “That is a dangerous quality in an outsider. We were clever once, too, fifteen years ago, when we decided that a living cultivator could hold the seal better than an iron chain. We were right, you know. The mist has been quiet since then. Would you like to tell the disciples that our cleverness was a crime?”",
       "Behind them, the Elder has not moved. Her eyes are fixed on the masters, and her hands rest on the arms of the jade chair with a stillness that looks like a warning. You understand that she is waiting to see what you will say, and that the masters are waiting for the same thing.",
     ],
     choices: [
@@ -200,7 +200,7 @@ export const chapterSeven: Scene[] = [
     title: "Testimony Before the Disciples",
     paragraphs: [
       "The Elder lifts her hand again, and the testimony begins. She does not call you by name. She calls you the accused, and then she calls Gu Hanzhen the second accused, and it sounds strange in her mouth, like a phrase copied from a book she has never read. The disciples lean forward. Somewhere on the upper terrace, a girl begins to cry, and is shushed by the older disciples around her.",
-      "\"Speak,\" the Elder says. \"Tell the Law what you saw in the Ash Archive, in the sutra hall, and at the gate of the Sealing. Tell it in order. The bell will ring when you lie, and it will ring when you tell the truth, and the Law will know the difference.\"",
+      "“Speak,” the Elder says. “Tell the Law what you saw in the Ash Archive, in the sutra hall, and at the gate of the Sealing. Tell it in order. The bell will ring when you lie, and it will ring when you tell the truth, and the Law will know the difference.”",
       "The bell does not ring. It cannot. It is silent behind its grey cloth, and the disciples know it, and they look at one another with a shared unease that spreads across the terraces like wind across a field of grass. Without the bell, the testimony is only words, and words in this sect have always been measured by who speaks them.",
     ],
     choices: [
@@ -234,7 +234,7 @@ export const chapterSeven: Scene[] = [
     id: "tribunal_testimony_2",
     title: "What the Second Accused Saw",
     paragraphs: [
-      "Gu Hanzhen lifts his head from the steps. His voice is hoarse, but he speaks clearly. \"The second accused saw Su Mengjiao on the stair,\" he says. \"She told the second accused that the seal was tired. She asked him to tell the Elder that she was not dead. He has been trying to tell the Law that for three days, and the Law has been ringing the bell over his head ever since.\"",
+      "Gu Hanzhen lifts his head from the steps. His voice is hoarse, but he speaks clearly. “The second accused saw Su Mengjiao on the stair,” he says. “She told the second accused that the seal was tired. She asked him to tell the Elder that she was not dead. He has been trying to tell the Law that for three days, and the Law has been ringing the bell over his head ever since.”",
       "A ripple runs through the upper terrace. A few disciples stand up. Others sit down. One of the masters, a broad man with a bald head and a gold clasp at his collar, rises from his chair with a sharp exhalation of disapproval. The Elder does not look at him. She is still looking at you, and her eyes are grey and bright and utterly unreadable.",
     ],
     choices: [
@@ -312,7 +312,7 @@ export const chapterSeven: Scene[] = [
     id: "tribunal_crowd_2",
     title: "Fifteen Sealing Orders",
     paragraphs: [
-      "\"These are the sealing orders,\" he says. His voice is thin, but it carries. \"They were sent to the archive fifteen years ago and held there, unopened, because no one in the Law Hall wanted them read. The Elder’s signature is on fourteen of them. The masters’ seals are on all of them. The fifteenth is Mengjiao’s, and there is no Elder’s name on it at all. My mother’s mark is beside it, crossed out before the ink dried. She would not witness it.\"",
+      "“These are the sealing orders,” he says. His voice is thin, but it carries. “They were sent to the archive fifteen years ago and held there, unopened, because no one in the Law Hall wanted them read. The Elder’s signature is on fourteen of them. The masters’ seals are on all of them. The fifteenth is Mengjiao’s, and there is no Elder’s name on it at all. My mother’s mark is beside it, crossed out before the ink dried. She would not witness it.”",
       "The masters’ faces tighten. Hu Jingyan’s teacup goes still in his trembling hand. Lian Sheng stands up and says something sharp and furious, and her words are lost in the sudden roar that rises from the lower terraces. The disciples are talking now, all of them, and the sound is so loud that the wind seems to stop to listen.",
       "Gu Hanzhen is staring at the papers with his mouth open. Ren Qiao has stepped out from the edge of the terrace. He is holding his lantern again, and the flame is burning steady and bright, and he is looking directly at the masters with an expression you have never seen on a warden’s face before.",
     ],
@@ -361,7 +361,7 @@ export const chapterSeven: Scene[] = [
     title: "Trial by Bell",
     paragraphs: [
       "The Elder rises from the jade chair. The disciples fall silent again, not all at once this time but in a slow wave that moves up the terraces like a tide going out. She walks to the edge of the dais and stands above the steps, and for a moment she simply looks down at the crowd, the way she once looked down at the ledgers in her hall.",
-      "\"The Law has a rule for disputes it cannot settle with words,\" she says. \"The bell decides. It has never been wrong, because it has never been asked to decide anything that the Law did not already know. Tonight we will ask it a question the Law has never asked.\" She turns to the wardens standing at the bell’s base. \"Unwrap it.\"",
+      "“The Law has a rule for disputes it cannot settle with words,” she says. “The bell decides. It has never been wrong, because it has never been asked to decide anything that the Law did not already know. Tonight we will ask it a question the Law has never asked.” She turns to the wardens standing at the bell’s base. “Unwrap it.”",
       "The grey cloth falls away from the clapper, and the bell hums for the first time in fifteen years. It is a deep, rich sound, almost a voice, and it rolls out over the terraces and down the white steps until the disciples are pressing their hands to their ears. Gu Hanzhen cries out softly beside you. Ren Qiao does not move at all.",
     ],
     choices: [
@@ -395,7 +395,7 @@ export const chapterSeven: Scene[] = [
     id: "tribunal_bell_rule_2",
     title: "The Question for the Bell",
     paragraphs: [
-      "The Elder lifts her voice over the hum. \"The question is this: did Su Mengjiao go willingly into the mist, or did the Law send her there?\" The bell swells. It rings once, low and clear. Then it rings a second time, and the second note is harder and sharper and tilts toward the masters. A murmur runs through the crowd, like the sound of a crowd turning its head in unison.",
+      "The Elder lifts her voice over the hum. “The question is this: did Su Mengjiao go willingly into the mist, or did the Law send her there?” The bell swells. It rings once, low and clear. Then it rings a second time, and the second note is harder and sharper and tilts toward the masters. A murmur runs through the crowd, like the sound of a crowd turning its head in unison.",
       "The masters look at one another. Lian Sheng’s hand tightens on the arm of her chair. Hu Jingyan begins to speak, but the bell rings again, louder, and the words die in his throat. The Elder has not lowered her voice. She is still looking at the crowd, and in her eyes there is something that you did not expect to see there at all. It is not triumph. It is grief, and beneath the grief, a cold, patient anger that has waited fifteen years to be spent.",
     ],
     choices: [
@@ -472,7 +472,7 @@ export const chapterSeven: Scene[] = [
     paragraphs: [
       "The masters do not vote. They sit in silence on the dais, their faces grey with a kind of slow astonishment, as they watch the line of disciples climb past them one by one. Lian Sheng alone keeps her hands folded in her lap, and her eyes never leave the Elder’s face.",
       "When the last stone falls, the bowl is almost evenly divided. The Elder stands and counts them in silence, moving her lips, touching each stone with one fingertip. Then she looks up at you, and her expression is so open that it hurts to see it.",
-      "\"The Law counts its stones,\" she says quietly, \"and the Law has always counted fairly. It is only the masters who ever counted falsely.\" She takes a breath. \"The sect has spoken. The question is now mine to answer.\"",
+      "“The Law counts its stones,” she says quietly, “and the Law has always counted fairly. It is only the masters who ever counted falsely.” She takes a breath. “The sect has spoken. The question is now mine to answer.”",
     ],
     choices: [
       {

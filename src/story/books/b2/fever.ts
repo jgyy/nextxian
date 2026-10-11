@@ -17,7 +17,7 @@ A child sits on a step with a doll in her lap. She does not play with it. She lo
 “It has been like this for eleven weeks,” says the Elder, very low, at your side. She is looking at a jar on a windowsill, a plain white jar with a lid of oiled paper. “I know that jar. I know the paper. It is from my own office.”
 > mercy | Go to the sick-house at the end of the quay, where the worst are kept. | fever_a1s1 | +fever_a1
 > force | Find the depot where the jars are stored, and see how many there are. | fever_a2s1 | +fever_a2 needs:2
-> deceit | Visit the dust-seller in the market, and buy a month's supply. | fever_a3s1 | +fever_a3
+> deceit | Visit the dust-seller in the market, and buy a month’s supply. | fever_a3s1 | +fever_a3
 > truth | Ask the headman who sends for the dust, and why. | fever_a4s1 | +fever_a4
 > inquiry | Recall the note by the split root in Master Yao’s garden, and look for blue flowers in the town. | fever_h1 |  | knows_calm_dust | You do not know what the dust is made from, so you do not know what to look for.
 
@@ -31,7 +31,7 @@ A woman in a grey apron moves among them with a pitcher. She is thin, with cropp
 > truth | Tell her you are glad to see her, and that you need her help. | fever_a1s2 | +fever_yao_here
 > mercy | Take the pitcher from her hands, and begin to pour. | fever_a1s2 | +fever_yao_here bond:gu+1
 > inquiry | Ask how she came here, and who sent for her. | fever_a1s2 | +fever_yao_here
-> quiet | Step to the nearest pallet, and look at the sleeper's face. | fever_a1s2 | +fever_yao_here
+> quiet | Step to the nearest pallet, and look at the sleeper’s face. | fever_a1s2 | +fever_yao_here
 
 === fever_a1s2 | What Master Yao Knew
 “I came on a river boat nine days ago,” she says, setting down the pitcher. “A town clerk wrote to the Hall to ask for a physician. I came because I am the physician who knows what the dust does.” Her hands are very steady. “I have been treating them with the bitter root, a spoon a day, in warm water. It brings the names back. It also brings the grief.”
@@ -107,10 +107,10 @@ The depot is a low stone barn behind the mill, with a new roof and an old lock. 
 Through a crack in the door you can see the jars. They are stacked in rows to the rafters, round-bellied, white, each with a lid of oiled paper. There must be two thousand. A smell comes through: bitter, faintly sweet.
 A man in a green coat is sitting on a barrel at the door, picking his teeth. He gets to his feet with the unhurried air of a man who is paid by the hour.
 “Closed,” he says. “Come back tomorrow.”
-> force | Tell him you are the Concord's witness, and the depot is open. | fever_a2s2 | needs:2
+> force | Tell him you are the Concord’s witness, and the depot is open. | fever_a2s2 | needs:2
 > truth | Tell him you are here to stop the dust, and ask him to step aside. | fever_a2s2
 > deceit | Offer him a purse to look the other way. | fever_a2s2
-> quiet | Wait for the guard's shift to end, and slip in after dark. | fever_a2s2
+> quiet | Wait for the guard’s shift to end, and slip in after dark. | fever_a2s2
 
 === fever_a2s2 | The Guard in the Green Coat
 He turns out to be harmless. He takes your purse, if you offer it, and counts it, and says there is a second guard inside who is not. He says the dust is the Law Hall’s, and that the Law Hall pays on the first of the month, and that he is a family man.
@@ -160,7 +160,7 @@ The Elder says nothing at all.
 > truth | Tell the Elder to order the river dammed. | fever_a2s7 | +fever_a2_dam
 > force | Run downstream, and warn the next town. | fever_a2s7
 > inquiry | Ask Ren how far the river carries it. | fever_a2s7
-> mercy | Find the nearest healer's boat, and ask for roots. | fever_a2s7
+> mercy | Find the nearest healer’s boat, and ask for roots. | fever_a2s7
 
 === fever_a2s7 | What Burning Costs
 It was a mistake, and no one will say so. The Elder stands on the quay with her fists clenched at her sides. The warden with the key is kneeling at the water’s edge, scooping powder out with a cup. The man in the green coat sits down on a barrel and puts his head between his knees.
@@ -245,7 +245,7 @@ He puts the book on the counter.
 “I would like it understood that I never took a coin from a child.”
 > truth | Take the ledger, and promise it will not be used against his daughters. | fever_a3s8 | +fever_a3_took_ledger
 > mercy | Tell him to keep it, and put it somewhere safe. | fever_a3s8
-> inquiry | Ask if the Registrar's office ever sent anyone to check. | fever_a3s8
+> inquiry | Ask if the Registrar’s office ever sent anyone to check. | fever_a3s8
 > force | Tell him you will need more than a ledger. | fever_a3s8
 
 === fever_a3s8 | What the Town Did
@@ -255,7 +255,7 @@ The Elder watches from the end of the quay. She is holding a cup of tea, plain, 
 > truth | Tell her it is. | fever_close | +fever_swapped +fever_woke_some
 > mercy | Offer her your arm. | fever_close | +fever_swapped +fever_woke_some
 > quiet | Stand beside her and watch the smoke. | fever_close | +fever_swapped +fever_woke_some
-> inquiry | Ask her what she will say to the Registrar's office. | fever_close | +fever_swapped +fever_woke_some
+> inquiry | Ask her what she will say to the Registrar’s office. | fever_close | +fever_swapped +fever_woke_some
 
 // ---------------------------------------------------------------- a4: who sends for it
 === fever_a4s1 | The Headman’s House
@@ -295,7 +295,7 @@ He rubs his face with both hands.
 “If I ask them, and they say yes, I will have to go on being the one who remembers. If they say no, I will have to watch them weep. I am a coward. I have been a coward for eleven years.”
 > truth | Offer to be there when he asks. | fever_a4s5
 > mercy | Tell him a coward does not keep a town for eleven years. | fever_a4s5
-> inquiry | Ask how the Registrar's office would respond. | fever_a4s5
+> inquiry | Ask how the Registrar’s office would respond. | fever_a4s5
 > force | Tell him you will ask them yourself, tonight. | fever_a4s5 | +fever_a4_forced_ask
 
 === fever_a4s5 | The Gathering
@@ -304,7 +304,7 @@ Pu is gripping the edge of the barrel. His face is grey.
 “I am asking you,” he says, “whether you want to remember.”
 The silence goes on. A child coughs. An infant makes a small noise. Then, from the back, an old man in a miller’s apron raises his hand, as a child does in school, and says, in a cracked voice, “I do. I would like to know what happened to my sons.”
 > truth | Step beside him, and say you will help any who wish to wake. | fever_a4s6
-> mercy | Go and take the old miller's arm. | fever_a4s6
+> mercy | Go and take the old miller’s arm. | fever_a4s6
 > quiet | Stay at the back of the crowd, and watch faces. | fever_a4s6
 > inquiry | Count the raised hands. | fever_a4s6
 
@@ -313,7 +313,7 @@ Seventy-one raise their hands. Sixty-eight do not. The rest hesitate, hands half
 You count twice. The numbers don’t change.
 Pu has sat down on the barrel. He is staring at the crowd with an expression you cannot place.
 “I did not think there would be so many,” he says. “I thought it would be none.” He wipes his eyes. “And I did not think there would be so many who say no.”
-> truth | Tell him both are the town's right. | fever_a4s7
+> truth | Tell him both are the town’s right. | fever_a4s7
 > mercy | Tell him a town is allowed to be divided. | fever_a4s7
 > inquiry | Ask how the two halves will live side by side. | fever_a4s7
 > force | Tell him seventy-one is enough to begin. | fever_a4s7
@@ -325,7 +325,7 @@ The Elder spends the third night sitting with the headman, in his garden, among 
 > truth | Tell him it was well done. | fever_a4s8 | +fever_pu_resigned
 > mercy | Ask who will take his place. | fever_a4s8
 > quiet | Bow to him, once, as to a peer. | fever_a4s8
-> inquiry | Ask what he will do with the scroll of the woman's hand. | fever_a4s8
+> inquiry | Ask what he will do with the scroll of the woman’s hand. | fever_a4s8
 
 === fever_a4s8 | A Letter to the Registrar
 Before the barge leaves, Pu gives the Elder a letter. It is a plain sheet, written in a hand that shakes. She reads it in the cabin, standing, and sits when she has finished.
@@ -344,7 +344,7 @@ The dust is made from the top of the root, the part that has reached up into the
 It needs only to be planted.
 Master Yao, who has been watching your face, says quietly: “You know something.”
 > truth | Tell her what the note said. | fever_h2
-> inquiry | Ask her what grows in the town's old burial ground. | fever_h2
+> inquiry | Ask her what grows in the town’s old burial ground. | fever_h2
 > mercy | Ask whether the roots can be replanted, and how soon. | fever_h2
 > quiet | Take a spade from the shed and begin to dig. | fever_h2
 
@@ -375,12 +375,12 @@ The great wheel still turns, and the mill still grinds, and the market is loud. 
 +[appr] fever_a4 | You asked a headman to ask his town, and the town answered with its hands.
 +[how] fever_su_confessed | The Elder stood in front of sixty-four sleepers and said the Law Hall did this. Nobody has stopped talking about it.
 +[how] fever_burned | The dust went into the river, and the river took it downstream. Three weeks of cups.
-+[how] fever_swapped | Fifty-one households put plain tea in their jars. The dust-seller's rack is half empty.
++[how] fever_swapped | Fifty-one households put plain tea in their jars. The dust-seller’s rack is half empty.
 +[how] fever_pu_resigned | Headman Pu resigned. The lintel over his door is on the ground.
 +[how] fever_garden | A row of blue flowers grows by the mill. Nobody is allowed to eat them.
 +[yao] fever_yao_here | Master Yao stands at the quay with her sack, watching the barge.
-+[seller] fever_a3_took_ledger | The dust-seller's ledger is in your sleeve, four hundred names with the dates they began.
-+[seller] fever_a3_took_bribe | The dust-seller's purse is in your sleeve. It is heavier than you remember.
++[seller] fever_a3_took_ledger | The dust-seller’s ledger is in your sleeve, four hundred names with the dates they began.
++[seller] fever_a3_took_bribe | The dust-seller’s purse is in your sleeve. It is heavier than you remember.
 +[su] fever_su_read | The Elder has begun to read her own mail.
 + fever_a2_dam | A dam was begun at the second bend of the river. No one yet knows if it will hold.
 + fever_woke_some | Some of the town woke, and some chose not to. No one can say which was braver.
@@ -405,7 +405,7 @@ She taps the stack.
 > inquiry | Ask which of the letters she most dreads to open. | hub_b2_road | +b2r_fever npc:SU_FEVER_LETTERS
 `,
   scenarios: String.raw`
-$ SU_FEVER_CONFESS | trust+4 respect+5 fear+4 | elder | The Elder tells a sick-house full of sleepers that the dust was the Law Hall's doing, and the player stands beside her.
+$ SU_FEVER_CONFESS | trust+4 respect+5 fear+4 | elder | The Elder tells a sick-house full of sleepers that the dust was the Law Hall’s doing, and the player stands beside her.
 hostile: You stood beside me while I confessed. I did not ask you to. I will not thank you for it. I am not sure whether you meant the courtesy or the display.
 wary: I said it to sixty-four faces that did not know whether to hate me. You stood next to me. It was the closest I have been to forgiven in a decade, and I do not trust it. But I am grateful.
 neutral: I confessed. It was shorter than I expected, and more terrible. You did not look away. I think I will remember that longer than I will remember the sleepers.
@@ -422,6 +422,6 @@ devoted: You stay while I read my own sins aloud. I did not know a person could 
   remarks: String.raw`
 % fever_yao_later | since:fever_yao_here>=20 | elder | A message came from Master Yao by river post. She says the blue flowers by the mill have begun to seed. She says to tell you she was never the only one. I do not know what that means, but I know you do.
 % fever_susu_later | since:fever_a1_softened>=18 | gu | Su-Su gave me her doll to carry. She said it was not for me, it was for you, and I was only to hold it until you were ready. I am holding it. I do not know what ready looks like.
-% fever_garden_later | since:fever_garden>=22 | elder | There are blue flowers at the edge of the Law Hall's walled garden now. A servant planted them. I did not ask who told her. I did not stop her.
+% fever_garden_later | since:fever_garden>=22 | elder | There are blue flowers at the edge of the Law Hall’s walled garden now. A servant planted them. I did not ask who told her. I did not stop her.
 `,
 };

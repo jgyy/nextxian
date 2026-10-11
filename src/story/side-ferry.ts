@@ -12,8 +12,8 @@ export const stillWaterScenes: Scene[] = [
     title: "Side Path: The Ferry of Still Water",
     paragraphs: [
       "Below the hall, the mist lies on the water so flat that it looks solid. There is no wind. A narrow jetty of black stone runs out into the lake, and at its end a boat waits with its prow pointed at nothing you can see. The boatman is old, with one milky eye and a pole across his knees. He does not get up when you approach.",
-      "\"Still water,\" he says. \"Nobody crosses it unless they are carrying something. I carry the dead across. Not their bodies. Their names. The Law Hall gave me the job when it could not decide where to keep them.\" He taps a wooden board fixed to the bow. Each line on it is a name, painted in faded white. Most of the lines have been crossed out.",
-      "Near the bottom of the board, one name is painted in red and left uncrossed. The red is the colour of the seals on the sealing orders. The boatman does not look at it when he speaks. \"A passenger is waiting,\" he says. \"She has been waiting for fifteen years. She is patient. The mist taught her.\"",
+      "“Still water,” he says. “Nobody crosses it unless they are carrying something. I carry the dead across. Not their bodies. Their names. The Law Hall gave me the job when it could not decide where to keep them.” He taps a wooden board fixed to the bow. Each line on it is a name, painted in faded white. Most of the lines have been crossed out.",
+      "Near the bottom of the board, one name is painted in red and left uncrossed. The red is the colour of the seals on the sealing orders. The boatman does not look at it when he speaks. “A passenger is waiting,” he says. “She has been waiting for fifteen years. She is patient. The mist taught her.”",
     ],
     choices: [
       {
@@ -51,7 +51,7 @@ export const stillWaterScenes: Scene[] = [
     paragraphs: [
       "The boat moves without a stroke. The pole trails in the water, and the water does not ripple. Under the surface you can see the reflections of the hall roof, the lamps, the cliff, and your own face, which looks older than it did at the gate. For a long moment you cannot tell which reflection belongs to the sky and which to the lake.",
       "Halfway across, a second face appears beside yours. It is young, with its hair pinned in a silver comb, and it smiles the way a person does when about to say something they have rehearsed in front of a mirror. You hear nothing. But you feel, very clearly, that the face is counting you.",
-      "\"Everyone who crosses is counted,\" the boatman says from the stern. \"It is the only fare that matters. I do not take coins.\" He lifts the pole and lets the water run off it in silver threads. \"The lake asks each passenger one question on the far side. Answer it honestly, and the boat goes back to shore empty. Answer it badly, and the boat keeps your place.\"",
+      "“Everyone who crosses is counted,” the boatman says from the stern. “It is the only fare that matters. I do not take coins.” He lifts the pole and lets the water run off it in silver threads. “The lake asks each passenger one question on the far side. Answer it honestly, and the boat goes back to shore empty. Answer it badly, and the boat keeps your place.”",
     ],
     choices: [
       {
@@ -158,8 +158,8 @@ export const stillWaterScenes: Scene[] = [
     id: "ferry_fare",
     title: "The Fare",
     paragraphs: [
-      "The boat grinds against a shelf of pale stone. There is no dock here, only a ledge of rock that rises from the lake and vanishes into the mist. A cold draft comes down the rock, and with it a voice, so close to your ear that you turn around before you remember there is nobody behind you. \"Your fare, Wanderer,\" it says. It is the voice of a woman who has been waiting a long time.",
-      "The boatman tips his head. \"She asks one thing from everyone who lands. Not for herself. For the lake. Give it a name, a memory, or a promise, and the lake keeps it for the dead. Refuse, and the lake keeps the boat.\" He says this without any pity at all, the way a man reports the price of rice.",
+      "The boat grinds against a shelf of pale stone. There is no dock here, only a ledge of rock that rises from the lake and vanishes into the mist. A cold draft comes down the rock, and with it a voice, so close to your ear that you turn around before you remember there is nobody behind you. “Your fare, Wanderer,” it says. It is the voice of a woman who has been waiting a long time.",
+      "The boatman tips his head. “She asks one thing from everyone who lands. Not for herself. For the lake. Give it a name, a memory, or a promise, and the lake keeps it for the dead. Refuse, and the lake keeps the boat.” He says this without any pity at all, the way a man reports the price of rice.",
       "You can feel the water waiting for an answer. The young woman in the reflection is no longer smiling. She is only listening, with the attention of someone who has never once been allowed to speak first.",
     ],
     choices: [

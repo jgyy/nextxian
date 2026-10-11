@@ -1,3 +1,4 @@
+import { DEFAULT_HERO, HERO_FIELDS, personalise, realmBandFor, startFor, type Hero } from "./hero";
 import { applyStrain, gainCultivation, MASTERY_GAIN, MASTERY_GAP, realmShortfall, realmSurplus, TONE_GAIN } from "./cultivation";
 import {
   conditionsHold,
@@ -24,6 +25,7 @@ import type {
   NpcScenario,
   Scene,
   Story,
+  Tier as NpcTier,
 } from "./types";
 
 export const STAT_RANGE: Record<PlayerStat, [number, number]> = {
@@ -45,6 +47,11 @@ export const BOND_RANGE: [number, number] = [-100, 100];
 /** Decisions that must pass between one unprompted remark and the next. */
 export const REMARK_GAP = 3;
 
+/** Decisions that must pass between one remark about the hero's looks, dress or birth and the next. */
+export const ASIDE_GAP = 3;
+/** She does not comment on the hero before this many decisions have been made: first she listens. */
+export const ASIDE_START = 4;
+
 export const INITIAL_NPC: NpcState = { trust: 0, respect: 0, fear: 10, suspicion: 30 };
 
 export function clamp(value: number, [lo, hi]: [number, number]): number {
@@ -62,12 +69,20 @@ export function getScene(story: Story, id: string): Scene {
   return scene;
 }
 
-/** Starts a new game at the story's opening scene. */
-export function createGame(story: Story): GameState {
+/**
+ * Starts a new game at the story's opening scene. Who the hero is sets the opening numbers a little:
+ * a scholar starts with more insight, a noble in silk with a more suspicious Elder.
+ */
+export function createGame(story: Story, hero: Hero = DEFAULT_HERO): GameState {
+  const start = startFor(hero);
+  const stats = { ...INITIAL_STATS };
+  for (const key of Object.keys(start.stats) as PlayerStat[]) stats[key] = clamp(stats[key] + (start.stats[key] ?? 0), STAT_RANGE[key]);
+  const npc = applyNpcDelta({ ...INITIAL_NPC }, start.npc);
   const empty: GameState = {
+    hero,
     sceneId: story.startSceneId,
-    stats: { ...INITIAL_STATS },
-    npc: { ...INITIAL_NPC },
+    stats,
+    npc,
     flags: {},
     history: [],
     tones: [],
@@ -78,6 +93,7 @@ export function createGame(story: Story): GameState {
     flagAt: {},
     remarked: [],
     lastRemark: -REMARK_GAP,
+    lastAside: -ASIDE_GAP,
     log: [],
     visited: [],
   };
@@ -102,11 +118,11 @@ export function enterScene(story: Story, state: GameState, scene: Scene): GameSt
     .flatMap((x) => x.paragraphs);
   const interjections = (scene.interjections ?? [])
     .filter((x) => conditionsHold(x.when, state))
-    .map((x) => ({ kind: "npc" as const, speaker: speakerName(story, x.speaker), text: x.line }));
+    .map((x) => ({ kind: "npc" as const, speaker: speakerName(story, x.speaker), text: personalise(x.line, state.hero) }));
   const log = [
     ...state.log,
     { kind: "heading" as const, text: scene.title },
-    ...[...scene.paragraphs, ...extra].map((text) => ({ kind: "narration" as const, text })),
+    ...[...scene.paragraphs, ...extra].map((text) => ({ kind: "narration" as const, text: personalise(text, state.hero) })),
     ...interjections,
   ];
   return { ...state, sceneId: scene.id, log, visited: [...state.visited, scene.id] };
@@ -170,7 +186,7 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
 
   let next: GameState = {
     ...state,
-    log: [...state.log, { kind: "player", text: choice.label }],
+    log: [...state.log, { kind: "player", text: personalise(choice.label, state.hero) }],
     tones: [...state.tones, choice.tone],
     decisions: state.decisions + 1,
   };
@@ -201,7 +217,7 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
 /** One NPC scenario: the line, the change in feeling, and what they remember. A companion's scenario moves their bond. */
 function react(story: Story, state: GameState, scenario: NpcScenario): GameState {
   const reaction = reactToScenario(scenario, state);
-  const entry = { kind: "npc" as const, speaker: speakerName(story, scenario.npc), text: reaction.line };
+  const entry = { kind: "npc" as const, speaker: speakerName(story, scenario.npc), text: personalise(reaction.line, state.hero) };
   const remembered = (scenario.remember ?? []).filter((f) => state.flags[f] !== true);
   const base: GameState = {
     ...state,
@@ -214,7 +230,35 @@ function react(story: Story, state: GameState, scenario: NpcScenario): GameState
     const amount = Object.values(scenario.delta).reduce((n, v) => n + (v ?? 0), 0);
     return applyEffects(base, [{ kind: "addBond", npc: scenario.npc, amount }]);
   }
-  return { ...base, npc: applyNpcDelta(base.npc, scenario.delta) };
+  return aside(story, { ...base, npc: applyNpcDelta(base.npc, scenario.delta) }, reaction.tier);
+}
+
+/**
+ * The Elder says what she sees of the hero: the dress, the birth, the face, the trade, the way they were named. It
+ * follows her reply to a scenario, at most once every few decisions, and cycles through the five parts of the
+ * hero so that she is never repeating the same observation. Each observation is said once per attitude, so a
+ * colder or warmer Elder has something new to say about the same silk.
+ */
+function aside(story: Story, state: GameState, tier: NpcTier): GameState {
+  const table = story.asides;
+  if (!table || state.decisions < ASIDE_START || state.decisions - state.lastAside < ASIDE_GAP) return state;
+  const turn = state.remarked.filter((id) => id.startsWith("aside:")).length;
+  // Five parts of the hero, and then how far they have risen. Her remark on the realm is new each time the band changes.
+  const parts = [...HERO_FIELDS, "realm"] as const;
+  for (let i = 0; i < parts.length; i++) {
+    const field = parts[(turn + i) % parts.length];
+    const value = field === "realm" ? realmBandFor(state.realm) : state.hero[field];
+    const id = `aside:${field}:${value}:${tier}`;
+    const line = (table as Record<string, Record<string, Record<NpcTier, string>> | undefined>)[field]?.[value]?.[tier];
+    if (!line || state.remarked.includes(id)) continue;
+    return {
+      ...state,
+      remarked: [...state.remarked, id],
+      lastAside: state.decisions,
+      log: [...state.log, { kind: "npc", speaker: story.npc.name, text: personalise(line, state.hero) }],
+    };
+  }
+  return state;
 }
 
 /**
@@ -229,7 +273,7 @@ function remark(story: Story, state: GameState): GameState {
     ...state,
     remarked: [...state.remarked, found.id],
     lastRemark: state.decisions,
-    log: [...state.log, { kind: "npc", speaker: speakerName(story, found.speaker), text: found.line }],
+    log: [...state.log, { kind: "npc", speaker: speakerName(story, found.speaker), text: personalise(found.line, state.hero) }],
   };
 }
 
@@ -250,7 +294,7 @@ function noticeAttitude(story: Story, before: GameState, after: GameState): Game
     respectShiftLine(respectTierFor(before.npc.respect), respectTierFor(after.npc.respect)) ??
     mannerShiftLine(before.tones, after.tones);
   if (!line) return after;
-  return { ...after, log: [...after.log, { kind: "npc", speaker: story.npc.name, text: line }] };
+  return { ...after, log: [...after.log, { kind: "npc", speaker: story.npc.name, text: personalise(line, after.hero) }] };
 }
 
 export function applyNpcDelta(npc: NpcState, delta: Partial<NpcState>): NpcState {

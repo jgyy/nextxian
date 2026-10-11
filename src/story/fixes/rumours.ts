@@ -245,7 +245,7 @@ The terraces empty slowly. In the quiet after the stones are counted, the sect b
 > inquiry | Ask Lin Yuan which of the fifteen orders he fears most. | descent_return
 
 === rumours_15 | The Foundry Fires
-The Bell Foundry's smoke goes up the mountain like a rumour, and the foundry hands gossip as they work: loud, quick, and with their hands busy.
+The Bell Foundry’s smoke goes up the mountain like a rumour, and the foundry hands gossip as they work: loud, quick, and with their hands busy.
 +[foundry] visited_foundry | You walked past the apprentices straight to the furnace man, they say, keeping your hands where he could see them.
 +[foundry] heard_bell_names | You asked Kuang what the fifteenth name was doing in the clay, and why he poured it. He has not stopped asking himself since.
 +[foundry] poured_bronze | You took up the second ladle and helped him pour. The apprentices say it was the first straight pour of the season.
@@ -260,7 +260,7 @@ The Bell Foundry's smoke goes up the mountain like a rumour, and the foundry han
 > inquiry | Ask Kuang where the bronze for the bell came from. | descent_return
 
 === rumours_16 | Rope and Lantern
-The descent is common talk at the top of the cleft, where Ren Qiao's warden friends keep a small fire and a longer silence.
+The descent is common talk at the top of the cleft, where Ren Qiao’s warden friends keep a small fire and a longer silence.
 +[rope] took_rope | You tied the rope around your waist and fastened the other end to the iron ring. The wardens say no one has done that for fifteen years.
 +[rope] ren_followed | You asked Ren Qiao to follow you as far as the first ledge. He did, and came back with white hair at his temple that was not there before.
 +[mist] saw_figure_on_ledge | You called out before you reached the ledge, so as not to startle the figure on it. Ren Qiao says that is not the habit of a thief.
@@ -280,7 +280,7 @@ The cave in the cliff has no gossips, but the mist carries what was said there u
 +[ask] asked_how_seal | You asked her how she has kept the seal in place for fifteen years without the jade. The mist, the wardens say, listened for the answer.
 +[ask] asked_about_wanru | You asked her whether she thinks of her sister. The wardens heard something break softly in the dark.
 +[ask] showed_coin | You held out the bronze coin from the wall of bells. The wardens say the red water in the cave turned to gold for a breath.
-+[ask] drew_steel | You drew your sword and said you were sent to bring her back by force. The mist closed around the blade.
++[ask] drew_steel | You drew your blade and said you were sent to bring her back by force. The mist closed around the blade.
 +[answer] promised_message | You promised to carry her message word for word. The wardens say the cave breathed out.
 +[answer] offered_to_stay | You offered to stay in the cave and speak the names beside her every night. She would not let you.
 +[answer] called_through_shard | You held your shard against hers and called through the stone. The wardens swear the whole cleft hummed one note.
@@ -335,7 +335,7 @@ Those who have taken the still-water ferry keep their silence in a particular wa
 > inquiry | Ask the boatman whose name is on the last stone. | sealing_night
 
 === rumours_21 | Witness at the Altar
-On the morning after the vision, the Law Hall's servants find the great doors open, and everyone who comes in feels they have missed something.
+On the morning after the vision, the Law Hall’s servants find the great doors open, and everyone who comes in feels they have missed something.
 +[ring] stood_in_ring | You stepped into the ring of masters and stood beside the kneeling woman, close enough that the young Registrar could hear you breathing.
 +[ring] watched_from_pillar | You stayed by the pillar at the edge of the hall where no one would notice you. The masters did not, and that is its own kind of verdict.
 +[ring] whispered_to_elder | You leaned toward the young Registrar and whispered that she still had time to refuse the brush. The servants say her hand did not stop shaking.

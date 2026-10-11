@@ -421,28 +421,28 @@ $ SU_CENSOR_OPEN | trust+3 respect+2 | elder | The player stands with her as the
 hostile: You stand beside me because it is useful to be seen at my side. I know the difference between a shield and a friend. Stand there, and be a shield, and we shall see which of us breaks.
 wary: You stood with me before the Censor-General, and I would like to believe it was loyalty and not calculation. I will not ask you which. I shall watch what you do when no Censor is looking.
 neutral: You came to my side when Duan Wuyi looked at the altar. That is a small courage, and the kind of which the Law is made. I shall remember it among the other small things.
-warm: You stood beside me in front of the Concord's own Censor-General, and you did not look at the cleft. I did. I am grateful that one of us could keep her eyes level.
+warm: You stood beside me in front of the Concord’s own Censor-General, and you did not look at the cleft. I did. I am grateful that one of us could keep her eyes level.
 devoted: When you stepped to my side I understood that I have not been alone in my own hall for fifteen years. I did not know how tired I was of it. Thank you, Wanderer. I mean it as plainly as I can.
 ? tone:truth>=3/4 | You have answered four questions in a row without hiding anything, and now you stand at my side before the Concord. Be careful. Honesty in front of Censors is a kind of nakedness, and they do not look away.
 
 $ SU_CENSOR_BAR | trust-1 respect+4 fear+3 | elder | The player barred the gate against a Censor and was stopped by the Censor-General himself.
-hostile: You barred a Censor's gate in my name, and now I must answer for it in a larger room than this. I do not thank you for the honour of being your reason. Do not do it again.
+hostile: You barred a Censor’s gate in my name, and now I must answer for it in a larger room than this. I do not thank you for the honour of being your reason. Do not do it again.
 wary: You were right, and you were a fool, and you drew a seed of black thread out in front of a Censor. I will not pretend that is not a thing to be afraid of. I am afraid of it. I am also afraid for you.
-neutral: You stopped a Censor's rod with a thread I did not know you carried. I ought to ask what it is. I find I would rather ask what it needs, and I do not yet have the courage for either question.
+neutral: You stopped a Censor’s rod with a thread I did not know you carried. I ought to ask what it is. I find I would rather ask what it needs, and I do not yet have the courage for either question.
 warm: I have taught wardens to stand in doorways for forty years. You did it better than any of them, and for the wrong reason, and I would not have you do it differently. Come inside. You are wet.
 devoted: You stood in my gate for me. No one has done that since my sister, and she did it with a stolen lamp, and was just as foolish. Come in out of the rain, and let me look at your hands.
-? censors_seed_seen | The whole courtyard saw the thread, and now you stand before me with your hands closed. I will not ask you to open them. I will only say that I have seen worse things in a child's palm, and loved them.
+? censors_seed_seen | The whole courtyard saw the thread, and now you stand before me with your hands closed. I will not ask you to open them. I will only say that I have seen worse things in a child’s palm, and loved them.
 
 $ SU_CENSOR_LIE | trust-3 suspicion+4 | elder | The player helped hide records from the Censors and was found out, or nearly.
-hostile: You hid the Law Hall's own papers from the Concord, in my archive, with my clerk. I could strike your name for it. I may yet. Tell me why the Law should not.
+hostile: You hid the Law Hall’s own papers from the Concord, in my archive, with my clerk. I could strike your name for it. I may yet. Tell me why the Law should not.
 wary: You hid something from the Censors, and you were nearly caught, and I am nearly angry. The nearly is not forgiveness. It is only that I have not decided what I am.
-neutral: A lie in my archive, told to a Censor, with Lin Yuan's hands shaking at the desk. I will not call it a crime. I will call it a debt, and I will ask you to pay it in truth when I ask.
+neutral: A lie in my archive, told to a Censor, with Lin Yuan’s hands shaking at the desk. I will not call it a crime. I will call it a debt, and I will ask you to pay it in truth when I ask.
 warm: You hid what you hid because you thought I could not bear to lose it. You were right about the loss and wrong about the method. I shall say that gently, because you were kinder than the Law deserves.
 devoted: You tried to carry my sins for me in a lamp-black lie. I will not scold you. I will only ask that the next time you see me about to drown, you tell me, and let me reach for the rope.
 ? censors_took_the_fault | You took the fault in front of the Censor-General rather than let Lin Yuan take it. I cannot pretend that did not move me.
 
 $ SU_CENSOR_LISTEN | trust+2 fear+6 | elder | The player tells her what the Second Order says.
-hostile: You come to me with the Concord's secret as if it were a gift. I am not sure whether it is a warning or a bargain. I am not sure what you want in exchange, and that is the part that frightens me.
+hostile: You come to me with the Concord’s secret as if it were a gift. I am not sure whether it is a warning or a bargain. I am not sure what you want in exchange, and that is the part that frightens me.
 wary: The Great Sealing. A bearer of the black seed. I have heard the words before, in a different mouth, in a different decade. I will think. Do not tell anyone else, not yet, not until I tell you what it means.
 neutral: I knew there was a Second Order. I had not known its shape. Thank you for telling me, and forgive me, because I am going to sit down now, and I would rather you did not see my face.
 warm: You came to tell me when you could have kept it. I know what that costs, because I did the opposite for fifteen years. Sit with me. We shall not say anything for a while, and then we shall decide what to do.
@@ -456,7 +456,7 @@ neutral: I saw it from the east wing. I will not say what I thought. I will say 
 warm: I watched you from the window. I thought, I will lose her now. I did not think it would be to a Censor. I find I am still glad you were angry enough to wake it. Come here. Let me look at your palm.
 devoted: I have been waiting fifteen years to see that thread. I did not think it would be a gift. Wanderer, I have so much to tell you, and I am so afraid. Come in out of the rain.
 
-$ REN_STANDOFF | trust+4 | ren | Ren Qiao stands at the player's side after the duel.
+$ REN_STANDOFF | trust+4 | ren | Ren Qiao stands at the player’s side after the duel.
 hostile: I said I would stand where the danger was, and I do not take it back. I do not have to like what I stand beside. Do not mistake the lantern for a kindness.
 wary: I am a warden, and a warden stands at the door. You may be the door. I have not decided. For now my lantern is lit, and that will have to do.
 neutral: I held a lantern for fourteen once and did not speak. I am speaking now. I cannot say it will do any good. I can say I will not stop.

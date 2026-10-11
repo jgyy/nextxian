@@ -1,3 +1,5 @@
+import type { Hero, HeroField } from "./hero";
+
 /** Player-facing numeric stats. `karma` may go negative; the others stay in 0..100. */
 export type PlayerStat = "qi" | "karma" | "insight";
 export type PlayerStats = Record<PlayerStat, number>;
@@ -42,7 +44,11 @@ export type Condition =
   /** The scene the player is standing in starts with this text. */
   | { kind: "scene"; prefix: string }
   /** How many flags that start with this text are on. Arcs count their finished parts this way. */
-  | { kind: "count"; prefix: string; min?: number; max?: number };
+  | { kind: "count"; prefix: string; min?: number; max?: number }
+  /** The hero's character: `field` is one of gender, looks, background, attire, status, and the value must be in `is` (or not in `not`). */
+  | { kind: "hero"; field: HeroField; is?: string[]; not?: string[] }
+  /** How far the world defers to the hero: birth and clothes plus two per realm. See `standingOf`. */
+  | { kind: "standing"; min?: number; max?: number };
 
 export type Effect =
   | { kind: "setFlag"; flag: string; value?: boolean }
@@ -159,6 +165,11 @@ export interface Story {
   companions?: Record<string, Companion>;
   /** Unprompted remarks, most specific first. At most one is said per decision. */
   remarks?: Remark[];
+  /**
+   * What the Elder says about the hero, by part of the hero, then value, then her attitude. She works through these
+   * between her replies. See `aside` in the engine.
+   */
+  asides?: Record<HeroField | "realm", Record<string, Record<Tier, string>>>;
 }
 
 export interface LogEntry {
@@ -168,6 +179,8 @@ export interface LogEntry {
 }
 
 export interface GameState {
+  /** The character the player made. It never changes during a game. */
+  hero: Hero;
   sceneId: string;
   stats: PlayerStats;
   npc: NpcState;
@@ -190,6 +203,8 @@ export interface GameState {
   remarked: string[];
   /** The decision on which someone last spoke unprompted. Remarks keep a distance from each other. */
   lastRemark: number;
+  /** The decision on which the Elder last commented on the hero. */
+  lastAside: number;
   log: LogEntry[];
   visited: string[];
 }

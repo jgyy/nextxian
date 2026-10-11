@@ -450,7 +450,7 @@ They are both staring at the lighthouse. It is dark, but you could swear it blin
 > inquiry | Ask the Elder who she thinks keeps the Lamp. | tide_arrive | +b3_arrived
 `,
   scenarios: String.raw`
-$ SU_MENDER_BENCH | trust+3 respect+3 | elder | The Elder watches the player learn to mend a seal and sees the apprentice's bench with its numeral.
+$ SU_MENDER_BENCH | trust+3 respect+3 | elder | The Elder watches the player learn to mend a seal and sees the apprentice’s bench with its numeral.
 hostile: You mended something. You did not break it. I find I cannot hold that against you, though I have tried.
 wary: I watched you grind and spread and press. You were bad at it, and you did not hide the fact. That is a rarer thing than skill.
 neutral: A promise carved so that it need not be remembered. I had thought a seal was a weapon. I find it is closer to a kindness that has been taught to endure.

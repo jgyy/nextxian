@@ -21,7 +21,7 @@ In the lock-up behind the magistrate’s hall a boy of sixteen is sitting on a s
 > force | Go to the lock-up at night and tell Bo Lan he is leaving with you. | assize_a2s1 | +assize_a2 needs:2
 > deceit | Find a way to make the factor’s receipt say that Bo Lan paid for the root. | assize_a3s1 | +assize_a3
 > quiet | Follow the salt carts out of the granary at dusk, and see where they really go. | assize_a4s1 | +assize_a4
-> inquiry | Show Scribe Tong the factor's receipts, and ask what his ink says of them. | assize_h1 |  | censors_tong_friend | The scribe does not trust you enough yet to share what he reads.
+> inquiry | Show Scribe Tong the factor’s receipts, and ask what his ink says of them. | assize_h1 |  | censors_tong_friend | The scribe does not trust you enough yet to share what he reads.
 
 // ---------------------------------------------------------------- a1: plead the law
 === assize_a1s1 | The Lock-Up
@@ -38,7 +38,7 @@ The Concord’s law of property runs to nine hundred pages, and Hao Lan has read
 “Theft needs intent to deprive,” she says. “He left coin. That is a point. A tagged root is under what the book calls a lien of public benefit, which means it belongs to whoever needs it, if the owner is not using it. That is a stronger point. But the law also says a lien of public benefit must be registered, and I do not think this one was.”
 She taps the page, and her voice drops.
 “I do not think any of the tagged roots in that granary were registered. I think someone was selling them quietly.”
-> truth | Ask her to find out who is on the granary's register, and whose roots were sold. | assize_a1s3
+> truth | Ask her to find out who is on the granary’s register, and whose roots were sold. | assize_a1s3
 > inquiry | Ask what the penalty is for an unregistered lien. | assize_a1s3
 > mercy | Ask what a sixteen-year-old with a sick mother would be sentenced to, if the judge were generous. | assize_a1s3
 > deceit | Suggest that the register be lost before the hearing. | assize_a1s3
@@ -59,7 +59,7 @@ Near dawn you find the clause. It is short and old and nobody uses it. A person 
 It requires a person the court will accept as a witness. It requires, further, that the person be willing to stand in the court.
 > truth | Decide you will be that witness, and tell no one yet. | assize_a1s5
 > inquiry | Search for the precedent where someone else tried it. | assize_a1s5
-> mercy | Wake Hao Lan, and tell her what you've found. | assize_a1s5
+> mercy | Wake Hao Lan, and tell her what you’ve found. | assize_a1s5
 > quiet | Fold the page into your sleeve and go for a walk in the pans. | assize_a1s5
 
 === assize_a1s5 | The Hall of Salt
@@ -78,7 +78,7 @@ You look at Bo Lan. At Madam Lan on her pallet. At the factor Dai Ming in the fr
 “The need,” you say, “is eleven weeks of coughing, and a root that cost nothing to grow, and a tag that says not for sale.”
 > truth | Say plainly that the root was a medicine and the tag was a lie. | assize_a1s7
 > inquiry | Ask the court how many tags in the granary were registered. | assize_a1s7
-> mercy | Describe Madam Lan's cough, step by step, until the room quiets. | assize_a1s7
+> mercy | Describe Madam Lan’s cough, step by step, until the room quiets. | assize_a1s7
 > force | Say that if the Concord punishes this, the Concord is the thief. | assize_a1s7
 
 === assize_a1s7 | Cross-Examination
@@ -194,7 +194,7 @@ The counting-room smells of cinnamon and iron. The black box sits on a high shel
 You do not touch the jars. You look at them, a long time. They are labelled in a neat hand with the same words, over and over: Calm. For the river provinces. For the quiet.
 Your fingers are already on the padlock.
 > deceit | Pick the padlock, and lift the box down. | assize_a3s3
-> inquiry | Read the nearest jar's label, and the date, and the seal on its cork. | assize_a3s3
+> inquiry | Read the nearest jar’s label, and the date, and the seal on its cork. | assize_a3s3
 > force | Break the padlock, and take the box. | assize_a3s3
 > quiet | Back out of the room, and go and find a better plan. | assize_a3s2b
 
@@ -223,7 +223,7 @@ He talks for an hour. He says there have been forty-one tagged roots a quarter f
 He puts a small bundle on the table. In it are two spirit stones, wrapped in a handkerchief, and a slip of paper in a clerk’s clean hand: Received of Bo Lan, 2 stones, for 1 root.
 > truth | Ask him to say it in court. | assize_a3s5
 > deceit | Ask him to put a date on the slip, a day earlier. | assize_a3s5
-> mercy | Tell him he doesn't have to be the one to stand up. | assize_a3s5
+> mercy | Tell him he doesn’t have to be the one to stand up. | assize_a3s5
 > inquiry | Ask who else saw the stones. | assize_a3s5
 
 === assize_a3s5 | Dating a Receipt
@@ -241,7 +241,7 @@ Dai Ming learns of it by the afternoon. A person with a hundred ears will always
 “A clerk talks,” he says. “A clerk is easily frightened. I want to be clear that I bear him no ill will.” He turns his ring. “But I wonder whether you have considered what the Concord does to a witness who is found to have colluded with a prisoner’s friends.”
 He leaves a purse on the well-head and goes.
 > truth | Leave the purse where it lies, and tell him to take it back. | assize_a3s7
-> deceit | Take the purse and give it to Bo Lan's mother. | assize_a3s7
+> deceit | Take the purse and give it to Bo Lan’s mother. | assize_a3s7
 > force | Throw it into the well. | assize_a3s7
 > quiet | Leave it. Let the servants sort it. | assize_a3s7
 
@@ -252,7 +252,7 @@ Clerk Fu is called. He walks to the box with the slip clutched in his hand and h
 > truth | Stand, and say you can corroborate every word. | assize_a3s8
 > quiet | Keep still. Let the clerk finish. | assize_a3s8
 > mercy | Go to Bo Lan, and put a hand on his shoulder. | assize_a3s8
-> inquiry | Watch the magistrate's face as the slip is read. | assize_a3s8
+> inquiry | Watch the magistrate’s face as the slip is read. | assize_a3s8
 
 === assize_a3s8 | A Slip of Paper
 Duan reads the slip twice. When he has finished he sets it down on the table, flat, and smooths it with the side of his hand.
@@ -278,7 +278,7 @@ The carts stop at a warehouse behind the dyers’ lane, a low windowless buildin
 Ren Qiao touches your arm. He has smelled it. Bitter, faintly sweet: a root, dried and ground to powder. It is the smell of the Healer’s Hall, or of the cellar under it, or of the abyss path after rain.
 “Calm dust,” he says, very softly. “They are making it here.”
 > quiet | Slip along the wall to the window slit and look in. | assize_a4s3
-> inquiry | Read the marks on the mule-harness; they are the Concord's own brand. | assize_a4s3
+> inquiry | Read the marks on the mule-harness; they are the Concord’s own brand. | assize_a4s3
 > truth | Tell Ren that you want to go in and see. | assize_a4s3
 > force | Tell Ren to kick in the green door. | assize_a4s3
 
@@ -290,7 +290,7 @@ A foreman moves among them with a ledger, writing. Each time he passes a grinder
 > truth | Tell Ren you will not leave until you know who ordered it. | assize_a4s4
 > quiet | Watch until the foreman goes into the back room. | assize_a4s4
 > mercy | Ask whether there is any way to speak to them without being heard. | assize_a4s4
-> inquiry | Memorise the foreman's face, the stool, the cup, the ledger. | assize_a4s4
+> inquiry | Memorise the foreman’s face, the stool, the cup, the ledger. | assize_a4s4
 
 === assize_a4s4 | The Foreman’s Ledger
 The foreman goes into the back room, and the door does not quite close. You are through the window and across the floor before you have thought about it, a mortal’s quickness and a seed’s luck. The grinders do not look up. A girl of nine, at the end of the second table, opens her mouth and says one word, quietly: “Thank you.” She means, for not being loud.
@@ -316,7 +316,7 @@ She sets down the page with the care of someone setting down a live coal.
 Her voice is very quiet.
 “Then the masters saw that it worked, and the order was extended. To the disciples. To the cells. To the river towns, where the mist is thin and the names are loud. Every year I signed it. I did not look at where it went. I told myself the dust was for the quiet, and the quiet was for the sect.”
 > truth | Tell her she can still choose not to sign it again. | assize_a4s7
-> mercy | Tell her the first month's kindness was real, even if the rest was not. | assize_a4s7
+> mercy | Tell her the first month’s kindness was real, even if the rest was not. | assize_a4s7
 > inquiry | Ask who ordered the extensions. | assize_a4s7
 > quiet | Hold the silence with her until she is ready to speak again. | assize_a4s7
 
@@ -326,7 +326,7 @@ You take the page to Duan Wuyi at midnight. He is sitting in the dark of the ass
 He looks at you. “Why have you brought it to me, and not the Elder?”
 > truth | Tell him you brought it to both, and she asked you to. | assize_a4s8
 > quiet | Tell him some stamps are better sold to Censors than burned. | assize_a4s8 | +assize_a4_to_duan
-> inquiry | Ask him what he will do with the Registrar's name. | assize_a4s8
+> inquiry | Ask him what he will do with the Registrar’s name. | assize_a4s8
 > force | Tell him you do not trust anyone else with it. | assize_a4s8 | +assize_a4_to_duan
 
 === assize_a4s8 | A Raid at Dawn
@@ -377,10 +377,10 @@ The tide turns on the third morning, and the barge slips away from Kuan Landing 
 +[res] assize_raid | The warehouse behind the dyers’ lane is shut, the cups are broken, and eighty people woke up on the same morning.
 +[how] assize_a1 | You stood as a witness of need in a court of salt, and the town has begun to say your name as if it meant something.
 +[how] assize_a2 | You carried a woman out of a hall on a pallet, and you are no longer a stranger to the river.
-+[how] assize_a3 | You wrote a clerk's truth where a lie would have done, and slept for the first time in a week.
-+[how] assize_a4 | You found the Registrar's stamp in a hidden ledger, and know now what you did not wish to know.
++[how] assize_a3 | You wrote a clerk’s truth where a lie would have done, and slept for the first time in a week.
++[how] assize_a4 | You found the Registrar’s stamp in a hidden ledger, and know now what you did not wish to know.
 +[tong] assize_tong_trust | Scribe Tong sits cross-legged on the foredeck with his brush across his knees, watching you with his patient stare.
-+[dust] assize_dust_exposed | The Concord's river-wardens have been told. Calm dust will not cross a bridge in this province for a season.
++[dust] assize_dust_exposed | The Concord’s river-wardens have been told. Calm dust will not cross a bridge in this province for a season.
 > truth | Find the Elder, and tell her what the court did. | assize_close2
 > quiet | Stand at the stern as the white pans diminish. | assize_close2
 > mercy | Find Bo Lan, or the place he would be, and leave something for him. | assize_close2
@@ -400,16 +400,16 @@ He lifts a bishop, and holds it, and sets it down.
 > mercy | Ask whether the Concord has ever once asked a boy what he needed. | hub_b2_road | +b2r_assize
 `,
   scenarios: String.raw`
-$ SU_ASSIZE_STAMP | trust+2 fear+7 suspicion-3 | elder | The player shows the Elder the Registrar's stamp on the calm-dust ledger.
+$ SU_ASSIZE_STAMP | trust+2 fear+7 suspicion-3 | elder | The player shows the Elder the Registrar’s stamp on the calm-dust ledger.
 hostile: You put my own office in front of me as evidence, and expect me to be grateful. I will not thank you. I will read it. I will not forget who held the page.
-wary: The Office of the Registrar. Twelve years of it, under my deputy's hand. I did not know. I should have known. A person who signs a thing in kindness is responsible for what the kindness becomes.
+wary: The Office of the Registrar. Twelve years of it, under my deputy’s hand. I did not know. I should have known. A person who signs a thing in kindness is responsible for what the kindness becomes.
 neutral: You have put a stamp in front of me that I signed, and that someone else has been using. I do not know what to say. I know what the Law would say. I do not trust the Law to be right.
 warm: You brought it to me before you brought it to a Censor. That is a courtesy I did not earn. I shall try to be worth it. Sit with me a while. We have no time, but I should like to be sitting.
 devoted: I have been waiting twelve years for someone to bring me this page. I think I have known the shape of it since the first cup. I am glad it was you. I am so tired, and I am so relieved.
 `,
   remarks: String.raw`
-% assize_bo_lan_later | since:assize_free>=16 | elder | A letter from Kuan Landing, in a boy's hand, with three misspelled characters and one correctly spelled name. I put it in the second ledger. It seemed to belong there.
-% assize_tong_later | since:assize_tong_trust>=10 | elder | The Censor's scribe keeps looking at me over his brush. I believe he is deciding whether I am capable of an honest signature. I find I would like him to decide yes.
+% assize_bo_lan_later | since:assize_free>=16 | elder | A letter from Kuan Landing, in a boy’s hand, with three misspelled characters and one correctly spelled name. I put it in the second ledger. It seemed to belong there.
+% assize_tong_later | since:assize_tong_trust>=10 | elder | The Censor’s scribe keeps looking at me over his brush. I believe he is deciding whether I am capable of an honest signature. I find I would like him to decide yes.
 % assize_dust_later | since:assize_dust_exposed>=14 | elder | The river-wardens have closed three calm-dust depots this week. I did not order it. I would have. That is the part I cannot stop thinking about.
 `,
 };

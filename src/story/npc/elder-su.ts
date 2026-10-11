@@ -83,7 +83,7 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       wary: "Threats are a language I understand well. Choose yours carefully; some of them carry your own name.",
       neutral: "Bold. A threat means you believe you have something to bargain with. Let us see what it is, and whether I am willing to pay.",
       warm: "You threaten me, then look ashamed of it. I think you were frightened for someone, and it came out sideways.",
-      devoted: "Threatening me to protect the sect's secret is the wrong way to save it, but I hear what it cost you to say it. Who are you really protecting?",
+      devoted: "Threatening me to protect the sect’s secret is the wrong way to save it, but I hear what it cost you to say it. Who are you really protecting?",
     },
     memory: [
       {
@@ -115,14 +115,14 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
   },
   STEAL_SCROLL: {
     id: "STEAL_SCROLL",
-    summary: "The player takes the Heavenly Scroll from the ancestors' shelf.",
+    summary: "The player takes the Heavenly Scroll from the ancestors’ shelf.",
     delta: { trust: -14, respect: -8, suspicion: 14 },
     lines: {
       hostile: "The Heavenly Scroll is missing from the memorial shelf, and you are wearing its dust. Hand it back, or the Law Hall will take it from your ribs.",
       wary: "The scroll is gone and your sleeve bulges where it should not. I will not accuse you before I see it with my own eyes.",
       neutral: "A theft in the memorial hall. That is an insult to the ancestors before it is a crime against the sect.",
       warm: "I know you took the scroll for a reason. Tell me the reason, and I will hear it before I judge the thief.",
-      devoted: "You took the scroll from the ancestors' shelf. Only someone desperate, or very brave, would do that. Which are you?",
+      devoted: "You took the scroll from the ancestors’ shelf. Only someone desperate, or very brave, would do that. Which are you?",
     },
     remember: ["stole_scroll"],
     memory: [
@@ -137,7 +137,7 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
     summary: "The player channels demonic qi in front of the elder.",
     delta: { trust: -8, fear: 14, suspicion: 10 },
     lines: {
-      hostile: "Black lotus in your meridians. The Law Hall's sword is already leaving its scabbard, and I am not certain I will stop it.",
+      hostile: "Black lotus in your meridians. The Law Hall’s sword is already leaving its scabbard, and I am not certain I will stop it.",
       wary: "I felt that qi. It tastes of the Crimson Abyss, and I was taught never to trust a taste like that.",
       neutral: "The aura around you is wrong. Hide it, or explain it. Either way, I will be watching the path it takes.",
       warm: "You reached for demonic qi in front of me and then stopped yourself. I saw you stop. That counts for something.",
@@ -195,7 +195,7 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
       wary: "You honour the ancestors. Good. Now honour the living, and tell me what you did in their hall before you knelt.",
       neutral: "Respect for the dead is the first lesson of this sect. You learned it at the gate, or at least you pretended to.",
       warm: "The ancestors heard you kneel. So did I. My grandfather taught me the dead forgive faster than the living, and I am beginning to believe him.",
-      devoted: "You knelt before my family's tablet. Some of the names there are mine, and you have honoured them more than my own sister ever did.",
+      devoted: "You knelt before my family’s tablet. Some of the names there are mine, and you have honoured them more than my own sister ever did.",
     },
     remember: ["honored_ancestors"],
     memory: [
@@ -207,10 +207,10 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
   },
   REFUSE_TASK: {
     id: "REFUSE_TASK",
-    summary: "The player refuses the Law Hall's mission.",
+    summary: "The player refuses the Law Hall’s mission.",
     delta: { trust: -10, respect: -10, fear: -2 },
     lines: {
-      hostile: "You refuse the Law Hall's command? Then your name is struck from the register while you still stand here.",
+      hostile: "You refuse the Law Hall’s command? Then your name is struck from the register while you still stand here.",
       wary: "You refuse. I expected it from someone like you. Leave the gate quietly, and perhaps I will forget your face.",
       neutral: "You refuse the task. I will record your refusal honestly. Choose your road with your eyes open.",
       warm: "You say no to me. Few have dared, and fewer have meant it with such care. Tell me your reason, and perhaps I will find another path for you.",
@@ -238,17 +238,17 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
     memory: [
       {
         when: [{ kind: "flag", flag: "spared_gu" }],
-        line: "You bring back the jade, and you let the boy live. The Law counts the jade. I count the boy, and my count is not as simple as the Law's.",
+        line: "You bring back the jade, and you let the boy live. The Law counts the jade. I count the boy, and my count is not as simple as the Law’s.",
       },
     ],
     remember: ["completed_mission"],
   },
   EXPOSE_HER_SECRET: {
     id: "EXPOSE_HER_SECRET",
-    summary: "The player reveals that the elder's sister, Su Mengjiao, took the jade.",
+    summary: "The player reveals that the elder’s sister, Su Mengjiao, took the jade.",
     delta: { trust: 2, respect: -6, fear: 10, suspicion: 4 },
     lines: {
-      hostile: "You dare speak my sister's name in this hall? Her fall was not yours to shame. Get out before I forget I am still an elder of this hall.",
+      hostile: "You dare speak my sister’s name in this hall? Her fall was not yours to shame. Get out before I forget I am still an elder of this hall.",
       wary: "You know about Mengjiao. Half the sect whispers the name, and you have said it aloud. What you do next decides whether I break you or bury you.",
       neutral: "So you found the truth in the Abyss. I had hoped no one would speak her name in my hall again. You have spoken it. Now tell me what you want.",
       warm: "You had every reason to keep silent about her. You told me instead, and you did it kindly. I did not know kindness was still possible in this hall.",
@@ -283,7 +283,7 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
   },
   ACCEPT_PUNISHMENT: {
     id: "ACCEPT_PUNISHMENT",
-    summary: "The player submits to the Law's judgment without argument.",
+    summary: "The player submits to the Law’s judgment without argument.",
     delta: { trust: 3, respect: 6, fear: -3 },
     lines: {
       hostile: "Good. Kneel, and let the Law take its due. There will be no more arguments in my hall today.",
@@ -295,7 +295,7 @@ export const elderSuScenarios: Record<string, NpcScenario> = {
     memory: [
       {
         when: [{ kind: "flag", flag: "exposed_elder" }],
-        line: "You accept my judgment, yet you spoke my sister's name before the disciples. Accept it, then. Mercy is not owed to a blade that cut so deep.",
+        line: "You accept my judgment, yet you spoke my sister’s name before the disciples. Accept it, then. Mercy is not owed to a blade that cut so deep.",
       },
     ],
     remember: ["accepted_punishment"],

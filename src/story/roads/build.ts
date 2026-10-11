@@ -1,4 +1,5 @@
 import { REALMS } from "@/engine/cultivation";
+import { focusKind, pickFit } from "./kinds";
 import { ROAD_DONE_PREFIX } from "@/engine/npc";
 import type { Choice, ChoiceTone, Effect, NpcScenario, Scene } from "@/engine/types";
 import {
@@ -6,6 +7,7 @@ import {
   APPROACH_LABEL,
   CHOICE_LABEL,
   HIDDEN,
+  HIDDEN_OPEN_THING,
   MODE_BEAT,
   OBSTACLES,
   REPORT_LINES,
@@ -51,6 +53,8 @@ export interface RoadContext {
   wayside: string;
   /** The realm needed for the road’s cultivator’s way, as an index into `REALMS`. */
   realm: number;
+  /** Give each focus only wording that fits it. On by default; the slot audit turns it off to count what the old wording got wrong. */
+  fit?: boolean;
 }
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -100,6 +104,16 @@ export const doneFlag = (id: string) => `${ROAD_DONE_PREFIX}${id}`;
 export const reportedFlag = (id: string) => roadFlag(id, "reported");
 export const reportScenarioId = (id: string) => `REPORT_ROAD_${id.toUpperCase()}`;
 
+/**
+ * The slots a choice’s label is filled with. The obstacle and the ally come from the pools of the choice’s own tone: a label that says
+ * "Trace {obstacle} back to whoever put it there" needs something that can be traced, which a sick child on the step is not.
+ * Before this, they came from the pool of the approach the player was walking, whatever tone the choice had.
+ */
+function labelSlots(slots: Record<string, string>, tone: ChoiceTone, seed: number, fit: boolean): Record<string, string> {
+  if (!fit) return slots;
+  return { ...slots, obstacle: pick(OBSTACLES[tone], seed + 1), ally: pick(ALLIES[tone], seed + 2) };
+}
+
 /** Builds the 25 scenes of one road: entry, four approaches of five beats, a hidden route of three, and a return. */
 export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
   const { id } = spec;
@@ -113,6 +127,7 @@ export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
     secret: spec.secret,
   };
   const scenes: Scene[] = [];
+  const fit = ctx.fit ?? true;
 
   scenes.push({
     id: `${id}_entry`,
@@ -120,7 +135,7 @@ export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
     paragraphs: [spec.intro],
     choices: modes.map((mode, a): Choice => ({
       id: `approach_${a}`,
-      label: fill(pick(APPROACH_LABEL[mode], ctx.index + a), { ...base, focus: spec.focus[a] }),
+      label: fill(pickFit(APPROACH_LABEL[mode], ctx.index + a, spec.focus[a], fit), { ...base, focus: spec.focus[a] }),
       tone: mode,
       next: `${id}_a${a}s0`,
       effects: [{ kind: "setFlag", flag: roadFlag(id, `approach_${a}`) }],
@@ -142,7 +157,7 @@ export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
         if (stage === 3) effects.push({ kind: "setFlag", flag: roadFlag(id, `crisis_${tone}`) });
         return {
           id: tone,
-          label: fill(pick(CHOICE_LABEL[tone], seed + c * 2 + 3), slots),
+          label: fill(pickFit(CHOICE_LABEL[tone], seed + c * 2 + 3, slots.focus, fit), labelSlots(slots, tone, seed + c, fit)),
           tone,
           next,
           effects,
@@ -169,7 +184,12 @@ export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
       if (stage === 4 && a === 2) {
         choices.push({
           id: "hidden_stair",
-          label: fill("Notice the stair behind {focus} that you walked past, and go down.", slots),
+          label: fill(
+            focusKind(slots.focus) === "thing"
+              ? "Notice the loose board beneath {focus} that you walked past, and lift it."
+              : "Notice the stair behind {focus} that you walked past, and go down.",
+            slots,
+          ),
           tone: "inquiry",
           next: `${id}_h0`,
           requires: [{ kind: "stat", stat: "insight", min: 12 }],
@@ -181,7 +201,7 @@ export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
         id: `${id}_a${a}s${stage}`,
         title: `${spec.title}: ${STAGE_TITLE[mode][stage]}`,
         paragraphs: [
-          fill(pick(STAGE_OPEN[stage], seed), slots),
+          fill(pickFit(STAGE_OPEN[stage], seed, slots.focus, fit), slots),
           fill(pick(MODE_BEAT[mode], seed + a), slots),
         ],
         choices,
@@ -196,10 +216,10 @@ export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
     scenes.push({
       id: `${id}_h${n}`,
       title: `${spec.title}: ${h.title}`,
-      paragraphs: h.paragraphs.map((p) => fill(p, slots)),
+      paragraphs: h.paragraphs.map((p, i) => fill(n === 0 && i === 0 && fit && focusKind(slots.focus) === "thing" ? HIDDEN_OPEN_THING : p, slots)),
       choices: sceneTones(modes[2], n, 2).map((tone, c) => ({
         id: tone,
-        label: fill(pick(CHOICE_LABEL[tone], ctx.index + n * 3 + c), slots),
+        label: fill(pickFit(CHOICE_LABEL[tone], ctx.index + n * 3 + c, slots.focus, fit), labelSlots(slots, tone, ctx.index + n + c, fit)),
         tone,
         next,
         effects: [...TONE_EFFECTS[tone], ...final],
@@ -216,7 +236,7 @@ export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
     extras: [
       ...modes.map((mode, a) => ({
         when: [{ kind: "flag" as const, flag: roadFlag(id, `approach_${a}`) }],
-        paragraphs: [fill(RETURN_APPROACH[mode], { ...base, focus: spec.focus[a] })],
+        paragraphs: [fill(pickFit(RETURN_APPROACH[mode], ctx.index, spec.focus[a], fit), { ...base, focus: spec.focus[a] })],
         group: "approach",
       })),
       ...(Object.keys(RETURN_CRISIS) as ChoiceTone[]).map((tone) => ({

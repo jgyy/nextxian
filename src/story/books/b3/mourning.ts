@@ -163,7 +163,7 @@ The boy checks. Bao Er is standing at the foot of the stairs with her arms folde
 Bao Er raises her eyebrows at you in a gesture that means: boys. “He will, in about a decade,” she says. “Come upstairs. Mother has the kettle on.”
 > force | Follow her. | mourning_a2s6 | needs:3
 > truth | Tell Tian you are not asking him to be sorry. | mourning_a2s6
-> quiet | Sheath your sword. | mourning_a2s6
+> quiet | Sheath your blade. | mourning_a2s6
 > mercy | Bandage his cheek. | mourning_a2s6 | +mourning_bandaged_tian
 
 === mourning_a2s6 | Mother’s Kettle

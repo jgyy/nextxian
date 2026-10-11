@@ -409,7 +409,7 @@ Gu takes a piece. He says nothing. He chews, and swallows, and looks at the sky.
 > mercy | Hold Hao Lan. | bone_a3s10
 
 === bone_a3s10 | Qadan’s Second Letter
-He writes again, a month later, in cipher. You decode it by lantern-light in the hill country, with Hao Lan's tables. It is long. It is very careful. It says that he is the Colonel’s adjutant, and has been for eleven years. It says that he is tired. He gives the purpose. He gives the number. He gives the date of the shipment.
+He writes again, a month later, in cipher. You decode it by lantern-light in the hill country, with Hao Lan’s tables. It is long. It is very careful. It says that he is the Colonel’s adjutant, and has been for eleven years. It says that he is tired. He gives the purpose. He gives the number. He gives the date of the shipment.
 It ends: I have a daughter who is nine. She goes to the school. I had her name changed in the spring, to protect her. I do not know where she is now.
 Hao Lan reads it aloud, in a monotone, and puts it down.
 “He is a spy,” she says. “For the Hollow Lotus.”

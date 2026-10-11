@@ -11,7 +11,7 @@ export const sparringCourtScenes: Scene[] = [
     title: "Side Path: The Sparring Court",
     paragraphs: [
       "The sparring court lies behind the bell tower, a square of beaten earth ringed by stone benches and wooden posts scarred by a thousand strikes. Young disciples in plain grey practise their forms in pairs, shouting the count as they move. The air smells of sweat, liniment, and the dust that rises from their feet.",
-      "A senior disciple sits on the highest bench, a big man with a braid down his back and a bruise on one cheek. His name is Qin, and he has been watching you since you came through the gate. \"The Elder’s outsider,\" he says, loud enough for the whole court to hear. \"They say you can take a blow without falling. Stand on the earth, and let us see whether they are right.\"",
+      "A senior disciple sits on the highest bench, a big man with a braid down his back and a bruise on one cheek. His name is Qin, and he has been watching you since you came through the gate. “The Elder’s outsider,” he says, loud enough for the whole court to hear. “They say you can take a blow without falling. Stand on the earth, and let us see whether they are right.”",
       "Several of the younger disciples have stopped their forms to watch. Nobody is sure whether this is a test or a joke, and Qin’s grin makes it hard to tell.",
     ],
     choices: [
@@ -48,7 +48,7 @@ export const sparringCourtScenes: Scene[] = [
     title: "Watching From the Rail",
     paragraphs: [
       "The pairs move like water poured between stones. One disciple stumbles and laughs at herself. Another takes a blow on the forearm and does not flinch, and the instructor beside her nods once, as though she has passed a private test. You learn more from the rail than you expected. The forms are not about winning. They are about knowing where the other person’s weight will go next.",
-      "Qin notices you watching and walks over with a towel across his shoulder. \"You count,\" he says. \"Most outsiders just stare. Tell me what you saw.\" He is not hostile, only curious, and the question is a real one.",
+      "Qin notices you watching and walks over with a towel across his shoulder. “You count,” he says. “Most outsiders just stare. Tell me what you saw.” He is not hostile, only curious, and the question is a real one.",
     ],
     choices: [
       {
@@ -126,7 +126,7 @@ export const sparringCourtScenes: Scene[] = [
     id: "court_return",
     title: "After the Bout",
     paragraphs: [
-      "The court begins to breathe again. Juniors come forward to tie the strained posts, and Qin wipes his face with the towel and looks at you as though you are a different question now. \"The Elder’s outsider,\" he says, but there is less mockery in it. \"The bell is still ringing for you. You know that?\"",
+      "The court begins to breathe again. Juniors come forward to tie the strained posts, and Qin wipes his face with the towel and looks at you as though you are a different question now. “The Elder’s outsider,” he says, but there is less mockery in it. “The bell is still ringing for you. You know that?”",
       "Behind the bell tower, the summons is ringing again, slow and steady. The jade eye in your sleeve has been humming since the first blow, and you know, without being told, that the Elder can hear the court through it.",
     ],
     choices: [

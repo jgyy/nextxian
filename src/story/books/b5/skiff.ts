@@ -639,7 +639,7 @@ warm: I leaned out. Only a little. Over the runner, to watch the glass go by. It
 devoted: If I had a hundred years I should spend them in a skiff. I should write nothing. I should merely go.
 `,
   remarks: String.raw`
-% skiff_nomin_later | since:skiff_taught>=3 | yue | The child, Nomin, has made me a tiny skiff out of a bent spoon and a leaf. It has a name painted on the side. The name is Yue’s Fault. I am going to keep it in my coat until I die.
+% skiff_nomin_later | since:skiff_taught>=3 & bond:yue>=-100 | yue | The child, Nomin, has made me a tiny skiff out of a bent spoon and a leaf. It has a name painted on the side. The name is Yue’s Fault. I am going to keep it in my coat until I die.
 % skiff_ochir_later | since:b5q_skiff>=5 | ren | Old Ochir sent word that the Concord’s man in green silk came back asking for us. He said he did not recall our faces. He said it very loudly, to the whole yard.
 `,
 }

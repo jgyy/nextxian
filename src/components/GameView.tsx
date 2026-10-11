@@ -2,12 +2,15 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { choose, createGame, currentBeat, getChoices, getScene } from "@/engine/game";
+import { personalise, type Hero } from "@/engine/hero";
 import { mannerOf } from "@/engine/npc";
 import { restoreGame } from "@/engine/save";
 import { TONE_INFO } from "@/engine/tone";
 import type { GameState, LogEntry, Story } from "@/engine/types";
 import { chapters } from "@/story";
+import { Creation } from "./Creation";
 import { CultivationPanel } from "./CultivationPanel";
+import { HeroPanel } from "./HeroPanel";
 import { REALMS } from "@/engine/cultivation";
 import { NpcPanel } from "./NpcPanel";
 import { StatsPanel } from "./StatsPanel";
@@ -78,9 +81,84 @@ function Entry({ entry }: { entry: LogEntry }) {
   }
 }
 
+function Masthead({ story, children }: { story: Story; children?: ReactNode }) {
+  return (
+    <header className="masthead">
+      <div className="title-block">
+        <span className="seal-stamp" aria-hidden="true">
+          赤渊
+        </span>
+        <div>
+          <p className="eyebrow">A xianxia tale</p>
+          <h1>{story.title}</h1>
+        </div>
+      </div>
+      {children}
+    </header>
+  );
+}
+
 export function GameView({ story }: { story: Story }) {
-  const [game, setGame] = useState<GameState>(() => createGame(story));
+  // No game until the player has made a character, or loaded one.
+  const [game, setGame] = useState<GameState | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+
+  function begin(hero: Hero) {
+    const fresh = createGame(story, hero);
+    setGame(fresh);
+    setNotice(writeSave(fresh) ? null : "Progress is not being saved in this browser.");
+  }
+
+  function load() {
+    const saved = readSave(story);
+    if (saved) {
+      setGame(saved);
+      setNotice("Loaded your last saved game.");
+    } else {
+      setNotice("No saved game was found in this browser.");
+    }
+  }
+
+  if (!game) {
+    return (
+      <div className="shell">
+        <Masthead story={story} />
+        <Creation onBegin={begin} onLoad={load} />
+        {notice && (
+          <p className="notice" role="status">
+            {notice}
+          </p>
+        )}
+      </div>
+    );
+  }
+  return (
+    <Play
+      story={story}
+      game={game}
+      setGame={setGame}
+      notice={notice}
+      setNotice={setNotice}
+      onLoad={load}
+      onNewCharacter={() => {
+        setGame(null);
+        setNotice(null);
+      }}
+    />
+  );
+}
+
+interface PlayProps {
+  story: Story;
+  game: GameState;
+  setGame: (g: GameState) => void;
+  notice: string | null;
+  setNotice: (n: string | null) => void;
+  onLoad: () => void;
+  onNewCharacter: () => void;
+}
+
+function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter }: PlayProps) {
   const [showBacklog, setShowBacklog] = useState(false);
   const stage = useRef<HTMLDivElement>(null);
   const backlogEnd = useRef<HTMLDivElement>(null);
@@ -108,43 +186,28 @@ export function GameView({ story }: { story: Story }) {
   }
 
   function restart() {
-    const fresh = createGame(story);
+    // The same character begins again from the gate.
+    const fresh = createGame(story, game.hero);
     setGame(fresh);
     setShowBacklog(false);
     setNotice(writeSave(fresh) ? null : "Progress is not being saved in this browser.");
   }
 
-  function load() {
-    const saved = readSave(story);
-    if (saved) {
-      setGame(saved);
-      setNotice("Loaded your last saved game.");
-    } else {
-      setNotice("No saved game was found in this browser.");
-    }
-  }
-
   return (
     <div className="shell">
-      <header className="masthead">
-        <div className="title-block">
-          <span className="seal-stamp" aria-hidden="true">
-            赤渊
-          </span>
-          <div>
-            <p className="eyebrow">A xianxia tale</p>
-            <h1>{story.title}</h1>
-          </div>
-        </div>
+      <Masthead story={story}>
         <div className="actions">
-          <button type="button" className="ghost" onClick={load}>
+          <button type="button" className="ghost" onClick={onLoad}>
             Load save
           </button>
           <button type="button" className="ghost" onClick={restart}>
-            New game
+            Restart
+          </button>
+          <button type="button" className="ghost" onClick={onNewCharacter}>
+            New character
           </button>
         </div>
-      </header>
+      </Masthead>
 
       <div className="layout">
         <main className="novel" aria-label="Story">
@@ -200,7 +263,7 @@ export function GameView({ story }: { story: Story }) {
                       disabled={!available}
                       aria-describedby={hint ? `hint-${choice.id}` : undefined}
                     >
-                      <span className="choice-label">{choice.label}</span>
+                      <span className="choice-label">{personalise(choice.label, game.hero)}</span>
                       {choice.tone && <span className="tone-tag">{TONE_INFO[choice.tone].name}</span>}
                       {choice.needsRealm !== undefined && (
                         <span className="realm-tag" data-strain={strain ? "yes" : "no"}>
@@ -228,6 +291,7 @@ export function GameView({ story }: { story: Story }) {
         </main>
 
         <aside className="side" aria-label="Characters and stats">
+          <HeroPanel hero={game.hero} realm={game.realm} />
           <NpcPanel profile={story.npc} npc={game.npc} lastLine={lastNpcLine} manner={mannerOf(game.tones)} />
           <CultivationPanel game={game} />
           <StatsPanel stats={game.stats} tones={game.tones} />

@@ -1,4 +1,5 @@
 import { REALMS } from "./cultivation";
+import { standingOf } from "./hero";
 import { CHOICE_TONES } from "./tone";
 import type { ChoiceTone, Condition, GameState, Mood, NpcScenario, NpcState, RespectTier, Tier } from "./types";
 
@@ -192,7 +193,7 @@ export function reactToScenario(
 
 /** What a condition may read. Everything past the first five fields is optional so older callers and saves still work. */
 export type ConditionState = Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones"> &
-  Partial<Pick<GameState, "realm" | "bonds" | "decisions" | "flagAt" | "sceneId">>;
+  Partial<Pick<GameState, "realm" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero">>;
 
 /** True when every condition holds. An empty or missing list always holds. */
 export function conditionsHold(conditions: Condition[] | undefined, state: ConditionState): boolean {
@@ -245,6 +246,15 @@ export function conditionsHold(conditions: Condition[] | undefined, state: Condi
         return moodFor(state.npc) === c.is;
       case "scene":
         return (state.sceneId ?? "").startsWith(c.prefix);
+      case "hero": {
+        if (!state.hero) return c.is === undefined && c.not !== undefined; // no hero known: only a "not" condition can hold
+        const v: string = state.hero[c.field];
+        return (c.is === undefined || c.is.includes(v)) && (c.not === undefined || !c.not.includes(v));
+      }
+      case "standing": {
+        const v = state.hero ? standingOf(state.hero, state.realm ?? 0) : 0;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
       case "count": {
         const v = Object.entries(state.flags).filter(([flag, on]) => on && flag.startsWith(c.prefix)).length;
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);

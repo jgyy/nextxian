@@ -82,7 +82,7 @@ Something flickers in his face. A shadow, like a bird passing a window. His hand
 === mirage_a1s4 | Ink
 “He had a white patch on his ear,” says the Elder. She is barely audible. “He slept under your desk. You used to feed him pastry.” She pauses. “You never forgave me for the dismissal. You said so in your letter. It was a very good letter.”
 The old man is staring at the black king.
-“He died,” he whispers. “In the winter. I didn’t... there was a hole. In the garden. I wept for a week.” He raises his head. His eyes are no longer vacant. They are wet and enormous and horrified. “Wanru? Is that you? What have they done to me?”
+“He died,” he whispers. “In the winter. I didn’t… there was a hole. In the garden. I wept for a week.” He raises his head. His eyes are no longer vacant. They are wet and enormous and horrified. “Wanru? Is that you? What have they done to me?”
 “You came here.”
 “I came—” He looks round at the white arcades. At the smiling children. At the blank-eyed painter. His mouth falls open. “Dear Heaven. How long?”
 “Twenty-two years.”
@@ -103,7 +103,7 @@ He tries. You watch him try. He stands on the marble quay with his hands clenche
 “Tomas?”
 “No.”
 “Tan?”
-“*No.*” He sobs. “Something... with a rhythm. Like a bell. Two beats.”
+“*No.*” He sobs. “Something… with a rhythm. Like a bell. Two beats.”
 “Tao Tao.”
 His head goes up. The tears stop. “That’s it,” he says, in an astonished whisper. “That’s me. I’m *Tao Tao.* I make shoes.”
 > truth | Smile. | mirage_a1s6
@@ -113,7 +113,7 @@ His head goes up. The tears stop. “That’s it,” he says, in an astonished w
 
 === mirage_a1s6 | Shoes
 He remembers everything. It comes pouring out of him in a flood, there on the warm quay: a cobbler’s shop in a lane in the Southern River Provinces, a wife with a sharp tongue, a son who wanted to be a sailor. A debt. A forged signature. A knock on the door in the night. A man in green who said, *There is a place you can go.*
-“I wanted to,” he says. His voice cracks. “I was so tired. I thought, if I just go, they can’t take the shop. They can’t... ” He looks at his hands. “I left them. My wife. My boy. I left them in the shop.”
+“I wanted to,” he says. His voice cracks. “I was so tired. I thought, if I just go, they can’t take the shop. They can’t… ” He looks at his hands. “I left them. My wife. My boy. I left them in the shop.”
 “How long ago?”
 “I don’t know.”
 “Eight years,” says Hao Lan. She is holding a battered ledger she has taken from the harbour-master’s office. “It’s in the register. Tao Tao. Struck on the fourth of the sixth month. Arrived on the sixth.”
@@ -492,7 +492,7 @@ At the window, an old woman sits on a stool with a drawing-board on her knee. Sh
 “And the people?”
 “Oh, they’re guests.” She waves a hand. “They come when they’re lost. I draw them a place. They stay as long as they like.” She frowns. “I do wish they wouldn’t forget. It seems a pity, that they forget. But Lady Hollow says it’s kinder.”
 “You don’t think so?”
-“I think...” She hesitates. Her knotted fingers pick at the edge of the board. “I think a map is a thing you walk away from. You draw it so that someone can go somewhere else.”
+“I think…” She hesitates. Her knotted fingers pick at the edge of the board. “I think a map is a thing you walk away from. You draw it so that someone can go somewhere else.”
 She looks at the maps on the wall, thousands of them.
 “I’ve never been to any of these,” she says. “Not since the strike.”
 > mercy | Sit beside her. | mirage_a4s5

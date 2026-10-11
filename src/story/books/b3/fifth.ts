@@ -368,7 +368,7 @@ Outside, up the Well, you hear the first echo of boots.
 > inquiry | Ask Hao Lan to take notes. | fifth_a4s3
 
 === fifth_a4s3 | A Long Night
-The night is very long. You sit with your back against the door-frame and your sword across your knees. Ren Qiao sits opposite, with his hand on his pommel. Hao Lan crouches by the desk with her notebook, writing, and the Reader’s lips move. She is whispering. It is faint and fast, like a woman reciting a prayer, and every so often she stops, and tilts her head, and goes on.
+The night is very long. You sit with your back against the door-frame and your blade across your knees. Ren Qiao sits opposite, with his hand on his pommel. Hao Lan crouches by the desk with her notebook, writing, and the Reader’s lips move. She is whispering. It is faint and fast, like a woman reciting a prayer, and every so often she stops, and tilts her head, and goes on.
 At the third bell a sound comes from above. A rattle, a thud. The distant ring of steel on stone. You rise.
 “Hold,” says Ren Qiao. He lays a hand on your arm. “Let Mei and Shu Ning deal with it. They are on the stair. They know their work.”
 “And if it fails?”
@@ -500,7 +500,7 @@ The saint’s room is quiet. The lamp burns on the desk beside the stand where t
 +[how] fifth_broke_plate | Shu Ning broke the Chancery’s plate with a hammer, in two blows, and Fang lost his spectacles.
 +[how] fifth_forged | Hao Lan wrote a perfect copy of the lie, and Fang carried it up the Well in his arms.
 +[how] fifth_mi_read | A child named Mi read the True Ledger with her hand on the cover, and learned she was a pupil.
-+[how] fifth_letter | The saint's letter to the Registrar is folded in the Elder's sleeve.
++[how] fifth_letter | The saint’s letter to the Registrar is folded in the Elder’s sleeve.
 The Elder stands at the desk with the letter in her hand. She is looking at the stand. She looks tired and shaken and, beneath it, strangely at peace.
 “I have been a keeper of the wrong thing,” she says. “All my life. I kept ledgers. I kept orders. I kept order.” She smiles at the picture of the stick figure with a lantern. “She wanted me to keep a child.”
 She lays her hand on the desk.
@@ -524,7 +524,7 @@ Then she walks up the aisle between the desks, in her too-big tunic, with her la
 
 `,
   scenarios: String.raw`
-$ SU_FIFTH_FANG | trust+3 respect+4 fear+4 | elder | The Elder meets Inspector Fang in the saint's room, and he asks her to sign.
+$ SU_FIFTH_FANG | trust+3 respect+4 fear+4 | elder | The Elder meets Inspector Fang in the saint’s room, and he asks her to sign.
 hostile: He asked me to sign. He held out the pen. He was very courteous. I looked at the pen for what felt like an hour, and I did not take it, and I do not understand why that was so difficult.
 wary: I knew his face. I had seen it across the table at the Seventh Chancery fifteen years ago. He was a clerk then. He wore the same gloves. He was kind to me about my handwriting.
 neutral: He said, “Madam Registrar, you of all people understand the cost of a flawed record.” I said that I did. I said it was the reason I would not help him.

@@ -11,7 +11,7 @@ export const depths: Arc = {
   name: "The Crimson Abyss",
   scenes: String.raw`
 === depths_entry | Nine Doors
-The Law Hall is empty. Lian Sheng's men have gone up the mountain to hold the Archive, and the cellar under the Hall stands open, as if for a funeral. Beyond it the stair begins: black, narrow, lit with the red of the mist below. At every turn there is a door, nine in all. Each is carved with a different hand.
+The Law Hall is empty. Lian Sheng’s men have gone up the mountain to hold the Archive, and the cellar under the Hall stands open, as if for a funeral. Beyond it the stair begins: black, narrow, lit with the red of the mist below. At every turn there is a door, nine in all. Each is carved with a different hand.
 “Carry. Mend. Sing,” reads Lin Yuan, holding the lamp. “Light. Seal. Write. Keep. Open.” He stops at the last door, and does not say the ninth.
 “Answer,” says the Elder, from behind you.
 Cold comes up the stair. It is not the cold of the ward. It is slower, and wetter, and it has a rhythm. It is breathing.
@@ -47,7 +47,7 @@ It is not Lin Yuan.
 === depths_keys1 | Eight Keys
 Lin Yuan goes first, because it is his hand the keys are made for. He does it carefully, one door at a time, with the lamp held low and the ring of keys jingling in his shaking fingers. The hook for the first. The bell for the second. He says “please” at each lock, and apologises to the third door when it sticks.
 At the eighth door he stops. The key is the door itself; he sets his palm to it, and the door opens, and he gasps. For an instant his thin face is full of light. He had thought it would feel like losing something. It feels like being let in.
-“The ninth has no lock,” he whispers. “It's open already. Someone left it that way.”
+“The ninth has no lock,” he whispers. “It’s open already. Someone left it that way.”
 “Who?”
 “Yu Ling. I think she meant it for you.”
 > truth | Thank him. | depths_floor | bond:lin+3
@@ -64,7 +64,7 @@ Hao Lan stops on the landing and puts her hand over her mouth. “I know this,�
 “Yu Ling did,” says the Elder, very low.
 Below, the doors are open on the long red dark, and the song goes on without you.
 > truth | Follow it down. | depths_floor | cult+3
-> mercy | Hold Hao Lan's hand. | depths_floor
+> mercy | Hold Hao Lan’s hand. | depths_floor
 > force | Watch the doors. | depths_floor
 > quiet | Hold the cards. | depths_floor
 
@@ -99,7 +99,7 @@ They make camp on the ledge. Nobody sleeps, but they sit close to one another, r
 +[how] depths_carded | The cards sang you down, and the song is still in your ears.
 +[how] depths_slowed | You went down by hand, and the mist was waiting with tea.
 At the edge of the light the silver comb turns slowly in the air, as if on a thread.
-“She knows we're here,” says the Elder. “She will come up when she's ready.”
+“She knows we’re here,” says the Elder. “She will come up when she’s ready.”
 > truth | Wait with them. | hub_b6 | +b6q_abyss bond:ren+2 npc:SU_DEPTHS_DOORS
 > mercy | Sit with the Elder. | hub_b6 | +b6q_abyss bond:ren+2 npc:SU_DEPTHS_DOORS
 > force | Keep watch. | hub_b6 | +b6q_abyss bond:ren+2 npc:SU_DEPTHS_DOORS

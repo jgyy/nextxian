@@ -181,7 +181,7 @@ export function waysideBackScene(wayside: string, origin: Scene): Scene {
   if (!w) throw new Error(`no wayside "${wayside}"`);
   return {
     id: backSceneId(w.origin),
-    title: `Back from the ${w.title.replace("Waysides: ", "")}`,
+    title: `Back from ${w.title.replace("Waysides: The ", "the ")}`,
     paragraphs: [w.back],
     choices: origin.choices.map((c) => ({ ...c })),
   };

@@ -41,7 +41,7 @@ The door is thick black oak, bound with iron, and it is not locked. It is held. 
 The breathing stops.
 “I am not here to take you,” you say. “I am the Ninth. I came up the mountain in the rain, forty days ago. You gave me a key.”
 Silence. A creak of old floor. Then a thin, careful voice, precise and unsteady, with the clipped politeness of a boy who has learned to apologise before he is spoken to:
-“I am so sorry. I’m afraid I cannot let anybody in. It is the wards. They are... not mine.”
+“I am so sorry. I’m afraid I cannot let anybody in. It is the wards. They are… not mine.”
 “I know.”
 “I did try. I was extremely thorough. But I think it is, in fact, rather a larger problem than I am.”
 > truth | Say you will wait. | archive_inside
@@ -209,6 +209,6 @@ warm: He took his spectacles off and wiped them. I thought: his mother did that.
 devoted: I should like him to be told, in terms, that I am proud of him. I do not know how it is done. I have written many orders and never one of those. Hanzhen says one simply says it. I have decided to try.
 `,
   remarks: String.raw`
-% archive_lin_later | b6q_archive | gu | Lin Yuan has asked me to teach him to whistle. I don't think he has ever done it. He tried for an hour. He produced a noise like a kettle. He said it was ‘a promising start.’
+% archive_lin_later | b6q_archive | gu | Lin Yuan has asked me to teach him to whistle. I don’t think he has ever done it. He tried for an hour. He produced a noise like a kettle. He said it was ‘a promising start.’
 `,
 }

@@ -582,7 +582,7 @@ describe("length and structure checks", () => {
   const words = (n: number) => Array.from({ length: n }, () => "word").join(" ");
   const withGatePara = (paragraph: string) => ({
     ...story,
-    scenes: { ...story.scenes, gate: { ...story.scenes.gate, paragraphs: [paragraph] } },
+    scenes: { ...story.scenes, gate_gossip: { ...story.scenes.gate_gossip, paragraphs: [paragraph] } },
   });
 
   it("caps every NPC line and attitude comment in the story", () => {
@@ -603,7 +603,7 @@ describe("length and structure checks", () => {
   it("accepts a scene of exactly the cap, and reports one word over it", () => {
     expect(validateStory(withGatePara(words(MAX_SCENE_WORDS)))).toEqual([]);
     const problems = validateStory(withGatePara(words(MAX_SCENE_WORDS + 1)));
-    expect(problems).toEqual([expect.stringMatching(/scene "gate" has 201 words of body text; the limit is 200/)]);
+    expect(problems).toEqual([expect.stringMatching(/scene "gate_gossip" has 201 words of body text; the limit is 200/)]);
   });
 
   it("counts extra paragraphs and interjections toward the scene cap, since they can all show", () => {

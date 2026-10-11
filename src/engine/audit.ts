@@ -2,7 +2,7 @@ import type { Condition, Effect, Story } from "./types";
 
 /** One continuity problem the audit found in a story. */
 export interface AuditIssue {
-  kind: "dangling-flag" | "dead-condition" | "time-loop";
+  kind: "dangling-flag" | "dead-condition" | "time-loop" | "unmet-speaker";
   /** Where it sits: a scene id, a scenario id, or a flag name. */
   where: string;
   message: string;
@@ -15,12 +15,40 @@ function flagsSet(effects: Effect[] | undefined): string[] {
   return (effects ?? []).flatMap((e) => (e.kind === "setFlag" && (e.value ?? true) ? [e.flag] : []));
 }
 
+/** What `possibleFlags` says about one scene: whether a flag may be on by the time the player arrives. */
+export interface FlagSet {
+  has(flag: string): boolean;
+}
+
 /**
  * Walks the story graph and collects, for every scene, the flags that may have been set by the time the player
  * arrives. A flag is "possible" at a scene when at least one path from the opening reaches it with that flag on.
+ * Flags are bits, so the walk over twenty thousand choices and several thousand flags stays under a second.
  */
-export function possibleFlags(story: Story): Record<string, Set<string>> {
-  const into: Record<string, Set<string>> = Object.fromEntries(Object.keys(story.scenes).map((id) => [id, new Set<string>()]));
+export function possibleFlags(story: Story): Record<string, FlagSet> {
+  const index = new Map<string, number>();
+  const bit = (flag: string): number => {
+    let i = index.get(flag);
+    if (i === undefined) {
+      i = index.size;
+      index.set(flag, i);
+    }
+    return i;
+  };
+  // What each choice puts on: the flags it sets, and what the scenario it triggers says and remembers.
+  const carry = new Map<unknown, number[]>();
+  for (const scene of Object.values(story.scenes)) {
+    for (const choice of scene.choices) {
+      const flags = [
+        ...flagsSet(choice.effects),
+        ...(choice.npcScenario ? [`said:${choice.npcScenario}`, ...(story.scenarios[choice.npcScenario]?.remember ?? [])] : []),
+        ...(choice.allyScenario ? [`said:${choice.allyScenario}`, ...(story.scenarios[choice.allyScenario]?.remember ?? [])] : []),
+      ];
+      carry.set(choice, flags.map(bit));
+    }
+  }
+  const words = Math.max(1, Math.ceil(index.size / 32));
+  const into: Record<string, Uint32Array> = Object.fromEntries(Object.keys(story.scenes).map((id) => [id, new Uint32Array(words)]));
   const queue = [story.startSceneId];
   const queued = new Set(queue);
   const reached = new Set(queue);
@@ -29,19 +57,22 @@ export function possibleFlags(story: Story): Record<string, Set<string>> {
     queued.delete(id);
     const scene = story.scenes[id];
     if (!scene) continue;
+    const here = into[id];
     for (const choice of scene.choices) {
       const target = into[choice.next];
       if (!target) continue;
-      const carried = [
-        ...into[id],
-        ...flagsSet(choice.effects),
-        ...(choice.npcScenario ? [`said:${choice.npcScenario}`, ...(story.scenarios[choice.npcScenario]?.remember ?? [])] : []),
-        ...(choice.allyScenario ? [`said:${choice.allyScenario}`, ...(story.scenarios[choice.allyScenario]?.remember ?? [])] : []),
-      ];
       let grew = false;
-      for (const f of carried) {
-        if (!target.has(f)) {
-          target.add(f);
+      for (let w = 0; w < words; w++) {
+        const merged = (target[w] | here[w]) >>> 0;
+        if (merged !== target[w]) {
+          target[w] = merged;
+          grew = true;
+        }
+      }
+      for (const i of carry.get(choice) ?? []) {
+        const mask = 1 << (i & 31);
+        if ((target[i >> 5] & mask) === 0) {
+          target[i >> 5] |= mask;
           grew = true;
         }
       }
@@ -52,7 +83,69 @@ export function possibleFlags(story: Story): Record<string, Set<string>> {
       reached.add(choice.next);
     }
   }
-  return into;
+  return Object.fromEntries(
+    Object.entries(into).map(([id, bits]) => [
+      id,
+      {
+        has: (flag: string) => {
+          const i = index.get(flag);
+          return i !== undefined && (bits[i >> 5] & (1 << (i & 31))) !== 0;
+        },
+      },
+    ]),
+  );
+}
+
+/**
+ * Which companions the player has *certainly* met on entering each scene, and whenever each flag is set: the companions every path there
+ * has introduced. A line a companion speaks needs the bond, or a flag set after they were met, or somebody who has never been introduced speaks.
+ * Companions are bits of a mask, so the walk over twenty thousand choices stays quick.
+ */
+export function metCompanions(story: Story): { atScene: Record<string, Set<string>>; atFlag: Record<string, Set<string>> } {
+  const names = Object.keys(story.companions ?? {});
+  const bit = new Map(names.map((n, i) => [n, 1 << i]));
+  const intro = (c: Story["scenes"][string]["choices"][number]): number => {
+    let m = 0;
+    for (const e of c.effects ?? []) if (e.kind === "addBond") m |= bit.get(e.npc) ?? 0;
+    for (const id of [c.npcScenario, c.allyScenario]) {
+      const owner = id ? story.scenarios[id]?.npc : undefined;
+      if (owner) m |= bit.get(owner) ?? 0;
+    }
+    return m;
+  };
+  const ALL = (1 << names.length) - 1;
+  const at: Record<string, number> = {};
+  const queue: string[] = [story.startSceneId];
+  at[story.startSceneId] = 0;
+  while (queue.length) {
+    const id = queue.pop()!;
+    const here = at[id];
+    for (const c of story.scenes[id].choices) {
+      if (!story.scenes[c.next]) continue;
+      const after = here | intro(c);
+      const known = at[c.next];
+      const next = known === undefined ? after : known & after;
+      if (next !== known) {
+        at[c.next] = next;
+        queue.push(c.next);
+      }
+    }
+  }
+  const flagMask: Record<string, number> = {};
+  const meet = (flag: string, after: number) => (flagMask[flag] = flagMask[flag] === undefined ? after : flagMask[flag] & after);
+  for (const [id, here] of Object.entries(at)) {
+    for (const c of story.scenes[id].choices) {
+      const after = here | intro(c);
+      for (const e of c.effects ?? []) if (e.kind === "setFlag" && (e.value ?? true)) meet(e.flag, after);
+      for (const sid of [c.npcScenario, c.allyScenario]) for (const f of (sid && story.scenarios[sid]?.remember) || []) meet(f, after);
+    }
+  }
+  const toSet = (m: number) => new Set(names.filter((n) => (m & bit.get(n)!) !== 0));
+  void ALL;
+  return {
+    atScene: Object.fromEntries(Object.keys(story.scenes).map((id) => [id, toSet(at[id] ?? 0)])),
+    atFlag: Object.fromEntries(Object.entries(flagMask).map(([f, m]) => [f, toSet(m)])),
+  };
 }
 
 /** Every flag that some choice or scenario sets, and every flag some condition reads. */
@@ -114,6 +207,24 @@ export function auditStory(story: Story): AuditIssue[] {
     for (const choice of scene.choices) dead(`choice "${choice.id}" in "${scene.id}"`, scene.id, choice.requires);
     scene.extras?.forEach((x, i) => dead(`extra ${i} of "${scene.id}"`, scene.id, x.when));
     scene.interjections?.forEach((x, i) => dead(`interjection ${i} of "${scene.id}"`, scene.id, x.when));
+  }
+
+  // Somebody who has not been introduced does not speak.
+  const { atScene, atFlag } = metCompanions(story);
+  const bondFor = (conditions: Condition[], who: string) => conditions.some((c) => c.kind === "bond" && c.npc === who);
+  const flagFor = (conditions: Condition[], who: string) =>
+    conditions.some((c) => (c.kind === "since" || (c.kind === "flag" && c.is !== false)) && atFlag[c.flag]?.has(who));
+  for (const scene of Object.values(story.scenes)) {
+    scene.interjections?.forEach((x, i) => {
+      if (x.speaker && !atScene[scene.id].has(x.speaker) && !bondFor(x.when, x.speaker) && !flagFor(x.when, x.speaker)) {
+        issues.push({ kind: "unmet-speaker", where: `interjection ${i} of "${scene.id}"`, message: `${x.speaker} speaks in "${scene.id}", which a player can reach without having met them` });
+      }
+    });
+  }
+  for (const remark of story.remarks ?? []) {
+    if (remark.speaker && !bondFor(remark.when, remark.speaker) && !flagFor(remark.when, remark.speaker)) {
+      issues.push({ kind: "unmet-speaker", where: `remark "${remark.id}"`, message: `${remark.speaker} says "${remark.id}" with no sign they have been met` });
+    }
   }
 
   // A loop in the story graph replays text that has already happened. The only loops allowed run through a wayside

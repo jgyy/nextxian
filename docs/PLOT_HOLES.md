@@ -1,6 +1,54 @@
 # Plot-hole and continuity ledger
 
-The request was to fix over 1,000 plot holes. This ledger says honestly what was found and fixed. The total is **884**, short of 1,000.
+Two passes, each asked to fix more than 1,000. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
+
+| Pass | Fixed | Of what kind |
+| --- | ---: | --- |
+| Earlier pass (below) | 884 | 808 dangling flags, dead conditions and time loops, plus 76 hand-found contradictions |
+| **This pass** | **1,153** | lines of text, labels and titles the player is shown: 686 wording mismatches in generated roads, 426 typographic, 41 continuity and repetition |
+
+## This pass: 1,153 lines
+
+The unit is **one line of text, one choice label or one title that the player can be shown**, found by a detector that is now a test and fixed at its source. The count is of lines, not of marks: the 783 straight quotes sit in 381 lines and count as 381. It is a count of inconsistencies in the text and the generator, and most of them are not plot holes in the strict sense. Of the 1,153, the ones that change what the story *says* are the 41 in the last five rows. The rest are the story saying nonsense (“Slip a small piece of the weighing hut into your sleeve”) or saying the same thing two ways.
+
+| Class | Lines | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| Wording that does not fit what it names, in the Book One roads | 540 | `scripts/audit-slots.ts` replays the old selection against the new kinds | `roads/kinds.ts`, `roads/lexicon.ts`, `roads/build.ts` |
+| An obstacle or an ally that does not fit the label it is in | 146 | the same script | `roads/build.ts` (slots now come from the label’s tone) |
+| Straight quotes and apostrophes among 55,000 curly ones | 381 | `tests/consistency.test.ts` | `src/story/**`, converted in place |
+| Three-dot ellipses beside single-character ones | 45 | the same test | `src/story/books/**` |
+| “Back from the The Pilgrims’ Road” | 10 | the same test (doubled word in a title) | `roads/index.ts` |
+| An Elder’s report said word for word in 13 roads | 13 | the same test (no line repeated across scenarios) | `roads/lexicon.ts` |
+| Four choices that all read “Return to the bench.” | 4 | the same test (no repeated label) | `books/b2/assembly.ts` |
+| A companion who speaks before the player has met them | 8 | `auditStory` now runs a must-analysis over the story graph (`unmet-speaker`) | eight remarks in Books Four to Six, each now waits for the bond |
+| The player’s weapon is a sword in five scenes and a blade in ten | 5 | a search for the player’s gear, `tests/consistency.test.ts` | five scenes |
+| “Her silver comb in your braid”, for a hero who may have none | 1 | the same search | `books/b6/sealing.ts` |
+
+Each is listed in [plot-holes.jsonl](plot-holes.jsonl) with its file and a note.
+
+### What was looked for and not found
+
+The searches below returned nothing that needed fixing, and are kept so nobody repeats them.
+
+- **A companion who interjects before they are met.** The same analysis finds no scene interjection by a companion who might not yet be introduced. It did find eight *remarks* (above): 193 remarks are spoken by a companion, and 8 had no condition that says they have been met.
+- **The Elder out of place.** 24 lines of the Elder’s reactions in Books Two to Six say “this hall”, “my gate” or “my office”. All 24 are memories of the Law Hall, or scenes on the last night on the mountain. None is a slip.
+- **Ages, years and tenures.** The Elder has been Elder for twelve years in all six places that give the tenure. Gu is nineteen in both places that give his age, and Lin Yuan seventeen in the one that does.
+- **Names and spelling.** No near-miss of a recurring name appears in the text, and British spelling is used throughout (grey, colour, armour, rumour, centre, harbour). The one American form, “gotten”, is two lines of dialogue.
+- **Repeated paragraphs.** Across the hand-written story only four lines of ten words or more appear in more than one scene: one Elder’s report (fixed above), a greeting said in two rooms of the same house, a gesture (“She looks at you, with her head on one side”) in two scenes, and the night of stillness at nine hubs, which is one event.
+- **Duplicate paragraphs inside a scene.** 26 hits, all short spoken replies (“Yes.”, “I know.”) that a speaker says twice.
+
+### Caught in review of the new content
+
+These were found while writing this pass’s own roads and never reached the merged story, so they are not counted above. They are the reason the audit exists.
+
+- **The Glass Sea has no water.** The first draft of four roads dived for mirrors in shallows, stranded a ship in a tide and sold salt. The sea in Book V is fused glass. All four roads and their wayside were rewritten, and `CANON.md` now says so.
+- **Eighteen keepers shared a name with someone in the story**, among them Erdene and Tsetseg of Book Four, Ning of Book Five, Gu (the companion, as “Yan Gu”), Zhu of Book Three and Ke-er. All are renamed, and `tests/realm-roads.test.ts` fails if a keeper shares a given name or a companion’s name.
+- **A birth the canon forbids.** The Wanderer is a foundling. “Noble house” as a character option would have contradicted Book Two, so the choice is now the *papers the teacher entered the hero under*, and every line that said “your family” says “your papers”.
+- **A report line copied into the new roads’ lexicon**, and 25 report lines with no road’s name in them. The new roads’ reports are all distinct, and a test says so.
+
+## Earlier pass
+
+The request was to fix over 1,000 plot holes. That pass’s ledger says honestly what was found and fixed. The total was **884**, short of 1,000.
 
 ## Counts
 

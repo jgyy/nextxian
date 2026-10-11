@@ -16,11 +16,11 @@ export const vault: Arc = {
 The Ledger Hall sits at the top of the Crane Stairs, a broad low building of white stone with a roof of blue glass, and beneath it, three flights down a spiral stair that no one has climbed without a Censor’s escort in seven hundred years, is the Vault of Names. Duan Wuyi walks you to the head of the stair on the morning of the fourth day. He carries no staff. He has left it, he says, in his room.
 “I have been asked to give a reading to the Elder of the Azure Cloud Sect,” he says, “in the presence of her witness. The vault is open to the Assembly’s delegates on the eve of the trial. It has not been opened to a witness. I have taken the liberty of calling you a delegate.”
 His face is perfectly grave. Behind him, at the top of the stair, a gaunt old Censor in a hooded grey robe stands like a post. He has one hand cupped behind his ear. “Old Sou,” says Duan. “He is deaf. He is also the only man alive who has read the Stone in full. He will not be pleased.”
-> inquiry | Ask for a lawful reading, with the Censor-General's seal and the Stone's own questions. | vault_a1s1 | +vault_a1
+> inquiry | Ask for a lawful reading, with the Censor-General’s seal and the Stone’s own questions. | vault_a1s1 | +vault_a1
 > force | Meet Wen Rui at the Silver Bridge, where he says there is a way in that does not need a seal. | vault_a2s1 | +vault_a2 needs:2
-> deceit | Borrow the grey sashes of the night Censors from Hao Lan's chest, and go down at the changing of the watch. | vault_a3s1 | +vault_a3
+> deceit | Borrow the grey sashes of the night Censors from Hao Lan’s chest, and go down at the changing of the watch. | vault_a3s1 | +vault_a3
 > quiet | Ask Scribe Tong what he sees when he looks at the Ledger Hall. | vault_a4s1 | +vault_a4
-> truth | Carry the Law Hall's shard down the spiral stair, wrapped in grey silk against your own chest. | vault_h1 |  | censors_shard_kept | The shard is not with you.
+> truth | Carry the Law Hall’s shard down the spiral stair, wrapped in grey silk against your own chest. | vault_h1 |  | censors_shard_kept | The shard is not with you.
 > truth | Ask Ren Qiao to bring the shard he has kept, and carry it down together. | vault_h1 |  | censors_shard_ren | Ren Qiao is not keeping the shard.
 
 // ---------------------------------------------------------------- a1: a lawful reading
@@ -168,13 +168,13 @@ You look at the column. At the grey. At the thin line of a man’s name, struck 
 “I will not ask you to do it,” he says. “I will only say that I would be grateful, and that I would not tell the Concord.”
 The vault is still. Ren Qiao, behind you, has his hand on his sword. Gu says, in a small voice, “Don’t.”
 > truth | Lay your palm on the column. | + | +vault_wrote_wen
-> mercy | Ask Gu why he says don't. | ^
+> mercy | Ask Gu why he says don’t. | ^
 > inquiry | Ask what it costs. | ^
-> quiet | Take Wen Rui's hand in yours. | ^
+> quiet | Take Wen Rui’s hand in yours. | ^
 
 === vault_a2s7 | What It Cost
 It is not painful. That is the unexpected thing. The cold seed in your chest unwinds a thread of black and sends it down your arm into the jade, and the jade receives it as sand receives water. The grey column lightens. The two characters brighten from grey to gold. They are alive.
-And something else is there too. As you withdraw, you feel it: a brush of recognition, as of someone reaching toward you across a dark room. A woman's presence, vast, tired, kind. A touch like a leaf on the skin.
+And something else is there too. As you withdraw, you feel it: a brush of recognition, as of someone reaching toward you across a dark room. A woman’s presence, vast, tired, kind. A touch like a leaf on the skin.
 It is gone in a breath.
 Wen Rui is on his knees. His name is gold. He is laughing and sobbing at once, a thin high sound, and his hands are pressed against his forehead, where the faint line is fading as you watch.
 > truth | Help him up. | + | +vault_wen_written
@@ -191,7 +191,7 @@ She doesn’t raise the iron. She is looking at the name, and a muscle is workin
 > truth | Tell her yes. | vault_close | +vault_caught +vault_wen_written
 > mercy | Tell her to come and see. | vault_close | +vault_caught +vault_wen_written
 > force | Tell her to arrest you, if she must. | vault_close | +vault_caught +vault_wen_written needs:2
-> inquiry | Ask her what she'd write, if she could. | vault_close | +vault_caught +vault_wen_written
+> inquiry | Ask her what she’d write, if she could. | vault_close | +vault_caught +vault_wen_written
 
 // ---------------------------------------------------------------- a3: the night Censors
 === vault_a3s1 | The Grey Sashes
@@ -230,12 +230,12 @@ They are not the Concord’s. They wear its sashes. They hold its lanterns. But 
 His voice is hushed, amused, exhausted.
 “We come to listen. She is writing, you know. Every night. We like to be here when she does.”
 > truth | Ask what her name is. | +
-> mercy | Ask how long they've kept the vigil. | ^
+> mercy | Ask how long they’ve kept the vigil. | ^
 > inquiry | Ask whether Wen Rui knows. | ^
 > quiet | Say nothing. | ^
 
 === vault_a3s5 | The Vigil
-The young man's name is Lu. He was a copyist, struck at twenty for refusing to alter a deed. The old woman is his grandmother. The others are a cook, a laundry girl, a retired judge, a penniless poet, two brothers who lost the same sister, and a child of thirteen who goes by the nickname Pigeon. They have kept the vigil in the grey sashes of the night Censors for nine years.
+The young man’s name is Lu. He was a copyist, struck at twenty for refusing to alter a deed. The old woman is his grandmother. The others are a cook, a laundry girl, a retired judge, a penniless poet, two brothers who lost the same sister, and a child of thirteen who goes by the nickname Pigeon. They have kept the vigil in the grey sashes of the night Censors for nine years.
 “She’s the only thing that has ever listened to us,” says Lu. “Every other door in the world is shut. This one writes.”
 He gestures at the slab.
 “She’s writing the name of a woman who tore herself out of the Ledger so no one could use it. She’s writing it again. We think she’ll finish one day.”
@@ -252,11 +252,11 @@ It pauses.
 It begins to draw a second line.
 > truth | Whisper her name with the others. | +
 > quiet | Lift your lantern. | ^
-> mercy | Take Pigeon's hand. | ^
+> mercy | Take Pigeon’s hand. | ^
 > inquiry | Watch the second line. | ^
 
 === vault_a3s7 | The Second Line
-It is not a name. It is a shape. A long gold stroke curving to the left, a short one to the right, a dot. It is the opening line of a character you have never seen, and it resolves, in the hush of the vault, into a word of two syllables. It is not written in the old script. It is not written in the new. It is written in a script that has no equivalent in the Concord's books.
+It is not a name. It is a shape. A long gold stroke curving to the left, a short one to the right, a dot. It is the opening line of a character you have never seen, and it resolves, in the hush of the vault, into a word of two syllables. It is not written in the old script. It is not written in the new. It is written in a script that has no equivalent in the Concord’s books.
 Lu reads it. His face is wet. “It is a greeting,” he says. “It is a word in her tongue.” He swallows. “It means, Are you there?”
 The second line completes. The Stone hums on a deeper note. Then, very quietly, the whole ring of watchers answers, in a whisper, in nine voices.
 “We are here.”
@@ -274,7 +274,7 @@ Hao Lan looks at him for a long moment. “I knew I should not have lent the sas
 > truth | Tell her what you saw. | vault_close | +vault_joined
 > mercy | Thank her. | vault_close | +vault_joined
 > quiet | Fold the last sash for her. | vault_close | +vault_joined
-> inquiry | Ask her whether she's ever kept a vigil of her own. | vault_close | +vault_joined
+> inquiry | Ask her whether she’s ever kept a vigil of her own. | vault_close | +vault_joined
 
 // ---------------------------------------------------------------- a4: Tong’s door
 === vault_a4s1 | What Tong Sees
@@ -289,19 +289,19 @@ He nods. He writes: Since the barge. In my sleep. A woman with long hair. She is
 > quiet | Watch the door he is drawing. | ^
 
 === vault_a4s2 | A Long-Haired Woman
-She doesn't speak, Tong writes. She only writes. He tilts the page so the lamp falls on it, and there, in a child’s neat hand, are three characters. They are not in the Concord’s script, or the old script. They are in something older, a flowing hand that you have seen before: in a vision of a roof under stars, in the margins of Mengjiao’s impatient letters. A script of loops and long strokes.
+She doesn’t speak, Tong writes. She only writes. He tilts the page so the lamp falls on it, and there, in a child’s neat hand, are three characters. They are not in the Concord’s script, or the old script. They are in something older, a flowing hand that you have seen before: in a vision of a roof under stars, in the margins of Mengjiao’s impatient letters. A script of loops and long strokes.
 You cannot read them. Tong can. He draws his finger under them and shapes the sounds with his lips.
 He writes: It says, Come down.
 He looks at you.
 He writes: I think she means both of us.
-> truth | Tell him you'll go with him. | +
+> truth | Tell him you’ll go with him. | +
 > mercy | Ask whether he wants to. | ^
 > inquiry | Ask what he is afraid of. | ^
 > quiet | Take his hand. | ^
 
 === vault_a4s3 | Ink on the Water
 He does not use a key or a door. He sits at the edge of the quay at midnight with his inkstone in his lap, and draws, in black ink on the surface of the canal, a long thin line. The ink does not spread. It floats like a thread. He draws another, and another, and they knit into a net across the water, and when the net is the size of a door, he stands up and steps into it.
-He doesn't fall. He stands on the water, in the net, and holds out his hand.
+He doesn’t fall. He stands on the water, in the net, and holds out his hand.
 “He’s a door,” whispers Gu, awestruck. “He’s a literal door.”
 Ren Qiao, behind you, is quietly muttering a warden’s prayer. You take Tong’s hand. It is warm and ink-black and entirely steady.
 > truth | Step onto the net. | +
@@ -311,7 +311,7 @@ Ren Qiao, behind you, is quietly muttering a warden’s prayer. You take Tong’
 
 === vault_a4s4 | Under
 It goes under. The ink net sinks as you stand on it, gently, like a leaf, through the black water and the black mud and the black stone, and the sound of the city falls away. You are in a shaft of dark. Tong’s hand is the only fixed thing. Above you the lanterns of Qinglian Ford shrink to a star, and go out.
-Then you are standing on pale sand, in a round room, under a high vault. Before you, huge and silent, stands the Ledger Stone. Around you, in a ring, the bodies of the others: Gu on his knees, Ren Qiao on his feet, a warden's hand on a sword. Tong stands a little ahead, his hand still in yours.
+Then you are standing on pale sand, in a round room, under a high vault. Before you, huge and silent, stands the Ledger Stone. Around you, in a ring, the bodies of the others: Gu on his knees, Ren Qiao on his feet, a warden’s hand on a sword. Tong stands a little ahead, his hand still in yours.
 The Stone is lit. Its names move slowly across it like a school of fish. In the middle, a blank pulses.
 > truth | Step toward it. | +
 > quiet | Stay still. | ^
@@ -321,7 +321,7 @@ The Stone is lit. Its names move slowly across it like a school of fish. In the 
 === vault_a4s5 | The Woman Who Writes
 She is there. Not in the Stone, or not only in it. She is standing at the edge of the blank, a tall pale woman in a robe the colour of rain, her hair loose to her waist. She holds a brush the length of her arm. She is writing, stroke by stroke, a name on the air beside the slab. When she lifts the brush a thread of gold hangs and fades.
 She turns her head. You have never seen a face so tired, or so entirely without anger.
-She sets down the brush. She smiles. It is the smile of the girl on the roof under the stars, the girl who taught the Elder's sister to count the bells.
+She sets down the brush. She smiles. It is the smile of the girl on the roof under the stars, the girl who taught the Elder’s sister to count the bells.
 “Ah,” she says. “There you are.”
 > truth | Say her name. | + | +vault_yuling_met
 > mercy | Go to her. | ^
@@ -347,12 +347,12 @@ She lifts her hand. Gold light gathers in the palm.
 > quiet | Take her hand. | ^
 
 === vault_a4s8 | How It Is Done
-“I cannot say,” she says. “I do not know. I know that it needs a hand that can reach into the Unwritten and a voice that can speak the first line. I know that the hand is a listener's and the voice is the Law's. I know that the Law Hall once had the voice and lost it.” She looks at you with a trace of apology. “I know that I should not ask this of anyone who is about to be put in a wound.”
+“I cannot say,” she says. “I do not know. I know that it needs a hand that can reach into the Unwritten and a voice that can speak the first line. I know that the hand is a listener’s and the voice is the Law’s. I know that the Law Hall once had the voice and lost it.” She looks at you with a trace of apology. “I know that I should not ask this of anyone who is about to be put in a wound.”
 The Stone hums.
 “Tell Wanru I forgive her family,” she says, quite gently. “Tell her I was always going to. It was only a matter of time.”
-The light fades. The pit is empty, the sand still. Tong's hand is in yours, ink-black and warm.
+The light fades. The pit is empty, the sand still. Tong’s hand is in yours, ink-black and warm.
 > truth | Promise to tell the Elder. | vault_close | +vault_message
-> mercy | Hold Tong's hand until the room is quiet. | vault_close | +vault_message
+> mercy | Hold Tong’s hand until the room is quiet. | vault_close | +vault_message
 > quiet | Bow to the empty place. | vault_close | +vault_message
 > inquiry | Ask Tong if he can still hear her. | vault_close | +vault_message
 
@@ -377,10 +377,10 @@ Beyond it, in the dark: a long low room, a table, and a woman in a robe the colo
 > inquiry | Hold the shard in place. | ^
 
 === vault_h3 | The Unwritten Room
-It is not large. It is a scholar's study, lit by a single lamp, with a table and a stool and a shelf of unbound pages. The woman at the table doesn't look up at once. She is finishing a stroke. When she lifts her brush she says, without turning, in a pleasant lilting voice, "You've brought the last stitch. How thoughtful."
+It is not large. It is a scholar’s study, lit by a single lamp, with a table and a stool and a shelf of unbound pages. The woman at the table doesn’t look up at once. She is finishing a stroke. When she lifts her brush she says, without turning, in a pleasant lilting voice, “You’ve brought the last stitch. How thoughtful.”
 She sets the brush down.
-"I have been waiting for someone to come through. I did not think they would bring a piece of me."
-She turns. She is tall and pale and very tired. "It is mine, you know. It was cut from the stone I wrote my name on. Thank you for returning it."
+“I have been waiting for someone to come through. I did not think they would bring a piece of me.”
+She turns. She is tall and pale and very tired. “It is mine, you know. It was cut from the stone I wrote my name on. Thank you for returning it.”
 > truth | Offer her the shard. | vault_close | +vault_yuling_met +vault_shard_given
 > mercy | Say it was never yours to keep. | vault_close | +vault_yuling_met +vault_shard_given
 > quiet | Keep the shard, and bow. | vault_close | +vault_yuling_met +vault_shard_kept
@@ -394,8 +394,8 @@ You come up out of the Vault of Names into a morning that smells of wet stone an
 +[a] vault_a3 | You stood a night watch in a grey hood beside nine people who were never dismissed.
 +[a] vault_a4 | You stepped through a net of ink on black water, and a woman who tore her own page said hello.
 +[b] vault_entered | The reading is on the Stone. The Assembly cannot decide the Sealing without knowing she is awake.
-+[b] vault_wen_written | Wen Rui's name is gold. The faint line on his forehead is gone.
-+[b] vault_caught | Mei Qiu asked, 'Is that all it is?' She has not said a word since.
++[b] vault_wen_written | Wen Rui’s name is gold. The faint line on his forehead is gone.
++[b] vault_caught | Mei Qiu asked, ‘Is that all it is?’ She has not said a word since.
 +[b] vault_joined | The nine Lotus watchers know you now. Pigeon asked after you.
 +[b] vault_yuling_met | You have met Yu Ling. She sat on the edge of a pit with her feet in the sand, and asked for tea.
 +[c] vault_message | You promised her message to the Elder: that she forgives the Su, and always meant to.

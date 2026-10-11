@@ -136,7 +136,7 @@ It is about a girl. Her name was Yu Ling, and she was a saint, and the masters o
 Below, in the dark, someone is climbing the stair.
 > force | Take the book and go. | +
 > truth | Read the rest, fast. | ^
-> quiet | Put the book back and wait in the screen's shadow. | ^
+> quiet | Put the book back and wait in the screen’s shadow. | ^
 > deceit | Tear out the page, and put the book back. | ^
 
 === nine_a2s5 | Footsteps
@@ -145,7 +145,7 @@ He reaches the top and leans on his stick. His face turns toward the screen, to 
 “I think you have come for the chronicle,” he says. “Please do not tear it. It is the only copy, and I have not finished reading it.”
 > truth | Step out and tell him why. | +
 > quiet | Stay behind the screen. | ^
-> mercy | Say you're sorry, and put the book on the table. | ^
+> mercy | Say you’re sorry, and put the book on the table. | ^
 > force | Tell him to let you pass. | ^ | needs:2
 
 === nine_a2s6 | The Old Man’s Reading
@@ -175,12 +175,12 @@ He walks you down himself. He leads you down the stair, past the slate floor and
 “It is a very small difference,” says Master Gui. “It is a difference in manners.” He pats your arm. “Tell the Censor-General I am obliged to him. And tell him that if he ever sends a witness again without telling me, I shall be a great deal ruder.”
 > truth | Bow to the keeper. | nine_close | +nine_gui_ally
 > mercy | Thank him for walking you down. | nine_close | +nine_gui_ally
-> inquiry | Ask him for the chronicle's second volume. | nine_close | +nine_gui_ally
+> inquiry | Ask him for the chronicle’s second volume. | nine_close | +nine_gui_ally
 > quiet | Walk out into the dawn. | nine_close | +nine_gui_ally
 
 // ---------------------------------------------------------------- a3: a cousin of Lin Yuan
 === nine_a3s1 | A Letter of Introduction
-The letter is Gu’s work, and Lin Yuan’s signature, copied from the foot of a library receipt, and it says: The bearer is my cousin Lin Mian, of the Ash Archive, who would consult the Concord's founding records on a matter of cataloguing. It has Lin Yuan’s seal, in red wax, which you borrowed from his desk. It is the most careful forgery you have ever seen. You are almost sorry.
+The letter is Gu’s work, and Lin Yuan’s signature, copied from the foot of a library receipt, and it says: The bearer is my cousin Lin Mian, of the Ash Archive, who would consult the Concord’s founding records on a matter of cataloguing. It has Lin Yuan’s seal, in red wax, which you borrowed from his desk. It is the most careful forgery you have ever seen. You are almost sorry.
 The keeper of the jade door reads it twice and looks at you for a long time.
 “My cousin,” she says. “Of Lin Yuan. I see.” Her face does not change. “The Ash Archive has not sent a cousin in fifty years.”
 > deceit | Bow, and say it has been a long road. | +
@@ -195,10 +195,10 @@ You take the pen. You begin, in the margin, a numbering. It is plain, regular an
 > deceit | Number the first fifty entries and invent a heading. | +
 > truth | Tell her honestly that you are out of your depth. | ^
 > inquiry | Ask what the system is, and follow it. | ^
-> quiet | Copy her own hand's numbering exactly. | ^
+> quiet | Copy her own hand’s numbering exactly. | ^
 
 === nine_a3s3 | Lin Mian
-By the third hour you are Lin Mian. You have a title, a school, a distinguished mentor, a distinct opinion on the Peaks' filing conventions. The floor-keepers pass you from hand to hand, each one examining you for some flaw. Each one finds none.
+By the third hour you are Lin Mian. You have a title, a school, a distinguished mentor, a distinct opinion on the Peaks’ filing conventions. The floor-keepers pass you from hand to hand, each one examining you for some flaw. Each one finds none.
 On the fourth floor the slate keeper pauses over your shoulder. She says nothing. She puts one pale finger on a line you have written, and moves it, very slightly, to the left.
 It is a correction. Without a word, she has corrected your forgery.
 You glance up. She is not looking at you. She is looking out of the window.
@@ -218,8 +218,8 @@ You stand in the lamplight with the book open.
 > mercy | Say her name aloud. | ^
 
 === nine_a3s5 | The Saint’s Page
-The book tells you what the book tells everyone. A saint. A girl who listened. A mountain sect that struck her. A page torn out of Heaven’s Ledger by the saint's own hand, and a wound where it had been. You turn the leaf, and there is a note, and it is not in the chronicler’s hand. It is in the neat clerk’s script of the Concord.
-The founders' petition to strike the saint, with the signature of the three masters. You know the third name. It is Su.
+The book tells you what the book tells everyone. A saint. A girl who listened. A mountain sect that struck her. A page torn out of Heaven’s Ledger by the saint’s own hand, and a wound where it had been. You turn the leaf, and there is a note, and it is not in the chronicler’s hand. It is in the neat clerk’s script of the Concord.
+The founders’ petition to strike the saint, with the signature of the three masters. You know the third name. It is Su.
 The first of the Su line was one of the founders.
 Your hands are very cold.
 > truth | Read the name twice. | + | +nine_su_founder
@@ -231,7 +231,7 @@ Your hands are very cold.
 A hand falls on your shoulder. It is dry, a little shaky, and warm. “I know the chronicle,” says a thin voice. “I read it for forty years. I could not read the last part. The last part is about her, the Elder, the one you came with.”
 Master Gui. Blind, small, in a threadbare robe, with a stick, standing in the dark behind you. “You are not Lin Mian,” he says kindly. “Lin Mian does not exist. I wrote the letter of introduction she did not receive.”
 You stare.
-“I am a very old man,” he says. “I have a great deal of time on my hands. I wrote it and put it in the jade keeper's tray, the day before you came. I knew you would use a false name. I wanted you to have one that would work.”
+“I am a very old man,” he says. “I have a great deal of time on my hands. I wrote it and put it in the jade keeper’s tray, the day before you came. I knew you would use a false name. I wanted you to have one that would work.”
 > truth | Ask him why. | +
 > mercy | Thank him. | ^
 > inquiry | Ask who told him you were coming. | ^
@@ -263,7 +263,7 @@ Gu sits.
 So it is Gu, in the end, who goes in. He is told to carry a broom and keep his mouth shut. He does the first and not the second.
 When he comes out he is carrying a lantern, a wad of rags, and the dazed expression of a boy who has been given a mother.
 “She says,” he whispers, “that you can come up the back stair at midnight. She says I’m too thin.”
-> mercy | Thank Gu, and say he's right. | + | bond:gu+2
+> mercy | Thank Gu, and say he’s right. | + | bond:gu+2
 > truth | Ask what else she said. | ^
 > quiet | Take the lantern. | ^
 > inquiry | Ask whether she has a price. | ^
@@ -284,7 +284,7 @@ Behind the second screen, behind the first, under the reading table, in a crack 
 She spits into her bucket.
 “I think it’s hers,” she says. “The Elder’s. A woman in a grey robe came here once, fifteen years ago, at night. She hid a thing in the floor. I watched from the stair. She cried.”
 > truth | Take the roll. | +
-> mercy | Ask whether she'd like to read it with you. | ^
+> mercy | Ask whether she’d like to read it with you. | ^
 > inquiry | Ask how she knows it was the Elder. | ^
 > quiet | Put your hand over the crack, and hold still. | ^
 
@@ -313,7 +313,7 @@ She sweeps for a time.
 “I had a girl,” she says, with her back to you. “She was struck. She’d be thirty now. I don’t know what happened to her name. If you see a girl, tall, with a burn on the left hand, you might tell her old Pei still sweeps.”
 > truth | Promise to look. | + | +nine_pei_girl
 > mercy | Tell her you will remember the burn. | ^
-> inquiry | Ask the girl's name. | ^
+> inquiry | Ask the girl’s name. | ^
 > quiet | Take a broom, and sweep beside her. | ^
 
 === nine_a4s8 | A Lantern for the Road
@@ -324,7 +324,7 @@ He smiles.
 > truth | Thank him. | nine_close | +nine_gui_ally
 > quiet | Bow, once. | nine_close | +nine_gui_ally
 > mercy | Leave your cup beside his. | nine_close | +nine_gui_ally
-> inquiry | Ask whether he knows Pei's daughter. | nine_close | +nine_gui_ally
+> inquiry | Ask whether he knows Pei’s daughter. | nine_close | +nine_gui_ally
 
 // ---------------------------------------------------------------- hidden route: the small key
 === nine_h1 | The Smallest Key
@@ -362,12 +362,12 @@ The Stone Island sits in the river like a thumbprint. Behind you, the Archive of
 +[a] nine_a1 | You earned each floor by its own law, and five keepers have written your name in a book.
 +[a] nine_a2 | You climbed the wall in the rain, and the slate keeper left the slit unlatched.
 +[a] nine_a3 | You were Lin Mian for an afternoon. She was a good cataloguer, and has a following.
-+[a] nine_a4 | You swept a tower at midnight beside a deaf woman, and she gave you her daughter's burn.
++[a] nine_a4 | You swept a tower at midnight beside a deaf woman, and she gave you her daughter’s burn.
 +[c] nine_yuling | The saint was Yu Ling. She tore her own page out so that the founders could not have her.
-+[c] nine_su_founder | The third name on the founders' petition is Su. The Elder is the last of a line that struck a saint.
++[c] nine_su_founder | The third name on the founders’ petition is Su. The Elder is the last of a line that struck a saint.
 +[c] nine_reserve_letter | Nine children were seeded. One was placed with a nurse on the river. Eight were given to a woman the Elder trusted.
 +[g] nine_gui_ally | Master Gui asked you for one thing: if you ever read the sealed drawer on the ninth floor, tell him what it said.
-+[g] nine_list | You read the Elder's list of nine, and the smudge beside number nine.
++[g] nine_list | You read the Elder’s list of nine, and the smudge beside number nine.
 + nine_knows_nine | Old Pei knows, and has said nothing, and will say nothing.
 > truth | Take what you found to the Elder, and tell her all of it. | nine_close2 | npc:SU_NINE_TOLD
 > quiet | Keep what you found, and watch the river. | nine_close2
@@ -387,10 +387,10 @@ She looks at the water.
 > inquiry | Ask her what she means to do. | hub_b2_city | +b2q_nine
 `,
   scenarios: String.raw`
-$ SU_NINE_TOLD | trust+3 respect+2 fear+5 | elder | The player brings the Elder the founders' chronicle and the news that the first Su was a founder who struck a saint.
+$ SU_NINE_TOLD | trust+3 respect+2 fear+5 | elder | The player brings the Elder the founders’ chronicle and the news that the first Su was a founder who struck a saint.
 hostile: You bring me the shame of my family as if it were a gift. I am not ungrateful. I am not able to be grateful. Leave me.
-wary: A founder named Su. A saint named Yu Ling. A page torn out of Heaven's Ledger. I have been the Elder of the Law Hall for twelve years, and I did not know that the line I come from began in a crime. Thank you. I think.
-neutral: I knew we had a history. I did not know it was this. A saint struck for teaching a girl to listen. And the girl was the founders' daughter. I wonder whether I am listening, now, on her behalf.
+wary: A founder named Su. A saint named Yu Ling. A page torn out of Heaven’s Ledger. I have been the Elder of the Law Hall for twelve years, and I did not know that the line I come from began in a crime. Thank you. I think.
+neutral: I knew we had a history. I did not know it was this. A saint struck for teaching a girl to listen. And the girl was the founders’ daughter. I wonder whether I am listening, now, on her behalf.
 warm: You came to me with it before you came to a Censor. Sit. Let me see the page. I am not afraid of what it says. I am only afraid of how glad I am that it was you who found it.
 devoted: The first Su struck a saint. The last Su has a witness. It seems to me that the account is not yet closed, and that you and I are the ones who hold the pen.
 `,

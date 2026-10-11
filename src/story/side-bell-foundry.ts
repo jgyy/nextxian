@@ -48,8 +48,8 @@ export const bellFoundryScenes: Scene[] = [
     id: "foundry_floor",
     title: "Old Kuang’s Furnace",
     paragraphs: [
-      "The furnace man is called Kuang. He has cast bells for the Law Hall for thirty years, and he mentions it without pride, the way a man might mention a bad tooth. \"Every bell in the sect is cast from the same bronze,\" he says. \"The Law Hall sends me the metal and the names. I pour one, and the other goes into the rim, between the lotus and the sutra band. You cannot see it once the bell is hung. You can hear it, if you know how to listen.\"",
-      "He turns the rod in the furnace. The bronze inside is orange at its edges and white at its heart. \"Fifteen years ago the Law Hall sent me a list. Fourteen names for the bells of the upper terraces, and one name it did not want me to pour at all. I poured it anyway. A caster should not refuse metal, but he may refuse to forget what he poured.\"",
+      "The furnace man is called Kuang. He has cast bells for the Law Hall for thirty years, and he mentions it without pride, the way a man might mention a bad tooth. “Every bell in the sect is cast from the same bronze,” he says. “The Law Hall sends me the metal and the names. I pour one, and the other goes into the rim, between the lotus and the sutra band. You cannot see it once the bell is hung. You can hear it, if you know how to listen.”",
+      "He turns the rod in the furnace. The bronze inside is orange at its edges and white at its heart. “Fifteen years ago the Law Hall sent me a list. Fourteen names for the bells of the upper terraces, and one name it did not want me to pour at all. I poured it anyway. A caster should not refuse metal, but he may refuse to forget what he poured.”",
     ],
     choices: [
       {
@@ -153,7 +153,7 @@ export const bellFoundryScenes: Scene[] = [
     id: "foundry_ledger_2",
     title: "The Red Line",
     paragraphs: [
-      "Kuang watches you read without interrupting. When you look up, he says: \"I did not write the red line. I found it there the morning after. I never learned who wrote it, and I never asked. A caster who asks too many questions about his own bells does not keep his furnace.\"",
+      "Kuang watches you read without interrupting. When you look up, he says: “I did not write the red line. I found it there the morning after. I never learned who wrote it, and I never asked. A caster who asks too many questions about his own bells does not keep his furnace.”",
     ],
     choices: [
       {

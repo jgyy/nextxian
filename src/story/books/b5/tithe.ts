@@ -46,7 +46,7 @@ Duan opens it at the first page.
 “Are they returned?”
 “By statute.”
 “Have you returned one?”
-Vey’s moustache twitches. “I... would have to consult the book.”
+Vey’s moustache twitches. “I… would have to consult the book.”
 Duan turns the pages. They are covered in tidy columns: date, name, age, price, buyer. Hundreds of entries to a page. He runs his finger down the right-hand margin. There is a column for *Return.* Every cell in it is blank.
 “Forty-one years,” he says softly. “Eleven thousand sales a year. Four hundred and fifty thousand names.” His voice thins. “And not one returned.”
 “It is an oversight,” says Vey.
@@ -106,7 +106,7 @@ At the fourth hour, a bidder rises and walks to the dais. He is a young man, flu
 She crosses the floor as if sleep-walking. She takes it. She stands there with the slip between her fingers, not reading it, not looking. Her lips are trembling.
 “It’s only paper,” she whispers.
 “It is not,” says Duan.
-“It feels...” She shuts her eyes. “It feels like someone’s put a coat on me.”
+“It feels…” She shuts her eyes. “It feels like someone’s put a coat on me.”
 A cheer breaks out at the back. It is a ragged, astonished roar, thin at first, then swelling. The sellers are laughing and weeping. A man is hugging a stranger. Behind the lectern, Vey has gone the colour of putty.
 Others are coming forward now. A buyer. Another. A third. They set their slips on the lectern in a stack, one after another, with a gesture between apology and relief.
 “What are you doing?” hisses Vey.
@@ -258,7 +258,7 @@ You lie for an hour. The tarpaulin smells of horse and tar. Beside you, Hanming 
 You hear the sergeant’s boots. You hear him stop. You hear him sniff.
 “There’s a smell,” he says.
 “It’s the camel.”
-“It smells of... paper.”
+“It smells of… paper.”
 “She ate a book,” says Yue, serenely.
 The sergeant grunts. After a moment he goes away. When the sound of his boots has faded, Hanming gives a shuddering, agonised wheeze, and Ren Qiao, who has not smiled in three days, lets his head fall against the axle and laughs until he cries.
 > force | Laugh. | tithe_a2s8
@@ -367,7 +367,7 @@ There is a gasp. The bidders stare. This is not how it is done. They have bid in
 He counts. He has to. It is the rule: no bid is accepted until the money is on the dais. He sits at a table with the satchel in front of him and a team of six clerks. They count for six hours. The hall waits. Fans flutter. Somebody orders tea.
 You watch from a pillar, in a pilgrim’s cloak, with your heart in your mouth. Every few minutes a clerk holds a note to the lamp, frowns, and puts it down. Every few minutes Hao Lan, in the veil, flicks her fan.
 “Is there a difficulty?” she says.
-“No, madam.” Vey wipes his forehead. “The notes are, ah... very fine.”
+“No, madam.” Vey wipes his forehead. “The notes are, ah… very fine.”
 “They are the Treasury’s.”
 “Of course.” He lifts another. He holds it up. For a moment you see him squint at the lattice. A shadow crosses his long clever face. He sets it down.
 “Madam,” he says, slowly, “these are of a *remarkable* quality.”
@@ -383,7 +383,7 @@ The hall goes still.
 “Forged?” says Hao Lan, in the voice of the Honourable Madam Gao. It is a masterpiece of aristocratic umbrage. “Forged? Do you suggest, sir, that I am a coiner?”
 “I suggest nothing, madam.”
 “I should hope not.” The fan snaps. “These notes were issued to me by the Imperial Treasury, on the personal order of the Deputy Inspector. If you doubt them, you may take it up with him.”
-“The Deputy...?”
+“The Deputy…?”
 “Rao.” She says it coolly. “He is expected at the Ceremony. He will be most interested to learn that his auctioneer has impugned his credit.”
 Vey has gone a very bad colour. He glances at the clerks. He glances at the crowd. He wets his lips.
 “Madam,” he says, “I withdraw the remark.”
@@ -502,7 +502,7 @@ You glance at the Elder. She is standing at the foot of the cot, very upright, w
 
 === tithe_a4s5 | Two Entries
 She does it at the foot of the cot, with a stub of pencil, on the back of a prescription. She writes a line, in her dry exact hand, and signs it. She hands it to the healer. She says: “Please enter this in your register.”
-The grey-haired woman reads. Her eyebrows rise. “Madam. This is... irregular.”
+The grey-haired woman reads. Her eyebrows rise. “Madam. This is… irregular.”
 “It is exactly regular.” The Elder’s voice is gentle. “Chen Ru, aged thirty-four, of the Eastern Ford, is the mother of a child called Bell. Bell has been written in the Ledger of Persons in her own right, on this date, by the hand of the Registrar of Azure Cloud.” She taps the page. “She need not be anyone else.”
 “A new entry.”
 “An old one. It should have been made at her birth.”
@@ -675,7 +675,7 @@ warm: Hao Lan sat beside me throughout. She said nothing. At the end she took my
 devoted: There is a line in my second ledger that says: ‘I signed the tariff on the seventh. I felt nothing.’ I have crossed it out. I have written beneath it, in a large clear hand: ‘This was the first thing.’
 `,
   remarks: String.raw`
-% tithe_chen_later | since:tithe_bell>=3 | yue | Chen Ru has taken a job at the soup-line. She sews on the buttons that fall off the pilgrims. She says it is the first honest work she has had since she sold her name. She doesn’t like to talk about the daughter. She talks about her all the time.
+% tithe_chen_later | since:tithe_bell>=3 & bond:yue>=-100 | yue | Chen Ru has taken a job at the soup-line. She sews on the buttons that fall off the pilgrims. She says it is the first honest work she has had since she sold her name. She doesn’t like to talk about the daughter. She talks about her all the time.
 % tithe_vey_later | since:b5q_tithe>=4 | hao | Vey, the auctioneer, has taken up the gavel again. He uses it to call the soup-line to order. I am told he is excellent.
 `,
 }

@@ -17,8 +17,8 @@ At the quarter’s mouth a crowd stands around a house that is no longer there. 
 A woman leaning on a bollard turns her head. She is thirty-five or so, in a sea-coat the colour of tar, with a scar through one eyebrow and a smile she is not wasting on anyone yet.
 “You’re the witness,” says Yue Zhaoning. “The one who stood a river on its head. I’d buy you a drink, but I’d like to see which way you jump first.”
 > truth | Ask Madam Qi, the guildmaster, what the guild wants, and offer to carry it to the Assembly. | silk_a1s1 | +silk_a1
-> force | Go with Yue Zhaoning to the blockade the Concord has put across the quarter's canal. | silk_a2s1 | +silk_a2 needs:2
-> deceit | Offer to deal with the Concord's assessor, who is making an accounting of the loss. | silk_a3s1 | +silk_a3
+> force | Go with Yue Zhaoning to the blockade the Concord has put across the quarter’s canal. | silk_a2s1 | +silk_a2 needs:2
+> deceit | Offer to deal with the Concord’s assessor, who is making an accounting of the loss. | silk_a3s1 | +silk_a3
 > inquiry | Walk the burned stilts at low tide, and see who set the fire. | silk_a4s1 | +silk_a4
 > mercy | Hold out your wrist, where a red cord is tied, and ask Yue Zhaoning if she knows the knot. | silk_h1 |  | dep_cord | You wear no cord that a smuggler could read.
 
@@ -49,7 +49,7 @@ The petition is not written. It is woven. Madam Qi shows it to you on a loom the
 “It is a plain thing,” she says. “It asks the Assembly to say aloud that the Ledger belongs to the people it names, and not to the sashes that carry them. It asks nothing else.”
 She smooths the cloth.
 “They will say it is an insult. They will say a bolt of silk is not a petition. We say it is the only one that can be read in a dark room.”
-> truth | Promise to hand it to the Assembly's herald, in front of the Censors. | silk_a1s4
+> truth | Promise to hand it to the Assembly’s herald, in front of the Censors. | silk_a1s4
 > mercy | Add a line of your own to the bolt. | silk_a1s4
 > inquiry | Ask what the weavers will do if the Assembly refuses. | silk_a1s4
 > quiet | Run your fingers over the thread, feeling the names. | silk_a1s4
@@ -70,10 +70,10 @@ She bounces her heel against the beam.
 “Madam Qi’s petition will be read, if at all, on the third day, after lunch, by a herald who is already asleep. I could get you into the Assembly Hall with it by the back stair. A boat, a lantern, a cousin in the kitchens. No sashes.”
 She smiles. It is a good smile; it lights one half of her face.
 “I only ask for one thing. That if I ever need a favour, you remember who offered first.”
-> truth | Tell her you will take the herald's front door, and the favour anyway. | silk_a1s6 | +silk_yue_favour
-> deceit | Accept the back stair, and tell her you'll remember. | silk_a1s6 | +silk_yue_favour +silk_a1_back_stair
+> truth | Tell her you will take the herald’s front door, and the favour anyway. | silk_a1s6 | +silk_yue_favour
+> deceit | Accept the back stair, and tell her you’ll remember. | silk_a1s6 | +silk_yue_favour +silk_a1_back_stair
 > mercy | Ask what she wants it for, and whether the favour will hurt anyone. | silk_a1s6 | +silk_yue_favour
-> force | Tell her you'll take the favour, and if she tries to collect it wrongly, you'll break the boat. | silk_a1s6 | +silk_yue_wary
+> force | Tell her you’ll take the favour, and if she tries to collect it wrongly, you’ll break the boat. | silk_a1s6 | +silk_yue_wary
 
 === silk_a1s6 | The Third Day
 The Assembly Hall of the Concord is a round room of white stone, whose floor is inlaid with a map of the nine peaks and whose roof is a single dome of blue glass. In the centre stand nine chairs. Around them, on tiered benches, hundreds of delegates, in sashes, wait for the day’s business.
@@ -82,7 +82,7 @@ You carry a bolt of silk, rolled on a staff. The herald is, as predicted, drowsy
 He reads a line aloud, to no one. It is yours.
 > truth | Wait. Do not speak. | silk_a1s7
 > inquiry | Ask him to read the whole thing. | silk_a1s7
-> mercy | Stand beside Madam Qi, who has come in on Ah Tan's arm. | silk_a1s7
+> mercy | Stand beside Madam Qi, who has come in on Ah Tan’s arm. | silk_a1s7
 > force | Tell him that a dead fish still deserves to be unwrapped. | silk_a1s7
 
 === silk_a1s7 | Read in a Dark Room
@@ -93,7 +93,7 @@ Duan Wuyi, at the high table, lays down his brush and says quietly, “So entere
 > truth | Thank the herald. | silk_a1s8
 > mercy | Help Madam Qi to a bench. | silk_a1s8
 > quiet | Slip out of the Hall and let the weavers have their moment. | silk_a1s8
-> inquiry | Ask Duan what 'entered' means for the guild. | silk_a1s8
+> inquiry | Ask Duan what ‘entered’ means for the guild. | silk_a1s8
 
 === silk_a1s8 | What Entered Means
 It means very little and a great deal. The petition has no force of law. But a thing entered in the Assembly’s record becomes a thing the Assembly has heard; and a thing it has heard cannot be struck. Duan explains it later, at the quayside, with a cup of tea. He says it is the first time in thirty years that the Assembly has recorded a statement it did not itself write.
@@ -113,7 +113,7 @@ Yue Zhaoning stands in the prow of her narrow black boat with her coat blown bac
 “You’re an honest witness,” she says. “I could use one. I’m going to cut the chain.”
 > force | Climb aboard. | silk_a2s2 | +silk_met_yue needs:2
 > truth | Tell her cutting a Concord chain will bring the whole quarter down on her. | silk_a2s2 | +silk_met_yue
-> inquiry | Ask what is in the dyers' barges that matters so much. | silk_a2s2 | +silk_met_yue
+> inquiry | Ask what is in the dyers’ barges that matters so much. | silk_a2s2 | +silk_met_yue
 > deceit | Offer to distract the clerk while she works. | silk_a2s2 | +silk_met_yue
 
 === silk_a2s2 | The Black Boat
@@ -121,9 +121,9 @@ The boat is narrow, shallow-draught, with a tarred hull and a mast that folds, a
 “The chain is rust and pride,” says Yue Zhaoning. “It weighs a ton and it holds nothing. The posts are the point. Hit the left one with a ram, and the chain falls into the water of its own accord.”
 She taps the bow.
 “I have a ram. It’s a very good ram.”
-> force | Take the oar, and say you'll hit it harder. | silk_a2s3
+> force | Take the oar, and say you’ll hit it harder. | silk_a2s3
 > inquiry | Ask what the ram is made of. | silk_a2s3
-> truth | Say you'll back her, but you won't hurt the clerk. | silk_a2s3
+> truth | Say you’ll back her, but you won’t hurt the clerk. | silk_a2s3
 > quiet | Watch the barges, and count the lanterns. | silk_a2s3
 
 === silk_a2s3 | The Clerk With the Trumpet
@@ -142,7 +142,7 @@ It topples slowly, majestically, into the water, taking the chain with it. A gre
 Yue Zhaoning whoops, once, wildly. Her hair has come loose.
 > force | Whoop with her. | silk_a2s5
 > truth | Check that no one was hurt. | silk_a2s5
-> mercy | Throw a line to the nearest dyers' barge. | silk_a2s5
+> mercy | Throw a line to the nearest dyers’ barge. | silk_a2s5
 > inquiry | Look at the fallen post and see what was inside it. | silk_a2s5
 
 === silk_a2s5 | What Was in the Post
@@ -152,7 +152,7 @@ Yue Zhaoning has stopped whooping. She is looking at the cloth with a face you c
 “So,” she says. “That’s where it went.”
 > truth | Ask her what she means. | silk_a2s6
 > inquiry | Ask who stitched them. | silk_a2s6
-> force | Tell her you're keeping it. | silk_a2s6 | needs:2
+> force | Tell her you’re keeping it. | silk_a2s6 | needs:2
 > quiet | Say nothing, and wrap it up again. | silk_a2s6
 
 === silk_a2s6 | Yue’s Cargo
@@ -161,7 +161,7 @@ Her laugh is short. “It’s a Ledger. A private one. A name stitched eleven ye
 She looks up.
 “Whoever stitched it has stitched forty thousand times. Whatever that name is, it’s been remembered harder than any name in the Ledger.”
 > truth | Tell her who Su Mengjiao is. | silk_a2s7
-> mercy | Tell her it's the name of someone who is loved. | silk_a2s7
+> mercy | Tell her it’s the name of someone who is loved. | silk_a2s7
 > inquiry | Ask who the woman on the river is. | silk_a2s7
 > quiet | Keep what you know to yourself. | silk_a2s7
 
@@ -184,7 +184,7 @@ Yue Zhaoning has her arms folded and her chin up. Ren Qiao is looking at the sky
 > truth | Say you were aboard, and you take responsibility. | silk_close | +silk_chain_cut +silk_a2_owned
 > force | Say the chain deserved it. | silk_close | +silk_chain_cut needs:2
 > quiet | Say nothing, and let Yue Zhaoning answer. | silk_close | +silk_chain_cut
-> mercy | Say it was the post that fell, and no one's fault. | silk_close | +silk_chain_cut
+> mercy | Say it was the post that fell, and no one’s fault. | silk_close | +silk_chain_cut
 
 // ---------------------------------------------------------------- a3: the assessor
 === silk_a3s1 | The Assessor
@@ -193,7 +193,7 @@ Fang Shuo is a long thin man in a grey coat with a ledger under his arm and a no
 He underlines something.
 “I am, of course, open to a more generous reading. If there were an explanation.”
 > deceit | Offer to produce an explanation. | silk_a3s2
-> truth | Tell him you'd like to see the books. | silk_a3s2
+> truth | Tell him you’d like to see the books. | silk_a3s2
 > inquiry | Ask what kind of explanation he has in mind. | silk_a3s2
 > mercy | Ask whether the guild can pay in cloth. | silk_a3s2
 
@@ -213,7 +213,7 @@ You do not have four hundred taels. You have a forger. His name is Gu Hanzhen an
 You look over his shoulder. He writes, in Fang Shuo’s neat dry hand: Fire begun by a spark from the drying-racks, in a high wind, in an unseasonal heat. Not attributable.
 Gu looks at you. “It’s even true. I think.”
 > truth | Praise his hand, and tell him to sign it as himself. | silk_a3s4 | bond:gu+2
-> deceit | Tell him to add Fang Shuo's seal, which he has already copied. | silk_a3s4 | bond:gu-1
+> deceit | Tell him to add Fang Shuo’s seal, which he has already copied. | silk_a3s4 | bond:gu-1
 > inquiry | Ask whether he really thinks it was an accident. | silk_a3s4
 > quiet | Take the page, and read it twice. | silk_a3s4
 
@@ -222,8 +222,8 @@ You swap the ledgers at noon. It is a simple trick, and only simple because Fang
 You have almost finished when a shadow falls across the page.
 It is a young woman in a grey sash, with a stern, plain face and an iron bar in her hand. She stands there for what feels like a very long time, looking at the ledger. At the forged seal. At you.
 “Inspector Mei,” you say.
-> truth | Tell her what you're doing, and why. | silk_a3s5
-> deceit | Tell her you're helping the assessor tidy his accounts. | silk_a3s5
+> truth | Tell her what you’re doing, and why. | silk_a3s5
+> deceit | Tell her you’re helping the assessor tidy his accounts. | silk_a3s5
 > quiet | Say nothing. Let her speak. | silk_a3s5
 > force | Close the ledger and stand. | silk_a3s5
 
@@ -234,7 +234,7 @@ She looks at you flatly.
 “I have been at the burned stilts since dawn. The fire began at the north corner, in the stores, by a lamp left lit on a bale of dry silk. It was not a spark. It was set.”
 > truth | Ask her who set it. | silk_a3s6
 > inquiry | Ask how she knows. | silk_a3s6
-> mercy | Tell her you'd rather the guild not be blamed for arson. | silk_a3s6
+> mercy | Tell her you’d rather the guild not be blamed for arson. | silk_a3s6
 > quiet | Wait for her to say it. | silk_a3s6
 
 === silk_a3s6 | A Lamp on a Bale
@@ -274,7 +274,7 @@ You walk the length of the north row. At the corner the posts are blacker than t
 Gu crouches in the mud. “Smell,” he says. “Under the ash. Oil. Lamp oil.” He looks up. “Not tallow. The good kind. The kind they use in the Law Hall.”
 > truth | Tell him not to say that so loudly. | silk_a4s2
 > inquiry | Dig a little, to see how far the oil goes. | silk_a4s2
-> mercy | Ask whether he's all right. | silk_a4s2
+> mercy | Ask whether he’s all right. | silk_a4s2
 > quiet | Look around for anyone else watching. | silk_a4s2
 
 === silk_a4s2 | A Witness in the Reeds
@@ -358,17 +358,17 @@ Yue Zhaoning notices the red cord on your wrist before you notice her noticing. 
 “Hm.” She runs her thumb along the cord. “She’s a smuggler.”
 You have never thought of Gu Yunxia as a smuggler. But the way Yue Zhaoning says it is the way a fisherman says ‘she’s a sailor.’
 > truth | Ask what the knot says. | silk_h2
-> inquiry | Ask how she'd know. | silk_h2
+> inquiry | Ask how she’d know. | silk_h2
 > mercy | Say nothing, and let her read it. | silk_h2
-> deceit | Say the knot was a gift, and you don't know what it means. | silk_h2
+> deceit | Say the knot was a gift, and you don’t know what it means. | silk_h2
 
 === silk_h2 | What the Cord Says
 Yue Zhaoning reads the cord like a letter. She says each turn is a word. The first loop is safe harbour. The second is, we will carry for you. The warding knot, the little hook at the end, means that the tier of a knot is a witness, and that anyone who finds the bearer harmed must carry the news to the river.
 “It’s a river-mother’s knot,” she says. “Old as the Concord. Older. They’re tied on children who’ll travel. On anyone a mother can’t protect.” She lets go. “Your friend’s mother has been tying them for the Salt Coast for twenty years. Her cords go through every river-port. She doesn’t know it.”
 She grins crookedly.
 “She’s the best smuggler I’ve ever heard of. She’s never left her valley.”
-> truth | Tell her you'll let Gu know. | silk_h3 | +silk_gu_told_knot bond:gu+3
-> mercy | Say Gu's mother would be horrified, and then pleased. | silk_h3 | +silk_gu_told_knot
+> truth | Tell her you’ll let Gu know. | silk_h3 | +silk_gu_told_knot bond:gu+3
+> mercy | Say Gu’s mother would be horrified, and then pleased. | silk_h3 | +silk_gu_told_knot
 > inquiry | Ask who else wears her cords. | silk_h3
 > quiet | Look at the cord, and tighten it a little. | silk_h3
 
@@ -388,16 +388,16 @@ The banners hang over the water in the evening wind, madder and indigo and weld,
 +[ap] silk_a2 | You went with a ram and a smuggler, and the water took the post.
 +[ap] silk_a3 | You went with a forger and a scheme, and found a better use for the time.
 +[ap] silk_a4 | You went with the tide and a lantern, and found a comb.
-+[how] silk_petition_entered | The guild's petition was entered into the Assembly's record, in thread. Madam Qi says it is the first honest bolt the Concord has bought.
++[how] silk_petition_entered | The guild’s petition was entered into the Assembly’s record, in thread. Madam Qi says it is the first honest bolt the Concord has bought.
 +[how] silk_chain_cut | The chain across the canal lies in the water. Yue Zhaoning has been seen buying drinks for dyers.
-+[how] silk_ledger_to_duan | The treasurer's ledger is in the Censor-General's hands, and a factor in Kuan Landing has a good deal to explain.
++[how] silk_ledger_to_duan | The treasurer’s ledger is in the Censor-General’s hands, and a factor in Kuan Landing has a good deal to explain.
 +[how] silk_comb_taken | The second comb sits in your sleeve beside the first. They hum faintly in the dark.
 +[yue] silk_yue_favour | You owe the smuggler captain a favour. She has not said what, and you have not asked.
 +[yue] silk_yue_wary | Yue Zhaoning watches you with a wary half-smile, since you promised to break her boat.
-+[yue] silk_yue_owes | Yue Zhaoning owes you a boat, and a river-mother's knot is on your wrist.
++[yue] silk_yue_owes | Yue Zhaoning owes you a boat, and a river-mother’s knot is on your wrist.
 +[a] silk_a1_back_stair | You took the back stair to the Assembly, and the kitchen cousin remembers your face.
 +[a] silk_a2_owned | You owned the cut chain in front of the Censor-General, and he wrote it down with a straight face.
-+[a] silk_a3_burned_forgery | You burned a forged page in a weaver's brazier, and the smoke smelled of lamp-black.
++[a] silk_a3_burned_forgery | You burned a forged page in a weaver’s brazier, and the smoke smelled of lamp-black.
 +[a] silk_a4_spoke_ruyi | You offered to speak for a girl of twenty who carried sixty bolts out of a fire.
 > truth | Take the two combs to the Elder on the barge, tonight. | silk_close2 | npc:SU_SILK_COMBS | silk_comb_taken | You have no second comb to bring her.
 > truth | Go back to the barge with the news. | silk_close2
@@ -420,7 +420,7 @@ She goes back inside.
 > inquiry | Ask yourself what a cloth is, and what a Ledger is. | hub_b2_city | +b2q_silk
 `,
   scenarios: String.raw`
-$ SU_SILK_COMBS | trust+4 respect+2 | elder | The player shows the Elder the second comb, the pair to her sister's.
+$ SU_SILK_COMBS | trust+4 respect+2 | elder | The player shows the Elder the second comb, the pair to her sister’s.
 hostile: A second comb. I have been shown many relics this week, and I am tired of being asked to feel. If it is hers, give it to me. If it is not, take it away.
 wary: A pair. My sister told me once that she had a comb that she would not use, and I thought she meant a figure of speech. I will look at it in private, if you will permit me. I find I do not want you to see my face.
 neutral: The second comb. It is warmer than I remember. I had thought the pair was lost. I find it is only that I have been looking in the wrong direction.

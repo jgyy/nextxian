@@ -28,7 +28,7 @@ A train rattles along the shore, hauling a long string of flat wagons. On each w
 // ---------------------------------------------------------------- a1: the inspection
 === furnace_a1s1 | The Gate
 The gate-house is a squat brick box with a single barred window. Behind the bars, a clerk in an ink-stained coat is eating a cold pie. He looks up at the seal in Duan Wuyi’s hand, and the pie stops halfway to his mouth.
-“Censor-General,” he says, thickly. “I... we have had no notice.”
+“Censor-General,” he says, thickly. “I… we have had no notice.”
 “That is the purpose of the visit.” Duan’s voice is gentle and level. “I am entitled, under the Charter, to inspect any foundry in which the Concord holds an interest. I am entitled to see the books, the premises, and the people.” He folds the seal back into his sleeve. “I would be obliged if you would open the gate.”
 “I’ll have to fetch the Overseer.”
 “Of course.”
@@ -101,7 +101,7 @@ She has stepped forward. She is staring at the signature. Her eyes are very wide
 > inquiry | Ask Kwan about the order. | furnace_a1s6
 
 === furnace_a1s6 | A Hundred and Four
-“Lot nineteen,” says Kwan Dei, consulting a ledger. “Delivered to the Stair eleven years ago last spring. It was a fine batch.” He peers at the Elder. “You are... the Registrar?”
+“Lot nineteen,” says Kwan Dei, consulting a ledger. “Delivered to the Stair eleven years ago last spring. It was a fine batch.” He peers at the Elder. “You are… the Registrar?”
 “I was.”
 “We always say a prayer for the Registrars.” He is unctuous. “They make our work possible.”
 “What were the hundred and four?”
@@ -135,7 +135,7 @@ The Elder takes the slab from him. She holds it in both arms like a child.
 
 === furnace_a1s8 | The Glaziers Listen
 They have gathered while you were reading. You do not see them come. Two hundred men and women in leather aprons, with wet cloths round their necks, stand in a ring in the glare of the Mother. They have laid down their ladles. They are silent.
-Kwan Dei notices them last. “Back to work,” he says, weakly. “Back to... Censor-General, I must protest—”
+Kwan Dei notices them last. “Back to work,” he says, weakly. “Back to… Censor-General, I must protest—”
 “You must not,” says Duan.
 A big woman steps forward. She is sixty, built like a boiler, with forearms like hams scarred white with burns. She wears a Foreman’s badge. Her face is a lump of seamed brown leather.
 “Zhuo,” she says. “Foreman-Mother. Of the Third Pour.” Her voice is a rasp. “I want to ask the Censor-General a question.”
@@ -259,7 +259,7 @@ The lieutenant stares. He glances back at his line. A few of the soldiers have l
 They go in a river. Two thousand glaziers, with their wives and their children and their cooking-pots, flowing out of the yard and up the track, a dark slow tide of leather and soot. They sing as they go. It is an old furnace-song, rough and plain, with a refrain like a hammer: *Pour it hot, pour it clean, pour it for the one unseen.* The soldiers part for them. No one lifts a rifle.
 The lieutenant is left alone in the road, on his pony, with his mouth open. He watches them pass. At the end of the column an old woman stops in front of him. She reaches up and pats his boot.
 “Thank you for not shooting,” she says. “I knew your mother.”
-He turns scarlet. “I... ma’am...”
+He turns scarlet. “I… ma’am…”
 “She was a good girl,” says the old woman. “She’d be proud.” She goes on up the track.
 The lieutenant sits his pony for a very long time. Then, slowly, he dismounts. He takes off his cap. He hangs it on the saddle-horn and follows.
 Behind him, in ones and twos, the soldiers go too.
@@ -286,7 +286,7 @@ Kwan Dei is sitting on an upturned bucket at the foot of her, in his silk waistc
 He doesn’t stay. He goes to his office, and you hear the creak of a drawer. When he comes out he has a satchel over his shoulder and a roll of papers in his fist. He is pale. He is trembling. He looks like a man who has decided something very large and very small.
 “The books,” he says. “The real ones. Not the ones I showed the Censor.” He holds out the roll. “All the lots. All the names. Forty years of them.”
 You take it. It is heavy.
-“I kept them,” says Kwan Dei, in a husky voice. “I don’t know why. I never meant to... I only thought, if no one else was going to count, someone should.” He wipes his nose on his napkin. “I think I was ashamed.”
+“I kept them,” says Kwan Dei, in a husky voice. “I don’t know why. I never meant to… I only thought, if no one else was going to count, someone should.” He wipes his nose on his napkin. “I think I was ashamed.”
 “Thank you.”
 “Don’t.” He takes off his waistcoat. He folds it carefully, and lays it on the bucket. “I am not a good man. I was merely tidy.”
 He picks up his satchel. He walks out of the yard, in his shirtsleeves, into the pale afternoon.
@@ -319,7 +319,7 @@ He is thin and sallow and quick, with a cowlick and a leather apron too big for 
 You tell him. You tell him all of it, quietly, on the quay, in the grey light: the barrels, the ash, the names. Hao Lan stands a little apart and does not speak. Tuhin listens with the potato growing cold. At the end of it he sets it down on a post.
 “I know,” he says.
 “You know?”
-“What’s in the barrels.” His voice is very small. “I open them. I can smell it. It smells of... people.” He wets his lips. “I thought if I didn’t say, it would stop.”
+“What’s in the barrels.” His voice is very small. “I open them. I can smell it. It smells of… people.” He wets his lips. “I thought if I didn’t say, it would stop.”
 “It hasn’t.”
 “No.”
 He looks at the potato.
@@ -366,7 +366,7 @@ The overseer’s assistant, a small neat man with a stopwatch, takes the tempera
 “Hm,” he says.
 Tuhin’s hand clamps on your arm.
 “What is it?” calls the foreman.
-“The colour’s off.” The assistant frowns. “It’s clear. Very clear. A bit... *pale.*” He holds it up to the light. “Is it the batch?”
+“The colour’s off.” The assistant frowns. “It’s clear. Very clear. A bit… *pale.*” He holds it up to the light. “Is it the batch?”
 The foreman comes over. He is a big, flushed, weary man. He peers.
 “It’s only sand,” he says. “Looks like good sand to me.”
 “It lacks the red.”
@@ -544,9 +544,9 @@ They don’t know. That is the astonishing thing. The little girl asks what the 
 “Why?”
 “Because you like it.”
 “Why do you like it?”
-“I don’t... ” She falters. “You just do.”
+“I don’t… ” She falters. “You just do.”
 A boy puts up his hand. “Can I do it now?”
-“Now?” She gapes. “Aye. If you... certainly. If you like.”
+“Now?” She gapes. “Aye. If you… certainly. If you like.”
 He thinks about it. He looks at the dusty yard, the sooty sky, the huge dark furnace. He picks up a stick. He takes a few steps. He flings it, as hard as he can, into the air. It goes up in a long curve and falls in the dust.
 He looks at it. He looks back at the matron.
 “Was that right?” he whispers.
@@ -676,7 +676,7 @@ warm: Hanming took my arm when I swayed. His hand was scarred and warm. He said:
 devoted: I have decided that the treads must be put back. Each in its place, with its name uppermost, so that whoever climbs may read it. If the Stair is to be built of children, let it be built where they can be seen.
 `,
   remarks: String.raw`
-% furnace_zhuo_later | since:b5q_furnace>=4 | hanming | Foreman-Mother Zhuo sent a sample of her best glass, cut as a lens. It is the clearest I have seen. She said it was for looking at things honestly. I have put it in my pocket and look through it at everything.
+% furnace_zhuo_later | since:b5q_furnace>=4 & bond:hanming>=-100 | hanming | Foreman-Mother Zhuo sent a sample of her best glass, cut as a lens. It is the clearest I have seen. She said it was for looking at things honestly. I have put it in my pocket and look through it at everything.
 % furnace_tuhin_later | since:furnace_kids>=3 | gu | The apprentice, Tuhin, has been teaching Pim’s young Wrights to blow bubbles. They are all very bad at it. The bubbles are enormous and burst at once. It is the best sound in the world.
 `,
 }

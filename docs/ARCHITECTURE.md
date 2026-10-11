@@ -7,7 +7,10 @@ flowchart LR
   subgraph Story["src/story (content)"]
     C["chapter-1..11.ts<br/>eleven chapters"]
     SD["side-*.ts<br/>twelve side paths"]
-    RD["roads/<br/>forty side roads, 1,010 scenes"]
+    RD["roads/<br/>forty Book One side roads, 1,010 scenes"]
+    R2["roads2/<br/>forty realm roads, 1,020 scenes"]
+    HE["hero/<br/>Elder’s asides, gate echoes, companion remarks"]
+    RG["realm-gates.ts<br/>force asks a realm in Book One"]
     NPC["npc/elder-su*.ts<br/>98 scenarios, realm memories"]
   end
   subgraph Engine["src/engine (pure logic)"]
@@ -15,20 +18,24 @@ flowchart LR
     N["npc.ts<br/>tierFor / moodFor / respectTierFor / mannerOf / reactToScenario"]
     TN["tone.ts<br/>six tones and their names"]
     CU["cultivation.ts<br/>eight realms, gains, heart demon"]
+    HR["hero.ts<br/>the character, pronouns, starting numbers, standing"]
     V["validate.ts<br/>validateStory: 200-word scene cap, four choices, headings"]
     SV["save.ts<br/>restoreGame"]
     W["words.ts<br/>countWords"]
     T["types.ts"]
   end
   subgraph UI["src/components + app/"]
+    CR["Creation.tsx<br/>who climbs the mountain"]
+    HP["HeroPanel.tsx<br/>name, traits, standing"]
     GV["GameView.tsx<br/>VN stage, choices, backlog"]
     TL["ToneLegend.tsx<br/>what each colour means"]
     NP["NpcPanel.tsx<br/>portrait, mood, her read of you"]
     SP["StatsPanel.tsx<br/>stats and recent decisions"]
     CP["CultivationPanel.tsx<br/>realm, progress, ladder"]
   end
-  C & SD & RD & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
+  G --> HR
   G --> N
   G --> TN
   G --> CU
@@ -37,7 +44,9 @@ flowchart LR
   G --> GV
   GV --> TL
   GV --> SV
-  GV --> NP & SP & CP
+  GV --> CR
+  CR -->|Hero| G
+  GV --> NP & SP & CP & HP
   GV -->|localStorage save| Storage[("Browser storage")]
 ```
 
@@ -232,9 +241,92 @@ sequenceDiagram
 
 The `roads` condition counts the `road_done_*` flags, so the Elder can speak to the number of roads walked. Because every interjection counts toward a scene’s 200-word cap whether or not it shows, those remarks live on the waysides, one each, instead of on the return scenes.
 
+## The hero
+
+Before the first scene the player makes a character: a name, and five parts that any NPC can see at a glance (papers, dress, looks, trade since the river village, gender). `createGame(story, hero)` stores it in `GameState.hero`, and it never changes. Nothing about the hero changes what the player can do. Cultivation does that. It changes how people answer.
+
+```mermaid
+flowchart LR
+  CR["Creation screen<br/>name and five choices"] --> H["Hero<br/>name, gender, looks, background, attire, status"]
+  H --> CG["createGame(story, hero)"]
+  CG --> ST["startFor(hero)<br/>a scholar starts with insight,<br/>a noble in silk with a suspicious Elder"]
+  CG --> P["personalise(text, hero)<br/>name for Wanderer, pronouns, honorifics"]
+  CG --> SD["standingOf(hero, realm)<br/>papers + dress + two per realm"]
+  H --> CO["conditions<br/>hero:attire=silk|armour, standing>=4"]
+  CO --> X["extras, interjections, remarks,<br/>NPC memories, locked choices"]
+```
+
+Every line the engine logs goes through `personalise`, so a hero called Mo Lan is never called Wanderer, and `{they}`, `{them}`, `{their}`, `{honorific}` and `{person}` fill in from the gender. A save from before the hero existed loads with the default hero.
+
+### Standing
+
+Standing is how far the world bows, and the realm outweighs birth. The papers set a rank from 0 (outcast) to 3 (noble), silk or armour adds one, rags take one away, and **every realm adds two**. A Foundation Builder born an outcast already stands above a mortal prince.
+
+```mermaid
+flowchart LR
+  A["papers<br/>outcast 0, commoner 1,<br/>gentry 2, noble 3"] --> S(("standing"))
+  B["dress<br/>rags -1, silk +1, armour +1"] --> S
+  R["realm<br/>+2 each"] --> S
+  S --> T{{"despised, unremarked, regarded,<br/>honoured, revered"}}
+  S --> G["locked choices:<br/>“let your name speak” needs 2R+1"]
+```
+
+### How the cast reads the hero
+
+Four layers, so a hero meets a reaction wherever the story is, and none of them is the same line for two heroes.
+
+```mermaid
+flowchart TD
+  H["hero"] --> E["echoes<br/>the gate and the Law Hall read dress, papers, looks, manner, trade"]
+  H --> A["the Elder’s asides<br/>one remark every few decisions, cycling through status, attire, looks,<br/>background, gender and realm, once per attitude"]
+  H --> M["companion remarks<br/>66 lines, each said once after the companion is met"]
+  H --> RX["roads<br/>every keeper reads dress, birth, trade, face, manner,<br/>send-off and realm, at the scene that suits it"]
+```
+
+`story.asides` holds 22 values × 5 attitudes of her lines about the hero and 4 realm bands × 5 attitudes. `aside()` in `game.ts` says one after her reply to a scenario, after the fourth decision and at most once every three decisions, in a rotating order. The id of each (`aside:field:value:tier`) is kept in `remarked`, so it is never said twice, and a colder or warmer Elder has something new to say about the same silk.
+
+## Realm roads
+
+Ten more waysides open from the hubs of Books Two to Six, each with four roads of 25 scenes. Where the Book One roads are built from shared templates, each realm road writes its own twenty situations, its three hidden scenes and its closing paragraph (`specs-*.ts`). The builder adds the choices, tones, realm gates and reactions.
+
+```mermaid
+flowchart TD
+  HUB["book hub<br/>gains one choice"] --> W["wayside<br/>asks a realm R, four roads"]
+  W --> E["road entry<br/>reads dress, papers and realm"]
+  E -->|"approach 1, 2"| OPEN["open to anyone"]
+  E -->|"approach 3: needs R, beyond-you below it"| MID["strain below R"]
+  E -->|"approach 4: locked below R"| DEEP["barred below R"]
+  E -->|"realm below R: the lesser way"| HUM["humble: asks what a lesser traveller may do"]
+  OPEN & MID & DEEP & HUM --> S1["scene 2: trade and face"]
+  S1 --> RANK{"standing >= 2R+1?"}
+  RANK -->|yes| PULL["let your name speak"]
+  S1 --> S3["crisis: cultivator’s way needs R,<br/>reach needs R+1"]
+  S3 --> RET["way back: reports to the Elder,<br/>memories by realm above or below the road"]
+```
+
+The realm bands the keepers use are *relative* to the road: far below (two or more realms short), below (one short), at it, above it. A keeper greets each differently at the entry, the first scene, the crisis and the way back. At the crisis a hero below the road’s realm pays for a push: cultivation, qi and the Elder’s respect, per realm short. Two realms above it, the same choice earns mastery.
+
+### Wording that fits
+
+A road names four things to approach, and shared wording says what to do with them. Before kinds, “Break your way into the orchard ledger” and “Slip a small piece of the weighing hut into your sleeve” were both possible. Now every focus is a place, a thing or a person (`kinds.ts`), and every template is tagged with the kinds it fits (`[p]`, `[t]`, `[w]`, or combinations). A road is only given wording that fits, and the obstacle and the ally in a label come from the pools of that label’s own tone, so nothing says “Trace a sick child on the step back to whoever put it there”.
+
+```mermaid
+flowchart LR
+  F["focus: “the weighing hut”"] --> K["focusKind<br/>place"]
+  P["template pool<br/>[p] Break your way into {focus}<br/>[t] Seize {focus}<br/>[w] Corner {focus}"] --> PF["pickFit(pool, seed, focus)"]
+  K --> PF
+  PF --> L["“Break your way into the weighing hut …”"]
+```
+
+`npx tsx scripts/audit-slots.ts` replays the old selection and counts the picks that did not fit: 686 of the Book One roads’ lines.
+
+### Realm in Book One
+
+The first eleven chapters used to ask nothing of the realm. From the third chapter on every forceful choice now asks the realm of its chapter (`realm-gates.ts`): Qi Condensation in Chapters 3 and 4, Foundation Establishment from 5 to 11. A player below it can try, and pays; a player two realms above it does the same thing with ease and learns from it. A player who forces every door can reach Book Two still at Qi Condensation, where a patient one is a Foundation Builder.
+
 ## Chapter and side path map
 
-Reading order is set in `src/story/index.ts`. Chapters are the main line. Side paths branch from a scene and rejoin it, and the Elder reacts to what they report. The ten wayside groups of side roads follow their chapters and are omitted from the map below.
+Reading order is set in `src/story/index.ts`. Chapters are the main line. Side paths branch from a scene and rejoin it, and the Elder reacts to what they report. The ten wayside groups of Book One side roads follow their chapters, and the ten groups of realm roads follow the hubs of Books Two to Six. Both are omitted from the map below.
 
 ```mermaid
 flowchart LR

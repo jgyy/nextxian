@@ -339,7 +339,7 @@ She has forty. That is the arithmetic. She has seen how long it takes Pol to eat
 It is a draft, in a fine small cursive. It is signed, at the end, *Fang, Inspector.* It is headed, in large characters, *THE GREAT AMENDMENT.* She skims it, the way she skims all documents, in a single sweeping glance, like a hawk over a field.
 Her face does not change.
 “Duan,” she says clearly, in her flat pleasant clerk’s voice. “Did you want to see the schedule of provisions?”
-Duan Wuyi stops in mid-sentence. “I... yes.”
+Duan Wuyi stops in mid-sentence. “I… yes.”
 “Here.” She brings the scroll across the tent. She hands it to him. She does it with a look so utterly guileless that the Inspector, sipping his tea, does not even glance up.
 Duan unrolls it. He reads three lines. His breath catches.
 “Hao Lan,” he says, very softly.
