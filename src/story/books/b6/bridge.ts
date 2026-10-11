@@ -18,6 +18,7 @@ Ren Qiao has stopped. He is standing at the lip of the span with his cloak blowi
 The mist rises and falls under the arch. The ward in the stone has been lit: you can see it, a faint ring of pale fire round the keystone, reading the air. It reads cultivation. It has always read cultivation. It is how the Warden tells the sect from the road.
 “Captain Dur,” says Ren Qiao, looking at the far end. “I recognise the walk.”
 > truth | Walk across openly, and let the ward read you. | bridge_open1 | +bridge_open npc:SU_BRIDGE_WARD | realm>=5 | The ward bows only to a Spirit Severing cultivator, and holds all below.
+> truth | Hold up the Returner’s Seven-Star Charm and walk across, and let the ward read the charm. | bridge_open1 | +bridge_open item-hawker_row_ware npc:SU_BRIDGE_WARD | realm>=4 & item:hawker_row_ware>=1 | The ward bows to a Spirit Severing cultivator, or to a Nascent Soul who carries a charm it remembers. You are neither.
 > force | Walk across and break the ward as you go. | bridge_force1 | +bridge_forced needs:5
 > deceit | Go down the cliff-path Old Lin keeps under the span. | bridge_slip1 | +bridge_slipped
 > mercy | Let Ren Qiao go first, and take the post again. | bridge_ren1 | +bridge_ren | bond:ren>=10 | Ren Qiao does not yet trust you enough to take the post in front of you.

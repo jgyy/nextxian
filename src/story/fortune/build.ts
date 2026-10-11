@@ -1,5 +1,5 @@
 import { REALMS } from "@/engine/cultivation";
-import type { AssetDef, Choice, ChoiceTone, Condition, Effect, ItemDef, ItemKind, NpcScenario, Scene } from "@/engine/types";
+import type { AssetDef, Choice, Condition, Effect, ItemDef, ItemKind, NpcScenario, Scene } from "@/engine/types";
 import { ATTIRES, BACKGROUNDS, GENDERS, LOOKS, STATUSES } from "@/engine/hero";
 import { ALLIES, APPROACH_LABEL, CHOICE_LABEL, MODE_BEAT, OBSTACLES, STAGE_TITLE } from "../roads/lexicon";
 import { approachModes, fill, roadFlag, walkBase } from "../roads/build";
@@ -37,7 +37,6 @@ import {
   RETURN_USED_WARE,
   REPORT_MEMORY3,
   RISKY,
-  SELL_HOLDING,
   SELL_WARE,
   SETTLE,
   USE_WARE,
@@ -180,8 +179,6 @@ export function holdingAsset(spec: RoadSpec3, ctx: RoadContext3): AssetDef {
   };
 }
 
-const hero = (field: "gender" | "looks" | "background" | "attire" | "status", is: string): Condition => ({ kind: "hero", field, is: [is] });
-
 /** The purse against the road’s base price: four bands, in one group. */
 function purseGroup(base: number, seed: number, slots: Record<string, string>): Extra[] {
   const bands: [PurseBand, { min?: number; max?: number }][] = [
@@ -314,9 +311,9 @@ export function buildRoad3(spec: RoadSpec3, ctx: RoadContext3): Scene[] {
           effects: [{ kind: "setFlag", flag: flag("pulled_rank") }, { kind: "addStat", stat: "karma", amount: -1 }, { kind: "addCultivation", amount: 2 + R }],
         });
         if (a === 0) {
-          // The offer: buy the goods at the keeper’s price, or find the flaw and pay less. A pill is sold only to a hero near the realm it serves.
-          const sellable: Condition[] = isPill ? [{ kind: "realm", min: Math.max(0, R - 1) }] : [];
-          const hint = (n: number) => (isPill ? `${stonesHint(n)} ${spec.kname} sells this only to ${REALMS[Math.max(0, R - 1)].name} or above.` : stonesHint(n));
+          // The offer: buy the goods at the keeper’s price, or find the flaw and pay less. A pill is sold only to a hero of the road’s realm, the one just below the realm it opens.
+          const sellable: Condition[] = isPill ? [{ kind: "realm", min: R }] : [];
+          const hint = (n: number) => (isPill ? `${stonesHint(n)} ${spec.kname} sells this only to ${need} or above.` : stonesHint(n));
           eco({
             id: "buy",
             label: fill(pick(BUY, seed), slots),

@@ -18,6 +18,7 @@ Cold comes up the stair. It is not the cold of the ward. It is slower, and wette
 +[rl] realm>=6 | At Dao Seeking you feel each door as a held breath, and the mist behind them as one long note held too long.
 +[rl] realm<=3 | The cold seeps through your robe and settles in your chest like a stone.
 > truth | Stand before the doors, and let them be read. | depths_read1 | +depths_read | realm>=6 | The doors answer only a Dao Seeking cultivator who can feel what stands behind them.
+> quiet | Sit before the doors with the First-Plate Shard in your hands, and let them read the glass. | depths_read1 | +depths_read item-plate_stall_ware | realm>=5 & item:plate_stall_ware>=1 | The doors answer a Dao Seeking cultivator, or a Spirit Severing one who carries glass the Sea once sang through.
 > force | Break the first lock and take the stair at a run. | depths_force1 | +depths_forced needs:6
 > mercy | Let Lin Yuan open them with his eight keys. | depths_keys1 | +depths_keyed | bond:lin>=8 | Lin Yuan does not yet trust you enough to lend his keys.
 > inquiry | Lay the cards against the doors. | depths_cards1 | +depths_carded | count:card_>=5 | You hold too few cards for the doors to hum.
