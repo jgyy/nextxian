@@ -235,11 +235,22 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
   next = gainCultivation(next, scaled((fresh ? TONE_GAIN[choice.tone] : 0) + mastery, speed));
   next = applyAid(story, next);
   if (next.decisions % PAYDAY_EVERY === 0) next = payday(story, next);
+  next = noticeSpeed(state, next, story);
   const beforeAttitude = next.log.length;
   next = noticeAttitude(story, state, next);
   spoke = spoke || next.log.length > beforeAttitude;
   const entered = enterScene(story, settle(story, next), getScene(story, choice.next));
   return spoke ? entered : remark(story, entered);
+}
+
+/** When a purchase, a lease, a breakthrough or a lean payday changes how fast the hero cultivates, the log says so. */
+function noticeSpeed(before: GameState, after: GameState, story: Story): GameState {
+  const was = before.speed;
+  const now = cultivationSpeed(story, after);
+  if (now === was) return after;
+  const change = now - was;
+  const text = `Your cultivation now runs at ${now}% of the plain rate (${change > 0 ? "+" : "−"}${Math.abs(change)}).`;
+  return { ...after, log: [...after.log, { kind: "ledger", text }] };
 }
 
 /** One NPC scenario: the line, the change in feeling, and what they remember. A companion's scenario moves their bond. */

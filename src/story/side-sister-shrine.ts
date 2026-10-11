@@ -175,7 +175,9 @@ export const sisterShrineScenes: Scene[] = [
         label: "Leave a coin beside the bowl and walk away without looking at the closed box.",
         tone: "mercy",
         next: "shrine_return",
-        effects: [{ kind: "addStat", stat: "karma", amount: 1 }],
+        effects: [{ kind: "addWealth", amount: -1 }, { kind: "addStat", stat: "karma", amount: 1 }],
+        requires: [{ kind: "wealth", min: 1 }],
+        lockedHint: "You need 1 spirit stone.",
       },
       {
         id: "copy_the_carving",

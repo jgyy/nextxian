@@ -20,7 +20,9 @@ export const herbMarketScenes: Scene[] = [
         label: "Buy a bundle of frostleaf with the coins you carry, and ask Madam Hu for a fair weight.",
         tone: "quiet",
         next: "market_seller",
-        effects: [{ kind: "setFlag", flag: "bought_frostleaf" }, { kind: "addStat", stat: "qi", amount: 3 }],
+        effects: [{ kind: "addWealth", amount: -3 }, { kind: "setFlag", flag: "bought_frostleaf" }, { kind: "addStat", stat: "qi", amount: 3 }],
+        requires: [{ kind: "wealth", min: 3 }],
+        lockedHint: "You need 3 spirit stones.",
       },
       {
         id: "ask_about_jade",
@@ -80,7 +82,9 @@ export const herbMarketScenes: Scene[] = [
         label: "Pay the price she asks without haggling, and add a coin for the child’s kite.",
         tone: "mercy",
         next: "market_rumors",
-        effects: [{ kind: "addStat", stat: "karma", amount: 2 }],
+        effects: [{ kind: "addWealth", amount: -4 }, { kind: "addStat", stat: "karma", amount: 2 }],
+        requires: [{ kind: "wealth", min: 4 }],
+        lockedHint: "You need 4 spirit stones.",
       },
       {
         id: "haggle_hard",

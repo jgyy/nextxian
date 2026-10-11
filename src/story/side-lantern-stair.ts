@@ -102,7 +102,9 @@ export const lanternStairScenes: Scene[] = [
         label: "Pay for a measure of oil from your own purse, and ask for nothing in return.",
         tone: "mercy",
         next: "lantern_memory",
-        effects: [{ kind: "setFlag", flag: "paid_lamp_oil" }, { kind: "addStat", stat: "karma", amount: 2 }],
+        effects: [{ kind: "addWealth", amount: -2 }, { kind: "setFlag", flag: "paid_lamp_oil" }, { kind: "addStat", stat: "karma", amount: 2 }],
+        requires: [{ kind: "wealth", min: 2 }],
+        lockedHint: "You need 2 spirit stones.",
       },
       {
         id: "claim_law_name",
