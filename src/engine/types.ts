@@ -1,4 +1,5 @@
 import type { Hero, HeroField } from "./hero";
+import type { Element } from "./path";
 
 /** Player-facing numeric stats. `karma` may go negative; the others stay in 0..100. */
 export type PlayerStat = "qi" | "karma" | "insight";
@@ -59,11 +60,17 @@ export type Condition =
   | { kind: "holdings"; min?: number; max?: number }
   /** The hero’s cultivation speed, in percent of the plain rate. */
   | { kind: "speed"; min?: number; max?: number }
+  /** The hero’s mastery rank in their Dao, as an index into `DAO_RANKS`. 0 is Novice. */
+  | { kind: "mastery"; min?: number; max?: number }
+  /** How strongly the hero’s roots answer an element: 0 none, 1 partial, 2 kindred. */
+  | { kind: "affinity"; element: Element; min?: number; max?: number }
   /** Whether the hero is Unfed: away from the sect with a purse too light for the cost of living. `is` defaults to true. */
   | { kind: "unfed"; is?: boolean };
 
 export type Effect =
   | { kind: "setFlag"; flag: string; value?: boolean }
+  /** Mastery points in the hero’s own Dao. A hero with no Dao earns none. */
+  | { kind: "addDao"; amount: number }
   | { kind: "addStat"; stat: PlayerStat; amount: number }
   | { kind: "addNpc"; metric: NpcMetric; amount: number }
   /** Cultivation points on top of the small gain every decision already brings. */
@@ -268,6 +275,8 @@ export interface GameState {
   lastRemark: number;
   /** The decision on which the Elder last commented on the hero. */
   lastAside: number;
+  /** Mastery points in the hero’s Dao. The rank is `daoRankOf`. */
+  daoPoints: number;
   /** Spirit stones in the purse. */
   wealth: number;
   /** What the hero carries, by item id. Counts above zero only. */

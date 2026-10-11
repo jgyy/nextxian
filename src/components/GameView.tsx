@@ -264,6 +264,7 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
               <ol>
                 {choices.map(({ choice, available, hint, strain }) => {
                   const price = priceTag(choice.effects);
+                  const dao = (choice.effects ?? []).reduce((n, e) => (e.kind === "addDao" ? n + e.amount : n), 0);
                   return (
                   <li key={choice.id}>
                     <button
@@ -277,6 +278,7 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
                       {choice.tone && <span className="tone-tag">{TONE_INFO[choice.tone].name}</span>}
                       {price.cost > 0 && <span className="price-tag" data-kind="cost">Costs {price.cost} spirit stones</span>}
                       {price.gain > 0 && <span className="price-tag" data-kind="gain">Earns {price.gain} spirit stones</span>}
+                      {dao > 0 && game.hero.dao !== "none" && <span className="price-tag" data-kind="dao">Dao +{dao}</span>}
                       {choice.needsRealm !== undefined && (
                         <span className="realm-tag" data-strain={strain ? "yes" : "no"}>
                           {REALMS[choice.needsRealm].name}

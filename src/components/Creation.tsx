@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { aptitudeFor, startingWealth } from "@/engine/economy";
+import { DAO_NAME, DAO_PASSIVE, TALENT_LABEL, talentSpeed } from "@/engine/path";
 import {
   cleanName,
   DEFAULT_HERO,
@@ -11,6 +12,7 @@ import {
   HERO_OPTIONS,
   MAX_NAME_LENGTH,
   startFor,
+  startingPoints,
   type Hero,
   type HeroField,
 } from "@/engine/hero";
@@ -21,7 +23,12 @@ function startNotes(hero: Hero): string[] {
   const notes: string[] = [];
   const label = { qi: "qi", karma: "karma", insight: "insight", trust: "trust", respect: "respect", fear: "fear", suspicion: "suspicion" } as const;
   notes.push(`${startingWealth(hero)} spirit stones`);
-  if (aptitudeFor(hero) > 0) notes.push(`+${aptitudeFor(hero)}% cultivation speed`);
+  if (aptitudeFor(hero) > 0) notes.push(`+${aptitudeFor(hero)}% cultivation speed from your trade`);
+  const root = talentSpeed(hero.talent, 0);
+  if (root) notes.push(`${root > 0 ? "+" : "−"}${Math.abs(root)}% from your ${TALENT_LABEL[hero.talent].toLowerCase()}`);
+  if (hero.talent === "late") notes.push("+18% from Core Formation");
+  if (startingPoints(hero) > 0) notes.push(`${startingPoints(hero)} cultivation points already gathered`);
+  if (hero.dao !== "none") notes.push(`${DAO_NAME[hero.dao]}: ${DAO_PASSIVE[hero.dao]}`);
   for (const [stat, v] of Object.entries(start.stats)) if (v) notes.push(`${v > 0 ? "+" : "−"}${Math.abs(v)} ${label[stat as keyof typeof label]}`);
   for (const [metric, v] of Object.entries(start.npc)) if (v) notes.push(`Elder Su: ${v > 0 ? "+" : "−"}${Math.abs(v)} ${label[metric as keyof typeof label]}`);
   return notes;
@@ -30,6 +37,9 @@ function startNotes(hero: Hero): string[] {
 export function Creation({ onBegin, onLoad }: { onBegin: (hero: Hero) => void; onLoad: () => void }) {
   const [name, setName] = useState("");
   const [picks, setPicks] = useState<Record<HeroField, string>>({
+    origin: DEFAULT_HERO.origin,
+    talent: DEFAULT_HERO.talent,
+    dao: DEFAULT_HERO.dao,
     gender: DEFAULT_HERO.gender,
     looks: DEFAULT_HERO.looks,
     background: DEFAULT_HERO.background,
@@ -51,8 +61,8 @@ export function Creation({ onBegin, onLoad }: { onBegin: (hero: Hero) => void; o
         <p className="eyebrow">Before the stair</p>
         <h2>Who climbs the mountain?</h2>
         <p className="muted">
-          The sect reads you before you speak. Your dress, birth, face and trade change how Elder Su, her wardens and everyone on the side roads treat you.
-          They do not change what you can do. Only cultivation does that.
+          The sect reads you before you speak. Where you begin, the roots you were born with and the Dao you practise change how fast you cultivate and what the roads offer you.
+          Your dress, birth, face and trade change how Elder Su, her wardens and everyone on the roads treat you.
         </p>
 
         <div className="field">

@@ -21,6 +21,7 @@ export function restoreGame(saved: unknown, story: Story): GameState | null {
     ...game,
     hero,
     // A save from before the purse starts with what the hero would have begun with, and an empty pack.
+    daoPoints: typeof game.daoPoints === "number" && game.daoPoints >= 0 ? game.daoPoints : 0,
     wealth: typeof game.wealth === "number" && game.wealth >= 0 ? game.wealth : startingWealth(hero),
     items: Object.fromEntries(Object.entries(items).filter(([, n]) => typeof n === "number" && n > 0)),
     assets: Array.isArray(game.assets) ? game.assets.filter((a) => typeof a === "string") : [],

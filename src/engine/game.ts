@@ -1,6 +1,7 @@
-import { DEFAULT_HERO, HERO_FIELDS, personalise, realmBandFor, startFor, type Hero } from "./hero";
+import { DEFAULT_HERO, HERO_FIELDS, personalise, realmBandFor, startFor, startingPoints, type Hero } from "./hero";
+import { DAO_NAME, DAO_RANKS, daoRankOf, karmaChange, masteryGapFor, ORIGIN_START, toneBonus } from "./path";
 import { applyAid, cultivationSpeed, giveItem, isUnfed, payday, PAYDAY_EVERY, scaled, startingWealth, takeItem, tidy } from "./economy";
-import { applyStrain, gainCultivation, MASTERY_GAIN, MASTERY_GAP, realmShortfall, realmSurplus, TONE_GAIN } from "./cultivation";
+import { applyStrain, gainCultivation, MASTERY_GAIN, MASTERY_GAP, realmForPoints, realmShortfall, realmSurplus, TONE_GAIN } from "./cultivation";
 import {
   conditionsHold,
   mannerShiftLine,
@@ -79,17 +80,20 @@ export function createGame(story: Story, hero: Hero = DEFAULT_HERO): GameState {
   const stats = { ...INITIAL_STATS };
   for (const key of Object.keys(start.stats) as PlayerStat[]) stats[key] = clamp(stats[key] + (start.stats[key] ?? 0), STAT_RANGE[key]);
   const npc = applyNpcDelta({ ...INITIAL_NPC }, start.npc);
+  const begin = story.scenes[ORIGIN_START[hero.origin]] ? ORIGIN_START[hero.origin] : story.startSceneId;
+  const points = startingPoints(hero);
   const empty: GameState = {
     hero,
-    sceneId: story.startSceneId,
+    sceneId: begin,
     stats,
     npc,
     flags: {},
     history: [],
     tones: [],
-    cultivation: 0,
-    realm: 0,
+    cultivation: points,
+    realm: realmForPoints(points),
     bonds: {},
+    daoPoints: 0,
     wealth: startingWealth(hero),
     items: {},
     assets: [],
@@ -103,7 +107,7 @@ export function createGame(story: Story, hero: Hero = DEFAULT_HERO): GameState {
     log: [],
     visited: [],
   };
-  return enterScene(story, settle(story, empty), getScene(story, story.startSceneId));
+  return enterScene(story, settle(story, empty), getScene(story, begin));
 }
 
 /** Works out the numbers that depend on everything the hero has: cultivation speed and whether they are Unfed. */
@@ -159,8 +163,17 @@ export function applyEffects(state: GameState, effects: Effect[] = [], speed = 1
         return { ...s, bonds: { ...s.bonds, [effect.npc]: value } };
       }
       case "addStat": {
-        const value = clamp(s.stats[effect.stat] + effect.amount, STAT_RANGE[effect.stat]);
+        const amount = effect.stat === "karma" ? karmaChange(s.hero, effect.amount) : effect.amount;
+        const value = clamp(s.stats[effect.stat] + amount, STAT_RANGE[effect.stat]);
         return { ...s, stats: { ...s.stats, [effect.stat]: value } };
+      }
+      case "addDao": {
+        if (s.hero.dao === "none") return s;
+        const daoPoints = s.daoPoints + Math.max(0, effect.amount);
+        const was = daoRankOf(s.daoPoints);
+        const now = daoRankOf(daoPoints);
+        const log = now > was ? [...s.log, { kind: "realm" as const, text: `Your ${DAO_NAME[s.hero.dao]} reaches ${DAO_RANKS[now].name}. What your hands knew, your mind now knows too.` }] : s.log;
+        return { ...s, daoPoints, log };
       }
       case "addCultivation":
         return { ...s, cultivation: tidy(s.cultivation + scaled(effect.amount, speed)) };
@@ -229,10 +242,10 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
   next = applyEffects(next, choice.effects, speed);
   const shortfall = realmShortfall(state.realm, choice.needsRealm);
   if (shortfall > 0) next = applyStrain(next, shortfall);
-  const mastery = realmSurplus(state.realm, choice.needsRealm) >= MASTERY_GAP ? MASTERY_GAIN : 0;
+  const mastery = realmSurplus(state.realm, choice.needsRealm) >= masteryGapFor(state.hero, MASTERY_GAP) ? MASTERY_GAIN : 0;
   // Walking back to a scene already seen teaches nothing, so shuttling between two hubs cannot farm cultivation.
   const fresh = !state.visited.includes(choice.next);
-  next = gainCultivation(next, scaled((fresh ? TONE_GAIN[choice.tone] : 0) + mastery, speed));
+  next = gainCultivation(next, scaled((fresh ? TONE_GAIN[choice.tone] + toneBonus(state.hero, choice.tone) : 0) + mastery, speed));
   next = applyAid(story, next);
   if (next.decisions % PAYDAY_EVERY === 0) next = payday(story, next);
   next = noticeSpeed(state, next, story);

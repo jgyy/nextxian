@@ -1,5 +1,6 @@
 import type { HeroField } from "@/engine/hero";
 import type { Tier } from "@/engine/types";
+import { daoAsides, originAsides, talentAsides } from "./asides-path";
 
 type Lines = Record<Tier, string>;
 
@@ -9,6 +10,9 @@ type Lines = Record<Tier, string>;
  * Each is short, in her dry and exact voice, and says something she could only say to this hero.
  */
 export const heroAsides: Record<HeroField | "realm", Record<string, Lines>> = {
+  origin: originAsides,
+  talent: talentAsides,
+  dao: daoAsides,
   status: {
     outcast: {
       hostile: "No register holds your name, so no register can be blamed for you. I find that I am the only one left to blame, and I resent it.",
