@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { choose, createGame, currentBeat, getChoices, getScene } from "@/engine/game";
 import { mannerOf } from "@/engine/npc";
 import { restoreGame } from "@/engine/save";
@@ -35,6 +35,11 @@ function writeSave(state: GameState): boolean {
   }
 }
 
+/** Turns `*like this*` into italics, as the books write a card, a note or a remembered line. */
+function withEmphasis(text: string): ReactNode[] {
+  return text.split(/\*([^*]+)\*/).map((part, i) => (i % 2 === 1 ? <em key={i}>{part}</em> : part));
+}
+
 /** Renders one log entry. The same markup serves the stage and the backlog. */
 function Entry({ entry }: { entry: LogEntry }) {
   switch (entry.kind) {
@@ -53,7 +58,7 @@ function Entry({ entry }: { entry: LogEntry }) {
         </p>
       );
     case "narration":
-      return <p className="narration">{entry.text}</p>;
+      return <p className="narration">{withEmphasis(entry.text)}</p>;
     case "player":
       return (
         <p className="player-line">
@@ -67,7 +72,7 @@ function Entry({ entry }: { entry: LogEntry }) {
       return (
         <figure className="npc-line">
           <figcaption>{entry.speaker}</figcaption>
-          <blockquote>{entry.text}</blockquote>
+          <blockquote>{withEmphasis(entry.text)}</blockquote>
         </figure>
       );
   }

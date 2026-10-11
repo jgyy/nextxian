@@ -1,6 +1,6 @@
 # Canon
 
-The facts the story keeps, so that a scene written in Book Five agrees with one written in Book One. When two scenes disagree, this page decides. The `docs/plot-holes.md` ledger lists the contradictions that were fixed against it.
+The facts the story keeps, so that a scene written in Book Five agrees with one written in Book One. When two scenes disagree, this page decides. The `docs/PLOT_HOLES.md` ledger lists the contradictions that were fixed against it.
 
 ## Timeline
 
@@ -56,8 +56,24 @@ Each book after the first is a region and a hub. The player chooses which arcs t
 2. **The River of Ledgers**: the Censors, the Concord, Qinglian Ford. The Elder is summoned, and the Reserve is named.
 3. **The Drowned Library**: the Salt Coast. Where struck names wash up. The Concord decides to seal the abyss by sacrifice.
 4. **The Ash Steppe**: the Listeners, the Hollow Lotus, the first Listener’s tomb. What the founders did.
-5. **The Glass Sea and the Heavenly Stair**: ascension, and what the Ledger costs.
-6. **The Last Sealing**: the return to Azure Cloud, and the ending.
+5. **The Glass Sea and the Heavenly Stair**: ascension, and what the Ledger costs. The Stair is climbed by realm (the Nine Tiers), the Hall of the Ninth Night ends the Ceremony, and a lift carries the company down to the foothills.
+6. **The Last Sealing**: the return to Azure Cloud. Four arcs: the Ash Bridge (Captain Dur, Ren Qiao's post, Old Lin's path), the Ash Archive (Lin Yuan, forty days behind inward wards, the eight keys and the ninth), the Crimson Abyss (nine doors, one per verb) and the Last Sealing (Su Mengjiao, who asks the abyss's one question: *who is listening?*).
+
+### The realm ladder in canon
+
+Mortal, Qi Condensation, Foundation Establishment, Core Formation, Nascent Soul, Spirit Severing, Dao Seeking, Ascendant. The ward on the Ash Bridge bows only to Spirit Severing (realm 5) and above; the doors of the abyss read only Dao Seeking (realm 6); no sect has had an Ascendant (realm 7) for two hundred years. A cultivator who tries a deed beyond their realm pays for it (see strain in ARCHITECTURE.md).
+
+### The seven endings
+
+| Ending | What it asks |
+| --- | --- |
+| The Nine Verbs | all nine cards and Dao Seeking |
+| The Listener | Mengjiao's trust and Spirit Severing |
+| The Ascendant | Ascendant |
+| The Warden of the Mist | Dao Seeking |
+| The Price of the Hand | forcing it below Dao Seeking |
+| The Hollow Seat | karma below −30 and Core Formation |
+| The Closed Ledger | always open |
 
 ## Conventions for writers
 

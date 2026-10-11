@@ -10,6 +10,7 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 - **No Continue. Every scene fits one screen.** A scene’s body text, every extra paragraph and every NPC interjection included, stays at 200 words or fewer, and so does every NPC line. There are no page turns: a long stretch of the story is broken into scenes, and each scene ends in choices. The test suite fails if a cap is broken or a scene has no heading.
 - **Coloured choices.** Every decision has one of six tones: truth (jade), mercy (sky blue), inquiry (gold), deceit (violet), force (cinnabar) and quiet (grey). Each option wears its colour and names its tone, and a legend above the options explains them, so colour is never the only cue.
 - **Four or more options at every decision.** Options with unmet requirements stay visible, marked, and explain what is missing.
+- **The realm matters.** Cultivation is paced across six books and gates the story. Routes lock behind a realm (the Ash Bridge bows only to Spirit Severing, the abyss doors read only Dao Seeking), a choice tagged “beyond you” costs cultivation, qi and the Elder’s respect if you take it too early, and a deed far below your realm earns mastery. Every hub has a night of meditation. Seven endings depend on realm, the nine cards, the friends you kept and your karma.
 - **Cultivation.** You arrive as a **Mortal**. Every decision earns cultivation points (patience, study, truth and mercy earn more than force or lies), and enough points break you through eight realms: Mortal, Qi Condensation, Foundation Establishment, Core Formation, Nascent Soul, Spirit Severing, Dao Seeking and Ascendant. A breakthrough is logged on the stage and the Elder remarks on it. From Core Formation on, a heart demon holds back anyone whose karma has sunk below −30. Realms open a locked “cultivator’s way” at the crisis of every side road, and the Elder answers a cultivator differently from a mortal.
 - **Forty side roads, 1,010 new scenes.** Ten waysides branch off the main line, one per chapter from the gate to the sealing night, and each offers four roads. A road has an entry, four approaches of five scenes (each approach has its own tone), a hidden route of three scenes behind a high enough Insight, and a return scene that reports to the Elder. Every road is built from a short spec in `src/story/roads/` plus shared wording, so adding a road means adding one entry.
 - **A reactive Elder.** Elder Su has 98 scenarios. Each one has five lines chosen by her trust level, and every one has at least one memory override that reads what the player has done. Earlier choices override lines through memory flags, so a lie in Chapter One comes back later. She remembers what she has just heard, and she keeps count of the tones you choose: after three of your last four decisions share a tone, she names that manner once. Her respect for you now matters too: when it moves into a new band (contempt, unregarded, weighed, respected), she says so. Her panel shows her read of you, her attitude, her mood and her stats. She speaks unprompted when her suspicion, fear, a pattern in your past choices or a run of tones crosses a threshold, and in the return scenes of the side paths. She also reads your cultivation: she comments on mortals at the Law Hall and the abyss, names each breakthrough, answers a cultivator’s confession or threat differently from a mortal’s, and remarks on how many roads you have walked. Each road report has memory lines for the secret you found, the relic you kept, a run of lies, many roads walked and a cultivator’s standing.
@@ -28,6 +29,25 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 ![Ending](docs/screenshots/10-ending-desktop.png)
 ![Side path: the eastern peak](docs/screenshots/11-hermit-desktop.png)
 ![Backlog](docs/screenshots/12-backlog-desktop.png)
+
+### Realm gates, strain and endings
+
+![A realm tag on a choice that is beyond you, and a gate that is locked](docs/screenshots/22-realm-tags-desktop.png)
+![The strain line after forcing a ward above your realm](docs/screenshots/23-strain-desktop.png)
+![The final choice, mostly locked, for a Foundation cultivator](docs/screenshots/24-endings-locked-desktop.png)
+![The same choice for a Dao Seeking cultivator with nine cards](docs/screenshots/25-endings-open-desktop.png)
+![Ending: The Nine Verbs](docs/screenshots/26-ending-nine-verbs-desktop.png)
+![Book Six hub on a phone](docs/screenshots/27-book-six-hub-mobile.png)
+
+```mermaid
+flowchart LR
+  B1[Book I<br/>Foundation] --> B2[Book II<br/>Core Formation]
+  B2 --> B3[Book III<br/>Nascent Soul]
+  B3 --> B4[Book IV<br/>Spirit Severing]
+  B4 --> B5[Book V<br/>Dao Seeking]
+  B5 --> B6[Book VI<br/>bridge, archive, abyss, sealing]
+  B6 --> E{{seven endings<br/>by realm, cards, bonds, karma}}
+```
 
 ### Cultivation and the side roads
 
@@ -58,6 +78,8 @@ npm run dev        # http://localhost:3000
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint (Next.js rules) |
 | `npm run word-count` | Words written so far, by chapter and side path, against the 1,000,000-word goal |
+| `npm run check` | The validator and the continuity audit (dangling flags, dead conditions, time loops) |
+| `npm run simulate -- 40 diligent` | Random-walks the story (`thorough`, `diligent`, `forceful`, `hasty`) to find soft-locks and report realm and ending |
 
 ## Project layout
 
@@ -69,11 +91,13 @@ src/story/       chapters, side paths, the generated side roads, and the Elder�
 src/components/  React UI: the stage, the tone legend, the NPC, cultivation and stats panels
 app/             Next.js routes, layout and styles
 tests/           vitest suites
-scripts/         word-count tool
+scripts/         word count, story check, simulator
 ```
 
 ## Status
 
-The engine, NPC system, cultivation realms, visual novel UI, eleven chapters, twelve side paths and forty side roads are in place. Every scene stands on its own: there are no page turns, every scene has a heading, every decision has four or more tone-tagged choices, and every scene body is capped at 200 words.
+The engine, NPC system, cultivation realms, visual novel UI, six books and their endings are in place and playable from the first scene to seven endings. Every scene stands on its own: no page turns, a heading on every scene, four or more tone-tagged choices at every decision, and a 200-word cap on every scene body.
 
-The story has 1,297 scenes: 1,292 decision scenes and 5 endings. It offers 5,407 choices, each with a tone, and 98 NPC scenarios. The word count is 222,249, which is **22.22%** of the 1,000,000-word goal. The side roads are assembled from templates and per-road specs, so they read more uniformly than the hand-written chapters, and rewriting them scene by scene is the obvious next step. Adding content means adding scenes to `src/story/chapter-*.ts` or a side-path file, adding a road spec to `src/story/roads/specs-*.ts`, and the validator and word count update automatically. Every decision needs a tone, every new paragraph and NPC line must stay at 200 words or fewer, and every scene body (narration, extras and interjections together) must stay at 200 words or fewer.
+The story has 3,836 scenes (9 endings) and 15,677 choices, with 176 NPC scenarios. The word count is 723,436, which is **72.34%** of the 1,000,000-word goal. **The goal was not reached.** The last stretch of work went into making the story complete and valid (Book V’s finale, all of Book VI, the endings) and into making the realm matter, rather than into more words. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md) for the plot-hole count, which is also short of the 1,000 asked for: 884 found and fixed.
+
+The side roads of Book One are assembled from templates and read more uniformly than the hand-written chapters. The Book V finale and Book VI are compact (about 8,000 words) next to the sixteen-arc hubs before them, and are the obvious place to add more. The books and the canon are described in [docs/CANON.md](docs/CANON.md). Adding content means adding an arc under `src/story/books/<book>/`, registering it in `src/story/books/index.ts`, and running `npm run check`.
