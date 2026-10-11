@@ -18,7 +18,7 @@ The Elder gets down from the cart, and stands with her cloak whipping round her.
 Madam Ash’s letter is in your sleeve. It is eleven years old. It is addressed to a woman whose name you have never been told.
 Far off across the grass, a thin line of dust is rising.
 > truth | Wait at the cairn with the letter in your hand, and answer whoever comes. | border_a1s1
-> force | Take the cart through at once, before anyone can say you may not. | border_a2s1
+> force | Take the cart through at once, before anyone can say you may not. | border_a2s1 | needs:4
 > deceit | Look through the letter for something that would make a better introduction than the truth. | border_a3s1
 > quiet | Sit down on the grass beside the cairn, and wait for as long as it takes. | border_a4s1
 > inquiry | Hum the nine bars of the door that Pao wrote, and see who answers. | border_h1 |  | pao_door_written | You have not learned the door.
@@ -165,7 +165,7 @@ It closes behind you. The wind roars. The tall grass whips at the wheels. Within
 “Yes.”
 “I find I am enjoying it enormously,” says the Elder.
 Behind you, from the haze beyond the cairn, comes a high, thin, carrying sound, like a hawk’s cry, taken up and passed from throat to throat. It runs along the line of the horizon. It is the sound of thirty riders deciding to give chase.
-> force | Whip up the ponies. | border_a2s2
+> force | Whip up the ponies. | border_a2s2 | needs:4
 > truth | Look back. | border_a2s2
 > quiet | Hold on. | border_a2s2
 > inquiry | Ask Hao Lan which way is north. | border_a2s2
@@ -221,7 +221,7 @@ You look at him. You look at the grass.
 “That is also true,” says Temur. He nods. “The wind liked it. It is not a thing people say often.”
 He swings down.
 “Shall we begin again?”
-> force | Begin again. | border_a2s6
+> force | Begin again. | border_a2s6 | needs:4
 > truth | Say you are sorry. | border_a2s6
 > quiet | Dismount. | border_a2s6
 > mercy | Smile. | border_a2s6
@@ -259,7 +259,7 @@ You are given a bowl of hot salty milk-tea and a lump of hard cheese. You are to
 You do. Sarnai, on the other side of the fire, is looking at you over the rim of her own bowl. She has her chin on her knee.
 She winks.
 Somewhere on the dark grass, a long way off, a wolf howls. The wind, which has been rising all evening, takes up the sound and carries it on.
-> force | Eat. | border_a2s9
+> force | Eat. | border_a2s9 | needs:4
 > truth | Say good night. | border_a2s9
 > quiet | Look at the stars. | border_a2s9
 > mercy | Pass the bowl. | border_a2s9

@@ -18,7 +18,7 @@ Hao Lan stops on the top step. She has a way of going very still when she rememb
 “I was here once,” she says. “I was eleven. The Chancery sent me with a satchel of broken seals. A one-eyed man mended every one of them in front of me, and charged nothing, and told me that the only thing the Concord had ever made that was worth keeping was the knowledge of how to repair it.”
 The door opens before she has finished.
 > truth | Go in, and say your name to the master of the house. | mender_a1s1
-> force | Look at the back of the workshop, where a door is padlocked. | mender_a2s1
+> force | Look at the back of the workshop, where a door is padlocked. | mender_a2s1 | needs:3
 > deceit | Put on Hao Lan’s grey sash, and ask to audit the stock. | mender_a3s1
 > quiet | Follow the porters down to the pigment-mill. | mender_a4s1
 > inquiry | Tell Master Zhu what is written on the torn page you read in the bone-lamp. | mender_h1 |  | nine_yuling | You have not read the torn page.
@@ -114,7 +114,7 @@ The workshop has two doors. The front is propped open to let out the heat. The b
 “So the Concord is keeping something from itself,” says Ren.
 “Or from the master.”
 You look at the lock. It is a stout one, with a brass keyhole and a bar of black iron. You look at the window beside it, which is high, and barred, and not very well barred.
-> force | Break the bar. | mender_a2s2
+> force | Break the bar. | mender_a2s2 | needs:3
 > truth | Go and ask Master Zhu for the key. | mender_a2s2
 > deceit | Peel the strip carefully, and plan to paste it back. | mender_a2s2
 > quiet | Listen at the wall. | mender_a2s2
@@ -159,7 +159,7 @@ Master Zhu puts down his seal. He walks the length of the room, slowly, and knee
 He holds out a slice. Pip takes it.
 “I went to the town, to the magistrate. He was busy. I went again. I went four times.” His bright eye is dry. “I have been mending the Concord’s broken things for fifty years. It is a sign of what the Concord is that it could take a week to find out who had my boy.”
 He turns the eye on you. “Thank you for the door.”
-> force | Offer to find the clerk. | mender_a2s6
+> force | Offer to find the clerk. | mender_a2s6 | needs:3
 > truth | Say that it was not right, and that you are sorry. | mender_a2s6
 > mercy | Ask Pip how he is. | mender_a2s6
 > inquiry | Ask what the clerk wanted from the back room. | mender_a2s6
@@ -196,7 +196,7 @@ Master Zhu closes his eyes briefly, and opens them. “Then that is where your r
 “Seven?” says Hao Lan.
 Zhu looks at her. For the first time in the conversation he seems unsure.
 “Did I say seven?” he says.
-> force | Say that you will go to the Lamp. | mender_close | +mender_pip_freed
+> force | Say that you will go to the Lamp. | mender_close | +mender_pip_freed needs:3
 > truth | Say that you want to know what he knows. | mender_close | +mender_pip_freed
 > mercy | Tell Pip he was brave. | mender_close | +mender_pip_freed
 > quiet | Thank them, and leave. | mender_close | +mender_pip_freed

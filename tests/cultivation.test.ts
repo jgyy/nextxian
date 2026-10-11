@@ -174,3 +174,91 @@ describe("saves", () => {
     expect(views.some((v) => v.choice.next === "wayside_pilgrims")).toBe(true);
   });
 });
+
+describe("realm strain and mastery", () => {
+  const at = (sceneId: string, patch: Partial<GameState>): GameState => ({ ...createGame(story), sceneId, ...patch });
+  const pick = (state: GameState, next: string) => {
+    const view = getChoices(getScene(story, state.sceneId), state).find((v) => v.choice.next === next && v.available);
+    if (!view) throw new Error(`no open choice to ${next} in ${state.sceneId}`);
+    return choose(story, state, view.choice.id);
+  };
+
+  it("parses `needs:N` and rejects a realm that is not on the ladder", () => {
+    const forced = getScene(story, "bridge_entry").choices.find((c) => c.next === "bridge_force1");
+    expect(forced?.needsRealm).toBe(5);
+    expect(Math.max(...Object.values(story.scenes).flatMap((s) => s.choices.map((c) => c.needsRealm ?? 0)))).toBeLessThan(REALMS.length);
+  });
+
+  it("makes a force choice beyond the player's realm cost cultivation, qi and a strain line", () => {
+    const weak = at("bridge_entry", { realm: 3, cultivation: REALMS[3].threshold + 40, stats: { ...createGame(story).stats, qi: 80 } });
+    const after = pick(weak, "bridge_force1");
+    expect(after.cultivation).toBeLessThan(weak.cultivation);
+    expect(after.cultivation).toBeGreaterThanOrEqual(REALMS[3].threshold);
+    expect(after.stats.qi).toBeLessThan(weak.stats.qi);
+    expect(after.log.some((e) => e.kind === "strain")).toBe(true);
+  });
+
+  it("charges nothing to a player who is strong enough, and rewards one far beyond the ask", () => {
+    const equal = at("bridge_entry", { realm: 5, cultivation: REALMS[5].threshold });
+    const spent = pick(equal, "bridge_force1");
+    expect(spent.log.some((e) => e.kind === "strain")).toBe(false);
+    const master = at("bridge_entry", { realm: 7, cultivation: REALMS[7].threshold });
+    const ahead = pick(master, "bridge_force1");
+    expect(ahead.cultivation - master.cultivation).toBeGreaterThan(spent.cultivation - equal.cultivation);
+  });
+
+  it("shows the strain on a choice before it is taken", () => {
+    const view = getChoices(getScene(story, "bridge_entry"), at("bridge_entry", { realm: 2 })).find((v) => v.choice.next === "bridge_force1");
+    expect(view?.strain).toEqual({ needs: 5, gap: 3 });
+  });
+
+  it("gives no cultivation for walking back to a scene already seen", () => {
+    const seen = at("hub_b6", { visited: ["b6_gate"] });
+    const back = getChoices(getScene(story, "hub_b6"), seen)[0];
+    const first = choose(story, seen, back.choice.id);
+    const again = choose(story, { ...first, sceneId: "hub_b6" }, back.choice.id);
+    expect(again.cultivation).toBe(first.cultivation);
+  });
+});
+
+describe("the endings of Book Six", () => {
+  const stand = (patch: Partial<GameState> & { realm: number }): GameState => ({ ...createGame(story), sceneId: "lastseal_choice", ...patch });
+  const open = (state: GameState) =>
+    getChoices(getScene(story, "lastseal_choice"), state)
+      .filter((v) => v.available)
+      .map((v) => v.choice.next)
+      .sort();
+  const nine = Object.fromEntries([1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => [`card_${n}`, true]));
+
+  it("lets a Mortal do nothing but step back or close the ledger", () => {
+    expect(open(stand({ realm: 0 }))).toEqual(["end_ledger", "end_spent", "hub_b6"].sort());
+  });
+
+  it("opens the nine verbs only to a Dao Seeking cultivator who holds all nine cards", () => {
+    expect(open(stand({ realm: 5, flags: nine }))).not.toContain("end_nine");
+    expect(open(stand({ realm: 6, flags: { ...nine, card_9: false } }))).not.toContain("end_nine");
+    expect(open(stand({ realm: 6, flags: nine }))).toContain("end_nine");
+  });
+
+  it("offers the Warden's line to a Dao Seeking cultivator and the spent hand to anyone weaker", () => {
+    expect(open(stand({ realm: 6 }))).toContain("end_warden");
+    expect(open(stand({ realm: 6 }))).not.toContain("end_spent");
+    expect(open(stand({ realm: 5 }))).toContain("end_spent");
+    expect(open(stand({ realm: 5 }))).not.toContain("end_warden");
+  });
+
+  it("keeps the Ascendant ending for an Ascendant, and the hollow seat for a core carrying heavy karma", () => {
+    expect(open(stand({ realm: 6 }))).not.toContain("end_ascendant");
+    expect(open(stand({ realm: 7 }))).toContain("end_ascendant");
+    const dark = stand({ realm: 3 });
+    expect(open({ ...dark, stats: { ...dark.stats, karma: -60 } })).toContain("end_hollow");
+    expect(open({ ...dark, stats: { ...dark.stats, karma: 20 } })).not.toContain("end_hollow");
+    expect(open({ ...stand({ realm: 2 }), stats: { ...dark.stats, karma: -60 } })).not.toContain("end_hollow");
+  });
+
+  it("ends every ending scene without choices", () => {
+    const endings = Object.values(story.scenes).filter((s) => s.id.startsWith("end_"));
+    expect(endings.map((s) => s.id).sort()).toEqual(["end_ascendant", "end_hollow", "end_ledger", "end_listener", "end_nine", "end_spent", "end_warden"]);
+    for (const ending of endings) expect(ending.choices).toHaveLength(0);
+  });
+});

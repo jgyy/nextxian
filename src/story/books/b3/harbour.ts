@@ -16,7 +16,7 @@ The Wall is forty feet of pale limestone, and on every block, in rows as neat as
 Mei Qiu has not come down to the quay. She is standing on the sea steps at the north end with her back to the town, her iron bar in her hand, looking at the last block on the lowest course. It is the only one with fresh moss on it.
 “That is hers,” she says, without turning. “I have not read it since I was nine.”
 > truth | Walk the whole Wall with her, from the south end, and read every name. | harbour_a1s1
-> force | Ask what lies behind that block, and whether it could be opened. | harbour_a2s1
+> force | Ask what lies behind that block, and whether it could be opened. | harbour_a2s1 | needs:3
 > deceit | Tell the old woman chiselling at the south end that you have come as pilgrims. | harbour_a3s1
 > mercy | Take your hat off, and fall in beside the families on their way to the boats. | harbour_a4s1
 > inquiry | Say Ke-er’s name softly at the Wall, as you said Mei’s in the dark. | harbour_h1 |  | coast_ke_er_heard | You have not heard the voice in the Cut.
@@ -116,7 +116,7 @@ The block is smaller than the others, a square of dense grey stone set into the 
 “It is a vault,” says Mei Qiu. Her voice has no expression at all. “It is where they put her.”
 She has not moved. The iron bar hangs from her hand.
 “I do not know why you are asking,” she says to you. “But if you want to see, I will not stop you. I have been waiting nineteen years for someone to ask.”
-> force | Get a crowbar. | harbour_a2s2
+> force | Get a crowbar. | harbour_a2s2 | needs:3
 > truth | Ask her whether she wants it opened. | harbour_a2s2
 > quiet | Look for a seam. | harbour_a2s2
 > mercy | Say you will not do it without her leave. | harbour_a2s2
@@ -160,7 +160,7 @@ Lu takes the key from his belt. It is a plain iron key, the length of a hand, wi
 “That is not what I was told.”
 “Then you were told wrong. Warden, I have spent nineteen years in the Seal Office. I have read the founding treatise. Walls fall when they are weak, not when they are open.” She says this with the confidence of a woman who is not quite sure. “I will stand in front of it. If anyone is crushed, it will be me.”
 Warden Lu laughs, unexpectedly, a short bark. “That is a poor safeguard.”
-> force | Offer to stand with her. | harbour_a2s6
+> force | Offer to stand with her. | harbour_a2s6 | needs:3
 > truth | Say that you will bear the blame. | harbour_a2s6 | +harbour_took_blame
 > quiet | Say nothing. | harbour_a2s6
 > deceit | Say that the Concord has authorised it. | harbour_a2s6
@@ -196,7 +196,7 @@ You do not look at it long.
 Warden Lu has dropped to his knees. “I was told never,” he says. “I was told.”
 “I know,” says Mei Qiu, without turning. “It was not your fault.” Then, very quietly, to the stone: “Ke-er. It’s Mei. I came back. I am sorry it took so long.”
 The hum stops. For a long time there is only the lap of water.
-> force | Close the block. | harbour_close | +harbour_opened
+> force | Close the block. | harbour_close | +harbour_opened needs:3
 > truth | Wait with her. | harbour_close | +harbour_opened
 > quiet | Step back. | harbour_close | +harbour_opened
 > mercy | Say a name for the child. | harbour_close | +harbour_opened

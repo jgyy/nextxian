@@ -20,7 +20,7 @@ The ribbons stir, though there is no wind.
 Duan Wuyi has gone white. He is looking at the empty tenth stone, at the end of the ring. A tall old man in a felt cloak is looking at him.
 “Censor-General,” says the old man. “You read the law. We would like you to sit.”
 > truth | Tell Duan that the law is the one thing he has ever brought that they lack. | court_a1s1
-> force | Watch the big man at the edge of the ring, the one who is rubbing grease into his arms. | court_a2s1
+> force | Watch the big man at the edge of the ring, the one who is rubbing grease into his arms. | court_a2s1 | needs:4
 > deceit | Look at the ribbons. Ask Hao Lan how a pole that cannot be lied to can be fooled. | court_a3s1
 > mercy | Look for the woman in the black felt coat at the edge of the ring, who has not looked at the prisoner once. | court_a4s1
 > inquiry | Say that Qadan has a daughter, and that her name was bought back at the lake. | court_h1 |  | bone_credit | You have not yet bought back the name of anyone’s daughter.
@@ -161,7 +161,7 @@ He is called Bat, and he is the largest man you have seen on the Steppe. He stan
 “Then the debt is doubled.”
 You look at Qadan, on his knees by the pole. Nobody has volunteered. He is a grey little clerk. He is not going to be anyone’s champion.
 Ren Qiao, beside you, says in a voice you have never heard from him: “Oh, no.”
-> force | Look at him. | court_a2s2
+> force | Look at him. | court_a2s2 | needs:4
 > truth | Say nothing. | court_a2s2
 > quiet | Step back. | court_a2s2
 > mercy | Ask what is wrong. | court_a2s2
@@ -223,7 +223,7 @@ Ren Qiao lies on his back, panting, beside the champion, his chest heaving. Bat 
 “Sorry,” says Ren Qiao, gasping.
 “Is not allowed.”
 “I know.”
-> force | Cheer. | court_a2s6
+> force | Cheer. | court_a2s6 | needs:4
 > truth | Call the foul. | court_a2s6
 > quiet | Smile. | court_a2s6
 > mercy | Call the foul yourself. | court_a2s6
@@ -269,7 +269,7 @@ The crowd is utterly silent. A hawk wheels overhead.
 The grey man looks up. His face is wet. “I cannot.”
 “You can. It is three times round the ring. You weigh nothing.” Ren Qiao’s scarred face is stern. “It is the debt. Not mine. His. I am only the one who carries it.”
 Qadan climbs, with infinite clumsiness, onto the back of the swordsman. Ren Qiao gets to his feet. He is shaking. He walks slowly round the ring in the dust, once, twice, three times, with the spy of the Garrison on his back, and nobody says a word.
-> force | Watch. | court_a2s9
+> force | Watch. | court_a2s9 | needs:4
 > truth | Walk beside them. | court_a2s9
 > quiet | Look at Saran. | court_a2s9
 > mercy | Weep. | court_a2s9

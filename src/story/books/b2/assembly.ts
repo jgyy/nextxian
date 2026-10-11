@@ -31,7 +31,7 @@ Herald Yan strikes the gong. The sound rolls round the dome like a bird.
 +[seat] silk_petition_entered | In the rafters, a bolt of undyed silk hangs unrolled, stitched with names. The weavers entered it themselves.
 > truth | Sit up straight, and look at the delegates one by one. | asm_d1s1
 > mercy | Look at the Elder, to be sure she is breathing. | asm_d1s1
-> force | Look at the high table, and do not blink. | asm_d1s1
+> force | Look at the high table, and do not blink. | asm_d1s1 | needs:2
 > quiet | Study the hall, and count the exits. | asm_d1s1
 
 === asm_d1s1 | The Charge
@@ -126,6 +126,9 @@ The second day opens with rain on the dome. The benches are full. Three witnesse
 +[w] asm_w_gui | Master Gui sits with his stick across his knees, his face turned toward the dome.
 +[w] asm_w_mei | Inspector Mei stands at the back wall, her iron bar at her side, and does not look at anyone.
 +[w] asm_w_wen | A small grey man in a brown robe sits quietly near the door, without a mark on his forehead.
++[w] asm_w_gu | Gu Hanzhen sits on the bench with his hands between his knees, and has not stopped looking at the door.
++[w] asm_w_ren | Ren Qiao stands at the end of the row in his patched coat, with the lantern he carried for fourteen.
++[w] asm_w_su | Elder Su sits at the end of the delegation’s bench, upright, with her second ledger on her knee.
 > truth | Call Xiao Ye and Bai Dao, of Willow Reach. | asm_wye1 |  | willow_name_back & !asm_w_ye | You did not meet them at the Reach, or they are already heard.
 > mercy | Call Bo Lan and his mother, of Kuan Landing. | asm_wbo1 |  | assize_free & !asm_w_bo | You did not stand with them at the assize, or they are already heard.
 > inquiry | Call Master Gui, Head Archivist of the Nine. | asm_wgu1 |  | nine_gui_ally & !asm_w_gui | You did not climb the tower far enough to meet him, or he is already heard.
@@ -135,6 +138,9 @@ The second day opens with rain on the dome. The benches are full. Three witnesse
 > quiet | Call Captain Hu, of the Canal Watch. | asm_whu1 |  | lanterns_hu_stood_down & !asm_w_hu | The Captain did not take his helmet off, or he is already heard.
 > inquiry | Call Inspector Mei, Seal Inspector of the Concord. | asm_wme1 |  | barge_mei_ally & !asm_w_mei | She has not promised anything, or she is already heard.
 > truth | Call Wen Rui, formerly of the Seventh Chancery. | asm_wwe1 |  | vault_wen_written & !asm_w_wen | His name has not been written back, or he is already heard.
+> truth | Call Gu Hanzhen, who followed her down the abyss path. | asm_whz1 |  | !asm_w_gu | He has already spoken.
+> mercy | Call Ren Qiao, who held the lantern for the fourteen. | asm_wre1 |  | !asm_w_ren | He has already spoken.
+> inquiry | Call Elder Su, who signed the fourteen names. | asm_wsu1 |  | !asm_w_su | She has already spoken.
 > quiet | Call no one else. The three who have spoken are enough. | asm_d2end |  | count:asm_w_>=3 | Three witnesses must be heard before the bench is closed.
 
 === asm_wye1 | The Toll of a Name
@@ -340,6 +346,62 @@ A shiver passes round the Censors’ bench. Duan Wuyi's face is unreadable. He s
 > mercy | Help him back to his seat. | asm_hub_back | +asm_w_wen
 > quiet | Watch the door. | asm_hub_back | +asm_w_wen
 > inquiry | Ask Hao Lan whether the Assembly will hear Madam Ash. | asm_hub_back | +asm_w_wen
+
+=== asm_whz1 | A Tea-Stall Boy
+Gu Hanzhen goes to the witness table with his shoulders hunched, as a boy goes to be beaten. He is nineteen. He has his mother’s cracked cup in his pack, and does not know what to do with his hands.
+“My brother was taken in the levy the year of the Sealing,” he says. “I was four. Nobody told me where. My mother kept the lamp lit.” He swallows. “I followed a woman in grey down the abyss path, because I thought she knew.”
+“And did she?” asks a Censor, not unkindly.
+“She knew what I did not,” says Gu. “That it was a path.”
+> truth | Stand beside him. | asm_whz2 | +asm_w_gu bond:gu+2
+> mercy | Hold his pack for him. | asm_whz2 | +asm_w_gu bond:gu+2
+> inquiry | Watch the Censors. | asm_whz2 | +asm_w_gu
+> quiet | Nod. | asm_whz2 | +asm_w_gu
+
+=== asm_whz2 | What the Boy Asked
+“I would like the Concord to know,” says Gu, and his voice cracks, and he goes on, “that I am not angry. I thought I should be. I have been looking for it for a month. All I have found is that I would like my brother’s name written somewhere that is not a ledger of the levy.”
+A scribe in the front row puts down his brush. Another picks it up.
+“It will be written,” says Herald Yan, in a voice nobody has heard from him before.
+> truth | Thank him. | asm_hub_back | +asm_w_gu
+> mercy | Help him back to the bench. | asm_hub_back | +asm_w_gu
+> inquiry | Watch Duan Wuyi write. | asm_hub_back | +asm_w_gu
+> quiet | Look at the dome. | asm_hub_back | +asm_w_gu
+
+=== asm_wre1 | The Lantern
+Ren Qiao does not go to the table. He stands where he is, and lifts the old lantern, and holds it up. It is a dented thing of tin and horn. The glass has been cracked and mended with wax.
+“I held this for fourteen,” he says. “I was seventeen. I held it as far as the third door. I was told it was a mercy to hold the light for them, and I believed it, and I have spent fifteen years deciding whether I was right.”
+He sets the lantern down on the dais.
+“I was not,” he says. “But I held it steady.”
+> truth | Stand with him. | asm_wre2 | +asm_w_ren bond:ren+2
+> mercy | Say nothing, and let him finish. | asm_wre2 | +asm_w_ren bond:ren+2
+> inquiry | Watch the Law Hall’s delegation. | asm_wre2 | +asm_w_ren
+> quiet | Look at the lantern. | asm_wre2 | +asm_w_ren
+
+=== asm_wre2 | What the Warden Asked
+“There are fourteen names on a ledger,” says Ren. “I would like each read aloud. I held the lantern for them, and I did not hear them speak.”
+Herald Yan reads them. It takes six minutes. Nobody leaves. When the last is done, the hall is quiet in a way it has not been all day, and Ren Qiao picks up his lantern and goes back to his place with his head up.
+> truth | Thank him. | asm_hub_back | +asm_w_ren
+> mercy | Walk him back. | asm_hub_back | +asm_w_ren
+> inquiry | Watch Lian Sheng. | asm_hub_back | +asm_w_ren
+> quiet | Sit. | asm_hub_back | +asm_w_ren
+
+=== asm_wsu1 | The Registrar
+Elder Su goes to the table with her ledger shut under her arm. Her face is quite composed. Her hands, you notice, are not. She tells it the way she writes it: plainly, in order, without excuse.
+“Fourteen disciples were sent down the abyss path on the Sealing Night. Each order bore my signature. I wrote my name beneath the fourteenth, and did not write Su Mengjiao’s. I told myself it was a clerical economy.”
+“And now?” asks a Censor.
+“Now I think it was the first dishonest thing I ever did,” says the Elder, “and I have been doing it since.”
+> truth | Stand beside her. | asm_wsu2 | +asm_w_su
+> mercy | Offer her your arm. | asm_wsu2 | +asm_w_su
+> inquiry | Watch Duan Wuyi. | asm_wsu2 | +asm_w_su
+> quiet | Keep still. | asm_wsu2 | +asm_w_su
+
+=== asm_wsu2 | The Second Ledger
+She opens the book she has kept for fifteen years. She does not read from it. She holds it up, and then, with great care, lays it on the table, open, so the Concord can see it is full.
+“I have recorded what the Law sentenced,” she says. “In this one, I have recorded what I felt. I do not ask the Concord to read it. I ask only that it be known to exist.”
+Duan Wuyi rises. He bows to her. It is the deepest bow you have seen him give.
+> truth | Thank her. | asm_hub_back | +asm_w_su
+> mercy | Close the book for her. | asm_hub_back | +asm_w_su
+> inquiry | Watch the Censors’ faces. | asm_hub_back | +asm_w_su
+> quiet | Look at the dome. | asm_hub_back | +asm_w_su
 
 === asm_hub_back | A Pause in the Hall
 The clerks change the candle. The delegates shift on the benches. A servant moves among them with a tray of tea. The dome overhead has gone from grey to a low pale gold, and the rain has stopped.

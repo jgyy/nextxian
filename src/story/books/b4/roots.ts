@@ -19,7 +19,7 @@ The black ribbons lead in. They are tied to every post.
 A woman steps out of the nearest tent to look at you. She is thirty, thin, tired, in a coat that has been mended in nine colours. She looks at your face. She looks at the Elder’s. She does not seem to see either.
 “Are you looking for someone?” she says. “Because I do not think anyone here has a name.”
 > truth | Ask her what she is called. | roots_a1s1
-> force | Notice the men in grey felt who have stepped out from between the tents, each with a short club. | roots_a2s1
+> force | Notice the men in grey felt who have stepped out from between the tents, each with a short club. | roots_a2s1 | needs:4
 > deceit | Notice that nobody in the camp seems to see the Elder, or Duan, or you, and wonder why. | roots_a3s1
 > mercy | Look at the child who is sitting alone in the dust and writing in it with a stick. | roots_a4s1
 > inquiry | Show the black ribbon Madam Ash gave you, and ask for Wen Rui. | roots_h1 |  | lotus_trusted | The Hollow Lotus does not know your face.
@@ -157,7 +157,7 @@ There are forty of them, in a half-ring, between you and the cliff. They wear co
 “The list of people the keeper has said can come in.” He frowns. “You are not on it.” He thinks. “Nobody is.”
 Ren Qiao has stepped up to your side. His hand is resting on his sword-hilt. He has not drawn. He is looking at the giant with the quiet attention of a man weighing a door. “I am willing to talk,” he says. “I am also willing to be less polite.”
 “I wouldn’t,” says the giant, mildly.
-> force | Lay a hand on Ren’s arm. | roots_a2s2
+> force | Lay a hand on Ren’s arm. | roots_a2s2 | needs:4
 > truth | Ask for the keeper. | roots_a2s2
 > quiet | Watch the line. | roots_a2s2
 > mercy | Ask why they are afraid. | roots_a2s2
@@ -216,7 +216,7 @@ You walk. Ren Qiao walks. The twelve walk. Tolui stands at the end of the line w
 He steps aside.
 One by one, the others follow. The line breaks like a rope. You walk through it as through a field of tall grass, and nobody lifts a hand.
 It is the quietest battle you have ever won.
-> force | Walk on. | roots_a2s6
+> force | Walk on. | roots_a2s6 | needs:4
 > truth | Thank them. | roots_a2s6
 > quiet | Hold your breath. | roots_a2s6
 > mercy | Look back. | roots_a2s6
@@ -261,7 +261,7 @@ It does not break. It parts, as water parts round a stone. Wen Rui staggers. His
 He is silent for a long time. Behind him the cliff rises, huge and torn, red as a wound. The names of the struck are rustling in the camp, a low drone, a hum of three hundred and eleven voices at the Morning Telling.
 “How long?” says Wen Rui.
 “Until I have been to the mountain.”
-> force | Offer your hand. | roots_a2s9
+> force | Offer your hand. | roots_a2s9 | needs:4
 > truth | Say a month. | roots_a2s9
 > quiet | Wait. | roots_a2s9
 > mercy | Say you will come back. | roots_a2s9

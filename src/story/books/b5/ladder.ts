@@ -23,7 +23,7 @@ The number shows on a dial. A clerk reads it aloud, and writes it on the pilgrim
 At the head of the queue the clerk lifts his eyes. He sees your armbands.
 “Next,” he says.
 > truth | Step onto the pan, and say what you owe. | ladder_a1s1
-> force | Study the beam, and the pins that hold it to the pillars. | ladder_a2s1
+> force | Study the beam, and the pins that hold it to the pillars. | ladder_a2s1 | needs:4
 > deceit | Study the barrels, and the boys who roll them across the court. | ladder_a3s1
 > mercy | Notice an old man in the queue, bent double under a bundle, whom the line is passing by. | ladder_a4s1
 > inquiry | Lay the first card on the pan, and say what it asks. | ladder_h1 |  | card_1 | You hold no card that carries weight.
@@ -176,7 +176,7 @@ Ren Qiao studies them from a shed roof with a spyglass. He has been at it for an
 “Because it’s a lie.” His scarred face is hard. “It makes a number. It says: *this much a person costs.* It lets people feel it is arithmetic. As if a child had a weight.”
 “It does.”
 “It shouldn’t.” He raises the glass again. “Nothing alive should be priced to the ounce.”
-> force | Agree. | ladder_a2s2
+> force | Agree. | ladder_a2s2 | needs:4
 > truth | Say it is evidence. | ladder_a2s2
 > quiet | Study the court. | ladder_a2s2
 > mercy | Ask about Oyun. | ladder_a2s2
@@ -237,7 +237,7 @@ The camp has heard. Lights are springing up in the tents. A bugle begins to blow
 “Run,” says Ren Qiao.
 Oyun is standing in the middle of the court, with the red ash round his ankles, looking at the wreck of his life’s work. He is smiling.
 “Go on,” he says. “I shall explain.”
-> force | Run. | ladder_a2s6
+> force | Run. | ladder_a2s6 | needs:4
 > truth | Stay. | ladder_a2s6
 > quiet | Look at the ash. | ladder_a2s6
 > mercy | Take his arm. | ladder_a2s6
@@ -285,7 +285,7 @@ The clerk stares at his clipboard. He looks at the long file of pilgrims. He loo
 “Why not?”
 “It’s only a number.” He scribbles. “I suppose that’s all it ever was.”
 Behind him the Stair goes up. The pilgrims climb it, in white, in the sun, and at each step the glass rings. It is a clear sweet note, like a bell, and it carries a very long way.
-> force | Smile. | ladder_a2s9
+> force | Smile. | ladder_a2s9 | needs:4
 > truth | Applaud. | ladder_a2s9
 > quiet | Listen. | ladder_a2s9
 > mercy | Follow them up. | ladder_a2s9

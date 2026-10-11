@@ -19,7 +19,7 @@ Temur has dismounted. He stands at the road’s edge with his hat in his hand. �
 A tiny old woman at the end of the line looks up. She has a face like a dried plum. She sees you.
 She beckons.
 > truth | Join them. | vigil_a1s1
-> force | Notice the cordon of Garrison riflemen drawn across the road a mile ahead. | vigil_a2s1
+> force | Notice the cordon of Garrison riflemen drawn across the road a mile ahead. | vigil_a2s1 | needs:4
 > deceit | Notice a file of laundresses with baskets, passing in the opposite direction, and ask Yue what they carry. | vigil_a3s1
 > mercy | Take a candle from the old woman’s basket, and fall in at her side. | vigil_a4s1
 > inquiry | Say that you have a name for the Colonel’s wife. | vigil_h1 |  | b4q_bone | You have not yet been given Madam Uzun’s slip of grey paper.
@@ -160,7 +160,7 @@ You look along the road. The women are a moving ribbon of small lights, coming u
 “I don’t want them to wait.”
 Temur turns his head, slowly. “What do you want?”
 “I want to open the road,” you say.
-> force | Plan. | vigil_a2s2
+> force | Plan. | vigil_a2s2 | needs:4
 > truth | Say it plainly. | vigil_a2s2
 > quiet | Look at the ranks. | vigil_a2s2
 > mercy | Think of the soldiers. | vigil_a2s2
@@ -220,7 +220,7 @@ You pass Dolgor. He stands at the roadside, with his arms hanging. His face is g
 “No.” His laugh is cracked. “I forgot. There’s that.” He rubs his scarred cheek. “It’s a thought.”
 You walk on. You go up the long hill, with four hundred women, in a river of small flames. At the top the fort rises before you, grey and squat against the stars. The gates are shut. The walls are black. A single great bell hangs from a gibbet, over the arch.
 A white-haired man on a grey horse is sitting alone in the road below it, waiting.
-> force | Go on. | vigil_a2s6
+> force | Go on. | vigil_a2s6 | needs:4
 > truth | Stop. | vigil_a2s6
 > quiet | Hold your candle. | vigil_a2s6
 > mercy | Look at him. | vigil_a2s6
@@ -266,7 +266,7 @@ He stares down at her.
 She sets her candle on the ground. She folds her hands. She waits.
 And there is a silence in which you can hear the bell creak on its gibbet, and a horse stamp, and a small dry crack from the stones of the fort as the cold falls.
 Then the Colonel, with a trembling hand, says: “Sergeant. Open the gate.”
-> force | Step back. | vigil_close | +vigil_gate
+> force | Step back. | vigil_close | +vigil_gate needs:4
 > truth | Look at Altai. | vigil_close | +vigil_gate
 > quiet | Watch. | vigil_close | +vigil_gate
 > mercy | Weep. | vigil_close | +vigil_gate

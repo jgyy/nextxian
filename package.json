@@ -10,7 +10,9 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "word-count": "tsx scripts/word-count.ts"
+    "word-count": "tsx scripts/word-count.ts",
+    "check": "tsx scripts/check.ts",
+    "simulate": "tsx scripts/simulate.ts"
   },
   "dependencies": {
     "next": "16.4.0",

@@ -17,7 +17,7 @@ At the quarter’s mouth a crowd stands around a house that is no longer there. 
 A woman leaning on a bollard turns her head. She is thirty-five or so, in a sea-coat the colour of tar, with a scar through one eyebrow and a smile she is not wasting on anyone yet.
 “You’re the witness,” says Yue Zhaoning. “The one who stood a river on its head. I’d buy you a drink, but I’d like to see which way you jump first.”
 > truth | Ask Madam Qi, the guildmaster, what the guild wants, and offer to carry it to the Assembly. | silk_a1s1 | +silk_a1
-> force | Go with Yue Zhaoning to the blockade the Concord has put across the quarter's canal. | silk_a2s1 | +silk_a2
+> force | Go with Yue Zhaoning to the blockade the Concord has put across the quarter's canal. | silk_a2s1 | +silk_a2 needs:2
 > deceit | Offer to deal with the Concord's assessor, who is making an accounting of the loss. | silk_a3s1 | +silk_a3
 > inquiry | Walk the burned stilts at low tide, and see who set the fire. | silk_a4s1 | +silk_a4
 > mercy | Hold out your wrist, where a red cord is tied, and ask Yue Zhaoning if she knows the knot. | silk_h1 |  | dep_cord | You wear no cord that a smuggler could read.
@@ -111,7 +111,7 @@ The Concord has thrown a chain across the quarter’s canal. Not a metaphor: a g
 “Until the loss is assessed,” the clerk is announcing, in a cracked voice, “no vessel may leave the quarter.”
 Yue Zhaoning stands in the prow of her narrow black boat with her coat blown back and a long pole in her hand. She has the look of a woman who is deciding between two pleasures.
 “You’re an honest witness,” she says. “I could use one. I’m going to cut the chain.”
-> force | Climb aboard. | silk_a2s2 | +silk_met_yue
+> force | Climb aboard. | silk_a2s2 | +silk_met_yue needs:2
 > truth | Tell her cutting a Concord chain will bring the whole quarter down on her. | silk_a2s2 | +silk_met_yue
 > inquiry | Ask what is in the dyers' barges that matters so much. | silk_a2s2 | +silk_met_yue
 > deceit | Offer to distract the clerk while she works. | silk_a2s2 | +silk_met_yue
@@ -152,7 +152,7 @@ Yue Zhaoning has stopped whooping. She is looking at the cloth with a face you c
 “So,” she says. “That’s where it went.”
 > truth | Ask her what she means. | silk_a2s6
 > inquiry | Ask who stitched them. | silk_a2s6
-> force | Tell her you're keeping it. | silk_a2s6
+> force | Tell her you're keeping it. | silk_a2s6 | needs:2
 > quiet | Say nothing, and wrap it up again. | silk_a2s6
 
 === silk_a2s6 | Yue’s Cargo
@@ -182,7 +182,7 @@ By dawn the Concord’s clerk has filed his report, the dyers have taken their m
 Yue Zhaoning has her arms folded and her chin up. Ren Qiao is looking at the sky.
 “I am also obliged to say,” Duan continues, with a faint curve of his lips, “that I did not see. I arrived a moment ago.”
 > truth | Say you were aboard, and you take responsibility. | silk_close | +silk_chain_cut +silk_a2_owned
-> force | Say the chain deserved it. | silk_close | +silk_chain_cut
+> force | Say the chain deserved it. | silk_close | +silk_chain_cut needs:2
 > quiet | Say nothing, and let Yue Zhaoning answer. | silk_close | +silk_chain_cut
 > mercy | Say it was the post that fell, and no one's fault. | silk_close | +silk_chain_cut
 

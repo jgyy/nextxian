@@ -17,7 +17,7 @@ Madam Ash has brought you herself. She has changed her gown for a grey one with 
 “I do not vote,” she says. “I never have. I convene. I keep the minutes. I want you to know that I will say nothing in your favour, and nothing against.” Her hand tightens on the rail. “It is the only way it can be fair.”
 Five faces turn as you enter. Some you know. Some you do not.
 > truth | Sit in the sixth chair, and say you will answer anything. | lotus_a1s1
-> force | Look at the big scarred man at the end of the table, who has not stood. | lotus_a2s1
+> force | Look at the big scarred man at the end of the table, who has not stood. | lotus_a2s1 | needs:3
 > deceit | Look at the ledgers in front of each member, and think what they could mean. | lotus_a3s1
 > quiet | Ask if you may speak to each of them alone before the vote. | lotus_a4s1
 > inquiry | Lay the seven cards on the table, in order, and read them aloud. | lotus_h1 |  | mourning_cards_seen | You have not yet read the seven lines.
@@ -141,7 +141,7 @@ You walk the length of the cellar. You stop in front of him. He looks you up and
 “Everyone in this room is a child,” says Captain Kou. “It is the whole trouble. We were children when they struck us, and we have been children ever since.” He grins, with a flash of crooked teeth. “Do you want to sit? I do not mind.”
 Madam Ash, at the door, says in a low voice: “Captain.”
 “What? I am being hospitable.”
-> force | Stay where you are. | lotus_a2s2
+> force | Stay where you are. | lotus_a2s2 | needs:3
 > truth | Tell him what you want. | lotus_a2s2
 > quiet | Look at his hands. | lotus_a2s2
 > inquiry | Ask how he lost the ear. | lotus_a2s2
@@ -189,7 +189,7 @@ Captain Kou rolls up his sleeves. His forearms are the size of hams. He circles 
 You have no weapon, and no training, and nothing but a scar. You think of the Elder’s hands on the comb. You think of the river village, where you carried water up a hill. You think of Ke-er.
 He swings.
 It is a slow, enormous, almost lazy blow, meant to be seen coming. You step inside it.
-> force | Duck. | lotus_a2s6
+> force | Duck. | lotus_a2s6 | needs:3
 > truth | Take the hit. | lotus_a2s6
 > quiet | Step back. | lotus_a2s6
 > mercy | Say stop. | lotus_a2s6
@@ -228,7 +228,7 @@ She does not look at you. She looks at the ceiling, at the lamp, at her own fold
 She draws a deep breath.
 “The Lotus will stand with the ninth,” she says. “Not under her. With her. Let it be so minuted.”
 Hao Lan, who has been standing unobserved by the door with a pencil, writes it down. Her hand is trembling.
-> force | Look at Ash. | lotus_close | +lotus_trusted
+> force | Look at Ash. | lotus_close | +lotus_trusted needs:3
 > truth | Thank the Court. | lotus_close | +lotus_trusted
 > quiet | Take Kou’s hand again. | lotus_close | +lotus_trusted
 > mercy | Smile at Mei. | lotus_close | +lotus_trusted

@@ -20,7 +20,7 @@ The Reader goes ahead of you with her lamp. She does not hurry. She is explainin
 She stops under a green lamp. A tall shelf of boxes stands before her. She lays her small hand on the nearest.
 “Everyone who comes here wants to read,” she says. “I have been waiting to see what you will do.”
 > truth | Ask her to show you the leaves you hold. | stacks_a1s1
-> force | Ask where the locked stacks are, and who locked them. | stacks_a2s1
+> force | Ask where the locked stacks are, and who locked them. | stacks_a2s1 | needs:3
 > deceit | Ask Hao Lan whether a copy of a name is the same as a reading. | stacks_a3s1
 > quiet | Sit down on the gallery floor, and ask the paper staff how long they have waited. | stacks_a4s1
 > inquiry | Ask the Reader about the girl who is under the Wall. | stacks_h1 |  | harbour_ke_er_spoke | You have not heard Ke-er speak.
@@ -141,7 +141,7 @@ The Reader stops at the bars. She lays her small palm against one. “These are 
 “Inspector Fang. Last spring.”
 A big brass lock hangs on the gate. It is as large as a fist. There is a small stamp pressed into the wax: a closed eye, ringed in white. Beside it, a smaller one. It shows an open hand.
 Shu Ning breathes in sharply. “That’s a ward-chain mark.”
-> force | Try the gate. | stacks_a2s2
+> force | Try the gate. | stacks_a2s2 | needs:3
 > truth | Ask what it holds. | stacks_a2s2
 > quiet | Study the lock. | stacks_a2s2
 > inquiry | Ask Shu Ning. | stacks_a2s2
@@ -193,7 +193,7 @@ They are all there. Each one is a voice. Each one is a leaf with a single line: 
 “Yes,” says the Reader.
 “There are thousands.”
 “Forty thousand and twelve,” says the Reader. “I have counted.”
-> force | Read one. | stacks_a2s6
+> force | Read one. | stacks_a2s6 | needs:3
 > truth | Close the sleeve. | stacks_a2s6
 > quiet | Hold the lamp. | stacks_a2s6
 > mercy | Weep. | stacks_a2s6
@@ -233,7 +233,7 @@ It writes. It writes on the stone, with the nib, in great sweeping letters, in t
 “It is a protection,” says Hao Lan, wonderingly. “It was set to keep the leaves from being burned. It would never have harmed us. It was only waiting to be told that we were friends.”
 The Warden writes again.
 FRIENDS?
-> force | Say yes. | stacks_close | +stacks_warden
+> force | Say yes. | stacks_close | +stacks_warden needs:3
 > truth | Say we mean no harm. | stacks_close | +stacks_warden
 > quiet | Bow. | stacks_close | +stacks_warden
 > mercy | Hold out your hand. | stacks_close | +stacks_warden

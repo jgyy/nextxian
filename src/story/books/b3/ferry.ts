@@ -18,7 +18,7 @@ She is perhaps twenty-three, short, broad-shouldered, and so tanned that she loo
 “Customer,” she says. “Or inspector. You look like both.”
 Her eyes are the same pale grey as Madam Ash’s.
 > truth | Pay the copper, and say you would like to talk. | ferry_a1s1
-> force | Look at the skiff tied behind the ferry, and the man in it with a ledger. | ferry_a2s1
+> force | Look at the skiff tied behind the ferry, and the man in it with a ledger. | ferry_a2s1 | needs:3
 > deceit | Say you are a salt-buyer from the river, and show Hao Lan’s order. | ferry_a3s1
 > mercy | Offer to help with the loading. | ferry_a4s1
 > inquiry | Show her the tally-stamp on the barrel from Foreman Ba’s hut. | ferry_h1 |  | mender_found_dust | You have not seen the barrels.
@@ -125,7 +125,7 @@ Gang raises a plump hand and waves. “Morning, Zhi!” he calls. “Fine day fo
 He chuckles at his own wit. His abacus clicks.
 Ah Zhi does not return the wave. Her jaw is set.
 “I would like to hit him,” she says. “I have wanted to hit him for four years. I do not do it because he has the paper.”
-> force | Say you will hit him for her. | ferry_a2s2
+> force | Say you will hit him for her. | ferry_a2s2 | needs:3
 > truth | Ask what is in the ledger. | ferry_a2s2
 > quiet | Watch the skiff. | ferry_a2s2
 > inquiry | Ask how he keeps it. | ferry_a2s2
@@ -173,7 +173,7 @@ Gu, shaking, takes the factor’s arm. “Please,” he says. “Please let go.�
 “There are nine hundred people in it,” says Ah Zhi, quite calmly, “and you have no right to any of them.”
 She puts one boot on the skiff’s gunwale and gives it a shove.
 The skiff tips. The factor goes in with a splash like a falling wardrobe.
-> force | Haul the box aboard. | ferry_a2s6
+> force | Haul the box aboard. | ferry_a2s6 | needs:3
 > truth | Throw him a rope. | ferry_a2s6
 > quiet | Watch him paddle. | ferry_a2s6
 > mercy | Reach down for his hand. | ferry_a2s6
@@ -210,7 +210,7 @@ Hao Lan copies what she can in the time they have. She works feverishly, at the 
 Ah Zhi has put her hat back on. She looks at the sea, at the pale Wall, at the black ribbon of the quay. She says very quietly, “I am going to need a new boat.”
 Then she laughs, wildly, and slaps her thigh.
 “I am free,” she says. “I am free, and the ferry is a wreck, and I owe nobody anything.”
-> force | Grin. | ferry_close | +ferry_took_ledger
+> force | Grin. | ferry_close | +ferry_took_ledger needs:3
 > truth | Tell her you will help her find a boat. | ferry_close | +ferry_took_ledger
 > quiet | Pass her your hat. | ferry_close | +ferry_took_ledger
 > mercy | Hug her. | ferry_close | +ferry_took_ledger

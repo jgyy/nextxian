@@ -21,7 +21,7 @@ Odval is on her feet. She stands in the door of her tent with her bone pipe in h
 A girl of seven runs up out of the dark, white-faced. She is shouting something in Steppe-tongue.
 “Nergui,” says Odval. Her voice is flat. “My cousin. She has gone to the ridge.”
 > truth | Take Odval’s pipe, and offer to answer the wolves. | wolves_a1s1
-> force | Look at the hunters gathering at the pickets with spears. | wolves_a2s1
+> force | Look at the hunters gathering at the pickets with spears. | wolves_a2s1 | needs:4
 > deceit | Ask Hanming whether glass can howl. | wolves_a3s1
 > mercy | Go straight up the ridge after the child. | wolves_a4s1
 > inquiry | Hum the held door to the dark, and see what answers. | wolves_h1 |  | pao_ninth_asked | You have not yet been asked who is there.
@@ -162,7 +162,7 @@ They are gathered at the picket-lines in the last of the light: forty men, young
 “Why?”
 “Because the wolves always win.”
 He looks at the black-bearded man. “Tsogt thinks he’s different. He lost a child to a wolf, once. It was thirty years ago. He has never forgotten.”
-> force | Go to Tsogt. | wolves_a2s2
+> force | Go to Tsogt. | wolves_a2s2 | needs:4
 > truth | Ask Temur to stop them. | wolves_a2s2
 > quiet | Watch. | wolves_a2s2
 > mercy | Think of Nergui. | wolves_a2s2
@@ -215,7 +215,7 @@ She breathes. The great ribs heave.
 “I will take it out,” you say. “It will hurt.”
 She lets her head fall back on the stone. She closes her eyes.
 You pull. The spear comes free with a wet suck. A gout of blood follows. She gives a single grunting sob, and is still.
-> force | Press the wound. | wolves_a2s6
+> force | Press the wound. | wolves_a2s6 | needs:4
 > truth | Call for help. | wolves_a2s6
 > quiet | Hold her head. | wolves_a2s6
 > mercy | Hum. | wolves_a2s6
@@ -258,7 +258,7 @@ Tamar comes out. She is leaning on Odval. She turns the blue cloth toward the sh
 “So you came,” she says. “So you came. And we nearly speared you.”
 The wolf thumps her tail.
 “Well,” says Tamar, “you had better tell us.”
-> force | Listen. | wolves_a2s9
+> force | Listen. | wolves_a2s9 | needs:4
 > truth | Bow. | wolves_a2s9
 > quiet | Step back. | wolves_a2s9
 > mercy | Fetch tea. | wolves_a2s9

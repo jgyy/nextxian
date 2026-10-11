@@ -20,7 +20,7 @@ At the end of the row, in front of a shed, a one-eyed old man is sitting on a ba
 Yue Zhaoning has gone very still.
 “I am,” says Ochir, “open to persuasion.”
 > truth | Offer him a fair price, and say plainly where you are going. | skiff_a1s1
-> force | Look at the great sail-pole at the end of the yard, and the nine banners on it. | skiff_a2s1
+> force | Look at the great sail-pole at the end of the yard, and the nine banners on it. | skiff_a2s1 | needs:4
 > deceit | Look at the three finished skiffs in the shed, tagged with a green seal. | skiff_a3s1
 > mercy | Look at the child on the roof of a smashed skiff, who has been watching you for an hour. | skiff_a4s1
 > inquiry | Unroll the finished wedding rug from the cart, and ask what it would do as a sail. | skiff_h1 |  | kurultai_peace | You carry no sail.
@@ -158,7 +158,7 @@ Ren Qiao has crossed his arms. Yue Zhaoning, beside him, has the glitter in her 
 “Nine laps,” says the Wright. “Round the pole. Whoever crosses the line first, wins.”
 “And if the stranger loses?”
 “She buys her own skiff,” he says cheerfully, “at triple.”
-> force | Enter. | skiff_a2s2
+> force | Enter. | skiff_a2s2 | needs:4
 > truth | Ask the rules. | skiff_a2s2
 > quiet | Study the Gull. | skiff_a2s2
 > mercy | Ask if anyone is hurt. | skiff_a2s2
@@ -218,7 +218,7 @@ Yue Zhaoning is on her feet. She has a knife in her teeth and a boathook in her 
 “I won’t.” She takes the knife out. “I will, however, cut his rope.”
 “What rope?”
 “The one that holds his boom.”
-> force | Let her. | skiff_a2s6
+> force | Let her. | skiff_a2s6 | needs:4
 > truth | Say it is dishonourable. | skiff_a2s6
 > quiet | Hold her arm. | skiff_a2s6
 > mercy | Look at the Gull. | skiff_a2s6
@@ -263,7 +263,7 @@ They raise it that evening on the pole. It is a plain strip of green, with no de
 “Then you may buy.” He winks. “It’s in the rules. Gerel’s three, Light, Sail and Return. A lawful price.” He names a figure. It is exactly the amount in your purse.
 The Gull is standing at the foot of the pole, looking up. He has not left.
 “I would like to sail with you,” he says gruffly. “As pilot. If you’ll have me.”
-> force | Accept. | skiff_a2s9
+> force | Accept. | skiff_a2s9 | needs:4
 > truth | Ask why. | skiff_a2s9
 > quiet | Look at Yue. | skiff_a2s9
 > mercy | Say you would be honoured. | skiff_a2s9

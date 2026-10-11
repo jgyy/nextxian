@@ -18,7 +18,7 @@ Yue Zhaoning has put down the pole. The black boat drifts on the ebb. Nobody has
 Mei Qiu has gone to the bow. She is looking at the middle cutter, and her face has changed.
 “That is the Heron,” she says. “That is Ro Gan.”
 > truth | Ask Mei who Ro Gan is, and whether he can be spoken to. | coast_a1s1
-> force | Ask Yue whether the black boat can run the line before the cutters close. | coast_a2s1
+> force | Ask Yue whether the black boat can run the line before the cutters close. | coast_a2s1 | needs:3
 > deceit | Ask Hao Lan what manifest a boat like this might plausibly carry. | coast_a3s1
 > quiet | Ask the Elder whether the sea can be crossed by going around the cutters. | coast_a4s1
 > inquiry | Ask Mei whether she remembers the tide-book her old captain kept, and what it said about the Wall. | coast_h1 |  | barge_mei_ally | Mei has not yet trusted you with that.
@@ -118,7 +118,7 @@ Yue Zhaoning laughs, a short unamused bark, and takes up the pole. “You are as
 She runs a hand along the rail the way another woman might stroke a horse. The boat is long and low, tarred black, drawing hardly a foot. Her mast is folded. Her keel has been carefully planed to a knife’s edge for a purpose Yue has never explained.
 “She was built to go over shoals,” she says. “Those cutters have a draught of nine feet. If I can put a bar between them and me, they cannot follow.”
 Gu, behind you, has gone quite white.
-> force | Tell her to run it. | coast_a2s2
+> force | Tell her to run it. | coast_a2s2 | needs:3
 > truth | Tell her the truth: you do not want anyone hurt. | coast_a2s2
 > quiet | Ask her to wait for dusk. | coast_a2s2
 > inquiry | Ask where the bar is. | coast_a2s2
@@ -160,7 +160,7 @@ The boat leaps. Barrels bob behind you, nine strokes of an oar, ten, and the kee
 Behind you the Plover heaves up on the bar, shudders, and sticks. Her bow-gun tilts uselessly at the sky.
 You are over. You are through. You are lying on the planks in a puddle of seawater with the Elder’s elbow in your ribs, and nobody has been killed.
 Yue Zhaoning is laughing again, softly, with her forehead on the pole.
-> force | Laugh with her. | coast_a2s6
+> force | Laugh with her. | coast_a2s6 | needs:3
 > truth | Check that everyone is whole. | coast_a2s6 | bond:gu+1
 > mercy | Help the Elder up first. | coast_a2s6
 > quiet | Look back at the Plover. | coast_a2s6

@@ -22,7 +22,7 @@ Nobody speaks above a murmur. The wind has dropped. In the middle, on her heap o
 Odval touches your sleeve. Her pale eyes are shining.
 “They have asked you to speak,” she says. “All nine. Which will you be to them?”
 > truth | Go from fire to fire, and ask each chief what they are afraid of. | kurultai_a1s1 | +kurultai_a1
-> force | Look at the great field beyond the river, where the young riders are lining up for the war-game. | kurultai_a2s1
+> force | Look at the great field beyond the river, where the young riders are lining up for the war-game. | kurultai_a2s1 | needs:4
 > deceit | Notice that every chief has a quiet man standing behind them, writing nothing down. | kurultai_a3s1
 > mercy | Look at the two fires at the far edge, that burn apart from all the others and do not share a spark. | kurultai_a4s1
 > inquiry | Say that you have found the Horse-Keepers’ lost daughter. | kurultai_h1 |  | camp_mother_found | You have not yet found anyone the Horse-Keepers lost.
@@ -157,7 +157,7 @@ The field beyond the river is a mile of flattened grass, and two hundred riders 
 “Because they have been winning for eleven hundred years.”
 You look at the line. Yue Zhaoning, grim and jaunty on her camel, is trotting up and down. Ren Qiao is stripping off his coat. Hao Lan is taking bets.
 “There is a place for one more,” says Temur. “If you wish.”
-> force | Take it. | kurultai_a2s2
+> force | Take it. | kurultai_a2s2 | needs:4
 > truth | Ask about the rules. | kurultai_a2s2
 > quiet | Watch. | kurultai_a2s2
 > mercy | Ask who gets hurt. | kurultai_a2s2
@@ -212,7 +212,7 @@ There is a thunderclap of cheering. You drop the goat. It bounces. You pull up i
 “I fell off,” you say.
 “Only once!” She bounces in the saddle. “Come on!”
 A horn blows, and the goat is thrown again.
-> force | Go again. | kurultai_a2s6
+> force | Go again. | kurultai_a2s6 | needs:4
 > truth | Catch your breath. | kurultai_a2s6
 > quiet | Look for Jargal. | kurultai_a2s6
 > mercy | Check on Sarnai. | kurultai_a2s6
@@ -256,7 +256,7 @@ You surge. Cloud-Eater digs in. You come up alongside the black stallion, close 
 Ren Qiao comes from behind. Yue comes from the side. You each reach out a hand. It is a mad, impossible tangle of horses and arms and goat. For a moment the world is nothing but hooves and mane and a headless animal flung into the air.
 You catch it. You do not know how. You hand it off, over your shoulder, without looking.
 Ren Qiao takes it. He spurs. He goes for the line, hunched, grimacing, flat to the horse’s neck.
-> force | Ride. | kurultai_a2s9
+> force | Ride. | kurultai_a2s9 | needs:4
 > truth | Shout his name. | kurultai_a2s9
 > quiet | Hold your breath. | kurultai_a2s9
 > mercy | Cut off Jargal. | kurultai_a2s9

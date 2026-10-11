@@ -21,7 +21,7 @@ The Reader goes first, with her lamp. She does not hurry. She has gone down this
 You look back. At the head of the stair, tiny as a pin, a circle of light appears. A line of figures stands round it. Their lamps wink on steel.
 “They are coming,” says Hao Lan, very quietly. “He has the Gate key. He is here.”
 > truth | Go on down, and meet him at the desk. | fifth_a1s1
-> force | Hold the stair, and make them come one at a time. | fifth_a2s1
+> force | Hold the stair, and make them come one at a time. | fifth_a2s1 | needs:3
 > deceit | Ask Hao Lan and Shu Ning how long a forged volume would take. | fifth_a3s1
 > quiet | Ask the Reader if the Ledger can be read where it is, without being touched. | fifth_a4s1
 > inquiry | Tell Bao Er the desk may have a drawer that opens to a door sung in nine bars. | fifth_h1 |  | pao_door_written | You have no door to sing yet.
@@ -134,7 +134,7 @@ You hold the stair. It is narrow: three feet across, with a rail on one side and
 “It is the safer place,” you say, “and I do not care.”
 He grins in the lamplight. It is the first time you have seen him grin without pain. He draws his sword. Mei Qiu comes up on his left with her bar. Gu is on his right, shaking, his blade low and ready. Shu Ning has put down her anvil and picked up her hammer.
 Above you the lamps are descending. A line of figures, in grey leather, with pikes.
-> force | Wait. | fifth_a2s2
+> force | Wait. | fifth_a2s2 | needs:3
 > truth | Call up the stair. | fifth_a2s2
 > quiet | Listen. | fifth_a2s2
 > mercy | Tell the Elder to go down. | fifth_a2s2
@@ -190,7 +190,7 @@ The tall man does not look up.
 “Are you?” Fang considers. “I wonder. I shall have to give it thought.” He looks at you. “You have stopped my guards. It is impressive. It will not change anything.”
 He steps past you. You let him. You do not know why.
 “Please excuse me,” he says. “I have a book to collect.”
-> force | Seize his arm. | fifth_a2s6
+> force | Seize his arm. | fifth_a2s6 | needs:3
 > truth | Say he cannot. | fifth_a2s6
 > quiet | Follow. | fifth_a2s6
 > mercy | Let him go. | fifth_a2s6
@@ -229,7 +229,7 @@ Fang cries out. It is the first unguarded sound you have heard from him. He lung
 “You’ll ruin it!” Fang is screaming. “It’s the only one!”
 “It’s a seal!” says Shu Ning. “It never asked!”
 The plate splits in two.
-> force | Fight on. | fifth_close | +fifth_broke_plate
+> force | Fight on. | fifth_close | +fifth_broke_plate needs:3
 > truth | Pull Shu Ning back. | fifth_close | +fifth_broke_plate
 > quiet | Cover your ears. | fifth_close | +fifth_broke_plate
 > mercy | Help Fang up. | fifth_close | +fifth_broke_plate

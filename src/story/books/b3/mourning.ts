@@ -18,7 +18,7 @@ The door opens before your hand reaches it. A woman of fifty stands in the doorw
 “Good morning,” she says. “May I help you?”
 She says it to you exactly as she would say it to a stranger. She has not blinked.
 > truth | Say that you know who she is, and who you are. | mourning_a1s1
-> force | Push past her into the shop. | mourning_a2s1
+> force | Push past her into the shop. | mourning_a2s1 | needs:3
 > deceit | Say that you wish to order a funeral. | mourning_a3s1
 > mercy | Ask whether she needs a hand with the cranes. | mourning_a4s1
 > inquiry | Show her the brown card marked IX. | mourning_h1 |  | card_9 | You do not yet hold a card to show her.
@@ -113,7 +113,7 @@ You push past her. It is not graceful. The black door swings, the bell jangles, 
 Ren Qiao is a pace behind you with his hand on his sword. Gu is behind him, white as paper. The shop is dim, and long, and crowded with shelves. At the back there is a door, and beyond the door a staircase going down.
 You take it.
 Behind you the voice of Madam Ash says, very quietly, to no one: “Tian. Visitors.”
-> force | Run for the stairs. | mourning_a2s2
+> force | Run for the stairs. | mourning_a2s2 | needs:3
 > truth | Stop and say that you mean no harm. | mourning_a2s2
 > quiet | Go slowly. | mourning_a2s2
 > inquiry | Ask Ren what he heard. | mourning_a2s2
@@ -161,7 +161,7 @@ The boy checks. Bao Er is standing at the foot of the stairs with her arms folde
 “Say it.”
 “No.”
 Bao Er raises her eyebrows at you in a gesture that means: boys. “He will, in about a decade,” she says. “Come upstairs. Mother has the kettle on.”
-> force | Follow her. | mourning_a2s6
+> force | Follow her. | mourning_a2s6 | needs:3
 > truth | Tell Tian you are not asking him to be sorry. | mourning_a2s6
 > quiet | Sheath your sword. | mourning_a2s6
 > mercy | Bandage his cheek. | mourning_a2s6 | +mourning_bandaged_tian
@@ -199,7 +199,7 @@ Madam Ash is watching the door. Her face is unreadable.
 “He has not said a whole sentence to a stranger in six months,” she says. “He said three to you.” She takes up her teapot. “I do not know what you did. I should like you to do it again.”
 She puts the pot down.
 “I have a gift for you,” she says. “Take the key, if you wish. Or do not. I will not mind.”
-> force | Take the key. | mourning_close | +mourning_took_key
+> force | Take the key. | mourning_close | +mourning_took_key needs:3
 > truth | Refuse the key, and say why. | mourning_close | +mourning_refused_key
 > quiet | Take it, and pay a penny for it. | mourning_close | +mourning_paid_key
 > mercy | Leave it where it lies. | mourning_close | +mourning_refused_key

@@ -20,7 +20,7 @@ The glass ends in a ragged beach of black slag, and beyond it, the Furnace Towns
 A train rattles along the shore, hauling a long string of flat wagons. On each wagon, in crates, in tiers, in straw, lie hundreds of pale green slabs: square, polished, each the size of a table-top. They have writing on them.
 “Treads,” says Duan Wuyi, very quietly. “For the Stair.”
 > truth | Present Duan’s seal at the gate of the first town, and ask to inspect. | furnace_a1s1
-> force | Study the Mother Furnace, a mile inland, and the canal that feeds its cooling-pit. | furnace_a2s1
+> force | Study the Mother Furnace, a mile inland, and the canal that feeds its cooling-pit. | furnace_a2s1 | needs:4
 > deceit | Watch the feedstock barges unloading at the wharf, stencilled in red. | furnace_a3s1
 > mercy | Notice a row of children in leather aprons carrying buckets, none of them over ten. | furnace_a4s1
 > inquiry | Hum the tune the Sea gave you, under your breath, and see whether the furnace answers. | furnace_h1 |  | singing_carried | You carry no tune it would know.
@@ -174,7 +174,7 @@ It is a ribbon of brown water, forty feet wide, running inland from the harbour 
 “We don’t want anyone to die.”
 “No.” His scarred face is thoughtful. “But if the pit floods *slowly*, the Mother cools slowly. She goes dark in an hour. The glaziers have time to walk away.” He glances at you. “It’s the sluice. That’s the lever.”
 Ren Qiao has crossed his arms. “Then we drown her.”
-> force | Plan. | furnace_a2s2
+> force | Plan. | furnace_a2s2 | needs:4
 > truth | Ask Hanming how. | furnace_a2s2
 > quiet | Study the sluice. | furnace_a2s2
 > mercy | Ask about the glaziers. | furnace_a2s2
@@ -235,7 +235,7 @@ You have never heard it so quiet. The town holds its breath. A dog barks, a long
 The glaziers come out of the works. There are two thousand of them. They stand in the yard in the pale pre-dawn, in their wet leather aprons, black with soot, looking at the dark chimneys. They do not speak. A few take off their caps. An old woman sits down on a coil of rope and puts her head in her hands.
 “It’s over,” says Bator, hoarsely.
 “It isn’t,” says Ren Qiao. “It’s only begun.”
-> force | Look at the town. | furnace_a2s6
+> force | Look at the town. | furnace_a2s6 | needs:4
 > truth | Stand with the glaziers. | furnace_a2s6
 > quiet | Listen. | furnace_a2s6
 > mercy | Sit with the old woman. | furnace_a2s6
@@ -277,7 +277,7 @@ Kwan Dei is sitting on an upturned bucket at the foot of her, in his silk waistc
 “It was *making* them.” His moustache trembles. “They had work. They had wages. They had a place.”
 “They had a rota of deaths.”
 “Aye.” He looks at his hands. “That too.”
-> force | Sit beside him. | furnace_a2s9
+> force | Sit beside him. | furnace_a2s9 | needs:4
 > truth | Say it was needed. | furnace_a2s9
 > quiet | Look at the furnace. | furnace_a2s9
 > mercy | Offer him tea. | furnace_a2s9

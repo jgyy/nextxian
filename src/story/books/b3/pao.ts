@@ -19,7 +19,7 @@ You stand on the threshold with your hand over your mouth. The hum is a chord. I
 “They can be opened.” She hesitates. “They are rather shy.”
 A small lamp burns at the far end. Beside it, on a stool at a desk, a figure of folded paper is bent over a long roll, writing. It is humming.
 > truth | Send for Bao Er, and let her sing to them. | pao_a1s1 | npc:SU_PAO_JARS
-> force | Ask about the big jar hung in the middle of the gallery, with the Chancery’s seal. | pao_a2s1
+> force | Ask about the big jar hung in the middle of the gallery, with the Chancery’s seal. | pao_a2s1 | needs:3
 > deceit | Ask Hao Lan whether a song can be smuggled out of a Library in a person. | pao_a3s1
 > quiet | Go to the desk, and sit by the paper figure who is writing. | pao_a4s1
 > inquiry | Hum the eighth verse to the last jar on the shelf, and see whether it opens. | pao_h1 |  | keeners_ke_er_verse | You do not yet have the eighth verse.
@@ -130,7 +130,7 @@ It hangs at the centre of the gallery, from a chain of black iron. It is the siz
 Shu Ning has crouched in front of it. She runs her black fingers along the glaze. Her cold grey eyes narrow. “This is better made than the bell,” she says. “Much better. The walls are three inches thick. The inscription is on the inside.”
 “Can you break it?”
 “I can break anything.” She looks up. “But I should not like to, until I know what is in it.”
-> force | Break it anyway. | pao_a2s2
+> force | Break it anyway. | pao_a2s2 | needs:3
 > truth | Ask her to look first. | pao_a2s2
 > quiet | Listen. | pao_a2s2
 > inquiry | Ask the Reader what is in it. | pao_a2s2
@@ -181,7 +181,7 @@ It takes all night. The party works in a long line down the gallery, catching so
 Hao Lan has a ledger. She is cataloguing. She writes down every song as it lands: its jar, its key, its tune. By dawn, there are four thousand six hundred entries. She has ink to the elbows.
 “It is the finest catalogue I have ever made,” she says. “And I had no authority to make it. I am so happy.”
 She is beaming.
-> force | Laugh. | pao_a2s6
+> force | Laugh. | pao_a2s6 | needs:3
 > truth | Read her list. | pao_a2s6
 > quiet | Sit down. | pao_a2s6
 > mercy | Bring her water. | pao_a2s6
@@ -221,7 +221,7 @@ When it ends, she is silent for some time.
 “I don’t know the rest,” she says, in a wondering voice. “But it knows. It’s going to teach me.”
 She smiles at you. Her whole face is wet, and transfigured.
 “I think I’m going to be good at this,” she says.
-> force | Embrace her. | pao_close | +pao_broke_hush
+> force | Embrace her. | pao_close | +pao_broke_hush needs:3
 > truth | Say you always knew. | pao_close | +pao_broke_hush
 > quiet | Bow your head. | pao_close | +pao_broke_hush
 > mercy | Hold her hand. | pao_close | +pao_broke_hush

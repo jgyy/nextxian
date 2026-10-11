@@ -20,7 +20,7 @@ At the far end, on a low platform, stands a single desk, bigger than the rest. I
 It turns. It points at you.
 “Ah,” says a soft dry voice from nowhere. “Visitors. How nice. I have not had visitors since the eleventh.”
 > truth | Step in, and answer. | clerk_a1s1
-> force | Note the thirty pens by the hatch, longer than the rest, with steel nibs and a patient, watchful hover. | clerk_a2s1
+> force | Note the thirty pens by the hatch, longer than the rest, with steel nibs and a patient, watchful hover. | clerk_a2s1 | needs:4
 > deceit | Note the stamped receipt-books in a rack by the door, with Treasury covers and blank pages. | clerk_a3s1
 > mercy | Note that the chair at the large desk is empty, and has been for a very long time. | clerk_a4s1
 > inquiry | Write the word CLERK in the register, at the head of the desk, and ask it to sign. | clerk_h1 |  | pilgrims_named | You have not yet learned that a role may be written.
@@ -173,7 +173,7 @@ They hang by the hatch in a tight cluster, thirty long pens as thin and black as
 Ren Qiao has stepped in front of you. His sword is half out. “Pens,” he says, with interest. “Thirty pens.”
 “Sharp ones.”
 “I have fought swarms,” says Ren Qiao. “Of bees. On the Ash Bridge. In my second summer.” He draws. “It was extremely unpleasant.”
-> force | Stand beside him. | clerk_a2s2
+> force | Stand beside him. | clerk_a2s2 | needs:4
 > truth | Ask the Clerk to call them off. | clerk_a2s2
 > quiet | Study the swarm. | clerk_a2s2
 > mercy | Warn the others. | clerk_a2s2
@@ -229,7 +229,7 @@ You run a finger along the iron. The characters are cut deep, in a clean hard ha
 “We have one,” says Hao Lan. She is holding up her pen. It is a plain brown quill, tipped with a scrap of steel. She puts it to the first line of the inscription, and scratches.
 A single character disappears.
 She stares at it. Then at the pen. “It’s a *correction* pen,” she breathes. “Chancery issue. It’s for striking errors.” She grins. “I’ve been carrying it for ten years.”
-> force | Hold the lamp. | clerk_a2s6
+> force | Hold the lamp. | clerk_a2s6 | needs:4
 > truth | Watch. | clerk_a2s6
 > quiet | Count the characters. | clerk_a2s6
 > mercy | Ask the Clerk. | clerk_a2s6
@@ -279,7 +279,7 @@ The steel nibs have stopped. They hang in the air, uncertain, like a flock that 
 “You cannot,” he says.
 “I think I can,” says the Clerk, in wonder. “I think I just did.”
 A rustle runs through the tent. A thousand quills have stopped writing. Every pen in the Office turns, slowly, toward the Deputy Inspector.
-> force | Wait. | clerk_a2s9
+> force | Wait. | clerk_a2s9 | needs:4
 > truth | Step beside the Clerk. | clerk_a2s9
 > quiet | Hold your breath. | clerk_a2s9
 > mercy | Smile. | clerk_a2s9

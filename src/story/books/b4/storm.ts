@@ -19,7 +19,7 @@ Temur is on his feet, looking at it, with the wind snatching his hat. His broken
 “Three days.” He grabs a pony’s bridle. “Perhaps four. It will take the skin off you if you are caught in it. Quickly. Quickly!”
 You run. The wind is a hand at your back, shoving. The air tastes of iron. Far behind, the black wall rises, and rises, and begins to roar.
 > truth | Run for the ger. | storm_a1s1
-> force | Look back at the horses, who are not going to make it, and turn back for them. | storm_a2s1
+> force | Look back at the horses, who are not going to make it, and turn back for them. | storm_a2s1 | needs:4
 > deceit | Notice, ahead on the track, a file of grey-coated riders heading for the same ger. | storm_a3s1
 > mercy | Hear a child coughing in the tent as you duck inside. | storm_a4s1
 > inquiry | Ask Duan Wuyi what he is thinking about, since he has been so silent. | storm_h1 |  | bond:duan>=3 | Duan does not yet trust you with that.
@@ -167,7 +167,7 @@ You turn back. You do not stop to think. The storm is a mile behind, swallowing 
 You run on. The wind is a solid force. It screams in your ears and snatches your breath. The first dust, a fine stinging hail, begins to rattle on your cheek. Behind you Ren Qiao is shouting. Gu is at your heels. Somewhere a child is sobbing.
 The ponies see you. They stop. They stare, with white-rimmed eyes, trembling, as the sky goes black over their heads.
 “Come on,” you say. You hold out your hands. “Come with me. Come on.”
-> force | Get to the herd. | storm_a2s2
+> force | Get to the herd. | storm_a2s2 | needs:4
 > truth | Call the piebald. | storm_a2s2
 > quiet | Hold still. | storm_a2s2
 > mercy | Soothe them. | storm_a2s2
@@ -214,7 +214,7 @@ Ren Qiao crouches beside you. He doesn’t speak. He has his arm round the pieba
 Dandelion lowers his head. He rests his nose on your shoulder.
 It is the first time he has touched you of his own will.
 You stay like that for hours. The cold deepens. The wind rises. Your fingers go numb. At some point you realise that your cheeks are wet, and that you do not know whether it is dust or tears.
-> force | Stay awake. | storm_a2s6
+> force | Stay awake. | storm_a2s6 | needs:4
 > truth | Keep singing. | storm_a2s6
 > quiet | Sleep. | storm_a2s6
 > mercy | Hold Dandelion. | storm_a2s6
@@ -258,7 +258,7 @@ The storm blows itself out on the third day. The sky clears. The sun comes up li
 She doesn’t answer at once. Then, quite quietly, she says, “He is.”
 She points. Far off across the plain, small and sharp against the horizon, a long line of dark specks is moving. A herd. Behind it a single rider, on a heavy piebald horse, with a pole across his saddle. He is waving.
 Zaya and Batu burst from the tent like corks from a bottle, shrieking.
-> force | Watch. | storm_close | +storm_herd
+> force | Watch. | storm_close | +storm_herd needs:4
 > truth | Smile. | storm_close | +storm_herd
 > quiet | Step back. | storm_close | +storm_herd
 > mercy | Weep. | storm_close | +storm_herd

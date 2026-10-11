@@ -19,7 +19,7 @@ They are not wrecked. They are set. Every hull stands upright in a collar of cle
 Gu has gone to the rail. “There are people on the deck,” he whispers.
 There are. Hundreds. They stand at the rails and in the shrouds, small and stiff and pale. They do not move. They are made of glass.
 > truth | Climb to the flagship, where a lamp still burns in the stern cabin. | wreck_a1s1
-> force | Notice a Garrison camp at the foot of the flagship, and men hauling cable up its side. | wreck_a2s1
+> force | Notice a Garrison camp at the foot of the flagship, and men hauling cable up its side. | wreck_a2s1 | needs:4
 > deceit | Notice that the Garrison men are wearing Concord officers’ coats, and carrying Concord papers. | wreck_a3s1
 > mercy | Notice that one small glass figure at the stern-rail has its hand pressed flat against the glass from the inside. | wreck_a4s1
 > inquiry | Take out the founders’ cipher you copied in the tomb, and hold it against the flagship’s name-plate. | wreck_h1 |  | tomb_read | You have not learned the founders’ cipher.
@@ -154,7 +154,7 @@ They have run steel cables from the flagship’s mainmast to a row of winches on
 “They could burn the next fleet,” you say.
 “They would call it *an ascension*.”
 The plump man at the chair has finished his pastry. He licks his fingers. He has seen you.
-> force | Walk up. | wreck_a2s2
+> force | Walk up. | wreck_a2s2 | needs:4
 > truth | Hail him. | wreck_a2s2
 > quiet | Watch. | wreck_a2s2
 > mercy | Think of the children. | wreck_a2s2
@@ -217,7 +217,7 @@ Corvin has risen from his chair. His pastry lies in the dust.
 “It was a crane.”
 “It was *my* crane.” His round face is purple. “I shall have you court-martialled.”
 “By whom?” says Ren Qiao, panting, getting to his feet. He has a rifle across his shoulder, which he has taken from someone. “Look around.”
-> force | Stand. | wreck_a2s6
+> force | Stand. | wreck_a2s6 | needs:4
 > truth | Offer terms. | wreck_a2s6
 > quiet | Watch Corvin. | wreck_a2s6
 > mercy | Look at the men. | wreck_a2s6
@@ -265,7 +265,7 @@ There is still the cable. It runs from the flagship’s mainmast to the dead win
 You go and fetch them. You spend the day at the end of the cable, in the sun, with Hanming and Gu and Ren Qiao, driving a chisel into a strand of steel. The rhythm becomes a song. Strike. Pause. Strike. Pause. At sunset the last strand parts with a whine, and the hawser whips back along the glass in a long bright ripple.
 Ren Qiao leans on his hammer, grey with fatigue.
 “There,” he says. “That was the thing I was best at.”
-> force | Nod. | wreck_a2s9
+> force | Nod. | wreck_a2s9 | needs:4
 > truth | Thank him. | wreck_a2s9
 > quiet | Pick up the chisel. | wreck_a2s9
 > mercy | Give him water. | wreck_a2s9

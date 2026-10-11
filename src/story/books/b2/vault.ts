@@ -17,7 +17,7 @@ The Ledger Hall sits at the top of the Crane Stairs, a broad low building of whi
 “I have been asked to give a reading to the Elder of the Azure Cloud Sect,” he says, “in the presence of her witness. The vault is open to the Assembly’s delegates on the eve of the trial. It has not been opened to a witness. I have taken the liberty of calling you a delegate.”
 His face is perfectly grave. Behind him, at the top of the stair, a gaunt old Censor in a hooded grey robe stands like a post. He has one hand cupped behind his ear. “Old Sou,” says Duan. “He is deaf. He is also the only man alive who has read the Stone in full. He will not be pleased.”
 > inquiry | Ask for a lawful reading, with the Censor-General's seal and the Stone's own questions. | vault_a1s1 | +vault_a1
-> force | Meet Wen Rui at the Silver Bridge, where he says there is a way in that does not need a seal. | vault_a2s1 | +vault_a2
+> force | Meet Wen Rui at the Silver Bridge, where he says there is a way in that does not need a seal. | vault_a2s1 | +vault_a2 needs:2
 > deceit | Borrow the grey sashes of the night Censors from Hao Lan's chest, and go down at the changing of the watch. | vault_a3s1 | +vault_a3
 > quiet | Ask Scribe Tong what he sees when he looks at the Ledger Hall. | vault_a4s1 | +vault_a4
 > truth | Carry the Law Hall's shard down the spiral stair, wrapped in grey silk against your own chest. | vault_h1 |  | censors_shard_kept | The shard is not with you.
@@ -115,7 +115,7 @@ Wen Rui is waiting at the foot of the Silver Bridge, small and grey, in the brow
 “I have been thinking,” he says, “that a thing as important as the Stone ought not to be read under supervision.” He smiles his tired smile. “The Concord wants you to read it with a Censor at your elbow. I want you to read it alone.”
 He draws a small cloth from his sleeve and opens it. Inside lies a key of grey bone.
 “It opens the east door of the vault. It belonged to a clerk who died in the spring. It has not been changed.” He lays it in your palm. “I can bring four people. I cannot bring a warden.”
-> force | Take the key. | +
+> force | Take the key. | + | needs:2
 > truth | Ask what he wants in return. | ^
 > inquiry | Ask why he is trusting you with it. | ^
 > mercy | Ask whether anyone will be hurt. | ^
@@ -190,7 +190,7 @@ She doesn’t raise the iron. She is looking at the name, and a muscle is workin
 “Is that how it’s done?” she says. “Is that all it is?”
 > truth | Tell her yes. | vault_close | +vault_caught +vault_wen_written
 > mercy | Tell her to come and see. | vault_close | +vault_caught +vault_wen_written
-> force | Tell her to arrest you, if she must. | vault_close | +vault_caught +vault_wen_written
+> force | Tell her to arrest you, if she must. | vault_close | +vault_caught +vault_wen_written needs:2
 > inquiry | Ask her what she'd write, if she could. | vault_close | +vault_caught +vault_wen_written
 
 // ---------------------------------------------------------------- a3: the night Censors

@@ -18,7 +18,7 @@ A notice has been nailed to the door, fresh. It bears the Concord’s eye. It sa
 Bao Er lowers her chopstick. The singing dies.
 “Everyone,” she says. “This is Nine. She is going to tell us whether to keep going.”
 > truth | Say you want to hear all of it. | keeners_a1s1
-> force | Ask where the Concord has hung the thing that stops the singing. | keeners_a2s1
+> force | Ask where the Concord has hung the thing that stops the singing. | keeners_a2s1 | needs:3
 > deceit | Ask whether anyone has a wedding they could attend. | keeners_a3s1
 > mercy | Ask the oldest woman in the room what she remembers. | keeners_a4s1
 > inquiry | Say you heard a child hum a verse through a stone. | keeners_h1 |  | harbour_said_name | You have not said the child’s name at the Wall.
@@ -124,7 +124,7 @@ The marines hesitate. The rifles waver. Someone at the back is crying.
 Bao Er scowls. “Some of us have gone silent. Sixty choristers, down to forty. The rest have gone home. They say it hurts their ears.”
 “It hurts something,” says Mother Hsu.
 Ren Qiao, who has said nothing all morning, folds his arms. “A bronze bell,” he says. “On a stone tower. Sixty feet up.”
-> force | Say you will silence it. | keeners_a2s2
+> force | Say you will silence it. | keeners_a2s2 | needs:3
 > truth | Ask who rings it. | keeners_a2s2
 > quiet | Look at the tower. | keeners_a2s2
 > inquiry | Ask what it is made of. | keeners_a2s2
@@ -168,7 +168,7 @@ He steps back.
 Gu has put his hands over his ears.
 “How do we break it?” you whisper.
 “We do not,” says Ren. “We cannot. It is far too strong. We have to give it something it cannot swallow.” He looks at you. “A name it cannot say.”
-> force | Think. | keeners_a2s6
+> force | Think. | keeners_a2s6 | needs:3
 > truth | Say your own. | keeners_a2s6
 > quiet | Say nothing. | keeners_a2s6
 > inquiry | Ask what name. | keeners_a2s6
@@ -201,7 +201,7 @@ He cocks his head.
 “Is that the girl at the fish-stall? Is that Pearl? I thought she had died.” He wipes his face with his sleeve. “I did not know she still sang.”
 Below, the whole quay is shouting. The Hush is broken. A great roar of voices has gone up, a ragged cheer, and over it the sweet clear peal of a bell, a small one, which is somebody’s, somewhere, ringing for no reason but joy.
 Bao Er is standing on the roof of the salting-shed with her arms wide. She is singing at the top of her voice.
-> force | Wave to her. | keeners_close | +keeners_broke_hush
+> force | Wave to her. | keeners_close | +keeners_broke_hush needs:3
 > truth | Take the mallet. | keeners_close | +keeners_broke_hush
 > quiet | Sit with Fen. | keeners_close | +keeners_broke_hush
 > mercy | Help Fen up. | keeners_close | +keeners_broke_hush

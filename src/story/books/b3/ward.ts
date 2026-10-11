@@ -16,7 +16,7 @@ Cooper Lane runs behind the fish market, narrow and always damp, between the bla
 Inside, the long hall is full of beds. They are cots, mostly, hung with sheets for privacy, and between them move a few people in aprons with trays and basins. The air smells of vinegar and boiled linen and, very faintly, of that sweet grey ash. Someone is crying. Someone else is singing, over and over, the first line of a lullaby.
 A thin young woman in spectacles stands at the end of the hall with a clipboard. She is writing as she walks. Without looking up she says, “If you are a visitor, wash your hands. If you are a patient, there is a queue. If you are from the Concord, I am out.”
 > truth | Wash your hands, and offer to help. | ward_a1s1
-> force | Ask what she needs that she cannot get, and who is keeping it from her. | ward_a2s1
+> force | Ask what she needs that she cannot get, and who is keeping it from her. | ward_a2s1 | needs:3
 > deceit | Tell her the Concord’s inspectors are on Cooper Lane, and ask if she wants them kept out. | ward_a3s1
 > mercy | Sit down beside the man on the step. | ward_a4s1
 > inquiry | Ask her whether a garden of blue flowers would be of any use to her. | ward_h1 |  | fever_garden | You have not seen Green Mill wake.
@@ -124,7 +124,7 @@ She spreads her ink-stained hands.
 “I have enough for four patients. I have sixty-three. I have written to the Alchemy Peak, three times, requesting a supply. I have been told that the compound is classified.”
 “Where is it kept?” says Ren Qiao.
 “A depot,” says Lu Yan. “On Quay Street. Behind the customs house. They have a guard of six marines. I have walked past it every day for a year, thinking how very close it is.”
-> force | Say you will fetch it. | ward_a2s2
+> force | Say you will fetch it. | ward_a2s2 | needs:3
 > truth | Ask her if she would be ashamed of the means. | ward_a2s2
 > quiet | Ask where the marines sleep. | ward_a2s2
 > mercy | Ask her to say how many it would save. | ward_a2s2
@@ -174,7 +174,7 @@ Gu, who is carrying a crate, stops dead. His face goes the colour of tallow. He 
 “Chen,” says Gu. He is an appalling liar. “I was getting a drink.”
 The marine thinks about this. Then he shrugs, and picks up the dice. “Bring me one, then,” he says. “Make it a wet one.”
 Hao Lan puts her fist in her mouth.
-> force | Carry on. | ward_a2s6
+> force | Carry on. | ward_a2s6 | needs:3
 > truth | Nod to Gu. | ward_a2s6
 > quiet | Slip out the way you came. | ward_a2s6
 > mercy | Fetch the marine a drink. | ward_a2s6
@@ -210,7 +210,7 @@ He drinks. He swallows. A tremor passes through him. His eyes, which have been f
 His mouth opens.
 “Mallow,” he says. It is a harsh dry whisper. “Mallow. She’s called the Sea Mallow.”
 The ward is utterly still. And then a woman begins to clap.
-> force | Join in. | ward_close | +ward_stole_clearwater
+> force | Join in. | ward_close | +ward_stole_clearwater needs:3
 > truth | Watch Lu Yan’s face. | ward_close | +ward_stole_clearwater
 > quiet | Look away. | ward_close | +ward_stole_clearwater
 > mercy | Hold Dei’s hand. | ward_close | +ward_stole_clearwater

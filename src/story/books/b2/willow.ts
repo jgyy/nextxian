@@ -16,7 +16,7 @@ On the third day the river narrows between two walls of willow, and the barge pu
 A girl of eight or nine is taking fares at the foot of the jetty. She has a cloth satchel across her chest and a voice that is far too old, and she says the same words to every traveller: “One crossing, one name.” They give her coins, they give her smiles, and not one of them looks at her.
 At the rope of the ferry stands a broad man with a boatman’s hands, and when the girl brings him his bowl of rice he thanks her the way you thank a stranger.
 > truth | Walk down to the stone and ask the keeper of the toll what it takes, and why. | willow_a1s1 | +willow_a1
-> force | Step onto the jetty and ask the ferryman, loudly, what he has done with his own child. | willow_a2s1 | +willow_a2
+> force | Step onto the jetty and ask the ferryman, loudly, what he has done with his own child. | willow_a2s1 | +willow_a2 needs:2
 > deceit | Buy a crossing, and offer a name that is not yours, to see what the stone does with it. | willow_a3s1 | +willow_a3
 > mercy | Sit down on the jetty beside the girl, and ask if she would like help with the satchel. | willow_a4s1 | +willow_a4
 > inquiry | Remember Hao Lan’s sketch, and ask her whether a Censor’s register can hold a name a river cannot take. | willow_h1 |  | censors_hao_friend | You do not know any Censor well enough to ask.
@@ -102,7 +102,7 @@ Madam Sui turns her face to the wall, and her shoulders shake.
 The ferryman is tying a rope as you reach him, and does not look up until you have asked it twice. When he does, his face is that of a kind, somewhat slow man who has been told a joke he is expected to find funny.
 “My child?” he says. “I have no child. My wife and I had none. The river did not see fit.” He shakes his head with the polite helplessness of a man trying to remember a word in a foreign language. “Is there something I should know?”
 Behind him the girl in the cloth satchel has stopped counting coins. She is staring at you, and her eyes are very wide, and very dry.
-> force | Tell him that girl is his daughter and the river has made him forget. | willow_a2s2
+> force | Tell him that girl is his daughter and the river has made him forget. | willow_a2s2 | needs:2
 > truth | Ask, gently, how long he has had the satchel she wears, because it is his wife's sewing. | willow_a2s2
 > inquiry | Ask who the girl is, then, and how she came to be taking his fares. | willow_a2s2
 > mercy | Say there is nothing he needs to know, and give him a coin for the crossing. | willow_a2s2
@@ -141,7 +141,7 @@ The stone does not break. It sighs. A hairline runs from the palm-dip to the wat
 They are not gone. They are only loose.
 The willows shiver. On the bank, a fisherman looks up from his net and says, to no one, “Mother?”
 Ren Qiao’s hand goes to the rope at his belt. “That was the wrong thing,” he says. “Or the right thing, done too fast.”
-> force | Keep pushing; the stone will give, and the names will come home. | willow_a2s6
+> force | Keep pushing; the stone will give, and the names will come home. | willow_a2s6 | needs:2
 > truth | Step back, and tell everyone on the bank what has happened and what to do. | willow_a2s6
 > quiet | Call the names softly, one by one, and see which come to you. | willow_a2s6
 > mercy | Run for Xiao Ye, because her father will need her when his own name comes back. | willow_a2s6

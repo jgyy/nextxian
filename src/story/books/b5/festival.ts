@@ -19,7 +19,7 @@ You find them at the far end, under a banner of black silk. Seven figures in vei
 And in the middle, small, upright, in a plain black gown and a veil of grey gauze, with a face you could not mistake in a thousand, stands Madam Ash.
 “There you are,” says Hui Niang, softly. “I have brought a gift.”
 > truth | Say you cannot take it, before she names it. | festival_a1s1
-> force | Notice the Wardens at the edge of the ground, forming into a line. | festival_a2s1
+> force | Notice the Wardens at the edge of the ground, forming into a line. | festival_a2s1 | needs:4
 > deceit | Notice the masked dancers streaming past, and the spare masks on a nearby stall. | festival_a3s1
 > mercy | Look at the boy with the fat child on his shoulders, who is glaring at you with naked hatred. | festival_a4s1
 > inquiry | Tell her there is a Censor at the edge of the camp, with a black ribbon on his table, who has been waiting fifteen years. | festival_h1 |  | roots_ribbon | You have no ribbon to bring her.
@@ -180,7 +180,7 @@ At their head, on a tall bay horse, rides a bull-necked captain with a red face 
 “I did not abduct them.”
 “It does not say that.”
 “No,” says Hui Niang, “it wouldn’t.” She lifts her veil. “Will you have tea?”
-> force | Step beside her. | festival_a2s2
+> force | Step beside her. | festival_a2s2 | needs:4
 > truth | Say it is a mistake. | festival_a2s2
 > quiet | Look at the Wardens. | festival_a2s2
 > mercy | Look at Tian. | festival_a2s2
@@ -246,7 +246,7 @@ It is the strangest siege in the history of the Concord. Two hundred armed men a
 “It has been a very long week.” He drinks. “First the beam. Then the cork. Then the Cribs.” He glances at Ren Qiao. “I have an uncomfortable suspicion I am being managed.”
 “You are,” says Ren Qiao, with great gravity. “But kindly.”
 The captain barks a laugh. He wipes his eyes. “I shall tell the Deputy,” he says, “that you were most impressive.”
-> force | Nod. | festival_a2s6
+> force | Nod. | festival_a2s6 | needs:4
 > truth | Bow. | festival_a2s6
 > quiet | Look at Tian. | festival_a2s6
 > mercy | Smile. | festival_a2s6
@@ -300,7 +300,7 @@ The festival resumes. The drums return. The lanterns sway. In the circle of blac
 “I did not send for anyone. They came.”
 “Yes.” Her gaze is level. “That is what I meant.”
 She raises her cup.
-> force | Drink. | festival_a2s9
+> force | Drink. | festival_a2s9 | needs:4
 > truth | Smile. | festival_a2s9
 > quiet | Look at the camp. | festival_a2s9
 > mercy | Thank her. | festival_a2s9

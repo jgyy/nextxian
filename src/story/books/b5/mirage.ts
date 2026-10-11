@@ -24,7 +24,7 @@ A bell rings, clear and sweet, from the towers. A procession of figures in white
 “Yes.”
 “Can we go?”
 > truth | Sail in, and ask the first person on the quay for their name. | mirage_a1s1
-> force | Notice that the harbour wall is lined with soldiers in silver armour, and that none of them is moving. | mirage_a2s1
+> force | Notice that the harbour wall is lined with soldiers in silver armour, and that none of them is moving. | mirage_a2s1 | needs:4
 > deceit | Notice that every resident on the quay is holding a card with a name on it, and that there is a spare one waiting for each of you. | mirage_a3s1
 > mercy | Notice, in the highest tower, a single window with the lamp lit, and a figure at it who is not waving. | mirage_a4s1
 > inquiry | Say the name the child Echo was given, and see whether the city has heard of her. | mirage_h1 |  | roots_restored | The city has no use for names you cannot spend.
@@ -181,7 +181,7 @@ You watch. The shadows of the soldiers, in the noon glare, all point the same wa
 He steps up on the prow of Light. He cups his hands. His voice rings across the water.
 “Gatekeeper! We would speak with you!”
 The soldier in question lifts his visor.
-> force | Stand firm. | mirage_a2s2
+> force | Stand firm. | mirage_a2s2 | needs:4
 > truth | Call out. | mirage_a2s2
 > quiet | Hold your breath. | mirage_a2s2
 > mercy | Look at his face. | mirage_a2s2
@@ -244,7 +244,7 @@ Ember’s visor is up. His long face is intent.
 “Every day.” He swallows. “For seven years. I see my mother. She’s making porridge. She says my name.” He wipes his nose on his gauntlet. “She stopped, I think. A long time ago. She died. But in the glass she’s always making it.”
 You say nothing. The whole wall of statues stands in the sun, silent.
 “If someone broke it,” says Ember, “I’d have to guard something else.”
-> force | Ask to see it. | mirage_a2s6
+> force | Ask to see it. | mirage_a2s6 | needs:4
 > truth | Say you will. | mirage_a2s6
 > quiet | Look at the tower. | mirage_a2s6
 > mercy | Hold out your hand. | mirage_a2s6
@@ -288,7 +288,7 @@ She swings. The chair meets the silver face of the glass with a ringing, sweet, 
 She smiles. She mouths a word.
 The glass explodes.
 It is a flower of silver shards. The room dazzles. A great soundless wave of light rolls down the tower, and the stair, and the arcades, and out across the harbour. The sky is white.
-> force | Cover your face. | mirage_a2s9
+> force | Cover your face. | mirage_a2s9 | needs:4
 > truth | Hold the Elder. | mirage_a2s9
 > quiet | Duck. | mirage_a2s9
 > mercy | Reach for Ember. | mirage_a2s9

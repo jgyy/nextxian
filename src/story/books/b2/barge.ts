@@ -16,7 +16,7 @@ At dawn on the seventh day Mei Qiu knocks on the Elder’s door and the Elder’
 It is a leaf of the Concord’s travelling register, the grey-covered volume Hao Lan keeps in a locked case, and on it a line has been added overnight. There is no name on the line yet. There is only a date, in black ink, a seal, and the faint pressure of a brush that wrote and was lifted.
 “Forty-one names have come back to the Ledger since the spring,” says Mei Qiu. “Each time, the register has changed. Each time, we have been in the same room.” She does not blink. “Tonight it was this barge. The door is aboard, Wanderer. I would like it found before the Assembly. I would like it found by someone who is not me.”
 > inquiry | Lay the pages of the register side by side, and look for the pattern in what returned. | barge_a1s1 | +barge_a1
-> force | Offer to sit up with her tonight, with a lantern covered and a hand on a blade. | barge_a2s1 | +barge_a2
+> force | Offer to sit up with her tonight, with a lantern covered and a hand on a blade. | barge_a2s1 | +barge_a2 needs:2
 > deceit | Write a false struck name into the register yourself, and see who corrects it. | barge_a3s1 | +barge_a3
 > quiet | Accept Duan Wuyi’s standing invitation to a game of chess, and let him talk. | barge_a4s1 | +barge_a4
 > mercy | Go to Hao Lan’s cabin, where she has asked to show you something she has not shown anyone. | barge_h1 |  | censors_hao_friend | Hao Lan does not know you well enough yet to show you.
@@ -109,7 +109,7 @@ She turns the iron in her fingers.
 > truth | Tell her you do not know, but you intend to find out. | barge_a2s2
 > inquiry | Ask what she thinks it is. | barge_a2s2
 > quiet | Say nothing, and keep your eyes on the book. | barge_a2s2
-> force | Tell her to say it plainly, or be silent. | barge_a2s2
+> force | Tell her to say it plainly, or be silent. | barge_a2s2 | needs:2
 
 === barge_a2s2 | The Second Watch
 “A door,” she says. “That is the Concord’s word. A door is a person who stands between the Ledger and the world. The old texts say there were once many of them. They called them listeners. The founders of the sects burned them, and the Concord inherited the habit.”
@@ -148,7 +148,7 @@ Outside the cabin door there is a quiet movement of cloth. A shadow falls across
 “Please,” says a very small voice, which you have never heard before. “I did not mean to. I was dreaming.”
 > mercy | Open the door gently. | barge_a2s6
 > truth | Say his name. | barge_a2s6
-> force | Hold Mei Qiu back, before she reaches him. | barge_a2s6
+> force | Hold Mei Qiu back, before she reaches him. | barge_a2s6 | needs:2
 > quiet | Let Mei Qiu go to the door first. | barge_a2s6
 
 === barge_a2s6 | The Boy at the Door

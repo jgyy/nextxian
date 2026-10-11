@@ -19,7 +19,7 @@ You stand at the foot of the Wall with the whole of your party: the Elder in her
 “It opens at the third bell,” says Shu Ning, who has come up out of the ground as if by magic, black to the elbows. “Once. For an hour. You will want to be inside before the water turns.”
 The Library has four doors. You have the keys to all of them.
 > truth | Go in by the tide-door at the foot of the Wall, with Qiu’s lamp. | tidedoor_a1s1
-> force | Go in by the miners’ door at the end of Shu Ning’s drift, with the bead. | tidedoor_a2s1
+> force | Go in by the miners’ door at the end of Shu Ning’s drift, with the bead. | tidedoor_a2s1 | needs:3
 > deceit | Go in by the Fifth Floor Gate, through the Chancery’s cellar, on a forged pass. | tidedoor_a3s1
 > quiet | Go down the flooded stair on one breath, with Lu Yan’s reeds. | tidedoor_a4s1
 > inquiry | Ask Ke-er, through the last block on the lowest course, which door she would take. | tidedoor_h1 |  | harbour_ke_er_spoke | Ke-er has not yet spoken to you.
@@ -125,7 +125,7 @@ Shu Ning leads you down the iron ladder with a lantern in her teeth. The shaft i
 You walk the long tunnel in single file, with chalk arrows on the walls. The air is cool and wet. The sound of the sea comes through the rock, a deep slow pulse, like a heart. Gu walks close behind you. Ren Qiao is last, with a hand on his sword.
 At the end of the tunnel, the great hall. The black pool. The wall of old masonry, glowing faintly. The low iron door with its ring of characters.
 You take the bead from your neck.
-> force | Go forward. | tidedoor_a2s2
+> force | Go forward. | tidedoor_a2s2 | needs:3
 > truth | Say a word to the door. | tidedoor_a2s2
 > quiet | Hold the bead tight. | tidedoor_a2s2
 > inquiry | Ask Shu Ning what she would say. | tidedoor_a2s2
@@ -174,7 +174,7 @@ The stair brightens. The inscription glows brighter under your palm, until it is
 Bao Er would know it. It is the first note of the lament.
 Gu is staring about him with an open mouth. “Do you hear that?”
 “We all do,” says Ren Qiao hoarsely.
-> force | Climb on. | tidedoor_a2s6
+> force | Climb on. | tidedoor_a2s6 | needs:3
 > truth | Hum along. | tidedoor_a2s6
 > quiet | Stand still. | tidedoor_a2s6
 > mercy | Say thank you to the wall. | tidedoor_a2s6
@@ -212,7 +212,7 @@ Qiu.
 “There are others,” says the Reader. “Wen. Hao. Duan. A woman with an iron bar. A man with a knife.” Her small grey face is grave. “I have kept them dry. I thought, someday, someone will come for them.”
 She puts the leaves into your hands. They are as light as feathers.
 “It’s good that you came,” she says. “I was getting very tired.”
-> force | Thank her. | tidedoor_close | +tidedoor_miners
+> force | Thank her. | tidedoor_close | +tidedoor_miners needs:3
 > truth | Ask who she is. | tidedoor_close | +tidedoor_miners
 > quiet | Take her hand. | tidedoor_close | +tidedoor_miners
 > mercy | Promise to come back. | tidedoor_close | +tidedoor_miners

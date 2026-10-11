@@ -19,7 +19,7 @@ You go closer. A woman is sweeping the step of the nearest, a stout motherly wom
 “What are the houses?”
 “The Cribs.” She leans on the broom, glowing. “Where the honoured ones sleep. Nine of them. Each with a child of the Reserve.” She says it as one says *the royal stables.* “They’re ever so happy. They’re to be written on the ninth night.”
 > truth | Ask to meet the children. | crib_a1s1
-> force | Count the guards on the fence, and the hours of their watch. | crib_a2s1
+> force | Count the guards on the fence, and the hours of their watch. | crib_a2s1 | needs:4
 > deceit | Ask to see the Matron’s register, and the exemption forms on her wall. | crib_a3s1
 > mercy | Look at the round window, where a very small face is pressed against the glass. | crib_a4s1
 > inquiry | Say that you have come to give the nine children what the Spare in the hollow asked for. | crib_h1 |  | roots_restored | You carry no names to give.
@@ -172,7 +172,7 @@ You count them over three nights, from a hay-cart, with Ren Qiao. He takes notes
 “I would rather not hurt anyone.” He taps the plan. “So we do it at the change. When the old watch goes and the new comes. There is a gap of about ninety seconds. Everyone at the gate. No one at the back.”
 “Ninety seconds.”
 “It is enough to take nine children across a ditch.” He pauses. “If they know we’re coming.”
-> force | Plan. | crib_a2s2
+> force | Plan. | crib_a2s2 | needs:4
 > truth | Ask how they’ll know. | crib_a2s2
 > quiet | Study the ditch. | crib_a2s2
 > mercy | Ask about the Matron. | crib_a2s2
@@ -229,7 +229,7 @@ Then somebody, somewhere in the dark, says in a thin carrying voice: “The Rese
 A low murmur starts. It goes outward from the tent. It runs down the row. The captain of the watch is pointing and bellowing, but nobody is listening to him any more. They are standing at their flaps in the dark, in their nightgowns, with lanterns, looking at the knot of shaking children.
 One by one, they step out. They form a ring.
 The captain’s halberdiers slow, and stop.
-> force | Watch. | crib_a2s6
+> force | Watch. | crib_a2s6 | needs:4
 > truth | Stand with the children. | crib_a2s6
 > quiet | Hold your breath. | crib_a2s6
 > mercy | Hold Sparrow tight. | crib_a2s6
@@ -275,7 +275,7 @@ Beyond him, the halberdiers are lowering their staffs. One by one, they sit.
 He turns. He bawls, in a strong parade-ground voice, to his halberdiers. “Stand to! Right about turn! To the Cribs, at the double!” They rise, and wheel, and troop off across the grass, in a shambling column, led by a man with a red nose and a very straight back.
 At the fence they halt. They stand to attention before the empty houses.
 They stand there all night.
-> force | Watch. | crib_a2s9
+> force | Watch. | crib_a2s9 | needs:4
 > truth | Salute. | crib_a2s9
 > quiet | Look at the children. | crib_a2s9
 > mercy | Thank the pilgrims. | crib_a2s9

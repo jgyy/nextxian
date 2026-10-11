@@ -18,7 +18,7 @@ A woman rides at the head of the line on a tall dun camel, with a pole across he
 It is Yue Zhaoning, and she is on a camel.
 Beside you Hao Lan lets out a small, delighted, scandalised sound. “She sold the boat.”
 > truth | Hail her, and ask what the salt is for. | caravan_a1s1
-> force | Notice the dust-cloud on the northern horizon, and ask Yue how many riders. | caravan_a2s1
+> force | Notice the dust-cloud on the northern horizon, and ask Yue how many riders. | caravan_a2s1 | needs:4
 > deceit | Notice that the panniers sit lower than salt should, and ask what is under it. | caravan_a3s1
 > mercy | Notice a boy at the tail of the line, walking, with an empty water-skin. | caravan_a4s1
 > inquiry | Say you have come to settle the favour. | caravan_h1 |  | silk_yue_favour | You do not owe Yue a favour.
@@ -171,7 +171,7 @@ They are a long way off. A smear of tan on the horizon, rising and falling, like
 There is a short, terrible silence.
 “How long?” says Ren Qiao, drawing his sword.
 “An hour,” says Yue. “Less.”
-> force | Plan. | caravan_a2s2
+> force | Plan. | caravan_a2s2 | needs:4
 > truth | Ask Yue what she wants. | caravan_a2s2
 > quiet | Look at the ground. | caravan_a2s2
 > mercy | Ask about the children. | caravan_a2s2
@@ -225,7 +225,7 @@ The boy gasps. He claws at the scarf. It comes away. He is sixteen at most. His 
 Ren Qiao hesitates. His knife-hand trembles. For a heartbeat he is somebody else, in a different place, with a lantern. “You are a child,” he says.
 “I’m seventeen.”
 “You are a child.”
-> force | Stop. | caravan_a2s6
+> force | Stop. | caravan_a2s6 | needs:4
 > truth | Say let him up. | caravan_a2s6
 > quiet | Watch Ren. | caravan_a2s6
 > mercy | Ask his name. | caravan_a2s6
@@ -267,7 +267,7 @@ There is a silence.
 Dagva looks at his companions. They look back. A thin man with a bandaged arm gives a small, grave, wondering nod. Dagva takes a breath.
 “Fifty-three,” he says. “All of us?”
 “All of you.”
-> force | Nod. | caravan_a2s9
+> force | Nod. | caravan_a2s9 | needs:4
 > truth | Say it is well done. | caravan_a2s9
 > quiet | Look at Ren. | caravan_a2s9
 > mercy | Smile at Dagva. | caravan_a2s9

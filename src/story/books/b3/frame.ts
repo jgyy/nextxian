@@ -55,6 +55,9 @@ The Elder has taken rooms at the Ferryman’s Rest. The Censors who came with yo
 +[d] b3q_mourning | There is a black ribbon in your sleeve, and a woman’s voice that said nothing you could answer.
 +[d] b3q_ferry | The ferryman’s rope is still wound on your wrist, two turns, a knot you cannot undo.
 +[d] b3q_lamp | The lighthouse blinks twice on the horizon, in a pattern you now know.
++[rl] realm>=3 | At Core Formation the Tidewall hums, and you can tell the struck from the living by whether the hum has an owner.
++[rl] realm>=2 | At Foundation Establishment you feel the sea behind the wall, a slow cold pull in your dantian.
++[rl] realm<=1 | The Salt Coast is too much qi for a body like yours. The tide drags at your breathing.
 > truth | Walk the length of the Wall, and read what is carved there. | harbour_entry |  | !b3q_harbour & !b3q_sails | You have read the Wall.
 > mercy | Find the mourning-shop at the top of Bell Lane. | mourning_entry |  | !b3q_mourning & count:b3q_>=1 & !b3q_sails | You have been to the mourning-shop, or you have not yet learned enough of the town to find it.
 > inquiry | Take the ferry across the bay. | ferry_entry |  | !b3q_ferry & count:b3q_>=1 & !b3q_sails | You have taken that ferry, or you have not yet learned enough of the town to find it.
@@ -71,7 +74,15 @@ The Elder has taken rooms at the Ferryman’s Rest. The Censors who came with yo
 > truth | Take the Well stair down, nine hundred and ninety-nine steps, to the saint’s room. | fifth_entry |  | !b3q_fifth & b3q_stacks & b3q_pao & !b3q_sails | You have not yet earned the Reader's trust, or you have already stood at the saint's desk.
 > force | Go up on the Wall at first light, where the bells are ringing for the fleet. | ninesails_entry |  | !b3q_sails & count:b3q_>=8 | The fleet has not yet come, or has already come.
 > force | The chain is closing. Go down to the last block on the Wall. | chain_entry |  | b3q_sails & !b3q_chain | The fleet has not yet come.
+> quiet | Sit out the night in meditation, and let the road settle in your core. | still_hub_b3_coast | cult+50 +still_hub_b3_coast | !still_hub_b3_coast | You have already sat your night here.
 
+=== still_hub_b3_coast | A Night of Stillness
+You walk the sea-steps at low tide and sit where the wall meets the water. The tide comes in around you, and you breathe with it until your qi stops fighting.
+Nothing happens, and by morning something has. Your breath goes deeper than it did, and the qi in your dantian sits a little denser, like silt in a clear pool.
+> quiet | Rise at first light. | hub_b3_coast
+> truth | Admit how much of the road you were carrying. | hub_b3_coast
+> mercy | Wake the others gently. | hub_b3_coast
+> inquiry | Note what your qi felt like. | hub_b3_coast
 === b3_close | What the Coast Gave
 The fleet is gone by evening. It goes out on the ebb, nine sails in a long curved line, with a signal-flag at every masthead that says Returning. The Wall watches it go. The harbour is full of boats. Somebody has hung bunting along the quay, out of sheer excitement, and nobody has the heart to take it down.
 +[w] chain_unwritten | A hundred and four names sank into the Wall like rain, and the town woke up knowing them.

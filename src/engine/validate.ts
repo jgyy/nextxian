@@ -1,3 +1,4 @@
+import { REALMS } from "./cultivation";
 import { isTone } from "./tone";
 import { countWords } from "./words";
 import type { Condition, Scene, Story, Tier } from "./types";
@@ -90,6 +91,9 @@ export function validateStory(story: Story): string[] {
       }
       if (!scenes[choice.next]) {
         problems.push(`choice "${choice.id}" in "${scene.id}" points to missing scene "${choice.next}"`);
+      }
+      if (choice.needsRealm !== undefined && !(Number.isInteger(choice.needsRealm) && choice.needsRealm >= 0 && choice.needsRealm < REALMS.length)) {
+        problems.push(`choice "${choice.id}" in "${scene.id}" asks for realm ${choice.needsRealm}, which does not exist`);
       }
       if (choice.npcScenario && !scenarios[choice.npcScenario]) {
         problems.push(`choice "${choice.id}" in "${scene.id}" uses missing NPC scenario "${choice.npcScenario}"`);

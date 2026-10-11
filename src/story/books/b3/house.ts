@@ -18,7 +18,7 @@ At the second bell, Bao Er comes to the Ferryman’s Rest with her braid half un
 The House of Gentle Hands stands alone on the hill above the town, a long white building behind a wall of iron spikes. It has a garden, a chapel, a bell-tower. From the road it looks like a school.
 There are forty windows. In none of them is a face.
 > truth | Walk up to the front gate and ring the bell. | house_a1s1 | npc:SU_HOUSE_CHILDREN
-> force | Go and find Sergeant Hok, and ask for the men who put down their rifles. | house_a2s1
+> force | Go and find Sergeant Hok, and ask for the men who put down their rifles. | house_a2s1 | needs:3
 > deceit | Put on the Chancery sash, and call as a benefactress of the foundation. | house_a3s1
 > quiet | Ask Lu Yan where the old drains of the hill run out. | house_a4s1
 > inquiry | Take Lu Yan’s list of forty names up the hill, and read it at the gate. | house_h1 |  | ward_took_shift | You have not seen Lu Yan’s list.
@@ -132,7 +132,7 @@ Hok’s eyes come up. They are bloodshot and steady.
 “For what?”
 “A house on the hill. A Chancery foundation. There is a boy inside, and forty children, and a matron who gives them tea.” You hold his gaze. “I do not think they will mind being disobeyed.”
 Hok looks at his men. Private Wu has stopped polishing.
-> force | Wait for his answer. | house_a2s2
+> force | Wait for his answer. | house_a2s2 | needs:3
 > truth | Tell him it is dangerous. | house_a2s2
 > quiet | Watch Wu. | house_a2s2
 > mercy | Tell him he does not have to. | house_a2s2
@@ -190,7 +190,7 @@ The guards are professionals. The marines are not. For a long moment the two lin
 “It is an exercise.”
 You step between them. You do not know why. You have no weapon, and no plan, and nothing in your hands but a scar. You say the first thing that comes to your head, in your plainest voice.
 “There are forty children in that house,” you say. “They are drinking something that takes their names. I would like to take them home. Which of you is going to stop me?”
-> force | Wait. | house_a2s6
+> force | Wait. | house_a2s6 | needs:3
 > truth | Repeat it. | house_a2s6
 > quiet | Hold out your hand. | house_a2s6
 > mercy | Say they are somebody’s. | house_a2s6
@@ -228,7 +228,7 @@ Tian walks at the head, with Moth on his shoulders. She has her arms round his n
 “I wanted to burn it,” says Tian, to nobody in particular. “I’m glad I didn’t.”
 “So am I,” says Corporal Lei, behind him.
 At the foot of the hill, where the road meets the quay, the whole town is waiting. They have come out of their houses. They stand in a silent crowd, hats in their hands. When the first child comes into view, a woman at the front begins to weep.
-> force | Walk with them. | house_close | +house_marines_took
+> force | Walk with them. | house_close | +house_marines_took needs:3
 > truth | Look for Mrs Hang. | house_close | +house_marines_took
 > quiet | Watch Tian. | house_close | +house_marines_took
 > mercy | Carry a child. | house_close | +house_marines_took

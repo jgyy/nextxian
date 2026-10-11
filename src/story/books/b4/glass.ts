@@ -21,7 +21,7 @@ It is the most beautiful place you have ever seen. It is also, you realise, very
 “Memories,” says Temur, “mostly.”
 Beside you Gu has gone very still.
 > truth | Ask Master Bayar, the head of the Wrights, whether a young man named Hanming is among them. | glass_a1s1
-> force | Notice, at the far end of the Orchard, a patrol of grey-coated riders tying their horses to a glass tree. | glass_a2s1
+> force | Notice, at the far end of the Orchard, a patrol of grey-coated riders tying their horses to a glass tree. | glass_a2s1 | needs:4
 > deceit | Ask what a bottle of memory costs, and whose memories are for sale. | glass_a3s1
 > mercy | Ask whether a stranger may be taught to blow glass, and who would teach. | glass_a4s1
 > inquiry | Ask Gu to hum the song his mother sings at her tea-stall. | glass_h1 |  | bond:gu>=3 | Gu does not yet trust you with that.
@@ -165,7 +165,7 @@ Gu has gone green. “Hanming,” he says.
 “Is he here?” says Ren Qiao, sharply.
 “I don’t know. I don’t know.” Gu is staring at the third furnace. “But if he is, they’ll—”
 “Then we have about two minutes,” says Ren Qiao. He is already moving. “Go.”
-> force | Run. | glass_a2s2
+> force | Run. | glass_a2s2 | needs:4
 > truth | Call out. | glass_a2s2
 > quiet | Take cover. | glass_a2s2
 > inquiry | Ask Temur how many. | glass_a2s2
@@ -218,7 +218,7 @@ It comes down in a glittering storm. Shards fall like rain. The soldiers throw u
 “Down!” shouts Ren Qiao. “Everyone down!”
 You drop. You pull Hanming to the floor and cover his head. The avenue is a roar of breaking glass. The light is blinding. The trees ring and ring and ring, each one shedding a branch, a shower of crystal, until the ground is a drift of bright ice and the soldiers are on their knees, bleeding and swearing, in a shining wreck.
 And then it stops.
-> force | Rise. | glass_a2s6
+> force | Rise. | glass_a2s6 | needs:4
 > truth | Check Hanming. | glass_a2s6
 > quiet | Stay down. | glass_a2s6
 > mercy | Look for the wounded. | glass_a2s6
@@ -260,7 +260,7 @@ He signs it. He folds it. He tucks it into his belt.
 “Sergeant.”
 “Don’t go to the fort.” The red face is expressionless. “Whatever you’re planning. Don’t.” He gathers his reins. “I’ll tell them you’re dead. It’ll be easier on everyone.”
 He wheels his horse. The patrol clatters away.
-> force | Watch them go. | glass_a2s9
+> force | Watch them go. | glass_a2s9 | needs:4
 > truth | Thank him. | glass_a2s9
 > quiet | Take Hanming’s arm. | glass_a2s9
 > mercy | Call after him. | glass_a2s9

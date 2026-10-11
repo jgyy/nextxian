@@ -19,7 +19,7 @@ A fan goes up. Forty. Fifty. Sixty. A woman in the grey line stands very straigh
 “Sold,” says the auctioneer. “At seventy taels. To the Silver Heron.”
 The woman opens her eyes. She looks at nothing. She walks out into the dusk.
 > truth | Climb on the dais and ask for the ledger of sales. | tithe_a1s1
-> force | Notice the locked door behind the dais, and the two guards on it. | tithe_a2s1
+> force | Notice the locked door behind the dais, and the two guards on it. | tithe_a2s1 | needs:4
 > deceit | Notice that the bidders pay in paper scrip, stamped with the Concord’s mark, and that nobody inspects it. | tithe_a3s1
 > mercy | Follow the woman who has just sold her name, and see where she goes. | tithe_a4s1
 > inquiry | Stand at the back and read out the names on the sellers’ slips, as you read them at the Mirage. | tithe_h1 |  | mirage_woke | You have not yet learned how to give a name back.
@@ -172,7 +172,7 @@ Ren Qiao has crossed his arms. “Two guards,” he says. “A lock. Four walls.
 “Is it?”
 “I once took a fort with a bag of flour.”
 He grins, for the first time in a week.
-> force | Plan. | tithe_a2s2
+> force | Plan. | tithe_a2s2 | needs:4
 > truth | Ask Hanming. | tithe_a2s2
 > quiet | Study the lock. | tithe_a2s2
 > mercy | Ask about the guards. | tithe_a2s2
@@ -232,7 +232,7 @@ They stream out through the strongroom, and across the shed, and through the ope
 A slip brushes the cheek of a woman at a cooking-fire. She stands. A slip lands in the hands of a boy of nine. A slip settles on an old man’s shoulder like a moth. They look about, startled, and the slips go on: a river of gold, drifting in the starlight.
 “Do you see?” cries Hanming. His eyes are shining. He is weeping with joy. “They know! They know where to go!”
 Behind you, in the shed, someone is screaming for the guards.
-> force | Run. | tithe_a2s6
+> force | Run. | tithe_a2s6 | needs:4
 > truth | Watch. | tithe_a2s6
 > quiet | Cover your face. | tithe_a2s6
 > mercy | Follow a slip. | tithe_a2s6
@@ -276,7 +276,7 @@ Slips lie in the dust. Slips hang from tent-poles. A flock of paper clings to th
 The Inspector’s guards are standing helpless in the lane, with their halberds at the slope. Nobody is looking at them. A grey-haired sergeant takes off his helmet and looks at it. He puts it down in the dust. He walks away.
 Ren Qiao, beside you, lets out a long slow breath.
 “It was never about the lock,” he says.
-> force | Nod. | tithe_a2s9
+> force | Nod. | tithe_a2s9 | needs:4
 > truth | Take Hanming’s arm. | tithe_a2s9
 > quiet | Look at the Stair. | tithe_a2s9
 > mercy | Smile. | tithe_a2s9

@@ -18,7 +18,7 @@ As you reach it the mirror swivels on its nail all by itself, catches the mornin
 Gu squints. “Is that a trick of the sun?”
 The Elder, behind you, has gone very white. “No,” she says. “It is good morning.”
 > truth | Answer the mirror the way the Elder did, with the sun. | lamp_a1s1
-> force | Notice the grey shapes moving among the gorse above, and the glint of steel. | lamp_a2s1
+> force | Notice the grey shapes moving among the gorse above, and the glint of steel. | lamp_a2s1 | needs:3
 > deceit | Tell the Elder to stay back, and go up in the sash of the Harbour Board. | lamp_a3s1
 > quiet | Tell the Elder to take the mirror down from its nail, and answer it herself. | lamp_a4s1
 > inquiry | Fit the bone tide-key into the keyhole under the mirror. | lamp_h1 |  | mender_has_key | You have no tide-key.
@@ -124,7 +124,7 @@ Ren Qiao has seen them too. His hand is on his sword. “Concord marines,” he 
 “They are here for her,” says the Elder, white to the lips. “They have been told there is a keeper. They have been told she is a danger to shipping.”
 “Is she?” says Gu.
 “She is a girl with a mirror,” says the Elder, “and I will not let them take her.”
-> force | Rush them. | lamp_a2s2
+> force | Rush them. | lamp_a2s2 | needs:3
 > truth | Call out to them. | lamp_a2s2
 > quiet | Slip round the other side. | lamp_a2s2
 > deceit | Pretend to be a Concord patrol. | lamp_a2s2
@@ -175,7 +175,7 @@ Nobody moves.
 “Sir,” says the corporal. He is a lean, tired man of forty, and he lowers his rifle with a deliberate gesture. “I have a mother too.”
 One by one, the marines put down their weapons. The grass is dotted with them, like dropped sticks. Hok stands alone on the slope with a pistol in his fist.
 “Traitors,” he says. He does not raise it.
-> force | Take the pistol. | lamp_a2s6
+> force | Take the pistol. | lamp_a2s6 | needs:3
 > truth | Tell him it is over. | lamp_a2s6
 > quiet | Wait. | lamp_a2s6
 > mercy | Ask him what he wants. | lamp_a2s6
@@ -212,7 +212,7 @@ Hok takes a long drink of tea.
 He sets down the cup.
 “I do not know if it is true. I thought you should have it.”
 Nine days. The word hangs in the air like the smoke from the fire.
-> force | Ask whether the Lamp is on the list. | lamp_close | +lamp_hok_warned
+> force | Ask whether the Lamp is on the list. | lamp_close | +lamp_hok_warned needs:3
 > truth | Thank him again. | lamp_close | +lamp_hok_warned
 > quiet | Look at the sea. | lamp_close | +lamp_hok_warned
 > mercy | Tell him to stay with them. | lamp_close | +lamp_hok_warned

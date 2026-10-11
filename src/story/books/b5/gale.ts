@@ -21,7 +21,7 @@ Yue Zhaoning has her goggles down. She has put away her pipe. “Glass-gale,” 
 “Choose,” says Yue. “That’s the whole of seamanship.” She grins, unamused. “There are four ways to meet a gale. All of them are bad.”
 The wall is no longer a bruise. It is a cliff, advancing, with a thin high screaming along its face.
 > truth | Ask Odval what the wind is saying. | gale_a1s1
-> force | Shorten sail and run for the front. | gale_a2s1
+> force | Shorten sail and run for the front. | gale_a2s1 | needs:4
 > deceit | Look at the cargo, and at the spare skiff towed astern. | gale_a3s1
 > mercy | Notice a train of pilgrims on the plain ahead, directly in its path. | gale_a4s1
 > inquiry | Unwrap the cold steel shard from the cart. | gale_h1 |  | mill_note | The shard is only a piece of metal to you.
@@ -167,7 +167,7 @@ It takes four minutes. You haul down the great sail in a flurry of rope and curs
 “Then we’ll be fish-scales!”
 The Elder has tied herself to the mast with a length of line. Her face is the colour of paper. She is gripping the rope with both hands, and her lips are moving. You catch the words.
 She is reciting a statute.
-> force | Hold on. | gale_a2s2
+> force | Hold on. | gale_a2s2 | needs:4
 > truth | Say a word to the Elder. | gale_a2s2
 > quiet | Check the lashings. | gale_a2s2
 > inquiry | Ask which statute. | gale_a2s2
@@ -229,7 +229,7 @@ It vanishes.
  Then, from the far side, a crash.
 Yue Zhaoning is flat on her face in the splinters. She is laughing.
 “Light,” she wheezes. “Gerel’s Light. Oh, she’ll *kill* me.”
-> force | Help her up. | gale_a2s6
+> force | Help her up. | gale_a2s6 | needs:4
 > truth | Check the others. | gale_a2s6
 > quiet | Take cover. | gale_a2s6
 > inquiry | Ask where the others are. | gale_a2s6
@@ -272,7 +272,7 @@ You lose the afternoon to it. The mast and boom of Light are beyond saving, but 
 “It’s very practical. Wrights are.” She sits back on her heels. “It means the hull is never dead. It just becomes other boats.”
 At sunset you stand around the hulk with your hats off. Hanming ties a ribbon on the broken mast. Gu puts a stub of candle on the deck. The Elder says, in her dry exact voice: “Light. Constructed by Ochirgerel. Lost in the Glass Gale, in the service of the Ninth. She is entered in the register.”
 She writes it. It is the first time she has ever registered a boat.
-> force | Salute. | gale_a2s9
+> force | Salute. | gale_a2s9 | needs:4
 > truth | Bow. | gale_a2s9
 > quiet | Pour a drink. | gale_a2s9
 > inquiry | Ask Yue. | gale_a2s9

@@ -92,6 +92,11 @@ export interface Choice {
   npcScenario?: string;
   /** A companion's reaction to this choice, spoken after the Elder's. */
   allyScenario?: string;
+  /**
+   * The realm this choice asks of the player (an index into REALMS). A player below it can still try, but pays for it;
+   * a player two realms above it finds it easy.
+   */
+  needsRealm?: number;
 }
 
 export interface Scene {
@@ -157,7 +162,7 @@ export interface Story {
 }
 
 export interface LogEntry {
-  kind: "narration" | "heading" | "player" | "npc" | "realm";
+  kind: "narration" | "heading" | "player" | "npc" | "realm" | "strain";
   text: string;
   speaker?: string;
 }
@@ -193,4 +198,6 @@ export interface ChoiceView {
   choice: Choice;
   available: boolean;
   hint?: string;
+  /** Set when the choice asks for a realm above the player's: how many realms short they are. */
+  strain?: { needs: number; gap: number };
 }

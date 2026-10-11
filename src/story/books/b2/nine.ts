@@ -16,7 +16,7 @@ The Archive of Nine stands on the Stone Island in the middle of Qinglian Ford, a
 The Elder has no time for libraries. Duan Wuyi has lent you his seal for the day and nothing else. Beside the lowest door, a blind old man sits on a stool in the sun with a cup of tea, listening to the city.
 “The founders’ chronicle,” he says, before you have spoken. “Fifth floor, bone-lamp, behind the second screen. Nobody asks for it. I wonder why you do.”
 > inquiry | Say you will earn each floor by its own law, and begin on the jade door. | nine_a1s1 | +nine_a1
-> force | Say nothing, and come back at night with a rope. | nine_a2s1 | +nine_a2
+> force | Say nothing, and come back at night with a rope. | nine_a2s1 | +nine_a2 needs:2
 > deceit | Present a letter of introduction from Lin Mian, Keeper of the Ash Archive, who does not exist. | nine_a3s1 | +nine_a3
 > quiet | Sit down on the step beside him and ask how a blind man keeps nine floors. | nine_a4s1 | +nine_a4
 > truth | Climb to the ninth floor with Lin Yuan’s iron ring in your hand, and try the smallest key. | nine_h1 |  | dep_keys | You carry no keys from the Ash Archive.
@@ -104,7 +104,7 @@ He sets the cup down.
 The tower has no windows on its lowest three floors. On the fourth it has slits, and on the fifth, a balcony. You climb the outside of the tower at night, in rain, with a rope that Ren Qiao has coiled for you without asking why. The stones are old, rough, and slick. The lanterns of the Nine Peaks burn above you like a slow procession of eyes.
 Gu is at the foot with the lantern shuttered. Ren Qiao is at the foot of the rope, weight set, hands knotted in the line. “I hold,” he says. “You climb.”
 There is a ledge at the third floor. You stop on it. The stone is warm, as though something inside were breathing.
-> force | Climb on, hand over hand. | +
+> force | Climb on, hand over hand. | + | needs:2
 > quiet | Rest on the ledge, and listen. | ^
 > truth | Call down to Ren that you are fine. | ^
 > inquiry | Look at the stone under your hand. | ^
@@ -146,7 +146,7 @@ He reaches the top and leans on his stick. His face turns toward the screen, to 
 > truth | Step out and tell him why. | +
 > quiet | Stay behind the screen. | ^
 > mercy | Say you're sorry, and put the book on the table. | ^
-> force | Tell him to let you pass. | ^
+> force | Tell him to let you pass. | ^ | needs:2
 
 === nine_a2s6 | The Old Man’s Reading
 He sits down at the reading table, quite heavily. He folds his hands on the head of his stick. “I was told you would come,” he says. “Not by whom. By a note, left fifty years ago, in a hand I did not know. I kept it. I have wondered since whether it was meant for me, or for whoever would come after.”

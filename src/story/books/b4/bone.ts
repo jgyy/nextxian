@@ -18,7 +18,7 @@ There are no goods on the stalls. No cloth, no meat, no pots. On every counter l
 “It is the one place the wind cannot reach.” He pulls his hat low. “The salt kills the grass. The wind goes round.”
 Dagva has gone quiet. He looks at the stalls with hungry, frightened eyes.
 > truth | Walk up to the biggest awning, and ask to speak with whoever keeps the books. | bone_a1s1
-> force | Look at the great black tent in the centre, where the ledgers are stored. | bone_a2s1
+> force | Look at the great black tent in the centre, where the ledgers are stored. | bone_a2s1 | needs:4
 > deceit | Notice a man in a Garrison greatcoat, buying a name with a bag of silver, and ask Hao Lan what he is. | bone_a3s1
 > mercy | Notice a girl of eight on a block at the end of a row, with a tag round her neck, and a clerk calling a price. | bone_a4s1
 > inquiry | Show the broker the black ribbon Madam Ash gave you, and ask to see what the Lotus is owed. | bone_h1 |  | lotus_trusted | The Lotus has no credit in your name.
@@ -166,7 +166,7 @@ It stands in the centre of the ring, a squat windowless pavilion of black felt, 
 “The market is licensed.” Her face is white. “The Concord lets her run it. In return she keeps a copy of every ledger in that tent. And the Chancery has a key.”
 You look at the tent. You look at the guards. You think of eight hundred and forty children.
 “Then it is not hers,” you say. “It is theirs.”
-> force | Plan it. | bone_a2s2
+> force | Plan it. | bone_a2s2 | needs:4
 > truth | Say it is a trap. | bone_a2s2
 > quiet | Watch the guards. | bone_a2s2
 > mercy | Think of the deserters. | bone_a2s2
@@ -221,7 +221,7 @@ She crosses to it. She opens it. She reads.
 “Oh,” she says.
 “What?”
 “It is the master index.” Her voice is a whisper. “It lists every ledger. Every sale. Every buyer. Every name.” She turns a page. “And every one of them has been entered in the Chancery’s copy.” She looks up, horrified. “Madam Uzun has been informing on her own customers for forty years.”
-> force | Take it. | bone_a2s6
+> force | Take it. | bone_a2s6 | needs:4
 > truth | Close it. | bone_a2s6
 > quiet | Read. | bone_a2s6
 > mercy | Look for Dagva’s name. | bone_a2s6
@@ -263,7 +263,7 @@ It is the saddest face you have ever seen. It is a face from which a lifetime ha
 “It was a lie.”
 “It was hers.” She wipes her eyes. “It’s the only thing she had.”
 The cart rattles on into the dark.
-> force | Say nothing. | bone_a2s9
+> force | Say nothing. | bone_a2s9 | needs:4
 > truth | Look away. | bone_a2s9
 > quiet | Weep. | bone_a2s9
 > mercy | Ask to turn back. | bone_a2s9

@@ -17,7 +17,7 @@ At their head is a slight man past fifty with ink to the second knuckle of his l
 + end1_sovereign | His eyes fall on the seal at your belt, and he bows a second time, lower. A Censor’s bow is to an office, not a person.
 “I am Duan Wuyi, Censor-General,” he says. “You are the witness who read the names. I am told you did not blink. Forty-one names have returned to Heaven’s Ledger this season, every one struck out in the fifteen years since your Sealing. I would like to know which door they are coming through. I shall begin with your abyss.”
 > truth | Offer him the keys of the sect before he asks, and walk him to the memorial yourself. | censors_a1s1 | +censors_a1
-> force | Stand in the gateway and tell him the Law Hall answers to the Law Hall until the Elder says otherwise. | censors_a2s1 | +censors_a2
+> force | Stand in the gateway and tell him the Law Hall answers to the Law Hall until the Elder says otherwise. | censors_a2s1 | +censors_a2 needs:2
 > deceit | Welcome him warmly, and send Gu running ahead to Lin Yuan to put the wrong drawers in front. | censors_a3s1 | +censors_a3
 > quiet | Say little, and offer to carry a Censor’s bag, so that you stay near enough to listen. | censors_a4s1 | +censors_a4
 
@@ -105,7 +105,7 @@ Wanru looks at him a long time. “You are offering me a kindness.”
 You stand in the gateway with your hands where the Censors can see them, and the wardens come, one lantern and then another, until a dozen stand behind you in the rain. Duan stops at the third step. He is not angry. He looks like a man who has met a wall before and knows its habits.
 “A Law Hall that answers only to itself is the Law Hall that sealed fifteen,” he says. “I will not argue. I will ask you to stand aside.”
 Mei Qiu has already drawn a short iron bar from her sash. It is dark, and its end is stamped with a closed eye.
-> force | Plant your feet and say that you will not stand aside. | censors_a2s2
+> force | Plant your feet and say that you will not stand aside. | censors_a2s2 | needs:2
 > truth | Tell him it is not the Law Hall you guard but the people in it, and ask what he will do for them. | censors_a2s2
 > deceit | Step aside with a smile and a low bow, then close the gate behind them. | censors_a2s2
 > quiet | Hold your ground and look to Ren Qiao for the next move. | censors_a2s2 | bond:ren+2
@@ -142,7 +142,7 @@ The grey line reaches your collarbone, and the black seed answers it.
 It is not a flame or a flower. It is a thread, black as ink, and it runs out along your arm to meet the bar, and where the two touch the iron’s closed eye opens. Mei Qiu cries out. The grey lines on your sleeve fall off like sand.
 For an instant the courtyard sees what you carry. A seed with one thread of root in it, and in the root, very faint, small shapes that look like names.
 Duan Wuyi has gone absolutely still. Hao Lan’s sketchbook slides from her hands.
-> force | Press the advantage and push the thread through the iron. | censors_a2s6 | +censors_seed_seen npc:SU_CENSOR_SEED
+> force | Press the advantage and push the thread through the iron. | censors_a2s6 | +censors_seed_seen npc:SU_CENSOR_SEED needs:2
 > quiet | Draw the thread back in, quickly, before anyone can look too closely. | censors_a2s6 | +censors_seed_seen
 > truth | Say aloud that you are not hiding it, and that you do not know what it is. | censors_a2s6 | +censors_seed_seen
 > deceit | Say it is a trick of Qin’s sparring court, an old fire-drill, and grin. | censors_a2s6 | +censors_hid_seed

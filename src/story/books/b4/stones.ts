@@ -17,7 +17,7 @@ They hum. Not one, but all, in a vast slow chord that fills the rise like water 
 An old woman sits at the end of the nearest row, on a folding stool, with her back to a stone and her hands on her knees. She is tiny and brown and wrinkled as a nut, in a coat of undyed wool and a hat of white felt. Her eyes are shut. She is smiling.
 “Chimeg,” says Temur, softly. “The Stone-Singer. She is deaf. She hears everything.”
 > truth | Sit down opposite her, and wait to be spoken to. | stones_a1s1
-> force | Notice that a whole row at the north end lies toppled in the grass. | stones_a2s1
+> force | Notice that a whole row at the north end lies toppled in the grass. | stones_a2s1 | needs:4
 > deceit | Notice one stone in the third row that does not hum at all. | stones_a3s1
 > quiet | Ask Temur whether strangers may sleep among the stones. | stones_a4s1
 > inquiry | Say that there is a voice in the stones that you know, and ask which row it is in. | stones_h1 |  | border_door_sung | The stones have not yet been told your name.
@@ -152,7 +152,7 @@ Bold, shy and sweating, stands at the head of the row with his hands in his pock
 “Now there’s nobody to stand them up.” He rubs the back of his neck. “It takes forty men and a day. The clan’s only eleven. We’ve been trying with levers. The big ones weigh four tons.”
 Ren Qiao is looking at the stones with a sort of professional gloom. He walks the length of the row. He measures one with his arm-span. He grunts.
 “I could do it,” he says. “With help.”
-> force | Say you will help. | stones_a2s2
+> force | Say you will help. | stones_a2s2 | needs:4
 > truth | Ask how. | stones_a2s2
 > quiet | Study the ground. | stones_a2s2
 > mercy | Thank Bold. | stones_a2s2
@@ -206,7 +206,7 @@ They hold. The stone hangs, creaking. Dust trickles from the fissure. Every face
 “Then we need something to hold it.” Ren Qiao’s eyes sweep the company. They fall on you. “Something that will go through it. Something that fits in a crack.”
 You look at your hand. The left. The scar glows, faintly, in the dusk.
 “Open it,” says Ren Qiao.
-> force | Do it. | stones_a2s6
+> force | Do it. | stones_a2s6 | needs:4
 > truth | Say you are afraid. | stones_a2s6
 > quiet | Take a breath. | stones_a2s6
 > mercy | Ask what it will cost. | stones_a2s6
@@ -243,7 +243,7 @@ The Listeners have lit fires. They have brought out a barrel of fermented mare�
 “Have I?” He peers into the cup. “I think I may be a little drunk.”
 He smiles up at the stars.
 “I find that I am extremely happy,” he says. “It is a sensation I had forgotten.”
-> force | Drink. | stones_a2s9
+> force | Drink. | stones_a2s9 | needs:4
 > truth | Laugh. | stones_a2s9
 > quiet | Listen to the fiddle. | stones_a2s9
 > mercy | Help him sit. | stones_a2s9

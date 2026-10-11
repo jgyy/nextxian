@@ -18,7 +18,7 @@ She hears you. She does not look up.
 She closes the notebook on her finger.
 “I do not know what is true, now,” she says. “I do not know which parts of me are mine.”
 > truth | Offer to ask Madam Ash with her. | sixth_a1s1
-> force | Offer to find the Chancery’s file on her. | sixth_a2s1
+> force | Offer to find the Chancery’s file on her. | sixth_a2s1 | needs:3
 > deceit | Remind her that Yin offered her a place at Fang’s side. | sixth_a3s1
 > mercy | Sit beside her, and say nothing, and let her write. | sixth_a4s1
 > inquiry | Ask about the bone seal Master Zhu returned to her. | sixth_h1 |  | mender_hao_asked | You have not seen her ask about the sixth.
@@ -131,7 +131,7 @@ Hao Lan studies it through her telescope from the roof of a tea-house across the
 “The Registry is on the second floor,” she says. “It has a night-keeper. His name is Mr Mo. He is deaf in one ear and snores in the other.” She lowers the glass. “My file is in the Cabinet of Foundlings. Third row, seventh shelf. I have signed for it eleven times.”
 “You have seen it?”
 “I have seen the cover.” She swallows. “I never opened it. It seemed impolite.”
-> force | Offer to go in with her. | sixth_a2s2
+> force | Offer to go in with her. | sixth_a2s2 | needs:3
 > truth | Ask why now. | sixth_a2s2
 > quiet | Look at the porter. | sixth_a2s2
 > mercy | Say she doesn’t have to. | sixth_a2s2
@@ -183,7 +183,7 @@ She is very quiet. She sits on the cold floor with the page in her lap, and she 
 “I was. I was a second backup. If the ninth failed, there were eight more. If all eight failed, there was me, in the Chancery, being monitored.” She laughs, a dry small sound. “It is very efficient. It is rather beautiful. I wrote forty memoranda on the importance of redundancy.”
 The lantern throws her shadow, huge, up the black cabinets.
 “He let me write the Assembly minutes,” she says. “He let me take notes at the Stair. He let me sit in the room while Duan Wuyi read the Second Order, and he watched me.” Her voice is rising. “He wanted to see what I would do.”
-> force | Put a hand on her mouth. | sixth_a2s6
+> force | Put a hand on her mouth. | sixth_a2s6 | needs:3
 > truth | Say it is not her fault. | sixth_a2s6
 > quiet | Wait. | sixth_a2s6
 > mercy | Hold her. | sixth_a2s6
@@ -223,7 +223,7 @@ She taps the page in her coat.
 “I will keep this. I will not burn it. I want it in the record.” Her chin comes up. “I am going to be a clerk. I am going to be the best there has ever been. And I am going to write the whole truth, in a clear small hand, and put my name to it.”
 She looks at you. In the moonlight she is very pale and very calm.
 “Thank you for coming,” she says. “I would have gone alone. It would have been worse.”
-> force | Nod. | sixth_close | +sixth_read_file
+> force | Nod. | sixth_close | +sixth_read_file needs:3
 > truth | Say you would go anywhere. | sixth_close | +sixth_read_file
 > quiet | Walk with her. | sixth_close | +sixth_read_file
 > mercy | Take her hand. | sixth_close | +sixth_read_file

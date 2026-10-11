@@ -16,7 +16,7 @@ They come in at first light on the ninth day, out of a sea the colour of pewter.
 Tidewall wakes to the sound of church bells. Every window in the town is open. The fishermen stand at the quay with their hats in their hands. The old women are on the Wall. Qiu’s lamp sweeps once across the water and goes dark.
 Captain Kou is at your elbow with a glass. His scarred face is grim. “Eight hundred men,” he says. “A chain of a hundred links. A lead case the size of a coffin.” He lowers the glass. “They have not fired. They are waiting.”
 > truth | Go up on the Wall with a white flag, and ask to speak. | ninesails_a1s1
-> force | Ask Ah Zhi how many boats she can find, and how much oil. | ninesails_a2s1 | +ninesails_a2
+> force | Ask Ah Zhi how many boats she can find, and how much oil. | ninesails_a2s1 | +ninesails_a2 needs:3
 > deceit | Ask Yin what the flagship’s clerks do, and whether a new one would be missed. | ninesails_a3s1
 > mercy | Ask Lu Yan how many in the town cannot walk to the hill road. | ninesails_a4s1
 > inquiry | Ask Kou whether the Lotus has more than a committee. | ninesails_h1 |  | lotus_trusted | The Court has not found for you.
@@ -135,7 +135,7 @@ She stares at you. Then she laughs, a high wild laugh that rings along the quay.
 “It is possible,” says Ah Zhi, “if you do not mind losing every boat in the harbour.” She tucks the pencil behind her ear. “I do not. They are only boats.”
 Her eyes are bright.
 “I have been wanting to sink something for weeks.”
-> force | Start. | ninesails_a2s2
+> force | Start. | ninesails_a2s2 | needs:3
 > truth | Ask if she is sure. | ninesails_a2s2
 > quiet | Look at the fleet. | ninesails_a2s2
 > mercy | Ask who will crew. | ninesails_a2s2
@@ -184,7 +184,7 @@ A bell rings aboard the Prudence. A trumpet sounds. Figures run on the decks. Gu
 “Row!” shouts Ah Zhi. “Row, you idiots!”
 You row. The boat leaps. Behind you the first fire-ship drives onto the cutter Duty and the cutter’s rigging goes up in a sheet. A scream carries over the water. A man jumps. Another follows.
 The Elder’s voice, in your head, says: you are doing this. You are doing this.
-> force | Row harder. | ninesails_a2s6
+> force | Row harder. | ninesails_a2s6 | needs:3
 > truth | Look back. | ninesails_a2s6
 > quiet | Shut your ears. | ninesails_a2s6
 > mercy | Steer for the swimmers. | ninesails_a2s6
@@ -222,7 +222,7 @@ You think of the marines in the water. You think of the boy of seventeen who cou
 “Eight of ours,” says Captain Kou, at your shoulder. His scarred face is grey. “Forty-one boats. And three of theirs sunk.” He takes off his cap. “It is not an exchange.”
 “No.”
 “It is, however, a delay,” says Kou, “and I have been told that in war that is a victory.”
-> force | Bow your head. | ninesails_close | +ninesails_burned
+> force | Bow your head. | ninesails_close | +ninesails_burned needs:3
 > truth | Say their names. | ninesails_close | +ninesails_burned
 > quiet | Stay with Bao Er. | ninesails_close | +ninesails_burned
 > mercy | Go to the Ward. | ninesails_close | +ninesails_burned

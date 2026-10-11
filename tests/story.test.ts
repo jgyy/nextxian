@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { story, chapters } from "@/story";
+import { auditStory } from "@/engine/audit";
 import { validateStory, MAX_LINE_WORDS, MAX_SCENE_WORDS, MIN_CHOICES, MIN_NPC_SCENARIOS, sceneBodyWords } from "@/engine/validate";
 import { choose, createGame, currentBeat, enterScene, getChoices, getScene } from "@/engine/game";
 import {
@@ -260,6 +261,23 @@ describe("scene length", () => {
     expect(heading?.text).toBe(story.scenes.descent_return_2.title);
   });
 
+  it("passes the audit: no dangling flag, dead condition or time loop", () => {
+    expect(auditStory(story).map((i) => `${i.kind}: ${i.message}`)).toEqual([]);
+  });
+
+  it("gives every scene an id of its own, so no arc silently replaces another's scene", () => {
+    const owner = new Map<string, string>();
+    const clashes: string[] = [];
+    for (const chapter of chapters) {
+      for (const scene of chapter.scenes) {
+        const first = owner.get(scene.id);
+        if (first !== undefined) clashes.push(`${scene.id} (${first} / ${chapter.name})`);
+        else owner.set(scene.id, chapter.name);
+      }
+    }
+    expect(clashes).toEqual([]);
+  });
+
   it("keeps every scene body within the 200-word cap, extras and interjections included", () => {
     for (const scene of Object.values(story.scenes)) {
       expect(sceneBodyWords(scene), scene.id).toBeLessThanOrEqual(MAX_SCENE_WORDS);
@@ -277,14 +295,14 @@ describe("reactive NPC", () => {
 
   it("answers the same scenario differently across the trust tiers its choice can reach", () => {
     for (const scenario of Object.values(story.scenarios)) {
-      const { sceneId, choiceId, flags, stats, npc } = locate(scenario.id);
+      const { sceneId, choiceId, flags, stats, npc, realm } = locate(scenario.id);
       const reached = new Set<Tier>();
       const replies = new Set<string>();
       for (const trust of [-60, -20, 0, 30, 70]) {
         const base = withNpc(trust, flags);
         // A companion's scenario is answered by how they feel, which is their bond, not the Elder's trust.
         const bonds = scenario.npc ? { [scenario.npc]: trust } : base.bonds;
-        const state: GameState = { ...base, bonds, sceneId, stats: { ...base.stats, ...stats }, npc: { ...base.npc, ...npc, trust } };
+        const state: GameState = { ...base, bonds, sceneId, realm, stats: { ...base.stats, ...stats }, npc: { ...base.npc, ...npc, trust } };
         const view = getChoices(getScene(story, sceneId), state).find((v) => v.choice.id === choiceId);
         if (!view?.available) continue; // a choice with a trust requirement is closed to the colder tiers
         reached.add(tierFor(trust));
@@ -938,15 +956,18 @@ function locate(scenarioId: string): {
   flags: Record<string, boolean>;
   stats: Partial<PlayerStats>;
   npc: Partial<NpcState>;
+  realm: number;
 } {
   const scene = Object.values(story.scenes).find((s) => s.choices.some((c) => c.npcScenario === scenarioId || c.allyScenario === scenarioId));
   if (!scene) throw new Error(`no scene uses ${scenarioId}`);
   const choice = scene.choices.find((c) => c.npcScenario === scenarioId || c.allyScenario === scenarioId)!;
   const stats: Partial<PlayerStats> = {};
   const npc: Partial<NpcState> = {};
+  let realm = 0;
   for (const c of choice.requires ?? []) {
+    if (c.kind === "realm" && c.min !== undefined) realm = Math.max(realm, c.min);
     if (c.kind === "stat" && c.min !== undefined) stats[c.stat] = c.min;
     if (c.kind === "npc" && c.min !== undefined) npc[c.metric] = c.min;
   }
-  return { sceneId: scene.id, choiceId: choice.id, flags: flagsFor(choice), stats, npc };
+  return { sceneId: scene.id, choiceId: choice.id, flags: flagsFor(choice), stats, npc, realm };
 }

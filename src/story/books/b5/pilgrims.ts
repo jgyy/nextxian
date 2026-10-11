@@ -22,7 +22,7 @@ Duan Wuyi reads it twice. His mouth has gone dry.
 “That,” says Duan, “is the question.”
 A clerk at the nearest grille is looking at your party over the top of his spectacles. He crooks a finger.
 > truth | Step up and give your true names, all of them. | pilgrims_a1s1
-> force | Notice the barrier at the head of the queue beginning to bow outward. | pilgrims_a2s1
+> force | Notice the barrier at the head of the queue beginning to bow outward. | pilgrims_a2s1 | needs:4
 > deceit | Notice the gilt-edged tent at the end of the row, where a delegation of the Jade Crane Sect has just failed to arrive. | pilgrims_a3s1
 > mercy | Notice a woman fainting in the queue, and another beside her, and a child being passed overhead to the shade. | pilgrims_a4s1
 > inquiry | Lay the Elder’s seal on the counter in front of the clerks, and say her name. | pilgrims_h1 |  | wreck_register | The clerks do not yet know what your seal has done.
@@ -179,7 +179,7 @@ You hear the sound before you see it: a long low creak from the foot of the barr
 Nobody can. The pressure is a living thing. You see a small figure at the front lifted off her feet, a girl of eleven in a white robe, her mouth open, her arms flung up. She disappears.
 “Ren!” you shout.
 He is already running. He has seen it too. Ren Qiao, who stood on a bridge for fifteen years and turned no one back, goes into the crowd like a plough.
-> force | Follow. | pilgrims_a2s2
+> force | Follow. | pilgrims_a2s2 | needs:4
 > truth | Shout for calm. | pilgrims_a2s2
 > quiet | Look for the girl. | pilgrims_a2s2
 > mercy | Pull people back. | pilgrims_a2s2
@@ -241,7 +241,7 @@ She takes it. She holds it against her chest.
 Ren Qiao is silent for a long moment. His scarred face is unreadable.
 “I should like that,” he says gruffly. “Very much.”
 Behind him the camp, still kneeling, begins slowly to rise.
-> force | Smile. | pilgrims_a2s6
+> force | Smile. | pilgrims_a2s6 | needs:4
 > truth | Nod. | pilgrims_a2s6
 > quiet | Look at Ren. | pilgrims_a2s6
 > mercy | Hug Fen. | pilgrims_a2s6
@@ -291,7 +291,7 @@ By evening there is a ripple of little girls at his heels. Seven of them. They w
 “That is what you teach.”
 He looks at the line of children. They look back, grave, hopeful, with their hands behind their backs, exactly like his.
 “Oh dear,” says Ren Qiao.
-> force | Laugh. | pilgrims_a2s9
+> force | Laugh. | pilgrims_a2s9 | needs:4
 > truth | Pat his shoulder. | pilgrims_a2s9
 > quiet | Look away. | pilgrims_a2s9
 > mercy | Fetch tea. | pilgrims_a2s9

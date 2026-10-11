@@ -19,7 +19,7 @@ The chain is closing.
 It rises in a curve from the northern headland to the Wall, link on link, and each link glows at the heart, a dull sullen red. It hums one long low note, and under your feet the Wall begins to sing back.
 Mei Qiu has her hand on the stone. “It’s taking her,” she says. “I can feel it.”
 > truth | Go down to the last block, and ask Ke-er what she wants. | chain_a1s1 | npc:SU_CHAIN_CLOSES
-> force | Go out to the nearest anchor-point with Kou’s men, and wrench it open. | chain_a2s1
+> force | Go out to the nearest anchor-point with Kou’s men, and wrench it open. | chain_a2s1 | needs:3
 > deceit | Find Shu Ning and Hao Lan, and tell them it is time to turn the Inspector’s key. | chain_a3s1
 > quiet | Take Ah Zhi’s skiff out to the flagship in the dark, and find the Censor-General. | chain_a4s1
 > inquiry | Read the saint’s letter to the Wall, and ask the question it asks. | chain_h1 |  | fifth_letter | You have no letter from the saint to read.
@@ -139,7 +139,7 @@ Captain Kou is at the first with fifty men. They have crowbars, sledges, a black
 “It wants a different kind of key,” says Mei Qiu, who has come up the steps with her bar.
 She looks at you.
 “It wants yours.”
-> force | Go to the ring. | chain_a2s2
+> force | Go to the ring. | chain_a2s2 | needs:3
 > truth | Ask what she means. | chain_a2s2
 > quiet | Look at the plaque. | chain_a2s2
 > mercy | Say you do not know how. | chain_a2s2
@@ -191,7 +191,7 @@ The seed shudders. The black light dwindles. The veins fade, a thread at a time.
 You laugh. It hurts.
 “Seven rings,” says Kou, bending over you. He has gone pale. “Seven of nine. Two left.”
 “Then they stay,” says Mei Qiu. She has not let go. “She’s done enough.”
-> force | Try to rise. | chain_a2s6
+> force | Try to rise. | chain_a2s6 | needs:3
 > truth | Tell them to go on without you. | chain_a2s6
 > quiet | Rest. | chain_a2s6
 > mercy | Thank Ke-er. | chain_a2s6
@@ -234,7 +234,7 @@ He turns his head and looks at you. His scarred face is dirty and creased and fu
 “You will.” He grins. “But you’ll ask first.”
 He holds out a hand. You take it. He hauls you up.
 Mei Qiu is sitting on the sea steps with her bar across her knees and her head bowed. She is looking at nothing.
-> force | Sit beside her. | chain_close | +chain_forced
+> force | Sit beside her. | chain_close | +chain_forced needs:3
 > truth | Say her name. | chain_close | +chain_forced
 > quiet | Give her space. | chain_close | +chain_forced
 > mercy | Put a hand on her shoulder. | chain_close | +chain_forced

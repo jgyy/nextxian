@@ -18,7 +18,7 @@ In the lock-up behind the magistrate’s hall a boy of sixteen is sitting on a s
 + covered_bo_lan_bet | He has not forgotten that you put a coin over his bet.
 “Theft of a medicinal root from the factor’s granary,” reads the clerk. “Punishable by hands or by three years in the pans.”
 > inquiry | Offer to be Bo Lan’s advocate, and read the statutes with Hao Lan before the hearing. | assize_a1s1 | +assize_a1
-> force | Go to the lock-up at night and tell Bo Lan he is leaving with you. | assize_a2s1 | +assize_a2
+> force | Go to the lock-up at night and tell Bo Lan he is leaving with you. | assize_a2s1 | +assize_a2 needs:2
 > deceit | Find a way to make the factor’s receipt say that Bo Lan paid for the root. | assize_a3s1 | +assize_a3
 > quiet | Follow the salt carts out of the granary at dusk, and see where they really go. | assize_a4s1 | +assize_a4
 > inquiry | Show Scribe Tong the factor's receipts, and ask what his ink says of them. | assize_h1 |  | censors_tong_friend | The scribe does not trust you enough yet to share what he reads.
@@ -108,7 +108,7 @@ Bo Lan looks around the room as if waiting for someone to tell him it is a joke.
 The lock-up is a salt-block cell behind the magistrate’s hall, with a single guard on a stool and a lantern with a cracked shade. You did not decide to do this. You walked there, and then you stood at the end of the lane in the dark and watched the guard yawn, and the thing was decided.
 Ren Qiao stands beside you, silent as a stone. He has not asked what you intend. He has checked the buckles on his scabbard and unhooked his lantern, and he is waiting.
 Gu is at your other shoulder. “Is this wise?” he whispers. “I would like it on record that I asked.”
-> force | Tell them you are taking the boy, tonight, and anyone who wants to stop you can say so now. | assize_a2s2
+> force | Tell them you are taking the boy, tonight, and anyone who wants to stop you can say so now. | assize_a2s2 | needs:2
 > truth | Tell Ren Qiao honestly that you do not know whether this is right, and ask what a warden would do. | assize_a2s2 | bond:ren+3
 > mercy | Tell Gu it is on record, and ask him to watch the lane. | assize_a2s2 | bond:gu+2
 > deceit | Suggest a distraction: Gu knocks over the lantern at the far end. | assize_a2s2
@@ -149,7 +149,7 @@ She falls into step with Ren, practical as a clerk. “The nearest boat is a sal
 > truth | Thank her, and ask what the Censor-General would do if he found out. | assize_a2s6
 > mercy | Tell her she must stay out of this, and that you will not tell Duan she followed. | assize_a2s6
 > quiet | Hand her the foot of the pallet. | assize_a2s6
-> force | Tell her she is welcome to carry, but not to write. | assize_a2s6
+> force | Tell her she is welcome to carry, but not to write. | assize_a2s6 | needs:2
 
 === assize_a2s6 | The Third Pan
 The salt barge lies low in the water, loaded to the gunwale with white blocks, and the bargeman is a leathery old woman with one eye. She looks at the pallet, the boy, the warden, the girl in the Censor’s sash, and says, without any inflection, “Tong’s uncle says you owe him a favour. I say you owe me a salt.”
@@ -175,7 +175,7 @@ Duan Wuyi looks at the boy. At the pallet. At the warden, the girl in the sash, 
 “I rose at dawn to be told that a prisoner had been removed from my assize,” he says. “I find it remarkable. I had been about to declare him not guilty.”
 Bo Lan makes a sound like a cat that has swallowed a bell.
 > truth | Tell him you did not know, and offer to take whatever the Concord demands. | assize_close | +assize_fled +assize_dust_exposed
-> force | Tell him a judge who rules late is a judge who rules for the factor. | assize_close | +assize_fled
+> force | Tell him a judge who rules late is a judge who rules for the factor. | assize_close | +assize_fled needs:2
 > mercy | Ask whether the boy can still be tried, with his mother there to speak for him. | assize_close | +assize_fled +assize_dust_exposed
 > inquiry | Ask him what he was going to say about the factor. | assize_close | +assize_fled +assize_dust_exposed
 

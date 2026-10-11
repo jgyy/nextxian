@@ -22,7 +22,7 @@ Hao Lan is already out of the cart, with her notebook, walking round the ring. D
 “What are they for?”
 “To keep something in,” says Duan. “Or to keep something out.” He frowns. “I cannot tell which way they face.”
 > truth | Walk in through the gap between the first and ninth post. | tomb_a1s1
-> force | Notice the posts have eyes: a single dim red point in the top of each, turning slowly toward you. | tomb_a2s1
+> force | Notice the posts have eyes: a single dim red point in the top of each, turning slowly toward you. | tomb_a2s1 | needs:4
 > deceit | Notice a Garrison supply wagon at the horizon, and the glint of surveyors’ brass. | tomb_a3s1
 > mercy | Notice a thin blue thread of smoke from a hut at the back of the mound, and a figure sitting in front of it. | tomb_a4s1
 > inquiry | Hold up the ninth card and say you have come to answer her. | tomb_h1 |  | card_9 | You do not yet hold the card that asks.
@@ -170,7 +170,7 @@ There are nine. They move without noise. They close.
 “Then,” says Duan, “we fight.”
 Ren Qiao draws. He does it unhurriedly, with his scarred face quite calm, and the long sword flashes in the pale sun. “Nine,” he says. “It is a good number. I have always liked it.”
 He steps into the ring.
-> force | Stand beside him. | tomb_a2s2
+> force | Stand beside him. | tomb_a2s2 | needs:4
 > truth | Call out to them. | tomb_a2s2
 > quiet | Watch the eyes. | tomb_a2s2
 > mercy | Pull Duan back. | tomb_a2s2
@@ -231,7 +231,7 @@ The room beyond is large, bare, and strangely bright. The walls are polished. A 
 Duan takes out his spectacles and wipes them on his sleeve. He peers.
 “The cover is stamped,” he says. “It says: The Register of the Spared.”
 The Elder, in the doorway, goes grey as a candle.
-> force | Take it. | tomb_a2s6
+> force | Take it. | tomb_a2s6 | needs:4
 > truth | Ask Duan to read. | tomb_a2s6
 > quiet | Wait. | tomb_a2s6
 > mercy | Hold the Elder. | tomb_a2s6
@@ -278,7 +278,7 @@ It is the wall behind the pedestal. A seam of light runs across it, like a crack
 “No. That is the only way to pass.”
 Ren Qiao wipes his face on his sleeve. He gets slowly to his feet. He crosses the room and begins, with stiff hands, to collect the loose pages. He does it with care. He lays them in a neat pile on the pedestal.
 “I will not leave them on the floor,” he says. “Whatever else.”
-> force | Help him. | tomb_a2s9
+> force | Help him. | tomb_a2s9 | needs:4
 > truth | Go through the door. | tomb_a2s9
 > quiet | Hold the lamp. | tomb_a2s9
 > mercy | Say it is enough. | tomb_a2s9

@@ -16,7 +16,7 @@ Green Mill is a town of sixty roofs along a bend where the river turns a great w
 A child sits on a step with a doll in her lap. She does not play with it. She looks at it as at a puzzle she has been told is a toy.
 “It has been like this for eleven weeks,” says the Elder, very low, at your side. She is looking at a jar on a windowsill, a plain white jar with a lid of oiled paper. “I know that jar. I know the paper. It is from my own office.”
 > mercy | Go to the sick-house at the end of the quay, where the worst are kept. | fever_a1s1 | +fever_a1
-> force | Find the depot where the jars are stored, and see how many there are. | fever_a2s1 | +fever_a2
+> force | Find the depot where the jars are stored, and see how many there are. | fever_a2s1 | +fever_a2 needs:2
 > deceit | Visit the dust-seller in the market, and buy a month's supply. | fever_a3s1 | +fever_a3
 > truth | Ask the headman who sends for the dust, and why. | fever_a4s1 | +fever_a4
 > inquiry | Recall the note by the split root in Master Yao’s garden, and look for blue flowers in the town. | fever_h1 |  | knows_calm_dust | You do not know what the dust is made from, so you do not know what to look for.
@@ -107,7 +107,7 @@ The depot is a low stone barn behind the mill, with a new roof and an old lock. 
 Through a crack in the door you can see the jars. They are stacked in rows to the rafters, round-bellied, white, each with a lid of oiled paper. There must be two thousand. A smell comes through: bitter, faintly sweet.
 A man in a green coat is sitting on a barrel at the door, picking his teeth. He gets to his feet with the unhurried air of a man who is paid by the hour.
 “Closed,” he says. “Come back tomorrow.”
-> force | Tell him you are the Concord's witness, and the depot is open. | fever_a2s2
+> force | Tell him you are the Concord's witness, and the depot is open. | fever_a2s2 | needs:2
 > truth | Tell him you are here to stop the dust, and ask him to step aside. | fever_a2s2
 > deceit | Offer him a purse to look the other way. | fever_a2s2
 > quiet | Wait for the guard's shift to end, and slip in after dark. | fever_a2s2
@@ -149,7 +149,7 @@ The Elder breaks the first jar herself. She holds it over the water. She turns i
 It is meant as a joke. No one laughs.
 > truth | Break the second jar beside her. | fever_a2s6 | bond:ren+1
 > mercy | Stay at the quay and hold the lantern for her. | fever_a2s6
-> force | Smash a dozen jars against the quay-stones at once. | fever_a2s6
+> force | Smash a dozen jars against the quay-stones at once. | fever_a2s6 | needs:2
 > quiet | Watch the powder dissolve in the river, and think about where the river goes. | fever_a2s6
 
 === fever_a2s6 | Downstream

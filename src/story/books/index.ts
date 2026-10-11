@@ -34,6 +34,7 @@ import { fifth } from "./b3/fifth";
 import { ninesails } from "./b3/ninesails";
 import { frame4 } from "./b4/frame";
 import { frame5 } from "./b5/frame";
+import { frame6 } from "./b6/frame";
 import { chain } from "./b3/chain";
 import { border } from "./b4/border";
 import { stones } from "./b4/stones";
@@ -63,6 +64,13 @@ import { fang } from "./b5/fang";
 import { clerk } from "./b5/clerk";
 import { ladder } from "./b5/ladder";
 import { festival } from "./b5/festival";
+import { tiers } from "./b5/tiers";
+import { summit } from "./b5/summit";
+import { descent } from "./b5/descent";
+import { bridge } from "./b6/bridge";
+import { archive } from "./b6/archive";
+import { depths } from "./b6/depths";
+import { sealing } from "./b6/sealing";
 
 /**
  * The books after the first, in reading order. Each book lists its arcs; the story index parses them, adds their scenes
@@ -87,6 +95,11 @@ export const books: Book[] = [
   {
     id: "b5",
     name: "Book Five: The Glass Sea",
-    arcs: [frame5, skiff, singing, wreck, mirage, gale, furnace, pilgrims, tithe, crib, fang, clerk, ladder, festival],
+    arcs: [frame5, skiff, singing, wreck, mirage, gale, furnace, pilgrims, tithe, crib, fang, clerk, ladder, festival, tiers, summit, descent],
+  },
+  {
+    id: "b6",
+    name: "Book Six: The Last Sealing",
+    arcs: [frame6, bridge, archive, depths, sealing],
   },
 ];

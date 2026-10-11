@@ -20,7 +20,7 @@ Under-Manager Bo has walked you here himself, in the plain tunic of a man with n
 The hammer stops.
 A voice calls out, flat and sharp: “If you are coming in, shut the door. The draught makes the tallow gutter.”
 > truth | Go in, and shut the door behind you. | forge_a1s1
-> force | Ask Bo how many guards watch the shed at night, and where they sleep. | forge_a2s1
+> force | Ask Bo how many guards watch the shed at night, and where they sleep. | forge_a2s1 | needs:3
 > deceit | Ask Bo for the Works’ stamp-book, and whether anyone counts the seals. | forge_a3s1
 > inquiry | Ask Bo where the tunnels under the Works begin. | forge_a4s1
 > quiet | Tell Shu Ning that Master Zhu has kept her bench. | forge_h1 |  | mender_taught | You have not stood at Master Zhu’s bench.
@@ -126,7 +126,7 @@ He draws in the dust with his toe.
 “Why not?”
 “She says it is more instructive to stay,” says Bo. “She says she is learning the building.”
 He grimaces. “I have no idea what she means. I have learned not to ask.”
-> force | Plan it. | forge_a2s2
+> force | Plan it. | forge_a2s2 | needs:3
 > truth | Say you want to speak to her first. | forge_a2s2
 > quiet | Study the wall. | forge_a2s2
 > mercy | Ask whether anyone will be hurt. | forge_a2s2
@@ -178,7 +178,7 @@ Inside, the forge is dark but for the red eye of the stove. Shu Ning is sitting 
 She hesitates. For the first time, her cold face flickers. “Third,” she says. “I do not want to be rescued.”
 You stare.
 “I mean it,” she says. “I have been rescued twice. Once from a fire. Once from a ledger. Both times I was grateful. Both times I was owed, afterwards.” She tips her chin. “I would like to leave on my own account. I would like it to be my idea.”
-> force | Say it was her idea. | forge_a2s6
+> force | Say it was her idea. | forge_a2s6 | needs:3
 > truth | Say you understand. | forge_a2s6
 > quiet | Bow. | forge_a2s6
 > mercy | Say you will not claim a debt. | forge_a2s6
@@ -221,7 +221,7 @@ Shu Ning sees her. She goes rigid. Her fingers tighten on the anvil. She looks a
 “Yes.”
 “Hm.” Shu Ning folds her arms. “I always imagined she would be taller.”
 Ah Zhi laughs, short and sudden, like a hiccup.
-> force | Land. | forge_close | +forge_broke_out
+> force | Land. | forge_close | +forge_broke_out needs:3
 > truth | Stand between them. | forge_close | +forge_broke_out
 > quiet | Let it happen. | forge_close | +forge_broke_out
 > mercy | Wave to the Elder. | forge_close | +forge_broke_out

@@ -16,12 +16,12 @@ The Crane Stairs climb the western face of the Stone Island in nine flights of t
 The Azure Cloud Sect has not entered a champion in fifteen years. Its chair is the lowest in the hall, near the door, and the Elder has not mentioned this once.
 In the courtyard at the foot of the stairs the champions are being presented: a tall thin swordsman with a face like a closed fan, a stout woman in indigo with a satchel of pills, a bear of a man in a tunic of hides. The herald, a nervous fellow called Yan, reads out the Peaks in order. When he reaches the ninth, he stops and looks at his list.
 “The Azure Cloud Sect,” he says, with something like despair. “Does it enter?”
-> force | Say that it does, and that the champion is you. | stairs_a1s1 | +stairs_a1
+> force | Say that it does, and that the champion is you. | stairs_a1s1 | +stairs_a1 needs:2
 > mercy | Say that it does, and put your hand on Gu Hanzhen's shoulder. | stairs_a2s1 | +stairs_a2
 > deceit | Ask the herald for a quiet word about the order of the bracket. | stairs_a3s1 | +stairs_a3
 > truth | Ask to see the rule by which a sect is made to climb for its chair. | stairs_a4s1 | +stairs_a4
 > quiet | Stand in a corner of the courtyard and set your feet in the form Qin taught you, once, on packed earth. | stairs_h1 |  | asked_for_lesson | Qin never taught you a form.
-> force | Stand in a corner of the courtyard and set your feet in the stance you used when you let Qin's palm land. | stairs_h1 |  | accepted_challenge | You never stood in Qin's court.
+> force | Stand in a corner of the courtyard and set your feet in the stance you used when you let Qin's palm land. | stairs_h1 | needs:2 | accepted_challenge | You never stood in Qin's court.
 
 // ---------------------------------------------------------------- a1: you climb
 === stairs_a1s1 | The First Landing

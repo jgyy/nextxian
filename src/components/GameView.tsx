@@ -8,6 +8,7 @@ import { TONE_INFO } from "@/engine/tone";
 import type { GameState, LogEntry, Story } from "@/engine/types";
 import { chapters } from "@/story";
 import { CultivationPanel } from "./CultivationPanel";
+import { REALMS } from "@/engine/cultivation";
 import { NpcPanel } from "./NpcPanel";
 import { StatsPanel } from "./StatsPanel";
 import { ToneLegend } from "./ToneLegend";
@@ -42,6 +43,12 @@ function Entry({ entry }: { entry: LogEntry }) {
     case "realm":
       return (
         <p className="realm-line" role="status">
+          {entry.text}
+        </p>
+      );
+    case "strain":
+      return (
+        <p className="strain-line" role="status">
           {entry.text}
         </p>
       );
@@ -179,7 +186,7 @@ export function GameView({ story }: { story: Story }) {
               <p className="eyebrow">What do you do?</p>
               <ToneLegend />
               <ol>
-                {choices.map(({ choice, available, hint }) => (
+                {choices.map(({ choice, available, hint, strain }) => (
                   <li key={choice.id}>
                     <button
                       type="button"
@@ -190,6 +197,12 @@ export function GameView({ story }: { story: Story }) {
                     >
                       <span className="choice-label">{choice.label}</span>
                       {choice.tone && <span className="tone-tag">{TONE_INFO[choice.tone].name}</span>}
+                      {choice.needsRealm !== undefined && (
+                        <span className="realm-tag" data-strain={strain ? "yes" : "no"}>
+                          {REALMS[choice.needsRealm].name}
+                          {strain ? " · beyond you" : ""}
+                        </span>
+                      )}
                     </button>
                     {hint && (
                       <p id={`hint-${choice.id}`} className="hint">

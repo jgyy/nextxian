@@ -16,7 +16,7 @@ By dusk the nine canals of Qinglian Ford are a field of small lights. Every hous
 The crowds on the bridges are quiet in the particular way of people who have come to feel something and are determined not to hurry. Children carry candles in their cupped hands. Blind musicians play a slow air on bamboo flutes, almost a tune you know.
 The Elder stands at the water’s edge in a plain cloak with her hood up, holding a white lantern in both hands as if it might spill. She has not said whom it is for. Beside her, Gu Hanzhen is turning a blank one over and over, and Mei Qiu, who has not come to the water in nineteen years, is standing three paces behind them, stiff as a post, with her iron bar hanging from her belt.
 > truth | Buy a lantern for each person you carry, and float them one by one. | lanterns_a1s1 | +lanterns_a1
-> force | Go to the Silver Canal, where the Hollow Lotus has promised a Calling, and see that it is not stopped. | lanterns_a2s1 | +lanterns_a2
+> force | Go to the Silver Canal, where the Hollow Lotus has promised a Calling, and see that it is not stopped. | lanterns_a2s1 | +lanterns_a2 needs:2
 > deceit | Meet Yue Zhaoning at the lantern stalls, where a lantern can carry more than a name. | lanterns_a3s1 | +lanterns_a3
 > quiet | Watch the black boat that moves against the current, collecting the blank lanterns. | lanterns_a4s1 | +lanterns_a4
 > mercy | Take out the willow whistle, and blow the three notes at the water's edge. | lanterns_h1 |  | willow_whistle | You carry no whistle from a willow-lined jetty.
@@ -109,7 +109,7 @@ The Silver Canal is the narrowest of the nine, with high stone walls and a hump-
 “It is a Calling,” he says to you quietly. “We speak the names we are not allowed to. There are two hundred on this bridge who have a name to say. At midnight we will say them, one after another, and the Ledger will hear.”
 He folds his hands in his sleeves.
 “The Canal Watch has been told to prevent us. I do not think they will succeed. I think they will try.”
-> force | Stand at the foot of the bridge, and tell the Watch they will have to go through you. | lanterns_a2s2 | +lanterns_a2_stood
+> force | Stand at the foot of the bridge, and tell the Watch they will have to go through you. | lanterns_a2s2 | +lanterns_a2_stood needs:2
 > truth | Ask Wen Rui what the Calling is meant to do. | lanterns_a2s2
 > mercy | Ask whether the children on the bridge know what is coming. | lanterns_a2s2
 > inquiry | Ask how the Ledger hears a name that is spoken, not written. | lanterns_a2s2

@@ -19,7 +19,7 @@ You go. There seems no alternative.
 The boy strikes the gong. A flap lifts. Inside, in a cool white light, a little bald man in a plain brown robe is pouring tea from a clay pot into nine cups. He looks up with a smile of the purest gentleness.
 “You came,” says Inspector Fang. “How very kind. Do sit. I have been looking forward to this for three years.”
 > truth | Sit, and let Duan speak first. | fang_a1s1
-> force | Count the guards, and note the gap behind the dais where the tent-wall does not reach the ground. | fang_a2s1
+> force | Count the guards, and note the gap behind the dais where the tent-wall does not reach the ground. | fang_a2s1 | needs:4
 > deceit | Notice the roll of papers on his desk, sealed with a ribbon, and the secretary who sits guarding it. | fang_a3s1
 > mercy | Notice that the hand that pours the tea is shaking, and that he has not drunk any of his own. | fang_a4s1
 > inquiry | Lay the founders’ confession, in Hao Lan’s fair copy, on the table between the cups. | fang_h1 |  | tomb_read | You hold nothing he has not already read.
@@ -178,7 +178,7 @@ It is behind the dais, where the silk of the back wall meets the earth. Whoever 
 You look. There are eight guards at the door, in plain grey, with their hands at their sides. They have good posture. Their shoulders are very square. One of them, you notice, is standing with his weight on the balls of his feet.
 “Rao,” says Ren Qiao, softly.
 In the doorway, leaning against the tent-pole in his green silk coat, with a smile of mild amusement, stands Deputy Inspector Rao.
-> force | Watch him. | fang_a2s2
+> force | Watch him. | fang_a2s2 | needs:4
 > truth | Say nothing. | fang_a2s2
 > quiet | Hold your breath. | fang_a2s2
 > mercy | Look at Fang. | fang_a2s2
@@ -236,7 +236,7 @@ Something flashes. The vial strikes the floor at Ren Qiao’s feet and bursts. A
 Ren Qiao is on one knee. He is shaking. His scarred face is slack.
 The guards have closed in a ring. Hao Lan has her hand over her nose. Gu is coughing. Duan Wuyi has put his handkerchief to his face. The Elder, with iron composure, has not moved.
 “I regret the necessity,” says Rao. “I really do.” He steps forward. “I only want the seed.”
-> force | Hold your breath. | fang_a2s6
+> force | Hold your breath. | fang_a2s6 | needs:4
 > truth | Pull Ren back. | fang_a2s6
 > quiet | Cover your mouth. | fang_a2s6
 > mercy | Reach for Ren. | fang_a2s6
@@ -281,7 +281,7 @@ The flap is flung back. Ren Qiao staggers out, backwards, with his sword in his 
 He stops. The camp is watching.
 It is a ring of ten thousand people, silent, in the dusk. It stretches to the horizon.
 He puts away his sword.
-> force | Stand with Ren. | fang_a2s9
+> force | Stand with Ren. | fang_a2s9 | needs:4
 > truth | Step forward. | fang_a2s9
 > quiet | Hold your breath. | fang_a2s9
 > mercy | Help Ren. | fang_a2s9

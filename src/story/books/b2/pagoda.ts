@@ -17,7 +17,7 @@ The skiff holds a folded note in a clean clerk’s hand. It says: A cup is poure
 It carries no seal, no name. Underneath, drawn in a single ink-stroke, is a small closed lotus.
 The barge-pilot looks at it, and crosses himself in the old way, with two fingers.
 > truth | Take the skiff openly, with Gu and Ren, and tell the Elder where you are going. | pagoda_a1s1 | +pagoda_a1
-> force | Send Ren ahead in the dark to take the stair before you climb it. | pagoda_a2s1 | +pagoda_a2
+> force | Send Ren ahead in the dark to take the stair before you climb it. | pagoda_a2s1 | +pagoda_a2 needs:2
 > deceit | Put on a pilgrim’s cloak and go up as someone the host is not expecting. | pagoda_a3s1 | +pagoda_a3
 > quiet | Row to the drowned floors, below the tea house, and learn the building before you enter it. | pagoda_a4s1 | +pagoda_a4
 > inquiry | Take Old Lin’s wicks down to the black water below the third floor, and go in by their light. | pagoda_h1 |  | dep_wicks | You carry no wicks from the stair.
@@ -108,7 +108,7 @@ Ren Qiao goes up the pagoda in the dark, hand over hand on the weeds, with his l
 “If it is a trap,” whispers Gu, “I would like to say that I had an opinion.”
 “You do,” you say. “You have had it since the barge.”
 He laughs, silently, and the skiff rocks. Above you a shutter opens an inch, and a pale hand makes a sign: three fingers, then a fist. It is the wardens’ call for all clear, and then, by way of afterthought, a closed hand with the thumb folded in.
-> force | Climb after him, and take the first landing. | pagoda_a2s2
+> force | Climb after him, and take the first landing. | pagoda_a2s2 | needs:2
 > quiet | Wait for the next signal, and keep the skiff steady. | pagoda_a2s2
 > inquiry | Ask Gu what the second signal means. | pagoda_a2s2
 > mercy | Send Gu back to the barge for the Elder, in case there is trouble. | pagoda_a2s2 | bond:gu+1
@@ -148,7 +148,7 @@ Wen Rui does not seem insulted. He seems, rather, amused, as a patient man is am
 He looks at Ren Qiao.
 “You are loyal,” he says. “Good. You will need to be. The Great Sealing requires a bearer to walk into the wound under their own power. A bearer who is carried is a poor seal. The Concord knows how to make a person walk.”
 > truth | Ask him what the Concord does to make a person walk. | pagoda_a2s6
-> force | Tell him to stop speaking in riddles, and say what he wants. | pagoda_a2s6
+> force | Tell him to stop speaking in riddles, and say what he wants. | pagoda_a2s6 | needs:2
 > quiet | Look at Ren, and see how he has taken it. | pagoda_a2s6
 > mercy | Ask what the Lotus would do to protect a bearer who did not want to walk. | pagoda_a2s6
 

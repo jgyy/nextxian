@@ -16,7 +16,7 @@ Horses graze in their thousands on the grass beyond the river. Smoke and dust an
 Temur dismounts. He takes off his hat. He says, softly, “We are home.”
 At the foot of the black stone, on a heap of felts, sits a very old woman in a red coat, with a white scarf over her hair. Her face is as creased as a walnut. Her eyes are covered with a strip of blue cloth. She is laughing, silently, with her whole body.
 > truth | Go to her, and put Madam Ash’s letter in her hand. | camp_a1s1
-> force | Look at the pen of wild horses by the river, where a crowd has gathered. | camp_a2s1
+> force | Look at the pen of wild horses by the river, where a crowd has gathered. | camp_a2s1 | needs:4
 > deceit | Notice that every tent has a mask hung on its door-flap, and that the whole camp has fallen quiet. | camp_a3s1
 > mercy | Notice a grey-haired woman at the edge of the crowd, struggling alone with a load of winter hay. | camp_a4s1
 > inquiry | Take the pearl out of your pocket, and say that you have come to the Door. | camp_h1 |  | stones_slept | You have not slept among the dead.
@@ -136,7 +136,7 @@ They have a mare in the pen. She is a tall dun with a black dorsal stripe and a 
 “It’s the horse fair.” She takes a bite. “It’s the custom. Every year, at the summer camp, the Matriarch puts up a wild one. Anyone can try. If you stay on for the count of a hundred and four, you win.”
 “A hundred and four?”
 “It’s a good number for a horse.” She grins. “Do you want a go?”
-> force | Climb the rail. | camp_a2s2
+> force | Climb the rail. | camp_a2s2 | needs:4
 > truth | Ask what the prize is. | camp_a2s2
 > quiet | Watch the mare. | camp_a2s2
 > mercy | Ask if she is frightened. | camp_a2s2
@@ -192,7 +192,7 @@ Your hands are raw. Your arms are numb. You have lost your seat once and found i
 You think of Pao’s scroll. You think of a long fall that does not close. You think: do not close. You open. You let the mare go, in your mind, the way you would let a note go. You let your whole body go loose. You fall into her rhythm, and the bucking is a river and you are a boat.
 “Fifty!” roars the crowd. “Fifty-one!”
 The mare falters.
-> force | Stay on. | camp_a2s6
+> force | Stay on. | camp_a2s6 | needs:4
 > truth | Murmur to her. | camp_a2s6
 > quiet | Keep loose. | camp_a2s6
 > mercy | Pat her. | camp_a2s6
@@ -237,7 +237,7 @@ You think. There are a hundred things. You think of Ke-er, and Lin Yuan, and a f
 “I should like,” you say, “to know what the Door is for.”
 Tamar laughs, delighted.
 “That,” she says, “is a very good question. Sit down. It will take until dark.”
-> force | Sit. | camp_close | +camp_rode
+> force | Sit. | camp_close | +camp_rode needs:4
 > truth | Thank her. | camp_close | +camp_rode
 > quiet | Listen. | camp_close | +camp_rode
 > mercy | Ask for tea. | camp_close | +camp_rode

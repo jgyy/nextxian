@@ -1,4 +1,4 @@
-import { gainCultivation, TONE_GAIN } from "./cultivation";
+import { applyStrain, gainCultivation, MASTERY_GAIN, MASTERY_GAP, realmShortfall, realmSurplus, TONE_GAIN } from "./cultivation";
 import {
   conditionsHold,
   mannerShiftLine,
@@ -146,10 +146,12 @@ export function applyEffects(state: GameState, effects: Effect[] = []): GameStat
 export function getChoices(scene: Scene, state: GameState): ChoiceView[] {
   return scene.choices.map((choice) => {
     const available = conditionsHold(choice.requires, state);
+    const gap = realmShortfall(state.realm, choice.needsRealm);
     return {
       choice,
       available,
       hint: available ? undefined : (choice.lockedHint ?? "Not available yet."),
+      ...(gap > 0 && choice.needsRealm !== undefined ? { strain: { needs: choice.needsRealm, gap } } : {}),
     };
   });
 }
@@ -183,7 +185,12 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
   }
 
   next = applyEffects(next, choice.effects);
-  next = gainCultivation(next, TONE_GAIN[choice.tone]);
+  const shortfall = realmShortfall(state.realm, choice.needsRealm);
+  if (shortfall > 0) next = applyStrain(next, shortfall);
+  const mastery = realmSurplus(state.realm, choice.needsRealm) >= MASTERY_GAP ? MASTERY_GAIN : 0;
+  // Walking back to a scene already seen teaches nothing, so shuttling between two hubs cannot farm cultivation.
+  const fresh = !state.visited.includes(choice.next);
+  next = gainCultivation(next, (fresh ? TONE_GAIN[choice.tone] : 0) + mastery);
   const beforeAttitude = next.log.length;
   next = noticeAttitude(story, state, next);
   spoke = spoke || next.log.length > beforeAttitude;

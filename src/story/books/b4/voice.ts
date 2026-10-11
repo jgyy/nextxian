@@ -21,7 +21,7 @@ Along the ridge, in a line that runs back out of sight over the plain, the Liste
 Tamar is at the top, on her heap of felts, with her blind face lifted. She does not turn.
 “It stops here,” she says. “It has always stopped here. Nobody has answered.”
 > truth | Go to the Elder, and ask whether she wishes to speak first. | voice_a1s1
-> force | Notice, on the far horizon, a column of black smoke and a tower on wheels. | voice_a2s1
+> force | Notice, on the far horizon, a column of black smoke and a tower on wheels. | voice_a2s1 | needs:4
 > deceit | Notice a rider in Garrison blue on the next ridge, galloping with a leather satchel. | voice_a3s1
 > mercy | Notice a girl of fifteen at the end of the chain, swaying on her feet, who has not let go of the shoulder in front of her for nine days. | voice_a4s1
 > inquiry | Hold up the red glass key, and say that you have brought a question from the hollow. | voice_h1 |  | tomb_asked | You carry no question from anyone.
@@ -173,7 +173,7 @@ Tamar has not moved. She sits on her felts at the top of the rise, with her face
 “They will arrive by dawn,” she says. “They will ring it. And everyone on the ridge will be deaf for a day.” Her voice is quite calm. “It will be enough to break the chain.”
 “Then we must stop it.”
 “Yes,” says Tamar. “I thought you might say so.”
-> force | Ask Ren how. | voice_a2s2
+> force | Ask Ren how. | voice_a2s2 | needs:4
 > truth | Ask what Tamar wants. | voice_a2s2
 > quiet | Look at the engine. | voice_a2s2
 > mercy | Ask about the oxen. | voice_a2s2
@@ -232,7 +232,7 @@ His eyes dart to the line of dark shapes behind you. “What is it?”
 “Do you want to be here?”
 The sentry blinks. It is such a strange question that he does not know what to do with it. He looks at his rifle. He looks at the sixty oxen. He looks at the bell, a vast black silhouette against the stars.
 “No,” he says, very low. “I want to go home.”
-> force | Nod. | voice_a2s6
+> force | Nod. | voice_a2s6 | needs:4
 > truth | Ask where home is. | voice_a2s6
 > quiet | Hold out your hand. | voice_a2s6
 > mercy | Say you will help. | voice_a2s6
@@ -277,7 +277,7 @@ It does not ring.
 The great black tower stands on its wheels at the foot of the hill, absolutely mute. A hundred Garrison men stand about it with their mouths open. The engineer is staring at his empty hands.
 “It is cold,” he says, in a stupid voice. “The clapper is cold.”
 In the stillness, from the ridge, comes the hum. It is louder than before.
-> force | Stand. | voice_a2s9
+> force | Stand. | voice_a2s9 | needs:4
 > truth | Breathe. | voice_a2s9
 > quiet | Listen. | voice_a2s9
 > mercy | Look at the engineer. | voice_a2s9

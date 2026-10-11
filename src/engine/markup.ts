@@ -15,7 +15,8 @@ import type { Choice, ChoiceTone, Condition, Effect, Mood, NpcMetric, NpcScenari
  *
  * Conditions are joined with `&`: `flag`, `!flag`, `insight>=12`, `karma<=-10`, `trust>=20`, `realm>=2`, `roads>=3`,
  * `bond:ren>=10`, `since:flag>=4`, `decisions>=30`, `mood:afraid`, `scene:prefix`, `count:flag_prefix>=3`, `said:SCENARIO`, `tone:deceit>=3/6`.
- * Effects are separated by spaces: `+flag`, `-flag`, `karma+3`, `cult+4`, `trust-2`, `bond:ren+5`, `npc:ID`, `ally:ID`.
+ * Effects are separated by spaces: `+flag`, `-flag`, `karma+3`, `cult+4`, `trust-2`, `bond:ren+5`, `npc:ID`, `ally:ID`,
+ * and `needs:3`, which asks a realm (an index into the ladder) of anyone who tries the choice.
  * Unless the effects start with `=`, a choice also gets the small stat drift that goes with its tone.
  */
 
@@ -94,6 +95,7 @@ interface ParsedEffects {
   effects: Effect[];
   npcScenario?: string;
   allyScenario?: string;
+  needsRealm?: number;
   bare: boolean;
 }
 
@@ -101,12 +103,14 @@ export function parseEffects(source: string, where: string): ParsedEffects {
   const effects: Effect[] = [];
   let npcScenario: string | undefined;
   let allyScenario: string | undefined;
+  let needsRealm: number | undefined;
   let bare = false;
   for (const t of source.split(/\s+/).filter(Boolean)) {
     let m: RegExpExecArray | null;
     if (t === "=") bare = true;
     else if (t.startsWith("npc:")) npcScenario = t.slice(4);
     else if (t.startsWith("ally:")) allyScenario = t.slice(5);
+    else if ((m = /^needs:(\d+)$/.exec(t))) needsRealm = Number(m[1]);
     else if ((m = /^([+-])([a-z0-9_]+)$/.exec(t))) effects.push({ kind: "setFlag", flag: m[2], value: m[1] === "+" });
     else if ((m = /^bond:([a-z0-9_]+)([+-]\d+)$/.exec(t))) effects.push({ kind: "addBond", npc: m[1], amount: Number(m[2]) });
     else if ((m = /^cult([+-]\d+)$/.exec(t))) effects.push({ kind: "addCultivation", amount: Number(m[1]) });
@@ -116,7 +120,7 @@ export function parseEffects(source: string, where: string): ParsedEffects {
       effects.push({ kind: "addNpc", metric: m[1] as NpcMetric, amount: Number(m[2]) });
     } else throw new MarkupError(where, `unknown effect "${t}"`);
   }
-  return { effects, npcScenario, allyScenario, bare };
+  return { effects, npcScenario, allyScenario, needsRealm, bare };
 }
 
 /** Parses a block of scene markup into scenes. Throws a message naming the line when the markup is malformed. */
@@ -170,6 +174,7 @@ export function parseScenes(source: string, file = "markup"): Scene[] {
       };
       if (parsed.npcScenario) choice.npcScenario = parsed.npcScenario;
       if (parsed.allyScenario) choice.allyScenario = parsed.allyScenario;
+      if (parsed.needsRealm !== undefined) choice.needsRealm = parsed.needsRealm;
       if (req) {
         choice.requires = parseConditions(req, where);
         choice.lockedHint = hint || "Not available yet.";

@@ -21,7 +21,7 @@ It is saying something.
 You can. You wish you couldn’t.
 Beside you, Gu has stood up. His face is slack. He has taken a step toward the edge of the plate.
 > truth | Take Gu’s arm and say his name. | singing_a1s1
-> force | Grab the coil of rope from the skiff. | singing_a2s1
+> force | Grab the coil of rope from the skiff. | singing_a2s1 | needs:4
 > deceit | Reach for the wax from the cart, and a trick of Temur’s. | singing_a3s1
 > mercy | Turn to Odval, who has begun to shake. | singing_a4s1
 > inquiry | Take the hum from your chest, and hum it back. | singing_h1 |  | voice_relay | You have not yet learned how to carry a tune.
@@ -175,7 +175,7 @@ Ren Qiao, beside you, is already uncoiling the lashing from the skiff. He has a 
 “It’s the song.”
 “It’s a bloody nuisance,” says Ren Qiao, and throws a loop.
 It catches the Elder round the waist. She does not stop. She walks to the end of the rope and is jerked, with a gasp, onto her face.
-> force | Haul. | singing_a2s2
+> force | Haul. | singing_a2s2 | needs:4
 > truth | Run to the others. | singing_a2s2
 > quiet | Check the Elder. | singing_a2s2
 > mercy | Apologise. | singing_a2s2
@@ -235,7 +235,7 @@ It is the first time you have heard him shout. The word rings out over the glass
 “I’m here.” Gu is sobbing in great gulps. “I’m here, you idiot, I’m right here, I’m not four, I’m nineteen, and I’ve come four hundred miles to find you. You don’t get to leave.”
 Hanming stares at him. His mouth opens, and closes.
 Then the strength drains out of him. His knees buckle. You all go down in a heap on the glass, panting, in a tangle of rope.
-> force | Hold on. | singing_a2s6
+> force | Hold on. | singing_a2s6 | needs:4
 > truth | Breathe. | singing_a2s6
 > quiet | Look at the crack. | singing_a2s6
 > mercy | Hold them both. | singing_a2s6
@@ -281,7 +281,7 @@ There is a general groan. Temur is sick over the side. Hao Lan is looking at her
 Hanming opens his eyes. He sees his brother’s face.
 “Hullo,” he says, in a cracked voice. “Did I miss anything?”
 Gu bursts into tears.
-> force | Laugh. | singing_a2s9
+> force | Laugh. | singing_a2s9 | needs:4
 > truth | Cut the ropes. | singing_a2s9
 > quiet | Hold Gu. | singing_a2s9
 > mercy | Hand out tea. | singing_a2s9

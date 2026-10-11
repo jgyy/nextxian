@@ -20,7 +20,7 @@ Hanming, riding at the tail of the cart with a blanket over his shoulders, has s
 “Who runs it?”
 “A Deputy Inspector. Lai Ming. Young. Clean.” He grimaces. “He believes in it.”
 > truth | Ask Duan whether the Concord’s own edict permits it. | mill_a1s1
-> force | Notice that the wall has a single gate, and the gate has a single bar. | mill_a2s1
+> force | Notice that the wall has a single gate, and the gate has a single bar. | mill_a2s1 | needs:4
 > deceit | Notice a line of Garrison supply carts at the gate, loading sacks. | mill_a3s1
 > mercy | Notice a low brick culvert in the canal-bank, and a thin column of people being led out through it in the dusk. | mill_a4s1
 > inquiry | Ask Narmandakh to look at the bell. | mill_h1 |  | kurultai_spoke | You do not yet know what the bell-founder would say.
@@ -165,7 +165,7 @@ He turns his head. Narmandakh stands on the ridge in her smith’s coat, with a 
 “I can ring the great bell,” she says. “The counter-note. Not for long. Ten minutes.”
 “And?”
 “And every Garrison man within a mile will be stone-deaf,” she says. “Along with every Listener.”
-> force | Ask Jargal. | mill_a2s2
+> force | Ask Jargal. | mill_a2s2 | needs:4
 > truth | Say it is too much. | mill_a2s2
 > quiet | Look at the tower. | mill_a2s2
 > mercy | Ask Narmandakh if she is sure. | mill_a2s2
@@ -220,7 +220,7 @@ You run in behind the horses with your heart slamming. You see it all in flashes
 Six hundred workers have come out of the sheds and stand in rows, in their grey smocks, in the red light. They have taken off their masks. They are looking at the horsemen with wide, stunned, dawning eyes.
 A girl of twelve, small, with a bandaged hand, points.
 “Horses,” she says, very clearly. “Da, look. Horses.”
-> force | Rally the workers. | mill_a2s6
+> force | Rally the workers. | mill_a2s6 | needs:4
 > truth | Find Lai Ming. | mill_a2s6
 > quiet | Watch the walls. | mill_a2s6
 > mercy | Reach for the girl. | mill_a2s6
@@ -265,7 +265,7 @@ The two sounds meet. They fight. The steel screams. A shiver runs through the wh
 Narmandakh is laughing.
 The bell breaks.
 It does not shatter. It splits, quite quietly, from lip to shoulder, in a long clean crack, and the two halves sag apart and sigh. A huge breath of cold air rolls out. The Hush is over.
-> force | Hold on. | mill_a2s9
+> force | Hold on. | mill_a2s9 | needs:4
 > truth | Breathe. | mill_a2s9
 > quiet | Listen. | mill_a2s9
 > mercy | Help Narmandakh. | mill_a2s9
