@@ -35,7 +35,7 @@ export const daoSpecs5: RoadSpec4[] = [
       [
         "The cold pit is dug into the rock behind the bench, a shaft with a plank over it, and Weiyan will not step on the plank. She tells you that it is a larder, and that you should not believe her about anything else concerning it.",
         "She lets you lie flat on the planks and put an ear to the gap. From far down comes the soft tick of falling drops, regular as a clock, and the air that rises is so cold that it hurts your teeth. You can hear the water landing on water, which is impossible on a bluff of baked glass.",
-        "A tax-clerk from the Hall of Weights climbs the stair and asks whether the terrace has gathered more than it declared. Weiyan says that it has not. The clerk turns his ledger toward you and says that he will take your word, for a consideration.",
+        "A clerk from the Hall of Weights climbs the stair and asks whether the terrace has gathered more than it declared. Weiyan says that it has not. He turns his ledger toward you and offers to accept your word, for a consideration.",
         "The water in the pit is the water that the bells would gather if the sea had any. It has been falling for as long as the bluff has stood, and Weiyan’s grandmother measured it once and found it had risen a thumb in forty years, from a source she could not find. Weiyan thinks the sea is crying somewhere beneath it.",
         "Beyond the pit the rock wall is smooth and dark, and a thread of damp runs straight down it from the roof. At the bottom the damp stops at a stone no bigger than a loaf, and the stone is cold as a corpse.",
       ],
@@ -88,7 +88,7 @@ export const daoSpecs5: RoadSpec4[] = [
       [
         "The root pit is a hollow beyond the last clamp where Yinshan dumps the stumps and tangles that will not burn. He walks round it twice before he speaks. “You will want to look in,” he says. “Most people do. Most people don’t sleep afterwards.”",
         "You lean over the rim and see a mass of grey roots knotted into the shape of a ribcage. The root that forms the spine is as thick as a thigh, and it is wrapped, quite deliberately, round a bar of dark iron.",
-        "A tax-clerk climbs the bluff with a tally-board and asks whether any of the stumps have been sold without being counted. Yinshan says that none have. The clerk looks at you, and says that he will believe the first person who will tell him what is in the pit.",
+        "A tally-clerk comes up the bluff with a board and asks whether any of the stumps have been sold uncounted. Yinshan says that none have. The clerk looks at you, and says he would believe the first person who will tell him what is in the pit.",
         "The roots in the pit have grown round what the bluff swallowed: iron bars, a bell, a pair of shackles. Yinshan has found a dozen such things in twenty years, and has never dared to burn the roots that hold them, because the coal they make is too hot to cool.",
         "In the pit’s far wall the earth has slumped, and behind the slump is a darker patch that is not earth. A cold draught seeps out of it, smelling of resin and iron.",
       ],
@@ -141,7 +141,7 @@ export const daoSpecs5: RoadSpec4[] = [
       [
         "The shelf of spoiled tiles runs along the back wall, its boards bowed with weight, and Chiling stands in front of it with her arms folded. “You can look,” she says. “You can’t touch. They do not like to be touched.”",
         "Each tile on the shelf carries a faint writing that glows red when you step near, then fades. They are not wards. They are replies. Each is a line written in answer to something Chiling did not ask.",
-        "A tax-clerk climbs the bluff with a tally-board and asks whether any tile has been fired that is not in the book. Chiling says that none have. The clerk looks at you, and says that he would be inclined to believe a witness who could read the shelf.",
+        "A clerk from the weighing-hall arrives and asks whether any tile has been fired that is not in the book. Chiling says that none has. The clerk looks at you, and says he would believe a witness who could read the shelf.",
         "The replies are written by the kiln, in the kiln’s own script, in fire. Chiling first noticed them twenty years ago, when she found a tile that had been written on twice, and she has never been able to decide whether the kiln is speaking, or being spoken through.",
         "Behind the shelf the plaster has cracked in a line as straight as a ruler, and the wall bulges a little. A warm draught comes out of it, smelling of hot clay and a distant, impossible incense.",
       ],
@@ -194,7 +194,7 @@ export const daoSpecs5: RoadSpec4[] = [
       [
         "The mortar pit’s far side is closed off with a sheet of iron, and Dunwu walks round it twice before he speaks. “Nothing comes out of there,” he says, “and nothing goes in. I put the sheet down myself. I would rather you took my word.”",
         "He lets you lift a corner of the sheet and look. Under it the mortar is not grey but black, and it is quite dry, and set into it, course on course, are bricks that have no kiln and no wall. They are laid in a spiral going down.",
-        "A tax-clerk climbs the bluff with a tally-board and asks whether any course has been laid without being entered in the book. Dunwu says that none has. The clerk looks at you, and says that he would take your word for a consideration.",
+        "A tally-clerk comes to the yard and asks whether any course has been laid without being entered in the book. Dunwu says that none has. The clerk looks at you, and says he would take your word for a consideration.",
         "The spiral is the first thing Dunwu ever built, at fifteen, when his master was out and the bricks seemed to ask him to. He has never finished it, and never torn it down, and every kiln he has ever laid has pulled, very faintly, toward its centre.",
         "At the pit’s bottom, behind the iron, a single brick has been mortared in upside down. A cool draught comes through the gap beside it, smelling of lime and clay.",
       ],

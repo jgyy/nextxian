@@ -94,7 +94,7 @@ describe("what the roads sell", () => {
       expect(item.blurb, w.id).toContain(REALMS[w.realm + 1].name);
       expect(item.speed).toBeUndefined();
     });
-    expect(Object.values(story.items!).filter((i) => i.aid !== undefined)).toHaveLength(10);
+    expect(Object.values(fortuneItems).filter((i) => i.aid !== undefined)).toHaveLength(10);
   });
 
   it("gives every other good a speed bonus by its kind, which counts from the realm below the road’s, and a holding that pays more than it costs", () => {
@@ -205,9 +205,9 @@ describe("one walk of a road never repeats itself", () => {
     return out;
   };
 
-  it("finds 120 roads in three families", () => {
-    expect(roads).toHaveLength(120);
-    expect(new Set(roads.map((r) => kindOf(`${r}_entry`))).size).toBe(3);
+  it("finds 160 roads in four families", () => {
+    expect(roads).toHaveLength(160);
+    expect(new Set(roads.map((r) => kindOf(`${r}_entry`))).size).toBe(4);
   });
 
   it("shows no menu line twice in one walk", () => {
