@@ -129,3 +129,22 @@ On the Sealing Night (fifteen years before the story) the Elder was 28 and the n
 ## Book Four: The Ash Steppe
 
 Eighteen days of grass between the coast and the mountain. The **Steppe** is silver feather-grass (“ash-grass”), kurgans, standing stones that hum, and a wind that carries names. Its people are the **Listeners**, the last of the Order of the Torn Page, who keep Yu Ling’s nine verbs as clan customs and cannot be lied to, because the wind tells them. Clans: the **Stone-Singers** (the Singing Stones), the **Glass-Wrights** (the Glass Orchard), the **Horse-Keepers** (the Winter Camp), the **Salt-Road caravaneers** (Yue Zhaoning’s kin), and the **Kurultai** of nine clans under **Grandmother Tamar**, blind, ninety, laughing, who decides. Madam Ash carries an eleven-year-old letter “to the woman who will decide”. Ren Qiao’s mother was a Horse-Keeper. Gu’s brother Hanming, taken by the levy fifteen years ago, is a sergeant in the Steppe Garrison under **Colonel Ruo**, who runs a silencing campaign (Hush bells) against the clans. Su Mengjiao is counted by the Order as its **Seventh Voice**; the player is the Ninth. Duan Wuyi joins the party at the Grass Line.
+
+## The hero
+
+The player makes a character before the first scene, and every part of it is something an NPC can see. None of it changes what the hero can do. Cultivation does that.
+
+- **Name.** The name the hero gives at the gate. It replaces every “Wanderer” the story says, so nobody calls a named hero by a title. The canon still holds: the Wanderer has *no name they will say*, and the name given at the gate is the one they give strangers. The default, unchanged, is Wanderer.
+- **Papers.** Outcast, commoner, gentry or noble describe the register the hero’s teacher entered them under in the river village. They are what the world believes, and they do not contradict the foundling’s truth: a teacher can enter a child under any house’s name. NPCs say “your papers”, never “your family”. The Reserve child’s real origin is revealed in Book II exactly as before.
+- **Background.** The life the hero led *since* the river village: port orphan, copyist’s apprentice, levy deserter, trader’s runner, paddy hand, herbalist’s helper. It never replaces the river village or the teacher.
+- **Dress, looks, gender.** What anyone sees at a glance. Gender is a woman, a man or unspoken, and the story uses `{they}`, `{them}`, `{their}`, `{honorific}` and `{person}` for the hero, so no line may assume one. Every hero carries a plain blade (the story says “blade”, never “sword”), and the story never describes the hero’s hair or face beyond what looks the player chose.
+- **Standing.** How far the world bows. It is the rank of the papers (0 to 3), plus one for silk or armour and minus one for rags, plus **two for every realm**. A realm outranks any birth: a Foundation Builder born an outcast stands above a mortal prince.
+
+## Realm roads (Books Two to Six)
+
+Ten more waysides, one from each hub of the later books, each with four roads of 25 scenes. They are the places the road passes without naming: tollhouses, laundries, signal towers, wells. Each asks a realm that follows the pace of the story (Foundation Establishment on the river, Core Formation at Qinglian and on the Salt Coast, Nascent Soul on the Steppe, Spirit Severing at the edge of the grass, on the Glass Sea and at the tents, Dao Seeking on the Stair and on the road home).
+
+- The **Glass Sea is glass**, fused sand with no water: nothing there has a tide, a shore to wade from, or a diver. Cutters saw mirrors from its plates.
+- The Elder travels with the player in Books Two to Six, so the roads report to her in the cart or the camp, never in her hall.
+- **Keepers’ names are unique.** No keeper shares a given name with anyone else in the story, and none shares a companion’s name. A test fails if one does.
+- The roads never say “the Law Hall” or “the sect gate” except on the road home, where the mountain is in sight.

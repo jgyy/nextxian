@@ -119,7 +119,7 @@ The landing is bare, with a plank floor and a rotting rail. Ren Qiao is standing
 The stair beyond them climbs into darkness. From the fourth floor, thin as thread, comes the sound of a woman humming.
 > truth | Tell Ren the next man will not be the door. | pagoda_a2s3 | bond:ren+2
 > force | Go up the stair three steps at a time. | pagoda_a2s3
-> mercy | Loosen the men's cord a little, so it will not cut. | pagoda_a2s3 | bond:ren+2
+> mercy | Loosen the men’s cord a little, so it will not cut. | pagoda_a2s3 | bond:ren+2
 > quiet | Wait with Ren on the landing, and listen to the humming. | pagoda_a2s3
 
 === pagoda_a2s3 | Bare Hands
@@ -129,7 +129,7 @@ A small grey man rises from the far table. He bows to you, politely, as one does
 Ren Qiao has not sheathed his sword. “Wen Rui,” he says, “clerk to the Seventh Chancery. I know the name. You were struck for a number.”
 > force | Cross the room to Wen Rui, and put a hand on the table in front of him. | pagoda_a2s4
 > truth | Tell Ren to sheathe his sword, and that you will not threaten a man who has not threatened you. | pagoda_a2s4 | bond:ren+1
-> deceit | Tell Wen Rui that the Concord's Censors are on the stair, and watch his face. | pagoda_a2s4
+> deceit | Tell Wen Rui that the Concord’s Censors are on the stair, and watch his face. | pagoda_a2s4
 > mercy | Kneel to Ping, and apologise for the noise. | pagoda_a2s4
 
 === pagoda_a2s4 | What Ren Did
@@ -190,7 +190,7 @@ At the rope ladder, a voice calls softly from above. “Pilgrims go to the secon
 > deceit | Say you are a pilgrim, come to offer to the saint. | pagoda_a3s2
 > truth | Say you are a customer, and you have been invited. | pagoda_a3s2
 > quiet | Say nothing, and climb. | pagoda_a3s2
-> inquiry | Ask what the saint's name is. | pagoda_a3s2
+> inquiry | Ask what the saint’s name is. | pagoda_a3s2
 
 === pagoda_a3s2 | The Second Floor
 The second floor is a shrine. It was a shrine once. The altar has been stripped of its figure, and the place where the saint stood is a gap in the plaster the shape of a standing woman. Candles burn on the floor in rows. Each has a small paper tag tied to it, with a name.
@@ -207,7 +207,7 @@ The name on your tag is a man’s, old, and it means nothing to you. You say it 
 Her hand slides a small paper into yours. On it, in a clerk’s hand, is a line:
 Fourth floor. The host knows you are here. It is all right.
 You had expected to be found out. You had not expected to be welcomed.
-> truth | Thank her, and ask her brother's name, so you can say it again. | pagoda_a3s4
+> truth | Thank her, and ask her brother’s name, so you can say it again. | pagoda_a3s4
 > mercy | Hold her hand for a moment. | pagoda_a3s4
 > quiet | Fold the paper into your sleeve. | pagoda_a3s4
 > inquiry | Ask how long the Lotus has been sending someone. | pagoda_a3s4
@@ -284,11 +284,11 @@ There is a name you recognise, near your shoulder. It is the name Ye Qing, matro
 It is there. It is not a name. It is a number and a line, a half-inch from the wall, scratched with a pin. The line says: Nine. Withdrawn. Not struck. Not recorded. Not found.
 Beneath it, in a neater hand, someone has added a word and then tried to scratch it away. You tilt the lamp. The word is: Safe.
 The cold seed in your chest has begun, very quietly, to turn. You press your palm to it, and your palm is not steady. It is a single entry in a pagoda full of names. It is the first thing you have read all night that is about you.
-Gu, at your shoulder, has stopped holding the lamp. “Is it...” he begins, and does not finish.
+Gu, at your shoulder, has stopped holding the lamp. “Is it…” he begins, and does not finish.
 > truth | Tell him you do not know, and show him the line. | pagoda_a4s4 | +pagoda_nine_shown bond:gu+3
 > quiet | Say nothing, and cover the line with your hand. | pagoda_a4s4 | +pagoda_nine_hidden
 > mercy | Tell him it is nothing, and ask him to hold the lamp higher. | pagoda_a4s4 | bond:gu-1
-> inquiry | Ask him whether he has heard the word 'Reserve.' | pagoda_a4s4 | +pagoda_nine_shown
+> inquiry | Ask him whether he has heard the word ‘Reserve.’ | pagoda_a4s4 | +pagoda_nine_shown
 
 === pagoda_a4s4 | Down the Stair
 The stair goes down. You had not meant to descend. But the water is thinner there, and clearer, and the names on the wall thicken, and at the bottom of the stair you can see a faint steady glow. Your feet carry you to it.
@@ -360,7 +360,7 @@ You hold the lantern. You do not speak. Behind you Gu has put his hand over his 
 The chorus grows quieter. It does not go away. It stays, listening, at the edge of the light.
 > quiet | Descend, silent, step by step. | pagoda_h3 | +pagoda_kept_four
 > truth | Break the rule, and answer one question, to see what happens. | pagoda_h3 | +pagoda_broke_four
-> mercy | Put your free hand on Gu's shoulder to steady him. | pagoda_h3 | +pagoda_kept_four bond:gu+2
+> mercy | Put your free hand on Gu’s shoulder to steady him. | pagoda_h3 | +pagoda_kept_four bond:gu+2
 > inquiry | Listen to the chorus for a count of ten. | pagoda_h3 | +pagoda_kept_four
 
 === pagoda_h3 | The Cup of Names

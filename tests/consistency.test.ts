@@ -1,0 +1,139 @@
+import { describe, expect, it } from "vitest";
+import { story, chapters } from "@/story";
+import { choose, createGame, getChoices, getScene } from "@/engine/game";
+import { REALMS } from "@/engine/cultivation";
+import { FORCE_REALM_BY_CHAPTER } from "@/story/realm-gates";
+import type { GameState } from "@/engine/types";
+
+/** Everything the player can be shown as text, with where it sits. */
+function shownText(): { where: string; text: string; kind: "title" | "label" | "prose" }[] {
+  const out: { where: string; text: string; kind: "title" | "label" | "prose" }[] = [];
+  for (const s of Object.values(story.scenes)) {
+    out.push({ where: `${s.id}#title`, text: s.title, kind: "title" });
+    s.paragraphs.forEach((t, i) => out.push({ where: `${s.id}#p${i}`, text: t, kind: "prose" }));
+    s.extras?.forEach((x, i) => x.paragraphs.forEach((t) => out.push({ where: `${s.id}#x${i}`, text: t, kind: "prose" })));
+    s.interjections?.forEach((x, i) => out.push({ where: `${s.id}#i${i}`, text: x.line, kind: "prose" }));
+    s.choices.forEach((c) => out.push({ where: `${s.id}>${c.id}`, text: c.label, kind: "label" }));
+    if (s.ending) out.push({ where: `${s.id}#ending`, text: s.ending, kind: "title" });
+  }
+  for (const sc of Object.values(story.scenarios)) {
+    Object.entries(sc.lines).forEach(([k, t]) => out.push({ where: `${sc.id}.${k}`, text: t, kind: "prose" }));
+    sc.memory?.forEach((m, i) => out.push({ where: `${sc.id}.m${i}`, text: m.line, kind: "prose" }));
+  }
+  for (const r of story.remarks ?? []) out.push({ where: `remark ${r.id}`, text: r.line, kind: "prose" });
+  for (const table of Object.values(story.asides ?? {})) for (const [value, lines] of Object.entries(table)) for (const [tier, t] of Object.entries(lines)) out.push({ where: `aside ${value}.${tier}`, text: t, kind: "prose" });
+  return out;
+}
+
+describe("typography the whole story agrees on", () => {
+  const texts = shownText();
+
+  it("uses curly quotes and apostrophes everywhere, never the straight ones", () => {
+    const straight = texts.filter((t) => /["']/.test(t.text)).map((t) => `${t.where}: ${t.text.slice(0, 60)}`);
+    expect(straight).toEqual([]);
+  });
+
+  it("writes an ellipsis as one character, never three dots", () => {
+    expect(texts.filter((t) => t.text.includes("...")).map((t) => t.where)).toEqual([]);
+  });
+
+  it("never doubles a word in a heading or a choice, as in “Back from the The Road”", () => {
+    const doubled = texts.filter((t) => t.kind !== "prose" && /\b(\w+)\s+\1\b/i.test(t.text)).map((t) => `${t.where}: ${t.text}`);
+    expect(doubled).toEqual([]);
+  });
+
+  it("opens no sentence with a lower-case article after “Back from”, and ends no label without a full stop or question mark", () => {
+    const back = texts.filter((t) => t.where.endsWith("#title") && t.text.startsWith("Back from"));
+    expect(back.length).toBeGreaterThan(10);
+    for (const t of back) expect(t.text, t.where).toMatch(/^Back from the [A-Z]/);
+    const unfinished = texts.filter((t) => t.kind === "label" && !/[.!?…”’)]$/.test(t.text)).map((t) => `${t.where}: ${t.text}`);
+    expect(unfinished).toEqual([]);
+  });
+});
+
+describe("repetition", () => {
+  it("offers four choices with four different words in every scene", () => {
+    const dup: string[] = [];
+    for (const s of Object.values(story.scenes)) {
+      const seen = new Set<string>();
+      for (const c of s.choices) {
+        if (seen.has(c.label)) dup.push(`${s.id}: ${c.label}`);
+        seen.add(c.label);
+      }
+    }
+    expect(dup).toEqual([]);
+  });
+
+  it("never gives two NPC scenarios the same line, tier line or memory line, word for word", () => {
+    const seen = new Map<string, string>();
+    const repeats: string[] = [];
+    for (const sc of Object.values(story.scenarios)) {
+      for (const line of [...Object.values(sc.lines), ...(sc.memory ?? []).map((m) => m.line)]) {
+        if (line.split(/\s+/).length < 8) continue;
+        const first = seen.get(line);
+        if (first && first !== sc.id) repeats.push(`${sc.id} repeats ${first}: ${line.slice(0, 50)}`);
+        seen.set(line, sc.id);
+      }
+    }
+    expect(repeats).toEqual([]);
+  });
+});
+
+describe("the hero in the old text", () => {
+  const texts = shownText();
+
+  it("carries one weapon, a blade, wherever the story speaks of it, and no hair or dress that a hero may not have", () => {
+    expect(texts.filter((t) => /\byour sword\b(?!-)/i.test(t.text)).map((t) => t.where)).toEqual([]);
+    expect(texts.filter((t) => /\byour braid\b/i.test(t.text)).map((t) => t.where)).toEqual([]);
+  });
+});
+
+describe("the realm in Book One", () => {
+  const chapterOf = (sceneId: string): number | undefined => {
+    const group = chapters.find((c) => c.scenes.some((s) => s.id === sceneId));
+    const m = group && /^Chapter (\d+):/.exec(group.name);
+    return m ? Number(m[1]) : undefined;
+  };
+
+  it("asks the realm of its chapter for every forceful choice from the third chapter on", () => {
+    let checked = 0;
+    for (const s of Object.values(story.scenes)) {
+      const chapter = chapterOf(s.id);
+      if (chapter === undefined) continue;
+      const need = FORCE_REALM_BY_CHAPTER[chapter];
+      for (const c of s.choices) {
+        if (c.tone !== "force") continue;
+        if (need === undefined) expect(c.needsRealm, `${s.id}:${c.id}`).toBeUndefined();
+        else {
+          expect(c.needsRealm, `${s.id}:${c.id}`).toBeGreaterThanOrEqual(need);
+          checked++;
+        }
+      }
+    }
+    expect(checked).toBeGreaterThan(60);
+  });
+
+  it("makes a mortal pay for forcing a ward, and lets a Foundation Builder do it for free", () => {
+    const scene = Object.values(story.scenes).find((s) => chapterOf(s.id) === 5 && s.choices.some((c) => c.tone === "force" && c.needsRealm === 2))!;
+    const choice = scene.choices.find((c) => c.tone === "force" && c.needsRealm === 2)!;
+    const state = (realm: number, cultivation: number): GameState => ({ ...createGame(story), sceneId: scene.id, realm, cultivation, stats: { qi: 50, karma: 0, insight: 10 } });
+    const low = getChoices(getScene(story, scene.id), state(0, 10)).find((v) => v.choice.id === choice.id)!;
+    expect(low.strain).toEqual({ needs: 2, gap: 2 });
+    const hurt = choose(story, state(0, 10), choice.id);
+    expect(hurt.log.some((e) => e.kind === "strain")).toBe(true);
+    expect(hurt.stats.qi).toBeLessThan(50);
+    const able = choose(story, state(2, REALMS[2].threshold + 5), choice.id);
+    expect(able.log.some((e) => e.kind === "strain")).toBe(false);
+  });
+});
+
+describe("companions only speak once they are met", () => {
+  it("is found by the audit when a remark has no sign its speaker has been introduced", async () => {
+    const { auditStory } = await import("@/engine/audit");
+    const remark = story.remarks!.find((r) => r.id === "skiff_nomin_later")!;
+    expect(remark.when.some((c) => c.kind === "bond" && c.npc === "yue")).toBe(true);
+    const broken = { ...story, remarks: story.remarks!.map((r) => (r.id === remark.id ? { ...r, when: r.when.filter((c) => c.kind !== "bond") } : r)) };
+    const found = auditStory(broken).filter((i) => i.kind === "unmet-speaker");
+    expect(found.map((i) => i.where)).toEqual([`remark "skiff_nomin_later"`]);
+  });
+});

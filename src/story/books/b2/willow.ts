@@ -47,7 +47,7 @@ Her voice is very level.
 “She still takes the fares. She sleeps in the hut beside mine. He cannot see her. He thanks her for the rice and does not know why she weeps.”
 Gu Hanzhen has come up beside you at the door, white-faced.
 > truth | Tell Madam Sui you will speak to the river. | willow_a1s4
-> mercy | Tell her you will take the child's name on yourself, if the river will hear it. | willow_a1s4
+> mercy | Tell her you will take the child’s name on yourself, if the river will hear it. | willow_a1s4
 > inquiry | Ask whether a name that has been taken can be bought back, and with what. | willow_a1s4
 > deceit | Ask whether a river can be lied to, and what happens to those who try. | willow_a1s4
 
@@ -103,7 +103,7 @@ The ferryman is tying a rope as you reach him, and does not look up until you ha
 “My child?” he says. “I have no child. My wife and I had none. The river did not see fit.” He shakes his head with the polite helplessness of a man trying to remember a word in a foreign language. “Is there something I should know?”
 Behind him the girl in the cloth satchel has stopped counting coins. She is staring at you, and her eyes are very wide, and very dry.
 > force | Tell him that girl is his daughter and the river has made him forget. | willow_a2s2 | needs:2
-> truth | Ask, gently, how long he has had the satchel she wears, because it is his wife's sewing. | willow_a2s2
+> truth | Ask, gently, how long he has had the satchel she wears, because it is his wife’s sewing. | willow_a2s2
 > inquiry | Ask who the girl is, then, and how she came to be taking his fares. | willow_a2s2
 > mercy | Say there is nothing he needs to know, and give him a coin for the crossing. | willow_a2s2
 
@@ -153,7 +153,7 @@ Madam Sui has come out of the toll-hut with her fish-skin book clutched to her c
 > truth | Go to Madam Sui and tell her what you did, and that you will answer for it. | willow_a2s7
 > mercy | Go to Bai Dao and Xiao Ye, and stand between them and the crowd. | willow_a2s7
 > quiet | Look to the Elder, who is gripping a willow branch with both hands. | willow_a2s7 | npc:SU_WILLOW_STONE
-> force | Tell Madam Sui the river's tolls are over, and she should find honest work. | willow_a2s7
+> force | Tell Madam Sui the river’s tolls are over, and she should find honest work. | willow_a2s7
 
 === willow_a2s7 | What the River Said
 The water turns the colour of tea. From the stone, or from the water itself, comes the voice you will hear again in dreams.
@@ -180,7 +180,7 @@ You buy a crossing like any traveller. “One crossing, one name,” says the gi
 There is a hut at the end of the landing where the stone’s names are written, in a book bound in fish-skin. Behind you on the jetty, Gu Hanzhen shifts from foot to foot. “You are not going to give them your name,” he says. “You do not have one you say.”
 It is true. The question is what the stone will do with a false one.
 > deceit | Make up a name on the spot, grand and plausible, and lay it in the dip. | willow_a3s2
-> inquiry | Borrow the name of a character from a play you once saw, and watch the stone's reaction. | willow_a3s2
+> inquiry | Borrow the name of a character from a play you once saw, and watch the stone’s reaction. | willow_a3s2
 > truth | Tell Gu you will give the stone the name you were never given. | willow_a3s2
 > quiet | Hand the girl the coin and say you will pay later. | willow_a3s2
 
@@ -293,7 +293,7 @@ He stops. He turns his head. He says, with great courtesy, “That is my tune. W
 
 === willow_a4s5 | Three Verses
 He sings it with you. At first just the tune, and then, slowly, with a rasp, a few words that are not words at all, only sounds a father makes over a cradle. His voice is rough. Xiao Ye, at the foot of the punt, has stopped breathing.
-“It had a verse,” he says. He is almost whispering. “For the small one. I cannot... I cannot find her name. But I know she is small. She is small and she is afraid of the loud water. And there is a leaf.”
+“It had a verse,” he says. He is almost whispering. “For the small one. I cannot… I cannot find her name. But I know she is small. She is small and she is afraid of the loud water. And there is a leaf.”
 The tune falters. His hand is at his chest.
 “There is a leaf,” he says, “on the end of every line.”
 > truth | Sing the verse for him, with a leaf in each line. | willow_a4s6
@@ -302,7 +302,7 @@ The tune falters. His hand is at his chest.
 > inquiry | Ask what kind of leaf. | willow_a4s6
 
 === willow_a4s6 | A Verse With a Leaf
-The leaf is a willow leaf. It takes him the length of a long breath to say so. He says it aloud, with great care, as a man might lay a stone to cross a stream. “Willow. Willow leaf. Little...”
+The leaf is a willow leaf. It takes him the length of a long breath to say so. He says it aloud, with great care, as a man might lay a stone to cross a stream. “Willow. Willow leaf. Little…”
 He breaks off. His whole body is trembling. Beside you, Gu has covered his mouth with his hand.
 Xiao Ye has said nothing. She stands in front of her father and holds out both hands, palms up, as one offers rice.
 The river, which has been listening all this time, sighs under the punt like a very large animal settling back to sleep.
@@ -334,10 +334,10 @@ She hands you a small, worn willow whistle.
 // ---------------------------------------------------------------- hidden route: the written name
 === willow_h1 | A Clerk Among the Pilgrims
 Hao Lan has been following you all afternoon with a bowl of rice and the patient air of someone hoping to be asked. She catches your sleeve at the edge of the jetty.
-“I read the Concord's book too,” she says, low. “The one the girl read. It says a name can only be taken with consent. It does not say what happens if the name is written. In ink. In a register.” Her face has gone pink. “A written name is under the Ledger's protection, whether anyone has consented or not. The river cannot take what the Ledger holds.”
+“I read the Concord’s book too,” she says, low. “The one the girl read. It says a name can only be taken with consent. It does not say what happens if the name is written. In ink. In a register.” Her face has gone pink. “A written name is under the Ledger’s protection, whether anyone has consented or not. The river cannot take what the Ledger holds.”
 She looks at the little girl. “It would not need a Censor-General. It would need a Censor, and a brush, and about a quarter of an hour.”
 > truth | Ask her whether she would do it, if you asked. | willow_h2
-> mercy | Tell her she doesn't have to risk her place for this. | willow_h2
+> mercy | Tell her she doesn’t have to risk her place for this. | willow_h2
 > inquiry | Ask what she would write, and where. | willow_h2
 > quiet | Take her bowl of rice, and eat it, and nod. | willow_h2
 
@@ -396,7 +396,7 @@ You did not see her cross. You heard the planks, and a very quiet voice repeatin
 > inquiry | Ask her what the multiplication tables were for. | hub_b2_road | +b2r_willow
 `,
   scenarios: String.raw`
-$ SU_WILLOW_PLANK | trust+3 respect+1 | elder | The player takes the Elder's arm so she can walk the plank over the water, or comes back to her before speaking to the river.
+$ SU_WILLOW_PLANK | trust+3 respect+1 | elder | The player takes the Elder’s arm so she can walk the plank over the water, or comes back to her before speaking to the river.
 hostile: You offer me an arm over a plank. I could have crossed alone. I would have crossed alone if you had not made me aware of how many planks there were. Remove your hand.
 wary: You offered me your arm when I could not look at the water. I will take it, and I will watch what you do with the favour, because I have been given favours before by people who wanted something.
 neutral: Sixteen planks and an arm. Good. I shall remember it the way I remember the kindnesses of the Law, which is to say distantly and with surprise.
@@ -407,7 +407,7 @@ devoted: I walked across sixteen planks over moving water, holding the sleeve of
 $ SU_WILLOW_STONE | trust-1 fear+6 respect+2 | elder | The player breaks the toll-stone and the names spill loose from the river.
 hostile: The names are loose in the water, the villagers are weeping, and you stand there with your hand on a cracked stone. If you intended this, you have a bolder heart than I credited. If you did not, you are a fool.
 wary: You broke the toll and freed the names. I cannot say you were wrong. I can say that it is not the kind of thing the Concord will forget, and I shall be standing beside you when it remembers.
-neutral: You broke a river's stone. The Law would have asked to hear its case first. I find, standing here with the willows shaking, that I am less certain than I ought to be that the Law is right.
+neutral: You broke a river’s stone. The Law would have asked to hear its case first. I find, standing here with the willows shaking, that I am less certain than I ought to be that the Law is right.
 warm: I clutched a willow branch with both hands while you did it. If I had been braver, I would have done the same. As it is, I shall try to be braver in your next crisis.
 devoted: The names were loose in the water and they were singing. I could hear my sister in them. I thought, I shall never hear her again, and then I thought, I shall hear her always. Thank you for breaking it. Do not do it again.
 ? tone:force>=2/4 | You told Madam Sui to find honest work. She kept the toll for fifty years. Be gentle with people who have lived inside a bargain. They did not make it.

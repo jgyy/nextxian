@@ -19,7 +19,7 @@ The Elder stands at the water’s edge in a plain cloak with her hood up, holdin
 > force | Go to the Silver Canal, where the Hollow Lotus has promised a Calling, and see that it is not stopped. | lanterns_a2s1 | +lanterns_a2 needs:2
 > deceit | Meet Yue Zhaoning at the lantern stalls, where a lantern can carry more than a name. | lanterns_a3s1 | +lanterns_a3
 > quiet | Watch the black boat that moves against the current, collecting the blank lanterns. | lanterns_a4s1 | +lanterns_a4
-> mercy | Take out the willow whistle, and blow the three notes at the water's edge. | lanterns_h1 |  | willow_whistle | You carry no whistle from a willow-lined jetty.
+> mercy | Take out the willow whistle, and blow the three notes at the water’s edge. | lanterns_h1 |  | willow_whistle | You carry no whistle from a willow-lined jetty.
 
 // ---------------------------------------------------------------- a1: a lantern for each
 === lanterns_a1s1 | Auntie Rong’s Stall
@@ -27,7 +27,7 @@ The lantern-maker is a stout old woman in a white apron, with a tray of paper ti
 You count the people you carry. The fourteen. The fifteenth. A girl in a red mist who said she was only listening. A boy of twelve who wanted to be a gardener. The faces crowd your head, and you realise you have to choose, and the choosing is the whole of the festival.
 “Hurry,” says Auntie Rong, without malice. “The tide turns at ten.”
 > truth | Buy fifteen blank lanterns, one for each of the sealed. | lanterns_a1s2
-> mercy | Buy one grey, for the doubtful, and one white for the Elder's silver comb. | lanterns_a1s2
+> mercy | Buy one grey, for the doubtful, and one white for the Elder’s silver comb. | lanterns_a1s2
 > inquiry | Ask her what the blank ones mean, and who first floated them. | lanterns_a1s2
 > quiet | Buy a single white lantern, and decide on the water. | lanterns_a1s2
 
@@ -68,7 +68,7 @@ Ren Qiao floats his lantern last of the three. It is white, and plain, and bears
 “Fifteen,” he says. “I set a fifteenth stone in the mortar of the bridge. This is its lantern.” He wipes his hands on his cloak. “It is a foolish thing, to keep a place for someone who may be alive.”
 Gu has already floated his. It is blank. He did not write the name; he said it, once, under his breath: Hanming. The paper rocks away from him, white against black water, and he watches it as one watches a ship leave harbour.
 “I used to think the mist took him,” he says. “Now I think the Law took him, and the mist kept him. It’s a different thing to be angry at.”
-> truth | Tell Gu you'll be angry with him, as long as he wants. | lanterns_a1s6 | bond:gu+3
+> truth | Tell Gu you’ll be angry with him, as long as he wants. | lanterns_a1s6 | bond:gu+3
 > mercy | Float a second blank lantern beside his. | lanterns_a1s6 | bond:gu+4
 > inquiry | Ask Ren who else the fifteenth stone is for. | lanterns_a1s6 | bond:ren+2
 > quiet | Stand between them, and say nothing. | lanterns_a1s6 | bond:gu+2 bond:ren+2
@@ -85,7 +85,7 @@ You have never floated a lantern for yourself before. You do not know whether it
 
 === lanterns_a1s7 | The Fifteen
 You float the fifteen in a line, one after another, and they go down the canal together as a procession, glowing, a little crooked. You say the names as each leaves your hand. The fourteen in order. Then the fifteenth. The boy who wanted to be a gardener. The poet. The man who disliked cold rice. The girl of fifteen.
-On the sixth lantern the water ripples. On the ninth, a sound comes up from somewhere under the bridge: a note, thin and sweet, such as a reed makes. On the fourteenth lantern, a second voice joins the first, a woman's, without words.
+On the sixth lantern the water ripples. On the ninth, a sound comes up from somewhere under the bridge: a note, thin and sweet, such as a reed makes. On the fourteenth lantern, a second voice joins the first, a woman’s, without words.
 They are singing the tune. Somewhere under the water, or the dark, the dead are singing along.
 When you float the fifteenth, Mengjiao’s, the singing stops.
 > truth | Wait, and listen. | lanterns_a1s8
@@ -179,7 +179,7 @@ Then the sound changes. A second bell takes up the first, a flat harsh clangour 
 
 === lanterns_a2s8 | A Night That Did Not Break
 It does not break. That is the astonishing thing. The Assembly Guard come on at a run, and the crowd, which has every reason to scatter, sits down. They sit on the bridge, on the stones, in the water-steps. A hundred and fifty people, saying the names of their dead in low voices, with their hands in their laps.
-The Guard slow. They stop. Their captain, a thin man in an iron helmet, looks at the Canal Watch with their helmets off, and at Captain Hu with his hand on his heart, and at a woman of seventy who is quietly saying his own mother's name.
+The Guard slow. They stop. Their captain, a thin man in an iron helmet, looks at the Canal Watch with their helmets off, and at Captain Hu with his hand on his heart, and at a woman of seventy who is quietly saying his own mother’s name.
 He takes off his helmet. After a long moment, he sits down.
 Duan Wuyi, arriving at the head of the quay with his staff and his hat askew, takes one look and says, mildly, to nobody, “Well. I will have to write this up.”
 > truth | Sit down beside the Guard captain. | lanterns_close | +lanterns_bridge_calm
@@ -206,7 +206,7 @@ She looks at you.
 > truth | Ask which rooms. | lanterns_a3s3
 > deceit | Offer to carry the basket yourself. | lanterns_a3s3
 > mercy | Ask to read one. | lanterns_a3s3
-> force | Tell her it's too dangerous for the children's sake. | lanterns_a3s3
+> force | Tell her it’s too dangerous for the children’s sake. | lanterns_a3s3
 
 === lanterns_a3s3 | A Letter
 She lets you read one. It is on a thin slip, in a labouring hand, in the old script. It says: Dear daughter. Your father is well. The harvest was good. I have lit the lamp for you each night. I do not know if you can read this. I hope the river is kind.
@@ -240,9 +240,9 @@ He bows, and goes.
 > quiet | Watch him go. | lanterns_a3s6
 
 === lanterns_a3s6 | The Mark on the Tin
-The mark is a feather. Your fingers know it before your mind does: you saw it on the slip in the basket, beside a labouring hand and a reply. The mother's. The daughter's. The pear tree is not to be cut.
-It is the same feather. Wen Rui's letter is addressed to the woman on the other side of that correspondence, the one who writes to her daughter in a sea-town. It is addressed to the daughter's mother.
-You close your fist around the tin. Gu, at your shoulder, says, “Is it...”
+The mark is a feather. Your fingers know it before your mind does: you saw it on the slip in the basket, beside a labouring hand and a reply. The mother’s. The daughter’s. The pear tree is not to be cut.
+It is the same feather. Wen Rui’s letter is addressed to the woman on the other side of that correspondence, the one who writes to her daughter in a sea-town. It is addressed to the daughter’s mother.
+You close your fist around the tin. Gu, at your shoulder, says, “Is it…”
 “I think,” you say, “that he is writing to his wife.”
 > truth | Send it with the rest. | lanterns_a3s7 | +lanterns_wen_wife
 > mercy | Hold it back, until you can ask him. | lanterns_a3s7
@@ -299,7 +299,7 @@ His voice is soft. His hands on the pole are black to the wrist.
 > truth | Ask who told him. | lanterns_a4s4
 > inquiry | Ask where he takes the lanterns. | lanterns_a4s4
 > quiet | Step down into the boat. | lanterns_a4s4
-> force | Tell him you'll go no farther until he answers. | lanterns_a4s4
+> force | Tell him you’ll go no farther until he answers. | lanterns_a4s4
 
 === lanterns_a4s4 | The Quiet Place
 He poles you out of the city. The canals narrow and the houses fall behind. The black boat slides past a cemetery, an orchard, a dye-works, a clutch of reed huts. The blank lanterns in the bottom of the boat glow faintly, all together, like a small hearth.
@@ -366,7 +366,7 @@ Beside you Gu lets out a breath. “It’s the river,” he says. “It’s all 
 The water rises. Not much. A hand’s breadth. The nine canals, which a moment ago were stagnant, begin to flow, and the flow is toward the sea. Every lantern turns, as one, and starts to move: a thousand lights, a drifting galaxy, bright on the black.
 From somewhere in the current comes a voice. You know it. You heard it at a willow-lined stone, four hundred years old and tired and amused. Four syllables, Lian-ta-wei-shu, said in a ripple. Then, in an easy tone, as of an old friend: Child. I have friends in this city.
 The lanterns gather at the Stone Island. They form a ring.
-> truth | Say the river's name, three times. | lanterns_h3
+> truth | Say the river’s name, three times. | lanterns_h3
 > quiet | Bow to the water. | ^
 > mercy | Ask whether the lanterns will be all right. | ^
 > inquiry | Ask what the ring is for. | ^
@@ -389,14 +389,14 @@ Dawn finds the nine canals full of burned-out paper, grey flakes riding the curr
 +[a] lanterns_a3 | You carried two hundred letters in a basket and not one was stopped.
 +[a] lanterns_a4 | You followed a black boat to an island of blank paper and were handed a letter.
 +[b] lanterns_su_floated | The Elder floated her white lantern with her own hand, and has been quiet since, in a way that does not hurt.
-+[b] lanterns_su_proxy | You floated the Elder's lantern for her. She stood on the step and watched it go, and does not speak of it.
-+[b] lanterns_hu_stood_down | Captain Hu of the Canal Watch took his helmet off in front of a hundred strangers. His sick wife's name is Bian.
++[b] lanterns_su_proxy | You floated the Elder’s lantern for her. She stood on the step and watched it go, and does not speak of it.
++[b] lanterns_hu_stood_down | Captain Hu of the Canal Watch took his helmet off in front of a hundred strangers. His sick wife’s name is Bian.
 +[b] lanterns_bridge_calm | The Assembly Guard sat down on the Silver Bridge. Duan Wuyi is writing it up, and has been writing for an hour.
-+[b] lanterns_wen_wife | Wen Rui's letter went down the Fifth Canal in a tin, to a woman with a pear tree.
++[b] lanterns_wen_wife | Wen Rui’s letter went down the Fifth Canal in a tin, to a woman with a pear tree.
 +[b] lanterns_river_answered | The river answered a willow whistle, and the Ledger Hall rang its bell.
 +[c] lanterns_mei_stood | Mei Qiu floated a grey lantern, and you stood beside her.
-+[c] lanterns_mei_joined | You floated your own lantern beside Mei Qiu's, for the same name.
-+[c] lanterns_ash_letter | Madam Ash's letter is in your sleeve. The nine rings close at midnight on the day of the Great Sealing.
++[c] lanterns_mei_joined | You floated your own lantern beside Mei Qiu’s, for the same name.
++[c] lanterns_ash_letter | Madam Ash’s letter is in your sleeve. The nine rings close at midnight on the day of the Great Sealing.
 +[c] lanterns_yue_basket | Yue Zhaoning has asked you to help with the next basket.
 > truth | Find the Elder, and ask how the water felt. | lanterns_close2
 > quiet | Walk the nine canals at dawn, and watch the paper go. | lanterns_close2
@@ -407,8 +407,8 @@ Dawn finds the nine canals full of burned-out paper, grey flakes riding the curr
 Duan Wuyi is writing in the shade of an awning on the quay, with a cup of tea going cold at his elbow. He looks up as you approach, and puts down his brush.
 “The bell,” he says, “has rung once in seven hundred years. It rang last for the Sealing. It rang last night, for a bridge. I have been trying all morning to write the sentence that explains why, and I find there isn’t one that is both true and permitted.”
 He rubs his eyes.
-+ lanterns_a2_stood | The Assembly Guard's captain has asked to meet the person who stood at the foot of the bridge.
-+ lanterns_river_answered | The Ledger Hall's bell rang when a river spoke. He does not say it was your whistle. He does not need to.
++ lanterns_a2_stood | The Assembly Guard’s captain has asked to meet the person who stood at the foot of the bridge.
++ lanterns_river_answered | The Ledger Hall’s bell rang when a river spoke. He does not say it was your whistle. He does not need to.
 + lanterns_ash_letter | You do not mention the letter in your sleeve. He glances at it, and does not mention it either.
 “I will say in my report,” he says, “that a festival was held, and a bell rang, and no one was harmed. All of which is true.”
 > truth | Thank him. | hub_b2_city | +b2q_lanterns
@@ -426,7 +426,7 @@ devoted: She was there. In the water. I heard her voice, or I imagined it. I do 
 ? tone:truth>=3/5 | You told me what you heard in the river, plainly, as you have told me everything. I think I could believe it even if I did not want to.
 `,
   remarks: String.raw`
-% lanterns_hu_later | since:lanterns_hu_stood_down>=18 | elder | Captain Hu of the Canal Watch has asked to be transferred to the Law Hall's wards. He says he wants to learn what a ward is for. I have written back that I would like to learn it too.
+% lanterns_hu_later | since:lanterns_hu_stood_down>=18 | elder | Captain Hu of the Canal Watch has asked to be transferred to the Law Hall’s wards. He says he wants to learn what a ward is for. I have written back that I would like to learn it too.
 % lanterns_mei_later | since:lanterns_mei_joined>=14 | elder | Inspector Mei left a grey lantern on my doorstep. There was no name on it. I put it in the window. It has been burning since.
 % lanterns_yue_later | since:lanterns_yue_basket>=20 | elder | Another bundle from the river, tied with a double carrick. I have stopped asking where they come from. I have begun to read what is in them.
 `,

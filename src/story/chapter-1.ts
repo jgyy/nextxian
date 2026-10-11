@@ -8,7 +8,7 @@ export const chapterOne: Scene[] = [
     paragraphs: [
       "Rain has fallen on the mountain for three days, and the stone steps of the Azure Cloud Sect are slick with it. You climb them with a pack on your back and mud to your knees. Above you, the sect gate rises out of the mist like a sword in a sheath.",
       "A gate disciple in grey robes stands beneath the lintel, holding an umbrella that is not quite large enough for him. He watches you come up the last steps with the careful attention of someone who has been told to expect trouble.",
-      "\"State your name and business,\" he says. \"The Law Hall has closed its doors to visitors since the Sealing Jade was taken. Anyone who arrives now is either very brave or very guilty.\"",
+      "“State your name and business,” he says. “The Law Hall has closed its doors to visitors since the Sealing Jade was taken. Anyone who arrives now is either very brave or very guilty.”",
     ],
     choices: [
       {
@@ -47,8 +47,8 @@ export const chapterOne: Scene[] = [
     id: "gate_gossip",
     title: "The Gate Disciple",
     paragraphs: [
-      "The disciple lowers his voice, though there is no one else for a hundred steps. \"Three nights ago someone climbed the altar of the Sealing Jade and took it. The seal was never meant to leave the Law Hall. It is the lock on the Crimson Abyss. Without it, the mist down there is getting closer.\"",
-      "\"They say a rival disciple, Gu Hanzhen, was seen running toward the abyss path. Elder Su has sent the Law Hall's wardens after him, but the wardens came back empty-handed and frightened. Now the elder waits in her hall, and she does not sleep.\"",
+      "The disciple lowers his voice, though there is no one else for a hundred steps. “Three nights ago someone climbed the altar of the Sealing Jade and took it. The seal was never meant to leave the Law Hall. It is the lock on the Crimson Abyss. Without it, the mist down there is getting closer.”",
+      "“They say a rival disciple, Gu Hanzhen, was seen running toward the abyss path. Elder Su has sent the Law Hall’s wardens after him, but the wardens came back empty-handed and frightened. Now the elder waits in her hall, and she does not sleep.”",
     ],
     choices: [
       {
@@ -145,7 +145,7 @@ export const chapterOne: Scene[] = [
     id: "scroll_theft",
     title: "A Scroll in Your Sleeve",
     paragraphs: [
-      "The scroll is heavier than it looks, and its paper is warm to the touch, as if something inside it is still breathing. Footsteps echo in the corridor outside. A warden's lantern swings past the doorway and pauses.",
+      "The scroll is heavier than it looks, and its paper is warm to the touch, as if something inside it is still breathing. Footsteps echo in the corridor outside. A warden’s lantern swings past the doorway and pauses.",
       "You have a moment to choose before the lantern turns back.",
     ],
     choices: [
@@ -192,12 +192,12 @@ export const chapterOne: Scene[] = [
     title: "The Law Hall",
     paragraphs: [
       "The Law Hall is colder than the rain outside. Lamps hang from iron chains. At the far end, on a chair of pale jade, sits Elder Su Wanru, her grey hair pinned with a single silver comb. Her hands rest on a folded ledger, and her eyes are the colour of old river stone.",
-      "\"Sit,\" she says, without warmth. \"You have come up the mountain in the rain, which means either you were summoned or you had a reason to be here. Tell me which, and tell me the truth. The Sealing Jade was stolen from my altar, and I have very little patience left.\"",
+      "“Sit,” she says, without warmth. “You have come up the mountain in the rain, which means either you were summoned or you had a reason to be here. Tell me which, and tell me the truth. The Sealing Jade was stolen from my altar, and I have very little patience left.”",
     ],
     extras: [
       {
         when: [{ kind: "flag", flag: "sneaked_in" }],
-        paragraphs: ["Her gaze lingers on your muddy boots. \"Someone walked into my memorial without leave. I can smell the wet stone on you from here.\""],
+        paragraphs: ["Her gaze lingers on your muddy boots. “Someone walked into my memorial without leave. I can smell the wet stone on you from here.”"],
       },
       {
         when: [{ kind: "flag", flag: "stole_scroll" }],
@@ -251,8 +251,8 @@ export const chapterOne: Scene[] = [
     id: "mission",
     title: "The Command",
     paragraphs: [
-      "Elder Su closes her ledger. \"The Sealing Jade must return to the altar before the Crimson Abyss grows any wider. Gu Hanzhen fled down the abyss path, and the mist has already taken two wardens. You will go after him and bring the jade back. If you refuse, the Law Hall will judge you as the thief you may be.\"",
-      "She does not offer an alternative. Behind her, a mirror of polished jade hums softly. It is the sect's jade-eye, and through it she will follow your path down the mountain. The lamps flicker, and the room waits for your answer.",
+      "Elder Su closes her ledger. “The Sealing Jade must return to the altar before the Crimson Abyss grows any wider. Gu Hanzhen fled down the abyss path, and the mist has already taken two wardens. You will go after him and bring the jade back. If you refuse, the Law Hall will judge you as the thief you may be.”",
+      "She does not offer an alternative. Behind her, a mirror of polished jade hums softly. It is the sect’s jade-eye, and through it she will follow your path down the mountain. The lamps flicker, and the room waits for your answer.",
     ],
     choices: [
       {

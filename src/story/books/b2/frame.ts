@@ -50,7 +50,7 @@ Nothing happens, and by morning something has. Your breath goes deeper than it d
 The Guesthouse of Nine Moons has paper windows, and through them the city goes about its business as if no one in it were waiting to be judged. Six days remain before the Assembly sits. The Censors do not forbid you the town. Duan Wuyi says only that a witness who has seen nothing has nothing to say.
 + b2_qinglian | The Water Gate is behind you, and the lantern chain over it is already being strung for the festival.
 + b2q_silk | A bolt of plain silk is folded on the sill, a gift from a quarter that now knows your face.
-+ b2q_nine | The bone-lamp's pale glow still sits at the back of your eyes when you close them.
++ b2q_nine | The bone-lamp’s pale glow still sits at the back of your eyes when you close them.
 + b2q_lanterns | A paper lantern with a name on it bobs somewhere downriver, and you know whose.
 + b2q_stairs | Your legs still ache from the Crane Stairs, and the Elder has stopped teasing you about it.
 + b2q_vault | Ink is under your nails that will not wash out, and no one has asked why.
@@ -62,7 +62,7 @@ The Guesthouse of Nine Moons has paper windows, and through them the city goes a
 > mercy | The Festival of Floating Names, on the nine canals. | lanterns_entry |  | !b2q_lanterns | You have floated your lanterns.
 > inquiry | The Crane Stairs, where precedence is fought for. | stairs_entry |  | !b2q_stairs | You have already climbed.
 > force | The Ledger Hall, and what lies beneath it. | vault_entry |  | !b2q_vault & count:b2q_>=2 | Learn the city a little first, or you have been below already.
-> truth | Take your seat in the Round Hall. The Assembly is sitting. | asm_entry |  | count:b2q_>=4 | The Assembly will not sit until you have walked four of the city's roads.
+> truth | Take your seat in the Round Hall. The Assembly is sitting. | asm_entry |  | count:b2q_>=4 | The Assembly will not sit until you have walked four of the city’s roads.
 > quiet | Sit out the night in meditation, and let the road settle in your core. | still_hub_b2_city | cult+40 +still_hub_b2_city | !still_hub_b2_city | You have already sat your night here.
 
 === still_hub_b2_city | A Night of Stillness

@@ -8,7 +8,7 @@ export const chapterTwo: Scene[] = [
     paragraphs: [
       "The abyss path begins where the mountain splits. Red mist rises from the cleft like breath from a sleeping beast, and the air grows heavy with iron. Halfway down, the path narrows to a ledge the width of two shoulders.",
       "Gu Hanzhen is there, pressed against the rock with a torn sleeve and a sword that trembles in his hand. Black threads of mist curl around his ankles. He is young, perhaps nineteen, and his eyes are wide with fear rather than guilt.",
-      "\"Stay back,\" he says. \"The seal is not mine. It was never mine. If you come closer, the mist takes you too.\"",
+      "“Stay back,” he says. “The seal is not mine. It was never mine. If you come closer, the mist takes you too.”",
     ],
     choices: [
       {
@@ -57,8 +57,8 @@ export const chapterTwo: Scene[] = [
     id: "abyss_truth",
     title: "What the Mist Remembers",
     paragraphs: [
-      "Gu Hanzhen sinks to his knees on the ledge. The mist recoils from him as though he were a lamp. \"I was sent to watch the altar, not to steal from it,\" he says. \"A woman came out of the abyss three nights ago. She was dressed in old Azure Cloud grey, and her face was Elder Su's face, a little younger. She took the jade from the altar's crack and walked back down into the red.\"",
-      "\"She called herself Mengjiao. The mist called her by another name, Su Mengjiao. The elder's sister. The Law Hall buried her fifteen years ago, when she was caught studying the Blood Lotus Sutra. Nobody said she had fallen into the abyss. Everyone said she died.\"",
+      "Gu Hanzhen sinks to his knees on the ledge. The mist recoils from him as though he were a lamp. “I was sent to watch the altar, not to steal from it,” he says. “A woman came out of the abyss three nights ago. She was dressed in old Azure Cloud grey, and her face was Elder Su’s face, a little younger. She took the jade from the altar’s crack and walked back down into the red.”",
+      "“She called herself Mengjiao. The mist called her by another name, Su Mengjiao. The elder’s sister. The Law Hall buried her fifteen years ago, when she was caught studying the Blood Lotus Sutra. Nobody said she had fallen into the abyss. Everyone said she died.”",
     ],
     choices: [
       {
@@ -118,7 +118,7 @@ export const chapterTwo: Scene[] = [
     title: "Back in the Law Hall",
     paragraphs: [
       "The rain has stopped by the time you return. Elder Su is waiting in the Law Hall, exactly where you left her. Her ledger is closed. Beside it stands a lacquered tray, and on it the Sealing Jade if you brought it, or nothing if you did not.",
-      "\"Speak,\" she says. \"I have heard the abyss in my dreams for fifteen years. Tell me what you found there, and do not tell me what the Law wants to hear.\"",
+      "“Speak,” she says. “I have heard the abyss in my dreams for fifteen years. Tell me what you found there, and do not tell me what the Law wants to hear.”",
     ],
     extras: [
       {

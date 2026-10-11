@@ -6,12 +6,17 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 
 ## Features
 
+- **Make your character.** Before the first scene you choose a name, the papers you travel under (outcast, commoner, gentry, noble), what you wear, your looks, the life you led since the river village, and your gender. Each is something an NPC can see, and each changes what they say: the gate disciple reads your dress and papers, Elder Su comments on you every few decisions (22 observations by 5 attitudes, plus one for each stretch of your cultivation), 66 companion remarks wait for the right person to be met, and every keeper on the new roads reads your dress, birth, trade, face and manner. None of it changes what you can do. Cultivation does that.
+- **Standing.** Papers and dress set a floor, and every realm adds two, so a Foundation Builder born an outcast already outranks a mortal prince. Some doors open to standing alone.
+
 - **Visual novel stage.** Each choice clears the screen to the new beat. Earlier text stays out of view until you open the backlog.
 - **No Continue. Every scene fits one screen.** A scene’s body text, every extra paragraph and every NPC interjection included, stays at 200 words or fewer, and so does every NPC line. There are no page turns: a long stretch of the story is broken into scenes, and each scene ends in choices. The test suite fails if a cap is broken or a scene has no heading.
 - **Coloured choices.** Every decision has one of six tones: truth (jade), mercy (sky blue), inquiry (gold), deceit (violet), force (cinnabar) and quiet (grey). Each option wears its colour and names its tone, and a legend above the options explains them, so colour is never the only cue.
 - **Four or more options at every decision.** Options with unmet requirements stay visible, marked, and explain what is missing.
+- **The realm matters, more.** Forceful choices in Book One now ask the realm of their chapter, and a mortal who forces a ward pays for it. Forty new realm roads in Books Two to Six bar their deep approach below the road’s realm, charge for a reach above it, offer a lesser way to a traveller who is not equal to the place, and have their keepers greet a hero a realm below, at or above the road differently.
 - **The realm matters.** Cultivation is paced across six books and gates the story. Routes lock behind a realm (the Ash Bridge bows only to Spirit Severing, the abyss doors read only Dao Seeking), a choice tagged “beyond you” costs cultivation, qi and the Elder’s respect if you take it too early, and a deed far below your realm earns mastery. Every hub has a night of meditation. Seven endings depend on realm, the nine cards, the friends you kept and your karma.
 - **Cultivation.** You arrive as a **Mortal**. Every decision earns cultivation points (patience, study, truth and mercy earn more than force or lies), and enough points break you through eight realms: Mortal, Qi Condensation, Foundation Establishment, Core Formation, Nascent Soul, Spirit Severing, Dao Seeking and Ascendant. A breakthrough is logged on the stage and the Elder remarks on it. From Core Formation on, a heart demon holds back anyone whose karma has sunk below −30. Realms open a locked “cultivator’s way” at the crisis of every side road, and the Elder answers a cultivator differently from a mortal.
+- **Forty realm roads, 1,020 more scenes.** Ten waysides open from the hubs of Books Two to Six (tollhouses, a lamp exchange, a Garrison bell, a ship fused in the Glass Sea, a teahouse on the mountain road). Each road is 25 scenes written in its own words: twenty situations, a hidden route and a way back.
 - **Forty side roads, 1,010 new scenes.** Ten waysides branch off the main line, one per chapter from the gate to the sealing night, and each offers four roads. A road has an entry, four approaches of five scenes (each approach has its own tone), a hidden route of three scenes behind a high enough Insight, and a return scene that reports to the Elder. Every road is built from a short spec in `src/story/roads/` plus shared wording, so adding a road means adding one entry.
 - **A reactive Elder.** Elder Su has 98 scenarios. Each one has five lines chosen by her trust level, and every one has at least one memory override that reads what the player has done. Earlier choices override lines through memory flags, so a lie in Chapter One comes back later. She remembers what she has just heard, and she keeps count of the tones you choose: after three of your last four decisions share a tone, she names that manner once. Her respect for you now matters too: when it moves into a new band (contempt, unregarded, weighed, respected), she says so. Her panel shows her read of you, her attitude, her mood and her stats. She speaks unprompted when her suspicion, fear, a pattern in your past choices or a run of tones crosses a threshold, and in the return scenes of the side paths. She also reads your cultivation: she comments on mortals at the Law Hall and the abyss, names each breakthrough, answers a cultivator’s confession or threat differently from a mortal’s, and remarks on how many roads you have walked. Each road report has memory lines for the secret you found, the relic you kept, a run of lies, many roads walked and a cultivator’s standing.
 - **Twelve side paths.** Seven were already in the story: the herb market, the pavilion of stone wagers, the lantern stair, the sister’s shrine, the sparring court, the bell foundry and the ferry of still water. Five are new: the foothill village where Gu Hanzhen was born, the quarry under the archive where the jade was cut, the healer’s hall where the calm dust is made, the old master on the eastern peak, and the rope bridge over the Cloud Gap. Each of the five branches into four approaches, has a hidden route, rejoins the main line, and ends with a report to the Elder.
@@ -19,6 +24,47 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 - **Saves in your browser.** Progress is written to `localStorage` after every choice. Storage errors never stop play. Saves from before the Elder kept a reaction history, or before decisions had tones, still load.
 
 ![Scene with no Continue](docs/screenshots/02-no-continue-desktop.png)
+
+### Your character
+
+![Character creation](docs/screenshots/28-creation-desktop.png)
+![Character creation on a phone](docs/screenshots/29-creation-mobile.png)
+![The gate disciple reads a noble in silk](docs/screenshots/30-gate-noble-silk-desktop.png)
+![The same gate for an outcast in armour](docs/screenshots/31-gate-outcast-armour-desktop.png)
+![Elder Su reads the hero](docs/screenshots/32-elder-reads-the-hero-desktop.png)
+![A companion reads the hero](docs/screenshots/33-companion-reads-the-hero-desktop.png)
+![Hero panel on a phone](docs/screenshots/40-hero-panel-mobile.png)
+
+```mermaid
+flowchart LR
+  C["Creation screen"] --> H["Hero: name, papers, dress, looks, trade, gender"]
+  H --> G["gate and Law Hall echoes"]
+  H --> A["Elder’s asides, by attitude"]
+  H --> R["companion remarks"]
+  H --> K["keepers on the realm roads"]
+  H --> S["standing = papers + dress + 2 per realm"]
+  S --> L["locked choices that open to standing"]
+```
+
+### The realm roads
+
+![Below the road’s realm](docs/screenshots/34-realm-road-below-desktop.png)
+![At the road’s realm](docs/screenshots/35-realm-road-at-desktop.png)
+![A door that needs more standing](docs/screenshots/36-realm-road-standing-desktop.png)
+![The crisis: the cultivator’s way and the reach](docs/screenshots/37-realm-road-crisis-desktop.png)
+![A wayside](docs/screenshots/38-realm-wayside-desktop.png)
+![Realm tags on a Book One force choice](docs/screenshots/39-book-one-realm-tags-desktop.png)
+
+```mermaid
+flowchart TD
+  E["road entry"] -->|"approach 1, 2"| O["open to anyone"]
+  E -->|"approach 3"| M["asks the road’s realm; below it, you pay"]
+  E -->|"approach 4"| D["barred below the realm"]
+  E -->|"below the realm"| H["the lesser way"]
+  O & M & D & H --> C["crisis: cultivator’s way needs the realm, the reach needs one more"]
+  C --> R["report to the Elder: she reads how far above or below the road you stood"]
+```
+
 ![Side path: the foothill village](docs/screenshots/03-side-path-village-desktop.png)
 ![She reports the village](docs/screenshots/04-report-reaction-desktop.png)
 ![She respects your judgment](docs/screenshots/05-respect-shift-desktop.png)
@@ -79,6 +125,7 @@ npm run dev        # http://localhost:3000
 | `npm run lint` | ESLint (Next.js rules) |
 | `npm run word-count` | Words written so far, by chapter and side path, against the 1,000,000-word goal |
 | `npm run check` | The validator and the continuity audit (dangling flags, dead conditions, time loops) |
+| `npx tsx scripts/audit-slots.ts` | Counts the Book One road lines whose old wording did not fit what it named (686) |
 | `npm run simulate -- 40 diligent` | Random-walks the story (`thorough`, `diligent`, `forceful`, `hasty`) to find soft-locks and report realm and ending |
 
 ## Project layout
@@ -98,6 +145,6 @@ scripts/         word count, story check, simulator
 
 The engine, NPC system, cultivation realms, visual novel UI, six books and their endings are in place and playable from the first scene to seven endings. Every scene stands on its own: no page turns, a heading on every scene, four or more tone-tagged choices at every decision, and a 200-word cap on every scene body.
 
-The story has 3,836 scenes (9 endings) and 15,677 choices, with 176 NPC scenarios. The word count is 723,436, which is **72.34%** of the 1,000,000-word goal. **The goal was not reached.** The last stretch of work went into making the story complete and valid (Book V’s finale, all of Book VI, the endings) and into making the realm matter, rather than into more words. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md) for the plot-hole count, which is also short of the 1,000 asked for: 884 found and fixed.
+The story has 4,856 scenes (9 endings) and 20,382 choices, with 216 NPC scenarios and 243 unprompted remarks. The word count is 1,029,250, which is **102.9%** of the 1,000,000-word goal. The count adds up every variant of a line that can be shown (every dress, birth and realm a keeper can react to), so it overstates what one playthrough reads. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md): this pass fixed 1,153 inconsistencies, of which 41 are continuity or repetition and the rest wording and typography, and the ledger says plainly which is which.
 
 The side roads of Book One are assembled from templates and read more uniformly than the hand-written chapters. The Book V finale and Book VI are compact (about 8,000 words) next to the sixteen-arc hubs before them, and are the obvious place to add more. The books and the canon are described in [docs/CANON.md](docs/CANON.md). Adding content means adding an arc under `src/story/books/<book>/`, registering it in `src/story/books/index.ts`, and running `npm run check`.

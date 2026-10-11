@@ -546,11 +546,11 @@ You hear a woman’s voice, tired and gentle and amused, speaking names.
 
 === stones_h2 | Nine Hundred and Forty
 It is a litany. It goes on and on, in an even unhurried murmur, with a pause between each. It does not repeat. Each name is a different one: a man’s, a girl’s, a child’s, in a dozen dialects, a dozen scripts. There is no pattern. They are the names of the sealed, and the voice says them one by one into the dark.
-“...Wen Sui. Tao Mei. Zhou Ke-ming...”
+“…Wen Sui. Tao Mei. Zhou Ke-ming…”
 You know the voice. You have never heard it. You know it as you know the sound of your own breath. It is a low warm tired alto, with a flat dry humour in it, and it is saying a name every four seconds, as if it had been saying them for a very long time and did not mean to stop.
 Behind you, someone makes a small sound. It is the Elder. She has come across the rise without being noticed, and is standing at your shoulder, with both hands pressed over her mouth.
 “Mengjiao,” she whispers.
-“...Liu Hao. Ma Fei...”
+“…Liu Hao. Ma Fei…”
 > inquiry | Hold her. | stones_h3
 > truth | Tell her to listen. | stones_h3
 > mercy | Step aside. | stones_h3
@@ -565,7 +565,7 @@ The litany goes on. It does not stop. It does not hear. It is not addressed to h
 She leans her forehead against the stone.
 “Mengjiao,” she says. “It’s Wanru. I’m coming.”
 The litany falters. It halts, half-way through a name. There is a silence in the stone that lasts for three heartbeats.
-A voice says, clearly, very faint, as if from the other end of a long tube: “...Wanru?”
+A voice says, clearly, very faint, as if from the other end of a long tube: “…Wanru?”
 > inquiry | Hold your breath. | stones_close | +stones_heard_sister
 > truth | Step back. | stones_close | +stones_heard_sister
 > mercy | Touch the Elder’s back. | stones_close | +stones_heard_sister

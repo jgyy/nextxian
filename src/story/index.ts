@@ -25,6 +25,7 @@ import { quarryScenes } from "./side-quarry";
 import { healerScenes } from "./side-healer";
 import { hermitScenes } from "./side-hermit";
 import { bridgeScenes } from "./side-bridge";
+import { realmEntrances, realmRoadGroups, realmRoadScenarios, waysideBack2 } from "./roads2";
 import { roadGroups, roadScenarios, waysideBackScene, waysideEntrances } from "./roads";
 import { elderSuRealm, elderSuRealmScenes } from "./npc/elder-su-realm";
 import { applyEchoes, parseEchoes, parseRemarks, parseScenarios, parseScenes } from "@/engine/markup";
@@ -34,6 +35,10 @@ import { echoesOne } from "./fixes/echoes-1";
 import { rumourFlow, rumourScenes } from "./fixes/rumours";
 import { remarksOne, scenariosOne } from "./fixes/remarks-1";
 import { books } from "./books";
+import { heroAsides } from "./hero/asides";
+import { gateForce } from "./realm-gates";
+import { heroEchoes } from "./hero/echoes";
+import { heroRemarks } from "./hero/remarks";
 
 /**
  * The story in reading order. Side paths sit after the chapter they branch from and
@@ -70,11 +75,12 @@ const mainLine: { name: string; scenes: Scene[] }[] = [
  * roads follows the chapter it belongs to.
  */
 const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
-  const scenes = elderSuRealmScenes(c.scenes).map((scene) => {
+  const chapter = /^Chapter (\d+):/.exec(c.name);
+  const scenes = elderSuRealmScenes(c.scenes).map((raw) => {
+    const scene = chapter ? gateForce(raw, Number(chapter[1])) : raw;
     const entrance = waysideEntrances[scene.id];
     return entrance ? { ...scene, choices: [...scene.choices, entrance] } : scene;
   });
-  const chapter = /^Chapter (\d+):/.exec(c.name);
   const groups = chapter ? roadGroups.filter((g) => g.chapter === Number(chapter[1])) : [];
   return [
     { ...c, scenes },
@@ -89,7 +95,7 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
 /** The interludes in which the sect talks about what the player has done. */
 const interludes = parseScenes(rumourScenes, "rumours").map((scene) => {
   const flow = rumourFlow.find((f) => f.id === scene.id);
-  if (!flow) throw new Error(`interlude "${scene.id}" has no entry in rumourFlow`);
+  if (!flow) throw new Error(`interlude "${scene.id}“ has no entry in rumourFlow`);
   return { ...scene, choices: scene.choices.map((c) => ({ ...c, next: flow.next })) };
 });
 
@@ -103,21 +109,29 @@ function patch(groups: { name: string; scenes: Scene[] }[]): { name: string; sce
   for (const flow of rumourFlow) {
     for (const [from, to] of flow.edges) {
       const scene = byId.get(from);
-      if (!scene) throw new Error(`interlude edge starts at missing scene "${from}"`);
+      if (!scene) throw new Error(`interlude edge starts at missing scene “${from}"`);
       byId.set(from, { ...scene, choices: scene.choices.map((c) => (c.next === to ? { ...c, next: flow.id } : c)) });
     }
   }
-  const echoed = applyEchoes([...byId.values()], parseEchoes(echoesOne, "echoes-1"));
+  const echoed = applyEchoes([...byId.values()], [...parseEchoes(echoesOne, "echoes-1"), ...parseEchoes(heroEchoes, "hero/echoes")]);
   const patched = new Map(echoed.map((s) => [s.id, withBonds(s)]));
   return groups.map((g) => ({ ...g, scenes: g.scenes.map((s) => patched.get(s.id)!) }));
 }
 
-/** The arcs of every later book, parsed. Each arc becomes a chapter group in the word-count report. */
+/**
+ * The arcs of every later book, parsed. Each arc becomes a chapter group in the word-count report. A book hub that a
+ * realm wayside opens from gains one more choice, and the wayside’s group follows the arc the hub sits in.
+ */
 const bookGroups = books.flatMap((book) =>
-  book.arcs.map((arc) => ({
-    name: `${book.name} · ${arc.name}`,
-    scenes: parseScenes(arc.scenes, `${book.id}/${arc.id}`).map(withBonds),
-  })),
+  book.arcs.flatMap((arc) => {
+    const scenes = parseScenes(arc.scenes, `${book.id}/${arc.id}`)
+      .map(withBonds)
+      .map((scene) => (realmEntrances[scene.id] ? { ...scene, choices: [...scene.choices, realmEntrances[scene.id]] } : scene));
+    const roads = realmRoadGroups
+      .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+      .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack2(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads];
+  }),
 );
 
 const rawChapters: { name: string; scenes: Scene[] }[] = [
@@ -142,15 +156,17 @@ export const story: Story = {
   npc: elderSu,
   scenes: Object.fromEntries(scenes.map((s) => [s.id, s])),
   scenarios: {
-    ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios }),
+    ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios, ...realmRoadScenarios }),
     ...Object.fromEntries(parseScenarios(scenariosOne, "scenarios-1").map((x) => [x.id, x])),
     ...Object.fromEntries(
       books.flatMap((book) => book.arcs.flatMap((arc) => (arc.scenarios ? parseScenarios(arc.scenarios, `${book.id}/${arc.id}/scenarios`) : []))).map((x) => [x.id, x]),
     ),
   },
   companions,
+  asides: heroAsides,
   remarks: [
     ...parseRemarks(remarksOne, "remarks-1"),
+    ...parseRemarks(heroRemarks, "hero/remarks"),
     ...books.flatMap((book) => book.arcs.flatMap((arc) => (arc.remarks ? parseRemarks(arc.remarks, `${book.id}/${arc.id}/remarks`) : []))),
   ],
 };

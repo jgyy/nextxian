@@ -17,7 +17,7 @@ It stands in an open courtyard at the foot of the first tier, between two pillar
 The number shows on a dial. A clerk reads it aloud, and writes it on the pilgrim’s slip.
 “Eleven,” calls the clerk. A farmer in a patched coat steps down, pale. “Forty. Three. Nine hundred and six.” A rich merchant in silk, red-faced, is escorted away by two guards. The crowd behind murmurs.
 “What do they mean?” you whisper.
-“Children,” says Duan Wuyi. His voice is thin. “It is the cost. How many names must be struck, to carry each of them up.” He swallows. “The poor are cheap. They go up with a few. The great... ”
+“Children,” says Duan Wuyi. His voice is thin. “It is the cost. How many names must be struck, to carry each of them up.” He swallows. “The poor are cheap. They go up with a few. The great… ”
 “Nine hundred and six.”
 “It is their weight,” says Duan. “Not in pounds.”
 At the head of the queue the clerk lifts his eyes. He sees your armbands.
@@ -78,7 +78,7 @@ The dial swings. It settles. It reads, in thin black strokes, a single character
 === ladder_a1s4 | The Weight of One
 “It means that you stand,” says Oyun, “where she stood.” He is a very old man, suddenly. He lowers himself onto the step of the ladder with a hand on his knee. “In the founding story, the first ascender stood on this pan, and the first child on the other. They were weighed. The dial settled.” He wipes his face. “The pan has been used since. But the dial has never settled at one again.”
 “Why not?”
-“Because every ascender since has weighed more.” He looks at the dial. “It is the arithmetic of the thing. Each step costs the one before. But you...”
+“Because every ascender since has weighed more.” He looks at the dial. “It is the arithmetic of the thing. Each step costs the one before. But you…”
 “I weigh the first.”
 “You weigh *one.* Which is to say, the debt is paid.” He laughs, unevenly. “You cost no more than the original. You are the first child’s *own* weight, come back.”
 The crowd murmurs. The clerk has dropped his pen.
@@ -600,7 +600,7 @@ It is the heaviest, happiest morning of your life.
 === ladder_h1 | Carry What Is Heavy
 You lay it on the pan. It says, in careful letters: *Carry what is heavy.* It was given to you in a lamp-room, by a ferrywoman, with a smile like an open door. It lies on the brass in the morning light.
 The beam stirs.
-The priest, on the ladder, with the scoop in his hand, looks down. His face changes. “That is not a weight,” he says. “It is...”
+The priest, on the ladder, with the scoop in his hand, looks down. His face changes. “That is not a weight,” he says. “It is…”
 “It is a card.”
 “It is a *verb.*” His voice is a whisper. “The first. The first of the nine.” He puts down the scoop. “I have never seen one.”
 The pan sinks. It does not sink with the card’s weight. It sinks with something else. You feel it through your boots, a deep, steady, rising pressure, as of a very great tide turning. The dial spins. The pointer swings through numbers you have never seen, numbers with many noughts, and slows, and shudders, and stops.

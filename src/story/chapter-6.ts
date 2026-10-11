@@ -44,7 +44,7 @@ export const chapterSix: Scene[] = [
     title: "The Scraped Hollow",
     paragraphs: [
       "She does not turn when you rise. She is looking at the tablet nearest the altar, and you can see the name on it even from here, carved in the Law’s straight script and then painted over in white. The white paint has been scraped away around one character, leaving a small bright hollow in the middle of the name.",
-      "\"You came up the stair,\" she says. \"The sutra hall does not let people leave without a price, so I have assumed you paid one. I can see it in your hands. You are holding your fingers as if they had been burned.\" She finally turns, and her grey eyes move over you slowly, checking each part of you the way she checked the ledgers on the first day. \"Did she speak to you?\"",
+      "“You came up the stair,” she says. “The sutra hall does not let people leave without a price, so I have assumed you paid one. I can see it in your hands. You are holding your fingers as if they had been burned.” She finally turns, and her grey eyes move over you slowly, checking each part of you the way she checked the ledgers on the first day. “Did she speak to you?”",
     ],
     choices: [
       {
@@ -119,7 +119,7 @@ export const chapterSix: Scene[] = [
     title: "The Painted Name",
     paragraphs: [
       "The Elder walks to the tablet and stops in front of it. Close to, you can see the fine lines in her face that the lamplight usually hides. She has the look of someone who has been awake for two nights and has no intention of sleeping in the third. Her fingers rest on the edge of the stone, lightly, the way a person touches the shoulder of someone sleeping.",
-      "\"The white paint was my doing,\" she says. \"Fifteen years ago, on the morning after the Sealing. The Law Hall sent a clerk to repaint the memorial, and he asked me which names should be covered. I told him to cover all of them. Then I came back at night with a knife and scraped one of them clean again, because I could not stand to see the paint on her.\"",
+      "“The white paint was my doing,” she says. “Fifteen years ago, on the morning after the Sealing. The Law Hall sent a clerk to repaint the memorial, and he asked me which names should be covered. I told him to cover all of them. Then I came back at night with a knife and scraped one of them clean again, because I could not stand to see the paint on her.”",
       "The hollow in the paint is the shape of two characters. You can read them now, faintly, in the grain of the stone beneath. Su Mengjiao. The last name is worn almost smooth, and the first character has been cut so many times that the blade has gone deeper than the carving was meant to go.",
     ],
     choices: [
@@ -153,7 +153,7 @@ export const chapterSix: Scene[] = [
     id: "jade_eye_tablets_2",
     title: "Bowing Every Morning",
     paragraphs: [
-      "\"Every disciple of the Law learns to bow before the tablets,\" she says. \"We are taught that the dead are patient, that they will wait until we are ready to speak their names again. I have bowed before this one every morning for fifteen years. I have never once said her name.\" Her voice does not break. It simply stops, the way a bell stops when someone puts a hand on it.",
+      "“Every disciple of the Law learns to bow before the tablets,” she says. “We are taught that the dead are patient, that they will wait until we are ready to speak their names again. I have bowed before this one every morning for fifteen years. I have never once said her name.” Her voice does not break. It simply stops, the way a bell stops when someone puts a hand on it.",
       "The silence stretches. Somewhere in the courtyard beyond the memorial, a warden’s lantern goes by, and its light moves across the tablets in a slow arc, lighting up one name after another before it fades. For a moment the hollow in the paint catches the glow and looks almost like a wound that is trying to close.",
     ],
     choices: [
@@ -234,8 +234,8 @@ export const chapterSix: Scene[] = [
     id: "jade_eye_sealing_night_2",
     title: "The Ink That Would Not Flow",
     paragraphs: [
-      "\"I did not know she had been studying the sutra,\" Elder Su says. \"I found out that night, when the masters brought her to the altar and she spoke to them in the Blood Lotus language. She said the seal could hold without a living body if someone would listen to the mist. The masters called her a heretic. They ordered the wardens to take her down the path in chains, and I was ordered to witness it.\"",
-      "Her hands, which have rested calm against the tablet, begin to shake. She folds them behind her back so that you cannot see. \"Mengjiao looked at me from the top of the path,\" she says. \"She did not beg. She told me that I had always been the one who counted the bars. She said I should count her too, if I wanted to be accurate.\" A long breath. \"I wrote the number fourteen in the ledger that night. I did not write hers. I could not make the ink go down.\"",
+      "“I did not know she had been studying the sutra,” Elder Su says. “I found out that night, when the masters brought her to the altar and she spoke to them in the Blood Lotus language. She said the seal could hold without a living body if someone would listen to the mist. The masters called her a heretic. They ordered the wardens to take her down the path in chains, and I was ordered to witness it.”",
+      "Her hands, which have rested calm against the tablet, begin to shake. She folds them behind her back so that you cannot see. “Mengjiao looked at me from the top of the path,” she says. “She did not beg. She told me that I had always been the one who counted the bars. She said I should count her too, if I wanted to be accurate.” A long breath. “I wrote the number fourteen in the ledger that night. I did not write hers. I could not make the ink go down.”",
     ],
     choices: [
       {
@@ -343,8 +343,8 @@ export const chapterSix: Scene[] = [
     id: "jade_eye_letter_2",
     title: "The Last Page the Law Kept",
     paragraphs: [
-      "\"This was sent to the Law Hall,\" she says. \"I can see the mark of the Index on the seal. Someone opened it, and someone sealed it again, and someone put it in a drawer where I would never be allowed to find it. I have been the Elder of this hall for twelve years, and I have been running my own house with a locked door.\"",
-      "She turns over the last page and finds the blank space beneath the signature, the stain of the cup, the single word in the margin she had not noticed before. Read. She reads it aloud, her voice gone thin, and then she sets the letter down on the altar as gently as if it might break. \"I was supposed to read the last page,\" she says, very quietly. \"But I was never given the last page. The Law kept it.\"",
+      "“This was sent to the Law Hall,” she says. “I can see the mark of the Index on the seal. Someone opened it, and someone sealed it again, and someone put it in a drawer where I would never be allowed to find it. I have been the Elder of this hall for twelve years, and I have been running my own house with a locked door.”",
+      "She turns over the last page and finds the blank space beneath the signature, the stain of the cup, the single word in the margin she had not noticed before. Read. She reads it aloud, her voice gone thin, and then she sets the letter down on the altar as gently as if it might break. “I was supposed to read the last page,” she says, very quietly. “But I was never given the last page. The Law kept it.”",
       "Behind her, the empty altar gleams in the lamplight. The shard you found in the vault is not there, and the altar’s cracked base looks suddenly more like a wound than a seat. You remember that the shard was never meant to be returned to it. You wonder whether she knows that too.",
     ],
     choices: [
@@ -385,7 +385,7 @@ export const chapterSix: Scene[] = [
     title: "The Ledger in Her Room",
     paragraphs: [
       "Elder Su leads you out of the memorial and up the steps to the Law Hall, not through the great doors but through a narrow side passage lined with lamps. Her own private room lies at the end of it, a plain square chamber with a single window, a desk, a chair of pale jade, and a second ledger lying open on the desk. This one is smaller than the register, bound in faded grey cloth, and its pages are covered with the same neat signatures as the ledger of punishments.",
-      "\"I kept two books,\" she says, \"because I could not decide which one was true. The first records the Law’s sentences. The second records what I signed, and what I felt when I signed it. I have written the second every night for fifteen years. I have never shown it to anyone.\"",
+      "“I kept two books,” she says, “because I could not decide which one was true. The first records the Law’s sentences. The second records what I signed, and what I felt when I signed it. I have written the second every night for fifteen years. I have never shown it to anyone.”",
     ],
     choices: [
       {
@@ -419,7 +419,7 @@ export const chapterSix: Scene[] = [
     title: "Her Second Ledger",
     paragraphs: [
       "She opens it to a page near the middle. The handwriting is shaky, and the ink has run in places where tears have fallen. The entry is dated the night of the Sealing, and it contains only a few lines. I signed the fourteenth name. I did not sign hers. I wrote mine beneath it instead, so that someone would have to read it and know I was there too.",
-      "\"The Law did not punish me for the omission,\" she says. \"It did not notice. It never looks at the Elder’s own signature, only at the names beneath it. I have been waiting fifteen years for someone to ask me why I wrote my own name instead of hers.\"",
+      "“The Law did not punish me for the omission,” she says. “It did not notice. It never looks at the Elder’s own signature, only at the names beneath it. I have been waiting fifteen years for someone to ask me why I wrote my own name instead of hers.”",
       "The lamp hums softly. In the courtyard beyond the window, the mist has begun to rise again, slow and thick, pressing against the glass until the lamplight outside looks like a candle inside a cloud.",
     ],
     choices: [
@@ -461,8 +461,8 @@ export const chapterSix: Scene[] = [
     title: "The Law and the Hand",
     paragraphs: [
       "The Elder stands at the window with her back to you. The mist is pressing harder now, and the glass beads with cold moisture that runs down in slow lines, like the tears of a stone. She does not turn around when you speak, and her answer is so quiet that you have to lean forward to hear it.",
-      "\"The Law is not a person,\" she says. \"It is a hand. It is the hand that holds the bars, and the hand that counts them, and the hand that writes the names on the ledger. I have been its fingers for twelve years, and I have never once asked where the palm was. I thought the palm was the masters. I thought it was the sect. Tonight I think it was me.\"",
-      "She turns, and her face is so calm it frightens you. \"You want me to say that the Law is wrong,\" she says. \"Perhaps it is. But I am the one who signed. A wrong law does not sign itself. Someone has to lift the pen.\"",
+      "“The Law is not a person,” she says. “It is a hand. It is the hand that holds the bars, and the hand that counts them, and the hand that writes the names on the ledger. I have been its fingers for twelve years, and I have never once asked where the palm was. I thought the palm was the masters. I thought it was the sect. Tonight I think it was me.”",
+      "She turns, and her face is so calm it frightens you. “You want me to say that the Law is wrong,” she says. “Perhaps it is. But I am the one who signed. A wrong law does not sign itself. Someone has to lift the pen.”",
     ],
     choices: [
       {
@@ -496,7 +496,7 @@ export const chapterSix: Scene[] = [
     title: "The Tribunal Bell",
     paragraphs: [
       "Outside, faintly, the bell of the Law Hall begins to ring. It is not the evening bell. It is the single deep note the sect uses only for judgments, the one the disciples fear more than any sword. It rings once, then again, and the second note seems to come from inside the walls rather than from the tower.",
-      "\"That is the tribunal bell,\" the Elder says. \"It has not rung in fifteen years. It was rung for Mengjiao.\" She takes a breath and lets it out slowly. \"Someone has decided to ring it for you.\"",
+      "“That is the tribunal bell,” the Elder says. “It has not rung in fifteen years. It was rung for Mengjiao.” She takes a breath and lets it out slowly. “Someone has decided to ring it for you.”",
     ],
     choices: [
       {
@@ -537,7 +537,7 @@ export const chapterSix: Scene[] = [
     title: "The Summons",
     paragraphs: [
       "The tribunal summons arrives before you have finished your tea. It is a plain grey slip, folded once, and it is delivered by a warden who does not look at your face. It is sealed with the Law Hall’s red wax, and it says only: The tribunal of the Azure Cloud Sect will sit at dawn in the Hall of Bells. The accused will stand before the disciples. The Elder will preside. Bring whatever you have stolen.",
-      "Ren Qiao finds you in the corridor afterward. He has a new scar on his jaw and his lantern is lit again. \"They are calling the masters to the hall,\" he says. \"The old ones. The ones who signed the order with her. Half of them have not left their rooms in fifteen years. I do not know who sent for them.\" He hesitates, then adds, in a lower voice, \"I do know one thing. The gate has been told that you are a thief. Everyone in the sect has been told the same thing, and they have all started listening for the bell.\"",
+      "Ren Qiao finds you in the corridor afterward. He has a new scar on his jaw and his lantern is lit again. “They are calling the masters to the hall,” he says. “The old ones. The ones who signed the order with her. Half of them have not left their rooms in fifteen years. I do not know who sent for them.” He hesitates, then adds, in a lower voice, “I do know one thing. The gate has been told that you are a thief. Everyone in the sect has been told the same thing, and they have all started listening for the bell.”",
     ],
     choices: [
       {

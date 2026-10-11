@@ -283,7 +283,7 @@ Wen Rui does not look at her. He cannot. But he lifts one hand, a little way, fr
 // ---------------------------------------------------------------- a3: unseen
 === roots_a3s1 | Nobody Sees
 It takes you an hour to realise. You walk through the camp, and nobody looks. Not at you. Not at Duan Wuyi, in his Censor’s grey; not at the Elder, who has the most striking face in the Concord. A boy runs straight into Hao Lan, bounces off, and apologises to the air.
-“It is a quality of the place,” says Duan, uneasily. “I have read of it. In the Annex. A wound where a page is torn gathers the unwritten. And those who walk into it...” He trails off.
+“It is a quality of the place,” says Duan, uneasily. “I have read of it. In the Annex. A wound where a page is torn gathers the unwritten. And those who walk into it…” He trails off.
 “Become unwritten?”
 “Become unremarked.” He pinches the bridge of his nose. “It is not a curse. It is the way the paper is. A person who is not in the Ledger is not seen by those who are.”
 “But we are in the Ledger.”
@@ -316,7 +316,7 @@ You hold it. Not because she asks, but because nobody else is near. She comes to
 “No.”
 She hands it over. It is a small square of white. It weighs nothing. It lies in your palm like a feather.
 She says the name aloud, to the Telling circle. She says it clearly, once. And then you watch her face change.
-It does not go blank. It goes soft, rounded, a little younger, like a child's after sleep. She blinks. She looks round the camp, at the red cliff, at the three hundred strangers. She looks at you.
+It does not go blank. It goes soft, rounded, a little younger, like a child’s after sleep. She blinks. She looks round the camp, at the red cliff, at the three hundred strangers. She looks at you.
 “Hello,” she says, with a hesitant smile. “Are you lost?”
 > deceit | Say yes. | roots_a3s4
 > truth | Say you are a friend. | roots_a3s4

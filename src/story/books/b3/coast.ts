@@ -428,7 +428,7 @@ She does not say anything else. She puts it carefully into her satchel.
 > inquiry | Ask Hao Lan how many she thinks there are. | tide_arrive | +b3_arrived
 `,
   scenarios: String.raw`
-$ SU_COAST_FOG | trust+3 respect+2 fear-2 | elder | The Elder sees the Salt Lamp signal in the fog and recognises her friend's code.
+$ SU_COAST_FOG | trust+3 respect+2 fear-2 | elder | The Elder sees the Salt Lamp signal in the fog and recognises her friend’s code.
 hostile: You were quiet through the fog. I noticed. I do not know if that is a virtue or a method.
 wary: I told you a thing in the dark that I had not said aloud in fifteen years. I find that I have not regretted it, which is unexpected.
 neutral: I spoke of a mirror, and a girl, and a summer. You did not ask me to explain. I am grateful. I am not good at explaining happiness.

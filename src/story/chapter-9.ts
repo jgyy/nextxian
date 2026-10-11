@@ -43,7 +43,7 @@ export const chapterNine: Scene[] = [
     id: "mist_remembers_2",
     title: "Three Bells",
     paragraphs: [
-      "\"The bell has rung three times since you went down,\" he says. \"Once for the masters, who are hiding in their rooms. Once for the disciples, who are standing in the courtyard waiting to see if you come back alive. And once for the Elder, who has not left her hall since the tribunal. She asked me to tell you that she is waiting. She did not say for what.\"",
+      "“The bell has rung three times since you went down,” he says. “Once for the masters, who are hiding in their rooms. Once for the disciples, who are standing in the courtyard waiting to see if you come back alive. And once for the Elder, who has not left her hall since the tribunal. She asked me to tell you that she is waiting. She did not say for what.”",
       "You walk with him back toward the Law Hall. The disciples in the courtyard watch you come down the path, and their faces change as you pass. Some look away. Some stare. A few bow their heads, very slightly, the way one bows to a person who has been through a terrible ordeal and has come back with something valuable in their hands. You do not know whether they know what you carry, but they know that you are carrying something.",
     ],
     choices: [
@@ -117,7 +117,7 @@ export const chapterNine: Scene[] = [
     paragraphs: [
       "You stand before the jade chair and begin to speak. You do not raise your voice. You say the first name, which is the boy of twelve who wanted to be a gardener, and then the second, the poet who wrote on the backs of ledger pages. Behind you the wardens shift their weight. The masters have come out of their rooms to stand at the foot of the dais, and their faces are pale in the lamplight.",
       "You read all fourteen names, the last of them the girl who said she was not dead, only listening. Then you read the fifteenth, which no ledger of the Law ever carried in the Registrar’s hand. You read Mengjiao’s name last, and when you say it the Elder’s hands tighten on the arms of her chair until the knuckles whiten, and then, very slowly, they relax.",
-      "\"Enough,\" says Hu Jingyan. His voice is weak, but it carries the old authority of the Law. \"The names are the Law’s to keep. They are not an outsider’s to read aloud in the Law Hall.\"",
+      "“Enough,” says Hu Jingyan. His voice is weak, but it carries the old authority of the Law. “The names are the Law’s to keep. They are not an outsider’s to read aloud in the Law Hall.”",
     ],
     choices: [
       {
@@ -150,7 +150,7 @@ export const chapterNine: Scene[] = [
     id: "mist_names_read_2",
     title: "Read Every One",
     paragraphs: [
-      "The Elder does not look at him. \"The names are not the Law’s,\" she says. \"They were never the Law’s. They belonged to the people who wore them, and to the people who loved them, and to the mist, which has been keeping them for fifteen years in the only memory the sect would not burn.\" She turns her head toward the masters, and for the first time her voice rises. \"Read the rest, Wanderer. Read every one.\"",
+      "The Elder does not look at him. “The names are not the Law’s,” she says. “They were never the Law’s. They belonged to the people who wore them, and to the people who loved them, and to the mist, which has been keeping them for fifteen years in the only memory the sect would not burn.” She turns her head toward the masters, and for the first time her voice rises. “Read the rest, Wanderer. Read every one.”",
     ],
     choices: [
       {
@@ -192,7 +192,7 @@ export const chapterNine: Scene[] = [
     title: "The Masters Break",
     paragraphs: [
       "The masters do not break at once. They break the way old walls break, slowly and then all at once. First Hu Jingyan sits down on the nearest step with his teacup still in his hand, and his shoulders begin to shake. Then the broad masters with the gold clasps look at one another and turn their faces toward the door, as if the answer might be written on the lintel. One of them steps back. Then another.",
-      "Lian Sheng alone does not move. She stands at the foot of the dais with her hands folded in front of her, and when the others begin to slip toward the courtyard she says, in a clear voice that cuts across the hall, \"Let them go. The Law is not run by its masters. It has always been run by the hand that signs, and we have all been signing for fifteen years.\" She looks at the Elder. \"You never once asked us to stop.\"",
+      "Lian Sheng alone does not move. She stands at the foot of the dais with her hands folded in front of her, and when the others begin to slip toward the courtyard she says, in a clear voice that cuts across the hall, “Let them go. The Law is not run by its masters. It has always been run by the hand that signs, and we have all been signing for fifteen years.” She looks at the Elder. “You never once asked us to stop.”",
     ],
     choices: [
       {
@@ -225,7 +225,7 @@ export const chapterNine: Scene[] = [
     id: "mist_masters_fall_2",
     title: "Doors and Masters",
     paragraphs: [
-      "The Elder stands. She is smaller than she was when the tribunal began, and yet she seems taller. \"No,\" she says. \"I did not. I wrote my own name beneath theirs and told myself that was enough.\" Her voice cracks on the last word, and she does not try to mend it.",
+      "The Elder stands. She is smaller than she was when the tribunal began, and yet she seems taller. “No,” she says. “I did not. I wrote my own name beneath theirs and told myself that was enough.” Her voice cracks on the last word, and she does not try to mend it.",
       "The courtyard outside has begun to murmur. You can hear the disciples moving closer to the doors, their footsteps soft on the white stone. A few of them are calling names, the same names you read, and the calling spreads through the crowd like a fire moving through dry grass. The mist is rising behind them, slowly, pouring over the courtyard wall in red-tinged waves that taste of iron and tears.",
     ],
     choices: [
@@ -299,8 +299,8 @@ export const chapterNine: Scene[] = [
     id: "mist_wanru_message_2",
     title: "The Sealing Order",
     paragraphs: [
-      "\"She always did talk to the mist,\" Elder Su says softly. \"When we were children, she would sit on the roof and tell it stories until the stars came out. I used to think she was mad. I used to think the Law was right to watch her.\" She lifts one hand and lets it fall. \"Tell her I heard the message. Tell her I will read the names. Tell her it is not enough, and that I know it is not, and that I will read them anyway, every night, for the rest of my life.\"",
-      "Then she reaches into the sleeve of her robe and takes out a thin folded paper, yellow with age. She holds it out to you without looking at it. \"This is the sealing order,\" she says. \"The original. The one the masters never sent to the archive. My name is on it. Hers is not. I have carried it for fifteen years, in case someone ever asked me to prove I was there.\"",
+      "“She always did talk to the mist,” Elder Su says softly. “When we were children, she would sit on the roof and tell it stories until the stars came out. I used to think she was mad. I used to think the Law was right to watch her.” She lifts one hand and lets it fall. “Tell her I heard the message. Tell her I will read the names. Tell her it is not enough, and that I know it is not, and that I will read them anyway, every night, for the rest of my life.”",
+      "Then she reaches into the sleeve of her robe and takes out a thin folded paper, yellow with age. She holds it out to you without looking at it. “This is the sealing order,” she says. “The original. The one the masters never sent to the archive. My name is on it. Hers is not. I have carried it for fifteen years, in case someone ever asked me to prove I was there.”",
     ],
     choices: [
       {

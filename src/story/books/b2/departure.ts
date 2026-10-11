@@ -55,7 +55,7 @@ The room is small and clean and smells of smoke and dried persimmon. On the hook
 + took_copybook | The old schoolmaster’s copybook is in your pack, with its last line written in a child’s trembling hand.
 + took_pebble | The pebble with the red thread in your sleeve came from her son’s brother’s grave. She will know it by the knot.
 “Tell me what he is going to do,” she says to you, and not to him. “He never tells me, and I always find out.”
-> truth | Tell her he is going to the Concord's Assembly as a witness, and is in danger. | gu_s4 | +dep_gu_told_truth
+> truth | Tell her he is going to the Concord’s Assembly as a witness, and is in danger. | gu_s4 | +dep_gu_told_truth
 > mercy | Tell her he is going to speak for his brother, in the only room that will listen. | gu_s4 | +dep_gu_told_brother
 > deceit | Tell her it is an errand for the Law Hall, quite safe, quite brief. | gu_s4 | +dep_gu_told_lie
 > quiet | Look at Gu, and let him say it. | gu_s4 | bond:gu+3
@@ -258,7 +258,7 @@ In the end he walks you to the archive door and stands under the bronze lintel w
 “I am not coming,” he says. “I wanted to say it before you asked. I am the one who stays. Somebody has to be here, to open the drawer when you come back.”
 He smiles, and it is the first completely unafraid thing you have seen on his face.
 “Bring me something for the sixteenth card,” he says. “Anything. A name, a place, a day. I have kept the space.”
-> truth | Promise to bring him the sixteenth card's name, whatever it turns out to be. | hub_departure | +dvisit_lin bond:lin+4 ally:LIN_STAY
+> truth | Promise to bring him the sixteenth card’s name, whatever it turns out to be. | hub_departure | +dvisit_lin bond:lin+4 ally:LIN_STAY
 > mercy | Tell him the sixteenth card is already half written, in the way he waits for it. | hub_departure | +dvisit_lin bond:lin+4 ally:LIN_STAY
 > quiet | Bow to him, once, as to a master of the archive. | hub_departure | +dvisit_lin bond:lin+3
 > inquiry | Ask him to guard one more thing for you, a thing you have not yet decided to give. | hub_departure | +dvisit_lin bond:lin+3
@@ -289,12 +289,12 @@ She laughs, a small ragged sound. “I have been reading the river that way for 
 Behind her, on the desk, her second ledger lies open under the lamp, the small one, in her private hand. You can see the shape of the last entry from where you stand.
 > truth | Ask whether you may read the page, and mean the question. | su_s4
 > inquiry | Ask what she wrote tonight. | su_s4
-> mercy | Tell her she doesn't have to show anyone anything tonight. | su_s4
+> mercy | Tell her she doesn’t have to show anyone anything tonight. | su_s4
 > quiet | Look away from the desk, deliberately, and keep your eyes on her face. | su_s4
 
 === su_s4 | The Second Ledger
 She gives you the page. She does not say why; she tears it from the book along its stitching, quickly, as one pulls a splinter. It is a single sheet, in ink that has been written and rubbed and written again.
-It is dated tonight. It says, in the small hand: I have asked a stranger to carry my sister's name down the river, and my own. I have not told her what I did on the Sealing Night with the sixteenth line. I do not yet know how. I will try on the river. If I do not, let this page speak for me.
+It is dated tonight. It says, in the small hand: I have asked a stranger to carry my sister’s name down the river, and my own. I have not told her what I did on the Sealing Night with the sixteenth line. I do not yet know how. I will try on the river. If I do not, let this page speak for me.
 You read it twice. The lamp is very steady.
 > truth | Tell her you do not need her to speak until she is ready. | su_s5 | +dep_su_page
 > mercy | Tell her the page is already speaking, and you have heard it. | su_s5 | +dep_su_page
@@ -302,7 +302,7 @@ You read it twice. The lamp is very steady.
 > force | Tell her you want the whole story now, tonight, before the river. | su_s5 | +dep_su_page
 
 === su_s5 | Not Tonight
-“Not tonight,” she says. It is not a refusal; she says it the way one says a sentence one is afraid to hear completed. “I want to say it to your face, and I do not yet know what your face will be. You have been the Law Hall's best witness for six weeks. I cannot also be your Elder when I say it.”
+“Not tonight,” she says. It is not a refusal; she says it the way one says a sentence one is afraid to hear completed. “I want to say it to your face, and I do not yet know what your face will be. You have been the Law Hall’s best witness for six weeks. I cannot also be your Elder when I say it.”
 She takes the brush from the stand and sets it down again.
 “Will you do me one favour? When the Concord asks me a question I cannot answer, I would like you to stand where I can see you, and not say anything. Not because I need your protection. Because I need to remember what I am doing it for.”
 > truth | Promise to stand where she can see you, whatever the question. | su_s6 | +dep_promised_stand npc:SU_DEPART_NIGHT
@@ -323,7 +323,7 @@ She turns it over in her fingers. It has a lotus engraved on the back, worn almo
 She presses the comb into your palm. Her fingers are cold. “Not to keep,” she says quickly. “To carry. If I forget, on the barge, whose name I am here for, you are to put it into my hand. If I do not forget, you will give it back at Qinglian.”
 It is a very small thing. It has a very small weight. It is the heaviest object you have ever been given.
 She nods once, as if a ledger has been closed, and takes up the brush again.
-“Go and sleep,” she says, and the old dryness is back in her voice like a hand returning to a hilt. “You will want your wits for Duan Wuyi's barge. He plays chess for the soul.”
+“Go and sleep,” she says, and the old dryness is back in her voice like a hand returning to a hilt. “You will want your wits for Duan Wuyi’s barge. He plays chess for the soul.”
 > truth | Close your hand around the comb, and say that you will not let her forget. | su_s8 | +dep_comb
 > mercy | Close your hand around the comb, and tell her it was a kindness to ask. | su_s8 | +dep_comb
 > quiet | Bow, and take the comb without a word. | su_s8 | +dep_comb
@@ -386,9 +386,9 @@ By the second bend the mountain is a grey tooth in the haze, and then it is gone
 > inquiry | Find Duan Wuyi at his chess board and ask him to teach you a game. | hub_b2_road | +departed
 `,
   scenarios: String.raw`
-$ SU_DEPART_GU | trust+2 respect+1 | elder | The player promises Gu's mother to wear her red cord to the river and beyond.
+$ SU_DEPART_GU | trust+2 respect+1 | elder | The player promises Gu’s mother to wear her red cord to the river and beyond.
 hostile: You went to a village of the levy to be tied to one of its children. I do not yet know whether that is loyalty or a debt you intend to collect. I shall watch the knot.
-wary: A red cord. Your sleeve has a mother's knot on it. I will not tell you what to do about the families of the sect. I will tell you that the Law Hall has been feeding on them for fifteen years.
+wary: A red cord. Your sleeve has a mother’s knot on it. I will not tell you what to do about the families of the sect. I will tell you that the Law Hall has been feeding on them for fifteen years.
 neutral: A cord from the valley. Good. It is time a Wanderer of the Law Hall had something tied to something that was not the Law. I shall pretend not to have seen it, in front of Duan Wuyi.
 warm: You were tied to the valley tonight, and I am glad. I have kept the valley at the edge of my ledger for fifteen years. It is a relief to see it carried by someone who will not file it.
 devoted: You went down the road I never could. You came back with a cord. If the river takes me, wear it for me. If it takes you, I shall ask the Concord to knot my hair with the same twist.
@@ -401,16 +401,16 @@ warm: When the Concord asks the question I cannot answer, I will look up and fin
 devoted: Wanderer. I am more frightened than I have ever been, and I am less alone than I have been in fifteen years. Whatever the Concord asks, I will look for you, and you will be there.
 ? tone:truth>=3/5 | You have answered every question tonight plainly, and now you promise me something plain. I am not accustomed to being given the thing I ask for.
 
-$ REN_LEAVE | trust+4 | ren | Ren Qiao writes his leave and walks out of the Law Hall's service to travel with the player.
+$ REN_LEAVE | trust+4 | ren | Ren Qiao writes his leave and walks out of the Law Hall’s service to travel with the player.
 hostile: I have written my leave. I have put my seal on it. I do not trust you, but I trust the lantern, and the lantern has chosen to go. I shall go with it. Do not give me cause to regret the choice.
-wary: I wrote a warden's leave tonight. I have not done it before. I do not think you are what the sect fears. I do not think you are what you fear, either. I shall find out on the river.
+wary: I wrote a warden’s leave tonight. I have not done it before. I do not think you are what the sect fears. I do not think you are what you fear, either. I shall find out on the river.
 neutral: The page is written. The post is vacant. A warden has gone to hold the lantern where it is needed. It is a strange thing to feel light.
 warm: I have kept a bridge for fifteen years and I wrote my leave in four lines. It is an odd thing, to be so easily undone. Thank you for being the door.
 devoted: I do not know what I am if I am not a warden. I do not mind. Walk, and I will walk, and between us we will be a bridge for whoever needs one.
 
-$ LIN_STAY | trust+3 | lin | Lin Yuan promises to keep the archive for the player's return.
-hostile: I have kept the Law Hall's drawers, and the Law Hall has kept me. I stay, I think, because I do not know how to leave. Do not come back unless you mean to tell me something true.
-wary: I will be here. I will write nothing of you in the Law Hall's ledgers, and nothing of the Law Hall in yours. I shall wait for the day we can speak without keys.
+$ LIN_STAY | trust+3 | lin | Lin Yuan promises to keep the archive for the player’s return.
+hostile: I have kept the Law Hall’s drawers, and the Law Hall has kept me. I stay, I think, because I do not know how to leave. Do not come back unless you mean to tell me something true.
+wary: I will be here. I will write nothing of you in the Law Hall’s ledgers, and nothing of the Law Hall in yours. I shall wait for the day we can speak without keys.
 neutral: A name, a place, a day. I have the space, the ink and the patience. Bring me whatever you can. I shall file it where no one else will find it.
 warm: I have never had a reason to want someone to come back. I find I have found it. Bring me the sixteenth card, and bring yourself with it, and I will keep the lamp lit.
 devoted: There was a drawer in the wall behind my desk for sixteen years and I never knew. Now there is a card in my hand and a name that is not written. I will wait as long as the ink holds. Come home.

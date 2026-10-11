@@ -631,7 +631,7 @@ He smiles.
 
 `,
   scenarios: String.raw`
-$ SU_BORDER_WIND | trust+3 respect+3 fear+2 | elder | The Elder meets the Listeners' riders and learns they can hear a lie in the wind.
+$ SU_BORDER_WIND | trust+3 respect+3 fear+2 | elder | The Elder meets the Listeners’ riders and learns they can hear a lie in the wind.
 hostile: They knew when I lied. I said I was a pilgrim. A girl of twelve, on a horse, said, “The grass says you are afraid.” I was.
 wary: A people who cannot be lied to. I thought at first that it was a boast. I have been a Registrar for twenty years. I know how rarely a thing like that is not a boast.
 neutral: The captain asked me my name. I gave it. He asked what I had done. I told him. He nodded, and said, “Good. Now we can begin.” I have never been so relieved by a question.

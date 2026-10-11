@@ -100,7 +100,7 @@ It says, in neat black ink: *The Ninth.*
 It holds. That is the astonishing thing. The ink dries. The line sits in the book, black and square, between a farmer from the south and a girl from the coast. The old man runs a thumb along it. He frowns. He looks at the next entry.
 “It has taken,” he says, wonderingly. “I have never seen a title written. I thought the ink would reject it.” He blots again. “It hasn’t.”
 “Why would it?”
-“Because the Ledger is a list of persons.” He stamps the page. “A title is not a person. It is a... what is the word?”
+“Because the Ledger is a list of persons.” He stamps the page. “A title is not a person. It is a… what is the word?”
 “A role,” says the Elder.
 “A role. Aye. And a role cannot be struck, because it has no line to strike.” He sits back, light-headed. “You’ve found a hole in the book. In forty-one years I’ve never seen one.” He gives a hoarse laugh. “It’s *beautiful.*”
 Nobody speaks. In the pavilion, a hundred clerks have fallen quiet. Heads are turning.
@@ -219,7 +219,7 @@ The girl’s eyes flutter. She is thin, brown, hawk-nosed, with a plait coming u
 “What lamp?”
 “My mother’s. For the Ceremony. We were going to light it at the top.” She hiccups. “It was a thousand years old. It’s gone.”
 Ren Qiao crouches. He puts a big scarred hand on her head, very gently. “What does it look like?”
-“It’s... it’s small and brass. It’s got a dragon.”
+“It’s… it’s small and brass. It’s got a dragon.”
 “I’ll find it.”
 “It’s under all those feet.”
 “Aye,” says Ren Qiao. “Then I’ll find it under all those feet.”
@@ -344,11 +344,11 @@ She looks at it. It looks at her.
 
 === pilgrims_a3s3 | Aspects of the Role
 She is magnificent. That is the horror and the miracle of it. She is carried into the registration pavilion on a gilt chair by four servants, with her headdress rattling and her pug in her lap, looking neither right nor left, and every clerk in the building rises to his feet. Her fan makes a slow sweep. Her voice is a dry cold carrying drawl. “I am the Elder Mistress Ying,” she says. “Of the Jade Crane. I am delayed.”
-“Your Honour.” Tsering’s deputy is bowing so low his nose touches the counter. “Naturally. Forgive the inconvenience. If you would...”
+“Your Honour.” Tsering’s deputy is bowing so low his nose touches the counter. “Naturally. Forgive the inconvenience. If you would…”
 “I would not.” The fan snaps. “I will be registered at my tent. By a clerk of rank.”
 “Of course, Your Honour.”
 “And I wish to speak to the person responsible for the ferry.”
-“The... ferry?”
+“The… ferry?”
 “It sank.” The Elder’s eyes are chips of jade. “I was inconvenienced. I require an apology.”
 Behind her chair, Hao Lan is biting her tongue so hard it bleeds. Duan Wuyi has gone to look at a pillar. The pug sneezes.
 “Immediately,” gasps the deputy.
@@ -364,7 +364,7 @@ She is a vast woman of sixty with a face like a cheerful apple and three chins. 
 “I’d like a word,” she says. “With the lady who’s not our mistress.”
 The Elder looks up from her tea. “Yes?”
 “I’ve cooked for that old devil for twenty-two years,” says the cook. “She’s never once said thank you.” Her round face wobbles. “I wanted to say, I think you’re a vast improvement.”
-“I... thank you.”
+“I… thank you.”
 “You’re welcome.” She nods. “We’ve decided to help.”
 > deceit | Ask how. | pilgrims_a3s5
 > truth | Look at the Elder. | pilgrims_a3s5
@@ -422,7 +422,7 @@ He looks at the thin grey woman on the divan. He looks at the fan. He looks at t
 “Madam,” he says, in a thin voice. “Who are you?”
 The Elder rises. She is rather pale. “I am the Elder Mistress Ying.”
 “You are not.” His eyes bulge. “The Elder Mistress is eighty. She is five feet tall. She has a squint. She is on a *barge.*”
-“I have...” The Elder falters. “I have recovered.”
+“I have…” The Elder falters. “I have recovered.”
 “And the pug is called Biscuit.”
 Everyone looks at the dog.
 It sits up. It wags its curly tail. It looks at the Elder with an expression of unmistakable devotion.
@@ -592,7 +592,7 @@ He turns the bowl in his fingers.
 The Elder lays it down herself. It is a small square of green stone, the size of a matchbox, carved with the character for *Law.* She sets it on the brass counter in front of Tsering’s deputy, quietly, with a click. It sits there, under the lamp, glittering.
 “Su Wanru,” she says. “Elder of the Law Hall of Azure Cloud.”
 The deputy’s eyes widen. He looks at the seal. He looks at the Elder. His mouth opens, and closes.
-“I... Madam, I had heard... that is, we were told that you had...”
+“I… Madam, I had heard… that is, we were told that you had…”
 “Been struck?”
 “*Retired,*” he whispers.
 “I am neither.” Her voice is dry as parchment. “I am on leave.” She taps the seal. “That seal wrote eight hundred and eleven names into the book on the Fleet of the Ninth Year. If you consult the Fifth Office, you will find the ink has not yet dried.”
@@ -611,7 +611,7 @@ They stand. One after another, at their grilles, a hundred and four clerks of th
 “Why not?”
 “Because you signed the orders,” says the old man simply. “For forty years. Every Registrar did.”
 “Yes.”
-“And now you...?”
+“And now you…?”
 “I have been taught,” says the Elder, “by a girl of nine.” She does not look at you. “I am too old to be proud of it. But I am glad.”
 Nobody speaks. Then, from the back row, a young voice, trembling:
 “Will you teach us?”

@@ -43,7 +43,7 @@ export const chapterEight: Scene[] = [
     id: "descent_return_2",
     title: "Ren Qiao at the Rope",
     paragraphs: [
-      "Ren Qiao is waiting at the top of the abyss path with a rope coiled over his shoulder and a fresh lantern in his hand. He has changed his cloak and his face is hard, but he gives you the lantern without a word, and when you take it he says only, \"The mist knows the way better than I do. Let it lead you, and do not let it talk too much.\"",
+      "Ren Qiao is waiting at the top of the abyss path with a rope coiled over his shoulder and a fresh lantern in his hand. He has changed his cloak and his face is hard, but he gives you the lantern without a word, and when you take it he says only, “The mist knows the way better than I do. Let it lead you, and do not let it talk too much.”",
       "The abyss path begins where the mountain splits, exactly as it did on the day you first came to find Gu Hanzhen. The cleft is wider than you remember. Red mist pours up from its depths in slow, heavy breaths, and the air is thick with the iron smell of blood that has been left to dry on stone. The path winds down the edge of the cleft, narrow and steep, with no railing and no light except the one you carry.",
     ],
     choices: [
@@ -307,7 +307,7 @@ export const chapterEight: Scene[] = [
     paragraphs: [
       "The ledge is exactly as you remember it from the day you first came down the path to find Gu Hanzhen. The rock is still scarred with the marks of his sword. The mist still curls around its edges like black threads. A single bronze coin lies in a crack near the outer lip, bright and clean, and you recognise it as the twin of the one you found beside the wall of stone bells.",
       "Mengjiao is standing at the very edge, where a fall would be the end of everything. She is not afraid of it. She is looking down into the cleft with her chin lifted, and her braid moves slightly in the rising warmth of the air. In the dim light her face looks younger than the Elder’s, and yet it is the same face, shaped by the same bones, marked by the same stubbornness.",
-      "\"You came down the path,\" she says, without turning. \"Wanru sent you. I can tell from your shoulders. She always stood with her shoulders squared when she was ordered to do something she hated, and you have been carrying that same stance since you arrived. Does it hurt you yet?\"",
+      "“You came down the path,” she says, without turning. “Wanru sent you. I can tell from your shoulders. She always stood with her shoulders squared when she was ordered to do something she hated, and you have been carrying that same stance since you arrived. Does it hurt you yet?”",
     ],
     choices: [
       {
@@ -340,8 +340,8 @@ export const chapterEight: Scene[] = [
     id: "descent_ledge_2",
     title: "Mengjiao Turns",
     paragraphs: [
-      "You say that it does, and she laughs softly, a warm sound that does not match the grey around her. \"Good,\" she says. \"Pain is the only proof we have that we are still listening. The Law forgot that long ago. It counts names and forgets the people who wore them.\"",
-      "She turns. Her eyes are dark and clear, and in them there is nothing of the wild thing the Law described in its ledgers. She looks tired, the way a long-distance runner looks tired, carefully and without complaint. \"I have been down here for fifteen years,\" she says. \"Keeping the seal the only way I know how. Would you like to see how?\"",
+      "You say that it does, and she laughs softly, a warm sound that does not match the grey around her. “Good,” she says. “Pain is the only proof we have that we are still listening. The Law forgot that long ago. It counts names and forgets the people who wore them.”",
+      "She turns. Her eyes are dark and clear, and in them there is nothing of the wild thing the Law described in its ledgers. She looks tired, the way a long-distance runner looks tired, carefully and without complaint. “I have been down here for fifteen years,” she says. “Keeping the seal the only way I know how. Would you like to see how?”",
     ],
     choices: [
       {
@@ -368,7 +368,7 @@ export const chapterEight: Scene[] = [
       },
       {
         id: "draw_steel",
-        label: "Draw your sword and tell her you were sent to bring her back by force if necessary.",
+        label: "Draw your blade and tell her you were sent to bring her back by force if necessary.",
         tone: "force",
         next: "descent_mengjiao",
         npcScenario: "THREATEN",
@@ -381,7 +381,7 @@ export const chapterEight: Scene[] = [
     title: "Su Mengjiao",
     paragraphs: [
       "She leads you to a hollow in the cliff face, a small cave lined with lotus petals of pale green jade. The petals have been arranged in a spiral, and in the centre of the spiral sits a stone bowl filled with red water. In the water, a single shard of pale jade floats, the twin of the shard that lay in the vault beneath the archive. Mengjiao kneels beside the bowl and lays her palm flat on the water. The mist around the cave stills at once, as if someone has held up a hand in a crowded room.",
-      "\"This is the other half,\" she says. \"The Law broke the Sealing Jade on the night of the first sealing, because the masters could not agree which half to keep. They kept the altar piece, and they sent the other half down the path, with the first living Su to be sacrificed. That was me. I was supposed to hold the other half in my palm until my heart stopped. I did not stop. I learned to listen instead.\"",
+      "“This is the other half,” she says. “The Law broke the Sealing Jade on the night of the first sealing, because the masters could not agree which half to keep. They kept the altar piece, and they sent the other half down the path, with the first living Su to be sacrificed. That was me. I was supposed to hold the other half in my palm until my heart stopped. I did not stop. I learned to listen instead.”",
     ],
     choices: [
       {
@@ -415,7 +415,7 @@ export const chapterEight: Scene[] = [
     title: "The Holes in the Seal",
     paragraphs: [
       "The water in the bowl ripples. Images rise from it, faint and fleeting: the altar in the Law Hall, the masters at their desks, the Elder at her window with a silver comb in her hand. The mist answers each image with a soft, low note, and the note sounds like forgiveness, though you are not sure whether it is forgiving her or the Law.",
-      "\"The seal does not need a body,\" Mengjiao says. \"It needs a voice. Someone who will speak the names of the sealed every night, so the mist knows it has not been forgotten. I have been doing it for fifteen years. The Law has been doing the opposite. Every name they erase is a hole in the seal. That is why the mist is rising. It is not hungry. It is counting the holes.\"",
+      "“The seal does not need a body,” Mengjiao says. “It needs a voice. Someone who will speak the names of the sealed every night, so the mist knows it has not been forgotten. I have been doing it for fifteen years. The Law has been doing the opposite. Every name they erase is a hole in the seal. That is why the mist is rising. It is not hungry. It is counting the holes.”",
     ],
     choices: [
       {
@@ -448,7 +448,7 @@ export const chapterEight: Scene[] = [
     id: "descent_mengjiao_3",
     title: "A Message for Wanru",
     paragraphs: [
-      "She looks up at you, and for the first time her voice shakes. \"Wanru will not come down here,\" she says. \"She is too proud, and too frightened of the height. But you can bring her a message. You can tell her that the names are still here, and that they are waiting to be read aloud in the Law Hall. Will you do that?\"",
+      "She looks up at you, and for the first time her voice shakes. “Wanru will not come down here,” she says. “She is too proud, and too frightened of the height. But you can bring her a message. You can tell her that the names are still here, and that they are waiting to be read aloud in the Law Hall. Will you do that?”",
     ],
     choices: [
       {

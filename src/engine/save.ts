@@ -1,4 +1,5 @@
 import { realmForPoints } from "./cultivation";
+import { restoreHero } from "./hero";
 import type { GameState, Story } from "./types";
 
 /**
@@ -14,6 +15,8 @@ export function restoreGame(saved: unknown, story: Story): GameState | null {
   const cultivation = typeof game.cultivation === "number" ? game.cultivation : 0;
   return {
     ...game,
+    hero: restoreHero((saved as { hero?: unknown }).hero),
+    lastAside: typeof game.lastAside === "number" ? game.lastAside : -3,
     cultivation,
     realm: typeof game.realm === "number" ? game.realm : realmForPoints(cultivation),
     bonds: game.bonds && typeof game.bonds === "object" ? game.bonds : {},

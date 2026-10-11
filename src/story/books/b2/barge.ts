@@ -118,7 +118,7 @@ She is not looking at you. She is staring at the book.
 The lamp-flame is steady.
 “I was nine,” she says. “I held the lamp.”
 > truth | Tell her you are sorry. | barge_a2s3
-> mercy | Reach for her hand, even though she'll not take it. | barge_a2s3
+> mercy | Reach for her hand, even though she’ll not take it. | barge_a2s3
 > inquiry | Ask why she still serves a house that did that. | barge_a2s3
 > quiet | Sit with the silence, and let her end it. | barge_a2s3
 
@@ -142,7 +142,7 @@ Mei Qiu has her iron drawn. She is shaking. “It is here,” she says. “It is
 > quiet | Step back from the table and let it finish. | barge_a2s5
 
 === barge_a2s5 | The Name Is Written
-The name completes itself. It is the name of a girl of eleven, in an old script. Her sister's name. Mei Qiu stares at it as if she had been struck. Her face is white. The iron slips out of her hand and clatters to the planks.
+The name completes itself. It is the name of a girl of eleven, in an old script. Her sister’s name. Mei Qiu stares at it as if she had been struck. Her face is white. The iron slips out of her hand and clatters to the planks.
 Then a second line follows it, small and neat: a date, a place, a seal, in a hand that is not hers or yours. And a third, very faint, as of someone whispering the first word of a song.
 Outside the cabin door there is a quiet movement of cloth. A shadow falls across the crack.
 “Please,” says a very small voice, which you have never heard before. “I did not mean to. I was dreaming.”
@@ -158,7 +158,7 @@ Mei Qiu goes down on her knees on the planks. She does not say anything. She has
 “Her name was Ke-er,” she says, through her fingers, in the ghost of a voice. “Ke-er. She was my sister.”
 > truth | Tell Tong the name has come home, and he has done a good thing. | barge_a2s7 | +barge_tong_door
 > mercy | Kneel beside Mei Qiu, and put a hand on her back. | barge_a2s7 | +barge_tong_door
-> quiet | Pick up Tong's inkstone, and hold it so he need not. | barge_a2s7 | +barge_tong_door
+> quiet | Pick up Tong’s inkstone, and hold it so he need not. | barge_a2s7 | +barge_tong_door
 > inquiry | Ask Tong when he first noticed the names coming. | barge_a2s7 | +barge_tong_door
 
 === barge_a2s7 | The Door Is a Child
@@ -218,8 +218,8 @@ Fen was hired at Qinglian for the season. She told you so on the second day, ove
 She holds up the brush, a coarse thing with a split tip.
 “It did not work. It never works.”
 > truth | Tell her it is not the brush, nor the paper, and you will not tell anyone. | barge_a3s5
-> mercy | Ask for her son's name, and promise to carry it to Qinglian. | barge_a3s5
-> inquiry | Ask for the clerk's name. | barge_a3s5
+> mercy | Ask for her son’s name, and promise to carry it to Qinglian. | barge_a3s5
+> inquiry | Ask for the clerk’s name. | barge_a3s5
 > force | Tell her the Concord will have her hanged if she is found. | barge_a3s5
 
 === barge_a3s5 | Wen Rui’s Cook
@@ -237,7 +237,7 @@ You think of Wen Rui in the drowned pagoda saying, softly, I want to be written 
 She looks at you, stricken. “It is his that take. I have been afraid to say. When I heard he had stood at the register and written the name of a fisherman he never met, I thought, he’s a child, he can’t be the one. Mine never took. His do.”
 You stand very still. The porthole shows a rim of grey light.
 > truth | Thank her, and promise to keep Tong safe. | barge_a3s7 | +barge_tong_door
-> mercy | Ask her to keep this to herself, for the boy's sake. | barge_a3s7 | +barge_tong_door
+> mercy | Ask her to keep this to herself, for the boy’s sake. | barge_a3s7 | +barge_tong_door
 > inquiry | Ask when it started, and what he writes. | barge_a3s7 | +barge_tong_door
 > force | Tell her you will deal with it. | barge_a3s7 | +barge_tong_door
 
@@ -266,8 +266,8 @@ The door is a child. And the door does not care whether a name is true.
 Duan Wuyi’s cabin is plain: a cot, a lamp, a shelf of bound volumes, and a low table with a chessboard inlaid in two woods. The pieces are carved from a single piece of ivory, the white left natural and the black dipped in ink. He sets them out slowly, as a man sets out a meal, and takes the black.
 “I play for the soul,” he says. “It is a vulgar phrase. It is also exact. Every game I have ever played with a witness has told me something I did not ask for. Please. White moves first.”
 You sit. The lamp is steady. The board is a small, clear landscape, and for the first time in a week there is nothing in the room that wants to hurt you.
-> truth | Open with the king's pawn, and tell him you play badly. | barge_a4s2
-> inquiry | Open with the queen's pawn, and ask him what the Concord does with a lost game. | barge_a4s2
+> truth | Open with the king’s pawn, and tell him you play badly. | barge_a4s2
+> inquiry | Open with the queen’s pawn, and ask him what the Concord does with a lost game. | barge_a4s2
 > quiet | Move a knight, and say nothing. | barge_a4s2
 > deceit | Open with a gambit, and watch his hands. | barge_a4s2
 
@@ -288,7 +288,7 @@ He sets the pawn down.
 “It was the first door I ever heard of. I did not look for it. I have been not looking for twenty-six years.”
 > truth | Ask him why he has stopped not looking. | barge_a4s4
 > mercy | Tell him a man who wanted to find a door would have found it. | barge_a4s4
-> inquiry | Ask what the woman's name was. | barge_a4s4
+> inquiry | Ask what the woman’s name was. | barge_a4s4
 > quiet | Move a rook. Let the silence work. | barge_a4s4
 
 === barge_a4s4 | The Third Game
@@ -319,7 +319,7 @@ He picks up his king and holds it out to you, black ivory, warm from his hand.
 “If I sign the Second Order, I want you to put this on my desk. I do not know what it will mean. I want it there.”
 > truth | Take the king. | barge_a4s7 | +barge_duan_king bond:duan+3
 > inquiry | Ask what he wants it to mean. | barge_a4s7 | +barge_duan_king
-> quiet | Take it, and put it in your sleeve beside the Elder's comb. | barge_a4s7 | +barge_duan_king
+> quiet | Take it, and put it in your sleeve beside the Elder’s comb. | barge_a4s7 | +barge_duan_king
 > force | Refuse. Tell him he has no right to give you his conscience. | barge_a4s7 | +barge_duan_refused bond:duan-2
 
 === barge_a4s7 | The Boy at the Door
@@ -329,7 +329,7 @@ Duan Wuyi rises from the board. He crosses the cabin in two steps and kneels on 
 “Tong,” he says. “Little Tong. You are not in trouble.”
 He does not look at you. His voice breaks.
 > truth | Tell Tong he did well. | barge_a4s8 | +barge_tong_door
-> mercy | Kneel beside Duan, and put a hand on the boy's. | barge_a4s8 | +barge_tong_door
+> mercy | Kneel beside Duan, and put a hand on the boy’s. | barge_a4s8 | +barge_tong_door
 > quiet | Stay seated at the board, and let the three of them have the cabin. | barge_a4s8 | +barge_tong_door
 > inquiry | Ask Tong whom he wrote. | barge_a4s8 | +barge_tong_door
 
@@ -414,12 +414,12 @@ She turns.
 `,
   scenarios: String.raw`
 $ SU_BARGE_DOOR | trust+3 fear+4 respect+3 | elder | The Elder speaks with the player about Scribe Tong, the child who writes names back.
-hostile: You talk to me of a boy and a Ledger as though I were a refuge. I am not. I am an Elder who signed fourteen orders and did not look at the fifteenth. I will not be a haven for anyone else's secrets.
+hostile: You talk to me of a boy and a Ledger as though I were a refuge. I am not. I am an Elder who signed fourteen orders and did not look at the fifteenth. I will not be a haven for anyone else’s secrets.
 wary: A child who writes names back into the Ledger. I have heard the old tales. I did not believe them. I believe them now, and I am afraid. Do not ask me to tell you what the Law Hall knew. The Law Hall knew everything and said nothing.
 neutral: I knew of listeners. I did not know they could still be born. The founders burned the ones they found, and called the burning law. I have a feeling, Wanderer, that this boy is the beginning of a question I have been avoiding for fifteen years.
 warm: A boy with black hands and a gift he does not understand. And you. I have been counting the ways in which this barge is full of people who should not be on it, and I think I am glad of every one. Sit. Let us think how to keep him safe.
 devoted: I will do what I can for the boy. I will do more for you. I cannot say what, yet. But hear me, Wanderer: I did not smuggle you out of the Law Hall to have you sealed in a river. I will go into the wound myself first.
-? tone:mercy>=3/5 | You have been kind to the Concord's scribe, and the Concord's cook, and the Concord's Censor. I did not think it possible to be kind to the Concord. I am glad to be corrected.
+? tone:mercy>=3/5 | You have been kind to the Concord’s scribe, and the Concord’s cook, and the Concord’s Censor. I did not think it possible to be kind to the Concord. I am glad to be corrected.
 `,
   remarks: String.raw`
 % barge_tong_later | since:barge_asked_tong>=14 | elder | The boy asked the cook for a second bowl of millet today. In a voice. I did not know he had one. I am told he asked you what he wanted first. That was well done.

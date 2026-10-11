@@ -11,7 +11,7 @@ export const lanternStairScenes: Scene[] = [
     title: "Side Path: The Lantern Stair",
     paragraphs: [
       "The stair beneath the cell is narrower than the one above, and it was cut by hands that did not expect to be seen. Every few steps a bronze lamp hangs from a hook in the wall, and none of them is lit. Then, as you pass the third, a small blue flame wakes behind its glass, as though it had been waiting for someone to notice it.",
-      "At the bottom of the stair, in a niche cut into the rock, an old woman sits among dozens of wicks and bottles of oil. Her grey hair is tied with a red cord, and her fingers are blackened to the wrist. She does not look up. \"The lamps are lit only for those who come down the wrong stair,\" she says. \"That is the rule. You are the wrong kind of visitor, and I have been expecting you since the bell rang.\"",
+      "At the bottom of the stair, in a niche cut into the rock, an old woman sits among dozens of wicks and bottles of oil. Her grey hair is tied with a red cord, and her fingers are blackened to the wrist. She does not look up. “The lamps are lit only for those who come down the wrong stair,” she says. “That is the rule. You are the wrong kind of visitor, and I have been expecting you since the bell rang.”",
     ],
     choices: [
       {
@@ -85,9 +85,9 @@ export const lanternStairScenes: Scene[] = [
     id: "lantern_keeper",
     title: "The Keeper of Wicks",
     paragraphs: [
-      "\"I am Old Lin,\" she says at last. She takes a wick from the bottle beside her and begins to trim it with a knife no longer than a finger. \"I keep the lamps for the sutra door. Fifteen years ago, when the Law Hall still sent girls down to the lamps, I kept a lantern girl who wore her hair in a braid and sang when she thought no one was listening.\"",
-      "The knife stops. \"Su Mengjiao lit the first lamp on this stair. She said the mist would follow a light if the light was patient enough. I told her patience was the Law’s favourite lie. She laughed at me, and then she went down the abyss path with her braid over her shoulder, and she did not come back the same way.\"",
-      "Old Lin sets the wick aside and wipes her hands on a rag. \"The Law Hall has a rule about lamps,\" she says. \"No light may be carried below the sutra door unless a disciple of the Law has lit it. You are not a disciple of the Law. Yet you are standing in my light.\"",
+      "“I am Old Lin,” she says at last. She takes a wick from the bottle beside her and begins to trim it with a knife no longer than a finger. “I keep the lamps for the sutra door. Fifteen years ago, when the Law Hall still sent girls down to the lamps, I kept a lantern girl who wore her hair in a braid and sang when she thought no one was listening.”",
+      "The knife stops. “Su Mengjiao lit the first lamp on this stair. She said the mist would follow a light if the light was patient enough. I told her patience was the Law’s favourite lie. She laughed at me, and then she went down the abyss path with her braid over her shoulder, and she did not come back the same way.”",
+      "Old Lin sets the wick aside and wipes her hands on a rag. “The Law Hall has a rule about lamps,” she says. “No light may be carried below the sutra door unless a disciple of the Law has lit it. You are not a disciple of the Law. Yet you are standing in my light.”",
     ],
     choices: [
       {
@@ -125,7 +125,7 @@ export const lanternStairScenes: Scene[] = [
     title: "The Names on the Wall",
     paragraphs: [
       "Behind the niche, the rock has been carved into a long wall of names. Each name is cut into a small square of stone and sealed with wax, and most of the wax has cracked. Some of the squares are blank. Those are the names the Law Hall would not allow Old Lin to carve, and she has left room for them anyway.",
-      "\"The sealed are not all dead,\" Old Lin says, watching you read. \"Some of them are only waiting. This wall is the only record of who walked down the path before the Sealing, and who walked after. The Law Hall prefers its own ledger, because its ledger is shorter.\"",
+      "“The sealed are not all dead,” Old Lin says, watching you read. “Some of them are only waiting. This wall is the only record of who walked down the path before the Sealing, and who walked after. The Law Hall prefers its own ledger, because its ledger is shorter.”",
       "A lantern at the far end of the wall has burned down to a red ember. Beside it, someone has pressed a hand into the wet clay, and the handprint is small enough to belong to a girl.",
     ],
     choices: [

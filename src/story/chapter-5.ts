@@ -120,7 +120,7 @@ export const chapterFive: Scene[] = [
     title: "The Voice in the Page",
     paragraphs: [
       "The first page is written in red ink that seems to move under the light. The characters crawl toward the centre of the sheet and then slide back toward the edges, like threads of blood trying to find the nearest vein. You cannot read them all at once. You read one, and it becomes two, and the two turn into a row of small faces looking up at you from the page.",
-      "A voice comes out of the page. It is soft and almost kind, and it sounds like a girl telling a secret in a crowded room. \"The mist is not your enemy,\" it says. \"It is only lonely. You know what loneliness is. You have been carrying it since the gate, and you have been careful to hide it behind your Law and your bargains. Let it out. The lotus will hold it for you.\"",
+      "A voice comes out of the page. It is soft and almost kind, and it sounds like a girl telling a secret in a crowded room. “The mist is not your enemy,” it says. “It is only lonely. You know what loneliness is. You have been carrying it since the gate, and you have been careful to hide it behind your Law and your bargains. Let it out. The lotus will hold it for you.”",
     ],
     choices: [
       {
@@ -266,7 +266,7 @@ export const chapterFive: Scene[] = [
     title: "The Roof Beneath the Stars",
     paragraphs: [
       "The hall dissolves. You are standing on the roof of the Law Hall, on the same slope of grey tile you climbed on the night of the archive, but the sky above you is clear and full of stars, and the stars are very close. A girl sits beside you with her knees drawn up. She has a braid over one shoulder and a silver comb pinned to the back of her head, and she is pointing up at a cluster of stars that look like a lotus.",
-      "\"That one is the abyss,\" she says. \"It is not a hole. It is just very far away and very sad.\" Her voice is Mengjiao’s, and it is young and clear and certain of itself. Beside her, a taller figure sits with her arms around her knees and says nothing. It is a girl of perhaps sixteen. She has the same grey eyes as the Elder, and she is staring at the stars with a fear she has not learned to hide.",
+      "“That one is the abyss,” she says. “It is not a hole. It is just very far away and very sad.” Her voice is Mengjiao’s, and it is young and clear and certain of itself. Beside her, a taller figure sits with her arms around her knees and says nothing. It is a girl of perhaps sixteen. She has the same grey eyes as the Elder, and she is staring at the stars with a fear she has not learned to hide.",
     ],
     choices: [
       {
@@ -299,8 +299,8 @@ export const chapterFive: Scene[] = [
     id: "sutra_trance_2",
     title: "The Girl Who Asks",
     paragraphs: [
-      "\"Wanru, you have to stop being afraid of the height,\" Mengjiao says. \"You can see the whole sect from here. Look at the bells. Look at how the mist moves around them. It is not trying to hurt anyone. It is only trying to count us too.\" The younger girl shakes her head, and her braid swings like a bell rope. \"Then why do they keep the names?\" she asks. \"If the mist is only counting, why does the Law write everything down?\"",
-      "Mengjiao does not answer for a long time. When she does, her voice has changed. It is quieter and older, and it is not directed at her sister at all. It is directed at you. \"Because the Law is afraid that someone will call the names back,\" she says. \"And someone always does.\"",
+      "“Wanru, you have to stop being afraid of the height,” Mengjiao says. “You can see the whole sect from here. Look at the bells. Look at how the mist moves around them. It is not trying to hurt anyone. It is only trying to count us too.” The younger girl shakes her head, and her braid swings like a bell rope. “Then why do they keep the names?” she asks. “If the mist is only counting, why does the Law write everything down?”",
+      "Mengjiao does not answer for a long time. When she does, her voice has changed. It is quieter and older, and it is not directed at her sister at all. It is directed at you. “Because the Law is afraid that someone will call the names back,” she says. “And someone always does.”",
       "The stars go out, one by one, until only the lotus-shaped cluster remains. Then it too goes dark, and you are standing again in the red water of the sutra hall with the sutra’s voice ringing softly in your ears. The jade eye is watching. Its light has a new colour now, a flat grey, the colour of a sky before rain.",
     ],
     choices: [
@@ -340,7 +340,7 @@ export const chapterFive: Scene[] = [
     title: "The Eye in the Floor",
     paragraphs: [
       "The jade mirror rises a finger’s width above the floor, and the eye at its centre opens fully. The light in it is pale green, and it fills the sutra hall until the red water seems to glow from beneath. When the voice comes, it is the Elder’s voice, dry and clipped and carefully steady, the voice of the Law Hall at the end of a long day.",
-      "\"You have been reading,\" she says. \"I can see the pages. I can see your hands on the silk. I cannot see your face, which is a mercy to both of us.\" A pause follows, long enough for the water to ripple against the dais. \"Tell me what the sutra says, Wanderer. Do not tell me what the Law wants to hear. I stopped listening to the Law’s wishes long ago.\"",
+      "“You have been reading,” she says. “I can see the pages. I can see your hands on the silk. I cannot see your face, which is a mercy to both of us.” A pause follows, long enough for the water to ripple against the dais. “Tell me what the sutra says, Wanderer. Do not tell me what the Law wants to hear. I stopped listening to the Law’s wishes long ago.”",
     ],
     choices: [
       {
@@ -375,7 +375,7 @@ export const chapterFive: Scene[] = [
     paragraphs: [
       "Behind the voice, faintly, there is a second sound. It is the clink of a small porcelain cup set down on a wooden tray, and then the sound of someone sighing. The Elder is at her desk, in the Law Hall, watching a mirror and drinking tea she has forgotten to sip. You can picture her hair loose on her shoulders and the silver comb set beside the ledger.",
       "The mirror pulses. Somewhere beyond the sutra hall, very far away, the bell of the Law Hall rings once, and the sound comes down through the rock like a stone dropped into a well. The Elder has heard it too. You hear her breath catch and then steady.",
-      "\"The mist is answering you,\" she says, and her voice has gone very quiet. \"It answered me once, too. Fifteen years ago, on the night of the Sealing, when I stood at the top of the stair and called for my sister. It did not answer with words. It answered with a silence, and I have been listening to that silence ever since. Be careful, Wanderer. The silence has a way of asking for company.\"",
+      "“The mist is answering you,” she says, and her voice has gone very quiet. “It answered me once, too. Fifteen years ago, on the night of the Sealing, when I stood at the top of the stair and called for my sister. It did not answer with words. It answered with a silence, and I have been listening to that silence ever since. Be careful, Wanderer. The silence has a way of asking for company.”",
     ],
     choices: [
       {
@@ -514,7 +514,7 @@ export const chapterFive: Scene[] = [
     id: "sutra_mengjiao_voice_2",
     title: "Wanru’s Clean Mirror",
     paragraphs: [
-      "\"Wanru always did keep the mirror clean,\" Mengjiao says, in a voice you have heard already in the vision and on the page. \"She used to polish it every morning before breakfast. I told her the mirror would never answer a clean face. It answers only what is true, and the truth is usually grimy.\" She smiles without warmth. \"You came down the stair. Nobody comes down the stair. Did the Law send you, or did the mist?\"",
+      "“Wanru always did keep the mirror clean,” Mengjiao says, in a voice you have heard already in the vision and on the page. “She used to polish it every morning before breakfast. I told her the mirror would never answer a clean face. It answers only what is true, and the truth is usually grimy.” She smiles without warmth. “You came down the stair. Nobody comes down the stair. Did the Law send you, or did the mist?”",
       "She waits for your answer with the patience of someone who has already heard every possible reply. The water around her knees glints red and gold. Somewhere far behind you, the Law Hall bell rings a second time, and the sound seems to come from a great distance, as if the whole sect is turning in its sleep to listen.",
     ],
     choices: [
@@ -548,7 +548,7 @@ export const chapterFive: Scene[] = [
     id: "sutra_mengjiao_voice_3",
     title: "The Price Is the Listener",
     paragraphs: [
-      "\"I will tell you something before you decide,\" Mengjiao says. \"The sutra is a lie. Not all of it. The method is real, and the mist does answer. But the price was never a name. The price is the one who hears the answer. Whoever climbs this stair must stay on it forever, listening, and the Law has always been very eager for someone to stay.\"",
+      "“I will tell you something before you decide,” Mengjiao says. “The sutra is a lie. Not all of it. The method is real, and the mist does answer. But the price was never a name. The price is the one who hears the answer. Whoever climbs this stair must stay on it forever, listening, and the Law has always been very eager for someone to stay.”",
     ],
     choices: [
       {

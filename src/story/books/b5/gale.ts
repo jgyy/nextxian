@@ -179,7 +179,7 @@ She is reciting a statute.
 “Then why?”
 “It is soothing.” Her eyes are tight shut. “It is full of subordinate clauses. One can hold on to them.”
 You put your arm round her shoulders. She is rigid. “Say another.”
-“Article ten. The master of a vessel in extremity shall be answerable only to the... only to... ” She breaks off. “I cannot remember article ten.”
+“Article ten. The master of a vessel in extremity shall be answerable only to the… only to… ” She breaks off. “I cannot remember article ten.”
 “Make one up.”
 Her eyes open. “I beg your pardon?”
 “Invent one. Say what you wish it said.”
@@ -379,7 +379,7 @@ Temur’s eyes are very large.
 “She’s under a mountain.”
 “She’s under a mountain with nine hundred miles of wind to carry a message.” Hao Lan holds up the note. “She hears everything. She’s been listening to this sea for fifteen years.” Her voice shakes. “She’s been listening to us.”
 The Elder has come over. She stands very still, looking at the lamp. Slowly, she puts out a hand and takes it. She cups the flame.
-“She says thank you for the light,” she says. “She means the lanterns. She means the... decoy.” She is half-laughing, half in tears. “She says thank you for *giving something to the wind to love.*”
+“She says thank you for the light,” she says. “She means the lanterns. She means the… decoy.” She is half-laughing, half in tears. “She says thank you for *giving something to the wind to love.*”
 Temur’s mouth has fallen open.
 “She says,” the Elder goes on, with trembling lips, “that it was the kindest thing she has seen anyone do in fifteen years.”
 > deceit | Take her hand. | gale_a3s7
@@ -660,7 +660,7 @@ warm: Temur held the lantern all night. I did not ask him to. He sat at the foot
 devoted: I have been afraid of heights all my life. I was afraid of the storm for exactly as long as it took to understand that I was not alone in it. After that, it was only weather.
 `,
   remarks: String.raw`
-% gale_sun_later | since:gale_pilgrims>=3 | yue | Sun Mei’s baby has been named after a skiff. The skiff is Light. She says it is a good strong name and will do for a boy or a girl. I have not told Ochir.
+% gale_sun_later | since:gale_pilgrims>=3 & bond:yue>=-100 | yue | Sun Mei’s baby has been named after a skiff. The skiff is Light. She says it is a good strong name and will do for a boy or a girl. I have not told Ochir.
 % gale_decoy_later | since:gale_decoyed>=3 | hao | Temur’s lantern-skiff is still out there, somewhere, being chased by weather. I find I think of it as a loyal dog.
 `,
 }

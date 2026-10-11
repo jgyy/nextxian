@@ -63,9 +63,9 @@ export const herbMarketScenes: Scene[] = [
     id: "market_seller",
     title: "Madam Hu’s Stall",
     paragraphs: [
-      "Madam Hu weighs the frostleaf on a brass scale with a patience that makes you feel rushed. Her fingers are stained green to the second knuckle. \"Fair weight, fair coin,\" she says. \"The Law Hall taught me that, though it never paid me for the lesson.\"",
-      "She glances up the mountain toward the gate, and her voice drops. \"You are the one they are sending down the abyss path. Everyone in the lane knows it already. They say the Elder watches through a mirror, that the mirror has been dull since the jade went missing, and that it still watches anyway.\"",
-      "A child runs past with a paper kite shaped like a crane. Madam Hu follows it with her eyes until it vanishes behind a curtain of drying cloth. \"My daughter was a Law Hall disciple once,\" she says, to no one in particular. \"Fifteen years ago. She went down the mountain and never came back up.\"",
+      "Madam Hu weighs the frostleaf on a brass scale with a patience that makes you feel rushed. Her fingers are stained green to the second knuckle. “Fair weight, fair coin,” she says. “The Law Hall taught me that, though it never paid me for the lesson.”",
+      "She glances up the mountain toward the gate, and her voice drops. “You are the one they are sending down the abyss path. Everyone in the lane knows it already. They say the Elder watches through a mirror, that the mirror has been dull since the jade went missing, and that it still watches anyway.”",
+      "A child runs past with a paper kite shaped like a crane. Madam Hu follows it with her eyes until it vanishes behind a curtain of drying cloth. “My daughter was a Law Hall disciple once,” she says, to no one in particular. “Fifteen years ago. She went down the mountain and never came back up.”",
     ],
     choices: [
       {

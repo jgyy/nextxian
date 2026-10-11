@@ -43,7 +43,7 @@ export const chapterTen: Scene[] = [
     id: "sealing_night_2",
     title: "The Young Registrar at the Altar",
     paragraphs: [
-      "\"This is the night of the Sealing,\" a voice says behind you. It is the Elder’s voice, but it has no weariness in it now, and the woman beside you is not yet the Elder at all. It is the voice of a woman who has not yet learned how much a single signature can cost. \"Witness it, or you will never believe what it cost.\" You turn, and the Elder is standing beside you, young and straight-backed, her eyes wide and dry, watching the kneeling woman at the altar as though she were watching a stranger.",
+      "“This is the night of the Sealing,” a voice says behind you. It is the Elder’s voice, but it has no weariness in it now, and the woman beside you is not yet the Elder at all. It is the voice of a woman who has not yet learned how much a single signature can cost. “Witness it, or you will never believe what it cost.” You turn, and the Elder is standing beside you, young and straight-backed, her eyes wide and dry, watching the kneeling woman at the altar as though she were watching a stranger.",
       "On the altar, the Sealing Jade rests in a bed of black silk. It is whole, and it is very beautiful, pale green with a deep inner glow. Beside it lies a stack of grey orders, and the top one is blank except for a single line at the bottom: Signed by the Registrar of the Law Hall, before witnesses.",
     ],
     choices: [
@@ -125,9 +125,9 @@ export const chapterTen: Scene[] = [
     id: "sealing_altar",
     title: "The Brush and the Name",
     paragraphs: [
-      "The young Registrar dips the brush in the ink and holds it above the paper. Her hand does not stop shaking. The masters lean forward in unison, and the sound of their breath rises in the hall like a wind rising through a valley. One of them, a broad man with a gold clasp, says in a low voice, \"The line is waiting, Su Wanru. The sect is waiting. Mengjiao is waiting.\"",
+      "The young Registrar dips the brush in the ink and holds it above the paper. Her hand does not stop shaking. The masters lean forward in unison, and the sound of their breath rises in the hall like a wind rising through a valley. One of them, a broad man with a gold clasp, says in a low voice, “The line is waiting, Su Wanru. The sect is waiting. Mengjiao is waiting.”",
       "The brush touches the paper. A single stroke appears, very dark, and then a second, and the young woman’s breath catches as if she had been struck. The first stroke is her name, the family name Su. The second is the beginning of the given name, Wanru. She has stopped there, and her hand is hovering over the third stroke.",
-      "\"Finish it,\" says a voice from the far side of the hall, and you realise that it is the voice of the fourteenth disciple, the girl who was sent down the path before Mengjiao. She is standing in the shadows with her hands bound. No one looks at her. The masters have decided that she is not a witness, only a name.",
+      "“Finish it,” says a voice from the far side of the hall, and you realise that it is the voice of the fourteenth disciple, the girl who was sent down the path before Mengjiao. She is standing in the shadows with her hands bound. No one looks at her. The masters have decided that she is not a witness, only a name.",
     ],
     choices: [
       {
@@ -234,8 +234,8 @@ export const chapterTen: Scene[] = [
     id: "sealing_path_2",
     title: "Mengjiao in Chains",
     paragraphs: [
-      "\"You are going to give me the seal,\" she says. \"And then you are going to watch me walk into the mist with it, so the Law can say that a Su died holding the lock. That is what you want, and you have called it a sacrifice, because the word sounds better than murder in the mouth of an elder.\"",
-      "The masters say nothing. One of them lifts the jade and holds it out to her, but she does not reach for it. She turns instead to the young Registrar, who has followed the procession to the cleft with the signed order still clutched in her hand. Mengjiao’s voice softens. \"Wanru,\" she says. \"You can still walk away. The Law cannot make you stand at the top of the path if you refuse to stand there.\"",
+      "“You are going to give me the seal,” she says. “And then you are going to watch me walk into the mist with it, so the Law can say that a Su died holding the lock. That is what you want, and you have called it a sacrifice, because the word sounds better than murder in the mouth of an elder.”",
+      "The masters say nothing. One of them lifts the jade and holds it out to her, but she does not reach for it. She turns instead to the young Registrar, who has followed the procession to the cleft with the signed order still clutched in her hand. Mengjiao’s voice softens. “Wanru,” she says. “You can still walk away. The Law cannot make you stand at the top of the path if you refuse to stand there.”",
     ],
     choices: [
       {
@@ -348,7 +348,7 @@ export const chapterTen: Scene[] = [
     title: "The Eye Closes",
     paragraphs: [
       "The memory breaks like a mirror struck with a stone. You are back in the Law Hall, standing beside the empty altar in the grey light of morning. The lamps have burned down to stubs. The mist is outside the doors, hanging in the courtyard like a second sky. And the Elder is standing next to you, very close, her hand resting lightly on your sleeve, as if to make sure you are real.",
-      "\"I saw it,\" she says, very quietly. \"I saw what you did, or failed to do, at the top of the path. The mirror does not lie. It never did. It only waited for someone to watch long enough.\" She looks at the altar, where the Sealing Jade should be and is not, because it has been on a lacquer tray in the sutra hall for fifteen years. \"I wrote my name beneath hers that night. Tonight I would write it again, if you had not stood there and asked me to remember why.\"",
+      "“I saw it,” she says, very quietly. “I saw what you did, or failed to do, at the top of the path. The mirror does not lie. It never did. It only waited for someone to watch long enough.” She looks at the altar, where the Sealing Jade should be and is not, because it has been on a lacquer tray in the sutra hall for fifteen years. “I wrote my name beneath hers that night. Tonight I would write it again, if you had not stood there and asked me to remember why.”",
     ],
     choices: [
       {
@@ -382,7 +382,7 @@ export const chapterTen: Scene[] = [
     title: "Out Through the Great Doors",
     paragraphs: [
       "The bell has stopped ringing. The courtyard is silent except for the murmur of the disciples who have gathered at the doors, and the sound of Ren Qiao’s boots as he walks toward the hall with a lantern in his hand. The Elder turns to you and lifts her chin. Her eyes are grey and bright and utterly steady.",
-      "\"The Law will decide now,\" she says. \"It always does, eventually. But this time, the Law will have to decide with the whole truth on the table, and not one page of it hidden in a drawer. Come, Wanderer. The judgment is waiting for you, and so is Mengjiao, if she has chosen to come back up the stair.\"",
+      "“The Law will decide now,” she says. “It always does, eventually. But this time, the Law will have to decide with the whole truth on the table, and not one page of it hidden in a drawer. Come, Wanderer. The judgment is waiting for you, and so is Mengjiao, if she has chosen to come back up the stair.”",
     ],
     choices: [
       {

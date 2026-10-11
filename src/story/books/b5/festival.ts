@@ -399,7 +399,7 @@ He staggers back. “Hey! That’s—”
 She writes on her slate with one hand. She holds it up. It says: *I am mute.*
 “Oh.” He looks embarrassed. “I’m sorry.” He peers at the mirror. “But I must see—”
 She writes: *The mask is the mirror. The mirror is the face.*
-“I... what?”
+“I… what?”
 She writes: *I cannot take it off.*
 “Why not?”
 She writes, in large round letters: *It is stuck.*
@@ -420,7 +420,7 @@ He holds it out. She reads it, behind her blank white oval, slowly. She turns it
 “It is not.”
 “The seal is wrong.” She taps it. “The Deputy Inspector’s ring has a chip in the lower left. This one doesn’t. And the wax is the wrong green. It’s a Treasury green. It’s a common mistake.”
 The sergeant takes it back. He holds it to the lantern. He peers. His face changes.
-“It does have a... ” He swallows. “Who are you?”
+“It does have a… ” He swallows. “Who are you?”
 “A seal-wright,” says Shu Ning. “Retired.” She folds her arms. “I can make you a better one for four taels.”
 > deceit | Hold your breath. | festival_a3s7
 > truth | Smile. | festival_a3s7

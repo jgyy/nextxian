@@ -186,7 +186,7 @@ There is a lamp every ten paces, a tiny flame in a glass chimney. They are lit. 
 “Somebody is here,” whispers Ren Qiao.
 “Somebody has always been here,” says a voice, very softly, from the dark.
 It is a girl’s voice, high and clear. It comes from behind a stack of boxes at the end of the aisle.
-> force | Draw your sword. | tidedoor_a2s7
+> force | Draw your blade. | tidedoor_a2s7
 > truth | Say hello. | tidedoor_a2s7
 > quiet | Step back. | tidedoor_a2s7
 > mercy | Hold up your lantern. | tidedoor_a2s7

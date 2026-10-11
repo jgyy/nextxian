@@ -131,6 +131,6 @@ warm: Ren Qiao carried Hanzhen up the eighth spiral, and afterwards would not di
 devoted: I have spent my life walking up other people’s stairs. This is the first that has asked me, plainly, what I weigh. It is a relief to be asked.
 `,
   remarks: String.raw`
-% tiers_ren_later | count:tier_c_>=2 | ren | I carried you twice, or three times. It was no trouble. It was less trouble than the first bridge. I would be obliged if you did not mention it to anyone with a notebook.
+% tiers_ren_later | count:tier_c_>=2 & bond:ren>=-100 | ren | I carried you twice, or three times. It was no trouble. It was less trouble than the first bridge. I would be obliged if you did not mention it to anyone with a notebook.
 `,
 }

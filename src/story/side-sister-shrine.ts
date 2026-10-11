@@ -10,7 +10,7 @@ export const sisterShrineScenes: Scene[] = [
     id: "shrine_gate",
     title: "Side Path: The Sister’s Shrine",
     paragraphs: [
-      "The attendant at the guest-cell door does not want to answer. He keeps glancing at the lamp on the wall as though it might report him. Then he sighs, points past the archive’s ash garden, and says that the path behind the old mulberry terraces leads to a place the Law Hall stopped mapping fifteen years ago. \"Nobody goes there to pray,\" he says. \"They go there because they cannot pray in front of the sect.\"",
+      "The attendant at the guest-cell door does not want to answer. He keeps glancing at the lamp on the wall as though it might report him. Then he sighs, points past the archive’s ash garden, and says that the path behind the old mulberry terraces leads to a place the Law Hall stopped mapping fifteen years ago. “Nobody goes there to pray,” he says. “They go there because they cannot pray in front of the sect.”",
       "The path is overgrown. Wild mulberry trees have pushed their roots under the flagstones, and ash from the archive fires has settled on their leaves until every branch looks dusted with grey flour. Halfway down the slope, a low wall of unmortared stones runs along the hillside. There is a gap in it, wide enough for one person, and a faded red ribbon knotted to the stone beside it. The colour has bled so far into the rock that the ribbon looks like a scar.",
     ],
     choices: [
@@ -80,8 +80,8 @@ export const sisterShrineScenes: Scene[] = [
     id: "shrine_garden",
     title: "The Unwritten Name",
     paragraphs: [
-      "A woman is kneeling in the mulberry leaves with a bucket of water and a stiff brush. She is past sixty, with a face weathered by years of sun and a wooden hairpin pushed through a bun of grey hair. She does not stop scrubbing when she sees you. \"If you have come to stare at the shrine, you may stand there. If you have come to pray, you may pull weeds. Do not do both.\"",
-      "Her name is Shen. She was a laundress in the Law Hall when Su Mengjiao was a disciple there. \"We washed the white silk for the sealing robes,\" she says. \"We were not allowed to look at the names sewn on the sleeves. I looked anyway. I looked at everything in those years, because nobody thought a laundress could read.\" She dips the brush and scrubs a stone that does not need it.",
+      "A woman is kneeling in the mulberry leaves with a bucket of water and a stiff brush. She is past sixty, with a face weathered by years of sun and a wooden hairpin pushed through a bun of grey hair. She does not stop scrubbing when she sees you. “If you have come to stare at the shrine, you may stand there. If you have come to pray, you may pull weeds. Do not do both.”",
+      "Her name is Shen. She was a laundress in the Law Hall when Su Mengjiao was a disciple there. “We washed the white silk for the sealing robes,” she says. “We were not allowed to look at the names sewn on the sleeves. I looked anyway. I looked at everything in those years, because nobody thought a laundress could read.” She dips the brush and scrubs a stone that does not need it.",
     ],
     choices: [
       {
@@ -114,7 +114,7 @@ export const sisterShrineScenes: Scene[] = [
     id: "shrine_garden_2",
     title: "Shen’s Brush",
     paragraphs: [
-      "\"They built this after the sealing,\" she says. \"The disciples who loved her. The Law Hall would not let her name be cut into the archive wall, so we cut it into the hill instead, where the mist can see it and the masters cannot.\" She taps the stone at the foot of the shrine. The letters are so worn that you can read them only with your fingertips: a small, neat, careful hand, carved by someone who was trying not to be heard.",
+      "“They built this after the sealing,” she says. “The disciples who loved her. The Law Hall would not let her name be cut into the archive wall, so we cut it into the hill instead, where the mist can see it and the masters cannot.” She taps the stone at the foot of the shrine. The letters are so worn that you can read them only with your fingertips: a small, neat, careful hand, carved by someone who was trying not to be heard.",
     ],
     choices: [
       {
@@ -224,7 +224,7 @@ export const sisterShrineScenes: Scene[] = [
     id: "shrine_vigil_2",
     title: "Pearwood Shavings",
     paragraphs: [
-      "When Shen finally climbs up, she carries a folded square of linen. She does not hand it to you. She sets it on the offering table beside the comb and smooths it flat. Inside are a dozen curls of pearwood shavings, the kind a carver leaves behind when making something small. \"Her first hairpin,\" she says. \"She carved it the year before the sealing, and it came out crooked. I kept the shavings, because I could not bear to throw her mistakes away.\"",
+      "When Shen finally climbs up, she carries a folded square of linen. She does not hand it to you. She sets it on the offering table beside the comb and smooths it flat. Inside are a dozen curls of pearwood shavings, the kind a carver leaves behind when making something small. “Her first hairpin,” she says. “She carved it the year before the sealing, and it came out crooked. I kept the shavings, because I could not bear to throw her mistakes away.”",
     ],
     choices: [
       {

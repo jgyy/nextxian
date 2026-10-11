@@ -501,7 +501,7 @@ warm: She told me to my face that she did not wish to be rescued. I said that I 
 devoted: If I might give her one thing, it would be a bench. Not a forge, not a bed. A bench by a window, with a row of clean tools, and no one to say what she should make. I think it is the only gift she would accept.
 `,
   remarks: String.raw`
-% forge_shu_later | since:b3q_forge>=3 | hao | Shu Ning has labelled every jar in the Ward's dispensary with a number. She has drawn a map of the pharmacy on the back of the door. She says it is not for any purpose. I believe her entirely.
+% forge_shu_later | since:b3q_forge>=3 | hao | Shu Ning has labelled every jar in the Ward’s dispensary with a number. She has drawn a map of the pharmacy on the back of the door. She says it is not for any purpose. I believe her entirely.
 % forge_zhu_later | since:forge_zhu_knife>=8 | gu | Master Zhu will want his knife back, someday. Shu Ning says it is his to keep. I think they are both pretending very hard not to be sentimental.
 `,
 };

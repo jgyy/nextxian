@@ -1,3 +1,4 @@
+import { HERO_FIELDS, HERO_OPTIONS, type HeroField } from "./hero";
 import { isTone } from "./tone";
 import type { Choice, ChoiceTone, Condition, Effect, Mood, NpcMetric, NpcScenario, NpcState, PlayerStat, Remark, Scene } from "./types";
 
@@ -14,7 +15,7 @@ import type { Choice, ChoiceTone, Condition, Effect, Mood, NpcMetric, NpcScenari
  *     // a comment
  *
  * Conditions are joined with `&`: `flag`, `!flag`, `insight>=12`, `karma<=-10`, `trust>=20`, `realm>=2`, `roads>=3`,
- * `bond:ren>=10`, `since:flag>=4`, `decisions>=30`, `mood:afraid`, `scene:prefix`, `count:flag_prefix>=3`, `said:SCENARIO`, `tone:deceit>=3/6`.
+ * `standing>=4`, `hero:attire=silk|armour`, `hero:status!=outcast`, `bond:ren>=10`, `since:flag>=4`, `decisions>=30`, `mood:afraid`, `scene:prefix`, `count:flag_prefix>=3`, `said:SCENARIO`, `tone:deceit>=3/6`.
  * Effects are separated by spaces: `+flag`, `-flag`, `karma+3`, `cult+4`, `trust-2`, `bond:ren+5`, `npc:ID`, `ally:ID`,
  * and `needs:3`, which asks a realm (an index into the ladder) of anyone who tries the choice.
  * Unless the effects start with `=`, a choice also gets the small stat drift that goes with its tone.
@@ -67,6 +68,14 @@ export function parseConditions(source: string, where: string): Condition[] {
     } else if (t.startsWith("count:")) {
       const { name, ...rest } = bounds(t.slice(6), where);
       out.push({ kind: "count", prefix: name, ...rest });
+    } else if (t.startsWith("hero:")) {
+      const m = /^hero:([a-z]+)(=|!=)([a-z]+(?:\|[a-z]+)*)$/.exec(t);
+      if (!m || !(HERO_FIELDS as readonly string[]).includes(m[1])) throw new MarkupError(where, `bad hero condition "${t}"`);
+      const values = m[3].split("|");
+      for (const v of values) {
+        if (!HERO_OPTIONS[m[1] as HeroField].some((o) => o.value === v)) throw new MarkupError(where, `"${v}" is not a ${m[1]}`);
+      }
+      out.push(m[2] === "=" ? { kind: "hero", field: m[1] as HeroField, is: values } : { kind: "hero", field: m[1] as HeroField, not: values });
     } else if (t.startsWith("scene:")) {
       out.push({ kind: "scene", prefix: t.slice(6) });
     } else if (t.startsWith("said:")) {
@@ -85,6 +94,7 @@ export function parseConditions(source: string, where: string): Condition[] {
       else if (name === "realm") out.push({ kind: "realm", ...rest });
       else if (name === "roads") out.push({ kind: "roads", ...rest });
       else if (name === "decisions") out.push({ kind: "decisions", ...rest });
+      else if (name === "standing") out.push({ kind: "standing", ...rest });
       else throw new MarkupError(where, `unknown condition "${t}"`);
     }
   }

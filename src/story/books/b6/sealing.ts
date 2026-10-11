@@ -11,20 +11,20 @@ export const sealing: Arc = {
   name: "The Last Sealing",
   scenes: String.raw`
 === lastseal_entry | The Listener
-She comes up out of the mist as a woman rises from a bath, slowly, with the red pouring off her shoulders. She is thin, grey-eyed, unhurried, with a long braid and a face four years younger than the Elder's and fifteen years more tired. She catches the silver comb out of the air, and runs it through her wet hair, and looks at you.
+She comes up out of the mist as a woman rises from a bath, slowly, with the red pouring off her shoulders. She is thin, grey-eyed, unhurried, with a long braid and a face four years younger than the Elder’s and fifteen years more tired. She catches the silver comb out of the air, and runs it through her wet hair, and looks at you.
 “You took your time,” says Su Mengjiao. “Good. People who hurry down here stay.”
 The Elder makes a sound that is not a word. Mengjiao looks at her for a long time.
-“Wanru,” she says. “You've grown a grey streak. It suits you.”
+“Wanru,” she says. “You’ve grown a grey streak. It suits you.”
 Behind her the mist is a lake at evening, and the thing in it has turned its whole slow attention to the ledge.
 +[rl] realm>=7 | At Ascendant the abyss is quiet in your presence, as a river is quiet before a dam.
 +[rl] realm<=3 | You are very much out of your depth, and feel it in your knees.
 > truth | Say who you are. | lastseal_a | npc:SU_SEALING_VOICE
-> mercy | Go to the Elder's side. | lastseal_a | npc:SU_SEALING_VOICE
+> mercy | Go to the Elder’s side. | lastseal_a | npc:SU_SEALING_VOICE
 > force | Put yourself between her and the others. | lastseal_a | npc:SU_SEALING_VOICE
 > quiet | Wait for her to speak. | lastseal_a | npc:SU_SEALING_VOICE
 
 === lastseal_a | The Question
-“It isn't hungry,” says Mengjiao. “People think it is. It's grieving. Fourteen of mine went down, and fifteen years of their names have fallen into it, and it does not know how to stop hearing them.” She tilts her head. “It asks one thing. It has asked it every night since the Sealing. *Who is listening?*”
+“It isn’t hungry,” says Mengjiao. “People think it is. It’s grieving. Fourteen of mine went down, and fifteen years of their names have fallen into it, and it does not know how to stop hearing them.” She tilts her head. “It asks one thing. It has asked it every night since the Sealing. *Who is listening?*”
 “And you answered,” says the Elder.
 “Every night. I have a very poor voice, and I never stopped.” She smiles at you, a worn and lovely smile. “I am tired, you know.”
 The mist stirs. A hundred faint voices, very low, begin to say the same thing.
@@ -61,7 +61,7 @@ The Elder burns her second ledger, one page at a time, and tells you she does no
 
 === end_listener | The Listener
 #end Ending: The Listener
-You answer her. You do not stop. You take Mengjiao’s place on the ledge, cross-legged, and say “I am here” to the mist, and it says it back, and it says it back, and it says it back. She puts her silver comb in your braid. She will not stay to watch.
+You answer her. You do not stop. You take Mengjiao’s place on the ledge, cross-legged, and say “I am here” to the mist, and it says it back, and it says it back, and it says it back. She puts her silver comb into your hair. She will not stay to watch.
 It is not a sacrifice. That is what you learn on the first night. It is an office, like Keeper of Keys, and it has hours. The Elder brings you tea. Lin Yuan reads you the cadastre. You answer the dark, night after night, and the dark, bit by bit, begins to answer you.
 +[who] bond:mengjiao>=12 | Mengjiao comes down the stair once a season, and sits with you for an hour, and says nothing at all, and goes up refreshed.
 +[who] bond:gu>=10 | Gu comes every day, and does not know what to say, and says it anyway.
@@ -123,6 +123,6 @@ warm: You did not hurry. You asked the doors, and the doors let you through. I h
 devoted: Stay, if you like. Or go, if you like. Either way you have given me the one thing I stopped hoping for: the sound of someone coming down the stair slowly.
 `,
   remarks: String.raw`
-% lastseal_lin_after | b6q_abyss | lin | I have been asked to write a short account of the Sealing for the Archive. I have written forty pages. I regret to say I do not know how to leave anything out.
+% lastseal_lin_after | b6q_abyss & bond:lin>=-100 | lin | I have been asked to write a short account of the Sealing for the Archive. I have written forty pages. I regret to say I do not know how to leave anything out.
 `,
 }

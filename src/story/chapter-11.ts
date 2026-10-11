@@ -21,19 +21,19 @@ export const chapterEleven: Scene[] = [
     id: "judgment",
     title: "Chapter Eleven: The Judgment",
     paragraphs: [
-      "Elder Su rises from the jade chair for the first time since you arrived. She is smaller than you remembered, and sharper. \"The Law has a single question,\" she says. \"What will you do now that you know the truth?\"",
+      "Elder Su rises from the jade chair for the first time since you arrived. She is smaller than you remembered, and sharper. “The Law has a single question,” she says. “What will you do now that you know the truth?”",
       "The Law Hall is silent. Outside, the mist is moving up the mountain, slow and patient, as if it has all the time in the world.",
     ],
     choices: [
       {
         id: "plead_mercy",
-        label: "Plead for Gu's pardon and your own, on the strength of what you have done.",
+        label: "Plead for Gu’s pardon and your own, on the strength of what you have done.",
         tone: "mercy",
         npcScenario: "PLEAD_FOR_PARDON",
         next: "ending_redeemed",
         effects: [{ kind: "setFlag", flag: "end1_redeemed" }],
         requires: [{ kind: "npc", metric: "trust", min: 15 }],
-        lockedHint: "Requires Elder Su's trust of 15 or more.",
+        lockedHint: "Requires Elder Su’s trust of 15 or more.",
       },
       {
         id: "accept_exile",
@@ -52,7 +52,7 @@ export const chapterEleven: Scene[] = [
       },
       {
         id: "claim_seat",
-        label: "Claim the Law Hall's seat as her successor.",
+        label: "Claim the Law Hall’s seat as her successor.",
         tone: "force",
         npcScenario: "CLAIM_SEAT",
         next: "ending_sovereign",
@@ -135,7 +135,7 @@ export const chapterEleven: Scene[] = [
     id: "ending_redeemed",
     title: "The Law Remembers Mercy",
     paragraphs: [
-      "Elder Su listens to your plea without interrupting. When you finish, she takes the Sealing Jade from its tray and sets it back into the cracked altar in the Law Hall. \"Mercy is not a crack in the Law,\" she says. \"It is the thing the Law was built to hold.\"",
+      "Elder Su listens to your plea without interrupting. When you finish, she takes the Sealing Jade from its tray and sets it back into the cracked altar in the Law Hall. “Mercy is not a crack in the Law,” she says. “It is the thing the Law was built to hold.”",
       "Gu Hanzhen is released into the care of the sect. You are assigned to repair the abyss seal under her eye, and the mist recedes by a single pace each season. The sect does not forgive quickly, but it does not forget the one who stood in the rain and told the truth.",
       "On the fortieth day a grey-sailed barge is seen far down the river, coming up against the current. The bells of the Law Hall ring once to say that someone has come to audit the mercy you were granted.",
     ],
@@ -156,7 +156,7 @@ export const chapterEleven: Scene[] = [
     title: "Ending: The Black Lotus Blooms",
     paragraphs: [
       "The Sealing Jade is warm in your hand, and it does not hum for you. Instead, the mist in the abyss rises to meet you, and the black lotus opens in your chest. The power is intoxicating. You feel every meridian in your body singing, and you do not notice when the singing turns into a scream.",
-      "Elder Su is the last person who will speak your name in the sect. She speaks it once, to the wind on the mountain, and then she closes the Law Hall's doors for good.",
+      "Elder Su is the last person who will speak your name in the sect. She speaks it once, to the wind on the mountain, and then she closes the Law Hall’s doors for good.",
     ],
     choices: [],
     ending: "Ending: The Black Lotus Blooms",
@@ -165,7 +165,7 @@ export const chapterEleven: Scene[] = [
     id: "ending_sovereign",
     title: "The Keeper of Bars",
     paragraphs: [
-      "Elder Su gives you the ledger, the comb, and the chair of pale jade without a word. The bars of the Law are yours to count now. You count them every night, and some nights you open one. Gu Hanzhen becomes your steward. Su Mengjiao's name is carved back into the memorial, beside the others, and no one is allowed to say it aloud unless they have earned the right.",
+      "Elder Su gives you the ledger, the comb, and the chair of pale jade without a word. The bars of the Law are yours to count now. You count them every night, and some nights you open one. Gu Hanzhen becomes your steward. Su Mengjiao’s name is carved back into the memorial, beside the others, and no one is allowed to say it aloud unless they have earned the right.",
       "The mist has stopped rising from the abyss. Whether that is because you hold the seal, or because you have finally learned what it costs to hold anything at all, the sect does not ask.",
       "On the fortieth day a grey-sailed barge is seen far down the river, coming up against the current. The bells of the Law Hall ring once, and the chair of pale jade is suddenly the loneliest place on the mountain.",
     ],

@@ -46,7 +46,7 @@ export const chapterThree: Scene[] = [
     paragraphs: [
       "The main doors are cedar, banded with iron and sealed with a talisman that glows a cold blue whenever the wind pushes against it. Beyond the doors you can hear a sound like breathing. It is the sound of paper settling on paper, thousands of pages shifting in their drawers, as if the building is turning over in its sleep.",
       "A warden stands on the stone bridge that leads to the doors. He is broad in the shoulders and carries a lantern even though the morning is already bright. His name, you learn when he speaks, is Ren Qiao. He keeps the bridge and the doors, and he has been ordered to let no one through without a seal.",
-      "\"The archive is closed,\" he says. \"Since the jade was taken, nobody goes in unless the Elder sends them, and the Elder has not sent anyone in fifteen years. Show me your authority, or go back down the steps.\"",
+      "“The archive is closed,” he says. “Since the jade was taken, nobody goes in unless the Elder sends them, and the Elder has not sent anyone in fifteen years. Show me your authority, or go back down the steps.”",
     ],
     choices: [
       {
@@ -152,8 +152,8 @@ export const chapterThree: Scene[] = [
     title: "Lin Yuan at the Desk",
     paragraphs: [
       "A young man in grey sits at a writing desk near the entrance. He looks up with the terror of someone who has been caught doing nothing wrong for a very long time. His ink is still wet on the page before him. He is Lin Yuan, the keeper of keys, and he reads your order aloud in a voice that cracks on the seal.",
-      "\"The Elder’s hand,\" he says. \"Yes. But the Index of the Departed opens only when the Elder herself stands before it, or when a witness of the Law stands in her place. I cannot open that cabinet on a piece of paper, even hers. I am sorry. I would open it if I could.\"",
-      "He hesitates, then lowers his voice. \"You are not the first person to come asking about the Index this week. A man in a black hood came yesterday, and he asked for the same drawer. I told him the same thing. He did not like the answer.\"",
+      "“The Elder’s hand,” he says. “Yes. But the Index of the Departed opens only when the Elder herself stands before it, or when a witness of the Law stands in her place. I cannot open that cabinet on a piece of paper, even hers. I am sorry. I would open it if I could.”",
+      "He hesitates, then lowers his voice. “You are not the first person to come asking about the Index this week. A man in a black hood came yesterday, and he asked for the same drawer. I told him the same thing. He did not like the answer.”",
     ],
     choices: [
       {
@@ -367,8 +367,8 @@ export const chapterThree: Scene[] = [
     title: "The Keeper of Keys",
     paragraphs: [
       "Lin Yuan sits with the ring of keys in both hands, turning it slowly as though the iron might tell him something. His ink has dried on the page. He is not much older than the disciples you trained beside at the outer gate, but his face has the grey tiredness of someone who has counted too many nights without sleep.",
-      "\"My mother was a disciple of the Law Hall,\" he says quietly, without being asked. \"She was expelled fifteen years ago, the week after the Sealing, for refusing to witness the fifteenth order. The Registrar signed her expulsion herself. I was the child. The Law Hall let me stay, as long as I worked in the archive and never asked questions about who the drawers belonged to.\"",
-      "He lifts the key ring and sets it on the desk between you. One key is larger than the rest, black iron with a crescent on its bow. \"This opens the Index drawers on the lower shelves. It does not open the Elder’s own cabinet. It also does not open anything if the wardens think I gave it to you. If they ask, I will say I was asleep.\"",
+      "“My mother was a disciple of the Law Hall,” he says quietly, without being asked. “She was expelled fifteen years ago, the week after the Sealing, for refusing to witness the fifteenth order. The Registrar signed her expulsion herself. I was the child. The Law Hall let me stay, as long as I worked in the archive and never asked questions about who the drawers belonged to.”",
+      "He lifts the key ring and sets it on the desk between you. One key is larger than the rest, black iron with a crescent on its bow. “This opens the Index drawers on the lower shelves. It does not open the Elder’s own cabinet. It also does not open anything if the wardens think I gave it to you. If they ask, I will say I was asleep.”",
     ],
     choices: [
       {
@@ -403,7 +403,7 @@ export const chapterThree: Scene[] = [
     title: "The Black Iron Key",
     paragraphs: [
       "You understand what he is risking. You also understand that he will not offer the key twice. The question is what he wants in return, and whether he is brave enough to say it.",
-      "\"I want my mother’s name to stay out of the Law’s ledgers,\" he says. \"That is all. I do not want a pardon for her, or an apology. Only to be left alone with what I already know.\"",
+      "“I want my mother’s name to stay out of the Law’s ledgers,” he says. “That is all. I do not want a pardon for her, or an apology. Only to be left alone with what I already know.”",
     ],
     choices: [
       {
@@ -755,7 +755,7 @@ export const chapterThree: Scene[] = [
     title: "The Warden’s Lantern",
     paragraphs: [
       "Ren Qiao comes around the end of the row with the lantern held high. He does not hurry. The light finds your sleeves first, then your face, then the drawers behind you, and he stops with his head tilted as if he is listening for a lie in the air. He has the look of a man who was taught early that the Law does not need to be loud to be obeyed.",
-      "\"You are not on the list,\" he says. \"Whatever order you carry, it named the front doors, and the Elder sent nobody to the roof. I checked with the gate at dawn. And yet the skylight is open, and there is ash on the bridge, and I have a clerk who cannot stop shaking his hands.\"",
+      "“You are not on the list,” he says. “Whatever order you carry, it named the front doors, and the Elder sent nobody to the roof. I checked with the gate at dawn. And yet the skylight is open, and there is ash on the bridge, and I have a clerk who cannot stop shaking his hands.”",
       "He sets the lantern on the nearest shelf. The flame stands straight. In the quiet, you can see his face properly for the first time. He is older than you assumed, with a scar across the bridge of his nose and a warden’s stillness in his shoulders. His eyes go to the card in your hand, then to the letter sleeve, then back to your face.",
     ],
     choices: [
@@ -789,8 +789,8 @@ export const chapterThree: Scene[] = [
     id: "archive_warden_2",
     title: "Ren Qiao’s Lantern",
     paragraphs: [
-      "\"Fifteen years ago,\" he says slowly, \"I stood on this bridge on the night of the Sealing. I was seventeen. I watched the Law carry fourteen people to the abyss path, and I held the lantern for them. One of them was a girl who used to teach me the qi exercises in the outer courtyard, when the other boys were too proud to ask. Her name was Mengjiao. I have not said it aloud since.\"",
-      "He lowers his voice until it is almost gentle. \"So tell me what you are, and what you are doing with her name.\"",
+      "“Fifteen years ago,” he says slowly, “I stood on this bridge on the night of the Sealing. I was seventeen. I watched the Law carry fourteen people to the abyss path, and I held the lantern for them. One of them was a girl who used to teach me the qi exercises in the outer courtyard, when the other boys were too proud to ask. Her name was Mengjiao. I have not said it aloud since.”",
+      "He lowers his voice until it is almost gentle. “So tell me what you are, and what you are doing with her name.”",
     ],
     choices: [
       {
@@ -1074,7 +1074,7 @@ export const chapterThree: Scene[] = [
     title: "The Report",
     paragraphs: [
       "Elder Su does not look up when you enter the Law Hall. She is writing at her desk, and the lamps have been burning all night. Her grey hair is loose for the first time since you met her, and the silver comb lies on the desk beside her hand. She does not seem to have slept.",
-      "\"You went into the Ash Archive,\" she says, without raising her voice. \"The gate reported a skylight, and the wardens reported smoke, and Ren Qiao reported nothing at all, which is the most worrying of the three. Tell me what you found, Wanderer. Tell me in order, and tell me what you did with it.\"",
+      "“You went into the Ash Archive,” she says, without raising her voice. “The gate reported a skylight, and the wardens reported smoke, and Ren Qiao reported nothing at all, which is the most worrying of the three. Tell me what you found, Wanderer. Tell me in order, and tell me what you did with it.”",
     ],
     choices: [
       {
@@ -1240,7 +1240,7 @@ export const chapterThree: Scene[] = [
     paragraphs: [
       "The courtyard is cold, and the flagstones are wet with the last of the rain. You walk across them slowly. The Elder’s window is open a crack, and the lamp inside casts a long yellow bar across the stones. You can see her shadow moving behind the paper screen: sitting, standing, sitting again, with the stillness of someone who has been waiting for a long time.",
       "You knock on the shutter. The shadow stops moving. For a long moment there is no sound at all, and then the screen slides back, and Elder Su Wanru looks out at you with her hair still loose and her face grey in the lamplight.",
-      "\"You came,\" she says. \"I thought you might not. Most people who come to my window at night come to confess something, and most of them lie while they do it.\" She does not invite you in. She leans her forearms on the sill and looks at you as if you were a page she has been trying to read in poor light.",
+      "“You came,” she says. “I thought you might not. Most people who come to my window at night come to confess something, and most of them lie while they do it.” She does not invite you in. She leans her forearms on the sill and looks at you as if you were a page she has been trying to read in poor light.",
     ],
     choices: [
       {
@@ -1273,7 +1273,7 @@ export const chapterThree: Scene[] = [
     id: "archive_night_visit_2",
     title: "The Elder’s Window",
     paragraphs: [
-      "\"Mengjiao used to climb out of this window,\" she says. \"Every night, for a year, when she was twelve and I was sixteen. She told me the stars were better from the roof. I never went up to see them with her. I was afraid of the height. Afterward I was afraid of nothing else, and that is the reason I became what I am.\"",
+      "“Mengjiao used to climb out of this window,” she says. “Every night, for a year, when she was twelve and I was sixteen. She told me the stars were better from the roof. I never went up to see them with her. I was afraid of the height. Afterward I was afraid of nothing else, and that is the reason I became what I am.”",
     ],
     choices: [
       {

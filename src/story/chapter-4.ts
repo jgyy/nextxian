@@ -45,7 +45,7 @@ export const chapterFour: Scene[] = [
     title: "The Key That Fits",
     paragraphs: [
       "The bronze key from Lin Yuan’s packet sits in your palm, its lotus bud cold against your skin. It fits the keyhole with a small click that you feel in your teeth. Then nothing happens. The gate stays shut. The mist continues to pour down the cliff in slow, patient threads, and somewhere inside the rock a bell rings once, very softly, as if it is asking whether you are ready.",
-      "Ren Qiao stands three steps below you on the stair. He has not stood at this door in fifteen years, and he keeps his eyes fixed on the stone at his feet as though looking higher would make the wall move. \"The Law Hall calls this the Sutra Door,\" he says. \"The disciples call it the Gate That Listens. I have never heard anyone say what it wants in return for opening.\"",
+      "Ren Qiao stands three steps below you on the stair. He has not stood at this door in fifteen years, and he keeps his eyes fixed on the stone at his feet as though looking higher would make the wall move. “The Law Hall calls this the Sutra Door,” he says. “The disciples call it the Gate That Listens. I have never heard anyone say what it wants in return for opening.”",
     ],
     choices: [
       {
@@ -186,7 +186,7 @@ export const chapterFour: Scene[] = [
     id: "sutra_inscriptions_3",
     title: "A Homecoming on the Gate",
     paragraphs: [
-      "Behind you on the stair, Ren Qiao shifts his weight and clears his throat. He has been reading too, and he has not liked what he found. \"That is not the Law’s language,\" he says quietly. \"The Law would never carve a homecoming on a gate it guards. Someone wanted this door to be found.\"",
+      "Behind you on the stair, Ren Qiao shifts his weight and clears his throat. He has been reading too, and he has not liked what he found. “That is not the Law’s language,” he says quietly. “The Law would never carve a homecoming on a gate it guards. Someone wanted this door to be found.”",
     ],
     choices: [
       {
@@ -292,7 +292,7 @@ export const chapterFour: Scene[] = [
     title: "The Reflection in the Water",
     paragraphs: [
       "The reflection smiles. You do not know her face, and yet you know it at once. It is Elder Su’s face, younger by fifteen years, and it has a tear track on its cheek that looks painted in lacquer. The mist closes. The reflection stays for an instant longer, long enough to mouth one word, and then the stair beneath you is only stone again, cold and grey, and your palm is bleeding a little where the qi left you.",
-      "Ren Qiao is staring at you from the stair. His lantern has gone out. \"Your eyes went white,\" he says. \"Only for a breath. I thought you were being taken.\"",
+      "Ren Qiao is staring at you from the stair. His lantern has gone out. “Your eyes went white,” he says. “Only for a breath. I thought you were being taken.”",
     ],
     choices: [
       {
@@ -364,8 +364,8 @@ export const chapterFour: Scene[] = [
     title: "The Divided Stair",
     paragraphs: [
       "Halfway down, the stair divides. The left branch is lit by a lamp burning in an iron cage, and you can hear someone talking to themselves in a low, pleasant voice that does not sound frightened at all. The right branch goes straight down toward the sound of water and a faint red light. Between them, set in the rock, is a small niche with a bowl of cold millet and a slip of paper that says only: Eat, then continue.",
-      "Ren Qiao stops at the division and looks at the niche for a long time. He does not touch the bowl. \"I have carried food to the cells on this stair for twelve years,\" he says. \"I never once went farther than the lamp. The Law told me the sutra hall was no place for a warden. I believed them, because it was easier.\"",
-      "He turns to the right-hand stair and looks down it. The red light flickers. \"I can take you as far as the cells,\" he says. \"After that the Elder gave the order herself, and I was told to stop. I am a warden, Wanderer. I stop where the orders stop.\"",
+      "Ren Qiao stops at the division and looks at the niche for a long time. He does not touch the bowl. “I have carried food to the cells on this stair for twelve years,” he says. “I never once went farther than the lamp. The Law told me the sutra hall was no place for a warden. I believed them, because it was easier.”",
+      "He turns to the right-hand stair and looks down it. The red light flickers. “I can take you as far as the cells,” he says. “After that the Elder gave the order herself, and I was told to stop. I am a warden, Wanderer. I stop where the orders stop.”",
     ],
     choices: [
       {
@@ -403,7 +403,7 @@ export const chapterFour: Scene[] = [
     title: "Gu Hanzhen in the Lamplight",
     paragraphs: [
       "The iron cage holds a lamp, a stool, and a young man with his back against the wall. Gu Hanzhen looks up when your shadow crosses the bars, and for a moment his face is so open and hopeful that you almost turn away. Then the hope fades into the careful blankness of someone who has been hurt enough times to expect it. His torn sleeve has been mended with grey thread. His hair is loose. The mist has left faint red lines on his wrists, like the marks of a bracelet he never chose.",
-      "\"They let me keep the lamp,\" he says. His voice is rough from disuse. \"The warden says it is because I do not sleep. I think it is because they are afraid of the dark that I bring with me.\" He glances at the stair behind you. \"Did they send you down here to watch me?\"",
+      "“They let me keep the lamp,” he says. His voice is rough from disuse. “The warden says it is because I do not sleep. I think it is because they are afraid of the dark that I bring with me.” He glances at the stair behind you. “Did they send you down here to watch me?”",
     ],
     choices: [
       {
@@ -436,8 +436,8 @@ export const chapterFour: Scene[] = [
     id: "sutra_gu_cell_2",
     title: "The Names the Law Forgets",
     paragraphs: [
-      "You tell him the truth, which is that you were sent to find a record and you took a wrong turn on the stair. He laughs, once, a short bitter sound that ends in a cough. \"Wrong turns are the only kind this mountain allows,\" he says. \"I took one three nights before the jade vanished. I thought I was following a girl in grey robes. She told me the seal was tired and wanted to sleep.\"",
-      "He leans forward so that the lamplight falls across his face and shows the new lines beside his eyes. \"Su Mengjiao,\" he says quietly. \"Do you know what she told me at the end? She said the Law Hall had been feeding the abyss for fifteen years, a little at a time, with the names of the sealed. The mist does not want the jade. It wants to be remembered by name, and the Law has been careful to remember only the names it wants forgotten.\"",
+      "You tell him the truth, which is that you were sent to find a record and you took a wrong turn on the stair. He laughs, once, a short bitter sound that ends in a cough. “Wrong turns are the only kind this mountain allows,” he says. “I took one three nights before the jade vanished. I thought I was following a girl in grey robes. She told me the seal was tired and wanted to sleep.”",
+      "He leans forward so that the lamplight falls across his face and shows the new lines beside his eyes. “Su Mengjiao,” he says quietly. “Do you know what she told me at the end? She said the Law Hall had been feeding the abyss for fifteen years, a little at a time, with the names of the sealed. The mist does not want the jade. It wants to be remembered by name, and the Law has been careful to remember only the names it wants forgotten.”",
     ],
     choices: [
       {
@@ -471,7 +471,7 @@ export const chapterFour: Scene[] = [
     title: "Mirror and Warning",
     paragraphs: [
       "Ren Qiao, standing at the top of the stair with his cold lantern, makes a small sound of protest. Gu does not look at him. He is looking at you, and his eyes are wet, and his hands are clasped so tightly that the knuckles have gone white.",
-      "\"If you go to the sutra hall,\" he says, \"you will find her book on the dais, and beside it a mirror that the Elder can see through. Do not let the mirror speak first. Speak first yourself. The mist listens to whoever is braver, and the mirror listens to whoever is more afraid.\"",
+      "“If you go to the sutra hall,” he says, “you will find her book on the dais, and beside it a mirror that the Elder can see through. Do not let the mirror speak first. Speak first yourself. The mist listens to whoever is braver, and the mirror listens to whoever is more afraid.”",
     ],
     choices: [
       {

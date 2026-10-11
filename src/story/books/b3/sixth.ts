@@ -503,7 +503,7 @@ She is already reaching for a fresh sheet of paper.
 
 `,
   scenarios: String.raw`
-$ SU_SIXTH_COT | trust+4 respect+3 fear+1 | elder | The Elder learns that the Censors' clerk who has carried her bag for weeks was one of the seven.
+$ SU_SIXTH_COT | trust+4 respect+3 fear+1 | elder | The Elder learns that the Censors’ clerk who has carried her bag for weeks was one of the seven.
 hostile: I wrote a reference for her, once. I did not know the girl. I wrote that she was diligent and honest and well-suited to the Chancery. I did not know I was describing a child I had left in a fire.
 wary: The girl who has been correcting my footnotes for a month is one of the nine. I find that I have been talking to her as if she were a clerk. I find that I would like to start again.
 neutral: She asked me whether the Concord loved her. I said no, because it cannot. She nodded. She said, “Then who do I thank for the paper?”

@@ -12,12 +12,12 @@ export const TONE_RING: readonly ChoiceTone[] = ["inquiry", "mercy", "force", "d
 
 /** Label for choosing an approach on a road's entry scene, by the approach's tone. */
 export const APPROACH_LABEL: Record<ChoiceTone, string[]> = {
-  inquiry: ["Study {focus} and ask what it was built to hide.", "Go through {focus} slowly, reading what others walked past."],
-  mercy: ["Go to {focus} and see who needs help there.", "Offer your hands at {focus} before you offer any questions."],
-  force: ["Break your way into {focus} before anyone can prepare.", "March up to {focus} and demand to be let in."],
-  deceit: ["Pass yourself off as someone expected at {focus}.", "Slip toward {focus} behind a borrowed errand."],
-  quiet: ["Watch {focus} from a distance until it shows its habits.", "Wait near {focus} and let the day teach you its rhythm."],
-  truth: ["Walk up to {focus} and say plainly why you have come.", "Tell the people at {focus} who you are and what you want."],
+  inquiry: ["Study {focus} and ask what it was built to hide.", "Go through {focus} slowly, reading what others walked past.", "[w] Ask {focus} what {place} is built to hide, and listen to how the answer is given."],
+  mercy: ["[pw] Go to {focus} and see who needs help there.", "[p] Offer your hands at {focus} before you offer any questions.", "[t] Tend {focus}, and see who comes to ask what you are doing."],
+  force: ["[p] Break your way into {focus} before anyone can prepare.", "[p] March up to {focus} and demand to be let in.", "[t] Seize {focus} before anyone can stop you.", "[w] Corner {focus} and demand to be heard."],
+  deceit: ["[p] Pass yourself off as someone expected at {focus}.", "Slip toward {focus} behind a borrowed errand.", "[w] Tell {focus} a story and see which part of it is kept."],
+  quiet: ["[ptw] Watch {focus} from a distance until it shows its habits.", "[ptw] Wait near {focus} and let the day teach you its rhythm."],
+  truth: ["[pw] Walk up to {focus} and say plainly why you have come.", "[p] Tell the people at {focus} who you are and what you want.", "[t] Ask to read {focus} openly, and say plainly why you want to."],
 };
 
 /** What stands in the way, by the tone of the approach. Each is a noun phrase with its article. */
@@ -43,16 +43,16 @@ export const ALLIES: Record<ChoiceTone, string[]> = {
 /** The first paragraph of an approach scene, by stage (0 to 4). Four variants each. */
 export const STAGE_OPEN: string[][] = [
   [
-    "You turn toward {focus}, and the way narrows as you go. {Place} is quieter here than at its edge, and {omen} follows you like a stray dog. {Keeper} is said to keep watch there.",
-    "The path to {focus} runs behind {place}, where paving gives way to packed earth. Few have walked it this season, and {omen} marks the way better than any signpost. {Keeper} is said to keep the end of it.",
-    "It takes the rest of the morning to reach {focus}. All the while {omen} thickens, and the people of {place} watch you from doorways they do not quite step out of. {Keeper} is the only one who does not look away.",
-    "{Keeper} has told you where to find {focus}, but not why. You follow the directions and find the last turning unmarked, exactly as {kname} said it would be.",
+    "[ptw] You turn toward {focus}, and the way narrows as you go. {Place} is quieter here than at its edge, and {omen} follows you like a stray dog. {Keeper} is said to keep watch there.",
+    "[p] The path to {focus} runs behind {place}, where paving gives way to packed earth. Few have walked it this season, and {omen} marks the way better than any signpost. {Keeper} is said to keep the end of it.",
+    "[pw] It takes the rest of the morning to reach {focus}. All the while {omen} thickens, and the people of {place} watch you from doorways they do not quite step out of. {Keeper} is the only one who does not look away.",
+    "[ptw] {Keeper} has told you where to find {focus}, but not why. You follow the directions and find the last turning unmarked, exactly as {kname} said it would be.",
   ],
   [
-    "At {focus} you find the first true thing {place} has shown you. {Obstacle} stands in the way, and behind it are signs that someone was here before you and left in a hurry.",
-    "{Focus} is not what you were told. Up close it is older and plainer, and it has been tended by someone who did not want it noticed. Beyond it waits {obstacle}.",
-    "A faint trail leads from {focus} deeper into {place}. You follow it past {obstacle}, and for a moment the whole district seems to hold its breath.",
-    "You circle {focus} twice before you see what is wrong with it. Everything near it has been moved a little, to make it look as if it always stood alone. {Obstacle} guards the rest.",
+    "[pt] At {focus} you find the first true thing {place} has shown you. {Obstacle} stands in the way, and behind it are signs that someone was here before you and left in a hurry.",
+    "[ptw] {Focus} is not what you were told. Up close it is older and plainer, and it has been tended by someone who did not want it noticed. Beyond it waits {obstacle}.",
+    "[p] A faint trail leads from {focus} deeper into {place}. You follow it past {obstacle}, and for a moment the whole district seems to hold its breath.",
+    "[ptw] You circle {focus} twice before you see what is wrong with it. Everything near it has been moved a little, to make it look as if it always stood alone. {Obstacle} guards the rest.",
   ],
   [
     "{Kname} finds you there, as {kname} seems to find everyone who lingers. For a time neither of you speaks. Then {kname} says, quietly, that what you want was never lost. It was put away.",
@@ -128,9 +128,9 @@ export const STAGE_TITLE: Record<ChoiceTone, string[]> = {
 export const CHOICE_LABEL: Record<ChoiceTone, string[]> = {
   truth: [
     "Tell {kname} plainly what you came to find, and why.",
-    "Lay out everything you have seen at {focus}, without softening any of it.",
+    "[ptw] Lay out everything you have seen at {focus}, without softening any of it.",
     "Admit to {ally} that you do not yet know whom to trust in {place}.",
-    "Say aloud what you believe about {focus}, and accept whatever comes of saying it.",
+    "[ptw] Say aloud what you believe about {focus}, and accept whatever comes of saying it.",
     "Give {kname} your true name and your true errand, and ask for the same in return.",
   ],
   mercy: [
@@ -138,31 +138,31 @@ export const CHOICE_LABEL: Record<ChoiceTone, string[]> = {
     "Sit beside {kname} and let the silence be kind for a while.",
     "Take on a small task for {ally} before you press for answers.",
     "Speak gently of those who have suffered in {place}, and mean it.",
-    "Leave something at {focus} for the people who cannot come back for it.",
+    "[p] Leave something at {focus} for the people who cannot come back for it.",
   ],
   inquiry: [
-    "Study {focus} a little longer, and write down what does not fit.",
-    "Ask {ally} one careful question about {focus}, then wait for the whole answer.",
-    "Compare what {kname} told you with what {focus} shows.",
-    "Search the margins of {focus} for marks that someone tried to remove.",
+    "[pt] Study {focus} a little longer, and write down what does not fit.",
+    "[ptw] Ask {ally} one careful question about {focus}, then wait for the whole answer.",
+    "[pt] Compare what {kname} told you with what {focus} shows.",
+    "[t] Search the margins of {focus} for marks that someone tried to remove.",
     "Trace {obstacle} back to whoever put it there.",
   ],
   deceit: [
     "Claim an errand from the Law Hall that you do not have.",
     "Tell {ally} a convincing half-truth and watch which half is believed.",
-    "Slip a small piece of {focus} into your sleeve while {kname} looks away.",
+    "[t] Slip a small piece of {focus} into your sleeve while {kname} looks away.",
     "Let {kname} believe you already know more than you do.",
     "Use a borrowed name to get past {obstacle}.",
   ],
   force: [
     "Press past {obstacle} before it can be explained away.",
     "Rest a hand on your blade and tell {kname} the questions are not optional.",
-    "Break the quiet around {focus} with a demand no one can ignore.",
+    "[pw] Break the quiet around {focus} with a demand no one can ignore.",
     "Shoulder {ally} aside and take what you came for.",
     "Warn {kname} that the Law Hall will hear of any lie told here today.",
   ],
   quiet: [
-    "Wait in the shadow of {focus} until the street empties.",
+    "[ptw] Wait in the shadow of {focus} until the street empties.",
     "Say nothing, and let {kname} fill the silence.",
     "Rest a while and let {place} show you its ordinary face.",
     "Move on at the pace of the slowest person here, and watch.",
@@ -194,6 +194,10 @@ export const HIDDEN: { title: string; paragraphs: string[] }[] = [
     ],
   },
 ];
+
+/** The first hidden paragraph when the focus is a thing and not a place: nobody goes behind a ledger. */
+export const HIDDEN_OPEN_THING =
+  "Beneath {focus} a loose board lifts, and a narrow stair goes down into rock the colour of old tea. You would have missed it had you not spent so long reading {place}. The air below smells of {omen} and something older.";
 
 /** The paragraphs of a road's return scene. Four variants. */
 export const RETURN_OPEN: string[][] = [
@@ -227,13 +231,22 @@ export const RETURN_CRISIS: Record<ChoiceTone, string> = {
 };
 
 /** How the way you came in colours the way back, by the tone of the approach. */
-export const RETURN_APPROACH: Record<ChoiceTone, string> = {
-  inquiry: "You went at {place} through {focus}, asking and copying, and your notes are heavier for it.",
-  mercy: "You came to {place} by way of {focus}, with open hands, and the people there have not yet decided what to make of that.",
-  force: "You pushed your way in at {focus}, and the door you broke there will be mended slowly, and talked about longer.",
-  deceit: "You slipped in at {focus} under a borrowed errand, and somewhere in {place} a clerk is still wondering who you were.",
-  quiet: "You watched {focus} from the edge until it showed its habits, and you leave knowing them better than those who keep them.",
-  truth: "You walked up to {focus} and said why you had come. It is a rarer thing in {place} than you would think.",
+export const RETURN_APPROACH: Record<ChoiceTone, string[]> = {
+  inquiry: ["[ptw] You went at {place} through {focus}, asking and copying, and your notes are heavier for it."],
+  mercy: ["[ptw] You came to {place} by way of {focus}, with open hands, and the people there have not yet decided what to make of that."],
+  force: [
+    "[p] You pushed your way in at {focus}, and the door you broke there will be mended slowly, and talked about longer.",
+    "[tw] You forced {focus} open, and what you broke there will be mended slowly, and talked about longer.",
+  ],
+  deceit: [
+    "[p] You slipped in at {focus} under a borrowed errand, and somewhere in {place} a clerk is still wondering who you were.",
+    "[tw] You took up {focus} under a borrowed errand, and somewhere in {place} a clerk is still wondering who you were.",
+  ],
+  quiet: ["[ptw] You watched {focus} from the edge until it showed its habits, and you leave knowing them better than those who keep them."],
+  truth: [
+    "[pw] You walked up to {focus} and said why you had come. It is a rarer thing in {place} than you would think.",
+    "[t] You asked to read {focus} openly and said why you wanted to. It is a rarer thing in {place} than you would think.",
+  ],
 };
 
 /** What the wayside says of a road once it is done, by whether the Elder was told. */
@@ -262,7 +275,7 @@ export const REPORT_LINES: Record<"hostile" | "wary" | "neutral" | "warm" | "dev
   wary: [
     "I will hear this, though I am watching how you tell it. {Place} has more stories than stones, and I want only the ones that are yours.",
     "You say {kname} told you things at {place}. I will weigh that against what I already know of {kname}, and against what I know of you.",
-    "Interesting that you came to me with this. I would have forgiven you for staying silent, and I would not have trusted you either way.",
+    "Interesting that you came to me with news of {place}. I would have forgiven you for staying silent, and I would not have trusted you either way.",
   ],
   neutral: [
     "A report on {place}. Good. The Law wants to know what is happening beyond its walls, and it rarely hears it from anyone who has gone to look.",

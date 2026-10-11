@@ -12,16 +12,16 @@ export const stairs: Arc = {
   name: "The Crane Stairs",
   scenes: String.raw`
 === stairs_entry | A Hundred and Eight Steps
-The Crane Stairs climb the western face of the Stone Island in nine flights of twelve, each flight ending in a landing of white stone with a crane carved in the pavement. The Nine Peaks send a champion each Midsummer, and the champions fight their way up. A challenge is made on a landing. The loser is out; the winner climbs. A sect's seat in the Assembly is the highest landing its champion reaches, and the sects nearest the dais speak first and are believed longest.
+The Crane Stairs climb the western face of the Stone Island in nine flights of twelve, each flight ending in a landing of white stone with a crane carved in the pavement. The Nine Peaks send a champion each Midsummer, and the champions fight their way up. A challenge is made on a landing. The loser is out; the winner climbs. A sect’s seat in the Assembly is the highest landing its champion reaches, and the sects nearest the dais speak first and are believed longest.
 The Azure Cloud Sect has not entered a champion in fifteen years. Its chair is the lowest in the hall, near the door, and the Elder has not mentioned this once.
 In the courtyard at the foot of the stairs the champions are being presented: a tall thin swordsman with a face like a closed fan, a stout woman in indigo with a satchel of pills, a bear of a man in a tunic of hides. The herald, a nervous fellow called Yan, reads out the Peaks in order. When he reaches the ninth, he stops and looks at his list.
 “The Azure Cloud Sect,” he says, with something like despair. “Does it enter?”
 > force | Say that it does, and that the champion is you. | stairs_a1s1 | +stairs_a1 needs:2
-> mercy | Say that it does, and put your hand on Gu Hanzhen's shoulder. | stairs_a2s1 | +stairs_a2
+> mercy | Say that it does, and put your hand on Gu Hanzhen’s shoulder. | stairs_a2s1 | +stairs_a2
 > deceit | Ask the herald for a quiet word about the order of the bracket. | stairs_a3s1 | +stairs_a3
 > truth | Ask to see the rule by which a sect is made to climb for its chair. | stairs_a4s1 | +stairs_a4
 > quiet | Stand in a corner of the courtyard and set your feet in the form Qin taught you, once, on packed earth. | stairs_h1 |  | asked_for_lesson | Qin never taught you a form.
-> force | Stand in a corner of the courtyard and set your feet in the stance you used when you let Qin's palm land. | stairs_h1 | needs:2 | accepted_challenge | You never stood in Qin's court.
+> force | Stand in a corner of the courtyard and set your feet in the stance you used when you let Qin’s palm land. | stairs_h1 | needs:2 | accepted_challenge | You never stood in Qin’s court.
 
 // ---------------------------------------------------------------- a1: you climb
 === stairs_a1s1 | The First Landing
@@ -37,7 +37,7 @@ At the first landing a woman in grey with a quarterstaff is waiting. She is a ju
 She is good. The staff comes at you in short flat arcs, never wasted, and every strike carries the weight of her whole body behind it. You have no weapon but a mortal’s breath and a pair of quick hands, and the stone is slippery. The first blow takes the air from your ribs. The second you slip, barely, and the third catches your sleeve and tears it.
 You are not going to win by strength. The cold seed in your chest turns, lazily, at the sound of her breathing. It knows how she moves before she does.
 Below, in the courtyard, you hear Gu say, in a small voice, “Please.”
-> force | Rush inside the staff's reach. | +
+> force | Rush inside the staff’s reach. | +
 > quiet | Let the seed show you where she will be. | ^
 > deceit | Drop to one knee as though hurt. | ^
 > truth | Tell her that you cannot beat her, and ask whether she will accept a draw. | ^
@@ -56,17 +56,17 @@ The woman stares at it. She lets it fall from her hands. It rolls down the first
 She does not pick up the staff. She looks at you for a long moment, and then, with grave courtesy, she bows. “The landing is yours,” she says. “I do not know what you are. I know when I am beaten.” She stands aside. “I will say to the herald that I yielded.”
 You climb the twelve steps with the courtyard watching. At the second landing is a man in a tunic of hides, sitting cross-legged on the crane in the pavement, eating a boiled egg. He is huge, bald, and pleased with himself. He looks up as you reach the top and smiles with his mouth full.
 “The little one,” he says. “They said you were coming.” He swallows. “I am Brother Ox. I don’t fight on an empty stomach. Do you have an egg?”
-> truth | Say you do not, but you'll share a bowl of rice after. | +
+> truth | Say you do not, but you’ll share a bowl of rice after. | +
 > mercy | Offer him your last dried plum. | ^
-> inquiry | Ask what he's eating the egg for. | ^
-> force | Tell him you're here to fight, not to eat. | ^
+> inquiry | Ask what he’s eating the egg for. | ^
+> force | Tell him you’re here to fight, not to eat. | ^
 
 === stairs_a1s5 | Brother Ox
 The second bout is stranger than the first. Brother Ox fights as he eats, with great relish and no hurry. He is slow, and enormous, and every blow he throws would break a wall. He misses you by a hand’s breadth every time, and apologises.
 “It is the egg,” he says. “It slows me down.” He ducks a feint. “I thought it would give me strength.”
 You are laughing. You don’t know why. Somewhere in the second minute the laughter is so absurd that you stop fighting and sit down on the stair with your hands over your face, and Brother Ox, with a puzzled frown, sits down beside you.
 “I do not think that was in the rules either,” he says.
-> truth | Tell him it is the best bout you've had. | + | +stairs_ox_friend
+> truth | Tell him it is the best bout you’ve had. | + | +stairs_ox_friend
 > mercy | Offer him the second plum. | ^
 > quiet | Sit beside him in silence. | ^
 > inquiry | Ask how he came to be a champion. | ^
@@ -76,10 +76,10 @@ He tells you, over the course of an afternoon, in a voice like warm gravel. He w
 “It is not cowardice,” he says. “It’s a kind of manners.”
 He rolls an egg across the stone.
 “Would you like to go up? I’ll tell them I lost.”
-> truth | Tell him he doesn't have to, and that you'd like to win properly. | +
+> truth | Tell him he doesn’t have to, and that you’d like to win properly. | +
 > mercy | Accept, with thanks. | ^
-> deceit | Accept, and say you'll tell no one. | ^
-> force | Tell him you'll beat him for the landing. | ^
+> deceit | Accept, and say you’ll tell no one. | ^
+> force | Tell him you’ll beat him for the landing. | ^
 
 === stairs_a1s7 | The Third Landing
 Three more champions wait on the third, fourth and fifth landings, and you do not fight any of them. They have heard what happened at the first and second. The Sword Peak’s man, Leng Jian, is on the sixth, and he is the first who does not yield.
@@ -149,7 +149,7 @@ Gu has the grey look of a boy who has been told something he already knew. He do
 Madam Zhu’s smile does not change. “And which am I?”
 “I think you’re selling,” says Gu. “I think you’re afraid of selling.”
 The courtyard roars. The woman steps back. Her fingers close slowly over the pill.
-> truth | Lay a hand on Gu's shoulder. | + | +stairs_gu_refused_pill bond:gu+4
+> truth | Lay a hand on Gu’s shoulder. | + | +stairs_gu_refused_pill bond:gu+4
 > inquiry | Ask Madam Zhu where the Alchemy Peak buys its roots. | ^
 > quiet | Watch her go. | ^
 > mercy | Tell Gu he did well. | ^
@@ -174,9 +174,9 @@ He draws his sword. It makes a small clean sound.
 Gu draws his own. His hand is shaking. His voice, when it comes, is surprisingly steady.
 “Thank you,” he says. “So will I.”
 > truth | Stand back. Let him. | +
-> mercy | Call out one word: 'Breathe.' | ^
-> inquiry | Watch Leng Jian's feet. | ^
-> quiet | Hold Ren Qiao's sleeve, because he looks as if he might move. | ^
+> mercy | Call out one word: ‘Breathe.’ | ^
+> inquiry | Watch Leng Jian’s feet. | ^
+> quiet | Hold Ren Qiao’s sleeve, because he looks as if he might move. | ^
 
 === stairs_a2s8 | What Gu Did
 He loses. Of course he loses; Leng Jian is the finest swordsman of his generation. But for eleven minutes he does not die, and for six he is winning, and at the end he is on one knee at the sixth landing with a cut across his forearm and his sword still up, and the champion of the Sword Peak is looking down at him with a face of open astonishment.
@@ -208,7 +208,7 @@ He lifts it, between finger and thumb. It is plain, white, and a little dusty.
 > truth | Ask him to do it fairly, this once. | +
 > deceit | Offer to mark it yourself. | ^
 > mercy | Ask whether he has ever wanted to. | ^
-> inquiry | Ask what happens if the Azure Cloud's card comes first. | ^
+> inquiry | Ask what happens if the Azure Cloud’s card comes first. | ^
 
 === stairs_a3s3 | A Fair Draw Costs
 It costs, in the end, a purse of Yue Zhaoning’s silver and a favour you didn’t know you were collecting. She arrives in the courtyard in a long coat the colour of tar, with a basket of eels on her arm and a smile for the herald, and she says, loud enough for the whole queue, “Master Yan! There you are! My cousin said you’d want fresh eel.”
@@ -225,9 +225,9 @@ The new draw is a ceremony. The nine champions stand in a ring around a copper b
 And the Azure Cloud Sect, whose card has come last every year for fifteen, comes first.
 There is a pause. A murmur. An elderly man in a Formation Peak robe says loudly, “It is a fixing.” Madam Zhu laughs. Leng Jian, without expression, looks at the herald.
 “It is a lot,” says Yan, in a thin voice. “It is a lot. It is a fair lot. I drew it myself.”
-> truth | Say you'll take the first landing, as drawn. | +
-> deceit | Say you'd prefer to go last. | ^
-> mercy | Ask the old man to say what he's afraid of. | ^
+> truth | Say you’ll take the first landing, as drawn. | +
+> deceit | Say you’d prefer to go last. | ^
+> mercy | Ask the old man to say what he’s afraid of. | ^
 > inquiry | Ask who drew the card before. | ^
 
 === stairs_a3s5 | The Old Man’s Objection
@@ -235,9 +235,9 @@ The Formation Peak’s delegate is eighty, in a robe embroidered with diagrams, 
 “I was a champion once,” he says. “I climbed the stair when I was your age. I fought nine landings in a day. I will not see it undone by a purse and a basket of eels.” He pokes you in the chest. “If you are going to win, win. If not, go home.”
 You are rather impressed. It is, in its way, the most honest thing anyone has said all week.
 “I mean to,” you say. You discover that you do.
-> truth | Tell him you'll climb it honestly. | +
-> force | Tell him he's welcome to climb behind you. | ^
-> mercy | Ask him to teach you the Formation Peak's first stance. | ^
+> truth | Tell him you’ll climb it honestly. | +
+> force | Tell him he’s welcome to climb behind you. | ^
+> mercy | Ask him to teach you the Formation Peak’s first stance. | ^
 > inquiry | Ask which landing was his hardest. | ^
 
 === stairs_a3s6 | The First Landing, Fairly
@@ -286,7 +286,7 @@ Clause Forty. A sect which is under audit by the Censor-General shall not be req
 You read it twice. You read it a third time, and then you copy it out, carefully, in your best hand.
 The Azure Cloud Sect is under audit. It has been since Duan Wuyi climbed its mountain. By the Concord’s own charter, its chair should not be at the bottom.
 > truth | Take the clause to the Elder. | +
-> deceit | Take it to Lian Sheng's allies, and ask whom they trust. | ^
+> deceit | Take it to Lian Sheng’s allies, and ask whom they trust. | ^
 > inquiry | Ask Hao Lan what Clause Forty has been used for before. | ^
 > force | Take it to the Assembly itself. | ^
 
@@ -296,10 +296,10 @@ Hao Lan reads the clause in the corner of the guest-house with her chin on her f
 “Who argues?” you say.
 She looks at you.
 “A witness,” she says. “It’s always a witness. The Elder can’t be seen to.”
-> truth | Say you'll do it. | +
-> mercy | Tell her you'll need her. | ^
+> truth | Say you’ll do it. | +
+> mercy | Tell her you’ll need her. | ^
 > inquiry | Ask who sits on a Council of Nine. | ^
-> quiet | Say you'll think about it. | ^
+> quiet | Say you’ll think about it. | ^
 
 === stairs_a4s4 | Nine Chairs
 The Council of Nine meets in the round room at the top of the Stone Island, under the dome of blue glass. Nine delegates, one from each Peak, sit in nine chairs, and between them, in the centre of the floor, a small round table, on which is laid the Book of Precedence. The delegates wear their sashes. The herald, in a corner, is trembling.
@@ -372,7 +372,7 @@ He looks at you.
 His voice is very gentle.
 “You are, I think, her great-granddaughter in the art. It would be an honour to fight you.”
 > truth | Say you would be honoured to fight him too. | stairs_h3
-> mercy | Tell him you'd rather learn than fight. | stairs_h3
+> mercy | Tell him you’d rather learn than fight. | stairs_h3
 > quiet | Bow to him, in the old form. | stairs_h3
 > inquiry | Ask him to show the first form. | stairs_h3
 
@@ -393,15 +393,15 @@ The crowd on the Stone Island breaks into streams and trickles away, down the ni
 +[a] stairs_a2 | You stood on a landing while a boy fought the finest swordsman of his generation for eleven minutes.
 +[a] stairs_a3 | You bought a fair draw with silver and eels, and climbed it honestly.
 +[a] stairs_a4 | You won your chair with a sentence, in a round room under blue glass.
-+[b] stairs_precedence | The Azure Cloud Sect's chair is moved from the door to the third row, by the Concord's own charter.
-+[b] stairs_sixth | You reached the sixth landing. The Sword Peak knows your name, and the Azure Cloud's chair is higher by six steps.
++[b] stairs_precedence | The Azure Cloud Sect’s chair is moved from the door to the third row, by the Concord’s own charter.
++[b] stairs_sixth | You reached the sixth landing. The Sword Peak knows your name, and the Azure Cloud’s chair is higher by six steps.
 +[c] stairs_qin_form | Leng Jian recognised the Seventh Form of the Blind Sparrow in your feet, and has spoken of little else.
 +[c] stairs_thread_seen | The slate junior saw the thread of black at your fingers. She told the herald she yielded, and told no one why.
 +[c] stairs_ox_friend | Brother Ox has sent you a boiled egg by courier, wrapped in a note that says only: still warm.
 +[c] stairs_gu_climbed | Gu Hanzhen fought the Sword Peak for eleven minutes, and the courtyard has started to call him by the name of his sword.
-+[c] stairs_gu_refused_pill | Gu refused Madam Zhu's pill in front of the whole courtyard, and the Alchemy Peak is not smiling at him any more.
++[c] stairs_gu_refused_pill | Gu refused Madam Zhu’s pill in front of the whole courtyard, and the Alchemy Peak is not smiling at him any more.
 +[c] stairs_leng_friend | Leng Jian of the Sword Peak has asked for a lesson in swordsmanship by sentence.
-+[c] stairs_yue_helped | Yue Zhaoning's eels bought a fair draw, and she is owed a favour.
++[c] stairs_yue_helped | Yue Zhaoning’s eels bought a fair draw, and she is owed a favour.
 > truth | Go and tell the Elder where her chair is. | stairs_close2
 > quiet | Watch the carpenters carry the chair. | stairs_close2
 > mercy | Find Gu, and bind whatever cuts he has. | stairs_close2 | bond:gu+2
@@ -420,10 +420,10 @@ She turns.
 > inquiry | Ask what the third row will let her say. | hub_b2_city | +b2q_stairs
 `,
   scenarios: String.raw`
-$ SU_STAIRS_CHAIR | trust+3 respect+4 | elder | The Elder sees the Azure Cloud's chair moved up the hall, by a clause, a stair, or a fair draw.
+$ SU_STAIRS_CHAIR | trust+3 respect+4 | elder | The Elder sees the Azure Cloud’s chair moved up the hall, by a clause, a stair, or a fair draw.
 hostile: I have a better chair, and I do not trust it. I will sit in it, as I sat in the other, and note who watches.
-wary: A chair is a small thing. It is also the whole of a sect's standing at the Assembly. You have given me a good chair. I do not know what you will ask in return.
-neutral: The third row. It is higher than I expected, and nearer the dais. I shall be able to see the Censors' faces. I do not know whether that is a gift or a hazard.
+wary: A chair is a small thing. It is also the whole of a sect’s standing at the Assembly. You have given me a good chair. I do not know what you will ask in return.
+neutral: The third row. It is higher than I expected, and nearer the dais. I shall be able to see the Censors’ faces. I do not know whether that is a gift or a hazard.
 warm: I did not think I should ever sit in a higher chair in this hall. You have given me a window, Wanderer, where I had a door. I am grateful in a way I cannot express in a ledger.
 devoted: For twelve years I sat by the door and told myself I preferred it. You have shown me I did not. I will sit up straight in the third row, and I will think of you every time I do.
 `,

@@ -40,7 +40,7 @@ Duan Wuyi rises from the central chair. He wears the full grey robe of the Censo
 He sets the staff on the floor. It rings.
 “The Azure Cloud Sect is summoned to answer the first and second, to witness to the third, and to be heard on the fourth. The Elder of its Law Hall will speak first.”
 > truth | Watch the Elder rise. | +
-> quiet | Watch Lian Sheng's hands. | ^
+> quiet | Watch Lian Sheng’s hands. | ^
 > inquiry | Watch the delegate of the Alchemy Peak, who is smiling. | ^
 > mercy | Watch Gu, who has gone grey. | ^
 
@@ -52,11 +52,11 @@ Her voice does not waver.
 A murmur goes round the hall. On the benches, three hundred sashes shift.
 +[su] fever_su_confessed | She has said these words before, to sixty-four sleepers in a sick-house. They come easier the second time, and cost more.
 +[su] fever_su_read | She has read eleven years of letters from a town that begged her to stop. She carries them, bound, in her sleeve.
-+[su] assize_a4_told_su | She has looked at her own stamp on a dust-maker's ledger. She does not look away from it now.
++[su] assize_a4_told_su | She has looked at her own stamp on a dust-maker’s ledger. She does not look away from it now.
 > truth | Stand up beside her. | + | npc:SU_ASSEMBLY_STAND
 > mercy | Keep your seat, and keep your eyes on her. | ^
 > inquiry | Watch how the delegates take it. | ^
-> force | Glare at the Alchemy Peak's chair. | ^
+> force | Glare at the Alchemy Peak’s chair. | ^
 
 === asm_d1s3 | Lian Sheng Rises
 Lian Sheng speaks next, from the Azure Cloud’s second chair. She does not stand so much as unfold. She has put on her finest ash-grey robe, and the lamplight in the dome picks out the white at her temples. She bows to the dais.
@@ -76,8 +76,8 @@ You have a list. You have a list in your head and another in your sleeve, in the
 “I do not recall,” says Lian Sheng.
 “Eleven,” you say. “One each spring. They were kept in a drawer in your office. They said: send no more.”
 There is a long silence. A stir in the benches. At the high table, Duan Wuyi turns a page.
-+ fever_pu_resigned | Headman Pu's resignation is read into the record from a letter in your hand.
-+ fever_a3_took_ledger | The dust-seller's ledger lies on the witness table, four hundred names with the dates they began.
++ fever_pu_resigned | Headman Pu’s resignation is read into the record from a letter in your hand.
++ fever_a3_took_ledger | The dust-seller’s ledger lies on the witness table, four hundred names with the dates they began.
 > truth | Press her: did she read them? | + | +asm_pressed_lian
 > force | Place the letters on the table. | ^
 > mercy | Ask whether she ever wanted to stop. | ^
@@ -90,7 +90,7 @@ Her voice is steady and clear.
 A bench in the front row creaks. The old man from the Formation Peak has half risen, his stick raised.
 > truth | Tell her that she was never right to decide for a town. | + | +asm_denied_lian
 > quiet | Wait. Let him speak. | ^
-> inquiry | Ask her how many of the town's thirty-one woke gladly. | ^
+> inquiry | Ask her how many of the town’s thirty-one woke gladly. | ^
 > mercy | Ask what she would say to Su-Su. | ^
 
 === asm_d1s6 | Master Tan
@@ -118,7 +118,7 @@ In the Guesthouse of Nine Moons that evening the Elder sits on her bed with her 
 === hub_asm_witnesses | The Witness Bench
 The second day opens with rain on the dome. The benches are full. Three witnesses may be called, and each will have the length of a candle to speak. On a long table before the dais, the clerks have laid out slips of paper, one for every name the Azure Cloud’s delegation has put forward.
 +[w] asm_w_ye | A cloth satchel hangs from the back of a chair. Xiao Ye sits in it, small and straight, with her father beside her.
-+[w] asm_w_bo | Bo Lan sits in the front row with his mother's pallet beside him. She is propped on cushions and coughing less.
++[w] asm_w_bo | Bo Lan sits in the front row with his mother’s pallet beside him. She is propped on cushions and coughing less.
 +[w] asm_w_pu | Headman Pu sits in a plain brown coat with no badge of office, and his hands do not stop shaking.
 +[w] asm_w_qi | Madam Qi sits very straight, in the cap she has worn for sixty years, with a needle behind her ear.
 +[w] asm_w_sou | Old Sou has been carried up from the vault in a chair, and sits cupping his ear in the aisle.
@@ -148,11 +148,11 @@ Xiao Ye does not come to the witness table. She walks to the centre of the hall,
 “I was nobody for eight months,” she says. Her voice is a child’s, clear and old. “My father took my fare every day and did not know my name.”
 She looks round the dome.
 “The river takes one name for each crossing. It is a fair price, they said. But it took the nearest one that was his, and the nearest was me.”
-+ willow_river_promise | The river's four-syllable name hums in your chest while she speaks.
-+ willow_written | Her name is in a Censor's register, in three scripts, and the clerk beside Hao Lan is turning to it.
++ willow_river_promise | The river’s four-syllable name hums in your chest while she speaks.
++ willow_written | Her name is in a Censor’s register, in three scripts, and the clerk beside Hao Lan is turning to it.
 > truth | Stand beside her. | asm_wye2 | +asm_w_ye
-> mercy | Hold her father's arm. | asm_wye2 | +asm_w_ye
-> quiet | Watch the delegates' faces. | asm_wye2 | +asm_w_ye
+> mercy | Hold her father’s arm. | asm_wye2 | +asm_w_ye
+> quiet | Watch the delegates’ faces. | asm_wye2 | +asm_w_ye
 > inquiry | Ask Hao Lan whether the register is open. | asm_wye2 | +asm_w_ye
 
 === asm_wye2 | What the Child Asked
@@ -170,12 +170,12 @@ Bo Lan stands at the witness table with his hands on the edge and his chin up, a
 “I took a root,” he says. “It had a tag on it that said Not for Sale. I left two stones on the barrow. They called it theft.”
 Behind him, Madam Lan coughs. It is a quieter cough now.
 “My mother has a fever,” he says. “The root helped. A factor kept forty roots a quarter in a granary, and sold them to the Law Hall for a thing you have been calling calm dust. It was my mother’s medicine, and they ground it into powder for people who wanted to forget.”
-+ assize_dust_exposed | The raid on the warehouse behind the dyers' lane is in the record now. He is entered as a witness to it.
++ assize_dust_exposed | The raid on the warehouse behind the dyers’ lane is in the record now. He is entered as a witness to it.
 + assize_fled | He is still a runaway, in the eyes of the court. Duan Wuyi has not issued a warrant, and the Assembly has noticed.
 > truth | Stand beside him. | asm_wbo2 | +asm_w_bo
 > mercy | Fetch his mother a cushion. | asm_wbo2 | +asm_w_bo
-> inquiry | Ask Hao Lan to read the factor's receipt into the record. | asm_wbo2 | +asm_w_bo
-> quiet | Watch Dai Ming's empty seat in the delegates' row. | asm_wbo2 | +asm_w_bo
+> inquiry | Ask Hao Lan to read the factor’s receipt into the record. | asm_wbo2 | +asm_w_bo
+> quiet | Watch Dai Ming’s empty seat in the delegates’ row. | asm_wbo2 | +asm_w_bo
 
 === asm_wbo2 | The Question Bo Lan Asked
 “I would like to ask,” says Bo Lan, “how many people there are in this room whose mother was sick, and who took the cheaper thing.”
@@ -193,9 +193,9 @@ He has no book. He reads from memory.
 He reads the founding of the Azure Cloud Sect, and the dispute, and the petition. He reads the saint’s name. He reads the line that follows. And the page was torn, and the wound was named the Abyss.
 Nobody moves. In the second row, the old man from the Formation Peak has taken off his hat.
 + nine_yuling | You have read the same lines in the bone-lamp. Hearing them aloud, in this room, is a different thing.
-+ nine_su_founder | The Elder's hands are very still. The third name on the petition is hers.
++ nine_su_founder | The Elder’s hands are very still. The third name on the petition is hers.
 > truth | Listen. | asm_wgu2 | +asm_w_gui
-> mercy | Hold the Elder's hand. | asm_wgu2 | +asm_w_gui
+> mercy | Hold the Elder’s hand. | asm_wgu2 | +asm_w_gui
 > quiet | Watch Lian Sheng. | asm_wgu2 | +asm_w_gui
 > inquiry | Watch Duan. | asm_wgu2 | +asm_w_gui
 
@@ -262,7 +262,7 @@ Madam Qi crosses the hall with a bolt of undyed silk over her shoulder. She has 
 She smooths the silk. Thirty feet of undyed thread lie across the table, names in rows.
 “I have unpicked eleven hundred names in sixty years. I would like the Assembly to know that every one of them was asked.”
 + silk_a4_told_qi | She stitched one name for eleven years in a cellar. You know whose.
-+ silk_a1 | Your stitch is in the bolt, a line of fifteen, worked by a dyer's boy's hand over yours.
++ silk_a1 | Your stitch is in the bolt, a line of fifteen, worked by a dyer’s boy’s hand over yours.
 > truth | Take the other end of the cloth. | asm_wqi2 | +asm_w_qi
 > mercy | Fetch her a stool. | asm_wqi2 | +asm_w_qi
 > quiet | Watch her hands. | asm_wqi2 | +asm_w_qi
@@ -297,7 +297,7 @@ Nobody speaks. A thin old woman in the third row has begun, quietly, to say a na
 Then another. Then another. It spreads along the benches, soft, in a hundred small voices, until the dome rings with it. The Assembly of Nine is saying the names of its struck.
 Duan Wuyi sets down his staff. “So entered,” he says, very low.
 > truth | Say a name yourself. | asm_hub_back | +asm_w_hu
-> mercy | Take Captain Hu's arm. | asm_hub_back | +asm_w_hu
+> mercy | Take Captain Hu’s arm. | asm_hub_back | +asm_w_hu
 > quiet | Let them speak. | asm_hub_back | +asm_w_hu
 > inquiry | Watch the high table. | asm_hub_back | +asm_w_hu
 
@@ -310,7 +310,7 @@ A rustle goes through the Censors’ bench.
 + lanterns_mei_joined | You floated a lantern beside hers, for the same name.
 > truth | Stand beside her. | asm_wme2 | +asm_w_mei
 > mercy | Pick up the iron, and hold it for her. | asm_wme2 | +asm_w_mei
-> quiet | Watch Duan Wuyi's face. | asm_wme2 | +asm_w_mei
+> quiet | Watch Duan Wuyi’s face. | asm_wme2 | +asm_w_mei
 > inquiry | Ask Hao Lan what the Censors will do. | asm_wme2 | +asm_w_mei
 
 === asm_wme2 | A Sister
@@ -325,7 +325,7 @@ Mei Qiu does not look at them. She picks up the iron, and sits down on the floor
 > inquiry | Watch the Alchemy Peak. | asm_hub_back | +asm_w_mei
 
 === asm_wwe1 | The Man Who Was Written Back
-Wen Rui rises from the bench near the door. He is small and grey and has no mark on his forehead. He walks to the table with a clerk's walk, and sets down a single sheet. It is a leaf from the Seventh Chancery, with a figure circled in red.
+Wen Rui rises from the bench near the door. He is small and grey and has no mark on his forehead. He walks to the table with a clerk’s walk, and sets down a single sheet. It is a leaf from the Seventh Chancery, with a figure circled in red.
 “I was struck for reporting this,” he says. “A wrong sum. A figure in a ledger that did not match the figure in the book. I was twenty-nine. I was honest.” He lifts his eyes. “I have been a member of the Hollow Lotus for twenty-one years. I have been in rooms where the Concord would hang me.”
 The hall stirs. He holds up his hand.
 “I am here because someone read the Stone, and wrote my name back. I wish to say that I came to ask for nothing. I came to say thank you.”
@@ -333,14 +333,14 @@ The hall stirs. He holds up his hand.
 + pagoda_wen_friend | You told him you would remember his name. You have.
 > truth | Stand and bow to him. | asm_wwe2 | +asm_w_wen
 > mercy | Hold the paper for him. | asm_wwe2 | +asm_w_wen
-> quiet | Watch the Censors' faces. | asm_wwe2 | +asm_w_wen
+> quiet | Watch the Censors’ faces. | asm_wwe2 | +asm_w_wen
 > inquiry | Ask him what the Hollow Lotus wants. | asm_wwe2 | +asm_w_wen
 
 === asm_wwe2 | What the Lotus Wants
 “To be written back,” says Wen Rui. It is simple, and it is the saddest thing in the hall. “That is all. We are not an army. We are not a conspiracy. We are those who were struck, and have not yet decided what to do about it.”
 He looks at Duan Wuyi.
 “Madam Ash, who leads us, was a Censor. She was the best of you. She was struck for refusing to sign a Great Sealing. She walked out of a fire. She is not a threat, Censor-General. She is a witness, as I am, as all of us are.” He bows. “She would like to be heard.”
-A shiver passes round the Censors’ bench. Duan Wuyi's face is unreadable. He sets down his brush.
+A shiver passes round the Censors’ bench. Duan Wuyi’s face is unreadable. He sets down his brush.
 “The Assembly notes the statement,” he says.
 > truth | Thank him. | asm_hub_back | +asm_w_wen
 > mercy | Help him back to his seat. | asm_hub_back | +asm_w_wen
@@ -407,10 +407,10 @@ Duan Wuyi rises. He bows to her. It is the deepest bow you have seen him give.
 The clerks change the candle. The delegates shift on the benches. A servant moves among them with a tray of tea. The dome overhead has gone from grey to a low pale gold, and the rain has stopped.
 Herald Yan strikes the small gong.
 “The Azure Cloud may call its next witness,” he says. His voice cracks only once.
-> truth | Return to the bench. | hub_asm_witnesses
-> quiet | Return to the bench. | hub_asm_witnesses
-> mercy | Return to the bench. | hub_asm_witnesses
-> inquiry | Return to the bench. | hub_asm_witnesses
+> truth | Return to the bench and sit where the clerks can see you. | hub_asm_witnesses
+> quiet | Return to the bench and wait for the candle. | hub_asm_witnesses
+> mercy | Return to the bench beside whoever looks most tired. | hub_asm_witnesses
+> inquiry | Return to the bench and count who has not come back. | hub_asm_witnesses
 
 === asm_d2end | The Third Candle
 The third witness sits down. The candle on the high table burns out. The hall is hushed, and a little bleary, as a theatre is after a long play.
@@ -450,8 +450,8 @@ Lian Sheng lays the register on the table with a flat soft thump. It is a thick 
 “Nine children were seeded with the black lotus by the masters of the Law Hall in the year before the Sealing,” she says. “As a reserve, in case the first failed. Eight were removed from the dormitory on the night of the Sealing, by persons not recorded. The ninth was carried out separately.”
 She taps the line.
 “Withdrawn. Not struck. Not recorded. Not found.”
-She turns. She looks, not at the Elder, but at the witness's bench.
-“She has been among us for six weeks,” says Lian Sheng. “She has read the names in the Law Hall. She has carried the Elder's comb. She has the seed in her chest. I ask the Assembly to look at her left palm.”
+She turns. She looks, not at the Elder, but at the witness’s bench.
+“She has been among us for six weeks,” says Lian Sheng. “She has read the names in the Law Hall. She has carried the Elder’s comb. She has the seed in her chest. I ask the Assembly to look at her left palm.”
 > truth | Hold up your palm. | +
 > force | Close your hand. | ^
 > quiet | Keep it at your side. | ^
@@ -470,13 +470,13 @@ Her voice is perfectly clear.
 > inquiry | Look at the Assembly. | ^
 
 === asm_d3s5 | The Vote
-There is no debate. There cannot be. The motion is put and the delegates rise, one by one, to say their stones. The Sword Peak: Leng Jian stands, and says, "Against." The Beast Peak: Brother Ox, who has put down his egg, says, "Against, and I will fight anyone who says otherwise." The Slate Peak: "Against." The Formation Peak: Master Tan, with his stick: "Against, and a pox on the rest."
-Four against. The Alchemy Peak, with a gracious smile: "For." The Gold Peak: "For." The Jade Peak: "For."
+There is no debate. There cannot be. The motion is put and the delegates rise, one by one, to say their stones. The Sword Peak: Leng Jian stands, and says, “Against.” The Beast Peak: Brother Ox, who has put down his egg, says, “Against, and I will fight anyone who says otherwise.” The Slate Peak: “Against.” The Formation Peak: Master Tan, with his stick: “Against, and a pox on the rest.”
+Four against. The Alchemy Peak, with a gracious smile: “For.” The Gold Peak: “For.” The Jade Peak: “For.”
 Two left. The Cinnabar Peak and the Ash Peak. They have not spoken. They are looking at each other, and at the dais, and at you.
 Lian Sheng is smiling very slightly.
-+ stairs_leng_friend | Leng Jian said 'Against' without being asked, and sat down with his sword across his knees.
++ stairs_leng_friend | Leng Jian said ‘Against’ without being asked, and sat down with his sword across his knees.
 + stairs_ox_friend | Brother Ox rose from his bench with a boiled egg in each hand.
-+ stairs_precedence | The Azure Cloud's chair is in the third row, and the delegates seated around it are not the ones who would have been.
++ stairs_precedence | The Azure Cloud’s chair is in the third row, and the delegates seated around it are not the ones who would have been.
 > truth | Wait. Do not speak. | +
 > quiet | Look at the Cinnabar Peak. | ^
 > force | Look at the Ash Peak. | ^
@@ -521,15 +521,15 @@ Duan Wuyi sets the brush down. “I cannot sign,” he says. His voice is soft, 
 > inquiry | Watch Lian Sheng. | asm_flight1 | +asm_duan_refused
 
 === asm_flight1 | Lian Sheng’s Move
-Lian Sheng closes her eyes. When she opens them there is nothing in them at all. “Then it falls to the Council,” she says. “Under clause twenty. A dissenting Censor-General is replaced by his deputy.” She nods to a grey figure at the Censors' bench. “Inspector Fang. If you would.”
-The thin Censor who has been sitting quietly at Duan's left hand rises, and takes the brush. He is calm and young and wholly unremarkable. He signs.
+Lian Sheng closes her eyes. When she opens them there is nothing in them at all. “Then it falls to the Council,” she says. “Under clause twenty. A dissenting Censor-General is replaced by his deputy.” She nods to a grey figure at the Censors’ bench. “Inspector Fang. If you would.”
+The thin Censor who has been sitting quietly at Duan’s left hand rises, and takes the brush. He is calm and young and wholly unremarkable. He signs.
 It takes four seconds.
-“The Great Sealing is authorised,” he says. “The bearer is to be taken into the Concord's keeping. I ask the Assembly Guard to carry out the order.”
+“The Great Sealing is authorised,” he says. “The bearer is to be taken into the Concord’s keeping. I ask the Assembly Guard to carry out the order.”
 At the doors of the hall, iron boots begin to ring.
 > force | Run for the Elder. | + | +asm_ran
 > quiet | Look for the nearest exit. | ^
 > truth | Stand where you are, and say your name, whatever it is. | ^
-> mercy | Take Gu's hand. | ^
+> mercy | Take Gu’s hand. | ^
 
 === asm_flight2 | Iron Boots
 The Assembly Guard come in through the great doors in two files, forty of them, in grey iron, with halberds. They move with the terrible calm of men who have been told something is necessary. The delegates leap up in confusion. Chairs overturn. Somewhere a woman screams.
@@ -542,13 +542,13 @@ Who can you count on?
 + stairs_leng_friend | Leng Jian has drawn his plain steel sword and is standing in the aisle with it pointed at the floor.
 > truth | Call on those who have already said they stand with you. | asm_flight3 | +asm_called_allies
 > force | Fight your way to the Water Gate. | asm_flight3
-> quiet | Take the Elder's hand, and walk. | asm_flight3
-> deceit | Take the Elder's cloak, and put it round your own shoulders. | asm_flight3
+> quiet | Take the Elder’s hand, and walk. | asm_flight3
+> deceit | Take the Elder’s cloak, and put it round your own shoulders. | asm_flight3
 
 === asm_flight3 | Who Stands
-The hall breaks into pieces. It is the most extraordinary thing you have seen. The Assembly Guard come on in their iron line, and the delegates, who have sat for three days under blue glass, do not break. They stand. The Slate Peak’s old woman steps in front of a halberd. The Beast Peak’s delegate lowers her great bulk across the aisle like a gate. The old man from the Formation Peak plants his stick in the floor and says, loudly, "I won't." Madam Zhu, of the Alchemy Peak, is the only one who runs.
+The hall breaks into pieces. It is the most extraordinary thing you have seen. The Assembly Guard come on in their iron line, and the delegates, who have sat for three days under blue glass, do not break. They stand. The Slate Peak’s old woman steps in front of a halberd. The Beast Peak’s delegate lowers her great bulk across the aisle like a gate. The old man from the Formation Peak plants his stick in the floor and says, loudly, “I won’t.” Madam Zhu, of the Alchemy Peak, is the only one who runs.
 In the confusion, Duan Wuyi is at your elbow.
-"The Water Gate," he says, quietly. "There is a boat. I do not know whose. It has been waiting since the second night." He presses his black ivory king, if you have not already given it to him, into your hand. "Go. I have a rule against stopping you."
+“The Water Gate,” he says, quietly. “There is a boat. I do not know whose. It has been waiting since the second night.” He presses his black ivory king, if you have not already given it to him, into your hand. “Go. I have a rule against stopping you.”
 > truth | Thank him. | asm_flight4 | +asm_duan_helped
 > mercy | Take his hand. | asm_flight4 | +asm_duan_helped
 > quiet | Go. | asm_flight4
@@ -556,11 +556,11 @@ In the confusion, Duan Wuyi is at your elbow.
 
 === asm_flight4 | The Water Gate
 The Water Gate is a pair of white towers with a chain of lanterns between them, and below them the river runs black and fast. A narrow boat with a tarred hull waits at the steps, a mast folded, a pole in the hands of a woman in a sea-coat the colour of tar.
-"Took your time," says Yue Zhaoning, unsmiling. She holds out a hand.
+“Took your time,” says Yue Zhaoning, unsmiling. She holds out a hand.
 + silk_yue_owes | She owes you a boat. She is making it very clear that she means this one.
 + silk_yue_favour | You owe her a favour. She has not yet said what it is. She seems to be about to.
 + silk_yue_wary | She remembers that you promised to break her boat. She has brought it anyway.
-"I have room for six," she says. "There are seven of you. Somebody can stay and be arrested, or somebody can swim."
+“I have room for six,” she says. “There are seven of you. Somebody can stay and be arrested, or somebody can swim.”
 > truth | Count heads aloud. | +
 > mercy | Hand the Elder aboard first. | ^
 > quiet | Look at who has come. | ^
@@ -571,16 +571,16 @@ It is a ridiculous boat. It sits low in the water with eight aboard: you, the El
 Duan Wuyi is not aboard. He is standing on the steps of the Water Gate with his staff in his hand and his hat askew, calmly in front of the line of Guards, and as the boat slides out into the stream he bows to you, in the old courteous way of the Censors.
 Then the river takes you, and the white towers shrink, and the shouting dwindles to a sound like gulls.
 > truth | Watch him until he is gone. | asm_close | +asm_fled
-> mercy | Take the Elder's hand. | asm_close | +asm_fled
+> mercy | Take the Elder’s hand. | asm_close | +asm_fled
 > quiet | Look at the water. | asm_close | +asm_fled
 > inquiry | Ask Yue Zhaoning where the river goes. | asm_close | +asm_fled
 
 === asm_close | Downstream
-The current is strong, and Yue Zhaoning poles with the easy rhythm of someone who has run this reach in the dark a hundred times. The city's lamps fall behind you. The sky overhead is the colour of slate, and then of ash, and then of the first stars.
+The current is strong, and Yue Zhaoning poles with the easy rhythm of someone who has run this reach in the dark a hundred times. The city’s lamps fall behind you. The sky overhead is the colour of slate, and then of ash, and then of the first stars.
 +[who] asm_duan_helped | Duan Wuyi bowed on the Water Gate steps, and stood in front of forty halberds with his hat askew.
 +[who] asm_duan_refused | Duan Wuyi laid down his brush and said that he had a rule against it.
 +[who] asm_w_mei | Mei Qiu sits in the stern with her back straight and her face wet, and will not say why.
-+[who] asm_w_hu | Captain Hu's Watch held the north door for eleven minutes before they were told to stop.
++[who] asm_w_hu | Captain Hu’s Watch held the north door for eleven minutes before they were told to stop.
 +[who] asm_called_allies | Those who had stood with you stood in the aisle with their eggs and sticks and swords, and bought you the time.
 +[who] asm_ran | You ran. No one has called it cowardice, and no one needs to.
 +[lian] asm_pressed_lian | You made Lian Sheng admit that she had read the letters. It did not stop her.

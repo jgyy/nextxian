@@ -649,7 +649,7 @@ warm: I think Yu Ling wrote that confession to be read by a bureaucrat. Someone 
 devoted: I have been trying to decide whether I forgive them. It occurs to me that it is not mine to forgive. It is the child’s. I should like very much to ask her.
 `,
   remarks: String.raw`
-% tomb_itgel_later | since:tomb_keeper>=3 | yue | The old woman at the tomb sent a pot. Honey. It has a note: for the Ninth. I have not told her that you will not eat it. I am keeping it for you. I am not eating it either.
+% tomb_itgel_later | since:tomb_keeper>=3 & bond:yue>=-100 | yue | The old woman at the tomb sent a pot. Honey. It has a note: for the Ninth. I have not told her that you will not eat it. I am keeping it for you. I am not eating it either.
 % tomb_spare_later | since:b4q_tomb>=6 | hao | I have started to write the First Spare’s name on everything. It is a habit. I have no name for her. I write a gap. It is the most accurate thing I have ever put on paper.
 `,
 }
