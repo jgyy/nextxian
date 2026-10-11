@@ -4,6 +4,7 @@ import { choose, createGame, getChoices, getScene } from "@/engine/game";
 import { REALMS } from "@/engine/cultivation";
 import { FORCE_REALM_BY_CHAPTER } from "@/story/realm-gates";
 import type { GameState } from "@/engine/types";
+import { DEFAULT_HERO, type Hero } from "@/engine/hero";
 
 /** Everything the player can be shown as text, with where it sits. */
 function shownText(): { where: string; text: string; kind: "title" | "label" | "prose" }[] {
@@ -135,5 +136,48 @@ describe("companions only speak once they are met", () => {
     const broken = { ...story, remarks: story.remarks!.map((r) => (r.id === remark.id ? { ...r, when: r.when.filter((c) => c.kind !== "bond") } : r)) };
     const found = auditStory(broken).filter((i) => i.kind === "unmet-speaker");
     expect(found.map((i) => i.where)).toEqual([`remark "skiff_nomin_later"`]);
+  });
+});
+
+describe("spacing the whole story agrees on", () => {
+  it("never leaves two spaces inside a line", () => {
+    const texts = shownText();
+    expect(texts.filter((t) => /\S {2,}\S/.test(t.text)).map((t) => t.where)).toEqual([]);
+  });
+});
+
+describe("the hero wears what they chose", () => {
+  const dress = (attire: Hero["attire"]) => ({ ...DEFAULT_HERO, attire });
+
+  it("puts sandals on the patched hemp and a hat on nobody but the traveller, wherever the story says boots and hats", async () => {
+    const { personalise } = await import("@/engine/hero");
+    expect(personalise("the crunch of your boots, and Your boots ring", dress("rags"))).toBe("the crunch of your sandals, and Your sandals ring");
+    expect(personalise("it fell from your boot", dress("rags"))).toBe("it fell from your sandal");
+    expect(personalise("under your boots", dress("armour"))).toBe("under your boots");
+    expect(personalise("Take your hat off.", dress("traveller"))).toBe("Take your hat off.");
+    expect(personalise("Take your hat off.", dress("rags"))).toBe("Take your headcloth off.");
+    expect(personalise("Take your hat off.", dress("scholar"))).toBe("Take your cap off.");
+  });
+
+  it("finds the story’s boots and hats: 21 of one and 3 of the other, which is what the fix is for", () => {
+    const text = shownText().map((t) => t.text).join("\n");
+    expect((text.match(/\b[Yy]our boots?\b/g) ?? []).length).toBeGreaterThanOrEqual(20);
+    expect((text.match(/\b[Yy]our hat\b/g) ?? []).length).toBeGreaterThanOrEqual(3);
+  });
+});
+
+describe("the story graph", () => {
+  it("lets a player reach every scene from the opening", () => {
+    const seen = new Set<string>([story.startSceneId]);
+    const queue = [story.startSceneId];
+    while (queue.length) {
+      for (const c of story.scenes[queue.pop()!].choices) {
+        if (!seen.has(c.next)) {
+          seen.add(c.next);
+          queue.push(c.next);
+        }
+      }
+    }
+    expect(Object.keys(story.scenes).filter((id) => !seen.has(id))).toEqual([]);
   });
 });

@@ -190,6 +190,10 @@ const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
  * `{name}` become the hero's own; a capital first letter (`{They}`) capitalises the result. The title "the Wanderer" becomes the
  * hero's name once the hero has one, and the bare vocative "Wanderer" does too. A hero who kept the default name changes nothing.
  */
+/** What the story calls the hero’s footwear and headgear when it says “boots” or “hat”: the patched hemp wears straw sandals, and nobody but the traveller owns the bamboo hat. */
+const FOOTWEAR: Record<Attire, string> = { rags: "sandal", traveller: "boot", scholar: "boot", silk: "boot", armour: "boot" };
+const HEADGEAR: Record<Attire, string> = { rags: "headcloth", traveller: "hat", scholar: "cap", silk: "hood", armour: "cap" };
+
 export function personalise(text: string, hero: Hero): string {
   const p = PRONOUNS[hero.gender];
   const slots: Record<string, string> = { ...p, name: hero.name };
@@ -199,6 +203,10 @@ export function personalise(text: string, hero: Hero): string {
     if (value === undefined) return whole;
     return key.charAt(0) === key.charAt(0).toUpperCase() && key.charAt(0) !== key.charAt(0).toLowerCase() ? cap(value) : value;
   });
+  // The hero wears what they chose: the story’s boots and hats are whatever that dress has on its feet and its head.
+  out = out
+    .replace(/\b([Yy])our boot(s?)\b/g, (_m, y: string, s: string) => `${y}our ${FOOTWEAR[hero.attire]}${s}`)
+    .replace(/\b([Yy])our hat\b/g, (_m, y: string) => `${y}our ${HEADGEAR[hero.attire]}`);
   if (hero.name !== DEFAULT_NAME) {
     out = out.replace(/\b(?:the|The) Wanderer\b/g, hero.name).replace(/\b([Aa]) Wanderer\b/g, "$1 wanderer").replace(/\bWanderer\b/g, hero.name);
   }

@@ -46,7 +46,7 @@ const RECKONINGS: Reckoning[] = [
       { label: "Buy dried rice and tea for the road", price: 4 },
       { label: "Buy a second pair of straw sandals and a rain-cape", price: 6 },
     ],
-    hand: "Leave a share of your purse in the almoner’s tin, for the next pupil who goes down without one.",
+    hand: "Leave a share of your purse in the almoner’s tin, for the next pupil who goes down without one",
   },
   {
     id: "reckoning_coast",
@@ -70,7 +70,7 @@ const RECKONINGS: Reckoning[] = [
       { label: "Buy salt-fish and a second blanket from the barge’s cook", price: 6 },
       { label: "Pay the barge-master for a berth on the dry side of the hold", price: 10 },
     ],
-    hand: "Put a share of your purse into the company’s strongbox, for the next landing where the Elder has to pay.",
+    hand: "Put a share of your purse into the company’s strongbox, for the next landing where the Elder has to pay",
   },
   {
     id: "reckoning_grass",
@@ -94,7 +94,7 @@ const RECKONINGS: Reckoning[] = [
       { label: "Buy a felt coat and a pair of boots from the innkeeper", price: 10 },
       { label: "Buy a sack of dried curd and a skin of mare’s milk", price: 8 },
     ],
-    hand: "Pay the stable-boy’s wages for the company’s ponies out of your own purse.",
+    hand: "Pay the stable-boy’s wages for the company’s ponies out of your own purse",
   },
   {
     id: "reckoning_glass",
@@ -118,7 +118,7 @@ const RECKONINGS: Reckoning[] = [
       { label: "Buy a pair of glare-glasses and a length of shade-cloth", price: 12 },
       { label: "Buy a skiff-wright’s spare runner and a coil of rope", price: 14 },
     ],
-    hand: "Pay for the company’s share of the skiff-hire out of your own purse.",
+    hand: "Pay for the company’s share of the skiff-hire out of your own purse",
   },
   {
     id: "reckoning_home",
@@ -142,7 +142,7 @@ const RECKONINGS: Reckoning[] = [
       { label: "Buy tea and a warm blanket from the milestone’s stall", price: 10 },
       { label: "Buy a lantern and oil for the last climb", price: 8 },
     ],
-    hand: "Leave a share of your purse in the tin by the milestone, for travellers who come home with less than you.",
+    hand: "Leave a share of your purse in the tin by the milestone, for travellers who come home with less than you",
   },
 ];
 
@@ -179,7 +179,7 @@ export const reckoningScenes: Scene[] = RECKONINGS.map((r) => {
     ),
     {
       id: "share",
-      label: `${r.hand} (10 spirit stones.)`,
+      label: `${r.hand} (10 spirit stones).`,
       tone: "mercy",
       next: r.gate,
       requires: [{ kind: "wealth", min: 10 }],
