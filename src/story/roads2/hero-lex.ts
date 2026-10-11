@@ -15,9 +15,9 @@ export const DRESS: Record<Attire, string[]> = {
     "{Kname} sees mended hemp and assumes you cannot pay. It is a mistake you are free to correct or to use.",
   ],
   traveller: [
-    "{Kname} reads the salt and mud in your oiled cloak and asks only which road you came by. A traveller is the one guest {place} never turns away.",
+    "{Kname} reads the mud and road-dust in your oiled cloak and asks only which road you came by. A traveller is the one guest {place} never turns away.",
     "Your travelling cloak says you will be gone by morning. {Kname} treats you with the cheerful carelessness reserved for the passing.",
-    "{Kname} sniffs your cloak, names the province it has seen rain in, and is right. It makes the rest of your story harder to improve.",
+    "{Kname} sniffs your cloak, names the province your road-dust came from, and is right. It makes the rest of your story harder to improve.",
     "A traveller’s pack gets a traveller’s welcome here: warm water, a bowl of whatever is on, and one honest question.",
   ],
   scholar: [
@@ -95,7 +95,7 @@ export const TRADE: Record<Background, string[]> = {
     "You haggle over a cup of tea out of habit, and {kname} loves it. For a quarter-hour {place} feels like a market again.",
   ],
   farmer: [
-    "You glance at the sky, then at the ground, then at the sky again. {Kname} says, to nobody, that rain is coming, and you say it will hold off till dusk.",
+    "You glance at the sky, then at the ground, then at the sky again. {Kname} says, to nobody, that the wind is turning, and you say it will hold off till dusk.",
     "{Kname} sees your hands. Paddy hands are broad and cracked at the knuckle, and no keeper of {place} has ever lied to a pair.",
     "You fix a loose stake by the door without being asked. The people of {place} watch as though you had performed a minor miracle.",
     "Somebody at {place} asks where you farmed. Their face changes when you say, and for once nobody is working out your price.",

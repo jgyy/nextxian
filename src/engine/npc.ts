@@ -193,7 +193,7 @@ export function reactToScenario(
 
 /** What a condition may read. Everything past the first five fields is optional so older callers and saves still work. */
 export type ConditionState = Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones"> &
-  Partial<Pick<GameState, "realm" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero">>;
+  Partial<Pick<GameState, "realm" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero" | "wealth" | "items" | "assets" | "speed" | "unfed">>;
 
 /** True when every condition holds. An empty or missing list always holds. */
 export function conditionsHold(conditions: Condition[] | undefined, state: ConditionState): boolean {
@@ -255,6 +255,27 @@ export function conditionsHold(conditions: Condition[] | undefined, state: Condi
         const v = state.hero ? standingOf(state.hero, state.realm ?? 0) : 0;
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
       }
+      case "wealth": {
+        const v = state.wealth ?? 0;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "item": {
+        const v = state.items?.[c.item] ?? 0;
+        // With only a maximum, zero is allowed: `max: 0` means “carries none”. Otherwise one is the least that counts.
+        return v >= (c.min ?? (c.max === undefined ? 1 : 0)) && (c.max === undefined || v <= c.max);
+      }
+      case "asset":
+        return (state.assets ?? []).includes(c.asset) === (c.is ?? true);
+      case "holdings": {
+        const v = (state.assets ?? []).length;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "speed": {
+        const v = state.speed ?? 100;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "unfed":
+        return (state.unfed ?? false) === (c.is ?? true);
       case "count": {
         const v = Object.entries(state.flags).filter(([flag, on]) => on && flag.startsWith(c.prefix)).length;
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);

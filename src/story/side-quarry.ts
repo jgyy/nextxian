@@ -198,8 +198,8 @@ export const quarryScenes: Scene[] = [
     choices: [
       { id: "drink_the_spring", label: "Kneel by the basin and drink from your cupped hands, slowly.", tone: "quiet", effects: [{ kind: "addStat", stat: "qi", amount: 2 }], next: "quarry_blind_cutter" },
       { id: "count_the_coins", label: "Count the coins on the bottom of the basin, and note their ages.", tone: "inquiry", next: "quarry_blind_cutter" },
-      { id: "add_coin_for_mengjiao", label: "Drop a coin of your own into the basin, and say a name as it sinks.", tone: "mercy", next: "quarry_blind_cutter" },
-      { id: "take_one_coin", label: "Fish out the newest coin from the bottom, and slip it into your sleeve.", tone: "deceit", next: "quarry_blind_cutter" },
+      { id: "add_coin_for_mengjiao", label: "Drop a coin of your own into the basin, and say a name as it sinks.", tone: "mercy", next: "quarry_blind_cutter", effects: [{ kind: "addWealth", amount: -1 }], requires: [{ kind: "wealth", min: 1 }], lockedHint: "You need 1 spirit stone." },
+      { id: "take_one_coin", label: "Fish out the newest coin from the bottom, and slip it into your sleeve.", tone: "deceit", next: "quarry_blind_cutter", effects: [{ kind: "addWealth", amount: 1 }, { kind: "setFlag", flag: "took_basin_coin" }], requires: [{ kind: "flag", flag: "took_basin_coin", is: false }], lockedHint: "You have already done this." },
     ],
   },
   {
@@ -241,7 +241,7 @@ export const quarryScenes: Scene[] = [
       { id: "keep_chip_token", label: "Keep the chip in your palm as a token, and promise to return it to the vein.", tone: "mercy", next: "quarry_return" },
       { id: "study_chip_light", label: "Hold the chip up to the lamp, and study how the green moves through it.", tone: "inquiry", next: "quarry_return" },
       { id: "leave_chip_behind", label: "Set the chip down on the bench, exactly where you found the chisel.", tone: "quiet", next: "quarry_return" },
-      { id: "sell_chip_to_law", label: "Tell Wei that the Law Hall will pay for every chip the mountain sheds, and keep the coins.", tone: "deceit", next: "quarry_return" },
+      { id: "sell_chip_to_law", label: "Tell Wei that the Law Hall will pay for every chip the mountain sheds, and keep the coins.", tone: "deceit", next: "quarry_return", effects: [{ kind: "addWealth", amount: 4 }, { kind: "setFlag", flag: "sold_quarry_chips" }], requires: [{ kind: "flag", flag: "sold_quarry_chips", is: false }], lockedHint: "You have already done this." },
     ],
   },
   {

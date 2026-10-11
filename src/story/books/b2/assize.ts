@@ -293,7 +293,7 @@ A foreman moves among them with a ledger, writing. Each time he passes a grinder
 > inquiry | Memorise the foreman’s face, the stool, the cup, the ledger. | assize_a4s4
 
 === assize_a4s4 | The Foreman’s Ledger
-The foreman goes into the back room, and the door does not quite close. You are through the window and across the floor before you have thought about it, a mortal’s quickness and a seed’s luck. The grinders do not look up. A girl of nine, at the end of the second table, opens her mouth and says one word, quietly: “Thank you.” She means, for not being loud.
+The foreman goes into the back room, and the door does not quite close. You are through the window and across the floor before you have thought about it, a thief’s quickness and a seed’s luck. The grinders do not look up. A girl of nine, at the end of the second table, opens her mouth and says one word, quietly: “Thank you.” She means, for not being loud.
 The foreman’s ledger lies open on a stool. You read it standing.
 Dai Ming’s name is in it. So is the magistrate’s, and the Concord’s river-warden, and at the bottom of every page, in a tidy hand, a stamp: Azure Cloud Sect, Law Hall, Office of the Registrar.
 > truth | Take the ledger, and walk out. | assize_a4s5

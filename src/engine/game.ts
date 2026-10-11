@@ -1,4 +1,5 @@
 import { DEFAULT_HERO, HERO_FIELDS, personalise, realmBandFor, startFor, type Hero } from "./hero";
+import { applyAid, cultivationSpeed, giveItem, isUnfed, payday, PAYDAY_EVERY, scaled, startingWealth, takeItem, tidy } from "./economy";
 import { applyStrain, gainCultivation, MASTERY_GAIN, MASTERY_GAP, realmShortfall, realmSurplus, TONE_GAIN } from "./cultivation";
 import {
   conditionsHold,
@@ -89,6 +90,11 @@ export function createGame(story: Story, hero: Hero = DEFAULT_HERO): GameState {
     cultivation: 0,
     realm: 0,
     bonds: {},
+    wealth: startingWealth(hero),
+    items: {},
+    assets: [],
+    speed: 100,
+    unfed: false,
     decisions: 0,
     flagAt: {},
     remarked: [],
@@ -97,7 +103,14 @@ export function createGame(story: Story, hero: Hero = DEFAULT_HERO): GameState {
     log: [],
     visited: [],
   };
-  return enterScene(story, empty, getScene(story, story.startSceneId));
+  return enterScene(story, settle(story, empty), getScene(story, story.startSceneId));
+}
+
+/** Works out the numbers that depend on everything the hero has: cultivation speed and whether they are Unfed. */
+export function settle(story: Story, state: GameState): GameState {
+  const speed = cultivationSpeed(story, state);
+  const unfed = isUnfed(story, state);
+  return speed === state.speed && unfed === state.unfed ? state : { ...state, speed, unfed };
 }
 
 /**
@@ -128,7 +141,8 @@ export function enterScene(story: Story, state: GameState, scene: Scene): GameSt
   return { ...state, sceneId: scene.id, log, visited: [...state.visited, scene.id] };
 }
 
-export function applyEffects(state: GameState, effects: Effect[] = []): GameState {
+/** Applies a choice's effects. `speed` is the hero's cultivation speed in percent; cultivation points they earn are scaled by it. */
+export function applyEffects(state: GameState, effects: Effect[] = [], speed = 100): GameState {
   return effects.reduce<GameState>((s, effect) => {
     switch (effect.kind) {
       case "setFlag": {
@@ -149,7 +163,17 @@ export function applyEffects(state: GameState, effects: Effect[] = []): GameStat
         return { ...s, stats: { ...s.stats, [effect.stat]: value } };
       }
       case "addCultivation":
-        return { ...s, cultivation: s.cultivation + effect.amount };
+        return { ...s, cultivation: tidy(s.cultivation + scaled(effect.amount, speed)) };
+      case "addWealth":
+        return { ...s, wealth: Math.max(0, s.wealth + effect.amount) };
+      case "giveItem":
+        return { ...s, items: giveItem(s.items, effect.item, effect.count) };
+      case "takeItem":
+        return { ...s, items: takeItem(s.items, effect.item, effect.count) };
+      case "grantAsset":
+        return s.assets.includes(effect.asset) ? s : { ...s, assets: [...s.assets, effect.asset] };
+      case "loseAsset":
+        return { ...s, assets: s.assets.filter((a) => a !== effect.asset) };
       case "addNpc": {
         const value = clamp(s.npc[effect.metric] + effect.amount, NPC_RANGE[effect.metric]);
         return { ...s, npc: { ...s.npc, [effect.metric]: value } };
@@ -200,18 +224,33 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
     spoke = true;
   }
 
-  next = applyEffects(next, choice.effects);
+  // Speed is read after the reply and before the effects: a tool bought in this choice quickens the next, not this one.
+  const speed = cultivationSpeed(story, next);
+  next = applyEffects(next, choice.effects, speed);
   const shortfall = realmShortfall(state.realm, choice.needsRealm);
   if (shortfall > 0) next = applyStrain(next, shortfall);
   const mastery = realmSurplus(state.realm, choice.needsRealm) >= MASTERY_GAP ? MASTERY_GAIN : 0;
   // Walking back to a scene already seen teaches nothing, so shuttling between two hubs cannot farm cultivation.
   const fresh = !state.visited.includes(choice.next);
-  next = gainCultivation(next, (fresh ? TONE_GAIN[choice.tone] : 0) + mastery);
+  next = gainCultivation(next, scaled((fresh ? TONE_GAIN[choice.tone] : 0) + mastery, speed));
+  next = applyAid(story, next);
+  if (next.decisions % PAYDAY_EVERY === 0) next = payday(story, next);
+  next = noticeSpeed(state, next, story);
   const beforeAttitude = next.log.length;
   next = noticeAttitude(story, state, next);
   spoke = spoke || next.log.length > beforeAttitude;
-  const entered = enterScene(story, next, getScene(story, choice.next));
+  const entered = enterScene(story, settle(story, next), getScene(story, choice.next));
   return spoke ? entered : remark(story, entered);
+}
+
+/** When a purchase, a lease, a breakthrough or a lean payday changes how fast the hero cultivates, the log says so. */
+function noticeSpeed(before: GameState, after: GameState, story: Story): GameState {
+  const was = before.speed;
+  const now = cultivationSpeed(story, after);
+  if (now === was) return after;
+  const change = now - was;
+  const text = `Your cultivation now runs at ${now}% of the plain rate (${change > 0 ? "+" : "−"}${Math.abs(change)}).`;
+  return { ...after, log: [...after.log, { kind: "ledger", text }] };
 }
 
 /** One NPC scenario: the line, the change in feeling, and what they remember. A companion's scenario moves their bond. */

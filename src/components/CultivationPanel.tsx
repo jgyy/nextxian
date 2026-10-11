@@ -27,7 +27,7 @@ export function CultivationPanel({ game }: { game: Cultivation }) {
       <p className="muted realm-note">
         {toNext === undefined
           ? "You stand at the top of the ladder."
-          : `${game.cultivation} points. ${toNext} more to reach ${REALMS[game.realm + 1].name}.`}
+          : `${Math.floor(game.cultivation)} points. ${Math.ceil(toNext)} more to reach ${REALMS[game.realm + 1].name}.`}
       </p>
       {blocked && (
         <p className="heart-demon" role="status">

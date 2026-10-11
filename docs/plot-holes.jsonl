@@ -78,3 +78,11 @@
 {"cat": "canon", "where": "chapter-8, rumours, b3/tidedoor, b3/fifth, b3/mourning", "note": "The player’s weapon is a blade in ten scenes and a sword in five. Unified to blade.", "n": 5}
 {"cat": "hero", "where": "src/story/books/b6/sealing.ts", "note": "“She puts her silver comb in your braid.” The hero may have no braid. Now “into your hair”.", "n": 1}
 {"cat": "continuity", "where": "src/story/books/b4/{caravan,tomb}, b5/{skiff,gale,tithe,furnace,tiers}, b6/sealing", "note": "Eight remarks spoken by Hao Lan, Yue, Hanming, Ren and Lin Yuan with no condition that they had been met, so a player who skipped their introduction heard them anyway. `auditStory` now has an unmet-speaker check.", "n": 8}
+{"cat": "repetition", "where": "src/story/roads/build.ts, roads/lexicon-extra.ts", "note": "A menu line shown in two scenes of one walk of a Book One road. The picker stepped by five through pools of five.", "n": 858}
+{"cat": "repetition", "where": "src/story/roads/build.ts, roads/lexicon-extra.ts", "note": "A second paragraph shown in two scenes of one walk of a Book One road. The pool held four lines and the picker stepped by five.", "n": 144}
+{"cat": "repetition", "where": "src/story/roads2/build.ts", "note": "A menu line shown in two scenes of one walk of a realm road.", "n": 676}
+{"cat": "setting", "where": "src/story/roads2/hero-lex.ts, roads/lexicon.ts, roads2/lexicon.ts", "note": "Rain and a pond in roads on the Glass Sea, which has no water (12 + 8 + 3).", "n": 23}
+{"cat": "realm", "where": "src/story/books/b2/{censors,stairs,assize}.ts", "note": "The hero called a mortal in Book Two, where they are at least a Foundation Builder.", "n": 3}
+{"cat": "hero", "where": "src/engine/hero.ts", "note": "“Your boots” for a hero who chose patched hemp and straw sandals (21), and “your hat” for a hero with no hat (3). `personalise` now dresses the hero as they chose.", "n": 24}
+{"cat": "economy", "where": "src/story/side-{village,herb-market,pavilion,healer,lantern-stair,sister-shrine,bell-foundry,quarry}.ts", "note": "A purchase, bet, bribe or offering the choice narrated and the purse never felt. Each now costs or pays what it says.", "n": 14}
+{"cat": "typography", "where": "src/story/books/b5/skiff.ts", "note": "Two spaces between sentences.", "n": 1}

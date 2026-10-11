@@ -9,6 +9,8 @@ flowchart LR
     SD["side-*.ts<br/>twelve side paths"]
     RD["roads/<br/>forty Book One side roads, 1,010 scenes"]
     R2["roads2/<br/>forty realm roads, 1,020 scenes"]
+    FR["fortune/<br/>forty Fortune Roads, 1,020 scenes,<br/>each pricing its goods, wages and lease"]
+    EC["economy/<br/>five reckonings, seven ending epilogues,<br/>remarks on the purse and the pack"]
     HE["hero/<br/>Elder’s asides, gate echoes, companion remarks"]
     RG["realm-gates.ts<br/>force asks a realm in Book One"]
     NPC["npc/elder-su*.ts<br/>98 scenarios, realm memories"]
@@ -18,6 +20,7 @@ flowchart LR
     N["npc.ts<br/>tierFor / moodFor / respectTierFor / mannerOf / reactToScenario"]
     TN["tone.ts<br/>six tones and their names"]
     CU["cultivation.ts<br/>eight realms, gains, heart demon"]
+    EO["economy.ts<br/>purse, pack, holdings, speed,<br/>payday, breakthrough pills"]
     HR["hero.ts<br/>the character, pronouns, starting numbers, standing"]
     V["validate.ts<br/>validateStory: 200-word scene cap, four choices, headings"]
     SV["save.ts<br/>restoreGame"]
@@ -32,13 +35,16 @@ flowchart LR
     NP["NpcPanel.tsx<br/>portrait, mood, her read of you"]
     SP["StatsPanel.tsx<br/>stats and recent decisions"]
     CP["CultivationPanel.tsx<br/>realm, progress, ladder"]
+    PP["PursePanel.tsx<br/>stones, speed by part, pack, holdings"]
   end
-  C & SD & RD & R2 & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
   G --> N
   G --> TN
   G --> CU
+  G --> EO
+  EO --> CU
   V -. checked in tests .-> S
   V --> W
   G --> GV
@@ -46,7 +52,7 @@ flowchart LR
   GV --> SV
   GV --> CR
   CR -->|Hero| G
-  GV --> NP & SP & CP & HP
+  GV --> NP & SP & CP & HP & PP
   GV -->|localStorage save| Storage[("Browser storage")]
 ```
 
@@ -324,9 +330,83 @@ flowchart LR
 
 The first eleven chapters used to ask nothing of the realm. From the third chapter on every forceful choice now asks the realm of its chapter (`realm-gates.ts`): Qi Condensation in Chapters 3 and 4, Foundation Establishment from 5 to 11. A player below it can try, and pays; a player two realms above it does the same thing with ease and learns from it. A player who forces every door can reach Book Two still at Qi Condensation, where a patient one is a Foundation Builder.
 
+## Wealth, pack, holdings and speed
+
+Cultivation is no longer the only thing the hero carries. The purse (spirit stones), the pack (items by id), the holdings (assets by id) and the cultivation speed are all part of `GameState`, all saved, and all readable by the story as conditions (`wealth`, `item`, `asset`, `holdings`, `speed`, `unfed`) and writable as effects (`addWealth`, `giveItem`, `takeItem`, `grantAsset`, `loseAsset`). `src/engine/economy.ts` holds the rules, and `Story.items`, `Story.assets` and `Story.leavesSect` hold the data.
+
+```mermaid
+flowchart TD
+  C["choose(choice)"] --> R["Elder and companion reply"]
+  R --> SP["speed = cultivationSpeed(state)<br/>plain 100 + trade + tools + holdings − Unfed"]
+  SP --> FX["effects: stones, pack, holdings,<br/>cultivation points × speed"]
+  FX --> G["tone gain × speed, then strain and mastery"]
+  G --> AID{"within 85% of the next realm<br/>and carrying its pill?"}
+  AID -->|yes| BR["eat the pill, break through"]
+  AID -->|no| PD
+  BR --> PD{"every 8th decision?"}
+  PD -->|yes| PAY["payday: stipend or living cost,<br/>holdings pay and cost"]
+  PD -->|no| NS
+  PAY --> NS["say so if the speed changed"]
+  NS --> SETTLE["settle: store speed and Unfed"]
+```
+
+### The numbers
+
+| Part | Rule |
+| --- | --- |
+| Starting purse | papers (outcast 3, commoner 8, gentry 24, noble 60) plus trade (trader’s runner +12, herbalist and levy deserter +4, paddy hand +3, copyist +2, orphan 0) |
+| Payday | every 8 decisions |
+| Stipend | on the mountain, until the hero has seen `departure_dawn`: 1 + the realm, per payday |
+| Cost of living | after that: 0, 0, 1, 1, 2, 2, 3, 3 stones by realm. A hero whose purse is below it is **Unfed** |
+| Speed | 100 + trade aptitude (copyist +5, orphan +3, herbalist +2) + each carried tool, relic, scripture, material or token that has reached its realm + each holding that has reached its realm − 20 if Unfed. Held between 50 and 250. It scales every cultivation point a choice earns |
+| Breakthrough pill | eaten when the hero’s points reach 85% of the next realm, if they carry a pill made for that realm and no heart demon holds them back |
+| Holding | pays its income and costs its upkeep on each payday. If the purse cannot meet the upkeep, the holding is taken back |
+| Price tag | a choice that moves stones shows “Costs N” or “Earns N” before it is picked |
+
+Nothing is a lock. A hero with no purse, no pack and no holding cultivates at the plain rate, or at four fifths of it once they are Unfed. What the economy buys is speed, and a pill is a door held open for a hero who was already reaching.
+
+### What the validator asks
+
+`validateEconomy` (in `validate.ts`) fails the build when a choice spends without requiring the money, hands over an item it does not require the hero to carry, takes on a holding it does not require the hero to lack (or gives one up it does not require them to hold), names an item or an asset that does not exist, moves more than 400 stones, or defines a holding that costs more than it pays. A test also fails if any choice that earns stones can be repeated.
+
+## Fortune roads
+
+Ten more waysides, one at each of ten places the main line stops: the foot of the gate stair, the almonry below the Law Hall, the merit exchange by the sutra door, the night market on the bell steps, the departure sale on the last night, the clerks’ bazaar under the Assembly dome, the Tidewall quays, the caravan ground at the edge of the grass, the salvage yards on the glass shore, and the fair at the foot of the mountain. Each has four roads of 25 scenes, and every road writes its own twenty situations, three hidden scenes and closing paragraph (`fortune/specs-*.ts`).
+
+A road is priced by its realm *R* (1 to 6) and its place in the wayside: a base price of 6 + 4*R* + slot, a wage of 3 + 2*R*, and a lease at four times the base. Each road sells one good (a pill, a tool, a relic, a scripture, a material or a token) and leases one holding. Exactly one road in each wayside sells a pill for the realm after the road’s.
+
+```mermaid
+flowchart TD
+  E["entry<br/>reads dress, papers, realm"] --> A0["approach 1: trade"]
+  E --> A1["approach 2: labour"]
+  E --> A2["approach 3: barter, needs R"]
+  E --> A3["approach 4: invest, barred below R"]
+  A0 -->|"scene 2"| BUY["buy the goods, or find the flaw (Insight 14) and pay less<br/>a pill is sold only to realm R or above"]
+  A1 -->|"scene 2"| WORK["a day’s wage, once"]
+  A1 -->|"scene 4"| RISKY["the job a mortal cannot do: three days’ pay, needs R"]
+  A1 -->|"scene 5"| KIND["take the goods as wages"]
+  A2 -->|"scene 3"| BRIBE["pay to look away: +2 Insight"]
+  A2 -->|"scene 5, Insight 12"| HID["hidden route: the goods, free"]
+  A3 -->|"scene 2"| SHARE["buy a share of the books"]
+  A3 -->|"scene 5"| LEASE["the lease: full price, or cut by a share;<br/>asks realm R, never twice"]
+  BUY & WORK & RISKY & KIND & BRIBE & HID & SHARE & LEASE --> RET["way back: report to the Elder,<br/>sell the goods or the lease for 60%"]
+```
+
+At the crisis of every approach the hero can also settle a debt for half the base price, show the goods they carry, draw on their cultivation (needs *R*) or reach past it (needs *R*+1, and costs cultivation, qi and the Elder’s respect below that). The Elder’s report reads the purse, the pack, the lease, the lies and the realm.
+
+### One walk, no repeats
+
+The roads are built from shared wording, and a walk of one (an entry, five scenes of an approach or three of the hidden route, and the way back) must not read the same menu line or paragraph twice. Each pool a builder draws from holds at least eight lines for each kind of thing a road can name, and the picker steps by *stage*, so no two scenes of a walk share a line. `tests/fortune.test.ts` walks every approach and hidden route of all 120 roads and fails on a repeat. On `main` the Book One roads repeated 858 menu lines and 144 paragraphs, and the realm roads 676 menu lines.
+
+## Accounts on the road
+
+Five short scenes (`economy/reckonings.ts`) sit in front of the river steps and the gates of Books Three to Six, and every way into those scenes now comes through them. The company takes stock. The Elder reads the hero’s realm against what the road expects (two, three, four, five and six: a diligent hero stands there at that point), and says so if they are behind, level or ahead. She notes if the hero is Unfed, or quick. The hero can go through the accounts (+1 Insight), sit the night (cultivation scaled by speed), buy two goods for the road, put ten stones in the common box, or say nothing. Each of the seven endings also closes on the purse and the holdings, in one line.
+
+Three wards in Book Six read an item as a realm: the Returner’s Seven-Star Charm lets a Nascent Soul across the Ash Bridge, the Retired Office Seal lets one through the Archive’s ring, and the First-Plate Shard lets a Spirit Severing cultivator read the abyss doors. Each is used up by the choice that spends it, and each is bought on a Fortune Road.
+
 ## Chapter and side path map
 
-Reading order is set in `src/story/index.ts`. Chapters are the main line. Side paths branch from a scene and rejoin it, and the Elder reacts to what they report. The ten wayside groups of Book One side roads follow their chapters, and the ten groups of realm roads follow the hubs of Books Two to Six. Both are omitted from the map below.
+Reading order is set in `src/story/index.ts`. Chapters are the main line. Side paths branch from a scene and rejoin it, and the Elder reacts to what they report. The ten wayside groups of Book One side roads follow their chapters, the ten groups of realm roads follow the hubs of Books Two to Six, and the ten groups of Fortune Roads follow the scenes they open from. All three, and the five reckonings, are omitted from the map below.
 
 ```mermaid
 flowchart LR
@@ -555,5 +635,6 @@ The scenarios are in `src/story/npc/elder-su.ts`, the reactions added for choice
 
 - `npm test` checks that every decision has at least four choices and a tone, that every scene has a heading, that every link resolves, that there are at least forty NPC scenarios, that each scenario produces one reply per trust tier it can reach, that every `said` and `tone` condition names something real, that no scene body or NPC line runs over its cap, that the respect bands and their lines are distinct, that the side paths open and rejoin, that every road has 25 scenes within the word cap, that the cultivator’s way and hidden routes are gated, that realms, breakthroughs and the heart demon behave, that old saves load as a Mortal, that the strain, mastery and no-farming rules hold, that every Book VI ending opens at exactly the realm, cards, bond and karma it names, that no two arcs share a scene id, that the continuity audit finds nothing (no flag set but never read, no condition nothing can satisfy, no loop with no way out), and that the colour legend defines all six tones in both themes.
 - `npm run check` runs the validator and the audit; `npm run simulate` random-walks the story to find soft-locks and to pace the realm gates.
+- `tests/economy.test.ts` and `tests/fortune.test.ts` check the purse, pack, holdings, speed, payday and pills; that no choice can earn without end; that all 40 Fortune Roads are walkable by a funded hero of the road’s realm, in every approach and the hidden route, never in debt; that every wayside sells exactly one pill, for the realm after the road’s; that no walk of any of the 120 roads repeats a menu line or a paragraph; that the reckonings sit in front of the five gates; and that goods stand in for a realm at three wards.
 - `npm run word-count` reports player-facing words against the 1,000,000-word goal, with the largest scene body against its 200-word cap.
 - CI (`.github/workflows/ci.yml`) runs lint, typecheck, tests, word count, and the production build.

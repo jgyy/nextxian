@@ -18,6 +18,7 @@ A single lamp shows in a high window. It has not moved in forty days. Someone is
 “Through that?” Her mouth twists. “He cannot hear a word. The ward eats sound.”
 The ring of fire stands motionless in the dusk, a perfect circle. Beyond it, the great door is shut, and a faint thread of smoke rises from its keyhole.
 > truth | Break the ward with your qi, from outside. | archive_break1 | +archive_broke npc:SU_ARCHIVE_DOOR | realm>=5 | The ward burns anything that has a name; only a Spirit Severing cultivator can step past it.
+> inquiry | Hold the Retired Office Seal to the ring, and let the ward read it as the Archive’s own key. | archive_break1 | +archive_broke item-chancery_market_ware npc:SU_ARCHIVE_DOOR | realm>=4 & item:chancery_market_ware>=1 | The ward burns anything that has a name. It spares a Spirit Severing cultivator, or a Nascent Soul who carries a seal it once answered to.
 > force | Push through the ward regardless of the cost. | archive_break1 | +archive_pushed needs:5
 > mercy | Let the Elder call to him through the fire. | archive_told1 | +archive_told | trust>=35 | The Elder does not yet trust you enough to say what she has to say.
 > deceit | Let Hao Lan forge a Keeper’s chit and slide it under the door. | archive_forge1 | +archive_forged | bond:hao>=10 | Hao Lan does not yet trust you with her hand.

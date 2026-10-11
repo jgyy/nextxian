@@ -44,7 +44,7 @@ export const MODE_BEAT2: Record<ChoiceTone, string[]> = {
     "Someone corrects you, kindly, on a detail you invented. You thank them, and learn something true from the correction.",
   ],
   quiet: [
-    "You do not hurry. {Place} reveals itself the way a pond does when you stop throwing stones: first the surface, then the movement under it, then the shape of what is waiting.",
+    "You do not hurry. {Place} reveals itself the way a still face does when you stop watching it: first the surface, then the movement under it, then the shape of what is waiting.",
     "Hours pass. {Ally} brings you tea without being asked and says nothing, and the silence turns out to be the most honest thing anyone has offered you here.",
     "You let the day go by and keep your eyes open. A great deal happens when nobody expects you to be watching.",
     "Stillness is its own kind of cultivation. You breathe, the world slows, and details you would have missed come forward one at a time.",

@@ -583,7 +583,7 @@ You look at the rug. At the hull. They are, you realise, exactly the same width.
 > quiet | Wait. | skiff_h3
 
 === skiff_h3 | The Fourth Skiff
-They rig it that night. It takes the whole yard, forty Wrights in lantern-light, rigging the great rug to the spars with bronze rings and a hundred lashings.  Ochir does the bolt-rope himself. When they hoist it, at moonrise, the huge soft slab of colour rises up the mast like a flag, slowly, shaking out its creases, and fills.
+They rig it that night. It takes the whole yard, forty Wrights in lantern-light, rigging the great rug to the spars with bronze rings and a hundred lashings. Ochir does the bolt-rope himself. When they hoist it, at moonrise, the huge soft slab of colour rises up the mast like a flag, slowly, shaking out its creases, and fills.
 It is the most beautiful thing you have ever seen.
 It glows. The wire in the last row catches the moon and burns, a thin pale gold thread across the dark. The hundred colours shift as the wind moves. The black hull beneath it leans, and quivers, and does not move, as though waiting to be told.
 “Name her,” says Ochir.

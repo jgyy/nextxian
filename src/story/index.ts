@@ -27,6 +27,7 @@ import { hermitScenes } from "./side-hermit";
 import { bridgeScenes } from "./side-bridge";
 import { realmEntrances, realmRoadGroups, realmRoadScenarios, waysideBack2 } from "./roads2";
 import { roadGroups, roadScenarios, waysideBackScene, waysideEntrances } from "./roads";
+import { fortuneAssets, fortuneEntrances, fortuneGroups, fortuneItems, fortuneScenarios, waysideBack3 } from "./fortune";
 import { elderSuRealm, elderSuRealmScenes } from "./npc/elder-su-realm";
 import { applyEchoes, parseEchoes, parseRemarks, parseScenarios, parseScenes } from "@/engine/markup";
 import { companions } from "./companions";
@@ -39,6 +40,9 @@ import { heroAsides } from "./hero/asides";
 import { gateForce } from "./realm-gates";
 import { heroEchoes } from "./hero/echoes";
 import { heroRemarks } from "./hero/remarks";
+import { reckoningScenes, routeThroughReckonings } from "./economy/reckonings";
+import { economyEndings } from "./economy/endings";
+import { economyRemarks } from "./economy/remarks";
 
 /**
  * The story in reading order. Side paths sit after the chapter they branch from and
@@ -79,9 +83,13 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
   const scenes = elderSuRealmScenes(c.scenes).map((raw) => {
     const scene = chapter ? gateForce(raw, Number(chapter[1])) : raw;
     const entrance = waysideEntrances[scene.id];
-    return entrance ? { ...scene, choices: [...scene.choices, entrance] } : scene;
+    const fortune = fortuneEntrances[scene.id];
+    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : [])] };
   });
   const groups = chapter ? roadGroups.filter((g) => g.chapter === Number(chapter[1])) : [];
+  const fortunes = fortuneGroups
+    .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+    .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack3(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
   return [
     { ...c, scenes },
     ...groups.map(({ name, scenes: roads, wayside }) => {
@@ -89,6 +97,7 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
       const origin = scenes.find((s) => waysideEntrances[s.id]?.next === wayside);
       return { name, scenes: origin ? [...roads, waysideBackScene(wayside, origin)] : roads };
     }),
+    ...fortunes,
   ];
 });
 
@@ -126,11 +135,15 @@ const bookGroups = books.flatMap((book) =>
   book.arcs.flatMap((arc) => {
     const scenes = parseScenes(arc.scenes, `${book.id}/${arc.id}`)
       .map(withBonds)
-      .map((scene) => (realmEntrances[scene.id] ? { ...scene, choices: [...scene.choices, realmEntrances[scene.id]] } : scene));
+      .map((scene) => (realmEntrances[scene.id] ? { ...scene, choices: [...scene.choices, realmEntrances[scene.id]] } : scene))
+      .map((scene) => (fortuneEntrances[scene.id] ? { ...scene, choices: [...scene.choices, fortuneEntrances[scene.id]] } : scene));
     const roads = realmRoadGroups
       .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
       .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack2(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
-    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads];
+    const fortunes = fortuneGroups
+      .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+      .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack3(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes];
   }),
 );
 
@@ -138,7 +151,8 @@ const rawChapters: { name: string; scenes: Scene[] }[] = [
   ...patch(assembled),
   { name: "Interludes: What the Sect Says", scenes: interludes.map(withBonds) },
   ...bookGroups,
-];
+  { name: "Interludes: The Accounts on the Road", scenes: reckoningScenes },
+].map((g) => ({ ...g, scenes: economyEndings(routeThroughReckonings(g.scenes)) }));
 
 /** Echoes written inside the books can land on any scene, including those of Book One. */
 const bookEchoes = books.flatMap((book) => book.arcs.flatMap((arc) => (arc.echoes ? parseEchoes(arc.echoes, `${book.id}/${arc.id}/echoes`) : [])));
@@ -156,16 +170,20 @@ export const story: Story = {
   npc: elderSu,
   scenes: Object.fromEntries(scenes.map((s) => [s.id, s])),
   scenarios: {
-    ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios, ...realmRoadScenarios }),
+    ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios, ...realmRoadScenarios, ...fortuneScenarios }),
     ...Object.fromEntries(parseScenarios(scenariosOne, "scenarios-1").map((x) => [x.id, x])),
     ...Object.fromEntries(
       books.flatMap((book) => book.arcs.flatMap((arc) => (arc.scenarios ? parseScenarios(arc.scenarios, `${book.id}/${arc.id}/scenarios`) : []))).map((x) => [x.id, x]),
     ),
   },
   companions,
+  items: fortuneItems,
+  assets: fortuneAssets,
+  leavesSect: "departure_dawn",
   asides: heroAsides,
   remarks: [
     ...parseRemarks(remarksOne, "remarks-1"),
+    ...economyRemarks(fortuneItems),
     ...parseRemarks(heroRemarks, "hero/remarks"),
     ...books.flatMap((book) => book.arcs.flatMap((arc) => (arc.remarks ? parseRemarks(arc.remarks, `${book.id}/${arc.id}/remarks`) : []))),
   ],

@@ -28,7 +28,7 @@ export const villageScenes: Scene[] = [
       "On the notice board by the well, a list of names has been pinned beneath the year of the Sealing. Half of them have been rubbed nearly away by weather and fingers.",
     ],
     choices: [
-      { id: "buy_tea_red_awning", label: "Buy a bowl of tea from the stall with the red awning.", tone: "quiet", next: "village_tea" },
+      { id: "buy_tea_red_awning", label: "Buy a bowl of tea from the stall with the red awning.", tone: "quiet", next: "village_tea", effects: [{ kind: "addWealth", amount: -1 }], requires: [{ kind: "wealth", min: 1 }], lockedHint: "You need 1 spirit stone." },
       { id: "ask_levy_family", label: "Ask the rice women which family lost a son to the levy.", tone: "inquiry", next: "village_tea" },
       { id: "lift_rice_basket", label: "Help the women lift a heavy basket of rice, and ask nothing in return.", tone: "mercy", next: "village_tea" },
       { id: "copy_levy_board", label: "Read the levy board, and copy every name that is still legible.", tone: "truth", next: "village_tea" },

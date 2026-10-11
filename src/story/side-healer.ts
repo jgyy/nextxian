@@ -288,7 +288,7 @@ export const healerScenes: Scene[] = [
     choices: [
       { id: "report_healer_to_jade_eye", label: "Tell the jade-eye what the healer kept, the dust, the ledger, and the names she could not say.", tone: "truth", npcScenario: "REPORT_HEALER", next: "market_return" },
       { id: "keep_healer_secret", label: "Say nothing to the mirror about the Hall or the dust, and keep the tin to yourself.", tone: "deceit", next: "market_return" },
-      { id: "buy_bitter_roots", label: "Buy a bundle of bitter roots from Madam Hu, to replace the ones you gave away.", tone: "quiet", next: "market_return" },
+      { id: "buy_bitter_roots", label: "Buy a bundle of bitter roots from Madam Hu, to replace the ones you gave away.", tone: "quiet", next: "market_return", effects: [{ kind: "addWealth", amount: -2 }], requires: [{ kind: "wealth", min: 2 }], lockedHint: "You need 2 spirit stones." },
       { id: "thank_market_quietly", label: "Walk back toward the abyss gate without speaking to anyone in the market.", tone: "mercy", next: "market_return" },
     ],
   },

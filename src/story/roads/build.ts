@@ -1,5 +1,6 @@
 import { REALMS } from "@/engine/cultivation";
 import { focusKind, pickFit } from "./kinds";
+import { BEAT_EXTRA, CHOICE_EXTRA, spread } from "./lexicon-extra";
 import { ROAD_DONE_PREFIX } from "@/engine/npc";
 import type { Choice, ChoiceTone, Effect, NpcScenario, Scene } from "@/engine/types";
 import {
@@ -99,6 +100,9 @@ function sceneTones(mode: ChoiceTone, stage: number, approach: number): ChoiceTo
   return [mode, ...others];
 }
 
+/** Where in a pool the walk of one approach starts, so that road after road reads differently while one walk never repeats a line. */
+export const walkBase = (index: number, approach: number, tone: ChoiceTone): number => index * 7 + approach * 3 + TONE_RING.indexOf(tone) * 5;
+
 export const roadFlag = (id: string, name: string) => `${id}_${name}`;
 export const doneFlag = (id: string) => `${ROAD_DONE_PREFIX}${id}`;
 export const reportedFlag = (id: string) => roadFlag(id, "reported");
@@ -157,7 +161,7 @@ export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
         if (stage === 3) effects.push({ kind: "setFlag", flag: roadFlag(id, `crisis_${tone}`) });
         return {
           id: tone,
-          label: fill(pickFit(CHOICE_LABEL[tone], seed + c * 2 + 3, slots.focus, fit), labelSlots(slots, tone, seed + c, fit)),
+          label: fill(pickFit([...CHOICE_LABEL[tone], ...CHOICE_EXTRA[tone]], walkBase(ctx.index, a, tone) + stage, slots.focus, fit), labelSlots(slots, tone, seed + c, fit)),
           tone,
           next,
           effects,
@@ -202,7 +206,7 @@ export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
         title: `${spec.title}: ${STAGE_TITLE[mode][stage]}`,
         paragraphs: [
           fill(pickFit(STAGE_OPEN[stage], seed, slots.focus, fit), slots),
-          fill(pick(MODE_BEAT[mode], seed + a), slots),
+          fill(spread([...MODE_BEAT[mode], ...BEAT_EXTRA[mode]], walkBase(ctx.index, a, mode), stage), slots),
         ],
         choices,
       });
@@ -219,7 +223,7 @@ export function buildRoad(spec: RoadSpec, ctx: RoadContext): Scene[] {
       paragraphs: h.paragraphs.map((p, i) => fill(n === 0 && i === 0 && fit && focusKind(slots.focus) === "thing" ? HIDDEN_OPEN_THING : p, slots)),
       choices: sceneTones(modes[2], n, 2).map((tone, c) => ({
         id: tone,
-        label: fill(pickFit(CHOICE_LABEL[tone], ctx.index + n * 3 + c, slots.focus, fit), labelSlots(slots, tone, ctx.index + n + c, fit)),
+        label: fill(pickFit([...CHOICE_LABEL[tone], ...CHOICE_EXTRA[tone]], walkBase(ctx.index, 2, tone) + 5 + n, slots.focus, fit), labelSlots(slots, tone, ctx.index + n + c, fit)),
         tone,
         next,
         effects: [...TONE_EFFECTS[tone], ...final],

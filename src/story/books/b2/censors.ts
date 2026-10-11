@@ -130,7 +130,7 @@ Ren Qiao has stepped to your shoulder. He says nothing, and holds out his lanter
 
 === censors_a2s4 | First Exchange
 Mei Qiu fights with the iron held reversed, point down, like a stylus. She does not strike so much as mark: a touch at the wrist, a touch at the knee, and each touch leaves a faint grey line on your sleeve that stiffens the cloth. Her feet never leave the stones.
-You have no qi gathered to speak of, only a mortal’s breath and a pair of quick hands. The courtyard has gone quiet around you. The rain falls into the space where you are not.
+You gather no qi for it, only breath and a pair of quick hands. The courtyard has gone quiet around you. The rain falls into the space where you are not.
 She touches your shoulder. The grey line crawls toward your neck.
 > force | Close the distance and take hold of the bar itself. | censors_a2s5
 > quiet | Give ground, step by step, and let her mark you until you read her pattern. | censors_a2s5

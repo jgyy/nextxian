@@ -1,13 +1,59 @@
 # Plot-hole and continuity ledger
 
-Two passes, each asked to fix more than 1,000. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
+Three passes, each asked to fix more than 1,000. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
 
 | Pass | Fixed | Of what kind |
 | --- | ---: | --- |
-| Earlier pass (below) | 884 | 808 dangling flags, dead conditions and time loops, plus 76 hand-found contradictions |
-| **This pass** | **1,153** | lines of text, labels and titles the player is shown: 686 wording mismatches in generated roads, 426 typographic, 41 continuity and repetition |
+| First pass (last section) | 884 | 808 dangling flags, dead conditions and time loops, plus 76 hand-found contradictions |
+| Second pass | 1,153 | lines of text, labels and titles the player is shown: 686 wording mismatches in generated roads, 426 typographic, 41 continuity and repetition |
+| **This pass** | **1,743** | 1,678 menu lines and paragraphs a player reads twice in one walk of a road, 64 contradictions of the setting, the hero’s realm, the hero’s dress and the hero’s purse, 1 spacing slip |
 
-## This pass: 1,153 lines
+## This pass: 1,743 lines
+
+The unit is again **one line of text, one choice label or one choice the player can be shown**. The count is of lines changed at their source. Most of it is repetition, and the ledger says so: 1,678 of the 1,743 are a line the player met twice in the same walk of one road. The 64 that contradict something the story says elsewhere (its setting, the hero’s realm, the hero’s dress or the hero’s purse) are in the rows after the third.
+
+| Class | Lines | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| A menu line that appears in two scenes of one walk of a Book One road | 858 | `tests/fortune.test.ts` walks every approach and every hidden route of all 120 roads and fails on a repeat | `roads/build.ts`, `roads/lexicon-extra.ts` |
+| A paragraph of eight words or more that appears twice in one walk of a Book One road | 144 | the same test | the same: the four second-paragraph variants per tone become ten |
+| A menu line that appears in two scenes of one walk of a realm road | 676 | the same test | `roads2/build.ts` |
+| Rain, and a pond, in roads on the Glass Sea, which has no water | 23 | a scan of the three Glass Sea road groups for water words (12 “rain is coming”, 8 “the way a pond does”, 3 “the province it has seen rain in”) | `roads2/hero-lex.ts`, `roads/lexicon.ts`, `roads2/lexicon.ts` |
+| “A mortal’s breath” and “a mortal’s quickness” in Book Two, where the hero is at least a Foundation Builder | 3 | a scan of Books Two to Six for the hero called a mortal | `books/b2/censors.ts`, `stairs.ts`, `assize.ts` |
+| “Your boots” for a hero who chose straw sandals (21), and “your hat” for one with no hat (3) | 24 | a scan of the story for the hero’s gear against the creation screen’s dress options | `engine/hero.ts` (`personalise`), tested in `tests/consistency.test.ts` |
+| A purchase, a bet, a bribe or an offering the choice narrates and the purse never feels | 14 | a scan of every Book One choice label for pay, buy, coin, price and purse | `side-village.ts`, `side-herb-market.ts`, `side-pavilion.ts`, `side-healer.ts`, `side-lantern-stair.ts`, `side-sister-shrine.ts`, `side-bell-foundry.ts`, `side-quarry.ts` |
+| Two spaces between sentences | 1 | `tests/consistency.test.ts` | `books/b5/skiff.ts` |
+
+The 1,678 are the defect a player would meet first. A Book One road gave the same second paragraph to all five scenes of an approach, because its pool held four lines and the picker stepped by five. It also gave the same menu line to the same tone in every scene, because each tone’s pool held five lines and the picker stepped by five again. Every walk now draws its lines by *stage*, from pools of at least eight lines for each kind of thing a road can name (a place, a thing, a person), so a walk of eight scenes cannot repeat one. The new test counts it on all 120 roads and says what the old code did: 858, 144 and 676 repeats on `main`.
+
+The 23 Glass Sea lines were three sentences in shared wording, written for the river and the mountain, and reused on a sea of fused sand. The 14 purchases are the ones the new purse made visible: “Buy a bundle of frostleaf with the coins you carry” changed nothing about the coins. Each now costs what it says (or pays what it says) and needs the stones to try it.
+
+### Caught in review of the new content
+
+These were found while writing this pass’s own roads and never reached the story, so they are not counted above. They are the reason the checks exist.
+
+- **The roads repeated themselves too.** Before the generators were fixed, the new roads had the same fault the old ones had: 762 repeated menu lines and 72 repeated paragraphs in walks of the Fortune Roads. They are fixed with the others, by the same change.
+- **Every purchase was locked.** The pack condition “carries none” was written as `max: 0`, and the engine read a missing minimum as one, so “no more than none, and at least one” could never hold and no road could sell anything. Found by playing a road with a full purse; the engine now reads a lone maximum as “from none”, and `tests/economy.test.ts` pins it.
+- **A pill that a mortal could buy.** A pill for Foundation Establishment on a Qi Condensation road was sold from the realm below the road’s. It is now sold only to a hero of the road’s own realm.
+- **“The The Cobbler’s Bench and Wall.”** A holding named with its article read as a doubled word in three choices. Names are now article-free and a test says so.
+- **“Break a watchman and walk through what is left.”** A force line that fit a gate and not a person. Found in a screenshot; the line now fits both.
+- **Hubs that did not fit the screen.** The first drafts of the Elder’s pace lines at the gates took five scenes over the 200-word cap (up to 325 words). They became five short scenes of their own, so no gate and no ending grew.
+- **A report written for the cart, said on the mountain.** The first road reports said “we are a long way from anywhere the Law is read aloud”. Five of the ten waysides are on the mountain, so the reports now name no place.
+
+### What was looked for and not found
+
+The searches below returned nothing that needed fixing, and are kept so nobody repeats them.
+
+- **Typography across all 5,881 scenes.** Straight quotes: none. “An” before a consonant: one, “an F”, which is right. Doubled words: 13, nine of them the name Tao Tao, two the nonsense “Ni ni”, one “that that” and one “before before”, all of which parse. A lower-case start: 5, each the second half of a quoted line that began in the paragraph above. An unbalanced curly quote: 13, eleven in a logbook read over several paragraphs, one speech and one verse.
+- **Hints that disagree with their conditions.** 2,364 choices carried a requirement when the check ran. Every one has a hint, none says “Not available yet”, and none names a realm or a stat threshold that its condition does not ask.
+- **A scene nobody can reach.** None of 5,881 is orphaned from the opening, and `tests/consistency.test.ts` now says so.
+- **A scene that repeats its title in a row.** None.
+- **“N years ago” against the canon.** The 35 “fifteen years ago” were read in context, and each is the Sealing, the expulsion the week after it, or somebody’s part in it. The other 69 (“twelve” for the Elder’s tenure, the rest for the Concord and the coast) were read in context too, and none contradicts the Timeline.
+- **The hero’s body and dress in unconditional text.** In the 181 hand-written lines that name a body part or a garment, nearly all are sleeves, hair, cheeks and voices every hero has. The ones a hero may not have are the boots and hats fixed above; a hero’s cloak appears 12 times and was left, since any dress can carry one in the pack.
+- **Tone against karma.** 13 choices have a karma sign that disagrees with their tone: eight force choices that raise it (each stands up for someone: the Elder at the altar, the tribunal, a widow’s door), four deceits that raise it (each protects someone), and one mercy that lowers it (`mist_masters_fall_2>let_masters_go`, which spares the masters at a cost to justice). Read from their labels and left as written.
+
+## Second pass: 1,153 lines
+
+
 
 The unit is **one line of text, one choice label or one title that the player can be shown**, found by a detector that is now a test and fixed at its source. The count is of lines, not of marks: the 783 straight quotes sit in 381 lines and count as 381. It is a count of inconsistencies in the text and the generator, and most of them are not plot holes in the strict sense. Of the 1,153, the ones that change what the story *says* are the 41 in the last five rows. The rest are the story saying nonsense (“Slip a small piece of the weighing hut into your sleeve”) or saying the same thing two ways.
 
