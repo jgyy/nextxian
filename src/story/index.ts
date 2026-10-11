@@ -1,4 +1,5 @@
 import type { Scene, Story } from "@/engine/types";
+import { prologueScenes } from "./origins";
 import { chapterOne } from "./chapter-1";
 import { chapterTwo } from "./chapter-2";
 import { chapterThree } from "./chapter-3";
@@ -39,6 +40,8 @@ import { books } from "./books";
 import { heroAsides } from "./hero/asides";
 import { gateForce } from "./realm-gates";
 import { heroEchoes } from "./hero/echoes";
+import { pathEchoes } from "./path/echoes";
+import { pathScenarios } from "./path/scenarios";
 import { heroRemarks } from "./hero/remarks";
 import { reckoningScenes, routeThroughReckonings } from "./economy/reckonings";
 import { economyEndings } from "./economy/endings";
@@ -49,6 +52,7 @@ import { economyRemarks } from "./economy/remarks";
  * rejoin the main line. Word counts and reports group scenes by these chapters.
  */
 const mainLine: { name: string; scenes: Scene[] }[] = [
+  { name: "Prologues: Where the Story Begins", scenes: prologueScenes },
   { name: "Chapter 1: The Stolen Seal", scenes: chapterOne },
   { name: "Side Path: The Foothill Village", scenes: villageScenes },
   { name: "Side Path: The Herb Market", scenes: herbMarketScenes },
@@ -122,7 +126,7 @@ function patch(groups: { name: string; scenes: Scene[] }[]): { name: string; sce
       byId.set(from, { ...scene, choices: scene.choices.map((c) => (c.next === to ? { ...c, next: flow.id } : c)) });
     }
   }
-  const echoed = applyEchoes([...byId.values()], [...parseEchoes(echoesOne, "echoes-1"), ...parseEchoes(heroEchoes, "hero/echoes")]);
+  const echoed = applyEchoes([...byId.values()], [...parseEchoes(echoesOne, "echoes-1"), ...parseEchoes(heroEchoes, "hero/echoes"), ...parseEchoes(pathEchoes, "path/echoes")]);
   const patched = new Map(echoed.map((s) => [s.id, withBonds(s)]));
   return groups.map((g) => ({ ...g, scenes: g.scenes.map((s) => patched.get(s.id)!) }));
 }
@@ -172,6 +176,7 @@ export const story: Story = {
   scenarios: {
     ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios, ...realmRoadScenarios, ...fortuneScenarios }),
     ...Object.fromEntries(parseScenarios(scenariosOne, "scenarios-1").map((x) => [x.id, x])),
+    ...Object.fromEntries(parseScenarios(pathScenarios, "path/scenarios").map((x) => [x.id, x])),
     ...Object.fromEntries(
       books.flatMap((book) => book.arcs.flatMap((arc) => (arc.scenarios ? parseScenarios(arc.scenarios, `${book.id}/${arc.id}/scenarios`) : []))).map((x) => [x.id, x]),
     ),
