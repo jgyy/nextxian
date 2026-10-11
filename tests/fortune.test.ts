@@ -340,3 +340,28 @@ describe("goods that stand in for a realm", () => {
     expect(view(6, {}).some((v) => v.available)).toBe(true);
   });
 });
+
+describe("a label says what the purse feels", () => {
+  const amount = (c: Scene["choices"][number]) => c.effects?.find((e) => e.kind === "addWealth");
+
+  it("names the real cost of a share in the books and the real payout of a sold holding, on every road", () => {
+    let invests = 0;
+    let sales = 0;
+    for (const s of scenes) {
+      for (const c of s.choices) {
+        const w = amount(c);
+        if (!w || w.kind !== "addWealth") continue;
+        if (c.id.startsWith("invest")) {
+          invests++;
+          expect(c.label, `${s.id}:${c.id}`).toContain(` ${-w.amount} spirit stones`);
+        }
+        if (c.id.startsWith("sell_holding")) {
+          sales++;
+          expect(c.label, `${s.id}:${c.id}`).toContain(` ${w.amount} spirit stones`);
+        }
+      }
+    }
+    expect(invests).toBeGreaterThanOrEqual(20);
+    expect(sales).toBeGreaterThanOrEqual(40);
+  });
+});

@@ -1,14 +1,27 @@
 # Plot-hole and continuity ledger
 
-Three passes, each asked to fix more than 1,000. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
+Four passes, three asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
 
 | Pass | Fixed | Of what kind |
 | --- | ---: | --- |
 | First pass (last section) | 884 | 808 dangling flags, dead conditions and time loops, plus 76 hand-found contradictions |
 | Second pass | 1,153 | lines of text, labels and titles the player is shown: 686 wording mismatches in generated roads, 426 typographic, 41 continuity and repetition |
-| **This pass** | **1,743** | 1,678 menu lines and paragraphs a player reads twice in one walk of a road, 64 contradictions of the setting, the hero’s realm, the hero’s dress and the hero’s purse, 1 spacing slip |
+| Third pass | 1,743 | 1,678 menu lines and paragraphs a player reads twice in one walk of a road, 64 contradictions of the setting, the hero’s realm, the hero’s dress and the hero’s purse, 1 spacing slip |
+| **Fourth pass (this branch)** | **63** | 63 choice labels that named a different price from the one the purse paid. It is short of the 1,000 asked for: see below |
 
-## This pass: 1,743 lines
+## Fourth pass: 63 lines, and why not 1,000
+
+This branch added the talent, Dao and origin systems, five starting points and forty Dao Roads (1,000+ new scenes). Its plot-hole pass found only what a detector could prove, and the ledger counts only that.
+
+| Class | Lines | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| A Fortune Road “share in the books” label that named the goods’ price, not the share’s | 23 | comparing the number in each `invest` label with the `addWealth` it applies, on `main` and on the branch | `fortune/lexicon.ts` (`INVEST`), `fortune/build.ts` (new `invest` slot) |
+| A Fortune Road “sell the lease” label that named the goods’ resale value, not the lease’s payout (and called a “Share” or “Stake” a lease) | 40 | the same comparison on `sell_holding` | `fortune/lexicon.ts` (`SELL_HOLDING`, `RETURN_CHOICES3`), `fortune/build.ts` (new `leaseValue` slot) |
+
+`tests/fortune.test.ts` now fails if any `invest` or `sell_holding` label states a number other than the one the purse moves.
+
+**Looked for and not counted as fixes.** About 600 compound spellings (“salt-cart” against “salt cart”) turned out to be single, unrelated uses, not a split in house style, so they were left alone rather than inflated into a count. About 66 shared road templates use street, lane and mud wording on the steppe and the Glass Sea. They are a style mismatch, not a contradiction the player can catch, and are listed here as a known follow-up. Three earlier passes had already cleared the dangling flags and the repetition a detector can find. The honest number for this pass is 63.
+
 
 The unit is again **one line of text, one choice label or one choice the player can be shown**. The count is of lines changed at their source. Most of it is repetition, and the ledger says so: 1,678 of the 1,743 are a line the player met twice in the same walk of one road. The 64 that contradict something the story says elsewhere (its setting, the hero’s realm, the hero’s dress or the hero’s purse) are in the rows after the third.
 

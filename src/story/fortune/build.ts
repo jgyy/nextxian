@@ -225,6 +225,8 @@ export function buildRoad3(spec: RoadSpec3, ctx: RoadContext3): Scene[] {
     lease: String(price.lease),
     discount: String(price.discount),
     value: String(price.value),
+    invest: String(price.invest),
+    leaseValue: String(price.leaseValue),
   };
   const modeBeat = mountain ? MODE_BEAT : MODE_BEAT2;
   const approachLabel = mountain ? APPROACH_LABEL : APPROACH_LABEL2;
