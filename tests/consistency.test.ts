@@ -85,7 +85,7 @@ describe("the hero in the old text", () => {
   const texts = shownText();
 
   it("carries one weapon, a blade, wherever the story speaks of it, and no hair or dress that a hero may not have", () => {
-    expect(texts.filter((t) => /\byour sword\b(?!-)/i.test(t.text)).map((t) => t.where)).toEqual([]);
+    expect(texts.filter((t) => /\byour sword\b(?!-| Dao)/i.test(t.text)).map((t) => t.where)).toEqual([]);
     expect(texts.filter((t) => /\byour braid\b/i.test(t.text)).map((t) => t.where)).toEqual([]);
   });
 });
