@@ -34,7 +34,7 @@ At the first landing a woman in grey with a quarterstaff is waiting. She is a ju
 > quiet | Watch how she holds the staff. | ^
 
 === stairs_a1s2 | The Staff
-She is good. The staff comes at you in short flat arcs, never wasted, and every strike carries the weight of her whole body behind it. You have no weapon but a mortal’s breath and a pair of quick hands, and the stone is slippery. The first blow takes the air from your ribs. The second you slip, barely, and the third catches your sleeve and tears it.
+She is good. The staff comes at you in short flat arcs, never wasted, and every strike carries the weight of her whole body behind it. You have no weapon but breath and a pair of quick hands, and the stone is slippery. The first blow takes the air from your ribs. The second you slip, barely, and the third catches your sleeve and tears it.
 You are not going to win by strength. The cold seed in your chest turns, lazily, at the sound of her breathing. It knows how she moves before she does.
 Below, in the courtyard, you hear Gu say, in a small voice, “Please.”
 > force | Rush inside the staff’s reach. | +
