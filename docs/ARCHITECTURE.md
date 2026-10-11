@@ -124,13 +124,13 @@ Every player begins as a Mortal. Each decision earns points by its tone, and an 
 ```mermaid
 stateDiagram-v2
   [*] --> Mortal
-  Mortal --> QiCondensation: 20 points
-  QiCondensation --> FoundationEstablishment: 80 points
-  FoundationEstablishment --> CoreFormation: 200 points, karma at least -30
-  CoreFormation --> NascentSoul: 380 points, karma at least -30
-  NascentSoul --> SpiritSevering: 620 points, karma at least -30
-  SpiritSevering --> DaoSeeking: 920 points, karma at least -30
-  DaoSeeking --> Ascendant: 1300 points, karma at least -30
+  Mortal --> QiCondensation: 15 points
+  QiCondensation --> FoundationEstablishment: 120 points
+  FoundationEstablishment --> CoreFormation: 400 points
+  CoreFormation --> NascentSoul: 850 points, karma at least -30
+  NascentSoul --> SpiritSevering: 1300 points, karma at least -30
+  SpiritSevering --> DaoSeeking: 1850 points, karma at least -30
+  DaoSeeking --> Ascendant: 2350 points, karma at least -30
 ```
 
 From Core Formation upward a heart demon blocks the next realm while karma is below −30. Points keep gathering, and the breakthrough happens on the first decision after karma recovers.
@@ -145,6 +145,44 @@ flowchart TD
   H -- yes --> HD[heart demon: points keep gathering, realm holds]
   H -- no --> B[realm + 1, log the breakthrough]
   B --> EL[the Elder names the new realm]
+```
+
+### Why the realm matters: gates, strain, mastery, meditation
+
+The ladder is paced across six books, so a realm is something the story asks for, not a number that saturates in Book One. A diligent player reaches Foundation Establishment by the end of Book I, Core Formation in Book II, Nascent Soul by the end of Book III, Spirit Severing in Book IV and Dao Seeking in Book V. Ascendant is for completionists. `scripts/simulate.ts` (`npm run simulate -- 40 diligent`) random-walks the story under four policies and reports the realm at each book gate and the ending reached.
+
+Three mechanics make the realm bite.
+
+- **Hard gates.** A choice can require `realm>=N`. The requirement stays visible, locked, and tells the player which realm it wants. Book VI's bridge, archive, abyss and final choice all have gated routes.
+- **Strain.** A choice can carry `needs:N` (a realm index). Take it below that realm and the attempt costs 10 cultivation per missing realm (never below the current realm's threshold), 12 qi, 3 of the Elder's respect, and logs a strain line. The choice shows a "beyond you" tag in advance. Take it far above the ask (two realms or more) and it grants mastery: +3 cultivation.
+- **Meditation.** Every hub has a one-time `still_<hub>` night of stillness that gives a lump of cultivation, so a player who takes their time can be ready for the next gate.
+
+Walking back into a scene already seen gives no tone gain, so shuttling between two hubs cannot farm cultivation.
+
+```mermaid
+flowchart LR
+  C[choice with needs:N] --> R{player realm >= N?}
+  R -- yes --> S{realm >= N + 2?}
+  S -- yes --> M[mastery: +3 cultivation]
+  S -- no --> OK[no cost]
+  R -- no --> X[strain: -10 cultivation per missing realm, -12 qi, -3 respect, strain line in the log]
+```
+
+### The endings
+
+Book VI ends at `lastseal_choice`. Each of seven endings has its own gate, and the cheapest is always open, so the story never soft-locks.
+
+```mermaid
+flowchart TD
+  L[lastseal_choice: Who is listening?]
+  L -->|9 cards and Dao Seeking| N[The Nine Verbs]
+  L -->|Mengjiao bond and Spirit Severing| LI[The Listener]
+  L -->|Ascendant| A[The Ascendant]
+  L -->|Dao Seeking| W[The Warden of the Mist]
+  L -->|below Dao Seeking, forcing it| SP[The Price of the Hand]
+  L -->|karma below -30 and Core Formation| H[The Hollow Seat]
+  L -->|always open| LE[The Closed Ledger]
+  L -->|step back| HUB[hub_b6]
 ```
 
 | Tone | Points per decision |
@@ -423,6 +461,7 @@ The scenarios are in `src/story/npc/elder-su.ts`, the reactions added for choice
 
 ## Quality gates
 
-- `npm test` checks that every decision has at least four choices and a tone, that every scene has a heading, that every link resolves, that there are at least forty NPC scenarios, that each scenario produces one reply per trust tier it can reach, that every `said` and `tone` condition names something real, that no scene body or NPC line runs over its cap, that the respect bands and their lines are distinct, that the side paths open and rejoin, that every road has 25 scenes within the word cap, that the cultivator’s way and hidden routes are gated, that realms, breakthroughs and the heart demon behave, that old saves load as a Mortal, and that the colour legend defines all six tones in both themes.
+- `npm test` checks that every decision has at least four choices and a tone, that every scene has a heading, that every link resolves, that there are at least forty NPC scenarios, that each scenario produces one reply per trust tier it can reach, that every `said` and `tone` condition names something real, that no scene body or NPC line runs over its cap, that the respect bands and their lines are distinct, that the side paths open and rejoin, that every road has 25 scenes within the word cap, that the cultivator’s way and hidden routes are gated, that realms, breakthroughs and the heart demon behave, that old saves load as a Mortal, that the strain, mastery and no-farming rules hold, that every Book VI ending opens at exactly the realm, cards, bond and karma it names, that no two arcs share a scene id, that the continuity audit finds nothing (no flag set but never read, no condition nothing can satisfy, no loop with no way out), and that the colour legend defines all six tones in both themes.
+- `npm run check` runs the validator and the audit; `npm run simulate` random-walks the story to find soft-locks and to pace the realm gates.
 - `npm run word-count` reports player-facing words against the 1,000,000-word goal, with the largest scene body against its 200-word cap.
 - CI (`.github/workflows/ci.yml`) runs lint, typecheck, tests, word count, and the production build.

@@ -20,43 +20,43 @@ export const REALMS: readonly Realm[] = [
   },
   {
     name: "Qi Condensation",
-    threshold: 20,
+    threshold: 15,
     arrival: "A thread of qi finds your dantian and stays. The first breath of true cultivation is cold, bright and a little frightening.",
     styled: "Qi Condenser",
   },
   {
     name: "Foundation Establishment",
-    threshold: 80,
+    threshold: 120,
     arrival: "The scattered qi settles into a foundation as level as a temple floor. Your body no longer feels borrowed.",
     styled: "Foundation Builder",
   },
   {
     name: "Core Formation",
-    threshold: 200,
+    threshold: 400,
     arrival: "Your qi folds in on itself and hardens into a golden core. For a moment you can hear it turning, slow as a millstone.",
     styled: "Core Cultivator",
   },
   {
     name: "Nascent Soul",
-    threshold: 380,
+    threshold: 850,
     arrival: "A small, clear figure sits behind your eyes and looks back at you. It is you, and it is not afraid.",
     styled: "Nascent Soul master",
   },
   {
     name: "Spirit Severing",
-    threshold: 620,
+    threshold: 1300,
     arrival: "You cut the last cords that tie your spirit to the dust of old names. The world is quieter, and wider.",
     styled: "Spirit Severing sage",
   },
   {
     name: "Dao Seeking",
-    threshold: 920,
+    threshold: 1850,
     arrival: "The Dao stops being a word and becomes a direction. You can feel which way is toward it.",
     styled: "Dao Seeker",
   },
   {
     name: "Ascendant",
-    threshold: 1300,
+    threshold: 2350,
     arrival: "The sky above you is no longer a ceiling. It is a door, and it is open.",
     styled: "Ascendant",
   },
@@ -124,5 +124,47 @@ export function gainCultivation(state: GameState, amount: number): GameState {
       ...gained.log,
       { kind: "realm", text: `Breakthrough: ${REALMS[next].name}. ${REALMS[next].arrival}` },
     ],
+  };
+}
+
+/**
+ * What it costs to try a choice that asks for a realm the player has not reached. Cultivation is lost (never below the
+ * floor of the realm already won), qi drains, and the Elder's respect drops, per realm of shortfall.
+ */
+export const STRAIN_CULTIVATION = 10;
+export const STRAIN_QI = 12;
+export const STRAIN_RESPECT = 3;
+
+/** A player this many realms above what a choice asks of them does it with ease, and gains a little from it. */
+export const MASTERY_GAP = 2;
+export const MASTERY_GAIN = 3;
+
+/** How many realms short the player is of a requirement. Zero or less means they have it. */
+export function realmShortfall(realm: number, needs: number | undefined): number {
+  return needs === undefined ? 0 : Math.max(0, needs - realm);
+}
+
+/** How many realms above the requirement the player stands, or zero. */
+export function realmSurplus(realm: number, needs: number | undefined): number {
+  return needs === undefined ? 0 : Math.max(0, realm - needs);
+}
+
+/** The line shown when the player pushes past their realm. */
+export function strainLine(needs: number, realm: number): string {
+  const asked = REALMS[Math.min(needs, REALMS.length - 1)].name;
+  const have = REALMS[realm].name;
+  return `This asks for ${asked}, and you are only ${have}. The attempt tears at your qi and loses you ground.`;
+}
+
+/** Applies the cost of straining. Cultivation stops at the floor of the realm already won, so a failed push never undoes a breakthrough. */
+export function applyStrain(state: GameState, shortfall: number): GameState {
+  const floor = REALMS[state.realm].threshold;
+  const lost = Math.min(state.cultivation - floor, STRAIN_CULTIVATION * shortfall);
+  return {
+    ...state,
+    cultivation: state.cultivation - lost,
+    stats: { ...state.stats, qi: Math.max(0, state.stats.qi - STRAIN_QI * shortfall) },
+    npc: { ...state.npc, respect: Math.max(-100, state.npc.respect - STRAIN_RESPECT * shortfall) },
+    log: [...state.log, { kind: "strain" as const, text: strainLine(state.realm + shortfall, state.realm) }],
   };
 }

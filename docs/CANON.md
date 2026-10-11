@@ -1,0 +1,131 @@
+# Canon
+
+The facts the story keeps, so that a scene written in Book Five agrees with one written in Book One. When two scenes disagree, this page decides. The `docs/PLOT_HOLES.md` ledger lists the contradictions that were fixed against it.
+
+## Timeline
+
+| When | What |
+| --- | --- |
+| Long ago | The founders of the Azure Cloud Sect strike a name from Heaven’s Ledger to hide it. The page they tear out becomes the **Crimson Abyss**. |
+| 16 years ago | The masters give a nameless child of the Orphans’ Terrace a **black seed**, a reserve seal in case Su Mengjiao fails. This child is the Wanderer. |
+| 15 years ago | **The Sealing Night.** Fourteen disciples are sent down the abyss path, each order signed by the Registrar, Su Wanru (28). Su Mengjiao (24) is sealed by the masters alone. Wanru writes her own name beneath the fourteenth and not Mengjiao’s. Lin Yuan’s mother refuses to witness the fifteenth order and is expelled the week after. Wanru smuggles the reserve child out of the sect with a nurse. |
+| 12 years ago | Wanru becomes Elder of the Law Hall. |
+| The week before the story | Mengjiao, who has kept the seal for fifteen years by speaking the names, comes up through the mist and takes the upper half of the Sealing Jade from the altar. She puts it into the hands of Gu Hanzhen on the ledge and tells him to keep it for someone who will speak first. |
+| Day one | The Wanderer climbs the mountain in the rain. |
+
+## Facts that must not move
+
+- **The sealed.** Fifteen were sealed. Fourteen are on the Law Hall’s ledger, signed by Wanru. The fourteenth is a girl of fifteen who says she was never dead, only listening. The fifteenth is Su Mengjiao, sealed by the masters’ seal alone.
+- **The Elder.** Su Wanru is 43. She was Registrar on the Sealing Night and has been Elder for twelve years. She is afraid of heights. She keeps two ledgers: the Law’s sentences, and what she felt when she signed.
+- **Mengjiao.** Four years younger than Wanru. Braid, silver comb, a wordless tune. She believes the abyss is grieving, not hungry. The price of the Blood Lotus is not a name but the listener: whoever hears must keep listening.
+- **The Sealing Jade.** Whole on the Sealing Night. The masters split it: the upper half stayed in the altar, the lower half went down the path with Mengjiao, and a small shard was kept in the vault under the Ash Archive. The jade is a piece of the **Ledger Stone**, on which Heaven’s Ledger is copied.
+- **Mortals.** A Mortal has no gathered qi but can draw a thread of raw breath-qi, enough to put out a lantern or read a mark. Qi Condensation is the first gathered qi.
+- **The Wanderer** carries a cold black seed in the chest, from childhood. It lets them live in the mist. They were raised by a teacher in a river village who told them nothing, and they have no name they will say.
+- **Ren Qiao** is 32. He held the lantern for the fourteen when he was 17, and was taught qi by Mengjiao in the outer courtyard.
+- **Gu Hanzhen** is 19. His brother Gu Hanming was taken by the levy in the year of the Sealing, when Hanzhen was four. His mother Gu Yunxia keeps a tea stall in the foothill village.
+- **Lin Yuan** is 17, the child his mother was expelled for. He keeps the keys of the Ash Archive.
+
+## The world
+
+**Heaven’s Ledger** is where every cultivator who rises is written. To ascend, you must be written. A name that is written cannot be unmade; a name that is struck out falls to the **Unwritten**, a place beneath the world reached through *wounds* where a page was torn. The Crimson Abyss is such a wound.
+
+**The Blood Lotus Sutra** is the art of listening to the Unwritten. It was never a weapon. The **black lotus** is a seed that lets its bearer survive the Unwritten and carry names back out of it. The founders feared it, and the Law is what they built to forbid it.
+
+**The Concord of Nine Peaks** keeps the sects in order. Its **Censors** audit Names. **The Hollow Lotus** is a cult of the struck-out who want to be written back, or to unwrite Heaven. **Heaven’s Clerk** is whatever writes.
+
+## Cast
+
+| Name | Who | Voice |
+| --- | --- | --- |
+| Su Wanru | Elder of the Law Hall; the reactive NPC | Dry, exact, ashamed of her own kindness |
+| Su Mengjiao | Her sister, the Listener | Warm, tired, amused |
+| Gu Hanzhen | Outer disciple | Earnest, rough from disuse |
+| Ren Qiao | Warden of the Ash Bridge | Few words, a soldier’s courtesy |
+| Lin Yuan | Keeper of keys | Apologetic, precise, braver than he knows |
+| Old Lin | Lamp keeper under the sutra stair | Salty, patient |
+| Hu Jingyan, Lian Sheng | Masters of the Law | Scholar’s menace; Lian is the hard one |
+| Duan Wuyi | Censor-General | Principled, courteous, wrong in ways that cost people |
+| Yue Zhaoning | Smuggler captain of the River Provinces | Quick, wry, loyal to the people she chooses |
+| Hui Niang (Madam Ash) | Leader of the Hollow Lotus | Gentle. A former Censor |
+
+## The books
+
+Each book after the first is a region and a hub. The player chooses which arcs to walk, and the climax of the book opens once enough of them are done. An arc is about forty scenes: an entry with four approaches, a hidden route, and a close that reads what the player did.
+
+1. **The Crimson Abyss** (Book One): the Azure Cloud Sect.
+2. **The River of Ledgers**: the Censors, the Concord, Qinglian Ford. The Elder is summoned, and the Reserve is named.
+3. **The Drowned Library**: the Salt Coast. Where struck names wash up. The Concord decides to seal the abyss by sacrifice.
+4. **The Ash Steppe**: the Listeners, the Hollow Lotus, the first Listener’s tomb. What the founders did.
+5. **The Glass Sea and the Heavenly Stair**: ascension, and what the Ledger costs. The Stair is climbed by realm (the Nine Tiers), the Hall of the Ninth Night ends the Ceremony, and a lift carries the company down to the foothills.
+6. **The Last Sealing**: the return to Azure Cloud. Four arcs: the Ash Bridge (Captain Dur, Ren Qiao's post, Old Lin's path), the Ash Archive (Lin Yuan, forty days behind inward wards, the eight keys and the ninth), the Crimson Abyss (nine doors, one per verb) and the Last Sealing (Su Mengjiao, who asks the abyss's one question: *who is listening?*).
+
+### The realm ladder in canon
+
+Mortal, Qi Condensation, Foundation Establishment, Core Formation, Nascent Soul, Spirit Severing, Dao Seeking, Ascendant. The ward on the Ash Bridge bows only to Spirit Severing (realm 5) and above; the doors of the abyss read only Dao Seeking (realm 6); no sect has had an Ascendant (realm 7) for two hundred years. A cultivator who tries a deed beyond their realm pays for it (see strain in ARCHITECTURE.md).
+
+### The seven endings
+
+| Ending | What it asks |
+| --- | --- |
+| The Nine Verbs | all nine cards and Dao Seeking |
+| The Listener | Mengjiao's trust and Spirit Severing |
+| The Ascendant | Ascendant |
+| The Warden of the Mist | Dao Seeking |
+| The Price of the Hand | forcing it below Dao Seeking |
+| The Hollow Seat | karma below −30 and Core Formation |
+| The Closed Ledger | always open |
+
+## Conventions for writers
+
+- Scene ids use the arc’s prefix: `censors_entry`, `censors_a1s3`. Flags use the same prefix. A flag nothing reads is a defect; `npm run audit` fails on it.
+- Every scene has four or more choices, a heading, and 200 words or fewer of body text. Alternatives in a group count once.
+- A companion appears with `bond:id` effects. A choice that changes a bond should be one the companion would notice.
+- Do not state a secret before the scene that reveals it.
+- Do not use a bare name before the character is introduced.
+
+## The Nine Cots (fixed in Book Two, used from Book Three)
+
+Nine children were seeded with the black lotus in the east dormitory of the Law Hall, numbered I to IX on brown cards. The player is IX. On the Sealing Night the Elder carried IX out in a basket, then went back and carried out one more, VIII, a boy of four. VIII is **Lin Yuan**, who is now the Keeper of Keys and does not know it. The other seven were taken from the burning dormitory by Madam Ash (Hui Niang), a Censor struck for refusing to sign the Great Sealing, and raised in a mourning-shop on the Salt Coast.
+
+| Cot | Name | What they became |
+| --- | --- | --- |
+| I | Ah Zhi | Keeps a ferry at the Tidewall. Practical, funny, drowning slowly in other people’s debts. |
+| II | Lu Yan | A physician. Tired, honest, treats the dust-sick. |
+| III | Bao Er | A singer and a smuggler. Loud, loving, lies for fun. |
+| IV | Qiu | Keeps the Salt Lamp, the lighthouse. Speaks little, sees the whole coast. |
+| V | Shu Ning | A seal-forger, trained by Ash’s old colleagues. Precise, bitter, brilliant. |
+| VI | Hao Lan | Placed by Ash among the Censors at nine, as Scribe Tong’s keeper and Duan Wuyi’s clerk. Does not know. |
+| VII | Tian | The youngest. Fierce. Has been told that IX is the reason the others were left to burn. |
+| VIII | Lin Yuan | Raised by the Elder as a keeper of keys. |
+
+Only the player’s seed woke. The others sleep. Ash’s rule is that nothing offered to a child is a gift, so she has waited fifteen years for IX to be able to refuse her.
+
+Yu Ling’s message, written on the back of every reserve card: *She will ask. Answer her.*
+
+## Book Three: The Drowned Library (the Salt Coast)
+
+Arrival is by the sea road (Mei’s coast guard) or the hill road (the Cinnabar seal-mender), according to `reserve_chose_sea` / `reserve_chose_hills`; both converge at **Tidewall**, a harbour town behind a wall of carved names. The Drowned Library is the sunken Fifth Floor annex of the Concord, where struck names wash up as wet paper at the spring tides. The Concord’s fleet under Inspector Fang arrives at the end of the book.
+
+### The Nine Cards (Yu Ling’s message)
+
+Yu Ling wrote one line on the back of every reserve card in the year before she tore her page. Read in cot order they are one vow. The player holds IX from Book Two; each sibling’s card is earned in that sibling’s arc (flag `card_1` to `card_8`). Book Six lets the player perform every verb whose card they hold.
+
+| Cot | Card | Verb |
+| --- | --- | --- |
+| I | Carry what is heavy. | Carry (Ah Zhi) |
+| II | Mend what is torn. | Mend (Lu Yan) |
+| III | Sing what is struck. | Sing (Bao Er) |
+| IV | Light what is dark. | Light (Qiu) |
+| V | Seal only what asks. | Seal (Shu Ning) |
+| VI | Write what is true. | Write (Hao Lan) |
+| VII | Keep what is small. | Keep (Tian) |
+| VIII | Open what is shut. | Open (Lin Yuan) |
+| IX | She will ask. Answer her. | Answer (the player) |
+
+### Ages and years (fixed in Book Three)
+
+On the Sealing Night (fifteen years before the story) the Elder was 28 and the nine children were: I Ah Zhi 10, II Lu Yan 9, III Bao Er 8, IV Qiu 9, V Shu Ning 8, VI Hao Lan 6, VII Tian 4, VIII Lin Yuan 2, IX the Wanderer 5. Hao Lan was placed in the Tidewall Chancery by Madam Ash three years later, at nine, through Wen Rui. Mei Qiu was 9 when her sister Ke-er (11) was sealed under the Salt Coast, nineteen years before the story. Yu Ling lived seven hundred years ago, at the founding of the Azure Cloud Sect; she wrote the Nine Cards, which lay on the rails of the Law Hall’s reserve cots from reserve to reserve until the Elder took IX and VIII off them on the Sealing Night. The Drowned Library (the Annex of Struck Leaves) was founded by Yu Ling and flooded in the Great Tide, 180 years ago; its paper staff stayed.
+
+## Book Four: The Ash Steppe
+
+Eighteen days of grass between the coast and the mountain. The **Steppe** is silver feather-grass (“ash-grass”), kurgans, standing stones that hum, and a wind that carries names. Its people are the **Listeners**, the last of the Order of the Torn Page, who keep Yu Ling’s nine verbs as clan customs and cannot be lied to, because the wind tells them. Clans: the **Stone-Singers** (the Singing Stones), the **Glass-Wrights** (the Glass Orchard), the **Horse-Keepers** (the Winter Camp), the **Salt-Road caravaneers** (Yue Zhaoning’s kin), and the **Kurultai** of nine clans under **Grandmother Tamar**, blind, ninety, laughing, who decides. Madam Ash carries an eleven-year-old letter “to the woman who will decide”. Ren Qiao’s mother was a Horse-Keeper. Gu’s brother Hanming, taken by the levy fifteen years ago, is a sergeant in the Steppe Garrison under **Colonel Ruo**, who runs a silencing campaign (Hush bells) against the clans. Su Mengjiao is counted by the Order as its **Seventh Voice**; the player is the Ninth. Duan Wuyi joins the party at the Grass Line.

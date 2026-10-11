@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { choose, createGame, currentBeat, getChoices, getScene } from "@/engine/game";
 import { mannerOf } from "@/engine/npc";
 import { restoreGame } from "@/engine/save";
@@ -8,6 +8,7 @@ import { TONE_INFO } from "@/engine/tone";
 import type { GameState, LogEntry, Story } from "@/engine/types";
 import { chapters } from "@/story";
 import { CultivationPanel } from "./CultivationPanel";
+import { REALMS } from "@/engine/cultivation";
 import { NpcPanel } from "./NpcPanel";
 import { StatsPanel } from "./StatsPanel";
 import { ToneLegend } from "./ToneLegend";
@@ -34,6 +35,11 @@ function writeSave(state: GameState): boolean {
   }
 }
 
+/** Turns `*like this*` into italics, as the books write a card, a note or a remembered line. */
+function withEmphasis(text: string): ReactNode[] {
+  return text.split(/\*([^*]+)\*/).map((part, i) => (i % 2 === 1 ? <em key={i}>{part}</em> : part));
+}
+
 /** Renders one log entry. The same markup serves the stage and the backlog. */
 function Entry({ entry }: { entry: LogEntry }) {
   switch (entry.kind) {
@@ -45,8 +51,14 @@ function Entry({ entry }: { entry: LogEntry }) {
           {entry.text}
         </p>
       );
+    case "strain":
+      return (
+        <p className="strain-line" role="status">
+          {entry.text}
+        </p>
+      );
     case "narration":
-      return <p className="narration">{entry.text}</p>;
+      return <p className="narration">{withEmphasis(entry.text)}</p>;
     case "player":
       return (
         <p className="player-line">
@@ -60,7 +72,7 @@ function Entry({ entry }: { entry: LogEntry }) {
       return (
         <figure className="npc-line">
           <figcaption>{entry.speaker}</figcaption>
-          <blockquote>{entry.text}</blockquote>
+          <blockquote>{withEmphasis(entry.text)}</blockquote>
         </figure>
       );
   }
@@ -179,7 +191,7 @@ export function GameView({ story }: { story: Story }) {
               <p className="eyebrow">What do you do?</p>
               <ToneLegend />
               <ol>
-                {choices.map(({ choice, available, hint }) => (
+                {choices.map(({ choice, available, hint, strain }) => (
                   <li key={choice.id}>
                     <button
                       type="button"
@@ -190,6 +202,12 @@ export function GameView({ story }: { story: Story }) {
                     >
                       <span className="choice-label">{choice.label}</span>
                       {choice.tone && <span className="tone-tag">{TONE_INFO[choice.tone].name}</span>}
+                      {choice.needsRealm !== undefined && (
+                        <span className="realm-tag" data-strain={strain ? "yes" : "no"}>
+                          {REALMS[choice.needsRealm].name}
+                          {strain ? " · beyond you" : ""}
+                        </span>
+                      )}
                     </button>
                     {hint && (
                       <p id={`hint-${choice.id}`} className="hint">

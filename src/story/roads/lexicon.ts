@@ -43,9 +43,9 @@ export const ALLIES: Record<ChoiceTone, string[]> = {
 /** The first paragraph of an approach scene, by stage (0 to 4). Four variants each. */
 export const STAGE_OPEN: string[][] = [
   [
-    "You turn toward {focus}, and the way narrows as you go. {Place} is quieter here than at its edge, and {omen} follows you like a stray dog.",
-    "The path to {focus} runs behind {place}, where paving gives way to packed earth. Few have walked it this season, and {omen} marks the way better than any signpost.",
-    "It takes the rest of the morning to reach {focus}. All the while {omen} thickens, and the people of {place} watch you from doorways they do not quite step out of.",
+    "You turn toward {focus}, and the way narrows as you go. {Place} is quieter here than at its edge, and {omen} follows you like a stray dog. {Keeper} is said to keep watch there.",
+    "The path to {focus} runs behind {place}, where paving gives way to packed earth. Few have walked it this season, and {omen} marks the way better than any signpost. {Keeper} is said to keep the end of it.",
+    "It takes the rest of the morning to reach {focus}. All the while {omen} thickens, and the people of {place} watch you from doorways they do not quite step out of. {Keeper} is the only one who does not look away.",
     "{Keeper} has told you where to find {focus}, but not why. You follow the directions and find the last turning unmarked, exactly as {kname} said it would be.",
   ],
   [
@@ -62,7 +62,7 @@ export const STAGE_OPEN: string[][] = [
   ],
   [
     "Now the matter has an edge. {Obstacle} is at your back and {ally} is at your side, and in front of you lies {relic}, which the whole of {place} has been pretending not to know about.",
-    "You can see the shape of it at last: {secret}. The knowledge is heavy, and everyone who might share it is watching to see what you do with it.",
+    "You can see the shape of it at last, though not yet all its edges. The knowledge is heavy, and everyone who might share it is watching to see what you do with it.",
     "{Kname} sets {relic} on the table between you. “Everyone here has a reason to want this gone,” says {kname}. “I would like to hear yours before I decide whose side the night is on.”",
     "The lamps gutter. For three breaths {place} is silent, and you understand that whatever you do next will be remembered here long after you have gone.",
   ],
@@ -217,8 +217,31 @@ export const RETURN_OPEN: string[][] = [
 
 /** Extra return-scene paragraphs, shown only when the matching flag is set. */
 export const RETURN_FOUND_SECRET = "You know the truth of it now: {secret}. Knowing it, you cannot go back to not knowing.";
-export const RETURN_CRISIS_FORCE = "The way you broke the quiet at the crisis will be remembered in {place}, long after your name is forgotten.";
-export const RETURN_CRISIS_MERCY = "What you gave at the crisis was small, and {kname} will remember it for exactly as long as it takes to repay.";
+export const RETURN_CRISIS: Record<ChoiceTone, string> = {
+  truth: "You spoke plainly at the crisis, and {kname} has already repeated your words to others, a little improved.",
+  mercy: "What you gave at the crisis was small, and {kname} will remember it for exactly as long as it takes to repay.",
+  inquiry: "The question you asked at the crisis is still going round {place}. Nobody has yet found an answer they like.",
+  deceit: "The story you told at the crisis holds for now. In {place}, a lie that holds is a debt someone will come to collect.",
+  force: "The way you broke the quiet at the crisis will be remembered in {place}, long after your name is forgotten.",
+  quiet: "You said little at the crisis, and {place} has decided your silence meant something. {Kname} will not say what.",
+};
+
+/** How the way you came in colours the way back, by the tone of the approach. */
+export const RETURN_APPROACH: Record<ChoiceTone, string> = {
+  inquiry: "You went at {place} through {focus}, asking and copying, and your notes are heavier for it.",
+  mercy: "You came to {place} by way of {focus}, with open hands, and the people there have not yet decided what to make of that.",
+  force: "You pushed your way in at {focus}, and the door you broke there will be mended slowly, and talked about longer.",
+  deceit: "You slipped in at {focus} under a borrowed errand, and somewhere in {place} a clerk is still wondering who you were.",
+  quiet: "You watched {focus} from the edge until it showed its habits, and you leave knowing them better than those who keep them.",
+  truth: "You walked up to {focus} and said why you had come. It is a rarer thing in {place} than you would think.",
+};
+
+/** What the wayside says of a road once it is done, by whether the Elder was told. */
+export const WAYSIDE_AFTER = {
+  reported: "The wardens have since called at {place}, and {kname} sent word up the stair that the visit was not unkind.",
+  silent: "Nothing of {place} has reached the Law Hall, and {kname} is grateful for it, or is pretending to be.",
+};
+
 export const RETURN_USED_QI = "Your breath ran deeper at the crisis than a mortal’s should. {Kname} noticed, and did not say so.";
 
 /** Return choices. */

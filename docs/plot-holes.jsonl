@@ -1,0 +1,70 @@
+{"cat": "timeline", "where": "src/story/chapter-10.ts", "note": "Su Wanru was the Registrar, not yet Elder, on the night of the Sealing (she became Elder twelve years ago); nine mentions corrected.", "n": 9}
+{"cat": "timeline", "where": "src/story/chapter-10.ts", "note": "Heading said Elder for the Registrar on the Sealing Night.", "n": 1}
+{"cat": "timeline", "where": "src/story/chapter-10.ts", "note": "The sealing order named an Elder who did not yet hold the office.", "n": 1}
+{"cat": "timeline", "where": "src/story/chapter-10.ts", "note": "Clarifies that the younger Wanru is the Registrar.", "n": 1}
+{"cat": "timeline", "where": "src/story/chapter-3.ts", "note": "Lin Yuan's mother could not be on a Sealing order if she was expelled three years before it; her expulsion now follows the Sealing and her reason matches the tribunal testimony.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-3.ts", "note": "The ledger listed Mengjiao among fourteen signed names; canon is fourteen signed by Wanru and a fifteenth, Mengjiao, sealed by the masters alone.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-3.ts", "note": "Wanru did not sign Mengjiao's line, so the heavier pressure belongs to the fourteenth name.", "n": 1}
+{"cat": "timeline", "where": "src/story/chapter-6.ts", "note": "The Elder narrated her own past as Elder fifteen years ago; she was Registrar then. Also removes her signature from Mengjiao's order.", "n": 1}
+{"cat": "timeline", "where": "src/story/chapter-6.ts", "note": "Fixes first-person slip in third-person narration.", "n": 1}
+{"cat": "logic", "where": "src/story/chapter-1.ts", "note": "Choice label contained a meta-narrative phrase ('for the rest of the story') that no character could say.", "n": 1}
+{"cat": "mortal-qi", "where": "src/story/npc/elder-su-realm.ts", "note": "Elder said a Mortal has no qi at all, while the opening scenes let the player draw a thread of breath-qi; canon: a Mortal has breath-qi but no gathered qi.", "n": 1}
+{"cat": "logic", "where": "src/story/chapter-2.ts", "note": "The choice said Gu runs away, but the next scene has him kneeling on the ledge in front of the player.", "n": 1}
+{"cat": "dead-condition", "where": "src/story/chapter-2.ts", "note": "OFFER_TO_FETCH_GU read a flag, spared_gu, that nothing set; sparing Gu now sets it.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-2.ts", "note": "The player's 'black lotus' appeared with no earlier mention; it is now the black seed the Wanderer has always carried, which Book II builds on.", "n": 1}
+{"cat": "dead-condition", "where": "src/story/chapter-2.ts", "note": "An extra in return_hall needed the flag fled_with_jade, but that choice ends the story, so the text could never show.", "n": 1}
+{"cat": "logic", "where": "src/story/chapter-2.ts", "note": "Clarified the tray's state; the old sentence read as if the tray's contents were unknown to the narrator.", "n": 1}
+{"cat": "timeline", "where": "src/story/chapter-3.ts", "note": "The rain at the start of the story lasted three days; the archive visit is several days later, so 'three days of rain' contradicted the calendar.", "n": 1}
+{"cat": "logic", "where": "src/story/chapter-3.ts", "note": "The text claimed the player recognised a mark from the altar, even if they never studied the altar.", "n": 1}
+{"cat": "logic", "where": "src/story/chapter-3.ts", "note": "Ren Qiao denied the Elder had sent anyone to the archive although the player carries her order.", "n": 1}
+{"cat": "logic", "where": "src/story/chapter-4.ts", "note": "Ren Qiao is standing at the sutra door, and later says he has carried food to the cells for twelve years.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-5.ts", "note": "In the vision Mengjiao is the younger sister (twelve to Wanru's sixteen, as Wanru says at her window); the scene made Wanru nine and 'his'.", "n": 1}
+{"cat": "timeline", "where": "src/story/chapter-6.ts", "note": "Wanru was twenty-eight on the Sealing Night, not sixteen.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-7.ts", "note": "Lin Yuan's mother could not be named as sealed; she is the clerk who refused to witness Mengjiao's order, matching her expulsion.", "n": 1}
+{"cat": "logic", "where": "src/story/chapter-8.ts", "note": "The text assumed the player carried the shard up from the vault, whether or not they took it.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-9.ts", "note": "The scene read fifteen names plus Mengjiao, sixteen in all; canon is fourteen signed names and Mengjiao as the fifteenth.", "n": 1}
+{"cat": "dead-condition", "where": "src/story/npc/elder-su.ts", "note": "The STEAL_SCROLL memory needed honored_ancestors, set by a sibling choice in the same scene, so it could never show; it now reads sneaked_in, which can precede the theft.", "n": 1}
+{"cat": "dead-condition", "where": "src/story/npc/elder-su.ts", "note": "JADE_EYE_REPORT needed lied_to_eye, set by a sibling choice in the same scene; it now remembers the earlier lie about the seal.", "n": 1}
+{"cat": "dead-condition", "where": "src/story/npc/elder-su.ts", "note": "JADE_EYE_LIE needed read_the_sutra, set by a sibling choice in the same scene; it now remembers the study in the archive reading room.", "n": 1}
+{"cat": "dead-condition", "where": "src/story/npc/elder-su.ts", "note": "REPORT_BOUT needed boasted, set by a sibling choice in the same scene; it now remembers the mockery of the forms.", "n": 1}
+{"cat": "logic", "where": "src/story/chapter-3.ts", "note": "Shortened the recognition fix so the scene stays within the word cap; recognition now comes from an echo that needs saw_altar.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-3.ts", "note": "Trimmed to fit the word cap.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-3.ts", "note": "Trimmed to fit the word cap.", "n": 1}
+{"cat": "dead-condition", "where": "src/story/npc/elder-su-reactions.ts", "note": "OFFER_TO_FETCH_GU remembered that the player had spared Gu, but the offer is made before the player has met him; it now remembers the name the gate disciple gave.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-3.ts", "note": "Trimmed to fit the word cap.", "n": 1}
+{"cat": "road-template", "where": "src/story/roads/lexicon.ts", "note": "The keeper was named bare (kname) in later scenes and labels before ever being introduced in some approaches; the opener now introduces them in full. Affects every road that draws this opener.", "n": 1, "inst": 120}
+{"cat": "road-template", "where": "src/story/roads/lexicon.ts", "note": "Same introduction fix for the second opener variant.", "n": 1, "inst": 0}
+{"cat": "road-template", "where": "src/story/roads/lexicon.ts", "note": "Same introduction fix for the third opener variant.", "n": 1, "inst": 0}
+{"cat": "road-template", "where": "src/story/roads/lexicon.ts", "note": "The secret of the road was stated outright in an ordinary approach scene, so the hidden route and the 'found the secret' memory lines revealed nothing new; the approach scene now only hints.", "n": 1, "inst": 40}
+{"cat": "name-clash", "where": "src/story/roads/specs-1.ts", "note": "Road keeper 'Shu Lin' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Cao Fen'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-1.ts", "note": "Road keeper 'Hu Mei' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Tian Rui'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-1.ts", "note": "Road keeper 'Ding Hu' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Ding Kai'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-1.ts", "note": "Road keeper 'Zhao Lian' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Zhao Yue'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-1.ts", "note": "Road keeper 'Bo Ning' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Dai Ning'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-1.ts", "note": "Road keeper 'Chen Gu' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Chen Zhou'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-2.ts", "note": "Road keeper 'Ouyang Bo' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Ouyang Tai'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-2.ts", "note": "Road keeper 'Gu Lan' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Zeng Lan'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-2.ts", "note": "Road keeper 'Qin Ya' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Liao Ya'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-2.ts", "note": "Road keeper 'Shi Hu' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Shi Gang'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-2.ts", "note": "Road keeper 'Lian Bo' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Xie Bo'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-2.ts", "note": "Road keeper 'Ku Ren' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Ku Dao'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-2.ts", "note": "Road keeper 'Ning Su' shared a name with a main-cast character (Lin, Gu, Hu, Qin, Su, Lian, Bo or Ren); renamed 'Ning Xia'.", "n": 2}
+{"cat": "name-clash", "where": "src/story/roads/specs-2.ts", "note": "Road keeper 'Xie Bo' shared a name element with Bo Lan; renamed 'Xie Tong'.", "n": 2}
+{"cat": "time-loop", "where": "src/story/roads/index.ts", "note": "Returning from a wayside sent the player back to the opening of the scene they left (the gate disciple's greeting, Gu on the ledge, the archive order delivered again). Each of the ten waysides now returns to a short 'back' scene of its own that offers the same choices.", "n": 10, "inst": 10}
+{"cat": "time-loop", "where": "src/story/chapter-3.ts", "note": "Crawling out of the ash chute dropped the player back at the archive gate, replaying the dawn order and the bridge; it now leads to the front doors.", "n": 1}
+{"cat": "time-loop", "where": "src/story/chapter-3.ts", "note": "Copying the letter sent the player back to the stacks they had just left; it now goes on to the ledger of punishments.", "n": 1}
+{"cat": "time-loop", "where": "src/story/chapter-3.ts", "note": "Slipping away from Ren Qiao by the chute looped the player back to the chute they came in by; it now leads to the report.", "n": 1}
+{"cat": "time-loop", "where": "src/story/chapter-3.ts", "note": "Dragging Lin Yuan out of the smoke sent the player back to a scene of him still sitting at his desk before the fire; it now leads out to the report.", "n": 1}
+{"cat": "time-loop", "where": "src/story/chapter-3.ts", "note": "Shouting for the wardens replayed Ren Qiao's first confrontation after the fire had already started; it now leads out to the report.", "n": 1}
+{"cat": "time-loop", "where": "src/story/chapter-3.ts", "note": "Returning up the chute from the vault looped back to the chute's first scene; it now leads out to the report.", "n": 1}
+{"cat": "dead-condition", "where": "src/story/npc/elder-su-side-paths.ts", "note": "REQUEST_VILLAGE remembered that the player had asked for a night in the same breath, but the two requests are alternatives in one scene; it now remembers the name the gate disciple gave.", "n": 1}
+{"cat": "dead-condition", "where": "src/story/npc/elder-su.ts", "note": "REFUSE_SEALING remembered that the player had watched the signing, but watching and refusing are alternatives in one scene; it now remembers the watch from the pillar.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "Book One's three good endings now open Book Two, and each leaves a flag so the sequel can remember which one the player reached.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "Same: the sovereign ending leaves end1_sovereign.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "Same: the sisters' ending leaves end1_sisters.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "The sisters' ending closed the story for good with the abyss at peace, although Book Two needs the Concord to arrive; it now ends with the barge on the river.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "The redeemed ending closed the story with the abyss repaired; it now ends with the Concord's barge on the river.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "The sovereign ending closed the story with the abyss sealed for good; it now ends with the Concord's barge on the river.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "Book One's good endings are no longer endings, so their headings lose the 'Ending:' prefix.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "Same.", "n": 1}
+{"cat": "canon", "where": "src/story/chapter-11.ts", "note": "Same.", "n": 1}

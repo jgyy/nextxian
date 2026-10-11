@@ -116,7 +116,7 @@ export const chapterNine: Scene[] = [
     title: "The Names Read Aloud",
     paragraphs: [
       "You stand before the jade chair and begin to speak. You do not raise your voice. You say the first name, which is the boy of twelve who wanted to be a gardener, and then the second, the poet who wrote on the backs of ledger pages. Behind you the wardens shift their weight. The masters have come out of their rooms to stand at the foot of the dais, and their faces are pale in the lamplight.",
-      "You read all fourteen names, and then you read the fifteenth, which is not on any ledger. It is the name of the girl who said she was not dead, only listening. You read Mengjiao’s name last, and when you say it the Elder’s hands tighten on the arms of her chair until the knuckles whiten, and then, very slowly, they relax.",
+      "You read all fourteen names, the last of them the girl who said she was not dead, only listening. Then you read the fifteenth, which no ledger of the Law ever carried in the Registrar’s hand. You read Mengjiao’s name last, and when you say it the Elder’s hands tighten on the arms of her chair until the knuckles whiten, and then, very slowly, they relax.",
       "\"Enough,\" says Hu Jingyan. His voice is weak, but it carries the old authority of the Law. \"The names are the Law’s to keep. They are not an outsider’s to read aloud in the Law Hall.\"",
     ],
     choices: [

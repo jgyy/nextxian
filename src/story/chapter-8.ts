@@ -380,7 +380,7 @@ export const chapterEight: Scene[] = [
     id: "descent_mengjiao",
     title: "Su Mengjiao",
     paragraphs: [
-      "She leads you to a hollow in the cliff face, a small cave lined with lotus petals of pale green jade. The petals have been arranged in a spiral, and in the centre of the spiral sits a stone bowl filled with red water. In the water, a single shard of pale jade floats, identical in shape and colour to the one you carried up from the vault. Mengjiao kneels beside the bowl and lays her palm flat on the water. The mist around the cave stills at once, as if someone has held up a hand in a crowded room.",
+      "She leads you to a hollow in the cliff face, a small cave lined with lotus petals of pale green jade. The petals have been arranged in a spiral, and in the centre of the spiral sits a stone bowl filled with red water. In the water, a single shard of pale jade floats, the twin of the shard that lay in the vault beneath the archive. Mengjiao kneels beside the bowl and lays her palm flat on the water. The mist around the cave stills at once, as if someone has held up a hand in a crowded room.",
       "\"This is the other half,\" she says. \"The Law broke the Sealing Jade on the night of the first sealing, because the masters could not agree which half to keep. They kept the altar piece, and they sent the other half down the path, with the first living Su to be sacrificed. That was me. I was supposed to hold the other half in my palm until my heart stopped. I did not stop. I learned to listen instead.\"",
     ],
     choices: [

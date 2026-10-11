@@ -41,15 +41,15 @@ export const chapterTen: Scene[] = [
   },
   {
     id: "sealing_night_2",
-    title: "The Young Elder at the Altar",
+    title: "The Young Registrar at the Altar",
     paragraphs: [
-      "\"This is the night of the Sealing,\" a voice says behind you. It is the Elder’s voice, but it has no weariness in it now. It is the voice of a woman who has not yet learned how much a single signature can cost. \"Witness it, or you will never believe what it cost.\" You turn, and the Elder is standing beside you, young and straight-backed, her eyes wide and dry, watching the kneeling woman at the altar as though she were watching a stranger.",
-      "On the altar, the Sealing Jade rests in a bed of black silk. It is whole, and it is very beautiful, pale green with a deep inner glow. Beside it lies a stack of grey orders, and the top one is blank except for a single line at the bottom: Signed by the Elder of the Law Hall, before witnesses.",
+      "\"This is the night of the Sealing,\" a voice says behind you. It is the Elder’s voice, but it has no weariness in it now, and the woman beside you is not yet the Elder at all. It is the voice of a woman who has not yet learned how much a single signature can cost. \"Witness it, or you will never believe what it cost.\" You turn, and the Elder is standing beside you, young and straight-backed, her eyes wide and dry, watching the kneeling woman at the altar as though she were watching a stranger.",
+      "On the altar, the Sealing Jade rests in a bed of black silk. It is whole, and it is very beautiful, pale green with a deep inner glow. Beside it lies a stack of grey orders, and the top one is blank except for a single line at the bottom: Signed by the Registrar of the Law Hall, before witnesses.",
     ],
     choices: [
       {
         id: "ask_what_she_sees",
-        label: "Ask the young Elder what she sees when she looks at the jade.",
+        label: "Ask the young Registrar what she sees when she looks at the jade.",
         tone: "inquiry",
         next: "sealing_night_3",
       },
@@ -77,7 +77,7 @@ export const chapterTen: Scene[] = [
     id: "sealing_night_3",
     title: "Witnessing the Sealing",
     paragraphs: [
-      "No one in the room looks at the jade. They look at the brush in the young Elder’s hand, and at the blank line on the order, and at the single space where her name should go. The masters are waiting. The mist is waiting. Outside the great doors, very far away, a bell is beginning to ring its long, slow note.",
+      "No one in the room looks at the jade. They look at the brush in the young Registrar’s hand, and at the blank line on the order, and at the single space where her name should go. The masters are waiting. The mist is waiting. Outside the great doors, very far away, a bell is beginning to ring its long, slow note.",
     ],
     choices: [
       {
@@ -96,7 +96,7 @@ export const chapterTen: Scene[] = [
       },
       {
         id: "speak_to_young_elder",
-        label: "Lean toward the young Elder and whisper that she still has time to refuse the brush.",
+        label: "Lean toward the young Registrar and whisper that she still has time to refuse the brush.",
         tone: "mercy",
         next: "sealing_altar",
         npcScenario: "SWEAR_OATH",
@@ -125,7 +125,7 @@ export const chapterTen: Scene[] = [
     id: "sealing_altar",
     title: "The Brush and the Name",
     paragraphs: [
-      "The young Elder dips the brush in the ink and holds it above the paper. Her hand does not stop shaking. The masters lean forward in unison, and the sound of their breath rises in the hall like a wind rising through a valley. One of them, a broad man with a gold clasp, says in a low voice, \"The line is waiting, Su Wanru. The sect is waiting. Mengjiao is waiting.\"",
+      "The young Registrar dips the brush in the ink and holds it above the paper. Her hand does not stop shaking. The masters lean forward in unison, and the sound of their breath rises in the hall like a wind rising through a valley. One of them, a broad man with a gold clasp, says in a low voice, \"The line is waiting, Su Wanru. The sect is waiting. Mengjiao is waiting.\"",
       "The brush touches the paper. A single stroke appears, very dark, and then a second, and the young woman’s breath catches as if she had been struck. The first stroke is her name, the family name Su. The second is the beginning of the given name, Wanru. She has stopped there, and her hand is hovering over the third stroke.",
       "\"Finish it,\" says a voice from the far side of the hall, and you realise that it is the voice of the fourteenth disciple, the girl who was sent down the path before Mengjiao. She is standing in the shadows with her hands bound. No one looks at her. The masters have decided that she is not a witness, only a name.",
     ],
@@ -160,12 +160,12 @@ export const chapterTen: Scene[] = [
     id: "sealing_altar_2",
     title: "The Blank Order",
     paragraphs: [
-      "The young Elder looks up. Her eyes find yours, across the ring of masters, and for a single heartbeat she seems to see you, really see you, a stranger from the future who has come to watch her make the choice she has spent fifteen years trying to undo. Her lips move. You cannot hear the words, but you know what they are, because they are the words the Elder spoke to you at the window at night: I wrote my own name instead.",
+      "The young Registrar looks up. Her eyes find yours, across the ring of masters, and for a single heartbeat she seems to see you, really see you, a stranger from the future who has come to watch her make the choice she has spent fifteen years trying to undo. Her lips move. You cannot hear the words, but you know what they are, because they are the words the Elder spoke to you at the window at night: I wrote my own name instead.",
     ],
     choices: [
       {
         id: "elder_signs",
-        label: "Let the young Elder finish her signature, and watch the masters nod in satisfaction as the order is sealed.",
+        label: "Let the young Registrar finish her signature, and watch the masters nod in satisfaction as the order is sealed.",
         tone: "quiet",
         next: "sealing_path",
         npcScenario: "WITNESS_SIGNING",
@@ -181,7 +181,7 @@ export const chapterTen: Scene[] = [
       },
       {
         id: "offer_to_go",
-        label: "Tell the masters that you will go down the path in her place, if only they will let the young Elder rest.",
+        label: "Tell the masters that you will go down the path in her place, if only they will let the young Registrar rest.",
         tone: "mercy",
         next: "sealing_path",
         npcScenario: "ACCEPT_DESCENT",
@@ -235,7 +235,7 @@ export const chapterTen: Scene[] = [
     title: "Mengjiao in Chains",
     paragraphs: [
       "\"You are going to give me the seal,\" she says. \"And then you are going to watch me walk into the mist with it, so the Law can say that a Su died holding the lock. That is what you want, and you have called it a sacrifice, because the word sounds better than murder in the mouth of an elder.\"",
-      "The masters say nothing. One of them lifts the jade and holds it out to her, but she does not reach for it. She turns instead to the young Elder, who has followed the procession to the cleft with the signed order still clutched in her hand. Mengjiao’s voice softens. \"Wanru,\" she says. \"You can still walk away. The Law cannot make you stand at the top of the path if you refuse to stand there.\"",
+      "The masters say nothing. One of them lifts the jade and holds it out to her, but she does not reach for it. She turns instead to the young Registrar, who has followed the procession to the cleft with the signed order still clutched in her hand. Mengjiao’s voice softens. \"Wanru,\" she says. \"You can still walk away. The Law cannot make you stand at the top of the path if you refuse to stand there.\"",
     ],
     choices: [
       {
@@ -308,7 +308,7 @@ export const chapterTen: Scene[] = [
     id: "sealing_choice_2",
     title: "The Cracked Iron",
     paragraphs: [
-      "The masters are waiting for the signal to step forward and push her into the mist. The young Elder is staring at the signed order in her hand as though the ink has begun to bleed through the paper. The wind pulls at the hem of your robe. You can feel the cracked iron under your palm when you lean close, and you know that you have only a few heartbeats before the masters decide that the witness has seen enough.",
+      "The masters are waiting for the signal to step forward and push her into the mist. The young Registrar is staring at the signed order in her hand as though the ink has begun to bleed through the paper. The wind pulls at the hem of your robe. You can feel the cracked iron under your palm when you lean close, and you know that you have only a few heartbeats before the masters decide that the witness has seen enough.",
     ],
     choices: [
       {

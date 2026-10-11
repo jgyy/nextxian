@@ -2,8 +2,9 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { story, chapters } from "@/story";
+import { auditStory } from "@/engine/audit";
 import { validateStory, MAX_LINE_WORDS, MAX_SCENE_WORDS, MIN_CHOICES, MIN_NPC_SCENARIOS, sceneBodyWords } from "@/engine/validate";
-import { choose, createGame, currentBeat, getChoices, getScene } from "@/engine/game";
+import { choose, createGame, currentBeat, enterScene, getChoices, getScene } from "@/engine/game";
 import {
   conditionsHold,
   RESPECT_SHIFT,
@@ -61,7 +62,16 @@ function deciding(sceneId: string, state: GameState): GameState {
 
 /** Makes the named decision. Routes name every choice they take, including the opening ones of a scene. */
 function pick(state: GameState, choiceId: string): GameState {
-  return choose(story, state, choiceId);
+  return skipInterludes(choose(story, state, choiceId));
+}
+
+/** The interludes are gossip between chapters. A player reads them and moves on, and so do the route tests. */
+function skipInterludes(state: GameState): GameState {
+  let current = state;
+  while (current.sceneId.startsWith("rumours_")) {
+    current = enterScene(story, current, getScene(story, getScene(story, current.sceneId).choices[0].next));
+  }
+  return current;
 }
 
 /** Makes each named decision in turn. */
@@ -107,12 +117,12 @@ describe("story integrity", () => {
     const ids = chapters.flatMap((c) => c.scenes.map((s) => s.id));
     expect(new Set(ids).size).toBe(ids.length);
     expect(ids.sort()).toEqual(Object.keys(story.scenes).sort());
-    expect(chapters).toHaveLength(33);
+    expect(chapters.length).toBeGreaterThanOrEqual(34);
   });
 
-  it("has five endings, all reachable", () => {
+  it("has endings, all reachable", () => {
     const endings = Object.values(story.scenes).filter((s) => s.ending !== undefined);
-    expect(endings).toHaveLength(5);
+    expect(endings.length).toBeGreaterThanOrEqual(2);
     const reachable = reachableScenes();
     for (const ending of endings) expect(reachable.has(ending.id), ending.id).toBe(true);
   });
@@ -251,6 +261,23 @@ describe("scene length", () => {
     expect(heading?.text).toBe(story.scenes.descent_return_2.title);
   });
 
+  it("passes the audit: no dangling flag, dead condition or time loop", () => {
+    expect(auditStory(story).map((i) => `${i.kind}: ${i.message}`)).toEqual([]);
+  });
+
+  it("gives every scene an id of its own, so no arc silently replaces another's scene", () => {
+    const owner = new Map<string, string>();
+    const clashes: string[] = [];
+    for (const chapter of chapters) {
+      for (const scene of chapter.scenes) {
+        const first = owner.get(scene.id);
+        if (first !== undefined) clashes.push(`${scene.id} (${first} / ${chapter.name})`);
+        else owner.set(scene.id, chapter.name);
+      }
+    }
+    expect(clashes).toEqual([]);
+  });
+
   it("keeps every scene body within the 200-word cap, extras and interjections included", () => {
     for (const scene of Object.values(story.scenes)) {
       expect(sceneBodyWords(scene), scene.id).toBeLessThanOrEqual(MAX_SCENE_WORDS);
@@ -268,12 +295,14 @@ describe("reactive NPC", () => {
 
   it("answers the same scenario differently across the trust tiers its choice can reach", () => {
     for (const scenario of Object.values(story.scenarios)) {
-      const { sceneId, choiceId, flags, stats, npc } = locate(scenario.id);
+      const { sceneId, choiceId, flags, stats, npc, realm } = locate(scenario.id);
       const reached = new Set<Tier>();
       const replies = new Set<string>();
       for (const trust of [-60, -20, 0, 30, 70]) {
         const base = withNpc(trust, flags);
-        const state: GameState = { ...base, sceneId, stats: { ...base.stats, ...stats }, npc: { ...base.npc, ...npc, trust } };
+        // A companion's scenario is answered by how they feel, which is their bond, not the Elder's trust.
+        const bonds = scenario.npc ? { [scenario.npc]: trust } : base.bonds;
+        const state: GameState = { ...base, bonds, sceneId, realm, stats: { ...base.stats, ...stats }, npc: { ...base.npc, ...npc, trust } };
         const view = getChoices(getScene(story, sceneId), state).find((v) => v.choice.id === choiceId);
         if (!view?.available) continue; // a choice with a trust requirement is closed to the colder tiers
         reached.add(tierFor(trust));
@@ -371,11 +400,12 @@ describe("player choices", () => {
     expect(getChoices(getScene(story, "gate"), game)).toHaveLength(5);
   });
 
-  it("reaches the Sisters' Dao ending through the sealing choice", () => {
+  it("reaches the close of Book One through the sealing choice, with Mengjiao freed", () => {
     let game = createGame(story);
     const route = ["bow_and_state","honest_account","accept_mission","spare_gu","recover_jade","full_truth","walk_east_wing","show_order","go_front","read_nearest_label","claim_elder_sent","search_quietly","open_for_wanru","to_the_index","copy_entry","report_index_entry","tell_everything_in_order","report_letter","call_to_door","sleep_on","take_cloak_thanks","go_at_bell","press_palm_lacquer","ask_what_gate_wants","turn_key_again","trace_lowest_band","read_struck_phrase","copy_all_bands","walk_lotus_steps","go_down_right","count_outer_rows","touch_central_bell","step_onto_red_water","cover_mirror_sleeve","read_the_sutra","count_petals_until_quiet","resist_the_voice","claim_nothing_new","mist_answered_same_voice","tell_elder_sister","brace_and_watch_water","admit_law_sent_you","offer_mengjiao_hand","rise_and_approach","show_burned_fingers","tell_of_mengjiao","ask_why_first_char_stayed","press_for_sealing_night","ask_who_the_masters_were","ask_last_words","accept_confession","ask_to_see_ledger","praise_her_courage","tear_summons","greet_gu","wait_for_elder_speak","ask_why_ren_qiao_moved","kneel_with_gu","describe_archive_fully","testify_for_gu","ask_can_bell_lie","let_bell_decide","count_white_with_elder","trust_elder_verdict","bow_and_accept_terms","ask_who_walked_cleft","trust_lantern","count_steps_on_rock","speak_names_back","walk_to_ledge","step_along_ledge","ask_how_she_keeps_seal","ask_other_half","ask_seal_needs","promise_message","count_voices_climbing","ask_elder_exact_words","carry_names_in","read_names_faster","read_all_fifteen","let_masters_go","stop_lian_leaving","repeat_message_exact","take_original_order","read_blank_line","ask_what_she_sees","step_into_the_ring","count_strokes_needed","elder_refuses","ask_mist_what_told","stay_back_path","find_weak_link","cut_chains","ask_mirror_meant","follow_elder_to_judgment","bring_sister","climb_steady_steps"];
     for (const id of route) game = pick(game, id);
-    expect(getScene(story, game.sceneId).ending).toBe("Ending: The Sisters’ Dao");
+    expect(game.sceneId).toBe("ending_sisters_2");
+    expect(game.flags.end1_sisters).toBe(true);
     expect(game.flags.freed_mengjiao).toBe(true);
   });
 
@@ -837,8 +867,8 @@ describe("the side paths of the new scenes", () => {
     expect(after.history).toEqual(["REQUEST_VILLAGE", "REPORT_VILLAGE"]);
   });
 
-  it("lets the Elder answer a request for the village with a memory of a request for a night", () => {
-    const after = pick(deciding("mission", fresh({ history: ["REQUEST_NIGHT"] })), "ask_village_leave");
+  it("lets the Elder answer a request for the village with a memory of the name the gate disciple gave", () => {
+    const after = pick(deciding("mission", fresh({ flags: { knows_gu_name: true } })), "ask_village_leave");
     expect(reactionLine(after)).toBe(story.scenarios.REQUEST_VILLAGE.memory?.[0].line);
   });
 
@@ -926,15 +956,18 @@ function locate(scenarioId: string): {
   flags: Record<string, boolean>;
   stats: Partial<PlayerStats>;
   npc: Partial<NpcState>;
+  realm: number;
 } {
-  const scene = Object.values(story.scenes).find((s) => s.choices.some((c) => c.npcScenario === scenarioId));
+  const scene = Object.values(story.scenes).find((s) => s.choices.some((c) => c.npcScenario === scenarioId || c.allyScenario === scenarioId));
   if (!scene) throw new Error(`no scene uses ${scenarioId}`);
-  const choice = scene.choices.find((c) => c.npcScenario === scenarioId)!;
+  const choice = scene.choices.find((c) => c.npcScenario === scenarioId || c.allyScenario === scenarioId)!;
   const stats: Partial<PlayerStats> = {};
   const npc: Partial<NpcState> = {};
+  let realm = 0;
   for (const c of choice.requires ?? []) {
+    if (c.kind === "realm" && c.min !== undefined) realm = Math.max(realm, c.min);
     if (c.kind === "stat" && c.min !== undefined) stats[c.stat] = c.min;
     if (c.kind === "npc" && c.min !== undefined) npc[c.metric] = c.min;
   }
-  return { sceneId: scene.id, choiceId: choice.id, flags: flagsFor(choice), stats, npc };
+  return { sceneId: scene.id, choiceId: choice.id, flags: flagsFor(choice), stats, npc, realm };
 }

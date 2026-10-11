@@ -77,11 +77,15 @@ describe("side roads", () => {
     expect(Object.keys(waysideEntrances)).toHaveLength(10);
   });
 
-  it("opens a wayside from the main line and returns to the scene it left", () => {
+  it("opens a wayside from the main line and returns to a scene of its own, not the opening it left", () => {
     let g = choose(story, createGame(story), "wayside_pilgrims");
     expect(g.sceneId).toBe("wayside_pilgrims");
     g = choose(story, g, "back_to_road");
-    expect(g.sceneId).toBe("gate");
+    expect(g.sceneId).toBe("back_gate");
+    const origin = getScene(story, "gate");
+    const back = getScene(story, "back_gate");
+    expect(back.paragraphs).not.toEqual(origin.paragraphs);
+    expect(back.choices.map((c) => c.next)).toEqual(origin.choices.map((c) => c.next));
   });
 
   it("walks a road to its end by any approach, reports it, and closes it on the wayside", () => {

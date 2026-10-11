@@ -1,6 +1,7 @@
 import { REALMS } from "@/engine/cultivation";
 import type { Choice, NpcScenario, Scene } from "@/engine/types";
-import { approachModes, buildReport, buildRoad, doneFlag, type RoadSpec } from "./build";
+import { approachModes, buildReport, buildRoad, doneFlag, fill, reportedFlag, type RoadSpec } from "./build";
+import { WAYSIDE_AFTER } from "./lexicon";
 import { roadsOne } from "./specs-1";
 import { roadsTwo } from "./specs-2";
 
@@ -8,6 +9,8 @@ interface Wayside {
   id: string;
   title: string;
   paragraphs: string[];
+  /** What the player sees on coming back from the wayside to the scene it branched from. */
+  back: string;
   /** The main-line scene the wayside branches from, and returns to. */
   origin: string;
   /** The chapter the wayside belongs to, used to place its group in reading order. */
@@ -23,6 +26,7 @@ interface Wayside {
 const WAYSIDES: Wayside[] = [
   {
     id: "wayside_pilgrims",
+    back: "You climb back up through the rain to the sect gate. The gate disciple is exactly where you left him, under an umbrella that is still not large enough, and he looks at the mud on you and chooses not to ask where you have been.",
     title: "Waysides: The Pilgrims’ Road",
     paragraphs: [
       "Below the sect gate a muddy track splits from the stair and winds down through the rain. Pilgrims in straw capes trudge along it, and every few hundred paces a lean-to or a shrine offers shelter and a story.",
@@ -36,6 +40,7 @@ const WAYSIDES: Wayside[] = [
   },
   {
     id: "wayside_terrace",
+    back: "The terrace road ends where it began, at the ledge. Red mist still breathes from the cleft. Gu Hanzhen has not moved from the rock, and his sword still trembles, but his eyes have followed your boots all the way back.",
     title: "Waysides: The Terrace Road",
     paragraphs: [
       "Along the rim of the abyss path runs a terrace road that the wardens’ maps leave out. Smugglers, hermits and the occasional lost disciple use it. It smells of sea air, though the sea is two hundred leagues away.",
@@ -49,6 +54,7 @@ const WAYSIDES: Wayside[] = [
   },
   {
     id: "wayside_scribes",
+    back: "You come back up the scribes’ lane to the east wing. The morning has not lifted, the black walls of the Ash Archive stand as you left them, and the Elder’s order is still folded in your hand.",
     title: "Waysides: The Scribes’ Lane",
     paragraphs: [
       "Behind the archive, a lane of ink-stained cottages climbs toward the stacks. The scribes who live here copy for the sect and gossip for themselves, and the lane goes a little too quiet when you mention the sutra.",
@@ -62,6 +68,7 @@ const WAYSIDES: Wayside[] = [
   },
   {
     id: "wayside_lamps",
+    back: "The lamp-sellers’ row lets you out at the foot of the red gate, a little smokier than you went in. The gate has not moved. The mist is still sinking toward it, and the keyhole still waits.",
     title: "Waysides: The Lamp-Sellers’ Row",
     paragraphs: [
       "A narrow row of stalls leads away from the sutra door, each selling something to light the dark: oil, wicks, candles, glass. The sellers hush when a stranger passes, and watch to see which lamp you look at.",
@@ -75,6 +82,7 @@ const WAYSIDES: Wayside[] = [
   },
   {
     id: "wayside_tower",
+    back: "The outer steps of the bell tower bring you down to the round doorway of the sutra hall. The red water is still, the dais is still, and the book is still waiting on its silk.",
     title: "Waysides: The Bell Tower Steps",
     paragraphs: [
       "A spiral of stone steps winds around the outside of the bell tower, with a landing at every turn. Apprentices sleep, work and quarrel on the landings, and the whole tower hums when the wind is from the abyss.",
@@ -88,6 +96,7 @@ const WAYSIDES: Wayside[] = [
   },
   {
     id: "wayside_terraces",
+    back: "You come up from the orchard terraces into the memorial. The Elder is where you left her beside the empty altar, her hair half pinned, her back turned, as though no time had passed for her at all.",
     title: "Waysides: The Orchard Terraces",
     paragraphs: [
       "Past the Jade Eye the hill is stepped into terraces of fruit and honey. The air is warm and thick with ripeness, which is strange this high up, in this season, in this rain.",
@@ -101,6 +110,7 @@ const WAYSIDES: Wayside[] = [
   },
   {
     id: "wayside_gallery",
+    back: "The rain gallery lets you out at the foot of the white steps. The summons is still in your hand, and the Hall of Bells still waits at the top.",
     title: "Waysides: The Rain Gallery",
     paragraphs: [
       "A covered gallery hangs along the cliff outside the Tribunal, its slate roof chiming under the rain. Clerks, makers and idlers shelter here and talk, and there is nothing they will not trade for news.",
@@ -114,6 +124,7 @@ const WAYSIDES: Wayside[] = [
   },
   {
     id: "wayside_ash",
+    back: "The grey road brings you back to the head of the abyss path, where Ren Qiao’s rope is still coiled and the cleft still breathes.",
     title: "Waysides: The Ash Road",
     paragraphs: [
       "Where the second descent begins, a grey road forks away through fields burned black. Smoke stands on the horizon in pillars, and the road is lined with travellers who say they are going home and walk in the wrong direction.",
@@ -127,6 +138,7 @@ const WAYSIDES: Wayside[] = [
   },
   {
     id: "wayside_landing",
+    back: "The lantern light on the landing guides you back up the path to the top of the cleft. The mist is gentler here, and the names are still on your lips.",
     title: "Waysides: The Ferry Landing",
     paragraphs: [
       "A path from the mist leads down to a landing of black planks and drifting lanterns. Boats rock on the dark water without a hand to tie them, and a crowd stands on the shore as if waiting for a signal.",
@@ -140,6 +152,7 @@ const WAYSIDES: Wayside[] = [
   },
   {
     id: "wayside_lanterns",
+    back: "The stair of lanterns returns you to the road to the altar. The lamps behind you go out one by one, like a procession breaking up.",
     title: "Waysides: The Last Lanterns",
     paragraphs: [
       "On the way to the sealing altar, a stair of lanterns winds up a side hill toward buildings that keep their own hours. The sect does not mention them, and the lamps along the stair are lit for someone.",
@@ -156,6 +169,24 @@ const WAYSIDES: Wayside[] = [
 const SPECS: RoadSpec[] = [...roadsOne, ...roadsTwo];
 const PER_WAYSIDE = 4;
 
+/** The id of the scene a player lands on when coming back from a wayside, so the origin's opening is not replayed. */
+export const backSceneId = (origin: string) => `back_${origin}`;
+
+/**
+ * The scene the player returns to from a wayside. It tells what has stayed the same since they left, then offers the
+ * origin's own choices again, so the opening of the origin scene is not read a second time.
+ */
+export function waysideBackScene(wayside: string, origin: Scene): Scene {
+  const w = WAYSIDES.find((x) => x.id === wayside);
+  if (!w) throw new Error(`no wayside "${wayside}"`);
+  return {
+    id: backSceneId(w.origin),
+    title: `Back from the ${w.title.replace("Waysides: ", "")}`,
+    paragraphs: [w.back],
+    choices: origin.choices.map((c) => ({ ...c })),
+  };
+}
+
 function waysideScene(w: Wayside, roads: { spec: RoadSpec; index: number }[]): Scene {
   const choices: Choice[] = roads.map(({ spec, index }) => ({
     id: `go_${spec.id}`,
@@ -165,24 +196,36 @@ function waysideScene(w: Wayside, roads: { spec: RoadSpec; index: number }[]): S
     requires: [{ kind: "flag", flag: doneFlag(spec.id), is: false }],
     lockedHint: "You have already walked this road.",
   }));
-  choices.push({ id: "back_to_road", label: "Leave the wayside and return to the road you left.", tone: "quiet", next: w.origin });
+  choices.push({ id: "back_to_road", label: "Leave the wayside and return to the road you left.", tone: "quiet", next: backSceneId(w.origin) });
   return {
     id: w.id,
     title: w.title,
     paragraphs: w.paragraphs,
+    // Once a road is done the wayside remembers whether the Elder was told, one alternative per road.
+    extras: roads.flatMap(({ spec }) => {
+      const slots = { place: spec.place, kname: spec.kname };
+      return [
+        { when: [{ kind: "flag" as const, flag: reportedFlag(spec.id) }], paragraphs: [fill(WAYSIDE_AFTER.reported, slots)], group: spec.id },
+        {
+          when: [{ kind: "flag" as const, flag: doneFlag(spec.id) }, { kind: "flag" as const, flag: reportedFlag(spec.id), is: false }],
+          paragraphs: [fill(WAYSIDE_AFTER.silent, slots)],
+          group: spec.id,
+        },
+      ];
+    }),
     interjections: [{ when: [{ kind: "roads", min: w.remark.roads }], line: w.remark.line }],
     choices,
   };
 }
 
 /** One group per wayside: the wayside scene and the 100 scenes of its four roads. */
-export const roadGroups: { name: string; chapter: number; scenes: Scene[] }[] = WAYSIDES.map((w, n) => {
+export const roadGroups: { name: string; chapter: number; wayside: string; scenes: Scene[] }[] = WAYSIDES.map((w, n) => {
   const roads = SPECS.slice(n * PER_WAYSIDE, (n + 1) * PER_WAYSIDE).map((spec, i) => ({ spec, index: n * PER_WAYSIDE + i }));
   const scenes = [
     waysideScene(w, roads),
     ...roads.flatMap(({ spec, index }) => buildRoad(spec, { index, wayside: w.id, realm: w.realm })),
   ];
-  return { name: w.title.replace("Waysides:", "Side Roads:"), chapter: w.chapter, scenes };
+  return { name: w.title.replace("Waysides:", "Side Roads:"), chapter: w.chapter, wayside: w.id, scenes };
 });
 
 /** The Elder’s reports on every road. */
