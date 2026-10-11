@@ -1340,3 +1340,102 @@ button.ghost[aria-expanded="true"] {
 .standing[data-standing="regarded"] strong {
   color: var(--jade);
 }
+
+/* ── The purse, the pack and the holdings ─────────────────── */
+
+.purse h2 {
+  margin: 4px 0 6px;
+}
+.purse h3.pack-title {
+  margin: 14px 0 6px;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+.purse .stones {
+  color: var(--gilt);
+  font-variant-numeric: tabular-nums;
+}
+.purse .stones[data-unfed="yes"] {
+  color: var(--ember, #d9795a);
+}
+.purse-note {
+  margin: 0 0 10px;
+  font-size: 0.84rem;
+}
+.unfed {
+  margin: 8px 0;
+  padding: 8px 12px;
+  font-size: 0.84rem;
+  border-left: 3px solid var(--ember, #d9795a);
+  background: rgba(217, 121, 90, 0.1);
+  border-radius: 0 10px 10px 0;
+}
+.speed {
+  margin: 10px 0 6px;
+  font-size: 0.9rem;
+}
+.speed-value {
+  font-family: var(--brush);
+  font-size: 1.3rem;
+  color: var(--jade);
+}
+.speed-parts,
+.pack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 0.84rem;
+}
+.speed-parts li,
+.pack li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 3px;
+  border-bottom: 1px dotted var(--panel-edge);
+}
+.speed-parts li[data-sign="minus"] strong {
+  color: var(--ember, #d9795a);
+}
+.speed-parts li[data-sign="plus"] strong {
+  color: var(--jade);
+}
+.pack li strong {
+  color: var(--gilt);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.pack li[data-kind="pill"] strong {
+  color: var(--tone-mercy);
+}
+
+/* What a choice costs or earns, shown before it is paid. */
+.price-tag {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.price-tag[data-kind="cost"] {
+  color: var(--ember, #d9795a);
+}
+.price-tag[data-kind="gain"] {
+  color: var(--jade);
+}
+
+/* The ledger speaks in grey, as a clerk would, between the scene and the choices. */
+.ledger-line {
+  margin: 14px 0;
+  padding: 8px 14px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  border-left: 3px solid var(--gilt-soft);
+  background: rgba(217, 181, 106, 0.06);
+  border-radius: 0 10px 10px 0;
+}

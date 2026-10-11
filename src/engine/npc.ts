@@ -193,7 +193,7 @@ export function reactToScenario(
 
 /** What a condition may read. Everything past the first five fields is optional so older callers and saves still work. */
 export type ConditionState = Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones"> &
-  Partial<Pick<GameState, "realm" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero">>;
+  Partial<Pick<GameState, "realm" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero" | "wealth" | "items" | "assets">>;
 
 /** True when every condition holds. An empty or missing list always holds. */
 export function conditionsHold(conditions: Condition[] | undefined, state: ConditionState): boolean {
@@ -255,6 +255,16 @@ export function conditionsHold(conditions: Condition[] | undefined, state: Condi
         const v = state.hero ? standingOf(state.hero, state.realm ?? 0) : 0;
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
       }
+      case "wealth": {
+        const v = state.wealth ?? 0;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "item": {
+        const v = state.items?.[c.item] ?? 0;
+        return v >= (c.min ?? 1) && (c.max === undefined || v <= c.max);
+      }
+      case "asset":
+        return (state.assets ?? []).includes(c.asset) === (c.is ?? true);
       case "count": {
         const v = Object.entries(state.flags).filter(([flag, on]) => on && flag.startsWith(c.prefix)).length;
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);

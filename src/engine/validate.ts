@@ -164,6 +164,8 @@ export function validateStory(story: Story): string[] {
     }
   }
 
+  problems.push(...validateEconomy(story));
+
   const used = new Set(
     Object.values(scenes).flatMap((s) => s.choices.flatMap((c) => [c.npcScenario, c.allyScenario]).filter(Boolean)),
   );
@@ -174,5 +176,80 @@ export function validateStory(story: Story): string[] {
     if (!used.has(id)) problems.push(`NPC scenario "${id}" is never triggered`);
   }
 
+  return problems;
+}
+
+/** The most any one choice may spend, earn or hand over, so a typo in an amount cannot ruin the economy. */
+export const MAX_PRICE = 400;
+
+/**
+ * Checks the purse, the pack and the holdings. Every item and asset a scene names must exist; a choice that spends
+ * must also require the money, one that hands over an item must require it, one that grants an asset must require that
+ * the hero does not hold it, and one that gives one up must require that they do.
+ */
+export function validateEconomy(story: Story): string[] {
+  const problems: string[] = [];
+  const items = story.items ?? {};
+  const assets = story.assets ?? {};
+  for (const [key, item] of Object.entries(items)) {
+    if (item.id !== key) problems.push(`item "${key}" is filed under the wrong id "${item.id}"`);
+    if (item.name.trim() === "" || item.blurb.trim() === "") problems.push(`item "${key}" has no name or blurb`);
+    if (!(item.value >= 0)) problems.push(`item "${key}" has a negative value`);
+    if (item.aid !== undefined && !(Number.isInteger(item.aid) && item.aid >= 1 && item.aid < REALMS.length)) {
+      problems.push(`item "${key}" helps into realm ${item.aid}, which cannot be entered`);
+    }
+    if (item.needsRealm !== undefined && !(Number.isInteger(item.needsRealm) && item.needsRealm >= 0 && item.needsRealm < REALMS.length)) {
+      problems.push(`item "${key}" asks for realm ${item.needsRealm}, which does not exist`);
+    }
+    if (item.speed !== undefined && !(item.speed > 0 && item.speed <= 40)) problems.push(`item "${key}" has a speed bonus outside 1 to 40`);
+  }
+  for (const [key, asset] of Object.entries(assets)) {
+    if (asset.id !== key) problems.push(`asset "${key}" is filed under the wrong id "${asset.id}"`);
+    if (asset.name.trim() === "" || asset.blurb.trim() === "") problems.push(`asset "${key}" has no name or blurb`);
+    if (!(asset.income >= 0 && asset.upkeep >= 0)) problems.push(`asset "${key}" has a negative income or upkeep`);
+    if (asset.income < asset.upkeep) problems.push(`asset "${key}" costs more than it pays`);
+    if (asset.speed !== undefined && !(asset.speed > 0 && asset.speed <= 40)) problems.push(`asset "${key}" has a speed bonus outside 1 to 40`);
+  }
+  if (story.leavesSect !== undefined && !story.scenes[story.leavesSect]) problems.push(`the scene where the hero leaves the sect, "${story.leavesSect}", does not exist`);
+
+  const known = (where: string, kind: "item" | "asset", id: string) => {
+    if (kind === "item" ? !items[id] : !assets[id]) problems.push(`${where} names the unknown ${kind} "${id}"`);
+  };
+  for (const { where, condition } of conditionsIn(story)) {
+    if (condition.kind === "item") known(where, "item", condition.item);
+    if (condition.kind === "asset") known(where, "asset", condition.asset);
+  }
+  for (const scene of Object.values(story.scenes)) {
+    for (const choice of scene.choices) {
+      const where = `choice "${choice.id}" in "${scene.id}"`;
+      const need = choice.requires ?? [];
+      let spend = 0;
+      for (const e of choice.effects ?? []) {
+        if (e.kind === "addWealth") {
+          if (Math.abs(e.amount) > MAX_PRICE) problems.push(`${where} moves ${e.amount} spirit stones, more than ${MAX_PRICE}`);
+          if (e.amount < 0) spend -= e.amount;
+        }
+        if (e.kind === "giveItem" || e.kind === "takeItem") {
+          known(where, "item", e.item);
+          if (e.kind === "takeItem") {
+            const count = e.count ?? 1;
+            if (!need.some((c) => c.kind === "item" && c.item === e.item && (c.min ?? 1) >= count && c.max === undefined)) {
+              problems.push(`${where} hands over "${e.item}" without requiring that the hero carries ${count}`);
+            }
+          }
+        }
+        if (e.kind === "grantAsset" || e.kind === "loseAsset") {
+          known(where, "asset", e.asset);
+          const wants = e.kind === "loseAsset";
+          if (!need.some((c) => c.kind === "asset" && c.asset === e.asset && (c.is ?? true) === wants)) {
+            problems.push(`${where} ${wants ? "gives up" : "takes on"} "${e.asset}" without requiring that the hero ${wants ? "holds" : "does not hold"} it`);
+          }
+        }
+      }
+      if (spend > 0 && !need.some((c) => c.kind === "wealth" && (c.min ?? 0) >= spend)) {
+        problems.push(`${where} spends ${spend} spirit stones without requiring that the hero has them`);
+      }
+    }
+  }
   return problems;
 }

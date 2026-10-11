@@ -13,6 +13,8 @@ import { CultivationPanel } from "./CultivationPanel";
 import { HeroPanel } from "./HeroPanel";
 import { REALMS } from "@/engine/cultivation";
 import { NpcPanel } from "./NpcPanel";
+import { PursePanel } from "./PursePanel";
+import { priceTag } from "@/engine/economy";
 import { StatsPanel } from "./StatsPanel";
 import { ToneLegend } from "./ToneLegend";
 
@@ -51,6 +53,12 @@ function Entry({ entry }: { entry: LogEntry }) {
     case "realm":
       return (
         <p className="realm-line" role="status">
+          {entry.text}
+        </p>
+      );
+    case "ledger":
+      return (
+        <p className="ledger-line" role="status">
           {entry.text}
         </p>
       );
@@ -254,7 +262,9 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
               <p className="eyebrow">What do you do?</p>
               <ToneLegend />
               <ol>
-                {choices.map(({ choice, available, hint, strain }) => (
+                {choices.map(({ choice, available, hint, strain }) => {
+                  const price = priceTag(choice.effects);
+                  return (
                   <li key={choice.id}>
                     <button
                       type="button"
@@ -265,6 +275,8 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
                     >
                       <span className="choice-label">{personalise(choice.label, game.hero)}</span>
                       {choice.tone && <span className="tone-tag">{TONE_INFO[choice.tone].name}</span>}
+                      {price.cost > 0 && <span className="price-tag" data-kind="cost">Costs {price.cost} spirit stones</span>}
+                      {price.gain > 0 && <span className="price-tag" data-kind="gain">Earns {price.gain} spirit stones</span>}
                       {choice.needsRealm !== undefined && (
                         <span className="realm-tag" data-strain={strain ? "yes" : "no"}>
                           {REALMS[choice.needsRealm].name}
@@ -278,7 +290,8 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
                       </p>
                     )}
                   </li>
-                ))}
+                  );
+                })}
               </ol>
             </section>
           )}
@@ -294,6 +307,7 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
           <HeroPanel hero={game.hero} realm={game.realm} />
           <NpcPanel profile={story.npc} npc={game.npc} lastLine={lastNpcLine} manner={mannerOf(game.tones)} />
           <CultivationPanel game={game} />
+          <PursePanel story={story} game={game} />
           <StatsPanel stats={game.stats} tones={game.tones} />
         </aside>
       </div>

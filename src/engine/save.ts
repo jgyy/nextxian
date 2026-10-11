@@ -1,4 +1,5 @@
 import { realmForPoints } from "./cultivation";
+import { startingWealth } from "./economy";
 import { restoreHero } from "./hero";
 import type { GameState, Story } from "./types";
 
@@ -13,9 +14,14 @@ export function restoreGame(saved: unknown, story: Story): GameState | null {
   const game = saved as GameState;
   if (typeof game.sceneId !== "string" || !story.scenes[game.sceneId]) return null;
   const cultivation = typeof game.cultivation === "number" ? game.cultivation : 0;
+  const hero = restoreHero((saved as { hero?: unknown }).hero);
   return {
     ...game,
-    hero: restoreHero((saved as { hero?: unknown }).hero),
+    hero,
+    // A save from before the purse starts with what the hero would have begun with, and an empty pack.
+    wealth: typeof game.wealth === "number" && game.wealth >= 0 ? game.wealth : startingWealth(hero),
+    items: game.items && typeof game.items === "object" && !Array.isArray(game.items) ? game.items : {},
+    assets: Array.isArray(game.assets) ? game.assets.filter((a) => typeof a === "string") : [],
     lastAside: typeof game.lastAside === "number" ? game.lastAside : -3,
     cultivation,
     realm: typeof game.realm === "number" ? game.realm : realmForPoints(cultivation),

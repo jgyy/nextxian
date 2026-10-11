@@ -48,7 +48,13 @@ export type Condition =
   /** The hero's character: `field` is one of gender, looks, background, attire, status, and the value must be in `is` (or not in `not`). */
   | { kind: "hero"; field: HeroField; is?: string[]; not?: string[] }
   /** How far the world defers to the hero: birth and clothes plus two per realm. See `standingOf`. */
-  | { kind: "standing"; min?: number; max?: number };
+  | { kind: "standing"; min?: number; max?: number }
+  /** Spirit stones in the purse. */
+  | { kind: "wealth"; min?: number; max?: number }
+  /** How many of an item the hero carries. `min` defaults to 1. */
+  | { kind: "item"; item: string; min?: number; max?: number }
+  /** Whether the hero holds an asset (a lease, a plot, a share). `is` defaults to true. */
+  | { kind: "asset"; asset: string; is?: boolean };
 
 export type Effect =
   | { kind: "setFlag"; flag: string; value?: boolean }
@@ -57,7 +63,17 @@ export type Effect =
   /** Cultivation points on top of the small gain every decision already brings. */
   | { kind: "addCultivation"; amount: number }
   /** Changes how a companion feels about the player. An amount of 0 introduces them. */
-  | { kind: "addBond"; npc: string; amount: number };
+  | { kind: "addBond"; npc: string; amount: number }
+  /** Spirit stones into or out of the purse. The purse never goes below zero, so a choice that spends needs a `wealth` requirement. */
+  | { kind: "addWealth"; amount: number }
+  /** Puts items in the pack. `count` defaults to 1. */
+  | { kind: "giveItem"; item: string; count?: number }
+  /** Takes items out of the pack. `count` defaults to 1, and the pack never holds fewer than none. */
+  | { kind: "takeItem"; item: string; count?: number }
+  /** The hero comes to hold an asset. It pays and costs on every payday, and may add to cultivation speed. */
+  | { kind: "grantAsset"; asset: string }
+  /** The hero stops holding an asset, by sale, loss or seizure. */
+  | { kind: "loseAsset"; asset: string };
 
 /** The NPC reaction tiers, derived from trust. */
 export type Tier = "hostile" | "wary" | "neutral" | "warm" | "devoted";
@@ -155,6 +171,41 @@ export interface Remark {
   speaker?: string;
 }
 
+/** What an item is for. Pills break a realm open, tools and relics speed cultivation while carried, the rest are goods to trade. */
+export type ItemKind = "pill" | "tool" | "relic" | "material" | "token" | "scripture";
+
+/** A thing the hero can carry. Defined once in the story, held by id. */
+export interface ItemDef {
+  id: string;
+  name: string;
+  kind: ItemKind;
+  /** One line for the pack. */
+  blurb: string;
+  /** What a buyer pays, in spirit stones. Selling is a choice in the story, not a button. */
+  value: number;
+  /** Percentage points of cultivation speed while it is carried, once the hero has reached `needsRealm`. */
+  speed?: number;
+  /** The realm that carrying it pays off at; below it, the item adds nothing to speed. */
+  needsRealm?: number;
+  /** A pill: the realm it helps its eater into. Eaten when the hero is within reach of that realm. */
+  aid?: number;
+}
+
+/** Something the hero holds that pays and costs on every payday: a stall, a plot, a share, a cave. */
+export interface AssetDef {
+  id: string;
+  name: string;
+  blurb: string;
+  /** Spirit stones it pays on each payday. */
+  income: number;
+  /** Spirit stones it costs on each payday. An asset whose upkeep cannot be met is seized. */
+  upkeep: number;
+  /** Percentage points of cultivation speed while held. */
+  speed?: number;
+  /** The realm needed to hold it. */
+  needsRealm?: number;
+}
+
 export interface Story {
   title: string;
   startSceneId: string;
@@ -170,10 +221,16 @@ export interface Story {
    * between her replies. See `aside` in the engine.
    */
   asides?: Record<HeroField | "realm", Record<string, Record<Tier, string>>>;
+  /** Everything the hero can carry, by id. */
+  items?: Record<string, ItemDef>;
+  /** Everything the hero can come to hold, by id. */
+  assets?: Record<string, AssetDef>;
+  /** The scene from which the sect stops paying the hero a stipend and the hero starts to pay for their own living. */
+  leavesSect?: string;
 }
 
 export interface LogEntry {
-  kind: "narration" | "heading" | "player" | "npc" | "realm" | "strain";
+  kind: "narration" | "heading" | "player" | "npc" | "realm" | "strain" | "ledger";
   text: string;
   speaker?: string;
 }
@@ -205,6 +262,12 @@ export interface GameState {
   lastRemark: number;
   /** The decision on which the Elder last commented on the hero. */
   lastAside: number;
+  /** Spirit stones in the purse. */
+  wealth: number;
+  /** What the hero carries, by item id. Counts above zero only. */
+  items: Record<string, number>;
+  /** What the hero holds, by asset id, in the order they came to hold it. */
+  assets: string[];
   log: LogEntry[];
   visited: string[];
 }

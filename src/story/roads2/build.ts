@@ -66,7 +66,7 @@ export const reportId2 = (id: string) => `REPORT_ROAD_${id.toUpperCase()}`;
 /** The standing a hero needs to make a road yield to their name: two for every realm it asks, and one more. */
 export const rankNeeded = (realm: number) => 2 * realm + 1;
 
-const TONE_EFFECTS: Record<ChoiceTone, Effect[]> = {
+export const TONE_EFFECTS: Record<ChoiceTone, Effect[]> = {
   truth: [{ kind: "addStat", stat: "insight", amount: 1 }, { kind: "addStat", stat: "karma", amount: 1 }],
   mercy: [{ kind: "addStat", stat: "karma", amount: 2 }],
   inquiry: [{ kind: "addStat", stat: "insight", amount: 2 }],
@@ -75,14 +75,14 @@ const TONE_EFFECTS: Record<ChoiceTone, Effect[]> = {
   quiet: [{ kind: "addStat", stat: "qi", amount: 2 }],
 };
 
-const pick = <T,>(items: readonly T[], seed: number): T => items[((seed % items.length) + items.length) % items.length];
+export const pick = <T,>(items: readonly T[], seed: number): T => items[((seed % items.length) + items.length) % items.length];
 
-type Extra = NonNullable<Scene["extras"]>[number];
+export type Extra = NonNullable<Scene["extras"]>[number];
 const hero = (field: "gender" | "looks" | "background" | "attire" | "status", is: string): Condition => ({ kind: "hero", field, is: [is] });
-const BANDS: RelBand[] = ["far", "below", "at", "above"];
+export const BANDS: RelBand[] = ["far", "below", "at", "above"];
 
 /** One extra per hero value, in one group, so a scene shows the one that fits. */
-function heroGroup<V extends string>(
+export function heroGroup<V extends string>(
   field: "gender" | "looks" | "background" | "attire" | "status",
   options: readonly { value: V }[],
   table: Record<V, string[]>,
@@ -94,7 +94,7 @@ function heroGroup<V extends string>(
 }
 
 /** One extra per band of the hero’s realm against the road’s, in one group. */
-function realmGroup(kind: RealmKind, road: number, seed: number, slots: Record<string, string>, group: string): Extra[] {
+export function realmGroup(kind: RealmKind, road: number, seed: number, slots: Record<string, string>, group: string): Extra[] {
   return BANDS.map((band) => {
     const { min, max } = bandBounds(band, road);
     return {
@@ -105,7 +105,7 @@ function realmGroup(kind: RealmKind, road: number, seed: number, slots: Record<s
   });
 }
 
-const DEEP_READ: Record<RelBand, string> = {
+export const DEEP_READ: Record<RelBand, string> = {
   far: "The characters are in a qi-script your body cannot follow yet. You catch the shape of the last line and nothing of its breath, and {kname} will have to read you the rest.",
   below: "You read most of it, and lose the last clause to a qi-script you are a realm too low to feel. It is enough to know what it is about.",
   at: "You read it whole, in the cultivator’s script it was written in, and each character settles in you like a stone into a socket it was cut for.",
@@ -113,7 +113,7 @@ const DEEP_READ: Record<RelBand, string> = {
 };
 
 /** Four distinct tones for one scene’s choices, starting with the approach’s own. */
-function sceneTones(mode: ChoiceTone, stage: number, approach: number): ChoiceTone[] {
+export function sceneTones(mode: ChoiceTone, stage: number, approach: number): ChoiceTone[] {
   const start = TONE_RING.indexOf(mode);
   const others: ChoiceTone[] = [];
   for (let i = 1; others.length < 3 && i <= TONE_RING.length; i++) {
@@ -124,7 +124,7 @@ function sceneTones(mode: ChoiceTone, stage: number, approach: number): ChoiceTo
 }
 
 /** The slots a choice’s label is filled with: the obstacle and the ally come from the pools of the choice’s own tone. */
-function labelSlots(slots: Record<string, string>, tone: ChoiceTone, seed: number): Record<string, string> {
+export function labelSlots(slots: Record<string, string>, tone: ChoiceTone, seed: number): Record<string, string> {
   return { ...slots, obstacle: pick(OBSTACLES[tone], seed + 1), ally: pick(ALLIES[tone], seed + 2) };
 }
 
