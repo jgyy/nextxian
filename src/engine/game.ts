@@ -1,5 +1,5 @@
 import { DEFAULT_HERO, HERO_FIELDS, personalise, realmBandFor, startFor, type Hero } from "./hero";
-import { applyAid, cultivationSpeed, giveItem, payday, PAYDAY_EVERY, scaled, startingWealth, takeItem, tidy } from "./economy";
+import { applyAid, cultivationSpeed, giveItem, isUnfed, payday, PAYDAY_EVERY, scaled, startingWealth, takeItem, tidy } from "./economy";
 import { applyStrain, gainCultivation, MASTERY_GAIN, MASTERY_GAP, realmShortfall, realmSurplus, TONE_GAIN } from "./cultivation";
 import {
   conditionsHold,
@@ -93,6 +93,8 @@ export function createGame(story: Story, hero: Hero = DEFAULT_HERO): GameState {
     wealth: startingWealth(hero),
     items: {},
     assets: [],
+    speed: 100,
+    unfed: false,
     decisions: 0,
     flagAt: {},
     remarked: [],
@@ -101,7 +103,14 @@ export function createGame(story: Story, hero: Hero = DEFAULT_HERO): GameState {
     log: [],
     visited: [],
   };
-  return enterScene(story, empty, getScene(story, story.startSceneId));
+  return enterScene(story, settle(story, empty), getScene(story, story.startSceneId));
+}
+
+/** Works out the numbers that depend on everything the hero has: cultivation speed and whether they are Unfed. */
+export function settle(story: Story, state: GameState): GameState {
+  const speed = cultivationSpeed(story, state);
+  const unfed = isUnfed(story, state);
+  return speed === state.speed && unfed === state.unfed ? state : { ...state, speed, unfed };
 }
 
 /**
@@ -229,7 +238,7 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
   const beforeAttitude = next.log.length;
   next = noticeAttitude(story, state, next);
   spoke = spoke || next.log.length > beforeAttitude;
-  const entered = enterScene(story, next, getScene(story, choice.next));
+  const entered = enterScene(story, settle(story, next), getScene(story, choice.next));
   return spoke ? entered : remark(story, entered);
 }
 

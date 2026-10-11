@@ -25,6 +25,9 @@ export function startingWealth(hero: Hero): number {
  */
 const BACKGROUND_APTITUDE: Record<Background, number> = { orphan: 3, scholar: 5, soldier: 0, merchant: 0, farmer: 0, healer: 2 };
 
+/** Percentage points a trade adds to the cultivation speed. */
+export const aptitudeFor = (hero: Hero): number => BACKGROUND_APTITUDE[hero.background];
+
 /** The sect pays a stipend to a hero living on its mountain: a stone, and one more for every realm. */
 export const stipendFor = (realm: number): number => 1 + realm;
 
@@ -83,7 +86,7 @@ export interface SpeedPart {
 /** Everything that moves the hero's cultivation speed, each with a label, so the panel can show where the rate comes from. */
 export function speedParts(story: Story, state: Held): SpeedPart[] {
   const parts: SpeedPart[] = [{ label: "Plain rate", points: BASE_SPEED }];
-  const aptitude = BACKGROUND_APTITUDE[state.hero.background];
+  const aptitude = aptitudeFor(state.hero);
   if (aptitude) parts.push({ label: "Aptitude of your trade", points: aptitude });
   for (const { item } of carried(story, state)) {
     if (item.speed && state.realm >= (item.needsRealm ?? 0)) parts.push({ label: item.name, points: item.speed });

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { aptitudeFor, startingWealth } from "@/engine/economy";
 import {
   cleanName,
   DEFAULT_HERO,
@@ -19,6 +20,8 @@ function startNotes(hero: Hero): string[] {
   const start = startFor(hero);
   const notes: string[] = [];
   const label = { qi: "qi", karma: "karma", insight: "insight", trust: "trust", respect: "respect", fear: "fear", suspicion: "suspicion" } as const;
+  notes.push(`${startingWealth(hero)} spirit stones`);
+  if (aptitudeFor(hero) > 0) notes.push(`+${aptitudeFor(hero)}% cultivation speed`);
   for (const [stat, v] of Object.entries(start.stats)) if (v) notes.push(`${v > 0 ? "+" : "−"}${Math.abs(v)} ${label[stat as keyof typeof label]}`);
   for (const [metric, v] of Object.entries(start.npc)) if (v) notes.push(`Elder Su: ${v > 0 ? "+" : "−"}${Math.abs(v)} ${label[metric as keyof typeof label]}`);
   return notes;

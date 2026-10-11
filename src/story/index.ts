@@ -40,6 +40,9 @@ import { heroAsides } from "./hero/asides";
 import { gateForce } from "./realm-gates";
 import { heroEchoes } from "./hero/echoes";
 import { heroRemarks } from "./hero/remarks";
+import { reckoningScenes, routeThroughReckonings } from "./economy/reckonings";
+import { economyEndings } from "./economy/endings";
+import { economyRemarks } from "./economy/remarks";
 
 /**
  * The story in reading order. Side paths sit after the chapter they branch from and
@@ -148,7 +151,8 @@ const rawChapters: { name: string; scenes: Scene[] }[] = [
   ...patch(assembled),
   { name: "Interludes: What the Sect Says", scenes: interludes.map(withBonds) },
   ...bookGroups,
-];
+  { name: "Interludes: The Accounts on the Road", scenes: reckoningScenes },
+].map((g) => ({ ...g, scenes: economyEndings(routeThroughReckonings(g.scenes)) }));
 
 /** Echoes written inside the books can land on any scene, including those of Book One. */
 const bookEchoes = books.flatMap((book) => book.arcs.flatMap((arc) => (arc.echoes ? parseEchoes(arc.echoes, `${book.id}/${arc.id}/echoes`) : [])));
@@ -179,6 +183,7 @@ export const story: Story = {
   asides: heroAsides,
   remarks: [
     ...parseRemarks(remarksOne, "remarks-1"),
+    ...economyRemarks(fortuneItems),
     ...parseRemarks(heroRemarks, "hero/remarks"),
     ...books.flatMap((book) => book.arcs.flatMap((arc) => (arc.remarks ? parseRemarks(arc.remarks, `${book.id}/${arc.id}/remarks`) : []))),
   ],

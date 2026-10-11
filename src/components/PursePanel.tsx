@@ -1,4 +1,4 @@
-import { carried, cultivationSpeed, held, isUnfed, ledgerOf, speedParts } from "@/engine/economy";
+import { carried, held, ledgerOf, speedParts } from "@/engine/economy";
 import { REALMS } from "@/engine/cultivation";
 import type { GameState, Story } from "@/engine/types";
 
@@ -7,9 +7,9 @@ export function PursePanel({ story, game }: { story: Story; game: GameState }) {
   const pack = carried(story, game);
   const holdings = held(story, game);
   const ledger = ledgerOf(story, game);
-  const speed = cultivationSpeed(story, game);
+  const speed = game.speed;
   const parts = speedParts(story, game);
-  const unfed = isUnfed(story, game);
+  const unfed = game.unfed;
   return (
     <section className="card purse" aria-labelledby="purse-title">
       <p className="eyebrow">Purse and pack</p>

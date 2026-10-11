@@ -51,10 +51,16 @@ export type Condition =
   | { kind: "standing"; min?: number; max?: number }
   /** Spirit stones in the purse. */
   | { kind: "wealth"; min?: number; max?: number }
-  /** How many of an item the hero carries. `min` defaults to 1. */
+  /** How many of an item the hero carries. `min` defaults to 1, or to 0 when only `max` is given, so `max: 0` means none. */
   | { kind: "item"; item: string; min?: number; max?: number }
   /** Whether the hero holds an asset (a lease, a plot, a share). `is` defaults to true. */
-  | { kind: "asset"; asset: string; is?: boolean };
+  | { kind: "asset"; asset: string; is?: boolean }
+  /** How many holdings the hero has. */
+  | { kind: "holdings"; min?: number; max?: number }
+  /** The hero’s cultivation speed, in percent of the plain rate. */
+  | { kind: "speed"; min?: number; max?: number }
+  /** Whether the hero is Unfed: away from the sect with a purse too light for the cost of living. `is` defaults to true. */
+  | { kind: "unfed"; is?: boolean };
 
 export type Effect =
   | { kind: "setFlag"; flag: string; value?: boolean }
@@ -268,6 +274,10 @@ export interface GameState {
   items: Record<string, number>;
   /** What the hero holds, by asset id, in the order they came to hold it. */
   assets: string[];
+  /** The hero’s cultivation speed in percent, worked out after every choice from their trade, pack and holdings. */
+  speed: number;
+  /** True while the hero is away from the sect and cannot pay the cost of living. */
+  unfed: boolean;
   log: LogEntry[];
   visited: string[];
 }

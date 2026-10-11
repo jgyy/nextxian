@@ -53,7 +53,9 @@ export function parseConditions(source: string, where: string): Condition[] {
   for (const raw of source.split("&")) {
     const t = raw.trim();
     if (!t) continue;
-    if (/^!?[a-z0-9_]+$/.test(t)) {
+    if (t === "unfed" || t === "!unfed") {
+      out.push(t === "unfed" ? { kind: "unfed" } : { kind: "unfed", is: false });
+    } else if (/^!?[a-z0-9_]+$/.test(t)) {
       out.push(t.startsWith("!") ? { kind: "flag", flag: t.slice(1), is: false } : { kind: "flag", flag: t });
     } else if (t.startsWith("bond:")) {
       const { name, ...rest } = bounds(t.slice(5), where);
@@ -76,6 +78,11 @@ export function parseConditions(source: string, where: string): Condition[] {
         if (!HERO_OPTIONS[m[1] as HeroField].some((o) => o.value === v)) throw new MarkupError(where, `"${v}" is not a ${m[1]}`);
       }
       out.push(m[2] === "=" ? { kind: "hero", field: m[1] as HeroField, is: values } : { kind: "hero", field: m[1] as HeroField, not: values });
+    } else if (t.startsWith("item:")) {
+      const { name, ...rest } = bounds(t.slice(5), where);
+      out.push({ kind: "item", item: name, ...rest });
+    } else if (t.startsWith("asset:") || t.startsWith("!asset:")) {
+      out.push({ kind: "asset", asset: t.replace(/^!?asset:/, ""), ...(t.startsWith("!") ? { is: false } : {}) });
     } else if (t.startsWith("scene:")) {
       out.push({ kind: "scene", prefix: t.slice(6) });
     } else if (t.startsWith("said:")) {
@@ -95,6 +102,9 @@ export function parseConditions(source: string, where: string): Condition[] {
       else if (name === "roads") out.push({ kind: "roads", ...rest });
       else if (name === "decisions") out.push({ kind: "decisions", ...rest });
       else if (name === "standing") out.push({ kind: "standing", ...rest });
+      else if (name === "wealth") out.push({ kind: "wealth", ...rest });
+      else if (name === "holdings") out.push({ kind: "holdings", ...rest });
+      else if (name === "speed") out.push({ kind: "speed", ...rest });
       else throw new MarkupError(where, `unknown condition "${t}"`);
     }
   }
@@ -124,6 +134,9 @@ export function parseEffects(source: string, where: string): ParsedEffects {
     else if ((m = /^([+-])([a-z0-9_]+)$/.exec(t))) effects.push({ kind: "setFlag", flag: m[2], value: m[1] === "+" });
     else if ((m = /^bond:([a-z0-9_]+)([+-]\d+)$/.exec(t))) effects.push({ kind: "addBond", npc: m[1], amount: Number(m[2]) });
     else if ((m = /^cult([+-]\d+)$/.exec(t))) effects.push({ kind: "addCultivation", amount: Number(m[1]) });
+    else if ((m = /^stones([+-]\d+)$/.exec(t))) effects.push({ kind: "addWealth", amount: Number(m[1]) });
+    else if ((m = /^item([+-])([a-z0-9_]+)$/.exec(t))) effects.push(m[1] === "+" ? { kind: "giveItem", item: m[2] } : { kind: "takeItem", item: m[2] });
+    else if ((m = /^asset([+-])([a-z0-9_]+)$/.exec(t))) effects.push(m[1] === "+" ? { kind: "grantAsset", asset: m[2] } : { kind: "loseAsset", asset: m[2] });
     else if ((m = /^([a-z]+)([+-]\d+)$/.exec(t)) && (STATS as string[]).includes(m[1])) {
       effects.push({ kind: "addStat", stat: m[1] as PlayerStat, amount: Number(m[2]) });
     } else if (m && (METRICS as string[]).includes(m[1])) {
