@@ -2,7 +2,8 @@ import { REALMS } from "@/engine/cultivation";
 import { standingOf, type Hero } from "@/engine/hero";
 import type { Choice, ChoiceTone, Condition, Effect, NpcScenario, Scene } from "@/engine/types";
 import { ALLIES, OBSTACLES, STAGE_TITLE, TONE_RING } from "../roads/lexicon";
-import { approachModes, fill, roadFlag } from "../roads/build";
+import { approachModes, fill, roadFlag, walkBase } from "../roads/build";
+import { BEAT_EXTRA, CHOICE_EXTRA, spread } from "../roads/lexicon-extra";
 import { focusKind, pickFit } from "../roads/kinds";
 import { ATTIRES, BACKGROUNDS, GENDERS, LOOKS, STATUSES } from "@/engine/hero";
 import { BIRTH, bandBounds, DRESS, FACE, MANNER, REALM_REACT, SEND_OFF, TRADE, type RealmKind, type RelBand } from "./hero-lex";
@@ -186,7 +187,7 @@ export function buildRoad2(spec: RoadSpec2, ctx: RoadContext2): Scene[] {
       const choices: Choice[] = sceneTones(mode, stage, a).map((tone, c) => {
         const effects: Effect[] = [...TONE_EFFECTS[tone]];
         if (stage === 3) effects.push({ kind: "setFlag", flag: roadFlag(id, `crisis_${tone}`) });
-        return { id: tone, label: fill(pickFit(CHOICE_LABEL2[tone], seed + c * 2 + 3, slots.focus), labelSlots(slots, tone, seed + c)), tone, next, effects };
+        return { id: tone, label: fill(pickFit([...CHOICE_LABEL2[tone], ...CHOICE_EXTRA[tone]], walkBase(ctx.index, a, tone) + stage, slots.focus), labelSlots(slots, tone, seed + c)), tone, next, effects };
       });
       const extras: Extra[] = [];
       if (stage === 0) extras.push(...realmGroup("open", R, seed, slots, "realm"));
@@ -270,7 +271,7 @@ export function buildRoad2(spec: RoadSpec2, ctx: RoadContext2): Scene[] {
       scenes.push({
         id: `${id}_a${a}s${stage}`,
         title: `${spec.title}: ${STAGE_TITLE[mode][stage]}`,
-        paragraphs: [fill(spec.beats[a][stage], slots), fill(pick(MODE_BEAT2[mode], seed + a), slots)],
+        paragraphs: [fill(spec.beats[a][stage], slots), fill(spread([...MODE_BEAT2[mode], ...BEAT_EXTRA[mode]], walkBase(ctx.index, a, mode), stage), slots)],
         ...(extras.length ? { extras } : {}),
         choices,
       });
@@ -289,7 +290,7 @@ export function buildRoad2(spec: RoadSpec2, ctx: RoadContext2): Scene[] {
       ...(n === 2 ? { extras: BANDS.map((band) => ({ when: [{ kind: "realm" as const, ...bandBounds(band, R) }], paragraphs: [fill(DEEP_READ[band], slots)], group: "read" })) } : {}),
       choices: sceneTones(modes[2], n, 2).map((tone, c) => ({
         id: tone,
-        label: fill(pickFit(CHOICE_LABEL2[tone], ctx.index + n * 3 + c, slots.focus), labelSlots(slots, tone, ctx.index + n + c)),
+        label: fill(pickFit([...CHOICE_LABEL2[tone], ...CHOICE_EXTRA[tone]], walkBase(ctx.index, 2, tone) + 5 + n, slots.focus), labelSlots(slots, tone, ctx.index + n + c)),
         tone,
         next,
         effects: [...TONE_EFFECTS[tone], ...final],

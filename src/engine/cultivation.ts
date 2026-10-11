@@ -111,7 +111,7 @@ export function realmProgress(state: Pick<GameState, "cultivation" | "realm">): 
  * own entry. Points keep gathering while a heart demon blocks the next realm.
  */
 export function gainCultivation(state: GameState, amount: number): GameState {
-  const cultivation = state.cultivation + Math.max(0, amount);
+  const cultivation = Math.round((state.cultivation + Math.max(0, amount)) * 100) / 100;
   const gained: GameState = { ...state, cultivation };
   const next = state.realm + 1;
   if (next >= REALMS.length || cultivation < REALMS[next].threshold || heartDemonBlocks(gained)) {

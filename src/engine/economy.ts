@@ -106,6 +106,9 @@ export function scaled(amount: number, speed: number): number {
   return Math.round(amount * speed) / 100;
 }
 
+/** Cultivation kept to two places, so floating sums never drift into long tails. */
+export const tidy = (points: number): number => Math.round(points * 100) / 100;
+
 /** What one payday brings and costs the hero now, for the panel: stipend, income, upkeep and living. */
 export function ledgerOf(story: Story, state: Held): { stipend: number; income: number; upkeep: number; living: number; net: number } {
   const sect = inSect(story, state);

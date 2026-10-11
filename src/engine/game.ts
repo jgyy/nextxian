@@ -1,5 +1,5 @@
 import { DEFAULT_HERO, HERO_FIELDS, personalise, realmBandFor, startFor, type Hero } from "./hero";
-import { applyAid, cultivationSpeed, giveItem, payday, PAYDAY_EVERY, scaled, startingWealth, takeItem } from "./economy";
+import { applyAid, cultivationSpeed, giveItem, payday, PAYDAY_EVERY, scaled, startingWealth, takeItem, tidy } from "./economy";
 import { applyStrain, gainCultivation, MASTERY_GAIN, MASTERY_GAP, realmShortfall, realmSurplus, TONE_GAIN } from "./cultivation";
 import {
   conditionsHold,
@@ -154,7 +154,7 @@ export function applyEffects(state: GameState, effects: Effect[] = [], speed = 1
         return { ...s, stats: { ...s.stats, [effect.stat]: value } };
       }
       case "addCultivation":
-        return { ...s, cultivation: s.cultivation + scaled(effect.amount, speed) };
+        return { ...s, cultivation: tidy(s.cultivation + scaled(effect.amount, speed)) };
       case "addWealth":
         return { ...s, wealth: Math.max(0, s.wealth + effect.amount) };
       case "giveItem":

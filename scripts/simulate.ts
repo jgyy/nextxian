@@ -5,6 +5,7 @@
 import { story } from "../src/story";
 import { choose, createGame, getChoices, getScene } from "../src/engine/game";
 import { REALMS } from "../src/engine/cultivation";
+import { cultivationSpeed } from "../src/engine/economy";
 import type { GameState } from "../src/engine/types";
 
 const GATES = ["b2_gate", "b3_gate", "b4_gate", "b5_gate", "b6_gate"];
@@ -17,7 +18,7 @@ function rng(seed: number): () => number {
   };
 }
 
-type Policy = "thorough" | "diligent" | "forceful" | "hasty";
+type Policy = "thorough" | "diligent" | "forceful" | "hasty" | "merchant";
 
 function run(seed: number, policy: Policy): { seen: Record<string, [number, number, number]>; end?: string; state: GameState } {
   const rand = rng(seed);
@@ -42,6 +43,13 @@ function run(seed: number, policy: Policy): { seen: Record<string, [number, numb
     const live = safe.length ? safe : options;
     const fresh = live.filter((c) => !state.visited.includes(c.choice.next));
     let pool = policy === "hasty" ? live.filter((c) => !c.choice.next.startsWith("still_")) : fresh.length ? fresh : live;
+    if (policy === "merchant") {
+      // Takes every chance to earn, buy and lease, and otherwise behaves as a diligent hero does.
+      const money = pool.filter((c) => (c.choice.effects ?? []).some((e) => e.kind === "grantAsset" || e.kind === "giveItem" || (e.kind === "addWealth" && e.amount > 0)));
+      const roads = pool.filter((c) => /^go_|^approach_/.test(c.choice.id) || c.choice.id.startsWith("wayside_fortune"));
+      const gentle = pool.filter((c) => c.choice.tone !== "force" && c.choice.tone !== "deceit");
+      pool = money.length ? money : roads.length ? roads : gentle.length ? gentle : pool;
+    }
     if (policy === "diligent") {
       const gentle = pool.filter((c) => c.choice.tone !== "force" && c.choice.tone !== "deceit");
       if (gentle.length) pool = gentle;
@@ -63,5 +71,5 @@ for (let r = 1; r <= runs; r++) {
   const gates = Object.entries(seen)
     .map(([k, [d, c, rl]]) => `${k}: d${d} c${c} ${REALMS[rl].name}`)
     .join(" | ");
-  console.log(`${policy} ${r}: ${gates} | end=${end} d${state.decisions} c${state.cultivation} ${REALMS[state.realm].name} karma ${state.stats.karma}`);
+  console.log(`${policy} ${r}: ${gates} | end=${end} d${state.decisions} c${state.cultivation} ${REALMS[state.realm].name} karma ${state.stats.karma} | purse ${state.wealth} speed ${cultivationSpeed(story, state)}% pack ${Object.keys(state.items).length} holdings ${state.assets.length}`);
 }
