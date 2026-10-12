@@ -204,7 +204,7 @@ export const witnessSpecs3: RoadSpec5[] = [
     ],
     deep: [
       "In the hollow behind the whisper-book is a second, smaller book of grey slate tablets, each tied with a thread. Gengxin takes out the first and puts it in your hand. It is the code, he says, that the masters use among themselves, which he cracked on the second day.",
-      "You read the tablets by the lamp. They are minutes of a meeting in a locked room, written in the heat of the argument and in a master’s own shorthand. The last tablet says only: seal her, and let Wanru sign. Gengxin stares at the floor.",
+      "You read the tablets by the lamp. They are minutes of a meeting in a locked room, written in the heat of the argument and in a master’s own shorthand. The last tablet says only: seal her ourselves, and let Wanru sign the fourteen. Gengxin stares at the floor.",
       "“I have kept this for fifteen years,” he says quietly, “because I did not know whom to give it to. I could not give it to the Hall. I could not give it to the Elder. I have been waiting for a person who asks questions in the right order.” He folds your fingers over the slate.",
     ],
     close: "Gengxin lowers the horn and closes his eyes. The terrace has said everything it has to say today, and he has heard it.",

@@ -360,7 +360,7 @@ Hao Lan stops laughing. She stares at the paper in her hand. Her mouth opens. Sh
 “No.” You rub your face. “That is the trouble with clever plans.”
 Duan Wuyi has taken the paper. He reads it again. He is no longer smiling. “It is a classic error,” he says. “I have seen it a hundred times. A forgery that works too well. It generates its own victims.” He lowers the sheet. “One cannot create a false person without some real person paying.”
 Hao Lan puts her head in her hands.
-> deceit | Comfort her. | bone_a3s7
+> mercy | Comfort her. | bone_a3s7
 > truth | Plan. | bone_a3s7
 > quiet | Hold the letter. | bone_a3s7
 > mercy | Ask what the grandmother is called. | bone_a3s7
@@ -373,7 +373,7 @@ You and Hao Lan look at each other.
 “The one who gets into the fort.”
 “Yes.” She swallows. “They have her. They have caught her, because I told a lie about a deserter.” She puts down the letter. Her eyes are wide. “And now she is in prison under my name.”
 You say nothing. Beyond the fire, in the dark, a wolf howls.
-> deceit | Take her hand. | bone_a3s8
+> mercy | Take her hand. | bone_a3s8
 > truth | Say you will go. | bone_a3s8
 > quiet | Look away. | bone_a3s8
 > mercy | Say she will be freed. | bone_a3s8
@@ -388,7 +388,7 @@ She signs it with her own name. She seals it with her own seal. She gives it to 
 It is a bold, foolish, honest thing. It is the thing she was made for.
 You think of a card in a bone-white script: write what is true. You think she would be proud.
 The courier rides off east. Hao Lan watches him go until he is a speck.
-> deceit | Stay with her. | bone_a3s9
+> mercy | Stay with her. | bone_a3s9
 > truth | Say it was right. | bone_a3s9
 > quiet | Pour tea. | bone_a3s9
 > mercy | Hold her. | bone_a3s9

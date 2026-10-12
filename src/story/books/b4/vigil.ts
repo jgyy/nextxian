@@ -369,7 +369,7 @@ You open it. It is the back of a laundry-tally, scrawled in pencil. Not in Yueâ€
 It says: Dear Yue. I got your letter. I hid it in my shoe. I am not eating the tea. I poured it in the plant. The plant is dead. I am sorry about the plant. I counted to a hundred and four. I did not run. I am waiting. Please hurry. I have a loose tooth. â€”Tsend.
 Yue Zhaoning is standing at your shoulder. She has read it over your arm.
 She makes a small sound. And then she sits down in the road and howls.
-> deceit | Hold her. | vigil_a3s8
+> mercy | Hold her. | vigil_a3s8
 > truth | Say nothing. | vigil_a3s8
 > quiet | Stand guard. | vigil_a3s8
 > mercy | Weep with her. | vigil_a3s8

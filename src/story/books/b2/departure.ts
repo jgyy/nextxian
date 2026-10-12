@@ -416,7 +416,7 @@ warm: I have never had a reason to want someone to come back. I find I have foun
 devoted: There was a drawer in the wall behind my desk for sixteen years and I never knew. Now there is a card in my hand and a name that is not written. I will wait as long as the ink holds. Come home.
 `,
   remarks: String.raw`
-% dep_ren_bridge | since:dep_ren>=14 & bond:ren>=10 | ren | I counted the stones on a bridge for fifteen years. On the river I count oars. It is a different number, and a better one.
+% dep_ren_bridge | since:dvisit_ren>=14 & bond:ren>=10 | ren | I counted the stones on a bridge for fifteen years. On the river I count oars. It is a different number, and a better one.
 % dep_lin_wicks | since:dep_wicks>=10 | elder | Old Lin sends a wick down the river with every messenger, and each one burns out before it reaches me. She is telling me something. I am too tired to read it.
 % dep_gu_cord | since:dep_cord>=12 & bond:gu>=10 | gu | My mother says a knot is only a promise that has learned to hold still. I have been holding still for nineteen years. Let me move a little, will you?
 % dep_comb_remark | since:dep_comb>=16 | elder | You still have my comb. I know, because the barge pilot told me you were seen weighing it in your palm. Do not drop it. It is smaller than it looks.

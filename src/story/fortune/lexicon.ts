@@ -151,7 +151,7 @@ export const RETURN_EARNED = "You worked for your coin at {place}, and your hand
 export const RETURN_BOUGHT = "You left {place} with {ware} and a lighter purse. {Kname} says that is how it is meant to go.";
 export const RETURN_LEASED = "You took the lease on {holding}. From the next payday it pays you and costs you, and it is yours to answer for.";
 export const RETURN_INVESTED = "You put money into the books at {place} before you took anything out. {Kname} says that is how the careful are paid.";
-export const RETURN_BRIBED = "You paid someone at {place} to forget a thing. They will not forget the paying.";
+export const RETURN_BRIBED = "At {place} you paid someone to forget a thing. They will not forget the paying.";
 export const RETURN_USED_WARE = "You showed {ware} at the crisis, and {place} remembers whose it was.";
 
 export const RETURN_CHOICES3 = {
@@ -165,7 +165,7 @@ export const REPORT_MEMORY3 = {
   ware: "You carry {ware} out of {place}. Do not lend it, and do not sell it for less than it cost you. The road is long, and what you hold is what you stand on.",
   broke: "You come to me from {place} with an empty purse. I will not lecture you. A hungry cultivator is a slower one, and I would sooner you ate than were proud.",
   rich: "A heavy purse, from {place}. I hope you earned it. If you did not, I would rather you told me now than have me hear it in a bell.",
-  bribed: "You paid someone at {place} to forget a thing. I will not ask who. I will ask you to remember that a bought silence is the most expensive kind, and that it is never final.",
+  bribed: "At {place} you paid someone to forget a thing. I will not ask who. I will ask you to remember that a bought silence is the most expensive kind, and that it is never final.",
   bought: "You bought {ware} at {place}, and paid the asking price or near it. A fair purchase is a quiet one. I will not ask what you mean to do with it, only what you mean to become.",
   found: "You came away from {place} with {ware} and without paying for it. I will not ask how. I will ask you to remember that what costs nothing is repaid later, in the currency the giver chooses.",
   kind: "You took {ware} for your wages instead of coin. That is how apprentices are made, and also how they are bound. Know which you are.",

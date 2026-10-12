@@ -287,7 +287,7 @@ The tank’s lead stopper unscrews. A smell rises, rich and sweet and sharp: par
 The girl dips a finger, and lifts it to her nose. She closes her eyes.
 Nobody speaks. Far down in the harbour, the bell does not ring.
 When she opens her eyes, she writes: THANK YOU. And then, with an appalling straightforwardness: I KNOW WHO YOU ARE. I HAVE KNOWN SINCE THE DOOR. I WAS ONLY WAITING TO SEE IF YOU WOULD TELL ME.
-> deceit | Admit it. | lamp_a3s7
+> truth | Admit it. | lamp_a3s7
 > truth | Say you are sorry for the pretence. | lamp_a3s7
 > quiet | Smile. | lamp_a3s7
 > mercy | Say her name. | lamp_a3s7

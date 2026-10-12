@@ -170,8 +170,8 @@ export const witnessSpecs5: RoadSpec5[] = [
     omen: "a hum under the glass and a smell of cold bronze",
     secret: "the treads of the Nine Tiers ring in a scale that rises with the climber, but the ninth note has never been heard, and Pengfei keeps its place open with a fork cut to a pitch no ear can reach",
     intro:
-      "On the eighth landing a woman with a cloth over her eyes kneels with a tuning-fork and a stack of reed pipes. Pengfei tunes the stair, so that each tread gives the climber the note the founders cut it for, and notes in a pitch-book what the glass sang each day and what it should have.",
-    focus: ["the green fork", "the reed pipes", "the blindfold", "the pitch-book"],
+      "On the eighth landing a woman with a cloth over her eyes kneels with a tuning-fork and a stack of glass pipes. Pengfei tunes the stair, so that each tread gives the climber the note the founders cut it for, and notes in a pitch-book what the glass sang each day and what it should have.",
+    focus: ["the green fork", "the glass pipes", "the blindfold", "the pitch-book"],
     beats: [
       [
         "The fork is a slender Y of green bronze, one tine a finger-joint shorter than the other. Pengfei strikes it on her knee and holds it to the glass, and the whole landing takes up its note, a low drone that runs through your teeth and into your spine.",
@@ -181,9 +181,9 @@ export const witnessSpecs5: RoadSpec5[] = [
         "As night comes the drone sinks, and the glass cools. Pengfei lays the fork across her knees and says that the stair is putting itself to bed, and that she will not interrupt.",
       ],
       [
-        "The reed pipes lie in a row on a mat, nine of them, cut from the marsh at the foot of the mountain. Pengfei picks them up in turn and blows a single breath into each, and the notes fall like water down a stair, from the highest to the lowest.",
-        "She hands you the fourth. It is warm from her breath and smells of green wet grass. When you blow, the note comes out cracked, then pure, then a long steady whine. “That one,” she says, “is yours. Keep to it, and you will not stumble.”",
-        "A pipe cracks in your hand with a small dry sound. Pengfei holds out her palm for the pieces, and weighs them. “It was tired,” she says. “It carried a note for forty years. I’ll plant it at the foot of the stair, and it will grow another.”",
+        "The pipes lie in a row on a mat, nine of them, drawn from the furnace glass of the sea’s edge and hollow as a bird’s bone. Pengfei picks them up in turn and blows a single breath into each, and the notes fall like water down a stair, from the highest to the lowest.",
+        "She hands you the fourth. It is warm from her breath and smells of hot sand. When you blow, the note comes out cracked, then pure, then a long steady whine. “That one,” she says, “is yours. Keep to it, and you will not stumble.”",
+        "A pipe cracks in your hand with a small dry sound. Pengfei holds out her palm for the pieces, and weighs them. “It was tired,” she says. “It carried a note for forty years. I’ll give it back to the furnace, and it will be drawn into another.”",
         "At the end of the row lies a pipe wrapped in black silk. Pengfei does not unwrap it. “The ninth,” she says. “It has no note. I keep it to keep the place.”",
         "As the pipes are laid back on the mat they roll a little, and for a moment they chime, one against another, in a soft chord. Pengfei listens with her head on one side, and then, very quietly, she hums along.",
       ],
@@ -203,7 +203,7 @@ export const witnessSpecs5: RoadSpec5[] = [
       ],
     ],
     deep: [
-      "Pengfei unwraps the ninth pipe from its black silk. It is a reed of the palest straw, with no finger-holes, and its mouth is sealed with a bead of green wax. She hands it to you. “It can only be blown by someone who has heard the stair’s other note, the one under all the rest.”",
+      "Pengfei unwraps the ninth pipe from its black silk. It is a pipe of the palest glass, with no finger-holes, and its mouth is sealed with a bead of green wax. She hands it to you. “It can only be blown by someone who has heard the stair’s other note, the one under all the rest.”",
       "You break the wax with your thumbnail and raise the pipe. The breath you give it comes out as a note you have heard once before, in the mist, hummed by a woman on a ledge. It runs down the pipe and into the glass, and the whole landing takes it up, and the nine tiers below it, tread by tread, begin to ring in a chord.",
       "Pengfei sits very still with her hands pressed over her face. When the chord has died she lets them fall. “That is the ninth,” she says. “I have waited thirty years. Thank you.” She feels for the pitch-book, opens it to the last page, and writes the note in silver, with a hand that does not shake.",
     ],
@@ -366,7 +366,7 @@ export const witnessSpecs5: RoadSpec5[] = [
       "“All these years,” says Daoming, “I thought something was breaking out. It was something trying to be let in.” He lifts the lantern with trembling hands and gives it to you. “The fifth. It never wanted to be sealed. It wanted to be carried by someone who would open it.”",
     ],
     close: "Daoming wraps the stamp in its red cloth and banks the brazier. The wax on the door glows faintly, and holds.",
-    ware: { name: "Ascendant Seal-Wax Pill", kind: "pill", blurb: "A dark red pill of seal-wax and ash from the fifth door’s brazier. Eaten by one close to the threshold, it carries a Dao Seeker over into Ascendant." },
+    ware: { name: "Seal-Wax Pill of the Fifth Door", kind: "pill", blurb: "A dark red pill of seal-wax and ash from the fifth door’s brazier. Eaten by one close to the threshold, it carries a Dao Seeker over into Ascendant." },
     holding: { name: "Brazier Beside the Fifth Door", blurb: "A brazier by the fifth door, with a stick of wax of your own and a stamp to seal what must be sealed." },
   },
   {

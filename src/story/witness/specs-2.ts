@@ -203,9 +203,9 @@ export const witnessSpecs2: RoadSpec5[] = [
       ],
     ],
     deep: [
-      "Behind the heap of scrolls there is a narrow shelf with a single scroll lying on it, wrapped in grey cloth. Yiran unwraps it, and the margins are crammed edge to edge with the small slanting hand: questions, hundreds of them, with a single answer at the bottom, written in a different ink.",
-      "You read the answer by the lamp. It says: the abyss is not hungry; it is listening. The ink is a deep, almost black blue, and the writing is the Elder’s. It is her hand, fifteen years younger, set into the margin of her sister’s questions like a seal.",
-      "Yiran folds the cloth back over the scroll and presses it to your chest. “I’ve been keeping this for her,” Yiran says. “And for you. The questions were never hers alone. I think the answer was always meant to be read by the second reader.”",
+      "Behind the heap of scrolls there is a narrow shelf with a single scroll lying on it, wrapped in grey cloth. Yiran unwraps it, and the margins are crammed edge to edge with the small slanting hand: questions, hundreds of them, with a single line at the bottom, written in a different ink.",
+      "You read the line by the lamp. It says: do not ask this where anyone can hear you. The ink is a deep, almost black blue, and the writing is the Elder’s. It is her hand, fifteen years younger, set into the margin of her sister’s questions like a seal.",
+      "Yiran folds the cloth back over the scroll and presses it to your chest. “I’ve been keeping this for her,” Yiran says. “And for you. The questions were never hers alone. I think the warning was always meant to be read by the second reader.”",
     ],
     close: "Yiran closes the gloss-book and ties the green cloth. The screen is drawn, and the gallery is quiet.",
     ware: { name: "Margin-Reader’s Peppermint Pill", kind: "pill", blurb: "A pill of peppermint and old ink, taken by readers who stay up too long. Eaten by one close to the threshold, it carries a Foundation Builder over into Core Formation." },

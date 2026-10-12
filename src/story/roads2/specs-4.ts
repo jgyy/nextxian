@@ -9,7 +9,7 @@ export const roadsGlass: RoadSpec2[] = [
     place: "the cutting camp at Bright Plate",
     keeper: "the cutter-chief Dong Yuhang",
     kname: "Dong Yuhang",
-    relic: "a hand-mirror that shows the hour before",
+    relic: "a hand-mirror that shows the hour just gone",
     omen: "a glitter at the corner of the eye, like a thing seen and gone",
     secret: "every mirror cut from these plates holds the reflection of someone who looked too long, and the cutters are not salvaging glass but people",
     intro: "On the flat of Bright Plate, half a day off the skiff track, a camp of tents leans against the wind. Cutters in leather hoods score the glass with wire saws and lift out mirrors the size of doors. Dong Yuhang counts them out at dawn and counts them in at dusk, and has never once lost a count.",

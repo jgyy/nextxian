@@ -187,7 +187,7 @@ The Elder draws in a shaky breath. “Article ten,” she says. “A vessel in e
 “Good.”
 “It is not law.”
 “It is excellent,” you say. “Say it again.”
-> force | Hold her. | gale_a2s3
+> mercy | Hold her. | gale_a2s3
 > truth | Say it with her. | gale_a2s3
 > quiet | Listen. | gale_a2s3
 > inquiry | Ask for article eleven. | gale_a2s3
@@ -229,7 +229,7 @@ It vanishes.
  Then, from the far side, a crash.
 Yue Zhaoning is flat on her face in the splinters. She is laughing.
 “Light,” she wheezes. “Gerel’s Light. Oh, she’ll *kill* me.”
-> force | Help her up. | gale_a2s6 | needs:4
+> mercy | Help her up. | gale_a2s6 | needs:4
 > truth | Check the others. | gale_a2s6
 > quiet | Take cover. | gale_a2s6
 > inquiry | Ask where the others are. | gale_a2s6
@@ -259,7 +259,7 @@ Ren Qiao has come up beside her. He does not speak. He puts a heavy hand on her 
 “She’d have gone through anything you asked.” His voice is gruff. “That’s the thing about a good hull. She doesn’t ask why.”
 Yue nods. She sits up. She takes a deep, ragged breath.
 “Right,” she says. “Salvage.”
-> force | Help her. | gale_a2s8
+> mercy | Help her. | gale_a2s8
 > truth | Say a few words. | gale_a2s8
 > quiet | Fetch the tools. | gale_a2s8
 > inquiry | Ask what is left. | gale_a2s8
@@ -382,7 +382,7 @@ The Elder has come over. She stands very still, looking at the lamp. Slowly, she
 “She says thank you for the light,” she says. “She means the lanterns. She means the… decoy.” She is half-laughing, half in tears. “She says thank you for *giving something to the wind to love.*”
 Temur’s mouth has fallen open.
 “She says,” the Elder goes on, with trembling lips, “that it was the kindest thing she has seen anyone do in fifteen years.”
-> deceit | Take her hand. | gale_a3s7
+> mercy | Take her hand. | gale_a3s7
 > truth | Look at Temur. | gale_a3s7
 > quiet | Listen to the wind. | gale_a3s7
 > mercy | Hold Temur. | gale_a3s7

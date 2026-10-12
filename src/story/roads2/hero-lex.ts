@@ -120,7 +120,7 @@ export const FACE: Record<Looks, string[]> = {
     "People at {place} look at you twice. {Kname} has the grace to look three times, and to pretend the third was at the lantern behind you.",
     "A girl by the door goes pink and tries to hide it in her sleeve. {Kname} sighs, and does not blame her, and does not trust you either.",
     "At {place} a handsome stranger is a rumour that has not yet decided which way to go. {Kname} intends to be the one to decide.",
-    "{Kname} says your face will be remembered, and in {place} to be remembered is both a gift and a threat.",
+    "{Kname} says your face will be remembered. At {place}, being remembered is both a gift and a threat.",
   ],
   scarred: [
     "{Kname} looks at the burn on your jaw, looks away, looks back. At {place} nobody asks, and everybody wants to.",

@@ -221,7 +221,7 @@ When it ends, she is silent for some time.
 “I don’t know the rest,” she says, in a wondering voice. “But it knows. It’s going to teach me.”
 She smiles at you. Her whole face is wet, and transfigured.
 “I think I’m going to be good at this,” she says.
-> force | Embrace her. | pao_close | +pao_broke_hush needs:3
+> mercy | Embrace her. | pao_close | +pao_broke_hush needs:3
 > truth | Say you always knew. | pao_close | +pao_broke_hush
 > quiet | Bow your head. | pao_close | +pao_broke_hush
 > mercy | Hold her hand. | pao_close | +pao_broke_hush

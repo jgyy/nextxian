@@ -162,7 +162,7 @@ Ren Qiao’s boathook comes down over the gunwale and catches the strap of the l
 “Thief!” screams the factor. “Guards! Thief!”
 You come out from under the tarpaulin with Gu at your heels.
 > force | Take the box. | ferry_a2s5
-> truth | Say you are the harbour inspector. | ferry_a2s5
+> deceit | Say you are the harbour inspector. | ferry_a2s5
 > quiet | Cut the strap. | ferry_a2s5
 > deceit | Shout that there is a fire. | ferry_a2s5
 
@@ -244,7 +244,7 @@ Hao Lan sits beside an old man with a face like creased leather. She says, quiet
 He stops with the spoon in the air. He looks at her. His mouth works.
 “I had it this morning,” he says, in a thin cracked voice. “It was on the tip of my tongue. Something with a mountain in it.” He frowns. “I wrote it on my wrist. I do not know where it went.”
 His wrist is bare. The skin is stained grey.
-> deceit | Take his hand. | ferry_a3s4
+> mercy | Take his hand. | ferry_a3s4
 > truth | Ask the ladle-woman what is in the soup. | ferry_a3s4
 > quiet | Sniff the bowl. | ferry_a3s4
 > inquiry | Ask how long he has worked here. | ferry_a3s4

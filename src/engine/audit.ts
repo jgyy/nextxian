@@ -215,6 +215,44 @@ export function auditStory(story: Story): AuditIssue[] {
     scene.interjections?.forEach((x, i) => dead(`interjection ${i} of "${scene.id}"`, scene.id, x.when));
   }
 
+  // A condition on something nothing in the story ever produces can never hold, wherever it sits: a flag no choice sets, a count of
+  // flags that cannot all be set, an item nobody is given, a holding nobody is granted. Remarks and memory lines are the usual victims,
+  // because no path analysis reaches them.
+  const given = new Set<string>();
+  const granted = new Set<string>();
+  for (const scene of Object.values(story.scenes)) {
+    for (const choice of scene.choices) {
+      for (const e of choice.effects ?? []) {
+        if (e.kind === "giveItem") given.add(e.item);
+        if (e.kind === "grantAsset") granted.add(e.asset);
+      }
+    }
+  }
+  const never = (c: Condition): string | undefined => {
+    if ((isFlag(c) && c.is !== false) || c.kind === "since") return set.has(c.flag) ? undefined : `flag "${c.flag}", which nothing ever sets`;
+    if (c.kind === "count") {
+      const can = [...set].filter((f) => f.startsWith(c.prefix)).length;
+      return (c.min ?? 0) > can ? `${c.min} flags starting "${c.prefix}", of which only ${can} can ever be set` : undefined;
+    }
+    if (c.kind === "item" && (c.min ?? (c.max === undefined ? 1 : 0)) > 0 && !given.has(c.item)) return `item "${c.item}", which nobody is ever given`;
+    if (c.kind === "asset" && c.is !== false && !granted.has(c.asset)) return `holding "${c.asset}", which nobody is ever granted`;
+    return undefined;
+  };
+  const impossible = (where: string, conditions: Condition[] | undefined, skipFlags = false) => {
+    for (const c of conditions ?? []) {
+      if (skipFlags && (isFlag(c) || c.kind === "since")) continue;
+      const reason = never(c);
+      if (reason) issues.push({ kind: "dead-condition", where, message: `${where} needs ${reason}` });
+    }
+  };
+  for (const scene of Object.values(story.scenes)) {
+    for (const choice of scene.choices) impossible(`choice "${choice.id}" in "${scene.id}"`, choice.requires, true);
+    scene.extras?.forEach((x, i) => impossible(`extra ${i} of "${scene.id}"`, x.when, true));
+    scene.interjections?.forEach((x, i) => impossible(`interjection ${i} of "${scene.id}"`, x.when, true));
+  }
+  for (const scenario of Object.values(story.scenarios)) scenario.memory?.forEach((m, i) => impossible(`memory ${i} of "${scenario.id}"`, m.when));
+  for (const remark of story.remarks ?? []) impossible(`remark "${remark.id}"`, remark.when);
+
   // Somebody who has not been introduced does not speak.
   const { atScene, atFlag } = metCompanions(story);
   const bondFor = (conditions: Condition[], who: string) => conditions.some((c) => c.kind === "bond" && c.npc === who);

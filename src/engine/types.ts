@@ -259,7 +259,7 @@ export interface GameState {
   history: string[];
   /** The tone of each decision the player has made, oldest first. The `tone` condition reads it. */
   tones: ChoiceTone[];
-  /** Cultivation points earned so far. They only grow. */
+  /** Cultivation points earned so far. They grow, except when a choice beyond the hero’s realm costs some. */
   cultivation: number;
   /** Index of the player's current realm in `REALMS`. The player starts as a Mortal (0). */
   realm: number;

@@ -287,7 +287,7 @@ He steps back.
 The carriage drives away. The marines go after it. The clerk, who has been standing with his mouth open, hurries to follow.
 Behind the door, Hao Lan slides slowly down the panels until she is sitting on the floor.
 “He knew,” she whispers. “He knew it was me.”
-> deceit | Kneel beside her. | ward_a3s7
+> mercy | Kneel beside her. | ward_a3s7
 > truth | Tell her it is not her fault. | ward_a3s7 | bond:hao+1
 > quiet | Give her a moment. | ward_a3s7
 > mercy | Hand her a cup of tea. | ward_a3s7

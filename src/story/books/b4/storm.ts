@@ -384,7 +384,7 @@ When he finishes, Narantuya says gruffly, “Again.”
 He sings it again.
 The Elder is crying. She does it quietly, with her hands in her lap.
 “I do not know why,” she says, to nobody. “It is not even a good song.”
-> deceit | Hold her. | storm_a3s10
+> mercy | Hold her. | storm_a3s10
 > truth | Pass the tea. | storm_a3s10
 > quiet | Listen. | storm_a3s10
 > mercy | Hum the tune. | storm_a3s10

@@ -358,7 +358,7 @@ It goes by hand. Hao Lan carries it in a leather folder, in her best Chancery ro
 She goes in. She is gone for eleven minutes. When she comes out, the folder is empty and she is walking at a perfectly even pace. She doesn’t look round. She walks to the end of the lane, and round the corner, and out of sight of the building. Then she leans against a post, and slides slowly down it, and sits in the dust.
 “They stamped it,” she says faintly. “They stamped all nine. The clerk said, ‘Another batch, eh?’ And I said, ‘Aye, it’s that time of year.’”
 She puts her head between her knees.
-> deceit | Help her up. | crib_a3s5
+> mercy | Help her up. | crib_a3s5
 > truth | Sit beside her. | crib_a3s5
 > quiet | Fetch water. | crib_a3s5
 > mercy | Hug her. | crib_a3s5

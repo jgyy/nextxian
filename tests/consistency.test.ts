@@ -182,3 +182,66 @@ describe("the story graph", () => {
     expect(Object.keys(story.scenes).filter((id) => !seen.has(id))).toEqual([]);
   });
 });
+
+describe("a sentence reads as a sentence", () => {
+  it("puts “an” before a vowel sound and “a” before a consonant sound, wherever a craft or a keeper’s possessive is filled in", () => {
+    const wrong: string[] = [];
+    for (const { where, text } of shownText()) {
+      for (const m of text.matchAll(/\ba ([aeiou][a-z’-]*)/gi)) if (!/^(u[a-z]*|eu[a-z]*|one[a-z-]*|once|ow[a-z]*)$/i.test(m[1])) wrong.push(`${where}: a ${m[1]}`);
+      for (const m of text.matchAll(/\ban ([bcdfgjklmnpqrstvwxz][a-z’-]*)/gi)) if (!/^([FHLMNRSX]|hour[a-z]*|honest[a-z]*|honou?r[a-z]*|heir[a-z]*|herb[a-z]*)$/.test(m[1])) wrong.push(`${where}: an ${m[1]}`);
+    }
+    expect(wrong).toEqual([]);
+  });
+
+  it("never doubles a word in narration, except a name said twice or a chant", () => {
+    const doubled: string[] = [];
+    for (const { where, text } of shownText()) {
+      for (const m of text.matchAll(/\b([A-Za-z’]+) \1\b/gi)) {
+        if (/^(tao|lu|la|ni|ta|moo|na|lee|had|that|is|no|yes|very|so|never|again|ten)$/i.test(m[1])) continue;
+        doubled.push(`${where}: ${m[0]}`);
+      }
+    }
+    expect(doubled).toEqual([]);
+  });
+});
+
+describe("a choice’s tone fits what the choice does", () => {
+  // The books gave the first option of some approaches the approach’s own tone whatever it said, so a hug counted as a lie.
+  const gentle = /^(Kneel|Comfort|Embrace|Hug|Hold (?:her|his|their|him|them)\b|Hand (?:her|him|them)|Give (?:her|him|them) (?:a|the|your)|Offer (?:her|him|them)|Help (?:her|him|them)|Carry (?:her|him|them)|Cover (?:her|him)|Stay with|Sit with|Take (?:her|his) hand|Console|Soothe)/;
+  const kept = new Set(["pao_a2s6>c1", "fever_a2s1>c3"]);
+
+  it("never counts a kind gesture as a lie or a threat, so a hug does not cost karma", () => {
+    const wrong: string[] = [];
+    for (const scene of Object.values(story.scenes)) {
+      if (/^(dr_|wr_|rr_)/.test(scene.id)) continue;
+      for (const choice of scene.choices) {
+        if (gentle.test(choice.label.trim()) && (choice.tone === "deceit" || choice.tone === "force") && !kept.has(`${scene.id}>${choice.id}`)) wrong.push(`${scene.id}>${choice.id} [${choice.tone}] ${choice.label}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+
+  it("counts claiming to be the harbour inspector as a lie", () => {
+    expect(story.scenes.ferry_a2s4.choices.find((c) => c.label.startsWith("Say you are the harbour inspector"))!.tone).toBe("deceit");
+  });
+});
+
+describe("the audit finds a remark that can never be said", () => {
+  it("flags a callback counting from a flag that nothing sets, a count of flags that cannot all be set, and an item nobody is given", async () => {
+    const { auditStory } = await import("@/engine/audit");
+    const bad = [
+      { id: "bad_since", when: [{ kind: "since" as const, flag: "nothing_sets_this", min: 3 }], line: "x" },
+      { id: "bad_count", when: [{ kind: "count" as const, prefix: "no_such_prefix_", min: 2 }], line: "x" },
+      { id: "bad_item", when: [{ kind: "item" as const, item: "no_such_item" }], line: "x" },
+    ];
+    const found = auditStory({ ...story, remarks: [...story.remarks!, ...bad] }).filter((i) => i.kind === "dead-condition").map((i) => i.where);
+    expect(found).toEqual(['remark "bad_since"', 'remark "bad_count"', 'remark "bad_item"']);
+    expect(auditStory(story)).toEqual([]);
+  });
+
+  it("has the two callbacks that used to count from flags nobody set count from the flags that are", () => {
+    const since = (id: string) => story.remarks!.find((r) => r.id === id)!.when.flatMap((c) => (c.kind === "since" ? [c.flag] : []));
+    expect(since("dep_ren_bridge")).toEqual(["dvisit_ren"]);
+    expect(since("caravan_yue_later")).toEqual(["b4q_caravan"]);
+  });
+});
