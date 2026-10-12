@@ -205,9 +205,9 @@ describe("one walk of a road never repeats itself", () => {
     return out;
   };
 
-  it("finds 160 roads in four families", () => {
-    expect(roads).toHaveLength(160);
-    expect(new Set(roads.map((r) => kindOf(`${r}_entry`))).size).toBe(4);
+  it("finds 200 roads in five families", () => {
+    expect(roads).toHaveLength(200);
+    expect(new Set(roads.map((r) => kindOf(`${r}_entry`))).size).toBe(5);
   });
 
   it("shows no menu line twice in one walk", () => {

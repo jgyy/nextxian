@@ -5,6 +5,7 @@ import { applyStrain, gainCultivation, MASTERY_GAIN, MASTERY_GAP, realmForPoints
 import {
   conditionsHold,
   mannerShiftLine,
+  reputeShiftLine,
   moodFor,
   moodShiftLine,
   realmShiftLine,
@@ -334,7 +335,7 @@ function remark(story: Story, state: GameState): GameState {
  * if the choice moved the Elder to another attitude tier, she says so. If only her
  * face changed, because fear or suspicion took hold or let go, she says that instead.
  * If her respect for the player moved into another band, she says so. If the player's
- * manner has settled on a new tone, she names it. Only one of these is said per choice.
+ * manner has settled on a new tone, she names it. If their karma has crossed into another band, so that the road calls them dark or kind or neither, she says that last. Only one of these is said per choice.
  * The line goes after her reply, so it is the last thing the player reads before the
  * next scene.
  */
@@ -344,7 +345,8 @@ function noticeAttitude(story: Story, before: GameState, after: GameState): Game
     tierShiftLine(tierFor(before.npc.trust), tierFor(after.npc.trust)) ??
     moodShiftLine(moodFor(before.npc), moodFor(after.npc)) ??
     respectShiftLine(respectTierFor(before.npc.respect), respectTierFor(after.npc.respect)) ??
-    mannerShiftLine(before.tones, after.tones);
+    mannerShiftLine(before.tones, after.tones) ??
+    reputeShiftLine(before.stats.karma, after.stats.karma);
   if (!line) return after;
   return { ...after, log: [...after.log, { kind: "npc", speaker: story.npc.name, text: personalise(line, after.hero) }] };
 }

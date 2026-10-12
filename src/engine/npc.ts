@@ -2,6 +2,7 @@ import { REALMS } from "./cultivation";
 import { standingOf } from "./hero";
 import { affinityOf, daoRankOf } from "./path";
 import { CHOICE_TONES } from "./tone";
+import { reputeOf, type Repute } from "./witness";
 import type { ChoiceTone, Condition, GameState, Mood, NpcScenario, NpcState, RespectTier, Tier } from "./types";
 
 /** Flags starting with this mark a finished side road. The `roads` condition counts them. */
@@ -98,6 +99,22 @@ export function mannerOf(tones: ChoiceTone[]): ChoiceTone | undefined {
 export function mannerShiftLine(before: ChoiceTone[], after: ChoiceTone[]): string | undefined {
   const to = mannerOf(after);
   return to !== undefined && to !== mannerOf(before) ? MANNER_SHIFT[to] : undefined;
+}
+
+/**
+ * What she says when the player's karma crosses into another band: the road begins to call them dark, or kind, or stops. Keyed by the
+ * band they arrive in, so a change in either direction has a line that fits. It is the last thing she can notice in one choice.
+ */
+export const REPUTE_SHIFT: Record<Repute, string> = {
+  dark: "I hear it on the road before I see it in you: the word for you has turned dark. Keepers lower their voices when they say it. I do not say it is deserved. I say that a word like that does not come off.",
+  grey: "The word on you has gone quiet. Neither dark nor kind, only unwritten. It is the safest place a person can stand on a road, and the loneliest, and I think you know both.",
+  kind: "The road has begun to speak well of you. Do not enjoy it too quickly. A good name is a debt, and the road collects in kindness, and in kindness it charges the most.",
+};
+
+/** The line for a change of karma band, or undefined when the band stayed the same. */
+export function reputeShiftLine(before: number, after: number): string | undefined {
+  const to = reputeOf(after);
+  return to === reputeOf(before) ? undefined : REPUTE_SHIFT[to];
 }
 
 /**

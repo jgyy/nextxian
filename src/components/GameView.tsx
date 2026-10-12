@@ -16,6 +16,7 @@ import { NpcPanel } from "./NpcPanel";
 import { PursePanel } from "./PursePanel";
 import { priceTag } from "@/engine/economy";
 import { StatsPanel } from "./StatsPanel";
+import { WitnessPanel } from "./WitnessPanel";
 import { ToneLegend } from "./ToneLegend";
 
 const SAVE_KEY = "nextxian:save:v1";
@@ -178,9 +179,12 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
   const chapterName = chapters.find((c) => c.scenes.some((s) => s.id === scene.id))?.name.split(":")[0];
   const lastNpcLine = [...game.log].reverse().find((e) => e.kind === "npc")?.text;
 
-  // Each new beat starts at the top of the stage.
+  // Each new beat starts at the top of the stage, and the page is brought back to the stage if the player had scrolled down to the options.
+  const frame = useRef<HTMLDivElement>(null);
   useEffect(() => {
     stage.current?.scrollTo({ top: 0, behavior: "smooth" });
+    const top = frame.current?.getBoundingClientRect().top ?? 0;
+    if (top < 0) frame.current?.scrollIntoView({ block: "start" });
   }, [game.log.length]);
 
   useEffect(() => {
@@ -219,7 +223,7 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
 
       <div className="layout">
         <main className="novel" aria-label="Story">
-          <div className="stage-frame">
+          <div className="stage-frame" ref={frame}>
             <div className="stage-bar">
               <p className="stage-chapter">{chapterName}</p>
               <button
@@ -310,6 +314,7 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
           <NpcPanel profile={story.npc} npc={game.npc} lastLine={lastNpcLine} manner={mannerOf(game.tones)} />
           <CultivationPanel game={game} />
           <PursePanel story={story} game={game} />
+          <WitnessPanel game={game} />
           <StatsPanel stats={game.stats} tones={game.tones} />
         </aside>
       </div>
