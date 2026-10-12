@@ -121,5 +121,5 @@ describe("a long walk through the Crossing Roads", () => {
     expect(steps).toBeGreaterThan(3000);
     expect([...scenesSeen].filter((s) => /_(gw|gm|gu|rk|rp|rf|so|sx|sn)$/.test(s)).length).toBeGreaterThan(40);
     expect([...new Set(problems)]).toEqual([]);
-  }, 60000);
+  });
 });

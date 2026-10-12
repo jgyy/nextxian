@@ -7,5 +7,7 @@ export default defineConfig({
   },
   test: {
     include: ["tests/**/*.test.ts"],
+    // The suite walks every scene and every Elder scenario of a ten-thousand-scene story, so a few tests need more than the default five seconds on a slow runner.
+    testTimeout: 60000,
   },
 });
