@@ -1,6 +1,6 @@
 # Plot-hole and continuity ledger
 
-Five passes, three asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
+Six passes, three asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
 
 | Pass | Fixed | Of what kind |
 | --- | ---: | --- |
@@ -9,7 +9,25 @@ Five passes, three asked to fix more than 1,000 and the fourth asked again. This
 | Third pass | 1,743 | 1,678 menu lines and paragraphs a player reads twice in one walk of a road, 64 contradictions of the setting, the hero’s realm, the hero’s dress and the hero’s purse, 1 spacing slip |
 | Fourth pass | 63 | 63 choice labels that named a different price from the one the purse paid. It is short of the 1,000 asked for: see below |
 
-| **Fifth pass (this branch)** | **42** | 31 choices whose tone contradicted the act, 9 lines of broken wording, 2 remarks that could never be said |
+| Fifth pass | 42 | 31 choices whose tone contradicted the act, 9 lines of broken wording, 2 remarks that could never be said |
+| **Sixth pass (this branch)** | **283** | 11 origin door scenes the Elder never played, 10 sentences read in up to 200 roads, 254 trait lines shared by 200 roads, and 8 smaller slips |
+
+## Sixth pass: 283, and what was looked for and found clean
+
+| Class | Count | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| A beginning’s own door scene skipped: the gate disciple’s gossip and the memorial both lead straight to the Law Hall, so the Elder never looked at a porter, rogue, heir, courier, exile or any of the six new beginnings | 11 | walking every route from every beginning’s gate | `origins/*`, `origins/echoes.ts` |
+| Sentences of a way back shown word for word in every road where the state held (up to 200 times) | 10 | counting sentences shown in more than one scene; the top eight were at 200 | `roads2/lexicon-state.ts`, `roads2/build.ts`, `fortune/build.ts` |
+| Dress, birth, face, trade, manner, send-off and realm readings with three or four wordings for 200 roads | 254 | the same count, one level down | `roads2/hero-lex-more.ts`, `roads2/hero-lex.ts` |
+| A heading never given the hero’s name | 2 | a 32,562-step soak walk over twelve beginnings and named heroes (`tests/soak.test.ts`) | `engine/game.ts`, `GameView.tsx` |
+| “a mixed roots”, “a heaven-marked and Pill Dao” | 2 | reading the creation preview for every talent and Dao | `engine/hero.ts` |
+| A mortal-only Elder line that sent every beginning up the stair in the rain | 1 | grepping shown text for one past that every hero is told they had | `npc/elder-su-realm.ts` |
+| A timeline slip (sixty years against fifty) | 1 | reading the new beginnings against each other | `origins/dream.ts` |
+| A letter carried the whole way and never explained | 2 | the same read | `origins/lamp.ts`, `origins/entries.ts` |
+
+Tests now fail on each class: `tests/soak.test.ts`, `tests/beginnings.test.ts`, `tests/cultivation-roads.test.ts`.
+
+**Looked for and found clean.** Extras shadowed by an earlier extra in the same group; items and holdings required before anything can give them (checked by path, not only globally); choices that spend more than they check, take an item they do not require, or lose a holding they do not hold; second-person claims of a realm outside a realm guard; years and ages against canon. The total is 283, not 1,000: the first two rows are the large ones, and the rest are what the detectors could prove.
 
 ## Fifth pass: 42, and what was looked for and found clean
 

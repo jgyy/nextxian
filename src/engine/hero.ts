@@ -231,9 +231,18 @@ export function describeHero(hero: Hero): string {
     struck: "someone struck by heaven",
     dream: "the dreamer of a stranger’s breath",
   };
-  const roots = TALENTS.find((t) => t.value === hero.talent)?.label.toLowerCase() ?? "";
-  const craft = hero.dao === "none" ? "no Dao yet" : (DAOS.find((d) => d.value === hero.dao)?.label ?? "");
-  return `${hero.name} is ${who[hero.gender]}, ${looks[hero.looks]}, once ${trade[hero.background]}, ${dress[hero.attire]}, ${rank[hero.status]}, ${where[hero.origin]}, with a ${roots} and ${craft}.`;
+  const roots: Record<Talent, string> = {
+    wood: "a verdant root",
+    fire: "a cinnabar root",
+    earth: "a mountain root",
+    metal: "a bright-metal root",
+    water: "a tide root",
+    mixed: "mixed roots",
+    heaven: "a heaven-marked root",
+    late: "a late-blooming root",
+  };
+  const craft = hero.dao === "none" ? "no Dao yet" : `the ${DAOS.find((d) => d.value === hero.dao)?.label ?? ""}`;
+  return `${hero.name} is ${who[hero.gender]}, ${looks[hero.looks]}, once ${trade[hero.background]}, ${dress[hero.attire]}, ${rank[hero.status]}, ${where[hero.origin]}, with ${roots[hero.talent]} and ${craft}.`;
 }
 
 // ───────────── pronouns and names

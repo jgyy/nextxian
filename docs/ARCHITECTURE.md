@@ -11,6 +11,8 @@ flowchart LR
     R2["roads2/<br/>forty realm roads, 1,020 scenes"]
     FR["fortune/<br/>forty Fortune Roads, 1,020 scenes,<br/>each pricing its goods, wages and lease"]
     WR["witness/<br/>forty Witness Roads, 1,020 scenes,<br/>four deeds the Elder answers at once"]
+    CR["cultivation/<br/>forty Cultivation Roads, 1,020 scenes,<br/>four practices the Elder answers at once"]
+    OG["origins/<br/>twelve beginnings, eleven prologues"]
     EC["economy/<br/>five reckonings, seven ending epilogues,<br/>remarks on the purse and the pack"]
     HE["hero/<br/>Elder’s asides, gate echoes, companion remarks"]
     RG["realm-gates.ts<br/>force asks a realm in Book One"]
@@ -28,6 +30,7 @@ flowchart LR
     W["words.ts<br/>countWords"]
     T["types.ts"]
     WI["witness.ts<br/>deeds, repute bands, counts"]
+    PR["practice.ts<br/>four practices, the cusp, counts"]
   end
   subgraph UI["src/components + app/"]
     CR["Creation.tsx<br/>who climbs the mountain"]
@@ -39,11 +42,12 @@ flowchart LR
     CP["CultivationPanel.tsx<br/>realm, progress, ladder"]
     PP["PursePanel.tsx<br/>stones, speed by part, pack, holdings"]
   end
-  C & SD & RD & R2 & FR & WR & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & WR & CR & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
   N --> WI
   WR --> WI
+  CR --> PR
   G --> N
   G --> TN
   G --> CU
@@ -679,3 +683,24 @@ sequenceDiagram
 ## The fixed desktop stage
 
 At 900 px wide and 640 px tall or more, `.shell.play` is exactly the window: the stage, the options (two columns, a one-line colour key) and the side column each have a fixed share and scroll inside it. Below that the page flows and the stage keeps a minimum height.
+
+## Cultivation Roads, beginnings and the cusp
+
+The Cultivation Roads are built on the Fortune Road builder, as the Witness Roads are, and add four practices per road: circulate, temper, comprehend, push. The engine learned three things for them. A `progress` condition reads how far through the current realm the hero is. The engine sets `reached_realm_N` on the decision a realm is entered, so a scene can tell a hero just risen from one who has long stood there. A `reachGate` effect lifts a hero on the cusp to the next threshold, and a heart demon still holds the door. A beginning adds its own line to the cultivation speed (`originSpeed`).
+
+```mermaid
+flowchart TD
+  B["twelve beginnings<br/>six start in cultivation"] --> M["a method chosen in the fourth scene<br/>og_*_m_* flag"]
+  B --> S["origin speed<br/>while its art lasts"]
+  M --> E["Elder at the Law Hall door<br/>keepers read it on every road"]
+  H["wayside hub<br/>four roads, one night of retreat"] --> R["road: 25 scenes"]
+  R --> C["circulate: realm R-1 to R+2"]
+  R --> T["temper: qi 10, costs 6"]
+  R --> D["comprehend: insight 8+2R, Dao mastery"]
+  R --> P["push: progress 75 percent, qi 12"]
+  P --> G["reachGate: the next threshold"]
+  G -->|"karma above the heart-demon line"| X["breakthrough: reached_realm_N"]
+  G -->|"karma below it"| Y["points gather, the realm waits"]
+  C & T & D & P --> A["Elder answers at once<br/>5 lines by trust, 4 memories"]
+  X --> K["keepers: fresh from a breakthrough"]
+```
