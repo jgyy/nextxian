@@ -61,8 +61,8 @@ export const USE_WARE = [
 ];
 
 export const INVEST = [
-  "Put {price} spirit stones into the venture at {place}, and ask for a share of the books.",
-  "Pay {price} spirit stones for a place in {kname}’s accounts, and read them.",
+  "Put {invest} spirit stones into the venture at {place}, and ask for a share of the books.",
+  "Pay {invest} spirit stones for a place in {kname}’s accounts, and read them.",
 ];
 
 export const LEASE = [
@@ -76,8 +76,8 @@ export const LEASE_SHARE = [
 ];
 
 export const SELL_HOLDING = [
-  "Sell your lease on {holding} back to {kname} for {value} spirit stones.",
-  "Hand {holding} back and take {value} spirit stones.",
+  "Sell your stake in {holding} back to {kname} for {leaseValue} spirit stones.",
+  "Hand {holding} back and take {leaseValue} spirit stones.",
 ];
 
 export const WORK_DAY = [
@@ -156,7 +156,7 @@ export const RETURN_USED_WARE = "You showed {ware} at the crisis, and {place} re
 
 export const RETURN_CHOICES3 = {
   sellWare: "Sell {ware} to {kname} before you go, for {value} spirit stones.",
-  sellHolding: "Sell the lease on {holding} to {kname} on your way out, for {value} spirit stones.",
+  sellHolding: "Sell your stake in {holding} to {kname} on your way out, for {leaseValue} spirit stones.",
 };
 
 /** What the Elder says of the hero’s purse and pack in her report: memory lines. */

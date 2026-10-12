@@ -86,3 +86,4 @@
 {"cat": "hero", "where": "src/engine/hero.ts", "note": "“Your boots” for a hero who chose patched hemp and straw sandals (21), and “your hat” for a hero with no hat (3). `personalise` now dresses the hero as they chose.", "n": 24}
 {"cat": "economy", "where": "src/story/side-{village,herb-market,pavilion,healer,lantern-stair,sister-shrine,bell-foundry,quarry}.ts", "note": "A purchase, bet, bribe or offering the choice narrated and the purse never felt. Each now costs or pays what it says.", "n": 14}
 {"cat": "typography", "where": "src/story/books/b5/skiff.ts", "note": "Two spaces between sentences.", "n": 1}
+{"cat": "economy", "where": "src/story/fortune/{lexicon,build}.ts", "note": "Fortune Road invest and sell-holding labels named a price the purse did not pay. Each now states the real amount.", "n": 63}

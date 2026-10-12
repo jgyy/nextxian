@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { startScenes } from "@/engine/audit";
 import { story, chapters } from "@/story";
 import { auditStory } from "@/engine/audit";
 import { validateStory, MAX_LINE_WORDS, MAX_SCENE_WORDS, MIN_CHOICES, MIN_NPC_SCENARIOS, sceneBodyWords } from "@/engine/validate";
@@ -45,7 +46,7 @@ function flagsFor(choice: Choice): Record<string, boolean> {
 /** Every scene id reachable from the start by following choice links, ignoring conditions. */
 function reachableScenes(): Set<string> {
   const seen = new Set<string>();
-  const queue = [story.startSceneId];
+  const queue = startScenes(story);
   while (queue.length) {
     const id = queue.shift()!;
     if (seen.has(id)) continue;

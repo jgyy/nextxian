@@ -94,7 +94,7 @@ describe("what the roads sell", () => {
       expect(item.blurb, w.id).toContain(REALMS[w.realm + 1].name);
       expect(item.speed).toBeUndefined();
     });
-    expect(Object.values(story.items!).filter((i) => i.aid !== undefined)).toHaveLength(10);
+    expect(Object.values(fortuneItems).filter((i) => i.aid !== undefined)).toHaveLength(10);
   });
 
   it("gives every other good a speed bonus by its kind, which counts from the realm below the road’s, and a holding that pays more than it costs", () => {
@@ -205,9 +205,9 @@ describe("one walk of a road never repeats itself", () => {
     return out;
   };
 
-  it("finds 120 roads in three families", () => {
-    expect(roads).toHaveLength(120);
-    expect(new Set(roads.map((r) => kindOf(`${r}_entry`))).size).toBe(3);
+  it("finds 160 roads in four families", () => {
+    expect(roads).toHaveLength(160);
+    expect(new Set(roads.map((r) => kindOf(`${r}_entry`))).size).toBe(4);
   });
 
   it("shows no menu line twice in one walk", () => {
@@ -338,5 +338,30 @@ describe("goods that stand in for a realm", () => {
     expect(view(5, { plate_stall_ware: 1 }).some((v) => v.available)).toBe(true);
     expect(view(4, { plate_stall_ware: 1 }).some((v) => v.available)).toBe(false);
     expect(view(6, {}).some((v) => v.available)).toBe(true);
+  });
+});
+
+describe("a label says what the purse feels", () => {
+  const amount = (c: Scene["choices"][number]) => c.effects?.find((e) => e.kind === "addWealth");
+
+  it("names the real cost of a share in the books and the real payout of a sold holding, on every road", () => {
+    let invests = 0;
+    let sales = 0;
+    for (const s of scenes) {
+      for (const c of s.choices) {
+        const w = amount(c);
+        if (!w || w.kind !== "addWealth") continue;
+        if (c.id.startsWith("invest")) {
+          invests++;
+          expect(c.label, `${s.id}:${c.id}`).toContain(` ${-w.amount} spirit stones`);
+        }
+        if (c.id.startsWith("sell_holding")) {
+          sales++;
+          expect(c.label, `${s.id}:${c.id}`).toContain(` ${w.amount} spirit stones`);
+        }
+      }
+    }
+    expect(invests).toBeGreaterThanOrEqual(20);
+    expect(sales).toBeGreaterThanOrEqual(40);
   });
 });

@@ -207,6 +207,22 @@ flowchart TD
 
 The realm also gates content and reactions. A `realm` condition reads it for choices, extras, interjections and NPC memory lines. The Elder remarks on a mortal at the Law Hall and the abyss, and on a cultivator at the archive, the tribunal and the judgment. Her memory lines for twelve scenarios (a confession, a lie, a threat and so on) change once the player has reached Foundation Establishment, though a flag the player set still wins.
 
+## Talent, Dao and origin
+
+`src/engine/path.ts` holds the rules; `hero.ts` holds the options. Every rule is a pure function of the hero, so the engine stays testable.
+
+```mermaid
+flowchart TD
+  H["Hero: origin, talent, dao"] --> S["startFor: purse, items, start scene"]
+  H --> SP["talentSpeed(realm)"]
+  H --> PR["Dao passive: aidReachFor, toolFactor, holdingFactor, strainFactor, masteryGapFor, toneBonus, heartDemonKarmaFor, unfedFactor, karmaChange"]
+  SP --> C["cultivation.ts"]
+  PR --> C
+  PR --> E["economy.ts, game.ts"]
+  H --> ST["story: asides, echoes, 40 Dao Roads"]
+  S --> A["audit: every start scene reaches the story"]
+```
+
 ## Side roads
 
 Ten waysides branch off the main line, one from the first scene of each chapter from the gate to the sealing night. That scene gains one choice, and the wayside returns to it. Each wayside offers four roads, and each road is 25 scenes built by `buildRoad` from a short spec (place, keeper, relic, omen, secret, four things to approach) and the shared wording in `lexicon.ts`. 40 roads × 25 scenes plus 10 waysides is 1,010 scenes.

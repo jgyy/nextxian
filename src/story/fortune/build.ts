@@ -180,7 +180,7 @@ export function holdingAsset(spec: RoadSpec3, ctx: RoadContext3): AssetDef {
 }
 
 /** The purse against the road’s base price: four bands, in one group. */
-function purseGroup(base: number, seed: number, slots: Record<string, string>): Extra[] {
+export function purseGroup(base: number, seed: number, slots: Record<string, string>): Extra[] {
   const bands: [PurseBand, { min?: number; max?: number }][] = [
     ["broke", { max: Math.floor(base / 3) }],
     ["thin", { min: Math.floor(base / 3) + 1, max: base - 1 }],
@@ -225,6 +225,8 @@ export function buildRoad3(spec: RoadSpec3, ctx: RoadContext3): Scene[] {
     lease: String(price.lease),
     discount: String(price.discount),
     value: String(price.value),
+    invest: String(price.invest),
+    leaseValue: String(price.leaseValue),
   };
   const modeBeat = mountain ? MODE_BEAT : MODE_BEAT2;
   const approachLabel = mountain ? APPROACH_LABEL : APPROACH_LABEL2;

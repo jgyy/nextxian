@@ -10,6 +10,12 @@ export type Looks = "plain" | "striking" | "scarred" | "frail";
 export type Background = "orphan" | "scholar" | "soldier" | "merchant" | "farmer" | "healer";
 export type Attire = "rags" | "traveller" | "scholar" | "silk" | "armour";
 export type Status = "outcast" | "commoner" | "gentry" | "noble";
+/** Where the story finds the hero: each origin has a prologue of its own that ends on the same mountain. */
+export type Origin = "river" | "porter" | "rogue" | "heir" | "courier" | "exile";
+/** The hero’s cultivation talent: the roots and the nature of the body that qi has to pass through. */
+export type Talent = "wood" | "fire" | "earth" | "metal" | "water" | "mixed" | "heaven" | "late";
+/** The hero’s profession Dao: the craft they cultivate beside their qi. */
+export type Dao = "none" | "alchemy" | "forging" | "talisman" | "formation" | "beast" | "sword" | "healing" | "fate";
 
 export interface Hero {
   /** What the Wanderer gives when asked. Everyone in the story says it in place of "Wanderer". */
@@ -19,6 +25,9 @@ export interface Hero {
   background: Background;
   attire: Attire;
   status: Status;
+  origin: Origin;
+  talent: Talent;
+  dao: Dao;
 }
 
 export type HeroField = Exclude<keyof Hero, "name">;
@@ -69,7 +78,43 @@ export const STATUSES: readonly HeroOption<Status>[] = [
   { value: "noble", label: "Noble house", blurb: "Your papers name a house with a banner, a surname and ancestors on the wall." },
 ];
 
+
+export const ORIGINS: readonly HeroOption<Origin>[] = [
+  { value: "river", label: "The river village", blurb: "Raised by a teacher who told you nothing, and sent up the mountain in the rain. The road the story was written for." },
+  { value: "porter", label: "A porter coming home", blurb: "You carried loads for the sect for years, and were sent down to the foothills the week the jade was taken. You climb back to a door that knows your face." },
+  { value: "rogue", label: "A rogue after the bounty", blurb: "No sect, no teacher, a little cultivation scraped from the roads, and a reward posted for whoever finds the thief." },
+  { value: "heir", label: "Heir of a ruined house", blurb: "Your family’s manor burned, its debts did not, and the Law Hall holds the one paper that could clear your name." },
+  { value: "courier", label: "A Concord courier", blurb: "You carry a sealed notice from the Concord of Nine Peaks, and everyone at the gate will want to know what it says." },
+  { value: "exile", label: "A sect’s exile", blurb: "You were a disciple of the Windward Sword Pavilion until a ruling struck you out. You arrive with a stolen breath of cultivation and a grudge." },
+];
+
+export const TALENTS: readonly HeroOption<Talent>[] = [
+  { value: "wood", label: "Verdant root", blurb: "Qi comes to you like sap. Herbs lean toward your hand, and healing and growing things answer." },
+  { value: "fire", label: "Cinnabar root", blurb: "Quick and hot. Furnaces, kilns and forges feel you before you speak, and so does your temper." },
+  { value: "earth", label: "Mountain root", blurb: "Slow, heavy and hard to move. Stone, ground and walls keep your counsel, and a heart demon finds you stubborn." },
+  { value: "metal", label: "Bright-metal root", blurb: "Sharp and clean. Blades, coin and hard bright things know your qi at once." },
+  { value: "water", label: "Tide root", blurb: "Qi that runs round obstacles. Rivers, mist, ink and rumour carry you where they like." },
+  { value: "mixed", label: "Mixed roots", blurb: "All five roots, none of them strong. You cultivate at the plain rate and can borrow a little from any element." },
+  { value: "heaven", label: "Heaven-marked", blurb: "A thunder root, rare as a comet. You cultivate far faster than the rest, and the hall watches you for it." },
+  { value: "late", label: "Late bloom", blurb: "Your roots stay shut for years and then open all at once. You are slow until Core Formation and fast after." },
+];
+
+export const DAOS: readonly HeroOption<Dao>[] = [
+  { value: "none", label: "Open hand", blurb: "No craft yet. Every master tempts you, and you learn a little from each, and master none." },
+  { value: "alchemy", label: "Pill Dao", blurb: "Alchemy. A pill carries you over a threshold from further back than it does anyone else." },
+  { value: "forging", label: "Forge Dao", blurb: "Artifacts. The tools and relics you carry work half again as hard." },
+  { value: "talisman", label: "Talisman Dao", blurb: "Script and ward. A ward on your qi halves what a push beyond your realm costs." },
+  { value: "formation", label: "Formation Dao", blurb: "Arrays. What you lease or hold quickens your cultivation twice as much." },
+  { value: "beast", label: "Beast Dao", blurb: "Spirit beasts. A companion hunts for you, so going hungry costs you half and living away from the sect costs less." },
+  { value: "sword", label: "Sword Dao", blurb: "The blade. You master a deed a realm sooner, and a forceful choice cultivates as well as a quiet one." },
+  { value: "healing", label: "Healer’s Dao", blurb: "Medicine. You mend the wounds of the qi, and a heart demon takes a far darker karma to hold you back." },
+  { value: "fate", label: "Fate Dao", blurb: "Divination. You read the cost before you pay it, and half of any karma you would lose is never lost." },
+];
+
 export const HERO_OPTIONS: Record<HeroField, readonly HeroOption[]> = {
+  origin: ORIGINS,
+  talent: TALENTS,
+  dao: DAOS,
   gender: GENDERS,
   looks: LOOKS,
   background: BACKGROUNDS,
@@ -78,9 +123,12 @@ export const HERO_OPTIONS: Record<HeroField, readonly HeroOption[]> = {
 };
 
 /** The order the fields are asked in, and the order the NPCs' asides cycle through them. */
-export const HERO_FIELDS: readonly HeroField[] = ["status", "attire", "looks", "background", "gender"];
+export const HERO_FIELDS: readonly HeroField[] = ["origin", "talent", "dao", "status", "attire", "looks", "background", "gender"];
 
 export const FIELD_TITLE: Record<HeroField, string> = {
+  origin: "Where your story begins",
+  talent: "The roots you were born with",
+  dao: "The Dao you cultivate beside your qi",
   gender: "How they will speak of you",
   looks: "Your looks",
   background: "The life you led since the river village",
@@ -95,6 +143,9 @@ export const DEFAULT_HERO: Hero = {
   background: "farmer",
   attire: "traveller",
   status: "commoner",
+  origin: "river",
+  talent: "mixed",
+  dao: "none",
 };
 
 export const MAX_NAME_LENGTH = 24;
@@ -160,7 +211,17 @@ export function describeHero(hero: Hero): string {
     gentry: "gentry",
     noble: "of a noble house",
   };
-  return `${hero.name} is ${who[hero.gender]}, ${looks[hero.looks]}, once ${trade[hero.background]}, ${dress[hero.attire]}, ${rank[hero.status]}.`;
+  const where: Record<Origin, string> = {
+    river: "from the river village",
+    porter: "a porter coming home",
+    rogue: "a rogue after the bounty",
+    heir: "the heir of a ruined house",
+    courier: "a Concord courier",
+    exile: "an exile of the Windward Sword Pavilion",
+  };
+  const roots = TALENTS.find((t) => t.value === hero.talent)?.label.toLowerCase() ?? "";
+  const craft = hero.dao === "none" ? "no Dao yet" : (DAOS.find((d) => d.value === hero.dao)?.label ?? "");
+  return `${hero.name} is ${who[hero.gender]}, ${looks[hero.looks]}, once ${trade[hero.background]}, ${dress[hero.attire]}, ${rank[hero.status]}, ${where[hero.origin]}, with a ${roots} and ${craft}.`;
 }
 
 // ───────────── pronouns and names
@@ -245,13 +306,57 @@ const ATTIRE_START: Record<Attire, Partial<NpcState>> = {
   armour: { fear: 8, trust: -3 },
 };
 
+const ORIGIN_START: Record<Origin, { stats: Partial<PlayerStats>; npc: Partial<NpcState> }> = {
+  river: { stats: {}, npc: {} },
+  porter: { stats: { qi: 4 }, npc: { trust: 6, suspicion: -10 } },
+  rogue: { stats: { qi: 6, insight: 3, karma: -3 }, npc: { suspicion: 6, respect: -2 } },
+  heir: { stats: { insight: 4 }, npc: { respect: 3, suspicion: 4 } },
+  courier: { stats: { insight: 5 }, npc: { respect: 4, suspicion: 8 } },
+  exile: { stats: { qi: 8, karma: -4 }, npc: { suspicion: 10, fear: 4, respect: -3 } },
+};
+
+const TALENT_START: Record<Talent, { stats: Partial<PlayerStats>; npc: Partial<NpcState> }> = {
+  wood: { stats: { karma: 2 }, npc: {} },
+  fire: { stats: { qi: 5 }, npc: { fear: 2 } },
+  earth: { stats: { qi: 3 }, npc: { trust: 2 } },
+  metal: { stats: { insight: 2 }, npc: { respect: 1 } },
+  water: { stats: { insight: 3 }, npc: { suspicion: 2 } },
+  mixed: { stats: {}, npc: {} },
+  heaven: { stats: { qi: 6 }, npc: { respect: 4, fear: 6, suspicion: 8 } },
+  late: { stats: { insight: 3 }, npc: { respect: -2 } },
+};
+
+const DAO_START: Record<Dao, Partial<PlayerStats>> = {
+  none: {},
+  alchemy: { insight: 3 },
+  forging: { qi: 3 },
+  talisman: { insight: 4 },
+  formation: { insight: 4 },
+  beast: { karma: 2, qi: 2 },
+  sword: { qi: 6 },
+  healing: { karma: 5 },
+  fate: { insight: 6 },
+};
+
+/** Cultivation points the hero begins with, from a past life as a cultivator. A mortal who has gathered a little is still a mortal. */
+const ORIGIN_POINTS: Record<Origin, number> = { river: 0, porter: 2, rogue: 6, heir: 0, courier: 3, exile: 12 };
+export const startingPoints = (hero: Hero): number => ORIGIN_POINTS[hero.origin];
+
 export function startFor(hero: Hero): Start {
   const sum = (...parts: Partial<NpcState>[]): Partial<NpcState> => {
     const out: Partial<NpcState> = {};
     for (const part of parts) for (const k of Object.keys(part) as (keyof NpcState)[]) out[k] = (out[k] ?? 0) + (part[k] ?? 0);
     return out;
   };
-  return { stats: BACKGROUND_START[hero.background], npc: sum(STATUS_START[hero.status], ATTIRE_START[hero.attire]) };
+  const stats = (...parts: Partial<PlayerStats>[]): Partial<PlayerStats> => {
+    const out: Partial<PlayerStats> = {};
+    for (const part of parts) for (const k of Object.keys(part) as (keyof PlayerStats)[]) out[k] = (out[k] ?? 0) + (part[k] ?? 0);
+    return out;
+  };
+  return {
+    stats: stats(BACKGROUND_START[hero.background], ORIGIN_START[hero.origin].stats, TALENT_START[hero.talent].stats, DAO_START[hero.dao]),
+    npc: sum(STATUS_START[hero.status], ATTIRE_START[hero.attire], ORIGIN_START[hero.origin].npc, TALENT_START[hero.talent].npc),
+  };
 }
 
 // ───────────── standing

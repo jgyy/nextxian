@@ -1,3 +1,4 @@
+import { ORIGIN_START } from "./path";
 import type { Condition, Effect, Story } from "./types";
 
 /** One continuity problem the audit found in a story. */
@@ -6,6 +7,11 @@ export interface AuditIssue {
   /** Where it sits: a scene id, a scenario id, or a flag name. */
   where: string;
   message: string;
+}
+
+/** Every scene a game can begin in: the opening, and the first scene of each origin’s prologue that this story defines. */
+export function startScenes(story: Story): string[] {
+  return [story.startSceneId, ...Object.values(ORIGIN_START).filter((id) => id !== story.startSceneId && story.scenes[id])];
 }
 
 const isFlag = (c: Condition): c is Extract<Condition, { kind: "flag" }> => c.kind === "flag";
@@ -49,7 +55,7 @@ export function possibleFlags(story: Story): Record<string, FlagSet> {
   }
   const words = Math.max(1, Math.ceil(index.size / 32));
   const into: Record<string, Uint32Array> = Object.fromEntries(Object.keys(story.scenes).map((id) => [id, new Uint32Array(words)]));
-  const queue = [story.startSceneId];
+  const queue = startScenes(story);
   const queued = new Set(queue);
   const reached = new Set(queue);
   while (queue.length) {
@@ -115,8 +121,8 @@ export function metCompanions(story: Story): { atScene: Record<string, Set<strin
   };
   const ALL = (1 << names.length) - 1;
   const at: Record<string, number> = {};
-  const queue: string[] = [story.startSceneId];
-  at[story.startSceneId] = 0;
+  const queue: string[] = startScenes(story);
+  for (const id of queue) at[id] = 0;
   while (queue.length) {
     const id = queue.pop()!;
     const here = at[id];

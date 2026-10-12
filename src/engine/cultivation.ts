@@ -1,3 +1,6 @@
+import { DEFAULT_HERO } from "./hero";
+import { heartDemonKarmaFor, strainFactor } from "./path";
+import { daoArrival, talentArrival } from "./path-text";
 import type { ChoiceTone, GameState } from "./types";
 
 export interface Realm {
@@ -86,10 +89,10 @@ export function realmForPoints(points: number): number {
 }
 
 /** True when the player has the points for the next realm but their karma holds them back. */
-export function heartDemonBlocks(state: Pick<GameState, "cultivation" | "realm" | "stats">): boolean {
+export function heartDemonBlocks(state: Pick<GameState, "cultivation" | "realm" | "stats"> & Partial<Pick<GameState, "hero">>): boolean {
   const next = state.realm + 1;
   if (next >= REALMS.length || next < HEART_DEMON_FROM) return false;
-  return state.cultivation >= REALMS[next].threshold && state.stats.karma < HEART_DEMON_KARMA;
+  return state.cultivation >= REALMS[next].threshold && state.stats.karma < heartDemonKarmaFor(state.hero ?? DEFAULT_HERO, HEART_DEMON_KARMA);
 }
 
 /** Points still needed for the next realm, or undefined at the top of the ladder. */
@@ -122,9 +125,15 @@ export function gainCultivation(state: GameState, amount: number): GameState {
     realm: next,
     log: [
       ...gained.log,
-      { kind: "realm", text: `Breakthrough: ${REALMS[next].name}. ${REALMS[next].arrival}` },
+      { kind: "realm", text: `Breakthrough: ${REALMS[next].name}. ${REALMS[next].arrival}${breakthroughNotes(gained, next)}` },
     ],
   };
+}
+
+/** What the hero’s roots, and their Dao, add to the breakthrough line when they enter a realm: a sentence for each, with a leading space. */
+export function breakthroughNotes(state: Pick<GameState, "hero">, realm: number): string {
+  const hero = state.hero ?? DEFAULT_HERO;
+  return [talentArrival(hero.talent, realm), daoArrival(hero.dao, realm)].filter(Boolean).map((t) => ` ${t}`).join("");
 }
 
 /**
@@ -159,12 +168,13 @@ export function strainLine(needs: number, realm: number): string {
 /** Applies the cost of straining. Cultivation stops at the floor of the realm already won, so a failed push never undoes a breakthrough. */
 export function applyStrain(state: GameState, shortfall: number): GameState {
   const floor = REALMS[state.realm].threshold;
-  const lost = Math.min(state.cultivation - floor, STRAIN_CULTIVATION * shortfall);
+  const factor = strainFactor(state.hero ?? DEFAULT_HERO);
+  const lost = Math.min(state.cultivation - floor, Math.round(STRAIN_CULTIVATION * shortfall * factor));
   return {
     ...state,
     cultivation: state.cultivation - lost,
-    stats: { ...state.stats, qi: Math.max(0, state.stats.qi - STRAIN_QI * shortfall) },
-    npc: { ...state.npc, respect: Math.max(-100, state.npc.respect - STRAIN_RESPECT * shortfall) },
+    stats: { ...state.stats, qi: Math.max(0, state.stats.qi - Math.round(STRAIN_QI * shortfall * factor)) },
+    npc: { ...state.npc, respect: Math.max(-100, state.npc.respect - Math.round(STRAIN_RESPECT * shortfall * factor)) },
     log: [...state.log, { kind: "strain" as const, text: strainLine(state.realm + shortfall, state.realm) }],
   };
 }

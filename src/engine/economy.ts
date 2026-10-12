@@ -1,5 +1,6 @@
-import { REALMS, heartDemonBlocks } from "./cultivation";
-import type { Background, Hero, Status } from "./hero";
+import { REALMS, breakthroughNotes, heartDemonBlocks } from "./cultivation";
+import { DEFAULT_HERO, type Background, type Hero, type Status } from "./hero";
+import { aidReachFor, holdingFactor, livingRebate, ORIGIN_WEALTH, talentSpeed, TALENT_LABEL, toolFactor, unfedFactor } from "./path";
 import type { AssetDef, GameState, ItemDef, LogEntry, Story } from "./types";
 
 /**
@@ -16,7 +17,7 @@ const STATUS_WEALTH: Record<Status, number> = { outcast: 3, commoner: 8, gentry:
 const BACKGROUND_WEALTH: Record<Background, number> = { orphan: 0, scholar: 2, soldier: 4, merchant: 12, farmer: 3, healer: 4 };
 
 export function startingWealth(hero: Hero): number {
-  return STATUS_WEALTH[hero.status] + BACKGROUND_WEALTH[hero.background];
+  return STATUS_WEALTH[hero.status] + BACKGROUND_WEALTH[hero.background] + ORIGIN_WEALTH[hero.origin];
 }
 
 /**
@@ -33,7 +34,8 @@ export const stipendFor = (realm: number): number => 1 + realm;
 
 /** What it costs to live and cultivate away from the sect, per payday. A Mortal and a Qi Condenser live on rice; higher realms eat spirit stones. */
 const LIVING: readonly number[] = [0, 0, 1, 1, 2, 2, 3, 3];
-export const livingCostFor = (realm: number): number => LIVING[Math.min(Math.max(0, realm), LIVING.length - 1)];
+export const livingCostFor = (realm: number, hero: Hero = DEFAULT_HERO): number =>
+  Math.max(0, LIVING[Math.min(Math.max(0, realm), LIVING.length - 1)] - livingRebate(hero));
 
 /** Cultivation speed, as a percentage of the plain rate. */
 export const BASE_SPEED = 100;
@@ -73,8 +75,8 @@ export function held(story: Pick<Story, "assets">, state: Pick<GameState, "asset
 }
 
 /** True when the hero is short of the cost of living away from the sect, and is Unfed. */
-export function isUnfed(story: Pick<Story, "leavesSect">, state: Pick<GameState, "wealth" | "realm" | "visited">): boolean {
-  return !inSect(story, state) && state.wealth < livingCostFor(state.realm);
+export function isUnfed(story: Pick<Story, "leavesSect">, state: Pick<GameState, "wealth" | "realm" | "visited"> & Partial<Pick<GameState, "hero">>): boolean {
+  return !inSect(story, state) && state.wealth < livingCostFor(state.realm, state.hero);
 }
 
 export interface SpeedPart {
@@ -88,13 +90,15 @@ export function speedParts(story: Story, state: Held): SpeedPart[] {
   const parts: SpeedPart[] = [{ label: "Plain rate", points: BASE_SPEED }];
   const aptitude = aptitudeFor(state.hero);
   if (aptitude) parts.push({ label: "Aptitude of your trade", points: aptitude });
+  const root = talentSpeed(state.hero.talent, state.realm);
+  if (root) parts.push({ label: TALENT_LABEL[state.hero.talent], points: root });
   for (const { item } of carried(story, state)) {
-    if (item.speed && state.realm >= (item.needsRealm ?? 0)) parts.push({ label: item.name, points: item.speed });
+    if (item.speed && state.realm >= (item.needsRealm ?? 0)) parts.push({ label: item.name, points: Math.round(item.speed * toolFactor(state.hero)) });
   }
   for (const asset of held(story, state)) {
-    if (asset.speed && state.realm >= (asset.needsRealm ?? 0)) parts.push({ label: asset.name, points: asset.speed });
+    if (asset.speed && state.realm >= (asset.needsRealm ?? 0)) parts.push({ label: asset.name, points: Math.round(asset.speed * holdingFactor(state.hero)) });
   }
-  if (isUnfed(story, state)) parts.push({ label: "Unfed: you cannot pay your way", points: -UNFED_PENALTY });
+  if (isUnfed(story, state)) parts.push({ label: "Unfed: you cannot pay your way", points: -Math.round(UNFED_PENALTY * unfedFactor(state.hero)) });
   return parts;
 }
 
@@ -119,7 +123,7 @@ export function ledgerOf(story: Story, state: Held): { stipend: number; income: 
   const assets = held(story, state);
   const income = assets.reduce((n, a) => n + a.income, 0);
   const upkeep = assets.reduce((n, a) => n + a.upkeep, 0);
-  const living = sect ? 0 : livingCostFor(state.realm);
+  const living = sect ? 0 : livingCostFor(state.realm, state.hero);
   return { stipend, income, upkeep, living, net: stipend + income - upkeep - living };
 }
 
@@ -149,7 +153,7 @@ export function payday(story: Story, state: GameState): GameState {
       log.push(note(`Payday: you cannot meet the upkeep of ${asset.name}. Its keepers take it back.`));
     }
   }
-  const living = sect ? 0 : livingCostFor(state.realm);
+  const living = sect ? 0 : livingCostFor(state.realm, state.hero);
   const eaten = Math.min(wealth, living);
   wealth -= eaten;
   const wasUnfed = isUnfed(story, state);
@@ -183,7 +187,7 @@ export function takeItem(items: Record<string, number>, id: string, count = 1): 
 export function applyAid(story: Story, state: GameState): GameState {
   const next = state.realm + 1;
   const realm = REALMS[next];
-  if (!realm || state.cultivation >= realm.threshold || state.cultivation < realm.threshold * AID_REACH) return state;
+  if (!realm || state.cultivation >= realm.threshold || state.cultivation < realm.threshold * aidReachFor(state.hero)) return state;
   const pill = Object.values(story.items ?? {}).find((item) => item.aid === next && (state.items[item.id] ?? 0) > 0);
   if (!pill) return state;
   const raised: GameState = { ...state, cultivation: realm.threshold };
@@ -192,7 +196,7 @@ export function applyAid(story: Story, state: GameState): GameState {
     ...raised,
     realm: next,
     items: takeItem(state.items, pill.id),
-    log: [...state.log, { kind: "realm", text: `Breakthrough: ${realm.name}, with the help of the ${pill.name}. ${realm.arrival}` }],
+    log: [...state.log, { kind: "realm", text: `Breakthrough: ${realm.name}, with the help of the ${pill.name}. ${realm.arrival}${breakthroughNotes(state, next)}` }],
   };
 }
 

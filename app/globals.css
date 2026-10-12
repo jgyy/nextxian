@@ -1439,3 +1439,24 @@ button.ghost[aria-expanded="true"] {
   background: rgba(217, 181, 106, 0.06);
   border-radius: 0 10px 10px 0;
 }
+
+/* Talent and Dao: where the hero’s craft sits beside their realm. */
+.price-tag[data-kind="dao"] {
+  color: var(--gold, #d9b35a);
+}
+.talent-note {
+  margin: 10px 0 0;
+  font-size: 0.88rem;
+}
+.dao-line {
+  margin: 10px 0 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line, rgba(255, 255, 255, 0.12));
+}
+.dao-name {
+  margin: 0 0 6px;
+  font-size: 0.92rem;
+}
+.fill-dao {
+  background: var(--gold, #d9b35a);
+}

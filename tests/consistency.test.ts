@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { story, chapters } from "@/story";
+import { startScenes } from "@/engine/audit";
 import { choose, createGame, getChoices, getScene } from "@/engine/game";
 import { REALMS } from "@/engine/cultivation";
 import { FORCE_REALM_BY_CHAPTER } from "@/story/realm-gates";
@@ -84,7 +85,7 @@ describe("the hero in the old text", () => {
   const texts = shownText();
 
   it("carries one weapon, a blade, wherever the story speaks of it, and no hair or dress that a hero may not have", () => {
-    expect(texts.filter((t) => /\byour sword\b(?!-)/i.test(t.text)).map((t) => t.where)).toEqual([]);
+    expect(texts.filter((t) => /\byour sword\b(?!-| Dao)/i.test(t.text)).map((t) => t.where)).toEqual([]);
     expect(texts.filter((t) => /\byour braid\b/i.test(t.text)).map((t) => t.where)).toEqual([]);
   });
 });
@@ -168,8 +169,8 @@ describe("the hero wears what they chose", () => {
 
 describe("the story graph", () => {
   it("lets a player reach every scene from the opening", () => {
-    const seen = new Set<string>([story.startSceneId]);
-    const queue = [story.startSceneId];
+    const seen = new Set<string>(startScenes(story));
+    const queue = [...seen];
     while (queue.length) {
       for (const c of story.scenes[queue.pop()!].choices) {
         if (!seen.has(c.next)) {

@@ -1,4 +1,5 @@
 import type { Scene, Story } from "@/engine/types";
+import { prologueScenes } from "./origins";
 import { chapterOne } from "./chapter-1";
 import { chapterTwo } from "./chapter-2";
 import { chapterThree } from "./chapter-3";
@@ -27,6 +28,7 @@ import { hermitScenes } from "./side-hermit";
 import { bridgeScenes } from "./side-bridge";
 import { realmEntrances, realmRoadGroups, realmRoadScenarios, waysideBack2 } from "./roads2";
 import { roadGroups, roadScenarios, waysideBackScene, waysideEntrances } from "./roads";
+import { daoAssets, daoEntrances, daoGroups, daoItems, daoScenarios, waysideBack4 } from "./dao";
 import { fortuneAssets, fortuneEntrances, fortuneGroups, fortuneItems, fortuneScenarios, waysideBack3 } from "./fortune";
 import { elderSuRealm, elderSuRealmScenes } from "./npc/elder-su-realm";
 import { applyEchoes, parseEchoes, parseRemarks, parseScenarios, parseScenes } from "@/engine/markup";
@@ -39,6 +41,8 @@ import { books } from "./books";
 import { heroAsides } from "./hero/asides";
 import { gateForce } from "./realm-gates";
 import { heroEchoes } from "./hero/echoes";
+import { pathEchoes } from "./path/echoes";
+import { pathScenarios } from "./path/scenarios";
 import { heroRemarks } from "./hero/remarks";
 import { reckoningScenes, routeThroughReckonings } from "./economy/reckonings";
 import { economyEndings } from "./economy/endings";
@@ -49,6 +53,7 @@ import { economyRemarks } from "./economy/remarks";
  * rejoin the main line. Word counts and reports group scenes by these chapters.
  */
 const mainLine: { name: string; scenes: Scene[] }[] = [
+  { name: "Prologues: Where the Story Begins", scenes: prologueScenes },
   { name: "Chapter 1: The Stolen Seal", scenes: chapterOne },
   { name: "Side Path: The Foothill Village", scenes: villageScenes },
   { name: "Side Path: The Herb Market", scenes: herbMarketScenes },
@@ -84,12 +89,16 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
     const scene = chapter ? gateForce(raw, Number(chapter[1])) : raw;
     const entrance = waysideEntrances[scene.id];
     const fortune = fortuneEntrances[scene.id];
-    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : [])] };
+    const dao = daoEntrances[scene.id];
+    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : []), ...(dao ? [dao] : [])] };
   });
   const groups = chapter ? roadGroups.filter((g) => g.chapter === Number(chapter[1])) : [];
   const fortunes = fortuneGroups
     .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
     .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack3(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+  const daos = daoGroups
+    .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+    .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack4(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
   return [
     { ...c, scenes },
     ...groups.map(({ name, scenes: roads, wayside }) => {
@@ -98,6 +107,7 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
       return { name, scenes: origin ? [...roads, waysideBackScene(wayside, origin)] : roads };
     }),
     ...fortunes,
+    ...daos,
   ];
 });
 
@@ -122,7 +132,7 @@ function patch(groups: { name: string; scenes: Scene[] }[]): { name: string; sce
       byId.set(from, { ...scene, choices: scene.choices.map((c) => (c.next === to ? { ...c, next: flow.id } : c)) });
     }
   }
-  const echoed = applyEchoes([...byId.values()], [...parseEchoes(echoesOne, "echoes-1"), ...parseEchoes(heroEchoes, "hero/echoes")]);
+  const echoed = applyEchoes([...byId.values()], [...parseEchoes(echoesOne, "echoes-1"), ...parseEchoes(heroEchoes, "hero/echoes"), ...parseEchoes(pathEchoes, "path/echoes")]);
   const patched = new Map(echoed.map((s) => [s.id, withBonds(s)]));
   return groups.map((g) => ({ ...g, scenes: g.scenes.map((s) => patched.get(s.id)!) }));
 }
@@ -136,14 +146,18 @@ const bookGroups = books.flatMap((book) =>
     const scenes = parseScenes(arc.scenes, `${book.id}/${arc.id}`)
       .map(withBonds)
       .map((scene) => (realmEntrances[scene.id] ? { ...scene, choices: [...scene.choices, realmEntrances[scene.id]] } : scene))
-      .map((scene) => (fortuneEntrances[scene.id] ? { ...scene, choices: [...scene.choices, fortuneEntrances[scene.id]] } : scene));
+      .map((scene) => (fortuneEntrances[scene.id] ? { ...scene, choices: [...scene.choices, fortuneEntrances[scene.id]] } : scene))
+      .map((scene) => (daoEntrances[scene.id] ? { ...scene, choices: [...scene.choices, daoEntrances[scene.id]] } : scene));
     const roads = realmRoadGroups
       .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
       .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack2(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
     const fortunes = fortuneGroups
       .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
       .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack3(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
-    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes];
+    const daos = daoGroups
+      .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+      .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack4(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes, ...daos];
   }),
 );
 
@@ -170,20 +184,21 @@ export const story: Story = {
   npc: elderSu,
   scenes: Object.fromEntries(scenes.map((s) => [s.id, s])),
   scenarios: {
-    ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios, ...realmRoadScenarios, ...fortuneScenarios }),
+    ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios, ...realmRoadScenarios, ...fortuneScenarios, ...daoScenarios }),
     ...Object.fromEntries(parseScenarios(scenariosOne, "scenarios-1").map((x) => [x.id, x])),
+    ...Object.fromEntries(parseScenarios(pathScenarios, "path/scenarios").map((x) => [x.id, x])),
     ...Object.fromEntries(
       books.flatMap((book) => book.arcs.flatMap((arc) => (arc.scenarios ? parseScenarios(arc.scenarios, `${book.id}/${arc.id}/scenarios`) : []))).map((x) => [x.id, x]),
     ),
   },
   companions,
-  items: fortuneItems,
-  assets: fortuneAssets,
+  items: { ...fortuneItems, ...daoItems },
+  assets: { ...fortuneAssets, ...daoAssets },
   leavesSect: "departure_dawn",
   asides: heroAsides,
   remarks: [
     ...parseRemarks(remarksOne, "remarks-1"),
-    ...economyRemarks(fortuneItems),
+    ...economyRemarks({ ...fortuneItems, ...daoItems }),
     ...parseRemarks(heroRemarks, "hero/remarks"),
     ...books.flatMap((book) => book.arcs.flatMap((arc) => (arc.remarks ? parseRemarks(arc.remarks, `${book.id}/${arc.id}/remarks`) : []))),
   ],
