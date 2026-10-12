@@ -12,6 +12,8 @@ flowchart LR
     FR["fortune/<br/>forty Fortune Roads, 1,020 scenes,<br/>each pricing its goods, wages and lease"]
     WR["witness/<br/>forty Witness Roads, 1,020 scenes,<br/>four deeds the Elder answers at once"]
     CR["cultivation/<br/>forty Cultivation Roads, 1,020 scenes,<br/>four practices the Elder answers at once"]
+    XR["crossing/<br/>forty Crossing Roads, 1,380 scenes:<br/>gender, root and craft doors, attunement"]
+    GD["gendered/<br/>Left Cloister, Right Yard, Third Door"]
     OG["origins/<br/>twelve beginnings, eleven prologues"]
     EC["economy/<br/>five reckonings, seven ending epilogues,<br/>remarks on the purse and the pack"]
     HE["hero/<br/>Elder’s asides, gate echoes, companion remarks"]
@@ -40,9 +42,10 @@ flowchart LR
     NP["NpcPanel.tsx<br/>portrait, mood, her read of you"]
     SP["StatsPanel.tsx<br/>stats and recent decisions"]
     CP["CultivationPanel.tsx<br/>realm, progress, ladder"]
+    XP["CrossingPanel.tsx<br/>elements attuned, doors taken"]
     PP["PursePanel.tsx<br/>stones, speed by part, pack, holdings"]
   end
-  C & SD & RD & R2 & FR & WR & CR & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & WR & CR & XR & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
   N --> WI
@@ -60,7 +63,7 @@ flowchart LR
   GV --> SV
   GV --> CR
   CR -->|Hero| G
-  GV --> NP & SP & CP & HP & PP
+  GV --> NP & SP & CP & HP & PP & XP
   GV -->|localStorage save| Storage[("Browser storage")]
 ```
 
@@ -703,4 +706,20 @@ flowchart TD
   G -->|"karma below it"| Y["points gather, the realm waits"]
   C & T & D & P --> A["Elder answers at once<br/>5 lines by trust, 4 memories"]
   X --> K["keepers: fresh from a breakthrough"]
+```
+
+## Hidden choices and attunement
+
+A choice with `hideLocked` is not shown at all while its requirements are unmet, and does not count toward the four every scene must offer. The Crossing Roads use it for doors that open to who the hero *is*. A kindred or partial root that works its element sets `pr_attuned…` flags, which `speedParts` turns into cultivation speed.
+
+```mermaid
+flowchart LR
+  H["hero: gender, talent, Dao"] --> D{"door requires"}
+  D -- "matches" --> S["scene behind the door"]
+  D -- "does not" --> X["hidden: not offered, not counted"]
+  S --> P["pick with its own price"]
+  P --> FL["fork flag, pick flag"]
+  P --> AT["attune flag"]
+  AT --> SP["speedParts: +6 kin, +3 partial"]
+  P --> EL["Elder answers at once"]
 ```

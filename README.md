@@ -6,6 +6,9 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 
 ## Features
 
+- **Crossing Roads: forty roads, 1,380 more scenes, where element and craft decide the story.** Five elements meet eight crafts (pill, forge, talisman, array, beast, sword, healing, fate) at forty places, each kept by a keeper who is a woman or a man. Every road has **three doors that open only to who the hero is**: a gender door (a woman’s Sisters’ Bench, a man’s Brothers’ Hall, the Middle Seat of someone who gives no answer), a root door (a kindred, a partial or a deaf root meets the road’s element) and a craft door (the keeper’s own Dao, another Dao, or an open hand). A door is hidden from everyone else. Each pick behind a door has its own price: a woman argues a barred door open with Insight, a man pays the yard’s test in qi, the middle seat asks to be explained, the master’s piece asks Adept mastery. A kindred root **attunes** the hero to an element for good (+6% cultivation speed, +3% for half), the Elder answers every door at once, 69 remarks read the pattern, and the Elder’s five accounts read the hero’s craft, roots and gender.
+- **Three gendered side paths (31 scenes).** Behind the Elder’s confession at the memorial: the Left Cloister for a woman, the Right Yard for a man and the Third Door for someone who gives no answer. The same fourteen names are kept three ways, in lullabies, in lanterns and in a Door-book.
+- **A seventh plot-hole pass.** See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md).
 - **Twelve beginnings, six of them in cultivation.** Besides the river village, the porter, the rogue, the heir, the courier and the exile, you can now begin as the finder of a sealed cave (a Qi Condenser before the first scene), a pill-house apprentice with a half-cooked pill, a roadside lamp-keeper, a hedge-listener’s ward, someone struck by heaven, or the dreamer of a stranger’s breath. Each is nine scenes, each adds its own line to your cultivation speed while its art lasts, each ends its fourth scene on one of four methods, and Elder Su, the keepers and the Cultivation Roads read the method you took.
 - **Cultivation Roads: forty roads, 1,074 more scenes.** Ten waysides where the work of a realm is done (the archive roof, the eastern terraces, the mirror cells, the tempering yards, the seat-houses of Qinglian Ford, the tide huts, the Hush shelters, the Glass Sea’s annealing plates, the tribulation landing, the stone thresholds), four roads each, and a night in a retreat. On every road you can **circulate**, **temper**, **comprehend** or **push at the gate**, and Elder Su answers each at once. Circulating asks a realm and gives nothing to a hero far above the road. Tempering costs qi. Comprehending asks insight and gives Dao mastery. A push needs you three-quarters through your realm, and lifts you to the next threshold unless a heart demon holds the door. Keepers read how far through your realm you are, how fast you cultivate, and whether you broke through only lately.
 - **283 plot holes fixed.** Eleven beginnings whose door scene the Elder never played on two of four routes, ten sentences shown in up to 200 roads each, 254 hero-trait lines that 200 roads shared among three or four wordings, a heading that never took the hero’s name, and a few smaller slips. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md).
@@ -38,6 +41,36 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 - **Saves in your browser.** Progress is written to `localStorage` after every choice. Storage errors never stop play. Saves from before the Elder kept a reaction history, or before decisions had tones, still load.
 
 ![Scene with no Continue](docs/screenshots/02-no-continue-desktop.png)
+
+### Crossing Roads, gender and the roots
+
+![A wayside of four roads](docs/screenshots/100-crossing-hub-desktop.png)
+![The gender door, shown to a woman and no one else](docs/screenshots/101-gender-door-woman-desktop.png)
+![A woman at the forge](docs/screenshots/102-gender-woman-forge-desktop.png)
+![A man at the same forge](docs/screenshots/103-gender-man-forge-desktop.png)
+![Someone who gives no answer, at the same forge](docs/screenshots/104-gender-unspoken-forge-desktop.png)
+![A kindred root attunes to fire, and the Elder answers](docs/screenshots/105-root-attunes-fire-desktop.png)
+![The keeper lets a colleague in](docs/screenshots/106-craft-colleague-desktop.png)
+![The Left Cloister](docs/screenshots/107-left-cloister-desktop.png)
+![The Right Yard](docs/screenshots/108-right-yard-desktop.png)
+![The Third Door](docs/screenshots/109-third-door-desktop.png)
+![The Crossings panel](docs/screenshots/110-crossings-panel-desktop.png)
+![Attunement in the cultivation speed](docs/screenshots/112-attunement-speed-desktop.png)
+![The same scene on a phone](docs/screenshots/111-gender-woman-forge-mobile.png)
+
+```mermaid
+flowchart TD
+  W["wayside hub: 10 of them, one element each"] --> R["road: one element x one craft, 25 scenes"]
+  R --> G["gender door, middle of approach one"]
+  R --> T["root door, middle of approach two"]
+  R --> C["craft door, middle of approach three"]
+  G --> GW["woman: Sisters' Bench"] & GM["man: Brothers' Hall"] & GU["no answer: Middle Seat"]
+  T --> RK["kindred root"] & RP["partial root"] & RF["deaf root"]
+  C --> CO["same Dao"] & CX["another Dao"] & CN["open hand"]
+  GW & GM & GU & RK & RP & RF & CO & CX & CN --> E["Elder answers at once, by trust and by what the hero is"]
+  RK & RP & RF --> A["attunement: +6 or +3 speed, once per element"]
+  E --> F["flags: remarks, report, accounts at the five reckonings"]
+```
 
 ### Twelve beginnings and the Cultivation Roads
 

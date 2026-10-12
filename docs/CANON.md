@@ -167,3 +167,11 @@ Ten more waysides, one from each hub of the later books, each with four roads of
 - **A method.** Every new beginning ends its fourth scene on one of four methods, each a flag (`og_cave_m_settle`…). The Elder at the door and the keepers of the Cultivation Roads read it.
 - **The Hush** is nineteen years old. Its bell tolls at noon in the Garrison’s gibbets and the wind goes deaf until dusk. The Listeners’ shelters teach cultivators to work through it.
 - **The Cultivation Roads** open from the Ash Archive roof, the eastern peak’s lesson, the jade mirror, the sparring court, Qinglian Ford, and the Night of Stillness at each later hub, and ask Qi Condensation to Dao Seeking. The Glass Sea’s plates have no water. The Great Flood at Tidewall was forty years ago, and ninety-one drowned.
+
+## The Crossing Roads and the gendered paths
+
+- **Forty crossings** of five elements and eight crafts, ten waysides of one element each (the making crafts first, the walking ones after). They open from `archive_clerk`, `archive_vault`, `sutra_gu_cell`, `jade_eye_tablets`, `tribunal_testimony`, the Qinglian Ford night, `b3_close3`, the Steppe night, the Glass Sea camp and `depths_close`.
+- **The Glass Sea has no water**: the Bright Rim roads say rim, plain and glare, never shore or tide. The roads on the road never say the Law Hall or the sect gate.
+- **The memorial** is a hall behind the Law Hall; the Hall of Bells stands behind it. The Great Flood at Tidewall was forty years ago, and the hounds of the salt hearths would not go down to the harbour that morning.
+- **Gender.** The woman’s Left Cloister kept the Sisters’ Book of fourteen lullabies; Wanru kept its keys at twenty and sang her name last. The man’s Right Yard hangs fourteen lanterns and swears the wardens’ oath, “I will not ask who signed”. The Third Door’s sweeper, Hou Zhe, keeps a Door-book; the hinge was oiled for eleven years by someone who left no name, and a message for “Wan” has waited fifteen years.
+- **Attunement** is once per element: +6 speed for a kindred root, +3 for a partial one or a deaf root that understands.
