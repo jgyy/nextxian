@@ -70,7 +70,7 @@ const SOURCE = String.raw`
 % su_cx_c_quarrel | count:pr_pick_c_quarrel_>=2 | elder | Twice you have contested a keeper’s method with your own. It is the surest way to find out whether you were right, and the surest way to be told.
 % su_cx_c_defer | count:pr_pick_c_defer_>=2 | elder | Twice you have deferred to a keeper. Deference is not weakness. It is the only way I know to be taught by someone who knows more.
 % su_cx_c_apprentice | count:pr_pick_c_apprentice_>=2 | elder | Twice you have sat at the apprentices’ end of the bench. You have no idea how rare that is in someone who has done what you have.
-% su_cx_c_labour | count:pr_pick_c_labour_>=2 | elder | Twice you have done the plain labour of a craft. I did it for three years in the pill-house. I have never been prouder of anything.
+% su_cx_c_labour | count:pr_pick_c_labour_>=2 | elder | Twice you have done the plain labour of a craft. I did it for three years in the Law Hall’s copy-room. I have never been prouder of anything.
 % su_cx_c_ask | count:pr_pick_c_ask_>=2 | elder | Twice you have asked a craft what it cannot do. It is the question under the question, and the only one a craft is ashamed to answer.
 % su_cx_c_carry | count:pr_pick_c_carry_>=2 | elder | Twice you have offered to carry what a keeper could not. It is what this sect was built on, and what it has almost entirely forgotten.
 // ---- The company
@@ -78,7 +78,7 @@ const SOURCE = String.raw`
 % cx_ren_woman | bond:ren>=-100 & count:pr_fork_g_>=4 & hero:gender=woman | ren | On the bridge I took orders from a woman for fifteen years and never once questioned them. I was not brave. I was just lucky in the woman.
 % cx_ren_man | bond:ren>=-100 & count:pr_fork_g_>=4 & hero:gender=man | ren | A man learns to stand where he is put. Four roads, and you have stood where you chose. It is a harder thing than a bridge.
 % cx_lin_unspoken | bond:lin>=-100 & count:pr_fork_g_>=3 & hero:gender=unspoken | lin | I keep a ledger with two columns for names. I have been thinking since you came that it wants a third. May I write you in it, or would you rather I tore out the page?
-% cx_lin_woman | bond:lin>=-100 & count:pr_fork_g_>=3 & hero:gender=woman | lin | My mother was struck from this archive’s rolls for a column in a ledger. She would have liked your roads. She would have asked to see the benches.
+% cx_lin_woman | bond:lin>=-100 & count:pr_fork_g_>=3 & hero:gender=woman | lin | My mother was put out of the Law Hall for refusing to sign beneath a line. She would have liked your roads. She would have asked to see the benches.
 % cx_yue_attuned | bond:yue>=-100 & count:pr_attuned>=2 | yue | Two elements, and your qi has two colours in it now. I can see them in a lamp. I have watched merchants pay thirty stones for less.
 % cx_mengjiao_roots | bond:mengjiao>=-100 & count:pr_fork_r_>=5 | mengjiao | Five times you have put your roots to an element. The mist has begun to lean when you pass. It does not do that for everyone, and I would not mistake it for flattery.
 % cx_odval_roots | bond:odval>=-100 & count:pr_attuned>=3 | odval | Three elements know your name. On the steppe we say a person who is known by three winds is never lost. I do not know that it is true. I like it very much.

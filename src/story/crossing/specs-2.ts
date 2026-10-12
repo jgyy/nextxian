@@ -118,7 +118,7 @@ export const crossingSpecs2: CrossingSpec[] = [
     omen: "a smell of cold metal and bitter almond",
     secret: "the tablets the painted name is read from are pressed with a tin-and-silver tonic that makes a clerk see his own handwriting in the glare, and Wuliang is the only one who knows it can be taken off",
     intro:
-      "Behind the tablet-gallery a narrow glass-fronted shed holds a tin alembic as long as a coffin, wrapped in tubing. Wuliang distils pills out of silver, tin and cold mountain water, and says that any fool can cook a plant; it takes patience to cook a metal.",
+      "Behind the memorial hall a narrow glass-fronted shed holds a tin alembic as long as a coffin, wrapped in tubing. Wuliang distils pills out of silver, tin and cold mountain water, and says that any fool can cook a plant; it takes patience to cook a metal.",
     focus: ["the long alembic", "the silver crucible", "the tonic shelf", "the weighing scale"],
     openers: [
       "The alembic runs the length of the shed on trestles, a tube of beaten tin coiled round a cold water jacket. Wuliang taps it near the elbow, and the tone that rings back is the note of a bell cast in one piece.",
@@ -143,7 +143,7 @@ export const crossingSpecs2: CrossingSpec[] = [
     omen: "a smell of oil and hot wire",
     secret: "every needle the sect’s healers use is drawn from the same ingot, and Sijun has refused for twenty years to make a second ingot, because she says the first has not yet been used up",
     intro:
-      "Behind the tablet-gallery a lane of low sheds runs with the ring of tiny hammers. Sijun makes needles, thousands of them, drawn thin as a hair from a steel that she warms and cools and warms again, and says that the smallest blade is the hardest to forge.",
+      "Behind the memorial hall a lane of low sheds runs with the ring of tiny hammers. Sijun makes needles, thousands of them, drawn thin as a hair from a steel that she warms and cools and warms again, and says that the smallest blade is the hardest to forge.",
     focus: ["the drawing bench", "the tempering oil", "the needle trays", "the grindstone"],
     openers: [
       "The drawing bench is a rail of oak with a steel plate fixed at one end. Sijun draws a wire through a hole with a pair of pincers, steady as a pulled thread, and the wire comes out on the far side a degree thinner and a degree brighter.",
@@ -166,9 +166,9 @@ export const crossingSpecs2: CrossingSpec[] = [
     kname: "Yuhan",
     relic: "a leather pouch of gold-leaf squares, each thin enough to float on a breath",
     omen: "a smell of hot leather and a bright clean dust",
-    secret: "the tablets in the gallery were each gilded with the leaf of one beater, and the sect has a rule that no beater may sign her work, which Yuhan has broken in every sheet she ever made",
+    secret: "the tablets in the memorial were each gilded with the leaf of one beater, and the sect has a rule that no beater may sign her work, which Yuhan has broken in every sheet she ever made",
     intro:
-      "At the far end of the gallery a shed full of dull thuds is staffed by women with leather aprons and wooden mallets. Yuhan beats gold into leaf and silver into foil, and the talisman-writers buy her sheets by the hundred; she says they are the only people who understand that a charm needs a skin.",
+      "At the far end of the memorial hall a shed full of dull thuds is staffed by women with leather aprons and wooden mallets. Yuhan beats gold into leaf and silver into foil, and the talisman-writers buy her sheets by the hundred; she says they are the only people who understand that a charm needs a skin.",
     focus: ["the beating stone", "the leaf book", "the tissue cutter", "the burnishing tray"],
     openers: [
       "The beating stone is a block of black marble with a polished top, and the mallet is a hammer the size of a fist. Yuhan brings it down in a regular beat, and between her blows she turns the packet of gold under the leather with the other hand.",
@@ -191,9 +191,9 @@ export const crossingSpecs2: CrossingSpec[] = [
     kname: "Zhongqi",
     relic: "a spool of braided silver wire the width of a hair, wound on a bobbin of horn",
     omen: "a smell of oil and thin cold metal",
-    secret: "the gallery’s tablets are guarded by a lattice of silver wire strung through the rafters, which hums when a lie is read aloud under it, and Zhongqi tunes it by ear",
+    secret: "the memorial’s tablets are guarded by a lattice of silver wire strung through the rafters, which hums when a name is spoken under it that is not on the stone, and Zhongqi tunes it by ear",
     intro:
-      "Across the roof of the gallery a lattice of silver wire has been strung, ten thousand strands, thinner than thread. Zhongqi tends it with a ladder and a tuning-fork, and says an array of metal is not built so much as played.",
+      "Across the roof of the memorial hall a lattice of silver wire has been strung, ten thousand strands, thinner than thread. Zhongqi tends it with a ladder and a tuning-fork, and says an array of metal is not built so much as played.",
     focus: ["the wire lattice", "the tuning-fork", "the bobbin room", "the ladder"],
     openers: [
       "The lattice hangs in the rafters in a pattern like a net, and a faint continuous note comes from it, so quiet that you hear it only when you stop breathing. Zhongqi stands beneath it with his eyes shut and his head a little on one side.",

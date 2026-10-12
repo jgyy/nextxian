@@ -28,7 +28,7 @@ ${talentExtras(0)}
 By noon the village has decided. Not about you, exactly, but about what you may do to its roofs. A man you grew up beside will not meet your eyes. The headwoman, who has been kind, asks you in a careful voice whether you could perhaps visit your cousins in the next valley for a season, until the damage to the drum-tower has been paid for. The light in your hands has settled into a steady glow, and does not stop.
 +[turn] og_struck_asked | The assessor’s answer is a small cold stone in your pocket: you will not be able to steer it without training.
 +[turn] og_struck_honest | Your honesty is on the assessor’s page now, and the headwoman has heard of it.
-+[turn] og_struck_lied | The assessor omitted what you asked her to, and it makes you feel like a man leaving a door unlatched.
++[turn] og_struck_lied | The assessor omitted what you asked her to, and it makes you feel like someone leaving a door unlatched.
 +[turn] og_struck_token | The copper token is warm. It is a pass to the Concord’s lodging-houses, and a tiny, indirect reproach.
 > mercy | Offer to stay and mend the drum-tower with your own hands, light and all. | + | +og_struck_mend karma+3 |
 > quiet | Pack your bundle, say goodbye to the headwoman, and walk out at dusk. | ^ | +og_struck_left qi+2 |

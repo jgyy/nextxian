@@ -247,7 +247,7 @@ He thinks. He looks at the bell again. “They would catch me.”
 He stares at you for a long second. Then, slowly, to your astonishment, he takes the rifle from his shoulder, and lays it on the grass. He takes off his belt and his bandolier. He lays them neatly beside it.
 “I did not see you,” he says. He wets his lips. “I was relieving myself. I heard a noise. I thought it was a fox.”
 “It was a fox.”
-“Aye.” He nods. He pulls off his cap. “Good luck, ma’am.”
+“Aye.” He nods. He pulls off his cap. “Good luck, {honorific}.”
 He walks away into the dark. He does not look back. His boots make almost no noise on the wet grass.
 > force | Cut the next trace. | voice_a2s7
 > truth | Watch him go. | voice_a2s7

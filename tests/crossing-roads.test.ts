@@ -135,6 +135,22 @@ describe("the Crossing Roads", () => {
     expect(SPECS7.filter((s) => new RegExp(`\\b${s.kname}\\b`).test(outside) || companions.has(s.kname)).map((s) => s.kname)).toEqual([]);
   });
 
+  it("keeps to the canon of the places: the Glass Sea is dry, and the roads of the road never say the Law Hall or the sect gate", () => {
+    const wet = /\b(rain|pond|river|tide|shore|swim|wade|dive|drown|wave|sea-wind|sailors?)s?\b/i;
+    const glass = SPECS7.slice(32, 36);
+    expect(glass.map((s) => s.id)).toEqual(["pr_metal_beast", "pr_metal_sword", "pr_metal_healing", "pr_metal_fate"]);
+    for (const s of glass) {
+      const mine = [s.intro, ...s.openers, s.close, s.secret, s.ware.blurb, s.holding.blurb, ...synthesize(s).beats.flat(), ...synthesize(s).deep];
+      expect(mine.filter((t) => wet.test(t.replace(/\bwater\b/gi, ""))), s.id).toEqual([]);
+    }
+    for (const s of SPECS7.slice(20)) {
+      const mine = [s.intro, ...s.openers, s.close, s.secret];
+      for (const t of mine) expect(t, s.id).not.toMatch(/Law Hall|sect gate/);
+    }
+    for (const w of WAYSIDES7.slice(5)) expect([w.title, ...w.paragraphs, w.back, w.label, w.remark].join(" "), w.id).not.toMatch(/Law Hall|sect gate/);
+    expect(WAYSIDES7[8].title).not.toMatch(/Shore|Sea/);
+  });
+
   it("does not clone a passage from road to road: no twelve-word phrase of a road’s own text in more than two roads, and no phrase of its craft or element’s in more roads than share them", () => {
     const grams = (n: number, limit: number, texts: (s: (typeof SPECS7)[number]) => string[]) => {
       const found = new Map<string, Set<string>>();

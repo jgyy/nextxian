@@ -144,7 +144,7 @@ export const CRAFT_BEATS: Record<Craft, string[]> = {
     "The almanac at {focus} is thick with thumbprints and annotations. {Kname} says the printed dates are a rumour, and the marginal ones are the truth.",
     "A bell is struck once and {kname} counts the length of its sound against {ktheir} own pulse. The two agree for a moment, and {kthey} says that is the best hour of the day.",
     "{Kname} reads your palm without touching it, by holding it a hand’s breadth from the lamp. The shadow, {kthey} says, is the part of the hand that tells the truth.",
-    "A cracked shell lies on the tray, its lines running like rivers on a map. {Kname} follows one with a nail and says it will rain, and says it is not the lines but the place where they stop.",
+    "A cracked shell lies on the tray, its lines running like roads on a map. {Kname} follows one with a nail and says the weather will turn, and says it is not the lines but the place where they stop.",
     "There is a rule that a diviner may read anyone’s fortune but their own. {Kname} says the rule is the only one that anyone obeys, and the only one worth the trouble.",
     "{Kname} refuses a fortune to a woman who asks for good news only. {Kthey} says the future is not a shop, and that there is no profit in a lie one has to come back for.",
     "A string of knotted cord is run through {ktheir} fingers. Each knot is a thing that did not happen, and {kname} says that the cord of what did not happen is a good deal longer than the other.",

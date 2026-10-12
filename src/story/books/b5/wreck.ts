@@ -240,7 +240,7 @@ It is, you reflect, a very effective sentence. It is only two syllables long.
 
 === wreck_a2s7 | The Winch-Crew
 They go in the morning. Corvin goes first, on a mule, with an air of wounded dignity. The sixty winch-men follow in a long dispirited line. Several of them glance back over their shoulders at the hull of the flagship. One gives a little wave. A boy of twenty with a squint lags behind the rest, and stops, and comes back.
-“Beg pardon, ma’am,” he says to you, wringing his cap. “I was on the cable. I heard the girl. In the hold.”
+“Beg pardon, {honorific},” he says to you, wringing his cap. “I was on the cable. I heard the girl. In the hold.”
 “The girl?”
 “The little one. With the plait.” He swallows. “I heard her breathe.”
 “It’s very slow.”

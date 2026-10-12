@@ -41,7 +41,7 @@ export const crossingSpecs1: CrossingSpec[] = [
     omen: "a smell of split green wood and linseed",
     secret: "the sect’s oldest blades have no hafts of their own; each wears the shaft of a tree that was felled the day the blade was made, and Jiansheng keeps the felling-book",
     intro:
-      "A smith is only as good as what he puts in the hand. Jiansheng’s shop is a long shed of drying timber, where every blade the sect forges is hafted, and where the old man sits among curls of ash and oak with a drawknife older than the Sealing.",
+      "A blade is only as good as what goes into the hand. Jiansheng’s shop is a long shed of drying timber, where every blade the sect forges is hafted, and where the old man sits among curls of ash and oak with a drawknife older than the Sealing.",
     focus: ["the drying racks", "the steaming trough", "the drawknife bench", "the felling-book"],
     openers: [
       "The racks run the length of the shed, loaded with shafts at every stage of seasoning, tagged with the year of their cutting. Jiansheng taps one and it rings; he taps another and it thuds, and he sets the second aside.",
@@ -191,9 +191,9 @@ export const crossingSpecs1: CrossingSpec[] = [
     kname: "Daoping",
     relic: "a brass sighting-ring with seven notches filed in its rim, one for each beacon he has outlived",
     omen: "a smell of burnt pitch and hot stone",
-    secret: "the beacons on the archive’s roof answer to a chain of fires that runs unbroken to the capital, and have been lit twice in a hundred years, for reasons the sect has erased",
+    secret: "the beacons above the vault’s stair answer to a chain of fires that runs unbroken to the capital, and have been lit twice in a hundred years, for reasons the sect has erased",
     intro:
-      "On the vault’s windowless roof, seven iron baskets stand in a ring, each filled with tarred wood and aimed at a different quarter of the sky. Daoping tends them alone, and says an array of fire is the only kind that speaks, whether or not anyone is listening.",
+      "On a stone platform above the vault’s service stair, open to the sky, seven iron baskets stand in a ring, each filled with tarred wood and aimed at a different quarter of the sky. Daoping tends them alone, and says an array of fire is the only kind that speaks, whether or not anyone is listening.",
     focus: ["the seven baskets", "the sighting-ring", "the tar barrel", "the signal-book"],
     openers: [
       "The baskets stand in their circle with the stiffness of old sentries. Daoping walks round them in a slow widdershins, stops at the fourth, and with a poker nudges a log a hand’s breadth to the left.",
@@ -201,8 +201,8 @@ export const crossingSpecs1: CrossingSpec[] = [
       "The tar barrel stands under a canvas, black and sweet-smelling, and its lid has been sealed with a ring of wax. Daoping breaks the seal with a knife, dips a rod, and holds it up to show you the slow clinging drip.",
       "The signal-book is a thick ledger of lines and ticks, each a message in a code with no key. Daoping reads a column with his lips moving, and then closes the book, and says he has read it three thousand times and never once understood.",
     ],
-    close: "Daoping covers the baskets with their canvas hoods. The roof is quiet, the sky is clear, and all seven fires are waiting, unlit, for the day they are wanted.",
+    close: "Daoping covers the baskets with their canvas hoods. The platform is quiet, the sky is clear, and all seven fires are waiting, unlit, for the day they are wanted.",
     ware: { name: "Beacon-Keeper’s Signal Tally", kind: "token", blurb: "A tally of seven brass beads that Daoping hands to those he trusts. It lets you read a fire’s meaning and carries a little of its warmth." },
-    holding: { name: "Night Watch on the Roof", blurb: "A night a week on the vault roof, a bed in Daoping’s hut, and the right to light one fire in a year." },
+    holding: { name: "Night Watch on the Platform", blurb: "A night a week on the beacon platform, a bed in Daoping’s hut, and the right to light one fire in a year." },
   },
 ];

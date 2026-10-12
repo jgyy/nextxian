@@ -69,7 +69,7 @@ export const ELEMENT_BEATS: Record<Element, string[]> = {
     "The light lies in thin bright blades across the floor, and where it lands on a nail-head it is almost too sharp to look at.",
     "Each of your breaths comes back to you a little thinner than it left. The room is listening, and has the manners of a good blade: it says nothing it can help.",
     "A hair-fine seam in the wall at {focus} catches the lamp. Follow it with your eye and it runs the whole length of the room, perfectly straight.",
-    "There is a smell of cold iron and wet stone, and under it a clean, dry sharpness like the moment before a word is spoken.",
+    "There is a smell of cold iron and scraped stone, and under it a clean, dry sharpness like the moment before a word is spoken.",
     "Your qi sounds, for a heartbeat, like a struck bowl. The vibration travels down your arms and into the floor, and something in the floor answers.",
     "The metal of the door-hinge has a patina like the skin of a very old, very patient animal. It does not squeak. It never has.",
     "Frost has formed on the inside of the window although it is not cold, in ferns so exact that they could have been engraved.",

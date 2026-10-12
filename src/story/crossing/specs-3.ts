@@ -1,6 +1,6 @@
 import type { CrossingSpec } from "./spec";
 
-/** Waysides five and six: the wash-houses behind the tribunal, where water meets the making crafts, and the willow yards of the river city, where wood meets the walking ones. */
+/** Waysides five and six: the wash-houses behind the Hall of Bells, where water meets the making crafts, and the willow yards of the river city, where wood meets the walking ones. */
 export const crossingSpecs3: CrossingSpec[] = [
   // ── Wayside 5: water and the making crafts
   {
@@ -16,7 +16,7 @@ export const crossingSpecs3: CrossingSpec[] = [
     omen: "a smell of rain on slate and cooling steam",
     secret: "the pills given to witnesses before the tribunal, which loosen the tongue without troubling the mind, are brewed from rain gathered on the day of the hearing and from no other",
     intro:
-      "Behind the tribunal hall the roofs have been made to drain into a row of cisterns, and over them stands a long brewhouse hung with copper. Yunshu brews her pills from rainwater alone, collected by the cupful, and has not used a well in thirty years.",
+      "Behind the Hall of Bells the gutters of its roof have been made to drain into a row of cisterns, and over them stands a long brewhouse hung with copper. Yunshu brews her pills from rainwater alone, collected by the cupful, and has not used a well in thirty years.",
     focus: ["the rain-cisterns", "the steeping tubs", "the copper coil", "the weather log"],
     openers: [
       "The cisterns are stone troughs sunk in the ground, each fed by its own gutter, each with a lid of wire gauze. Yunshu lifts one lid and lets you hear the water, which sounds exactly like a person thinking.",
@@ -64,7 +64,7 @@ export const crossingSpecs3: CrossingSpec[] = [
     kname: "Wenyuan",
     relic: "an inkstone of black slate with a hollow worn into it by a single stick of ink",
     omen: "a smell of wet soot and pine-smoke",
-    secret: "the tribunal’s verdicts are written in an ink that fades in a year, and Wenyuan keeps the only copy of the recipe that does not",
+    secret: "the tribunal’s minute-books are written in an ink that fades in a year, and Wenyuan keeps the only copy of the recipe for the ink that does not",
     intro:
       "In the yard behind the tribunal a row of earthen vats stands under a thatch, each full of soot-black water. Wenyuan steeps the ink for the sect’s talismans, and says the whole art is waiting: soot, glue and water, left to talk for a season, will tell you things no clerk can.",
     focus: ["the long vats", "the ink-sticks drying", "the skimming ladle", "the sample sheets"],
@@ -89,9 +89,9 @@ export const crossingSpecs3: CrossingSpec[] = [
     kname: "Linghe",
     relic: "a brass sluice-key as long as a forearm, polished bright by the hand that turns it",
     omen: "a smell of green water and old stone",
-    secret: "the sluices under the tribunal can flood the lower hall in minutes, and Linghe has the only key that closes them, which she has never been asked to use",
+    secret: "the sluices under the Hall of Bells can flood the terraces below in minutes, and Linghe has the only key that closes them, which she has never been asked to use",
     intro:
-      "Under the tribunal’s lowest floor a chain of stone gates holds back a hidden canal, and Linghe keeps them. She says the array of water is the opposite of the array of earth: where earth says stay, water says go, and the keeper’s whole art is to say which, and when.",
+      "Under the stone floor of the Hall of Bells a chain of stone gates holds back a hidden canal, and Linghe keeps them. She says the array of water is the opposite of the array of earth: where earth says stay, water says go, and the keeper’s whole art is to say which, and when.",
     focus: ["the stone gates", "the brass key", "the overflow channel", "the depth-gauge"],
     openers: [
       "The gates stand in a row across the tunnel, each a slab of black stone carved with a wheel. Linghe turns the nearest with her key, and the water behind it begins to speak in a low deliberate voice, as of a crowd deciding something.",

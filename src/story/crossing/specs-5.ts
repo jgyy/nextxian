@@ -1,6 +1,6 @@
 import type { CrossingSpec } from "./spec";
 
-/** Waysides nine and ten: the shore of the Glass Sea, where metal meets the walking crafts, and the pools at the foot of the last stair, where water does. */
+/** Waysides nine and ten: the rim of the Glass Sea, where metal meets the walking crafts, and the pools below the ledge, where water does. */
 export const crossingSpecs5: CrossingSpec[] = [
   // ── Wayside 9: metal and the walking crafts
   {
@@ -16,15 +16,15 @@ export const crossingSpecs5: CrossingSpec[] = [
     omen: "a smell of cold feathers and oiled steel",
     secret: "the hawks of the Glass Sea are bred with steel in their bones, a grafting the sect forbids, and Tieyi is the only man alive who knows which of them are true birds and which are not",
     intro:
-      "On the glass shore a long hall of bars and perches stands open to the sea-wind, and in it a hundred hawks hang hooded. Tieyi keeps them, and says a hawk of iron cannot be flown by love or fear but only by a cold and honest respect, which is the rarest thing a man can offer.",
-    focus: ["the perch hall", "the lure-post", "the weighing stand", "the sea-glass roof"],
+      "On the glass rim a long hall of bars and perches stands open to the wind, and in it a hundred hawks hang hooded. Tieyi keeps them, and says a hawk of iron cannot be flown by love or fear but only by a cold and honest respect, which is the rarest thing a man can offer.",
+    focus: ["the perch hall", "the lure-post", "the weighing stand", "the green-glass roof"],
     openers: [
       "The perch hall is a long colonnade of steel bars, and on every bar a hooded hawk sits with its talons locked. Tieyi walks beneath them with his hand held up, and each bird turns its blind head to follow the sound of his step.",
       "The lure-post is a tall iron pole with a cord and a leather decoy. Tieyi whirls the decoy in a slow circle above his head, and a hawk drops from the colonnade like a dropped blade, strikes, and is back on the bar before the leather has stopped swinging.",
       "The weighing stand is a brass balance, and on it a hawk stands stiff-legged while Tieyi adds weights to the other pan. He reads the figure by the lamp, and a faint line appears between his brows, and he says this one has not been eating.",
-      "The sea-glass roof lets in a green light, and under it, on a table, lie the hawks’ discarded hoods. Tieyi turns one over in his fingers and shows you the faint scratches inside, where a bird has beaten its beak against the leather for a whole night.",
+      "The green-glass roof lets in a green light, and under it, on a table, lie the hawks’ discarded hoods. Tieyi turns one over in his fingers and shows you the faint scratches inside, where a bird has beaten its beak against the leather for a whole night.",
     ],
-    close: "Tieyi hoods the last hawk and closes the colonnade’s shutters against the wind. The hall is dim and cold, and a hundred steel talons settle on their bars with a soft rattle like rain.",
+    close: "Tieyi hoods the last hawk and closes the colonnade’s shutters against the wind. The hall is dim and cold, and a hundred steel talons settle on their bars with a soft rattle like dry seed.",
     ware: { name: "Tieyi’s Steel Gauntlet", kind: "tool", blurb: "A gauntlet of steel scales a hawk will trust. A tool in the pack, it keeps the stride cold, quick and clear." },
     holding: { name: "Bar in the Iron-Hawk Hall", blurb: "A bar and a hawk of your own, the use of the lure-post, and a dawn each week in Tieyi’s company." },
   },
@@ -39,17 +39,17 @@ export const crossingSpecs5: CrossingSpec[] = [
     kname: "Shuangren",
     relic: "a whetstone the colour of old ivory, worn into a shallow saddle by one edge",
     omen: "a smell of oil and a high clean dryness in the air",
-    secret: "the swordsmen who walk the Glass Sea carry blades that have never been sharpened, only polished, and Shuangren knows why: the sea cuts a sharpened edge dull in a day",
+    secret: "the swordsmen who walk the Glass Sea carry blades that have never been sharpened, only polished, and Shuangren knows why: the glare dulls a sharpened edge in a day",
     intro:
-      "On a spit of black glass at the sea’s edge a line of whetstones stands in the wind, and at the first of them kneels a woman who does nothing but sharpen. Shuangren says an edge is not a thing you make but a thing you uncover, and that the sword was always sharp; the work is to remove everything else.",
+      "On a spit of black glass at the edge of the plain a line of whetstones stands in the wind, and at the first of them kneels a woman who does nothing but sharpen. Shuangren says an edge is not a thing you make but a thing you uncover, and that the sword was always sharp; the work is to remove everything else.",
     focus: ["the whetstone line", "the oil-bath", "the testing-rack", "the glass edge"],
     openers: [
       "The whetstones stand in a row at knee height, from coarse to fine, each with a groove of dark oil. Shuangren draws a blade along the first with a long steady stroke, then the second, then the third, and the sound changes from a rasp to a whisper to a silence.",
-      "The oil-bath is a shallow stone tray, its surface a perfect black mirror. Shuangren lays a blade in it, and the oil closes over the steel without a ripple, and when she lifts it the blade is wet with a light that wasn’t there before.",
+      "The oil-bath is a shallow stone tray, its surface a perfect black mirror. Shuangren lays a blade in it, and the oil closes over the steel without a ripple, and when she lifts it the blade is bright with a light that wasn’t there before.",
       "The testing-rack holds a row of paper strips, hung from a bar, and a row of hairs strung between two posts. Shuangren draws a blade through the paper, and the strips fall in two halves without a sound, and the hair does not so much as tremble.",
-      "The glass edge is the sea’s own shore, a wall of black glass that runs for miles. Shuangren sets her blade to it and draws it down, and a thin curl of glass peels away and falls, and she says the sea is the only whetstone she has never been able to wear out.",
+      "The glass edge is the plain’s own rim, a wall of black glass that runs for miles. Shuangren sets her blade to it and draws it down, and a thin curl of glass peels away and falls, and she says the glass is the only whetstone she has never been able to wear out.",
     ],
-    close: "Shuangren oils the stones and lays a cloth over the blades. The wind comes up from the sea, thin and cold, and the glass sings a single high note.",
+    close: "Shuangren oils the stones and lays a cloth over the blades. The wind comes across the glass, thin and cold, and the glass sings a single high note.",
     ware: { name: "Shuangren’s Ivory Whetstone", kind: "relic", blurb: "A small whetstone of old ivory, worn into a saddle. A relic in the pack, it keeps the qi bright and narrow." },
     holding: { name: "Stone in the Edge-Yard", blurb: "A stone in the line that is yours to keep, a measure of oil, and a morning each week at Shuangren’s side." },
   },
@@ -64,9 +64,9 @@ export const crossingSpecs5: CrossingSpec[] = [
     kname: "Zhenyue",
     relic: "a roll of silver needles in a case of black lacquer, each blade a different length and each handle capped with a seed pearl",
     omen: "a smell of rubbing-spirit and cool metal",
-    secret: "the sea’s fever, which seizes sailors in a single night and lets them go by dawn, is eased only by a needle in the sole of the foot, and Zhenyue is the one physician on the shore who knows the exact place",
+    secret: "the glass fever, which seizes skiff-hands in a single night and lets them go by dawn, is eased only by a needle in the sole of the foot, and Zhenyue is the one physician on the plates who knows the exact place",
     intro:
-      "In a long low house behind the glass shore, the sick lie in rows and the physician walks among them with a roll of silver needles. Zhenyue heals by opening doors in the body with a hair of metal, and says the body knows the way and only needs to be shown the latch.",
+      "In a long low house behind the glass rim, the sick lie in rows and the physician walks among them with a roll of silver needles. Zhenyue heals by opening doors in the body with a hair of metal, and says the body knows the way and only needs to be shown the latch.",
     focus: ["the long ward", "the needle case", "the pulse-table", "the chart of points"],
     openers: [
       "The ward is a single room lined with cots, and every patient lies with a few silver needles standing in the skin like hair. Zhenyue walks the row with her hands behind her back, stopping at each to give a needle a quarter-turn, and the patient’s breath eases.",
@@ -91,7 +91,7 @@ export const crossingSpecs5: CrossingSpec[] = [
     omen: "a smell of bronze and cold air, and a hum that is never quite silent",
     secret: "the Glass Sea’s skiff-wrights consult a bell before every crossing, and Dongzhong has told them to turn back eleven times in thirty years, and eleven times they have not, and eleven times he has been right",
     intro:
-      "In a hall of black glass on the shore, forty bells hang from a beam, each a different size and a different note. Dongzhong strikes them, one at a time, and listens to how they die, and says a bell does not tell the future, it only tells how long things take to fade.",
+      "In a hall of black glass on the rim, forty bells hang from a beam, each a different size and a different note. Dongzhong strikes them, one at a time, and listens to how they die, and says a bell does not tell the future, it only tells how long things take to fade.",
     focus: ["the hanging bells", "the damping cloth", "the cracked bell", "the listening-stone"],
     openers: [
       "The bells hang in a double row from a beam of black iron, from a bell the size of a thimble to one as big as a barrel. Dongzhong walks along the row striking each with a knuckle, and the sound builds in the hall until it feels as if the air has weight.",
@@ -101,7 +101,7 @@ export const crossingSpecs5: CrossingSpec[] = [
     ],
     close: "Dongzhong stills the last bell with his palm and the hall falls silent. The glass walls hum faintly with the wind, and the dusk comes in like a held note.",
     ware: { name: "Dongzhong’s Cracked Bell", kind: "relic", blurb: "A small bronze bell with a split lip. A relic in the pack, it keeps the qi cold, clear and listening." },
-    holding: { name: "Bell in the Diviners’ Hall", blurb: "A bell on the beam with your name cast in it, a place at the listening-stone, and a standing question each tide." },
+    holding: { name: "Bell in the Diviners’ Hall", blurb: "A bell on the beam with your name cast in it, a place at the listening-stone, and a standing question each dusk." },
   },
 
   // ── Wayside 10: water and the walking crafts
@@ -116,9 +116,9 @@ export const crossingSpecs5: CrossingSpec[] = [
     kname: "Shuilan",
     relic: "a dragon-whisker line of braided silk, as long as a river and as thin as thread",
     omen: "a smell of deep water and cold scales",
-    secret: "the pools at the foot of the last stair hold the last of the sect’s leviathans, each the length of a barge, and Shuilan has sworn never to say how many are left",
+    secret: "the pools below the ledge hold the last of the sect’s leviathans, each the length of a barge, and Shuilan has sworn never to say how many are left",
     intro:
-      "At the foot of the last stair three great pools lie in a cleft of rock, and in them, half-hidden, lie the beasts the sect has kept since before it had walls. Shuilan feeds them from a boat, and says a leviathan cannot be commanded, only asked, and that it will answer in its own time.",
+      "Below the ledge three great pools lie in a cleft of rock, and in them, half-hidden, lie the beasts the sect has kept since before it had walls. Shuilan feeds them from a boat, and says a leviathan cannot be commanded, only asked, and that it will answer in its own time.",
     focus: ["the three pools", "the feeding boat", "the whisker line", "the shallows"],
     openers: [
       "The pools are cut into the rock in three tiers, each one lower than the last, and each so clear and so deep that you cannot see the bottom. Shuilan stands at the edge of the first and drops a pebble, and the ripples that come back after a long time are far too large.",
@@ -143,7 +143,7 @@ export const crossingSpecs5: CrossingSpec[] = [
     omen: "a smell of rain and running stone",
     secret: "the sect’s last swordsmen learn to fight in running water, for a stroke made in a current cannot be braced against, and the one who masters it is never struck from the front",
     intro:
-      "Where the last stair’s runoff spills down in a series of shallow pools, a line of swordsmen stand to their knees in the water. Songhe teaches them, and says the sword in a stream does not cut the water but the moment: the blade goes where the current is about to go.",
+      "Where the runoff from the ledge spills down in a series of shallow pools, a line of swordsmen stand to their knees in the water. Songhe teaches them, and says the sword in a stream does not cut the water but the moment: the blade goes where the current is about to go.",
     focus: ["the stepping pools", "the cascade", "the stone ford", "the rain-blade"],
     openers: [
       "The pools step down the hillside in a stair of their own, each a handsbreadth deeper than the last, each fed by a thread of water from the one above. Songhe stands in the middle one and his blade makes no more sound than a falling petal.",
@@ -166,9 +166,9 @@ export const crossingSpecs5: CrossingSpec[] = [
     kname: "Lingquan",
     relic: "a cup of blue-grey stone with a chip in the rim, which has held the spring’s water for sixty years",
     omen: "a smell of cold spring water and wet stone",
-    secret: "the spring at the foot of the last stair cures every grief but one, and Lingquan will not say which, though she has watched people who needed it walk away unhealed",
+    secret: "the spring below the ledge cures every grief but one, and Lingquan will not say which, though she has watched people who needed it walk away unhealed",
     intro:
-      "A spring wells up in a stone basin at the bottom of the stair, and beside it sits a small hut with a row of cots. Lingquan nurses those who come to drink, and says the water cures nothing; it only lets the body weep what it has been holding, and then lets it rest.",
+      "A spring wells up in a stone basin in the cleft below the ledge, and beside it sits a small hut with a row of cots. Lingquan nurses those who come to drink, and says the water cures nothing; it only lets the body weep what it has been holding, and then lets it rest.",
     focus: ["the stone basin", "the row of cots", "the cup shelf", "the hut’s lamp"],
     openers: [
       "The basin is a bowl of grey stone, worn smooth at the lip by countless hands. Lingquan dips the stone cup in it and offers you a drink, and the water is so cold it burns, and so clear it seems to hold a light of its own.",
@@ -191,9 +191,9 @@ export const crossingSpecs5: CrossingSpec[] = [
     kname: "Mingjing",
     relic: "a basin of black stone, so shallow that it holds a fingernail’s depth of water and a whole sky",
     omen: "a smell of still water and cold air, and a faint stillness in the ears",
-    secret: "the last stair has a hundred steps more than the sect admits, and the basin-seers have counted them in the water, and have never once reached the number twice",
+    secret: "the stair to the ledge has a hundred steps more than the sect admits, and the basin-seers have counted them in the water, and have never once reached the number twice",
     intro:
-      "On a terrace at the foot of the stair a row of stone basins stands level with the ground, each filled to the brim with water so still that it holds the sky. Mingjing reads them, and says a basin does not show the future, it shows what the sky is about to do, and the sky is a gossip.",
+      "On a terrace in the cleft below the ledge a row of stone basins stands level with the ground, each filled to the brim with water so still that it holds the sky. Mingjing reads them, and says a basin does not show the future, it shows what the sky is about to do, and the sky is a gossip.",
     focus: ["the row of basins", "the dropper", "the dusk-pool", "the sand-table"],
     openers: [
       "The basins are black stone dishes set into the terrace, each brimming. Mingjing kneels at the first and breathes across its surface, and a faint ring spreads from his breath, and in the ring you see clouds that are not those overhead.",

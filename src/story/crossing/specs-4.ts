@@ -14,7 +14,7 @@ export const crossingSpecs4: CrossingSpec[] = [
     kname: "Hongyan",
     relic: "a leather glove singed black to the wrist, with a hound’s tooth sewn into the cuff",
     omen: "a smell of singed fur and wood-smoke",
-    secret: "the hounds of the salt hearths are bred to smell a fire three valleys off, and were the sect’s only warning on the night the Library drowned, which nobody has yet thanked them for",
+    secret: "the hounds of the salt hearths are bred to smell a fire three valleys off, and on the morning of the Great Flood forty years ago they were the only creatures on the coast that would not go down to the harbour, which nobody has yet thanked them for",
     intro:
       "Behind the salt-pans a row of brick kennels stands in a yard of white ash. Hongyan breeds the ember-hounds, red-coated dogs whose breath smells of smoke, and says they are not dangerous unless you lie to them, which is to say they are dangerous to everybody.",
     focus: ["the ash yard", "the kennel row", "the whelping box", "the smoke-post"],
