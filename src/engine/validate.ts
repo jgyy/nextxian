@@ -64,8 +64,9 @@ export function validateStory(story: Story): string[] {
   };
 
   for (const scene of Object.values(scenes)) {
-    if (scene.ending === undefined && scene.choices.length < MIN_CHOICES) {
-      problems.push(`scene "${scene.id}" has ${scene.choices.length} choices; needs ${MIN_CHOICES}`);
+    const always = scene.choices.filter((c) => !c.hideLocked).length;
+    if (scene.ending === undefined && always < MIN_CHOICES) {
+      problems.push(`scene "${scene.id}" has ${always} choices every hero sees; needs ${MIN_CHOICES}`);
     }
     if (scene.ending !== undefined && scene.choices.length > 0) {
       problems.push(`ending scene "${scene.id}" should not have choices`);

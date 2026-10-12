@@ -3,6 +3,9 @@ import { story } from "@/story";
 import { choose, createGame, enterScene, getChoices, getScene } from "@/engine/game";
 import { DAOS, DEFAULT_HERO, ORIGINS, STATUSES, TALENTS, type Hero } from "@/engine/hero";
 import { reachedFlag, REALMS } from "@/engine/cultivation";
+import type { Element } from "@/engine/path";
+import { rootKindOf } from "@/story/crossing/build";
+import { WAYSIDES7 } from "@/story/crossing";
 
 /** A small, repeatable generator, so every run of the suite walks the same walks. */
 function rng(seed: number): () => number {
@@ -62,5 +65,61 @@ describe("a long walk from every beginning", () => {
     const heading = entered.log.find((e) => e.kind === "heading")!;
     expect(heading.text).toBe("Questions for Mo Lan");
     expect(enterScene(story, { ...createGame(story), log: [] }, getScene(story, "archive_report_2")).log.find((e) => e.kind === "heading")!.text).toBe("Questions for the Wanderer");
+  });
+});
+
+describe("a long walk through the Crossing Roads", () => {
+  it("shows each hero only the scenes behind the doors that are theirs, and keeps the numbers sound, for every gender, root and craft", () => {
+    const problems: string[] = [];
+    const scenesSeen = new Set<string>();
+    let steps = 0;
+    let n = 0;
+    for (const gender of ["woman", "man", "unspoken"] as const) {
+      for (const talent of TALENTS) {
+        const dao = DAOS[(n++ * 3) % DAOS.length];
+        const hero: Hero = { ...DEFAULT_HERO, gender, talent: talent.value, dao: dao.value, name: n % 2 ? "Mo Lan" : DEFAULT_HERO.name };
+        const r = rng(n * 17 + 3);
+        let g = createGame(story, hero);
+        // Every hero begins at a different wayside, so the walks between them cover all ten.
+        g = { ...g, sceneId: WAYSIDES7[n % WAYSIDES7.length].id, realm: 3, cultivation: REALMS[3].threshold + 5, wealth: 200, stats: { qi: 60, karma: 0, insight: 40 } };
+        for (let i = 0; i < 500; i++) {
+          const scene = getScene(story, g.sceneId);
+          if (scene.ending && scene.choices.length === 0) break;
+          const options = getChoices(scene, g).filter((v) => v.available);
+          if (!options.length) {
+            problems.push(`${gender}/${talent.value}/${dao.value} is stuck in ${g.sceneId}`);
+            break;
+          }
+          // Stay on the roads: take a door whenever one is shown, then an approach, then a road from the hub; leave a wayside only when every road on it is done.
+          const staying = options.filter((v) => v.choice.id !== "back_to_road");
+          const doors = staying.filter((v) => /^door_/.test(v.choice.id) || /^go_pr_/.test(v.choice.id));
+          const pool = doors.length ? doors : g.sceneId.startsWith("pr_") && g.sceneId.endsWith("_entry") ? staying.filter((v) => /^approach_/.test(v.choice.id)) : staying.length ? staying : options;
+          const before = g;
+          g = choose(story, g, pool[Math.floor(r() * pool.length)].choice.id);
+          steps++;
+          scenesSeen.add(g.sceneId);
+          const mine = /_(gw|gm|gu)$/.exec(g.sceneId);
+          if (mine && mine[1] !== { woman: "gw", man: "gm", unspoken: "gu" }[gender]) problems.push(`a ${gender} stands in ${g.sceneId}`);
+          const root = /^pr_([a-z]+)_[a-z]+_(rk|rp|rf)$/.exec(g.sceneId);
+          if (root) {
+            const kind = rootKindOf(talent.value, root[1] as Element);
+            if (root[2] !== { kin: "rk", partial: "rp", far: "rf" }[kind]) problems.push(`a ${talent.value} root stands in ${g.sceneId}`);
+          }
+          const skill = /_(so|sx|sn)$/.exec(g.sceneId);
+          if (skill) {
+            const wanted = dao.value === "none" ? "sn" : g.sceneId.includes(`_${dao.value === "forging" ? "forging" : dao.value}_`) ? "so" : "sx";
+            if (skill[1] !== wanted) problems.push(`a ${dao.value} Dao stands in ${g.sceneId}`);
+          }
+          if (g.wealth < 0 || Number.isNaN(g.cultivation) || Object.values(g.stats).some(Number.isNaN)) problems.push(`bad number in ${g.sceneId}`);
+          for (const e of g.log.slice(before.log.length)) {
+            if (/undefined|\{\w+\}|NaN/.test(e.text)) problems.push(`${g.sceneId}: ${e.text.slice(0, 60)}`);
+            if (hero.name !== DEFAULT_HERO.name && /\bWanderer\b/.test(e.text)) problems.push(`${g.sceneId} still says Wanderer`);
+          }
+        }
+      }
+    }
+    expect(steps).toBeGreaterThan(3000);
+    expect([...scenesSeen].filter((s) => /_(gw|gm|gu|rk|rp|rf|so|sx|sn)$/.test(s)).length).toBeGreaterThan(40);
+    expect([...new Set(problems)]).toEqual([]);
   });
 });

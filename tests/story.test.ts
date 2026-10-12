@@ -94,7 +94,7 @@ describe("story integrity", () => {
   it("gives every decision scene at least four choices", () => {
     for (const scene of Object.values(story.scenes)) {
       if (scene.ending) continue;
-      expect(scene.choices.length, scene.id).toBeGreaterThanOrEqual(MIN_CHOICES);
+      expect(scene.choices.filter((c) => !c.hideLocked).length, scene.id).toBeGreaterThanOrEqual(MIN_CHOICES);
     }
   });
 

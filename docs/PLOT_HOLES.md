@@ -1,6 +1,6 @@
 # Plot-hole and continuity ledger
 
-Six passes, three asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
+Seven passes, three asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
 
 | Pass | Fixed | Of what kind |
 | --- | ---: | --- |
@@ -10,7 +10,28 @@ Six passes, three asked to fix more than 1,000 and the fourth asked again. This 
 | Fourth pass | 63 | 63 choice labels that named a different price from the one the purse paid. It is short of the 1,000 asked for: see below |
 
 | Fifth pass | 42 | 31 choices whose tone contradicted the act, 9 lines of broken wording, 2 remarks that could never be said |
-| **Sixth pass (this branch)** | **283** | 11 origin door scenes the Elder never played, 10 sentences read in up to 200 roads, 254 trait lines shared by 200 roads, and 8 smaller slips |
+| Sixth pass | 283 | 11 origin door scenes the Elder never played, 10 sentences read in up to 200 roads, 254 trait lines shared by 200 roads, and 8 smaller slips |
+| **Seventh pass (this branch)** | **72** | 2 hero-address lines and 1 simile that assumed a gender, 11 wet words on the Glass Sea, 6 places against canon, 28 generated-text slips, 8 plural places, 4 early spoilers, 10 name clashes, 2 wayside origins |
+
+## Seventh pass (this branch): what was looked for, found and fixed
+
+This branch added 1,411 scenes, so the pass went after the holes that new content could open and the ones gender, root and Dao could expose in old content. Counted only what a script or a test could prove.
+
+| Class | Count | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| A line that addressed the hero as “ma’am” whatever gender the hero gave | 2 | scanning every quoted address (sir, madam, ma’am, miss, boy, girl) near “you” | `books/b4/voice.ts`, `books/b5/wreck.ts` (now `{honorific}`) |
+| “like a man leaving a door unlatched”, said of every hero | 1 | grepping similes about the hero | `origins/struck.ts` |
+| Waysides hung from a scene in the middle of a crisis (a pigeon from the besieged archive, a silent bell) | 2 | reading every wayside’s origin beside its text | `crossing/index.ts` |
+| Wet words on the Glass Sea (shore, tide, sailors, rain, rivers on a map), against canon | 11 | a new test over the four Bright Rim roads, their beats and hidden room | `crossing/specs-5.ts`, `lexicon-craft.ts`, `lexicon-element.ts` |
+| A tablet “gallery”, a roof over a cellar, a tribunal hall with a floor, a lattice that hummed at lies, an ink that faded in a year: each against canon | 6 | reading each road’s place against the scene it hangs from | `crossing/specs-1.ts` to `specs-3.ts` |
+| A hidden room where the stair came after the room, and goods named “the Dongzhong’s Cracked Bell” | 28 | proofreading generated scenes for each craft and element | `crossing/build.ts`, `specs-*.ts` |
+| Singular text over plural places (“the dust-horse lines is”) | 8 | reading generated scenes | `crossing/specs-*.ts` |
+| Spoilers of a secret before its scene (the sisters, a tune heard in the mist at the Law Hall) | 4 | checking each gendered scene against canon’s order of reveals, which moved the paths to the tablet scene | `gendered/*` |
+| Keeper names that clashed with earlier keepers or companions | 10 | the name tests of earlier waves | `crossing/specs-*.ts` |
+
+Tests now fail on each class: `tests/crossing-roads.test.ts` (canon of places, goods named without a keeper, one scene per door), `tests/gendered.test.ts`, `tests/soak.test.ts` (every gender, root and craft walks the roads and never stands behind another’s door).
+
+**Looked for and found clean.** Named characters’ pronouns against their gender over every shown line (all candidates were false positives); gender extras missing a third value (none); flags set and never read (90 appeared during writing and were each given a reader); loops through a path’s own end (31 appeared; the door is gone from the way back); a pick flag shared by two doors (`ask`, `borrow` now name their door); heroes of every gender, root and craft walking all forty roads without a stuck scene or a stray token; speed above the cap after every attunement.
 
 ## Sixth pass: 283, and what was looked for and found clean
 

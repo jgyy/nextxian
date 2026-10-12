@@ -228,3 +228,59 @@ export const ORIGIN_LABEL: Record<Origin, string> = {
   struck: "Heaven’s own spark",
   dream: "A stranger’s breath-art",
 };
+
+// ───────────── attunement
+
+/**
+ * Walking a Path Road with roots that answer its element attunes the hero to that element for good. A kindred root attunes fully, a
+ * partial root half as much; an element the hero’s roots do not answer attunes nothing. Each element attunes once, however many
+ * roads work it, and the flag is the whole record.
+ */
+export const attuneFlag = (element: Element, level: 1 | 2) => `pr_attuned${level}_${element}`;
+export const ATTUNE_PREFIX = "pr_attuned";
+
+/** Percentage points of cultivation speed a full attunement and a partial one give. */
+export const ATTUNE_POINTS: Record<1 | 2, number> = { 1: 3, 2: 6 };
+
+export const ELEMENT_LABEL: Record<Element, string> = { wood: "Wood", fire: "Fire", earth: "Earth", metal: "Metal", water: "Water" };
+
+/** The elements a hero has attuned to, with how fully, in the order of the five phases. */
+export function attunements(flags: Record<string, boolean>): { element: Element; level: 1 | 2 }[] {
+  const found: { element: Element; level: 1 | 2 }[] = [];
+  for (const element of ELEMENTS) {
+    if (flags[attuneFlag(element, 2)]) found.push({ element, level: 2 });
+    else if (flags[attuneFlag(element, 1)]) found.push({ element, level: 1 });
+  }
+  return found;
+}
+
+/** The lines the speed panel shows for the hero’s attunements. */
+export function attunementParts(flags: Record<string, boolean>): { label: string; points: number }[] {
+  return attunements(flags).map(({ element, level }) => ({
+    label: `${level === 2 ? "Attuned to" : "Half-attuned to"} ${ELEMENT_LABEL[element].toLowerCase()}`,
+    points: ATTUNE_POINTS[level],
+  }));
+}
+
+/** What the hero has done on the Crossing Roads, counted from the flags they set. */
+export interface CrossingSummary {
+  /** Crossing Roads finished. */
+  roads: number;
+  /** Gender doors gone through, root doors, craft doors. */
+  benches: number;
+  roots: number;
+  crafts: number;
+  attuned: { element: Element; level: 1 | 2 }[];
+}
+
+const countFlags = (flags: Record<string, boolean>, prefix: string) => Object.entries(flags).filter(([flag, on]) => on && flag.startsWith(prefix)).length;
+
+export function crossingSummary(flags: Record<string, boolean>): CrossingSummary {
+  return {
+    roads: countFlags(flags, "pr_done_"),
+    benches: countFlags(flags, "pr_fork_g_"),
+    roots: countFlags(flags, "pr_fork_r_"),
+    crafts: countFlags(flags, "pr_fork_c_"),
+    attuned: attunements(flags),
+  };
+}
