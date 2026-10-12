@@ -1,4 +1,5 @@
 import type { Attire, Background, Gender, Looks, Status } from "@/engine/hero";
+import { MORE_BIRTH, MORE_DRESS, MORE_FACE, MORE_MANNER, MORE_REALM_REACT, MORE_SEND_OFF, MORE_TRADE } from "./hero-lex-more";
 
 /**
  * How the people of a realm road react to who the hero is. Each table has several variants per value, and a road picks
@@ -7,7 +8,7 @@ import type { Attire, Background, Gender, Looks, Status } from "@/engine/hero";
  */
 
 /** The entry: what the keeper makes of the hero’s dress, at first sight. */
-export const DRESS: Record<Attire, string[]> = {
+const BASE_DRESS: Record<Attire, string[]> = {
   rags: [
     "{Kname} looks at your patched hemp and quotes the lowest price first, then, ashamed of it, names a second.",
     "Your hemp robe earns no bow at {place}. It earns something rarer: a stool nearer the fire than a guest would be given.",
@@ -41,7 +42,7 @@ export const DRESS: Record<Attire, string[]> = {
 };
 
 /** The entry: what the keeper makes of the hero’s birth, once your name is known. */
-export const BIRTH: Record<Status, string[]> = {
+const BASE_BIRTH: Record<Status, string[]> = {
   outcast: [
     "When your name is given, {kname}’s face closes like a shutter. At {place} there are no registers, but there are memories.",
     "News that you were struck from the rolls has beaten you here. {Kname} neither shrinks from it nor welcomes it.",
@@ -69,7 +70,7 @@ export const BIRTH: Record<Status, string[]> = {
 };
 
 /** Stage 1: what the keeper makes of the hero’s trade, as they work. */
-export const TRADE: Record<Background, string[]> = {
+const BASE_TRADE: Record<Background, string[]> = {
   orphan: [
     "You move through {place} with your pack held close and your exits counted, and {kname} sees that and softens by a degree.",
     "{Kname} notes how you watch the hands of strangers rather than their faces. Port children learn that first. So do the people who raise them.",
@@ -109,7 +110,7 @@ export const TRADE: Record<Background, string[]> = {
 };
 
 /** Stage 1: what the keeper makes of the hero’s face. */
-export const FACE: Record<Looks, string[]> = {
+const BASE_FACE: Record<Looks, string[]> = {
   plain: [
     "You are forgotten the moment you look away, and {kname} cannot decide if that is a talent or a mercy.",
     "Nobody at {place} can say afterward what your face was like. It is a very good face for asking questions.",
@@ -137,7 +138,7 @@ export const FACE: Record<Looks, string[]> = {
 };
 
 /** Stage 2: what the keeper makes of the hero’s manner, a plain observation tied to gender and nothing else. */
-export const MANNER: Record<Gender, string[]> = {
+const BASE_MANNER: Record<Gender, string[]> = {
   woman: [
     "{Kname} says that a woman who comes to {place} alone and asks questions is either a magistrate’s inspector or in trouble. Which are you?",
     "The men at {place} address your companions first. {Kname} corrects them, mildly, and the correction is overheard.",
@@ -159,7 +160,7 @@ export const MANNER: Record<Gender, string[]> = {
 };
 
 /** The way out: what the keeper thinks of the hero’s dress by the end of it. */
-export const SEND_OFF: Record<Attire, string[]> = {
+const BASE_SEND_OFF: Record<Attire, string[]> = {
   rags: [
     "{Kname} presses a wrapped rice cake into your hand at the door, and does not say it is for the road.",
     "As you leave, {kname} stoops to retie the strap of your straw sandal. Nobody at {place} says a word about it.",
@@ -192,7 +193,7 @@ export type RelBand = "far" | "below" | "at" | "above";
 
 export type RealmKind = "entry" | "open" | "crisis" | "close";
 
-export const REALM_REACT: Record<RealmKind, Record<RelBand, string[]>> = {
+const BASE_REALM_REACT: Record<RealmKind, Record<RelBand, string[]>> = {
   entry: {
     far: [
       "{Kname} takes one look at how little qi you carry and steps between you and the road. {Place} is no place for someone this far below it.",
@@ -304,3 +305,18 @@ export function bandBounds(band: RelBand, road: number): { min?: number; max?: n
       return { min: road + 1 };
   }
 }
+
+/** A table with the lines of `more` added after its own, key by key. */
+function extend<K extends string>(base: Record<K, string[]>, more: Record<K, string[]>): Record<K, string[]> {
+  return Object.fromEntries((Object.keys(base) as K[]).map((k) => [k, [...base[k], ...more[k]]])) as Record<K, string[]>;
+}
+
+export const DRESS: Record<Attire, string[]> = extend(BASE_DRESS, MORE_DRESS);
+export const BIRTH: Record<Status, string[]> = extend(BASE_BIRTH, MORE_BIRTH);
+export const TRADE: Record<Background, string[]> = extend(BASE_TRADE, MORE_TRADE);
+export const FACE: Record<Looks, string[]> = extend(BASE_FACE, MORE_FACE);
+export const MANNER: Record<Gender, string[]> = extend(BASE_MANNER, MORE_MANNER);
+export const SEND_OFF: Record<Attire, string[]> = extend(BASE_SEND_OFF, MORE_SEND_OFF);
+export const REALM_REACT: Record<RealmKind, Record<RelBand, string[]>> = Object.fromEntries(
+  (Object.keys(BASE_REALM_REACT) as RealmKind[]).map((kind) => [kind, extend(BASE_REALM_REACT[kind], MORE_REALM_REACT[kind])]),
+) as Record<RealmKind, Record<RelBand, string[]>>;

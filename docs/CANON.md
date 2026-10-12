@@ -160,3 +160,10 @@ Ten more waysides, one from each hub of the later books, each with four roads of
 - **Keepers’ names are unique** among all 120 road keepers and the cast. A good or a holding is named without an article, since the text adds one.
 - **The hero’s dress** is what they chose. “Your boots” is “your sandals” to someone in patched hemp, and “your hat” is a headcloth, a cap or a hood for everyone but the traveller. The story never gives the hero a cloak more specific than “your cloak”.
 - **The Glass Sea has no water.** The shared wording of the roads says no rain, no pond and no river, so it can be used there.
+
+## Beginnings and the Cultivation Roads
+
+- **Twelve beginnings.** The six older starts and six that start in cultivation: the sealed cave (Qi Condensation, 22 points), the pill-house apprentice (a half-cooked pill), the roadside lamp-keeper, the hedge-listener’s ward, the one struck by heaven (Qi Condensation, 16 points) and the dreamer of a stranger’s breath. All are lives lived since the river village, so the foundling and the black seed stand. Each beginning’s speed bonus lasts while its art does (the dreamer’s ends at Spirit Severing).
+- **A method.** Every new beginning ends its fourth scene on one of four methods, each a flag (`og_cave_m_settle`…). The Elder at the door and the keepers of the Cultivation Roads read it.
+- **The Hush** is nineteen years old. Its bell tolls at noon in the Garrison’s gibbets and the wind goes deaf until dusk. The Listeners’ shelters teach cultivators to work through it.
+- **The Cultivation Roads** open from the Ash Archive roof, the eastern peak’s lesson, the jade mirror, the sparring court, Qinglian Ford, and the Night of Stillness at each later hub, and ask Qi Condensation to Dao Seeking. The Glass Sea’s plates have no water. The Great Flood at Tidewall was forty years ago, and ninety-one drowned.

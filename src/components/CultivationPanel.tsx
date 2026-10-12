@@ -1,5 +1,6 @@
 import { heartDemonBlocks, pointsToNext, realmProgress, REALMS, HEART_DEMON_KARMA } from "@/engine/cultivation";
 import { DAO_NAME, DAO_PASSIVE, DAO_RANKS, daoRankOf, daoToNext, TALENT_LABEL } from "@/engine/path";
+import { CUSP } from "@/engine/practice";
 import type { GameState } from "@/engine/types";
 
 type Cultivation = Pick<GameState, "cultivation" | "realm" | "stats" | "hero" | "daoPoints">;
@@ -51,6 +52,11 @@ export function CultivationPanel({ game }: { game: Cultivation }) {
           ? "You stand at the top of the ladder."
           : `${Math.floor(game.cultivation)} points. ${Math.ceil(toNext)} more to reach ${REALMS[game.realm + 1].name}.`}
       </p>
+      {!blocked && toNext !== undefined && percent >= CUSP && (
+        <p className="cusp" role="status">
+          You are on the cusp. A push at the gate on a Cultivation Road can carry you over.
+        </p>
+      )}
       {blocked && (
         <p className="heart-demon" role="status">
           A heart demon holds you at the threshold. Your karma is below {HEART_DEMON_KARMA}.

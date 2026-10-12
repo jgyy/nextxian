@@ -11,7 +11,7 @@ export type Background = "orphan" | "scholar" | "soldier" | "merchant" | "farmer
 export type Attire = "rags" | "traveller" | "scholar" | "silk" | "armour";
 export type Status = "outcast" | "commoner" | "gentry" | "noble";
 /** Where the story finds the hero: each origin has a prologue of its own that ends on the same mountain. */
-export type Origin = "river" | "porter" | "rogue" | "heir" | "courier" | "exile";
+export type Origin = "river" | "porter" | "rogue" | "heir" | "courier" | "exile" | "cave" | "furnace" | "lamp" | "listener" | "struck" | "dream";
 /** The hero’s cultivation talent: the roots and the nature of the body that qi has to pass through. */
 export type Talent = "wood" | "fire" | "earth" | "metal" | "water" | "mixed" | "heaven" | "late";
 /** The hero’s profession Dao: the craft they cultivate beside their qi. */
@@ -86,6 +86,12 @@ export const ORIGINS: readonly HeroOption<Origin>[] = [
   { value: "heir", label: "Heir of a ruined house", blurb: "Your family’s manor burned, its debts did not, and the Law Hall holds the one paper that could clear your name." },
   { value: "courier", label: "A Concord courier", blurb: "You carry a sealed notice from the Concord of Nine Peaks, and everyone at the gate will want to know what it says." },
   { value: "exile", label: "A sect’s exile", blurb: "You were a disciple of the Windward Sword Pavilion until a ruling struck you out. You arrive with a stolen breath of cultivation and a grudge." },
+  { value: "cave", label: "The sealed cave", blurb: "You fell through a rotten floor of the mountain and woke beside a dead cultivator’s seat. What they left is already in your breath. You begin as a Qi Condenser, and the sect does not know it." },
+  { value: "furnace", label: "A pill-house apprentice", blurb: "You fed the furnaces of a Concord pill house for four years, until the master was found beside a cold cauldron. You carry his last pill, half cooked, and the only name that can finish it." },
+  { value: "lamp", label: "A roadside lamp-keeper", blurb: "You kept a shrine lamp lit on the mountain road for seven winters, one steady breath at a time. Tonight it burned blue. You cultivate slowly, evenly and without a day missed." },
+  { value: "listener", label: "A hedge-listener’s ward", blurb: "An unregistered Listener taught you to hear names in the wind. You are quick to hear what qi says and slow to be believed, and the sect’s wardens mistrust a ward like you on sight." },
+  { value: "struck", label: "Struck by heaven", blurb: "Lightning took your village’s roof and walked through you without killing you. Your roots burned open in a night. You begin a Qi Condenser, far quicker than you can yet steer." },
+  { value: "dream", label: "The dreamer of a stranger’s breath", blurb: "Every night since you left the river village you have dreamed another person’s breath-art, and every morning you know a little more of it. It carries you fast through the first realms, and slows where it ends." },
 ];
 
 export const TALENTS: readonly HeroOption<Talent>[] = [
@@ -218,10 +224,25 @@ export function describeHero(hero: Hero): string {
     heir: "the heir of a ruined house",
     courier: "a Concord courier",
     exile: "an exile of the Windward Sword Pavilion",
+    cave: "the finder of a sealed cave",
+    furnace: "a pill-house apprentice",
+    lamp: "a roadside lamp-keeper",
+    listener: "a hedge-listener’s ward",
+    struck: "someone struck by heaven",
+    dream: "the dreamer of a stranger’s breath",
   };
-  const roots = TALENTS.find((t) => t.value === hero.talent)?.label.toLowerCase() ?? "";
-  const craft = hero.dao === "none" ? "no Dao yet" : (DAOS.find((d) => d.value === hero.dao)?.label ?? "");
-  return `${hero.name} is ${who[hero.gender]}, ${looks[hero.looks]}, once ${trade[hero.background]}, ${dress[hero.attire]}, ${rank[hero.status]}, ${where[hero.origin]}, with a ${roots} and ${craft}.`;
+  const roots: Record<Talent, string> = {
+    wood: "a verdant root",
+    fire: "a cinnabar root",
+    earth: "a mountain root",
+    metal: "a bright-metal root",
+    water: "a tide root",
+    mixed: "mixed roots",
+    heaven: "a heaven-marked root",
+    late: "a late-blooming root",
+  };
+  const craft = hero.dao === "none" ? "no Dao yet" : `the ${DAOS.find((d) => d.value === hero.dao)?.label ?? ""}`;
+  return `${hero.name} is ${who[hero.gender]}, ${looks[hero.looks]}, once ${trade[hero.background]}, ${dress[hero.attire]}, ${rank[hero.status]}, ${where[hero.origin]}, with ${roots[hero.talent]} and ${craft}.`;
 }
 
 // ───────────── pronouns and names
@@ -313,6 +334,12 @@ const ORIGIN_START: Record<Origin, { stats: Partial<PlayerStats>; npc: Partial<N
   heir: { stats: { insight: 4 }, npc: { respect: 3, suspicion: 4 } },
   courier: { stats: { insight: 5 }, npc: { respect: 4, suspicion: 8 } },
   exile: { stats: { qi: 8, karma: -4 }, npc: { suspicion: 10, fear: 4, respect: -3 } },
+  cave: { stats: { qi: 6, insight: 2 }, npc: { suspicion: 6 } },
+  furnace: { stats: { insight: 4, karma: 1 }, npc: { trust: 2 } },
+  lamp: { stats: { karma: 4, qi: 2 }, npc: { trust: 3, suspicion: -4 } },
+  listener: { stats: { insight: 6, karma: -1 }, npc: { suspicion: 12, fear: 3 } },
+  struck: { stats: { qi: 8 }, npc: { fear: 6, respect: 2, suspicion: 4 } },
+  dream: { stats: { insight: 8 }, npc: { suspicion: 6, respect: 1 } },
 };
 
 const TALENT_START: Record<Talent, { stats: Partial<PlayerStats>; npc: Partial<NpcState> }> = {
@@ -339,7 +366,7 @@ const DAO_START: Record<Dao, Partial<PlayerStats>> = {
 };
 
 /** Cultivation points the hero begins with, from a past life as a cultivator. A mortal who has gathered a little is still a mortal. */
-const ORIGIN_POINTS: Record<Origin, number> = { river: 0, porter: 2, rogue: 6, heir: 0, courier: 3, exile: 12 };
+const ORIGIN_POINTS: Record<Origin, number> = { river: 0, porter: 2, rogue: 6, heir: 0, courier: 3, exile: 12, cave: 22, furnace: 9, lamp: 10, listener: 8, struck: 16, dream: 5 };
 export const startingPoints = (hero: Hero): number => ORIGIN_POINTS[hero.origin];
 
 export function startFor(hero: Hero): Start {

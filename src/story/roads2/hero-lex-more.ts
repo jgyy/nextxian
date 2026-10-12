@@ -1,0 +1,380 @@
+import type { Attire, Background, Gender, Looks, Status } from "@/engine/hero";
+import type { RealmKind, RelBand } from "./hero-lex";
+
+/**
+ * More ways for a keeper to take in the hero. The first wave of roads gave each trait four lines, and two hundred roads then picked from
+ * those four, so a hero who walked twenty roads was told about their silk, their scar or their trade five times over in the same
+ * words. These add eight lines to every dress, birth, face, trade and manner, six to every send-off, and three to every reading of the
+ * hero’s realm, so the same sentence now comes round after a dozen roads, not four. Same slots as the lines they join: kname, place,
+ * relic. None says anything about the weather, since the Glass Sea uses them too.
+ */
+
+export const MORE_DRESS: Record<Attire, string[]> = {
+  rags: [
+    "{Kname} notes the darns in your hemp and counts them, idly, the way one counts the rings of a felled tree.",
+    "Nobody at {place} offers you a hat or a seat. {Kname} offers a clean bowl, which is better than either and costs more.",
+    "Your patched sleeve catches on the latch of {place}. {Kname} frees it with two fingers and says nothing of the tear.",
+    "The cloth you wear has been washed thin. {Kname} looks at it and then at the hands that washed it, and lowers the price without being asked.",
+    "A woman at {place} tugs her child away from your hem, then looks ashamed, and tugs the child back.",
+    "{Kname} says that at {place} a patched robe is the sign of a person who kept the one they had. It is not meant as an insult.",
+    "Straw sandals leave a particular print. {Kname} reads yours on the floor of {place} and knows the road you took.",
+    "{Kname} brings out a chipped cup for you and a good one for the next guest, then switches them, a little embarrassed, before anyone has looked.",
+  ],
+  traveller: [
+    "{Kname} runs a thumb along the oil of your cloak and says it was dressed with mutton fat, in the north. It was.",
+    "Your bamboo hat hangs by the door of {place} between three others. {Kname} says yours is the only one that looks as if it has met weather.",
+    "The pack on your back has been rebuilt twice, and {kname} sees the second seam. A traveller who mends is a traveller who intends to arrive.",
+    "{Kname} asks nothing about where you are going. At {place}, a cloak like yours has already said it.",
+    "Someone at {place} offers to buy your boots, and {kname} laughs. Boots like those, {kname} says, are not for sale. They are for walking away in.",
+    "The road has worn the hem of your cloak into a fringe. {Kname} calls it a map and offers to read it for the price of a bowl.",
+    "You hang your cloak on the peg by the fire and it steams. {Kname} tells you that is the smell of eleven provinces, and it is not unwelcome.",
+    "{Kname} gives you the seat that faces the door, the traveller’s seat. {Place} knows its guests before they speak.",
+  ],
+  scholar: [
+    "{Kname} takes in the ink at your cuffs and the callus on your finger. In {place} a person with both is assumed, wrongly or not, to be honest.",
+    "Papers shift on a table as you come in. {Kname} lays an elbow over one, casually, and asks what you would like to read.",
+    "A boy at {place} asks if you can write his name. {Kname} says to leave the scholar be, and then, quietly, writes it down for you to copy.",
+    "Your grey robe has a tidy hem and a ragged cuff. {Kname} concludes you are a person who is kind to books and careless of themselves.",
+    "{Kname} says that scholars are bad customers and excellent witnesses, and that {place} has long needed one of the second kind.",
+    "You are looked over for a pen, and found to carry two. {Kname} says nobody at {place} has trusted a person with fewer than three.",
+    "The ink in your sleeve has begun to dry, and {kname} sees you reach for a stub of wax to seal it. A scholar always does.",
+    "{Kname} puts a stool at the far side of the lamp, for the light. {Place} knows what a reader needs.",
+  ],
+  silk: [
+    "The cloud pattern in your silk catches the light of {place}, and a dozen small decisions are made about you before you have spoken.",
+    "{Kname} fetches the good cushion, then the better one, and ends by standing so that you may not be seen from the lane.",
+    "A boy begs a thread of your embroidery for luck. {Kname} cuffs him, gently, and then looks as if he wished to ask for one too.",
+    "Silk is a language at {place}, and yours is spoken fluently. {Kname} answers in it, and every word is a price.",
+    "{Kname} fusses over a stain on a stool that you have not yet noticed was there. It is a very expensive stain.",
+    "Someone near the door says your robe cost a village’s year. {Kname} says a village’s year is a long time, and asks if you want tea.",
+    "Your sleeve trails a hand’s breadth from a bowl, and {kname} moves the bowl without seeming to. At {place} silk is protected like a guest.",
+    "{Kname} doubles the lamps. At {place}, a person in silk is a performance, and the house has never failed one.",
+  ],
+  armour: [
+    "The scales of your jerkin click in time with your step. {Kname} counts the clicks, and then the exits, and then your hands.",
+    "A dog at {place} that has barked at every stranger for ten years lies down at your feet. {Kname} does not remark on it.",
+    "{Kname} asks you politely to leave the sword-belt by the door. You do, and the whole room breathes out.",
+    "Lacquer, laced leather, and the walk of someone ready to use both. {Kname} makes a place for you near the wall and well away from the children.",
+    "An old woman at {place} touches one of your scales, quickly, as one touches a charm. {Kname} lets her.",
+    "{Kname} sees where the lacing has been mended and decides you have been in more than one fight and won fewer than you would admit.",
+    "Your armour needs oiling, and {kname} offers a rag and a stool. It is the kindest thing a keeper can do for a fighter.",
+    "At {place} nobody wears armour but the Garrison and the desperate. {Kname} cannot yet decide which you are.",
+  ],
+};
+
+export const MORE_BIRTH: Record<Status, string[]> = {
+  outcast: [
+    "{Kname} says that an outcast at {place} is a customer like any other, and at least you know what to expect of each other.",
+    "Your name has been struck from more than one register, and {kname} has heard of it. They look at you with careful interest.",
+    "No one at {place} asks about your papers. {Kname} says the lack of a question is a kind of welcome, and a kind of warning.",
+    "An outcast stands where the light is bad, {kname} notes, and moves a lamp so that it is not. It costs nothing and means a great deal.",
+    "Someone at {place} spits at the floor when your name is said, and {kname} wipes it up without comment and without haste.",
+    "{Kname} says struck names have a way of arriving ahead of their owners, and yours did not. That was luck, or skill.",
+    "You are given the stool nearest the door, and {kname} does not explain it. An outcast learns to read stools.",
+    "The rolls say you do not exist, and {kname} looks at you carefully, as if to check.",
+  ],
+  commoner: [
+    "A village roll and nothing above it. {Kname} nods as at a sound, plain wall, and gets on with the day.",
+    "{Kname} gives you the commoner’s welcome at {place}: a bench, a bowl and no hurry. It is more than most guests get.",
+    "Your name is easy to say and easy to forget, and {kname} says it twice anyway, as if to fix it.",
+    "No one at {place} bows to you, and no one looks away. {Kname} says that is the most restful thing a stranger can ask.",
+    "You have no seal to show, and {kname} does not ask for one. At {place} a clean hand is as good as a stamp.",
+    "{Kname} puts you among the carters and gleaners, and you fit. It is a trick of the place that no one is made to stand out.",
+    "Your papers have been folded and unfolded so often that the creases have worn through. {Kname} reads them without opening them.",
+    "A commoner’s purse is a known quantity at {place}. {Kname} prices accordingly, and with a kind of rough justice.",
+  ],
+  gentry: [
+    "A magistrate’s seal sits on your papers like a small, polite threat. {Kname} reads it, bows, and begins to think about the cost of the bow.",
+    "The word for your standing at {place} is a short one, and everyone uses it behind a hand. {Kname} uses it to your face, and carefully.",
+    "{Kname} puts you at the head of the table without asking, and then spends the meal trying not to watch your hands.",
+    "Land, a seat at the table, and a name that carries. {Kname} knows what each is worth at {place}, to the grain.",
+    "Gentry always pay. {Kname} says this to nobody in particular, loud enough for the kitchen.",
+    "A cousin of the magistrate is rumoured to be at {place}. {Kname} wonders aloud whether you are he, and is too polite to push.",
+    "Your seal draws a ripple of small courtesies, and {kname} sees you notice and decide not to mind. It is a rare restraint.",
+    "A page is sent running to fetch the elder of {place}. {Kname} says it is a courtesy. Everyone else says it is a precaution.",
+  ],
+  noble: [
+    "The banner on your papers is older than {place}, and {kname} knows its colours. They bow without a word and stay bowed a heartbeat too long.",
+    "A noble house, by your papers. {Kname} gives you the best room before you ask, and the whole of {place} learns the fact within the hour.",
+    "{Kname} says that nobility has two uses at {place}: to be obeyed, and to be blamed. They are waiting to see which you prefer.",
+    "Your surname empties the benches near you. {Kname} stays standing at your elbow, and says it is only that the floor is clean.",
+    "Someone in the crowd murmurs a debt your house owes, and {kname} turns the talk gently to the weather. It is a lie of a pleasing size.",
+    "{Kname} dusts a crest from a high shelf that you had not noticed and sets it, face down, behind a jar. Nobody mentions it.",
+    "A noble at {place} is a spectacle and a hazard. {Kname} weighs the two, and decides to charge for the first.",
+    "The oldest woman at {place} tells you your ancestors once hanged her grandfather. {Kname} says she tells that to all of them. She does not.",
+  ],
+};
+
+export const MORE_TRADE: Record<Background, string[]> = {
+  orphan: [
+    "You pocket a crust and wipe the bowl clean without thinking. {Kname} refills it, and does not remark on it.",
+    "Your eyes go to the back door of {place} before they go to {kname}. A port child always finds the way out first.",
+    "{Kname} puts a hand on a coin purse, then takes it off again, ashamed, because you did not look at it once.",
+    "You listen to the street before you speak, like someone who learned what a footstep means. {Kname} lowers their voice to match yours.",
+    "A child at {place} sizes you up and decides you are one of the family. {Kname} lets the child go on thinking so.",
+    "You sleep sitting up, with your back against a post. {Kname} sees it and brings a blanket without a word.",
+    "{Kname} says that only an orphan makes the same face at kindness as at a blow, and then apologises for knowing it.",
+    "You name the three safest corners of {place} in a breath. {Kname} says nobody has asked their opinion of those in a decade.",
+  ],
+  scholar: [
+    "You read the grain of the table without meaning to, and {kname} catches you at it with an expression like a man seeing his own handwriting.",
+    "{Kname} sets down a half-inked brush in front of you and is visibly pleased when you cap it first. At {place}, manners are for those who copy.",
+    "You murmur a line of verse under your breath as you look round {place}, and {kname} finishes it. Neither of you mentions it again.",
+    "A faint smear on your thumb betrays a morning at the desk. {Kname} says the ink of that region is only ever that colour for one reason.",
+    "You ask whether the notices on the wall are signed. {Kname} says nobody has asked in nine years, and goes to find out.",
+    "The first thing you do at {place} is look for a lamp worth reading by. {Kname} brings one, and a stool, and leaves.",
+    "{Kname} watches you take in the accounts on the shelf in one sweep. A copyist, they decide, who is polite about it.",
+    "You straighten a leaning stack of papers before you notice yourself doing it, and {kname} stops mid-sentence to watch.",
+  ],
+  soldier: [
+    "You sit where you can see the room, and {kname} notes it without comment. The same thing keeps a levy alive and an innkeeper in business.",
+    "A veteran at {place} nods to you across the room, the small, flat nod soldiers give one another, and goes back to his cup.",
+    "{Kname} says that at {place} you can tell a levy man by how he drinks: fast, and watching. You have just proved it.",
+    "You wipe your hands on your thighs where a sword-belt would have been. {Kname} sees the gesture and pretends not to.",
+    "Your knees bend a fraction at the sound of a distant horn. {Kname} says that never leaves a person either.",
+    "An old drill-sergeant’s bark would make you straighten, and {kname} would bet money on it. So, quietly, would the rest of {place}.",
+    "{Kname} offers you the bench by the wall and the first helping, as one does for a man who has stood a post.",
+    "You count the people at {place} from habit, and come to the same number {kname} did. They exchange a look.",
+  ],
+  merchant: [
+    "Your eye goes to the scale, then the weights, then the thumb on the scale. {Kname} lifts the thumb, with a rueful smile.",
+    "You ask what the tea costs before you drink it. {Kname} laughs, because nobody has done it in a lifetime.",
+    "A trader’s runner learns to read a ledger upside down across a table. {Kname} turns theirs over without being asked.",
+    "{Kname} says that a runner knows the price of everything and the value of nothing, and that you seem to be the exception.",
+    "You count the room’s coin in your head, and {kname} counts yours. At {place} it is considered a courtesy.",
+    "Without being asked you steady a leaning stack of crates. {Kname} says a runner cannot help putting a stack to rights.",
+    "You are offered a discount, and decline it, because you can see what it hides. {Kname} bows to you the way one bows to an equal.",
+    "A little bell sounds at the door of {place}, and you glance at the lintel to see whether it is worth the price. It is not.",
+  ],
+  farmer: [
+    "You glance at the sky, the roof and the floor in that order. {Kname} says a person who looks at a roof before a face has worked land.",
+    "Your hands settle on the table, palms down, the way a person’s do who has leaned on a plough. {Kname} lays their own beside yours, to compare.",
+    "A child tugs your sleeve and asks you to show her how to tie a sheaf. You do, and {kname} watches your fingers with something like envy.",
+    "You rub a pinch of the dust of {place} between finger and thumb. {Kname} says: sandy. You nod, and the conversation is over.",
+    "{Kname} says the way you eat, steadily and without comment, tells them everything. A paddy hand’s dinner is a short, honest affair.",
+    "You step round a wet patch on the floor as though it were a furrow. {Kname} notes it and does not smile.",
+    "An old woman at {place} asks what you grew. Rice, you say. She nods, and calls you a name she uses only for the trustworthy.",
+    "{Kname} sets a bowl of something plain in front of you and watches your face. You say it needs salt, which is the right answer.",
+  ],
+  healer: [
+    "You are looking at {kname}’s hands again, and {kname} lets you. A healer’s helper cannot help noticing, and a keeper cannot help being noticed.",
+    "A cough in the corner stops, and starts, and you turn your head before {kname} has finished pretending it did not happen.",
+    "You sniff the air of {place} and name the herb in the lamp-oil. {Kname} says nobody has done that in the nineteen years they have kept it.",
+    "{Kname} shows you a sore finger and asks, as if it were nothing, what you would do. You tell them. They write it down.",
+    "Without being asked you move a child out of a draught. {Kname} watches the way you do it, gently, and nods.",
+    "You ask for hot water before you ask for anything else. {Kname} fetches it, and understands what for.",
+    "Someone in the shadows at {place} is more ill than they admit. You see it, {kname} sees that you see it, and neither of you looks.",
+    "{Kname} says that a healer’s helper learns the price of silence early. You have, and {kname} is sorry for it.",
+  ],
+};
+
+export const MORE_FACE: Record<Looks, string[]> = {
+  plain: [
+    "{Kname} tells you that a face like yours is the best sort for a courier or a thief, and the worst for a lover, and then blushes.",
+    "At {place} no one looks at you for long. {Kname} says this is a gift, and you will want to learn to use it.",
+    "You could walk through {place} twice, {kname} says, and no one would swear to having seen you once.",
+    "{Kname} studies your face for a distinguishing mark and gives up. Any description of you would fit half the lane.",
+    "Your features are even and unremarkable, and {kname} finds them restful. It is hard to be afraid of a face like that.",
+    "A man at {place} insists he has met you before. {Kname} says he has said that to everyone since spring.",
+    "{Kname} says plain faces get told secrets, because people forget they are being heard. You may want to be careful with that.",
+    "No one at {place} remembers your face, but they remember how they felt in its presence, and are oddly fond.",
+  ],
+  striking: [
+    "A pause falls as you come in. {Kname} fills it by dropping a ladle, loudly, so that everyone looks away.",
+    "{Kname} says the face you have is the kind that gets a person into rooms and out of them, and that you had better know which.",
+    "A girl at the well drops her bucket. A boy by the gate pretends not to see. {Kname} looks heavenward.",
+    "A ripple runs through {place} as you pass, the sort a stone makes. {Kname} watches it like someone who must clean up afterward.",
+    "People will remember you here, {kname} says, and not by your name. It may be a convenience, or a danger.",
+    "An old man at {place} tells you the last striking face he saw was a bandit’s. {Kname} tells him to be quiet, and he is not.",
+    "{Kname} turns your chair a little away from the window, for no reason they will give, and brings you tea.",
+    "The talk dies and revives in a different key. {Kname} says it is your face, not your manners, and that you may be forgiven both.",
+  ],
+  scarred: [
+    "A boy at {place} asks, in a clear voice, how you got it. {Kname} stops the room with a look, and then, softly, waits for your answer.",
+    "{Kname} makes no comment on your scar, and sets your cup on the side of the table you favour. It is the most delicate attention you have had.",
+    "Your burn draws a long look from an old woman at {place}, who nods as if confirming something. She does not say what.",
+    "A scar like yours tells {kname} you survived something. They treat you with the grave courtesy due to the survivor of a thing.",
+    "Several people at {place} glance at the old burn and away, and one touches her own jaw in sympathy. {Kname} watches the exchange.",
+    "{Kname} says a scar is only a place where something was refused, and that yours looks like it was refused with some force.",
+    "No one stares. That is the remarkable thing. {Place} has had too many scars to be impressed by one more.",
+    "You catch {kname} looking, and {kname} does not look away. It is the honesty of someone who has decided that a scar is a face’s best feature.",
+  ],
+  frail: [
+    "{Kname} sees you take the steps of {place} one at a time and moves a stool to the top of them, without remark.",
+    "You are pale after the walk, and {kname} says a rest is sensible, and no one at {place} will think less of you for it.",
+    "A thin guest draws a certain quiet at {place}. {Kname} sets the lamp beside you, not before you, and everyone else follows suit.",
+    "Your hands are cold, and {kname} wraps them round a hot cup without asking. It is not charity. It is the way {place} has always treated its guests.",
+    "{Kname} says the road is hard on the slight, and the slight, in {kname}’s experience, are harder than the road.",
+    "A child offers you her stool. You decline, and she insists, and {kname} lets her win.",
+    "You rest your shoulder against a post and try to look as though it were a choice. {Kname} brings a cushion and spares you the pretence.",
+    "{Kname} watches you cross the room with the careful attention of someone who has seen frailty hide things and knows how.",
+  ],
+};
+
+export const MORE_MANNER: Record<Gender, string[]> = {
+  woman: [
+    "{Kname} mentions, in passing, that the best bargainer at {place} is a woman of seventy, and that she asked after you.",
+    "A knot of women at the well quiet as you pass and then speak all at once. {Kname} says you have been weighed and found interesting.",
+    "The men at {place} stand a little too fast when you speak. {Kname} sits slowly, to show them how it is done.",
+    "{Kname} tells you the women of {place} keep the real accounts, and that you would do well to buy one of them a cup.",
+    "You are asked three times whether your husband knows where you are, and {kname} apologises for the other two.",
+    "A girl at {place} stares at you as at a picture, and {kname} says she has never seen a woman walk in alone before.",
+    "{Kname} lowers a lamp so that you are not dazzled, and raises it again when you do not seem to mind. It is a language.",
+    "An old woman at {place} presses a charm into your hand for the road and says it is for all women who go alone.",
+  ],
+  man: [
+    "The men at {place} shift to make room, and the shifting says more than the room. {Kname} takes the hint and fills a cup.",
+    "{Kname} asks what your business is in a tone that expects a short answer. You can give one, or can see how long {kname} will wait.",
+    "A man at the bar tells you the road ahead is no place for someone like you, and does not say what he means. {Kname} sighs.",
+    "You are called ‘young master’ by a boy who has not yet learned what it costs. {Kname} corrects him, mildly.",
+    "{Kname} says men who arrive alone at {place} either buy a round or start a fight, and that they have yet to decide about you.",
+    "The talk at {place} turns to prices when you sit, as it does for every man. {Kname} says you may speak of anything you like.",
+    "A woman at {place} takes your measure, plainly, and nods. {Kname} says she is the one whose opinion is law.",
+    "You are offered the best stool and, to your surprise, the worst advice. {Kname} gives you the right one afterward, for free.",
+  ],
+  unspoken: [
+    "No one at {place} presses you for a word to call yourself by. {Kname} says friend will do, and so does the well.",
+    "{Kname} calls you by your name and leaves the rest alone. It is surprising how rarely that is done.",
+    "A child at {place} asks what you are, and her mother hushes her. {Kname} says to let the child ask. Questions are cheap, and answers are yours.",
+    "You say little of yourself, and {kname} makes a virtue of it. At {place}, a closed door is a courtesy, and so is leaving it shut.",
+    "{Place} has a word for people like you, an old one, kindly meant. {Kname} uses it once, softly, and does not use it again.",
+    "Several people at {place} use three different forms of address within a minute, and then, relieved, settle on friend.",
+    "{Kname} says that at {place} a stranger is whatever they say they are, so long as they pay for the tea.",
+    "A traveller at the next table says you remind him of someone, and cannot say who. {Kname} calls it a gift to remind people of no one.",
+  ],
+};
+
+export const MORE_SEND_OFF: Record<Attire, string[]> = {
+  rags: [
+    "{Kname} slips a few coins under the rim of your bowl as you rise, and you find them only when you are in the lane.",
+    "At the door of {place}, {kname} hands you a scrap of rag for your blisters and says it is a spare, which it is not.",
+    "{Kname} will not take payment for the broth. The owner of {place}, says {kname}, is not a person with whom to argue.",
+    "As you leave, {kname} knots a new cord to your pack-strap with a quick, neat hand, and does not look up.",
+    "A stranger at {place} slides you a pair of old sandals, hardly worn, and is gone before you can thank him.",
+    "{Kname} tells you hemp is the only cloth that never lies, and wishes you a road that is not dishonest either.",
+  ],
+  traveller: [
+    "{Kname} tells you where the next well is and how many days it will be dry between. A traveller always asks, and seldom gets told.",
+    "As you shoulder your pack, {kname} tucks a heel of bread into the side pocket and says the road will take the rest.",
+    "{Kname} walks you as far as the last post and shakes your hand with the dry, quick shake of one who has said many goodbyes.",
+    "At the edge of {place} {kname} turns your hat the right way round with a flick and says the hat will thank you.",
+    "{Kname} says that a traveller who leaves a place well is welcome in the next. You will want to remember that.",
+    "You are given the name of a friend of a friend three provinces on. {Kname} says that is how a road becomes a road.",
+  ],
+  scholar: [
+    "{Kname} presses a stub of ink into your cuff and says a scholar should never leave a place without something to write with.",
+    "As you go, {kname} tells you the best reading-lamp in {place} is in the second house, and its owner would be pleased to be asked.",
+    "{Kname} asks you to write down what you have seen, in a clear hand, and send it. The sect’s histories are written by those who stayed.",
+    "At the door {kname} gives you a folded leaf of notes on {place}, in an unsteady hand. It is not for the Elder’s eyes.",
+    "{Kname} says that scholars come, and read, and go, and that {place} has begun to keep a shelf for what they leave behind.",
+    "A boy at {place} runs after you with a dropped pen. {Kname} says it is the third he has returned this year.",
+  ],
+  silk: [
+    "{Kname} sees you out into the lane and asks if you would like a cloth for the hem. It is a sensible question.",
+    "A stable boy is sent for a clean horse to take you to the gate. {Kname} apologises that the clean one is the only one.",
+    "As you leave, {kname} says that silk shows what a person is not, and that you wear yours as if you knew.",
+    "{Kname} walks you to the edge of {place} and murmurs which doors to avoid and which to knock on.",
+    "A bundle is pressed into your arms, sewn shut. {Kname} says it is a gift from the house, not to be opened before dark.",
+    "As you step into the lane, someone throws dried petals over your shoulder. {Kname} says it is the custom for silk.",
+  ],
+  armour: [
+    "{Kname} offers to oil your scales before you go, and does it, with a care that tells you what {kname} was before.",
+    "At the edge of {place} a small boy salutes you, and you salute him back. {Kname} watches with an expression you cannot read.",
+    "{Kname} says that to walk armed is to be asked questions by strangers, and that {kname} would rather you were asked at {place}.",
+    "As you go, {kname} hangs a small bell on your belt-hook and says it is so that people hear you coming and are not afraid.",
+    "{Kname} presses a wrapped packet of dried meat into your hands, and the weight of it surprises you.",
+    "A woman from the lane presses your gauntlet to her forehead and gives it back. {Kname} says she lost a son to the levy.",
+  ],
+};
+
+type Bands = Record<RelBand, string[]>;
+export const MORE_REALM_REACT: Record<RealmKind, Bands> = {
+  entry: {
+    far: [
+      "{Kname} lays a hand on the lintel of {place} as though to stop you, and says only that the road is longer than it looks.",
+      "A cultivator far below the road is a rare guest, and {kname} receives you with the gravity due to a pilgrim and the concern due to a child.",
+      "{Kname} says that {place} will not turn you away, but also will not carry you, and you are welcome to look at the stair.",
+    ],
+    below: [
+      "{Kname} watches you take the threshold and says you are a hair short of the weight of {place}. It can be borne. It will be felt.",
+      "The qi of {place} presses harder on you than on the others, and {kname} sees the colour leave your face. A realm will do that.",
+      "You are a step under what {place} asks. {Kname} describes the lesser way in a voice that has said it many times.",
+    ],
+    at: [
+      "Your qi rests in {place} like a stone in a socket. {Kname} says nothing, because nothing needs to be said.",
+      "{Kname} lets you walk the whole of the room before speaking. You are exactly what {place} is for, and it shows in your step.",
+      "The qi at {place} yields a finger’s breadth as you enter, as a crowd does for someone expected. {Kname} bows to the arrangement.",
+    ],
+    above: [
+      "The lamps at {place} lean away from you as though you were a draught. {Kname} counts the realms between you and the road, and stops counting.",
+      "{Kname} meets you at the door with both hands out, which at {place} is the greeting for a master or a debt.",
+      "Your qi fills {place} the way a bell fills a room, and {kname} puts a hand to their chest. You have not even spoken.",
+    ],
+  },
+  open: {
+    far: [
+      "The first work at {place} is easy for a cultivator, and for you a wall. {Kname} sets you at the end of the bench to watch.",
+      "You are a long way under what {place} asks, and the road lets you see how long, which is generous of it.",
+      "{Kname} hands you a cloth and a bucket instead of the tools, and you understand that you are being kind to yourself.",
+    ],
+    below: [
+      "The work at {place} comes slowly to you, a beat behind the rest. {Kname} slows the pace of the room by a half-breath.",
+      "You are a realm short of the task, and {kname} gives you the lighter end of it with no remark.",
+      "Your qi catches on the first stroke of the work, and {kname} says it is the common fault of those a step behind.",
+    ],
+    at: [
+      "The work at {place} fits you like a glove cut to the hand. {Kname} sees it, and for the first time all day, sits down.",
+      "You and the task are the same size, and {kname} lets you find it out. There is no better way to learn a floor than to walk it.",
+      "The qi you need and the qi you have are exactly equal. {Kname} says this happens rarely and means little, and smiles at the little.",
+    ],
+    above: [
+      "The work at {place} is a courtesy to you now, and {kname} knows it. They hand you the finest of the tools and a gentler task.",
+      "You do in a breath what takes the others an hour, and {kname} apologises for the delay in letting you do it.",
+      "The first stroke is so easy that you hold back, and {kname} says it is the first time {place} has met a cultivator with manners.",
+    ],
+  },
+  crisis: {
+    far: [
+      "At the turn of the work, {place} is more than you can meet, and {kname} sees it before you do and steps in.",
+      "The crisis at {place} comes down on you like a lid, and the distance between you and it is the measure of the road.",
+      "You are too far below what {place} asks, and the moment does not forgive it. {Kname} does what a keeper can, which is not much.",
+    ],
+    below: [
+      "The crisis at {place} comes a realm too early for you, and {kname} tells you quietly which side to stand on.",
+      "You strain against the turn of the work and {kname} watches your qi flicker. It will hold. It will cost something.",
+      "A realm short, you meet the hard part of {place} on the edge of your strength. {Kname} says it is how the next realm is bought.",
+    ],
+    at: [
+      "The hard part of {place} is the size of your strength, no larger, and {kname} watches you meet it with open pleasure.",
+      "At the turn you are exactly equal to the task, and neither of you seems to enjoy it. {Kname} says that is right.",
+      "Your qi rises to the crisis the way a hand rises to catch a cup, and {kname} lets out a breath they had not meant to hold.",
+    ],
+    above: [
+      "The crisis at {place} is a small thing now, and you treat it as one. {Kname} is relieved and a little sad.",
+      "You step through the hard part of {place} without altering your pace, and {kname} files the memory for later.",
+      "What the road means as a test is, for you, a courtesy, and {kname} thanks you for taking it so politely.",
+    ],
+  },
+  close: {
+    far: [
+      "As you leave, {kname} says plainly that {place} was beyond you, and that coming back will take courage.",
+      "You are a long way short of what the road wants, and {kname} says so kindly as you go.",
+      "{Kname} watches you out of {place} like a keeper who has seen a long road begun, and does not say how long.",
+    ],
+    below: [
+      "{Kname} says you did well for a realm short. At {place}, that is praise for those they expect back.",
+      "As you go, {kname} says the next realm will make {place} easier, and hopes to see how much.",
+      "A realm short, and still you finished. {Kname} nods at the door as at a debt, for now, paid.",
+    ],
+    at: [
+      "{Kname} sees you out with the quiet satisfaction of a keeper whose road was walked as it was meant.",
+      "You leave exactly as strong as the road expected, and {kname} marks it with a nod.",
+      "As the door of {place} closes behind you, {kname} says: well matched. In all their time, they have said it twice.",
+    ],
+    above: [
+      "{Kname} walks you out with the careful deference due to a cultivator who did the road a kindness by taking it.",
+      "As you leave {place}, {kname} says the road has seldom been so honoured, and will remember.",
+      "You leave far above where you came in, and {kname} bows lower at the door than at the entry.",
+    ],
+  },
+};

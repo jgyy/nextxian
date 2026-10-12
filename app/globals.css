@@ -1501,6 +1501,36 @@ button.ghost[aria-expanded="true"] {
   color: var(--muted);
 }
 
+/* ── Practice: what the hero has done on the Cultivation Roads ── */
+
+.practice h2 {
+  margin: 4px 0 10px;
+  font-size: 1.1rem;
+}
+.practice-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 0.84rem;
+}
+.practice-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.practice-list li[data-zero="yes"] {
+  color: var(--muted);
+}
+.cusp {
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-left: 3px solid var(--gilt);
+  background: rgba(217, 179, 90, 0.1);
+  font-size: 0.86rem;
+}
+
 /* ── A fixed desktop stage ────────────────────────────────────
    On a wide, tall screen the game fills the window. The stage, the options and the side panels keep a height of their own and scroll
    inside it, so the options start at the same place on every scene, whatever the text above them. */

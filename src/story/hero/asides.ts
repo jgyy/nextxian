@@ -1,5 +1,6 @@
 import type { HeroField } from "@/engine/hero";
 import type { Tier } from "@/engine/types";
+import { beginningAsides } from "../origins/entries";
 import { daoAsides, originAsides, talentAsides } from "./asides-path";
 
 type Lines = Record<Tier, string>;
@@ -10,7 +11,7 @@ type Lines = Record<Tier, string>;
  * Each is short, in her dry and exact voice, and says something she could only say to this hero.
  */
 export const heroAsides: Record<HeroField | "realm", Record<string, Lines>> = {
-  origin: originAsides,
+  origin: { ...originAsides, ...beginningAsides },
   talent: talentAsides,
   dao: daoAsides,
   status: {

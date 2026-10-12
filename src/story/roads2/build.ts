@@ -7,6 +7,7 @@ import { BEAT_EXTRA, CHOICE_EXTRA, spread } from "../roads/lexicon-extra";
 import { focusKind, pickFit } from "../roads/kinds";
 import { ATTIRES, BACKGROUNDS, GENDERS, LOOKS, STATUSES } from "@/engine/hero";
 import { BIRTH, bandBounds, DRESS, FACE, MANNER, REALM_REACT, SEND_OFF, TRADE, type RealmKind, type RelBand } from "./hero-lex";
+import { CRISIS, DEEP, HUMBLED, PULLED_RANK, REACHED, USED_QI } from "./lexicon-state";
 import {
   APPROACH_LABEL2,
   CHOICE_LABEL2,
@@ -18,11 +19,7 @@ import {
   RETURN_CHOICES2,
   RETURN_CRISIS2,
   RETURN_FOUND_SECRET2,
-  RETURN_HUMBLED,
   RETURN_OPEN2,
-  RETURN_PULLED_RANK,
-  RETURN_REACHED,
-  RETURN_USED_QI2,
 } from "./lexicon";
 
 /**
@@ -287,7 +284,7 @@ export function buildRoad2(spec: RoadSpec2, ctx: RoadContext2): Scene[] {
       id: `${id}_h${n}`,
       title: `${spec.title}: ${title}`,
       paragraphs: [fill(spec.deep[n], slots)],
-      ...(n === 2 ? { extras: BANDS.map((band) => ({ when: [{ kind: "realm" as const, ...bandBounds(band, R) }], paragraphs: [fill(DEEP_READ[band], slots)], group: "read" })) } : {}),
+      ...(n === 2 ? { extras: BANDS.map((band) => ({ when: [{ kind: "realm" as const, ...bandBounds(band, R) }], paragraphs: [fill(pick(DEEP[band], ctx.index), slots)], group: "read" })) } : {}),
       choices: sceneTones(modes[2], n, 2).map((tone, c) => ({
         id: tone,
         label: fill(pickFit([...CHOICE_LABEL2[tone], ...CHOICE_EXTRA[tone]], walkBase(ctx.index, 2, tone) + 5 + n, slots.focus), labelSlots(slots, tone, ctx.index + n + c)),
@@ -312,14 +309,14 @@ export function buildRoad2(spec: RoadSpec2, ctx: RoadContext2): Scene[] {
       })),
       ...(Object.keys(RETURN_CRISIS2) as ChoiceTone[]).map((tone) => ({
         when: [{ kind: "flag" as const, flag: roadFlag(id, `crisis_${tone}`) }],
-        paragraphs: [fill(RETURN_CRISIS2[tone], base)],
+        paragraphs: [fill(pick(CRISIS[tone], ctx.index), base)],
         group: "crisis",
       })),
       { when: [{ kind: "flag", flag: roadFlag(id, "found_secret") }], paragraphs: [fill(RETURN_FOUND_SECRET2, base)] },
-      { when: [{ kind: "flag", flag: roadFlag(id, "pulled_rank") }], paragraphs: [fill(RETURN_PULLED_RANK, base)], group: "manner" },
-      { when: [{ kind: "flag", flag: roadFlag(id, "humbled") }], paragraphs: [fill(RETURN_HUMBLED, base)], group: "manner" },
-      { when: [{ kind: "flag", flag: roadFlag(id, "reached") }], paragraphs: [fill(RETURN_REACHED, base)], group: "manner" },
-      { when: [{ kind: "flag", flag: roadFlag(id, "used_qi") }], paragraphs: [fill(RETURN_USED_QI2, base)], group: "manner" },
+      { when: [{ kind: "flag", flag: roadFlag(id, "pulled_rank") }], paragraphs: [fill(pick(PULLED_RANK, ctx.index), base)], group: "manner" },
+      { when: [{ kind: "flag", flag: roadFlag(id, "humbled") }], paragraphs: [fill(pick(HUMBLED, ctx.index), base)], group: "manner" },
+      { when: [{ kind: "flag", flag: roadFlag(id, "reached") }], paragraphs: [fill(pick(REACHED, ctx.index), base)], group: "manner" },
+      { when: [{ kind: "flag", flag: roadFlag(id, "used_qi") }], paragraphs: [fill(pick(USED_QI, ctx.index), base)], group: "manner" },
       ...realmGroup("close", R, ctx.index, base, "realm"),
     ],
     choices: [

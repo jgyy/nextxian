@@ -5,8 +5,9 @@ import { ALLIES, APPROACH_LABEL, CHOICE_LABEL, MODE_BEAT, OBSTACLES, STAGE_TITLE
 import { approachModes, fill, roadFlag, walkBase } from "../roads/build";
 import { BEAT_EXTRA, CHOICE_EXTRA, spread } from "../roads/lexicon-extra";
 import { focusKind, pickFit } from "../roads/kinds";
+import { BRIBED, DEEP, EARNED, HUMBLED, INVESTED, LEASED, PULLED_RANK, REACHED, SPENT, USED_QI, USED_WARE } from "../roads2/lexicon-state";
 import { BIRTH, bandBounds, DRESS, FACE, MANNER, SEND_OFF, TRADE } from "../roads2/hero-lex";
-import { BANDS, DEEP_READ, heroGroup, labelSlots, pick, realmGroup, sceneTones, TONE_EFFECTS, type Extra } from "../roads2/build";
+import { BANDS, heroGroup, labelSlots, pick, realmGroup, sceneTones, TONE_EFFECTS, type Extra } from "../roads2/build";
 import {
   APPROACH_LABEL2,
   CHOICE_LABEL2,
@@ -14,10 +15,6 @@ import {
   MODE_BEAT2,
   REPORT_MEMORY2,
   RETURN_FOUND_SECRET2,
-  RETURN_HUMBLED,
-  RETURN_PULLED_RANK,
-  RETURN_REACHED,
-  RETURN_USED_QI2,
 } from "../roads2/lexicon";
 import {
   BRIBE,
@@ -28,13 +25,7 @@ import {
   LEASE,
   LEASE_SHARE,
   PURSE_REACT,
-  RETURN_BRIBED,
   RETURN_CHOICES3,
-  RETURN_EARNED,
-  RETURN_INVESTED,
-  RETURN_LEASED,
-  RETURN_SPENT,
-  RETURN_USED_WARE,
   REPORT_MEMORY3,
   RISKY,
   SELL_WARE,
@@ -527,7 +518,7 @@ export function buildRoad3(spec: RoadSpec3, ctx: RoadContext3): Scene[] {
       id: `${id}_h${n}`,
       title: `${spec.title}: ${title}`,
       paragraphs: [fill(spec.deep[n], slots)],
-      ...(last ? { extras: BANDS.map((band) => ({ when: [{ kind: "realm" as const, ...bandBounds(band, R) }], paragraphs: [fill(DEEP_READ[band], slots)], group: "read" })) } : {}),
+      ...(last ? { extras: BANDS.map((band) => ({ when: [{ kind: "realm" as const, ...bandBounds(band, R) }], paragraphs: [fill(pick(DEEP[band], ctx.index), slots)], group: "read" })) } : {}),
       choices: sceneTones(modes[2], n, 2).map((tone, c) => ({
         id: tone,
         label: fill(pickFit([...choiceLabel[tone], ...CHOICE_EXTRA[tone]], walkBase(ctx.index, 2, tone) + 5 + n, slots.focus), labelSlots(slots, tone, ctx.index + n + c)),
@@ -552,18 +543,18 @@ export function buildRoad3(spec: RoadSpec3, ctx: RoadContext3): Scene[] {
         group: "approach",
       })),
       { when: flagIs("found_secret"), paragraphs: [fill(RETURN_FOUND_SECRET2, base)], group: "manner" },
-      { when: flagIs("pulled_rank"), paragraphs: [fill(RETURN_PULLED_RANK, base)], group: "manner" },
-      { when: flagIs("humbled"), paragraphs: [fill(RETURN_HUMBLED, base)], group: "manner" },
-      { when: flagIs("reached"), paragraphs: [fill(RETURN_REACHED, base)], group: "manner" },
-      { when: flagIs("used_qi"), paragraphs: [fill(RETURN_USED_QI2, base)], group: "manner" },
-      { when: flagIs("used_ware"), paragraphs: [fill(RETURN_USED_WARE, base)], group: "manner" },
+      { when: flagIs("pulled_rank"), paragraphs: [fill(pick(PULLED_RANK, ctx.index), base)], group: "manner" },
+      { when: flagIs("humbled"), paragraphs: [fill(pick(HUMBLED, ctx.index), base)], group: "manner" },
+      { when: flagIs("reached"), paragraphs: [fill(pick(REACHED, ctx.index), base)], group: "manner" },
+      { when: flagIs("used_qi"), paragraphs: [fill(pick(USED_QI, ctx.index), base)], group: "manner" },
+      { when: flagIs("used_ware"), paragraphs: [fill(pick(USED_WARE, ctx.index), base)], group: "manner" },
       // What the hero did with money, in the order that matters most. Only one shows.
-      { when: flagIs("leased"), paragraphs: [fill(RETURN_LEASED, base)], group: "money" },
+      { when: flagIs("leased"), paragraphs: [fill(pick(LEASED, ctx.index), base)], group: "money" },
       { when: [{ kind: "item", item: ware }], paragraphs: [fill(pick(WARE_REACT[spec.ware.kind], ctx.index), base)], group: "money" },
-      { when: flagIs("invested"), paragraphs: [fill(RETURN_INVESTED, base)], group: "money" },
-      { when: flagIs("settled"), paragraphs: [fill(RETURN_SPENT, base)], group: "money" },
-      { when: flagIs("bribed"), paragraphs: [fill(RETURN_BRIBED, base)], group: "money" },
-      { when: flagIs("worked"), paragraphs: [fill(RETURN_EARNED, base)], group: "money" },
+      { when: flagIs("invested"), paragraphs: [fill(pick(INVESTED, ctx.index), base)], group: "money" },
+      { when: flagIs("settled"), paragraphs: [fill(pick(SPENT, ctx.index), base)], group: "money" },
+      { when: flagIs("bribed"), paragraphs: [fill(pick(BRIBED, ctx.index), base)], group: "money" },
+      { when: flagIs("worked"), paragraphs: [fill(pick(EARNED, ctx.index), base)], group: "money" },
     ],
     choices: [
       { id: "report", label: fill(RETURN_CHOICES_BASE.report, base), tone: "truth", next: ctx.waysideId, npcScenario: reportId3(id), effects: [doneEffect] },

@@ -1,6 +1,6 @@
-import { REALMS, breakthroughNotes, heartDemonBlocks } from "./cultivation";
+import { REALMS, breakthroughNotes, heartDemonBlocks, reachedFlag } from "./cultivation";
 import { DEFAULT_HERO, type Background, type Hero, type Status } from "./hero";
-import { aidReachFor, holdingFactor, livingRebate, ORIGIN_WEALTH, talentSpeed, TALENT_LABEL, toolFactor, unfedFactor } from "./path";
+import { aidReachFor, holdingFactor, livingRebate, ORIGIN_LABEL, ORIGIN_WEALTH, originSpeed, talentSpeed, TALENT_LABEL, toolFactor, unfedFactor } from "./path";
 import type { AssetDef, GameState, ItemDef, LogEntry, Story } from "./types";
 
 /**
@@ -92,6 +92,8 @@ export function speedParts(story: Story, state: Held): SpeedPart[] {
   if (aptitude) parts.push({ label: "Aptitude of your trade", points: aptitude });
   const root = talentSpeed(state.hero.talent, state.realm);
   if (root) parts.push({ label: TALENT_LABEL[state.hero.talent], points: root });
+  const began = originSpeed(state.hero.origin, state.realm);
+  if (began) parts.push({ label: ORIGIN_LABEL[state.hero.origin], points: began });
   for (const { item } of carried(story, state)) {
     if (item.speed && state.realm >= (item.needsRealm ?? 0)) parts.push({ label: item.name, points: Math.round(item.speed * toolFactor(state.hero)) });
   }
@@ -195,6 +197,8 @@ export function applyAid(story: Story, state: GameState): GameState {
   return {
     ...raised,
     realm: next,
+    flags: { ...raised.flags, [reachedFlag(next)]: true },
+    flagAt: { ...raised.flagAt, [reachedFlag(next)]: raised.decisions },
     items: takeItem(state.items, pill.id),
     log: [...state.log, { kind: "realm", text: `Breakthrough: ${realm.name}, with the help of the ${pill.name}. ${realm.arrival}${breakthroughNotes(state, next)}` }],
   };

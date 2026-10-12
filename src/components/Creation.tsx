@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { aptitudeFor, startingWealth } from "@/engine/economy";
-import { DAO_NAME, DAO_PASSIVE, TALENT_LABEL, talentSpeed } from "@/engine/path";
+import { DAO_NAME, DAO_PASSIVE, ORIGIN_LABEL, originSpeed, TALENT_LABEL, talentSpeed } from "@/engine/path";
 import {
   cleanName,
   DEFAULT_HERO,
@@ -27,6 +27,8 @@ function startNotes(hero: Hero): string[] {
   const root = talentSpeed(hero.talent, 0);
   if (root) notes.push(`${root > 0 ? "+" : "−"}${Math.abs(root)}% from your ${TALENT_LABEL[hero.talent].toLowerCase()}`);
   if (hero.talent === "late") notes.push("+18% from Core Formation");
+  const began = originSpeed(hero.origin, 0);
+  if (began) notes.push(`+${began}% from ${ORIGIN_LABEL[hero.origin].toLowerCase()}`);
   if (startingPoints(hero) > 0) notes.push(`${startingPoints(hero)} cultivation points already gathered`);
   if (hero.dao !== "none") notes.push(`${DAO_NAME[hero.dao]}: ${DAO_PASSIVE[hero.dao]}`);
   for (const [stat, v] of Object.entries(start.stats)) if (v) notes.push(`${v > 0 ? "+" : "−"}${Math.abs(v)} ${label[stat as keyof typeof label]}`);

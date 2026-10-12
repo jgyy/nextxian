@@ -6,6 +6,9 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 
 ## Features
 
+- **Twelve beginnings, six of them in cultivation.** Besides the river village, the porter, the rogue, the heir, the courier and the exile, you can now begin as the finder of a sealed cave (a Qi Condenser before the first scene), a pill-house apprentice with a half-cooked pill, a roadside lamp-keeper, a hedge-listener’s ward, someone struck by heaven, or the dreamer of a stranger’s breath. Each is nine scenes, each adds its own line to your cultivation speed while its art lasts, each ends its fourth scene on one of four methods, and Elder Su, the keepers and the Cultivation Roads read the method you took.
+- **Cultivation Roads: forty roads, 1,074 more scenes.** Ten waysides where the work of a realm is done (the archive roof, the eastern terraces, the mirror cells, the tempering yards, the seat-houses of Qinglian Ford, the tide huts, the Hush shelters, the Glass Sea’s annealing plates, the tribulation landing, the stone thresholds), four roads each, and a night in a retreat. On every road you can **circulate**, **temper**, **comprehend** or **push at the gate**, and Elder Su answers each at once. Circulating asks a realm and gives nothing to a hero far above the road. Tempering costs qi. Comprehending asks insight and gives Dao mastery. A push needs you three-quarters through your realm, and lifts you to the next threshold unless a heart demon holds the door. Keepers read how far through your realm you are, how fast you cultivate, and whether you broke through only lately.
+- **283 plot holes fixed.** Eleven beginnings whose door scene the Elder never played on two of four routes, ten sentences shown in up to 200 roads each, 254 hero-trait lines that 200 roads shared among three or four wordings, a heading that never took the hero’s name, and a few smaller slips. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md).
 - **Wealth, a pack, holdings and cultivation speed.** Spirit stones are the coin of the whole story. You start with a purse that your papers and your trade set, the sect pays you a stipend while you live on its mountain, and the morning the barge leaves the river steps it stops: from then on you pay your own keep, and a cultivator above Qi Condensation eats stones. Goods in your pack (a lamp, a mat, a charm, a seal) and holdings you lease (a stall, a bench, a cave) quicken your cultivation, a pill carries you over the next realm’s threshold, and a purse too light for your keep makes you Unfed and a fifth slower. Every choice that spends or earns shows its price before you pick it.
 - **Talent, Dao and six starting points.** Cultivation now shapes the story. You choose one of eight **talents** (five single roots, mixed, heaven-marked, late bloom) that set your speed, one of nine **Daos** (alchemy, forging, talisman, formation, beast, sword, healing, fate, or the open hand) that give a passive rule and a mastery that grows from Novice to Grandmaster as you walk its roads, and one of six **origins** (the river village, a porter, a rogue, a ruined heir, a Concord courier, a sect’s exile), each with its own prologue, purse and way in. Forty **Dao Roads**, 1,000+ scenes, read your talent, Dao, mastery and origin; the Elder, the companions and the heart demon do too.
 - **Witness Roads: forty more roads, 1,020 more scenes.** Ten waysides, from the petitioners’ bench under the Law Hall’s eaves to the alcoves on the stair to the nine doors, each with four keepers who write people down: a bench-clerk, a rope-counter, a copyist of margins, a water-clock keeper, a hull-registrar, a knot-reader, a note-tuner, a watcher of the seventh door. Each road is 25 scenes in its own words, with goods, a lease and a pill on every wayside.
@@ -35,6 +38,32 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 - **Saves in your browser.** Progress is written to `localStorage` after every choice. Storage errors never stop play. Saves from before the Elder kept a reaction history, or before decisions had tones, still load.
 
 ![Scene with no Continue](docs/screenshots/02-no-continue-desktop.png)
+
+### Twelve beginnings and the Cultivation Roads
+
+![Twelve beginnings on the creation screen](docs/screenshots/90-twelve-beginnings-desktop.png)
+![What a beginning adds to your start](docs/screenshots/91-cave-preview-notes-desktop.png)
+![The method: the dead cultivator’s two halves](docs/screenshots/92-cave-method-desktop.png)
+![The dreamer’s first night, on a phone](docs/screenshots/93-dream-beginning-mobile.png)
+![The last pill of a dead pill-maker](docs/screenshots/94-furnace-last-pill-desktop.png)
+![A Cultivation wayside hub](docs/screenshots/95-cultivation-hub-desktop.png)
+![On the cusp: the push is open](docs/screenshots/96-on-the-cusp-desktop.png)
+![The push, answered at once, and a breakthrough](docs/screenshots/97-push-at-the-gate-desktop.png)
+![A circuit sat, and the Elder’s answer](docs/screenshots/98-circulate-elder-answers-desktop.png)
+
+```mermaid
+flowchart TD
+  B["twelve beginnings"] --> M["method chosen in the fourth scene"]
+  B --> L["Law Hall door: the Elder reads the beginning"]
+  M --> L
+  L --> W["Cultivation wayside<br/>10 hubs, 40 roads, 25 scenes each"]
+  W --> C["circulate"] & T["temper"] & D["comprehend"] & P["push at the gate"]
+  C & T & D & P --> E["Elder answers at once"]
+  P -->|"75 percent through the realm"| G["next threshold"]
+  G -->|"karma above the heart demon line"| X["breakthrough"]
+  G -->|"below it"| Y["points gather, the realm waits"]
+  W --> N["a night in the retreat, once a wayside"]
+```
 
 ### Witness Roads and a stage that holds still
 

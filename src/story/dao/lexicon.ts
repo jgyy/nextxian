@@ -1,4 +1,5 @@
 import type { Dao, Origin, Talent } from "@/engine/hero";
+import { beginningMeet } from "../origins/entries";
 import type { Element } from "@/engine/path";
 
 /**
@@ -291,6 +292,7 @@ export const ORIGIN_MEET: Record<Origin, Four> = {
     "{Kname} asks which sect, and you say it, and {kname} does not blink. At {place} the Pavilion’s name is neither a recommendation nor a warning.",
     "An exile is a guest who can leave quickly. {Kname} gives you the stool nearest the door, and means it as a kindness.",
   ],
+  ...(beginningMeet as Record<"cave" | "furnace" | "lamp" | "listener" | "struck" | "dream", Four>),
 };
 
 /** What the keeper reads in the hero’s mastery of their Dao, at the end of a walk. Three variants per rank. */
