@@ -69,7 +69,12 @@ export function synthesize(spec: CrossingSpec): RoadSpec3 {
   };
   const row = (a: number): [string, string, string, string, string] => [beat(a, 0), beat(a, 1), beat(a, 2), beat(a, 3), beat(a, 4)];
   const deepSlots = slotsOf(spec, spec.focus[2]);
-  const deep = [0, 1, 2].map((n) => fill(`${CRAFT_DEEP[spec.dao][n]} ${ELEMENT_DEEP[spec.element][n]}`, deepSlots)) as [string, string, string];
+  // The way down comes before what is found at the bottom, so the first two scenes lead with the element’s stair and passage and the last with the craft’s secret.
+  const deep = [0, 1, 2].map((n) => {
+    const craft = fill(CRAFT_DEEP[spec.dao][n], deepSlots);
+    const element = fill(ELEMENT_DEEP[spec.element][n], deepSlots);
+    return n < 2 ? `${element} ${craft}` : `${craft} ${element}`;
+  }) as [string, string, string];
   return {
     id: spec.id,
     title: spec.title,

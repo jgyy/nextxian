@@ -25,7 +25,7 @@ export const crossingSpecs4: CrossingSpec[] = [
       "The smoke-post is a tall iron stake with a cup of smouldering herb at the top. Hongyan lights the cup with a splint, and the hounds raise their heads in a single motion and turn toward you, all together, to see what you will do.",
     ],
     close: "Hongyan banks the coals in each cell and latches the doors one by one. The yard is dark and warm, and the hounds breathe in the ash like a sleeping fire.",
-    ware: { name: "Hongyan’s Ash-Hound Whistle", kind: "tool", blurb: "A whistle of fired bone that a hound will follow. A tool in the pack, it keeps the qi warm and the stride steady." },
+    ware: { name: "Ash-Hound Whistle", kind: "tool", blurb: "A whistle of fired bone that a hound will follow. A tool in the pack, it keeps the qi warm and the stride steady." },
     holding: { name: "Cell in the Ember Kennel", blurb: "A cell and a hound of your own, a bed of coals, and the right to walk the ash-yard at night." },
   },
   {
@@ -50,7 +50,7 @@ export const crossingSpecs4: CrossingSpec[] = [
       "The burning post flares and gutters in the wind. Zhuhuo cuts at it once, at an angle, and the flame splits in two halves that hang in the air for a heartbeat and then re-join with a soft sound like a sigh.",
     ],
     close: "Zhuhuo smothers the post with a wet cloth and wipes the blade on her sleeve. The ring is silent, the sand is dark, and a thin line of smoke goes up into the stars.",
-    ware: { name: "Zhuhuo’s Brand-Blade Wrap", kind: "token", blurb: "A strip of fire-cured cotton that wraps a sword’s grip. It marks you as one the dancers have taught, and keeps the qi warm." },
+    ware: { name: "Brand-Blade Wrap", kind: "token", blurb: "A strip of fire-cured cotton that wraps a sword’s grip. It marks you as one the dancers have taught, and keeps the qi warm." },
     holding: { name: "Place in the Brand-Dancers’ Ring", blurb: "A place in the ring at dusk, a blade of your own, and a night each week at Zhuhuo’s post." },
   },
   {
@@ -75,7 +75,7 @@ export const crossingSpecs4: CrossingSpec[] = [
       "The burning-bowl is a copper dish with a few embers, and on the embers lie small cones of herb. Wenhuo lights one with a splint, sets it on a patient’s wrist, and takes it off before it burns, with a flick of a finger and a murmur.",
     ],
     close: "Wenhuo opens the shutters to let the smoke out and the dusk in. The house is warm and low-lit, and the patients sleep with the colour back in their faces.",
-    ware: { name: "Wenhuo’s Mugwort Pill", kind: "pill", blurb: "A grey-green pill of mugwort ash and honey. It carries a Core Cultivator over into Nascent Soul." },
+    ware: { name: "Mugwort Ash Pill", kind: "pill", blurb: "A grey-green pill of mugwort ash and honey. It carries a Core Cultivator over into Nascent Soul." },
     holding: { name: "Cot in the Moxa House", blurb: "A cot kept warm for you, a roll of Wenhuo’s moxa each moon, and his leave to treat the pan-workers yourself." },
   },
   {
@@ -100,7 +100,7 @@ export const crossingSpecs4: CrossingSpec[] = [
       "The reading board is a plank of pale wood on which Zhaoyin has pinned the day’s plates in a grid. She runs a nail along a crack and then across a second, and her lips move, and she says nothing until the nail has crossed all the lines.",
     ],
     close: "Zhaoyin rakes the charcoal into a heap and lays a cloth over the hearth. The hut ticks as it cools, and the cracks on the shells shine in the last red light.",
-    ware: { name: "Zhaoyin’s Cracked Shell", kind: "scripture", blurb: "A shell with a reading burnt into it, wrapped in cloth. Studied in the pack, it quickens the mind with a long shadow." },
+    ware: { name: "Cracked Reading-Shell", kind: "scripture", blurb: "A shell with a reading burnt into it, wrapped in cloth. Studied in the pack, it quickens the mind with a long shadow." },
     holding: { name: "Shell at the Hearth of Cracks", blurb: "A shell of your own to burn, a bench at the clay hearth, and a standing question each full moon." },
   },
 
@@ -111,7 +111,7 @@ export const crossingSpecs4: CrossingSpec[] = [
     dao: "beast",
     kgender: "woman",
     title: "The Dust-Horse Lines",
-    place: "the dust-horse lines",
+    place: "the dust-horse line",
     keeper: "the horse-breaker Sai Tulan",
     kname: "Tulan",
     relic: "a coil of rawhide rope, stained brown by a hundred years of grass and hands",
@@ -127,7 +127,7 @@ export const crossingSpecs4: CrossingSpec[] = [
       "The water-trough is a hollowed log full of grey water, and Tulan kneels at it, scoops a handful, and drinks. She says a breaker must never ask a horse to do what she herself would not do, and the nearest mare comes to drink beside her.",
     ],
     close: "Tulan strips the saddle from the last horse and rubs the dust from its flank. The line settles, the wind drops, and the steppe lies low and brown to the sky.",
-    ware: { name: "Tulan’s Rawhide Rope", kind: "tool", blurb: "A coil of rawhide that a horse will follow. A tool in the pack, it keeps the stride long and the qi heavy and sure." },
+    ware: { name: "Rawhide Lead-Rope", kind: "tool", blurb: "A coil of rawhide that a horse will follow. A tool in the pack, it keeps the stride long and the qi heavy and sure." },
     holding: { name: "Peg on the Tether Line", blurb: "A peg and a horse on the line, a share of the foal-crop, and a winter in Tulan’s tent." },
   },
   {
@@ -152,7 +152,7 @@ export const crossingSpecs4: CrossingSpec[] = [
       "The old blade hangs on a peg, half its width gone to the whetstone. Hengshan takes it down and lays it across your palms, and it is lighter than a sword has any right to be, and he tells you not to be fooled.",
     ],
     close: "Hengshan lays the staves in their racks and chalks the day’s hollows. The yard is quiet and warm and the stone holds the footprints like a promise.",
-    ware: { name: "Hengshan’s Stance-Stone", kind: "relic", blurb: "A flat palm-stone worn with two hollows. A relic in the pack, it roots the qi and quiets the stride." },
+    ware: { name: "Hollowed Stance-Stone", kind: "relic", blurb: "A flat palm-stone worn with two hollows. A relic in the pack, it roots the qi and quiets the stride." },
     holding: { name: "Slab in the Stance Yard", blurb: "A slab of your own in the yard, a stave, and a dawn each week with Hengshan on the push-post." },
   },
   {
@@ -177,7 +177,7 @@ export const crossingSpecs4: CrossingSpec[] = [
       "The sling-room is a narrow lean-to hung with strips of linen, each knotted at one end. Jingshi takes one down and fits it round your own arm, and the weight lifts from your shoulder as if it had never been there.",
     ],
     close: "Jingshi packs the last splint with clay and washes his hands in a bucket. The tent is quiet and the riders sleep, and the earth under the floor is warm.",
-    ware: { name: "Jingshi’s Setting-Clay Pill", kind: "pill", blurb: "A heavy grey-brown pill of clay and bone-meal. It carries a Nascent Soul master over into Spirit Severing." },
+    ware: { name: "Setting-Clay Pill", kind: "pill", blurb: "A heavy grey-brown pill of clay and bone-meal. It carries a Nascent Soul master over into Spirit Severing." },
     holding: { name: "Place in the Bonesetters’ Tent", blurb: "A bed kept clean for you, a mallet of your own, and Jingshi’s leave to set a bone a month." },
   },
   {
@@ -202,7 +202,7 @@ export const crossingSpecs4: CrossingSpec[] = [
       "The map is a great quilt of coloured felts stitched in the shape of the steppe, with a button for each camp. Dilan moves a button an inch to the east and the whole quilt seems to shift, and she says she has just saved a family a winter.",
     ],
     close: "Dilan rakes the ground into its rings and weights the felt against the wind. The tent is dark and warm, and the earth under it is silent and keeps its own counsel.",
-    ware: { name: "Dilan’s Lodestone Compass", kind: "relic", blurb: "A palm-sized compass of lodestone that never quite agrees with the north. A relic in the pack, it roots the qi in what is." },
+    ware: { name: "Lodestone Compass", kind: "relic", blurb: "A palm-sized compass of lodestone that never quite agrees with the north. A relic in the pack, it roots the qi in what is." },
     holding: { name: "Quilt-Square of the Steppe", blurb: "A square of the felt map stitched with your name, a place in the tent, and Dilan’s leave to move a button." },
   },
 ];

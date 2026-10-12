@@ -107,6 +107,9 @@ describe("the Crossing Roads", () => {
       expect(pills[0].ware.blurb, w.id).toContain(next === REALMS.length - 1 ? "Ascendant" : REALMS[next].name);
     });
     for (const s of SPECS7) {
+      // A good is “the” and its name, so a keeper’s name in front of it reads “the Dongzhong’s Cracked Bell”.
+      expect(s.ware.name, s.id).not.toContain(s.kname);
+      expect(s.holding.name, s.id).not.toContain(s.kname);
       const asset = story.assets![`${s.id}_hold`];
       expect(asset.income, s.id).toBeGreaterThan(asset.upkeep);
       expect(s.ware.name, s.id).not.toMatch(/^(The|A|An) /);

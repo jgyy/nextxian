@@ -34,7 +34,7 @@ export const crossingSpecs3: CrossingSpec[] = [
     dao: "forging",
     kgender: "man",
     title: "The Quenching Troughs",
-    place: "the quenching troughs",
+    place: "the quenching yard",
     keeper: "the quench-master Tang Hailong",
     kname: "Hailong",
     relic: "a pair of iron tongs rusted to the colour of a fox, one jaw blackened by a thousand blades",
@@ -50,7 +50,7 @@ export const crossingSpecs3: CrossingSpec[] = [
       "On the rack the drowned blades hang, each weighted by a stone and trailing a ribbon of rust. Hailong draws one up and shows you its edge: a sheen like a fish’s belly, and a single flaw, which he says is the reason he keeps it.",
     ],
     close: "Hailong lets the water run to still. The troughs shine, the blades hang quiet, and a thin mist hangs over the yard like a held breath.",
-    ware: { name: "Hailong’s Quench-Tongs", kind: "tool", blurb: "A pair of rust-red tongs that have held a thousand blades. A tool in the pack, they keep the hand steady in any heat." },
+    ware: { name: "Rust-Red Quench-Tongs", kind: "tool", blurb: "A pair of rust-red tongs that have held a thousand blades. A tool in the pack, they keep the hand steady in any heat." },
     holding: { name: "Trough in the Quenching Yard", blurb: "A trough for your own work, a ration of oil and brine, and a say in what the tribunal’s water is used for." },
   },
   {
@@ -59,7 +59,7 @@ export const crossingSpecs3: CrossingSpec[] = [
     dao: "talisman",
     kgender: "man",
     title: "The Ink-Steeping Vats",
-    place: "the ink-steeping vats",
+    place: "the ink yard",
     keeper: "the ink-steeper Sang Wenyuan",
     kname: "Wenyuan",
     relic: "an inkstone of black slate with a hollow worn into it by a single stick of ink",
@@ -75,7 +75,7 @@ export const crossingSpecs3: CrossingSpec[] = [
       "The sample sheets are pinned to a board in rows, each marked with a date. Wenyuan lays his finger on the oldest, a dark clean stroke, and tells you it was written four years ago and has not changed, and that this is a rarer thing than a miracle.",
     ],
     close: "Wenyuan lays the covers back over the vats. The yard is wet and dark, and the surface of every vat holds, for a moment, the single bright coin of the moon.",
-    ware: { name: "Wenyuan’s Seasoned Ink-Stick", kind: "material", blurb: "A stick of seasoned ink that will outlast a verdict. Carried in the pack, it settles the qi like the memory of a clean stroke." },
+    ware: { name: "Seasoned Ink-Stick", kind: "material", blurb: "A stick of seasoned ink that will outlast a verdict. Carried in the pack, it settles the qi like the memory of a clean stroke." },
     holding: { name: "Vat in the Ink Yard", blurb: "A vat of your own, steeped for a season, and the right to the first stick each year." },
   },
   {
@@ -100,7 +100,7 @@ export const crossingSpecs3: CrossingSpec[] = [
       "The depth-gauge is a bronze post with notches, set in the canal’s edge. Linghe peers at the level, reads it by lantern, and marks a figure in chalk on the wall, where a hundred other figures have been rubbed out before it.",
     ],
     close: "Linghe turns the last wheel a quarter and locks the key in its case. The gates hold, the canal sleeps, and the tunnel is only wet stone and a faint sweet smell of the sea.",
-    ware: { name: "Linghe’s Sluice-Key Charm", kind: "relic", blurb: "A thumb-sized brass key on a cord. A relic in the pack, it quiets the qi like a gate closing on a flood." },
+    ware: { name: "Brass Sluice-Key Charm", kind: "relic", blurb: "A thumb-sized brass key on a cord. A relic in the pack, it quiets the qi like a gate closing on a flood." },
     holding: { name: "Gate of Your Own", blurb: "A gate in the chain that answers to your key, a turn at the wheels, and a night in Linghe’s watch-room." },
   },
 
@@ -152,7 +152,7 @@ export const crossingSpecs3: CrossingSpec[] = [
       "The worn grass is a bare circle of earth, trodden flat by sixty years of feet. Chenyi stands at its centre and does not move, and the stave in his hand makes no more sound than a leaf.",
     ],
     close: "Chenyi hangs the stave on its peg and bows to the grove. The bamboo creaks, the sap runs slow, and the grass in the ring lies quietly in the dusk.",
-    ware: { name: "Chenyi’s Split-Bamboo Stave", kind: "tool", blurb: "A practice stave of split bamboo, bound in leather. A tool in the pack, it keeps the hand light and the qi supple." },
+    ware: { name: "Split-Bamboo Stave", kind: "tool", blurb: "A practice stave of split bamboo, bound in leather. A tool in the pack, it keeps the hand light and the qi supple." },
     holding: { name: "Place in the Bamboo Ring", blurb: "A place in the ring, a stave of your own, and a morning with Chenyi each week." },
   },
   {
@@ -202,7 +202,7 @@ export const crossingSpecs3: CrossingSpec[] = [
       "The stool is a plain three-legged thing set before a table of carved cedar. Zhenming sits you on it and says to ask your question, and then, before you can speak, tells you not to say it aloud.",
     ],
     close: "Zhenming gathers the stalks and ties them in their thread. The grove is dim, the river slides past, and the wind in the yarrow sounds exactly like an answer.",
-    ware: { name: "Zhenming’s Cast Stalks", kind: "scripture", blurb: "A bundle of fifty stalks and a worn book of the sixty-four. Studied in the pack, they quicken the mind and cast a long shadow." },
+    ware: { name: "Fifty Cast Stalks", kind: "scripture", blurb: "A bundle of fifty stalks and a worn book of the sixty-four. Studied in the pack, they quicken the mind and cast a long shadow." },
     holding: { name: "Row in the Casting Grove", blurb: "A row of the yarrow to cut for yourself, a mat at the water, and a standing question for each new moon." },
   },
 ];

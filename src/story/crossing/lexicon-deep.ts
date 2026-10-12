@@ -8,16 +8,16 @@ import type { Craft } from "./lexicon-craft";
 export const CRAFT_DEEP: Record<Craft, [string, string, string]> = {
   alchemy: [
     "Shelves of sealed jars line the room, each marked with a year and a name. These are the ones {kname}’s teachers could not sell, and could not bring themselves to pour away.",
-    "A single pill rests on a square of silk in the centre of the room, and it is the wrong colour for any pill you know. Its label says only what it was made to cure, and the illness is one the sect says no longer exists.",
+    "A single pill rests on a square of silk in the centre of the room, and it is the wrong colour for any pill you know. Its label says only what it was made to cure, and the illness is one the registers say no longer exists.",
     "A notebook beside it records the long failure of a lifetime: ninety-one attempts, each with a date, each marked with a small neat cross, except the last, which has a circle.",
   ],
   forging: [
-    "A forge no bigger than a cupboard stands cold in the middle of the room, its bellows rotted to lace. The walls are hung with moulds, each for a blade the sect has no record of.",
+    "A forge no bigger than a cupboard stands cold in the middle of the room, its bellows rotted to lace. The walls are hung with moulds, each for a blade no register has a record of.",
     "On the anvil lies a half-made sword, its tang unfinished and its edge not yet drawn. It has been left like that for decades, and the dust on it is smooth as a sleeve.",
     "Under the anvil, in a tin box, is a ledger of every blade that came out of this room. The last entry is dated the year of the Sealing, and the buyer’s column is blank.",
   ],
   talisman: [
-    "A long table is covered with sheets of paper, each written in a script the sect forbids. They are stacked with care and the top sheet is weighted with a stone smoothed by a thumb.",
+    "A long table is covered with sheets of paper, each written in a script that is no longer taught. They are stacked with care and the top sheet is weighted with a stone smoothed by a thumb.",
     "In a drawer there is a single talisman, folded in four, whose ink has not faded. {Kname} says it is the one thing in the room that was ever finished, and that finishing it cost the writer {ktheir} eyes.",
     "Beneath the drawer a flat box holds the writer’s brush. It is worn to a stub, and there is a thread tied round the handle, and on the thread are knotted forty names.",
   ],
@@ -29,11 +29,11 @@ export const CRAFT_DEEP: Record<Craft, [string, string, string]> = {
   beast: [
     "The room is a nest. Straw lies in drifts in the corners, and the walls are scored with claw-marks of a creature the size of an ox. Whatever lived here was fed with care and never caged.",
     "On a shelf stands a row of tiny carved figures, each a different beast, each with a ribbon about its neck. {Kname} says they are the ones that came back, and that there are fewer than there ought to be.",
-    "At the back a harness is hung on a peg, too wide for any animal that the sect has bred. The leather is soft with oil, and the buckle is polished by a hand that still comes here.",
+    "At the back a harness is hung on a peg, too wide for any animal that is bred now. The leather is soft with oil, and the buckle is polished by a hand that still comes here.",
   ],
   sword: [
     "A long bare room, floored with sand, lined with racks of swords. None bears a maker’s mark, and every one is worn at the grip to the exact shape of a different hand.",
-    "On the far wall a single sword hangs in its scabbard, with a strip of white cloth tied about the hilt. The cloth is a mourning band, and the knot is the one the sect teaches for the dead.",
+    "On the far wall a single sword hangs in its scabbard, with a strip of white cloth tied about the hilt. The cloth is a mourning band, and the knot is the one tied for the dead.",
     "Beneath it is a bench and a notebook. It records, over sixty years, a single stroke, drawn again and again, from every angle, in a hand that grows steadily older and steadily more exact.",
   ],
   healing: [

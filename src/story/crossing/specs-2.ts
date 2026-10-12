@@ -50,7 +50,7 @@ export const crossingSpecs2: CrossingSpec[] = [
       "The great boulder sits at the hall’s end, black and veined with copper. Tiangen says it fell from the sky in his grandfather’s time, and that every smith who has touched it has made one blade of a kind no one else can match.",
     ],
     close: "Tiangen sweeps the day’s waste into a barrow. The hall is silent, and the hammers lie in their rows, each one worn to its owner’s grip.",
-    ware: { name: "Tiangen’s Sorted Ore", kind: "material", blurb: "A sack of the best stone out of the hall, sorted by taste. Carried on the person, it steadies the qi like a weight in a pocket." },
+    ware: { name: "Hand-Sorted Ore", kind: "material", blurb: "A sack of the best stone out of the hall, sorted by taste. Carried on the person, it steadies the qi like a weight in a pocket." },
     holding: { name: "Seat at the Sorting Tables", blurb: "A seat at the tables, a hammer of your own, and the first look at each barrow of ore." },
   },
   {
@@ -75,7 +75,7 @@ export const crossingSpecs2: CrossingSpec[] = [
       "The unfinished stone stands apart from the rest, blank, with only a line scored down its face. Bailao has never carved it. He says it is waiting for something to be written that is worth the weight.",
     ],
     close: "Bailao brushes the dust from the day’s stone and covers it with a cloth. The yard is silent, and the chisels rest, and the shapes of the charms catch the dusk.",
-    ware: { name: "Bailao’s Boundary Token", kind: "token", blurb: "A thumb-sized stone cut with a charm of Bailao’s. It marks you as a friend of the yard and settles the qi in the pocket it sits in." },
+    ware: { name: "Carved Boundary Token", kind: "token", blurb: "A thumb-sized stone cut with a charm of Bailao’s. It marks you as a friend of the yard and settles the qi in the pocket it sits in." },
     holding: { name: "Bench in the Carvers’ Yard", blurb: "A bench and a block in the yard, a mallet and three chisels, and the right to carve your name into one stone." },
   },
   {
@@ -84,7 +84,7 @@ export const crossingSpecs2: CrossingSpec[] = [
     dao: "formation",
     kgender: "woman",
     title: "The Foundation Stakes",
-    place: "the foundation stakes",
+    place: "the stake ring",
     keeper: "the stake-setter Yin Chengxi",
     kname: "Chengxi",
     relic: "a plumb-bob of lodestone on a silk line, cased in a tube of black bamboo",
@@ -152,7 +152,7 @@ export const crossingSpecs2: CrossingSpec[] = [
       "The grindstone is a thin disc of blue-grey stone turned by a foot treadle. Sijun touches a needle to its edge for a heartbeat, and the stone throws off a thread of sparks the colour of a firefly.",
     ],
     close: "Sijun counts the day’s needles into their paper and ties it with thread. The lane quietens, and the tiny hammers rest, and the oil gleams in its trough.",
-    ware: { name: "Sijun’s Silver Needle", kind: "tool", blurb: "A single needle drawn from Sijun’s ingot, in a case of bamboo. A tool in the pack, it carries a steady line through every long working." },
+    ware: { name: "Drawn Silver Needle", kind: "tool", blurb: "A single needle drawn from Sijun’s ingot, in a case of bamboo. A tool in the pack, it carries a steady line through every long working." },
     holding: { name: "Bench in the Needle Row", blurb: "A bench in the row, a drawing plate of your own, and a measure of the ingot to draw from each season." },
   },
   {
@@ -177,7 +177,7 @@ export const crossingSpecs2: CrossingSpec[] = [
       "The burnishing tray is a shallow bed of dog’s teeth, which she uses to polish the leaf. Yuhan rubs a corner of a sheet with a tooth, and the metal answers with a dull deep shine that makes the lamp look dim.",
     ],
     close: "Yuhan packs the day’s leaf between sheets of tissue and ties them in a bundle. The shed stills, the marble cools, and the dust of gold hangs in the last light.",
-    ware: { name: "Yuhan’s Gold-Leaf Book", kind: "scripture", blurb: "A small book of gold-leaf squares, each one an unwritten talisman. Studied in the pack, it steadies the hand and quickens the mind." },
+    ware: { name: "Gold-Leaf Book", kind: "scripture", blurb: "A small book of gold-leaf squares, each one an unwritten talisman. Studied in the pack, it steadies the hand and quickens the mind." },
     holding: { name: "Mallet in the Foil Shed", blurb: "A mallet and a place at the stone, a share of the day’s gold, and a name Yuhan will let you sign." },
   },
   {
@@ -202,7 +202,7 @@ export const crossingSpecs2: CrossingSpec[] = [
       "The ladder is a long one, with rungs bound in cloth. Zhongqi climbs it without hurry, hooks a new strand on the lattice, and tightens it with a small key, and the whole array shifts its note a quarter-tone.",
     ],
     close: "Zhongqi lowers the ladder and wipes the fork with oil. The wires hum, a little higher than before, and a little more content.",
-    ware: { name: "Zhongqi’s Tuning-Fork", kind: "relic", blurb: "A brass tuning-fork the size of a finger. A relic in the pack, it keeps the qi on one clear note." },
+    ware: { name: "Brass Tuning-Fork", kind: "relic", blurb: "A brass tuning-fork the size of a finger. A relic in the pack, it keeps the qi on one clear note." },
     holding: { name: "Strand in the Wire Array", blurb: "A strand of the lattice tuned to your name, a fork of your own, and the right to climb the ladder at night." },
   },
 ];

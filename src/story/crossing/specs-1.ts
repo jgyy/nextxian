@@ -59,7 +59,7 @@ export const crossingSpecs1: CrossingSpec[] = [
     dao: "talisman",
     kgender: "woman",
     title: "The Pulp Vats",
-    place: "the pulp vats",
+    place: "the pulp shed",
     keeper: "the paper-wright Lian Zhuyun",
     kname: "Zhuyun",
     relic: "a bamboo screen of a thousand fine slats, knotted with grey silk",
