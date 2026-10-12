@@ -181,8 +181,10 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
 
   // Each new beat starts at the top of the stage, and the page is brought back to the stage if the player had scrolled down to the options.
   const frame = useRef<HTMLDivElement>(null);
+  const options = useRef<HTMLElement>(null);
   useEffect(() => {
     stage.current?.scrollTo({ top: 0, behavior: "smooth" });
+    options.current?.scrollTo({ top: 0 });
     const top = frame.current?.getBoundingClientRect().top ?? 0;
     if (top < 0) frame.current?.scrollIntoView({ block: "start" });
   }, [game.log.length]);
@@ -206,7 +208,7 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
   }
 
   return (
-    <div className="shell">
+    <div className="shell play">
       <Masthead story={story}>
         <div className="actions">
           <button type="button" className="ghost" onClick={onLoad}>
@@ -226,6 +228,11 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
           <div className="stage-frame" ref={frame}>
             <div className="stage-bar">
               <p className="stage-chapter">{chapterName}</p>
+              {notice && (
+                <p className="notice stage-notice" role="status">
+                  {notice}
+                </p>
+              )}
               <button
                 type="button"
                 className="ghost small"
@@ -262,7 +269,7 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
               </button>
             </div>
           ) : (
-            <section className="choices" aria-label="Your options">
+            <section className="choices" aria-label="Your options" ref={options}>
               <p className="eyebrow">What do you do?</p>
               <ToneLegend />
               <ol>
@@ -302,11 +309,6 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
             </section>
           )}
 
-          {notice && (
-            <p className="notice" role="status">
-              {notice}
-            </p>
-          )}
         </main>
 
         <aside className="side" aria-label="Characters and stats">
@@ -315,6 +317,10 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
           <CultivationPanel game={game} />
           <PursePanel story={story} game={game} />
           <WitnessPanel game={game} />
+          <section className="card side-legend" aria-label="What each choice colour means">
+            <p className="eyebrow">Colours of choice</p>
+            <ToneLegend />
+          </section>
           <StatsPanel stats={game.stats} tones={game.tones} />
         </aside>
       </div>

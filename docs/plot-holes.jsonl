@@ -87,3 +87,7 @@
 {"cat": "economy", "where": "src/story/side-{village,herb-market,pavilion,healer,lantern-stair,sister-shrine,bell-foundry,quarry}.ts", "note": "A purchase, bet, bribe or offering the choice narrated and the purse never felt. Each now costs or pays what it says.", "n": 14}
 {"cat": "typography", "where": "src/story/books/b5/skiff.ts", "note": "Two spaces between sentences.", "n": 1}
 {"cat": "economy", "where": "src/story/fortune/{lexicon,build}.ts", "note": "Fortune Road invest and sell-holding labels named a price the purse did not pay. Each now states the real amount.", "n": 63}
+{"cat": "tone", "where": "src/story/books/*", "note": "A kind act (hug, hold, help, carry, kneel) marked deceit or force, so it cost karma and read to the Elder as a lie or a threat. Retoned to mercy, truth or deceit.", "n": 31}
+{"cat": "wording", "where": "src/story/dao/lexicon.ts", "note": "“a array-master’s craft”: the article now agrees.", "n": 5}
+{"cat": "wording", "where": "src/story/{roads2,fortune}", "note": "“the hour before before”, “lean-to to be remembered”, “lean-to to forget”.", "n": 4}
+{"cat": "dead-remark", "where": "src/story/books/{b2/departure,b4/caravan}.ts", "note": "Two remarks counted decisions since flags nothing sets, so they could never be said. The audit now checks every remark and memory.", "n": 2}

@@ -321,6 +321,17 @@ describe("the stage holds still", () => {
     expect(stage).not.toMatch(/max-height/);
   });
 
+  it("fills the window on a desktop: the stage, the options and the side panels each keep a height of their own and scroll inside it", () => {
+    const shell = css.slice(css.indexOf("/* ── A fixed desktop stage"));
+    expect(shell).toMatch(/@media \(min-width: 900px\) and \(min-height: 640px\)/);
+    expect(shell).toMatch(/\.shell\.play \{\s+height: 100dvh;/);
+    expect(shell).toMatch(/\.shell\.play \.choices,\s+\.shell\.play \.ending \{\s+flex: 0 0 var\(--options-height/);
+    expect(shell).toMatch(/\.shell\.play \.side \{\s+position: static;/);
+    const view = readFileSync("src/components/GameView.tsx", "utf8");
+    expect(view).toContain('className="shell play"');
+    expect(view).toContain("options.current?.scrollTo({ top: 0 })");
+  });
+
   it("keeps a minimum height on a phone, and brings the page back to the stage after a choice", () => {
     expect(css).toMatch(/@media \(max-width: 600px\)[\s\S]*min-height: 62vh/);
     expect(readFileSync("src/components/GameView.tsx", "utf8")).toContain("scrollIntoView");
