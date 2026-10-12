@@ -1,13 +1,32 @@
 # Plot-hole and continuity ledger
 
-Four passes, three asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
+Five passes, three asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
 
 | Pass | Fixed | Of what kind |
 | --- | ---: | --- |
 | First pass (last section) | 884 | 808 dangling flags, dead conditions and time loops, plus 76 hand-found contradictions |
 | Second pass | 1,153 | lines of text, labels and titles the player is shown: 686 wording mismatches in generated roads, 426 typographic, 41 continuity and repetition |
 | Third pass | 1,743 | 1,678 menu lines and paragraphs a player reads twice in one walk of a road, 64 contradictions of the setting, the hero’s realm, the hero’s dress and the hero’s purse, 1 spacing slip |
-| **Fourth pass (this branch)** | **63** | 63 choice labels that named a different price from the one the purse paid. It is short of the 1,000 asked for: see below |
+| Fourth pass | 63 | 63 choice labels that named a different price from the one the purse paid. It is short of the 1,000 asked for: see below |
+
+| **Fifth pass (this branch)** | **42** | 31 choices whose tone contradicted the act, 9 lines of broken wording, 2 remarks that could never be said |
+
+## Fifth pass: 42, and what was looked for and found clean
+
+| Class | Count | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| A kind act marked deceit or force (“Hug him”, “Hold her hand”, “Help her up”, “Carry him in”), which cost karma and read to the Elder as a lie or a threat. The first option of some approaches took the approach’s own tone whatever it said | 28 | a scan of every hand-written choice for gentle verbs with a deceit or force tone, then a read of each scene | `books/*` |
+| “Admit it” marked deceit, “Hand him the ninth card” marked force | 2 | the same | `books/*` |
+| “Say you are the harbour inspector” marked truth, a lie | 1 | the same | `books/*` |
+| “a array-master’s craft” | 5 | a scan of every shown line for a/an against the next sound | `dao/lexicon.ts` |
+| “the hour before before”, “lean-to to be remembered”, “lean-to to forget” | 4 | a scan for doubled words | `roads2/specs-4.ts`, `roads2/hero-lex.ts`, `fortune/lexicon.ts` |
+| A remark counting decisions since a flag nothing sets, so it could never be said (twice) | 2 | the audit, which now checks every remark and memory for flags, counts and items nothing produces | `books/b2/departure.ts`, `books/b4/caravan.ts`, `engine/audit.ts` |
+
+Tests now fail on each class: `tests/consistency.test.ts` (tones, articles, doubled words, the audit).
+
+**Looked for and found clean.** Straight quotes, double spaces, unfilled slots and `undefined` in any shown text; the timeline numbers (fifteen, twelve, nineteen years) against canon; place words in the wrong region (rain on the Glass Sea) across every road; hint numbers and realm names against the requirements they describe; prices in labels against the purse; choices with duplicate ids or labels; scenes where every choice is gated; scenarios, items and holdings nothing uses; 200 random playthroughs (none stuck, none missing a scene) and 21,561 random steps checking the purse, pack, holdings, realm and flags (cultivation fell only through the deliberate strain on a deed beyond the hero’s realm). The total is 42, not 1,000, because that is what the detectors could prove.
+
+Caught while writing the Witness Roads, not counted: a Glass Sea road with reed pipes and “wet grass”, an Elder who in a margin fifteen years ago already knew what the abyss was, a master’s minute that had Wanru sign Mengjiao’s sealing, five keeper names already in the story, and a group name that made the keeper’s reading of your manner lose to the gender line.
 
 ## Fourth pass: 63 lines, and why not 1,000
 

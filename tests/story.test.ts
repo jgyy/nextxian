@@ -296,14 +296,14 @@ describe("reactive NPC", () => {
 
   it("answers the same scenario differently across the trust tiers its choice can reach", () => {
     for (const scenario of Object.values(story.scenarios)) {
-      const { sceneId, choiceId, flags, stats, npc, realm } = locate(scenario.id);
+      const { sceneId, choiceId, flags, stats, npc, realm, wealth, decisions } = locate(scenario.id);
       const reached = new Set<Tier>();
       const replies = new Set<string>();
       for (const trust of [-60, -20, 0, 30, 70]) {
         const base = withNpc(trust, flags);
         // A companion's scenario is answered by how they feel, which is their bond, not the Elder's trust.
         const bonds = scenario.npc ? { [scenario.npc]: trust } : base.bonds;
-        const state: GameState = { ...base, bonds, sceneId, realm, stats: { ...base.stats, ...stats }, npc: { ...base.npc, ...npc, trust } };
+        const state: GameState = { ...base, bonds, sceneId, realm, wealth: Math.max(base.wealth, wealth), decisions: Math.max(base.decisions, decisions), stats: { ...base.stats, ...stats }, npc: { ...base.npc, ...npc, trust } };
         const view = getChoices(getScene(story, sceneId), state).find((v) => v.choice.id === choiceId);
         if (!view?.available) continue; // a choice with a trust requirement is closed to the colder tiers
         reached.add(tierFor(trust));
@@ -958,6 +958,8 @@ function locate(scenarioId: string): {
   stats: Partial<PlayerStats>;
   npc: Partial<NpcState>;
   realm: number;
+  wealth: number;
+  decisions: number;
 } {
   const scene = Object.values(story.scenes).find((s) => s.choices.some((c) => c.npcScenario === scenarioId || c.allyScenario === scenarioId));
   if (!scene) throw new Error(`no scene uses ${scenarioId}`);
@@ -965,10 +967,15 @@ function locate(scenarioId: string): {
   const stats: Partial<PlayerStats> = {};
   const npc: Partial<NpcState> = {};
   let realm = 0;
+  let wealth = 0;
+  let decisions = 0;
   for (const c of choice.requires ?? []) {
     if (c.kind === "realm" && c.min !== undefined) realm = Math.max(realm, c.min);
     if (c.kind === "stat" && c.min !== undefined) stats[c.stat] = c.min;
+    if (c.kind === "stat" && c.max !== undefined && c.min === undefined) stats[c.stat] = c.max;
     if (c.kind === "npc" && c.min !== undefined) npc[c.metric] = c.min;
+    if (c.kind === "wealth" && c.min !== undefined) wealth = Math.max(wealth, c.min);
+    if (c.kind === "decisions" && c.min !== undefined) decisions = Math.max(decisions, c.min);
   }
-  return { sceneId: scene.id, choiceId: choice.id, flags: flagsFor(choice), stats, npc, realm };
+  return { sceneId: scene.id, choiceId: choice.id, flags: flagsFor(choice), stats, npc, realm, wealth, decisions };
 }

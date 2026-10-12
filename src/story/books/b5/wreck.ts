@@ -281,7 +281,7 @@ At the end of the meal, Ren Qiao gets up, walks the length of the deck, and stop
 “It might be a long wait.”
 “I have waited for fifteen years on a bridge.” His voice is steady. “I am good at it.”
 You look at him. He does not look back.
-> force | Sit with him. | wreck_close | +wreck_cleared
+> mercy | Sit with him. | wreck_close | +wreck_cleared
 > truth | Say you will return. | wreck_close | +wreck_cleared
 > quiet | Leave him a blanket. | wreck_close | +wreck_cleared
 > mercy | Say it is not his burden. | wreck_close | +wreck_cleared

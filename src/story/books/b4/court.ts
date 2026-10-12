@@ -366,7 +366,7 @@ She stops. Her voice has gone thin.
 “I used the shape because it was the only thing I had,” she says. “I have been a clerk all my life. A clerk does not know how to say: spare him. She knows how to arrange. I am sorry.”
 Saran has not taken her eyes from her face.
 “Sit down, girl,” she says at last, not unkindly.
-> deceit | Hold her hand. | court_a3s7
+> mercy | Hold her hand. | court_a3s7
 > truth | Say she was brave. | court_a3s7
 > quiet | Give her tea. | court_a3s7
 > mercy | Say nothing. | court_a3s7

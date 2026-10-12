@@ -127,7 +127,7 @@ He is shockingly thin. His face is the colour of tallow. His spectacles are crac
 Gu catches him. He weighs nothing at all.
 > truth | Give him water. | archive_inside | bond:lin+3
 > mercy | Hold him up. | archive_inside | bond:lin+3
-> force | Carry him in. | archive_inside | bond:lin+3
+> mercy | Carry him in. | archive_inside | bond:lin+3
 > quiet | Sit him down. | archive_inside | bond:lin+3
 
 === archive_inside | The Keeper of Keys
@@ -198,7 +198,7 @@ The Elder looks at him. Her face is composed. Her hands, in her lap, are holding
 “You are not meant to do anything,” she says. “But I shall be very glad of your company.”
 > truth | Welcome him. | hub_b6 | +b6q_archive bond:lin+4
 > mercy | Give him your hand. | hub_b6 | +b6q_archive bond:lin+4
-> force | Hand him the ninth card. | hub_b6 | +b6q_archive bond:lin+4
+> truth | Hand him the ninth card. | hub_b6 | +b6q_archive bond:lin+4
 > quiet | Share the blanket. | hub_b6 | +b6q_archive bond:lin+4
 `,
   scenarios: String.raw`

@@ -259,7 +259,8 @@ h2 {
 
 .stage,
 .backlog {
-  max-height: 58vh;
+  /* A fixed height, not a maximum: the options below start at the same place on every scene, however long the text is. */
+  height: clamp(24rem, 60vh, 44rem);
   overflow-y: auto;
   padding: 6px 8px 4px 2px;
   scroll-behavior: smooth;
@@ -1103,7 +1104,8 @@ button.ghost[aria-expanded="true"] {
   }
   .stage,
   .backlog {
-    max-height: none;
+    height: auto;
+    min-height: 62vh;
     overflow: visible;
   }
   .stage-frame {
@@ -1459,4 +1461,164 @@ button.ghost[aria-expanded="true"] {
 }
 .fill-dao {
   background: var(--gold, #d9b35a);
+}
+
+/* ── Word on the road: what the keepers of the Witness Roads have written ── */
+
+.witness h2 {
+  margin: 4px 0 6px;
+  font-size: 1.1rem;
+}
+.witness .repute {
+  font-family: var(--brush);
+  font-size: 1.3rem;
+  color: var(--gilt);
+}
+.witness .repute[data-repute="dark"] {
+  color: var(--ember, #d9795a);
+}
+.witness .repute[data-repute="kind"] {
+  color: var(--jade);
+}
+.witness-note {
+  margin: 0 0 10px;
+  font-size: 0.84rem;
+}
+.witness-deeds {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 0.84rem;
+}
+.witness-deeds li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.witness-deeds li[data-zero="yes"] {
+  color: var(--muted);
+}
+
+/* ── A fixed desktop stage ────────────────────────────────────
+   On a wide, tall screen the game fills the window. The stage, the options and the side panels keep a height of their own and scroll
+   inside it, so the options start at the same place on every scene, whatever the text above them. */
+
+@media (min-width: 900px) and (min-height: 640px) {
+  .shell.play {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .shell.play > .masthead {
+    flex: 0 0 auto;
+    margin-bottom: 14px;
+    padding: 6px 0 12px;
+  }
+  .shell.play .layout {
+    flex: 1 1 auto;
+    min-height: 0;
+    align-items: stretch;
+  }
+  .shell.play .novel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+  }
+  .shell.play .stage-frame {
+    flex: 1 1 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .shell.play .stage,
+  .shell.play .backlog {
+    flex: 1 1 0;
+    min-height: 0;
+    height: auto;
+    max-height: none;
+  }
+  /* Shadows at the edges of the stage say that there is more to read above or below. */
+  .shell.play .stage {
+    background:
+      linear-gradient(var(--panel-raised) 30%, transparent) top / 100% 22px no-repeat local,
+      linear-gradient(transparent, var(--panel) 70%) bottom / 100% 22px no-repeat local,
+      radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.22), transparent) top / 100% 9px no-repeat scroll,
+      radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.22), transparent) bottom / 100% 9px no-repeat scroll;
+  }
+  .shell.play .choices,
+  .shell.play .ending {
+    flex: 0 0 var(--options-height, 40%);
+    min-height: 0;
+    margin: 0;
+    overflow-y: auto;
+  }
+  .shell.play .side {
+    position: static;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  .shell.play .choices ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+  /* The options carry a one-line key; the full meanings sit in the side panel, where there is room. */
+  .shell.play .choices .tone-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 16px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+  .shell.play .choices .tone-legend .meaning {
+    display: none;
+  }
+  .shell.play .side-legend {
+    display: block;
+  }
+  .shell.play .side-legend .tone-legend {
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .shell.play {
+    padding-top: 8px;
+    padding-bottom: 12px;
+  }
+  .shell.play > .masthead {
+    padding: 2px 0 8px;
+    margin-bottom: 10px;
+  }
+  .shell.play .masthead h1 {
+    font-size: 1.5rem;
+  }
+  .shell.play .seal-stamp {
+    width: 44px;
+    height: 44px;
+    font-size: 0.85rem;
+  }
+}
+
+.side-legend {
+  display: none;
+}
+
+/* A notice sits in the stage bar, so it never moves the options. */
+.stage-notice {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

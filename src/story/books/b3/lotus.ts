@@ -200,7 +200,7 @@ He goes over like a felled tree.
 There is a crash that shakes the table. A cloud of dust rises from the flags. Captain Kou lies on his back, looking at the roof, with an expression of extreme surprise.
 The cellar is utterly silent.
 Then Elder Gan, from his stool, begins to laugh. It is a thin cracked cackle like a rusty hinge. Mistress Ping puts her hand to her mouth. Father Ma, peeping through his fingers, makes a faint squeak. And Mei Qiu, at the back of the cellar, bursts into a whoop of laughter so loud and unrestrained that Qiu drops her slate.
-> force | Offer him a hand. | lotus_a2s7
+> mercy | Offer him a hand. | lotus_a2s7
 > truth | Say you are sorry. | lotus_a2s7
 > quiet | Step back. | lotus_a2s7
 > mercy | Ask if he is hurt. | lotus_a2s7

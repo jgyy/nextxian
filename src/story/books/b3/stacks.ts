@@ -310,7 +310,7 @@ The Reader carries the copies to the rail, and folds them into boats, and sends 
 They copy the baker. They copy Bian. They copy Ming of the mill. They copy a child on the Wall, a weaver, a priest, a girl who asked a question.
 By the third night, Hao Lan has copied four hundred and nine.
 She falls asleep at the table, with her cheek on the page, still holding the pen.
-> deceit | Carry her to bed. | stacks_a3s7
+> mercy | Carry her to bed. | stacks_a3s7
 > truth | Take the pen. | stacks_a3s7
 > quiet | Cover her. | stacks_a3s7
 > mercy | Stay by her. | stacks_a3s7
@@ -339,7 +339,7 @@ In the Reading Hall, Hao Lan sits at her table with her chin on her fist, lookin
 “It will take me ninety years.”
 She picks up her pen.
 “I had better start,” she says.
-> deceit | Sit with her. | stacks_close | +stacks_copied
+> mercy | Sit with her. | stacks_close | +stacks_copied
 > truth | Promise to help. | stacks_close | +stacks_copied
 > quiet | Fetch tea. | stacks_close | +stacks_copied
 > mercy | Hug her. | stacks_close | +stacks_copied

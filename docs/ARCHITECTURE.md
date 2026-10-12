@@ -10,6 +10,7 @@ flowchart LR
     RD["roads/<br/>forty Book One side roads, 1,010 scenes"]
     R2["roads2/<br/>forty realm roads, 1,020 scenes"]
     FR["fortune/<br/>forty Fortune Roads, 1,020 scenes,<br/>each pricing its goods, wages and lease"]
+    WR["witness/<br/>forty Witness Roads, 1,020 scenes,<br/>four deeds the Elder answers at once"]
     EC["economy/<br/>five reckonings, seven ending epilogues,<br/>remarks on the purse and the pack"]
     HE["hero/<br/>Elder’s asides, gate echoes, companion remarks"]
     RG["realm-gates.ts<br/>force asks a realm in Book One"]
@@ -26,6 +27,7 @@ flowchart LR
     SV["save.ts<br/>restoreGame"]
     W["words.ts<br/>countWords"]
     T["types.ts"]
+    WI["witness.ts<br/>deeds, repute bands, counts"]
   end
   subgraph UI["src/components + app/"]
     CR["Creation.tsx<br/>who climbs the mountain"]
@@ -37,9 +39,11 @@ flowchart LR
     CP["CultivationPanel.tsx<br/>realm, progress, ladder"]
     PP["PursePanel.tsx<br/>stones, speed by part, pack, holdings"]
   end
-  C & SD & RD & R2 & FR & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & WR & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
+  N --> WI
+  WR --> WI
   G --> N
   G --> TN
   G --> CU
@@ -654,3 +658,24 @@ The scenarios are in `src/story/npc/elder-su.ts`, the reactions added for choice
 - `tests/economy.test.ts` and `tests/fortune.test.ts` check the purse, pack, holdings, speed, payday and pills; that no choice can earn without end; that all 40 Fortune Roads are walkable by a funded hero of the road’s realm, in every approach and the hidden route, never in debt; that every wayside sells exactly one pill, for the realm after the road’s; that no walk of any of the 120 roads repeats a menu line or a paragraph; that the reckonings sit in front of the five gates; and that goods stand in for a realm at three wards.
 - `npm run word-count` reports player-facing words against the 1,000,000-word goal, with the largest scene body against its 200-word cap.
 - CI (`.github/workflows/ci.yml`) runs lint, typecheck, tests, word count, and the production build.
+
+## Witness Roads
+
+Each Witness Road is a Fortune Road underneath, with a keeper who is a witness. Four deeds (`vouch`, `confess`, `conceal`, `ask`) each sit at the start of one approach and carry an NPC scenario, so the Elder answers the moment the hero acts. Deeds set a flag per road, and `engine/witness.ts` counts them for the keepers, the remarks and the panel. The Elder also names a change in the road’s word for the hero (karma crossing into dark, unwritten or kind) at the end of the attitude chain.
+
+```mermaid
+sequenceDiagram
+  participant P as Player
+  participant E as choose()
+  participant N as Elder
+  P->>E: a deed at a Witness Road
+  E->>N: deed scenario: tier line, or memory (suspicion, karma, a lie streak, a silence bought)
+  N-->>E: her line, her change in feeling
+  E->>E: set wr_<deed>_<road>
+  E->>N: attitude chain: realm, tier, mood, respect, manner, then the road’s word
+  E-->>P: next scene, where the keeper reads karma, the Elder’s word, manner and the keepers met
+```
+
+## The fixed desktop stage
+
+At 900 px wide and 640 px tall or more, `.shell.play` is exactly the window: the stage, the options (two columns, a one-line colour key) and the side column each have a fixed share and scroll inside it. Below that the page flows and the stage keeps a minimum height.

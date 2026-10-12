@@ -8,6 +8,10 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 
 - **Wealth, a pack, holdings and cultivation speed.** Spirit stones are the coin of the whole story. You start with a purse that your papers and your trade set, the sect pays you a stipend while you live on its mountain, and the morning the barge leaves the river steps it stops: from then on you pay your own keep, and a cultivator above Qi Condensation eats stones. Goods in your pack (a lamp, a mat, a charm, a seal) and holdings you lease (a stall, a bench, a cave) quicken your cultivation, a pill carries you over the next realm’s threshold, and a purse too light for your keep makes you Unfed and a fifth slower. Every choice that spends or earns shows its price before you pick it.
 - **Talent, Dao and six starting points.** Cultivation now shapes the story. You choose one of eight **talents** (five single roots, mixed, heaven-marked, late bloom) that set your speed, one of nine **Daos** (alchemy, forging, talisman, formation, beast, sword, healing, fate, or the open hand) that give a passive rule and a mastery that grows from Novice to Grandmaster as you walk its roads, and one of six **origins** (the river village, a porter, a rogue, a ruined heir, a Concord courier, a sect’s exile), each with its own prologue, purse and way in. Forty **Dao Roads**, 1,000+ scenes, read your talent, Dao, mastery and origin; the Elder, the companions and the heart demon do too.
+- **Witness Roads: forty more roads, 1,020 more scenes.** Ten waysides, from the petitioners’ bench under the Law Hall’s eaves to the alcoves on the stair to the nine doors, each with four keepers who write people down: a bench-clerk, a rope-counter, a copyist of margins, a water-clock keeper, a hull-registrar, a knot-reader, a note-tuner, a watcher of the seventh door. Each road is 25 scenes in its own words, with goods, a lease and a pill on every wayside.
+- **A cast that reacts to what you did, not only to what you chose.** On every Witness Road the keeper reads your karma at the door, the word that has reached them of the Elder (afraid, suspicious, cold, warm, honoured), the manner of your last eight decisions, and how many keepers have already written you down. You can answer in four ways, each at the start of one approach: give the Elder’s name as surety, confess, pay to be forgotten, or ask to hear your own page. **Elder Su answers on the spot**, in a line that depends on her trust, with a memory for what she has heard of you before. 200 new scenarios, 30 new unprompted remarks (the Elder and nine companions), a face-driven line at every hub, and a new line when your karma crosses into a band the road calls dark, unwritten or kind. A “Word on the road” panel keeps the count.
+- **The options hold still.** On a desktop the game fills the window: the stage, the options and the side panels each keep a height of their own and scroll inside it, so the options start at the same place on every scene. Measured over a twelve-scene walk, the first option sat anywhere in a 253-pixel band before and in none after (see below). Notices moved into the stage bar so they cannot push anything.
+- **42 more plot holes fixed.** 31 choices whose tone contradicted the act (a hug that counted as a lie), 9 lines of broken wording, and 2 remarks that could never be said. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md). The audit now finds the last kind itself.
 - **63 price labels fixed.** See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md). The fourth pass found 63 Fortune Road labels naming a different price from the one the purse paid, and says plainly that this is well short of 1,000.
 - **Forty Fortune Roads, 1,025 more scenes.** Ten new waysides, one at each of ten places the main line stops, from the stalls at the foot of the gate stair to the fair at the foot of the mountain. Each has four roads of 25 scenes, each written in its own words: twenty situations, a hidden route, a way back, and a keeper who sells one good and leases one holding. Prices follow the road’s realm. A pill is sold only to a hero of the road’s realm, a lease only to a hero who has it, and the job a mortal cannot do pays three days’ wages to a hero who can.
 - **Accounts on the road.** Five short scenes stop the company at the river steps and the gates of Books Three to Six to count: the Elder reads your realm against what the road expects, notes if you are Unfed or quick, and lets you spend, share or sit the night. Each of the seven endings closes on the purse and the holdings.
@@ -31,6 +35,40 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 - **Saves in your browser.** Progress is written to `localStorage` after every choice. Storage errors never stop play. Saves from before the Elder kept a reaction history, or before decisions had tones, still load.
 
 ![Scene with no Continue](docs/screenshots/02-no-continue-desktop.png)
+
+### Witness Roads and a stage that holds still
+
+![The petitioners’ bench: the Elder speaks at the hub](docs/screenshots/70-witness-hub-desktop.png)
+![The keeper reads a dark name](docs/screenshots/71-keeper-reads-a-dark-name-desktop.png)
+![The Elder answers at once when her name is given](docs/screenshots/72-vouch-the-elder-answers-desktop.png)
+![A confession](docs/screenshots/73-confess-desktop.png)
+![A silence bought](docs/screenshots/74-conceal-desktop.png)
+![The page read aloud, by the manner of your last decisions](docs/screenshots/75-the-page-read-aloud-desktop.png)
+![Word on the road](docs/screenshots/76-word-on-the-road-desktop.png)
+![The Elder notices the road’s word for you](docs/screenshots/77-the-elder-notices-the-road-desktop.png)
+![The hub on a phone](docs/screenshots/78-witness-hub-mobile.png)
+
+Options before (left scene is long, the other short, the dashed line marks the first option) and after:
+
+![Before, a long scene](docs/screenshots/80-options-before-scene-5.png)
+![Before, a short scene: the options sit 253 pixels higher](docs/screenshots/80-options-before-scene-10.png)
+![After, the same long scene](docs/screenshots/80-options-after-scene-5.png)
+![After, the same short scene: the options have not moved](docs/screenshots/80-options-after-scene-10.png)
+
+```mermaid
+flowchart TD
+  H["wayside hub<br/>the Elder’s face speaks"] --> E["road entry: the keeper reads karma"]
+  E --> A["four approaches, each opens with a deed"]
+  A --> V["vouch: her name"] & C["confess"] & Q["conceal: pay to be forgotten"] & K["ask: hear your page"]
+  V & C & Q & K --> S["Elder answers at once<br/>5 lines by trust, 4 memories"]
+  S --> F["flag per road: wr_vouch_, wr_confess_, wr_conceal_, wr_ask_"]
+  F --> R["remarks and later keepers count them"]
+  F --> P["Word on the road panel"]
+  K --> M["keeper reads the tone of your last 8 decisions"]
+  A --> W["Elder word, manner, roads met: read in the middle scenes"]
+  W --> RT["return: what the keeper will tell the next traveller"]
+  RT --> RP["report: memory lines ahead of the rest"]
+```
 
 ### Talent, Dao and origin
 

@@ -233,7 +233,7 @@ The sergeant lifts his head. His red face is striped with blood. He stares at yo
 “You—” He stops. He puts a hand to his cheek. It comes away red. He looks at it with a kind of dull astonishment. “You’ve cut my face.”
 “I know.”
 “I’ve got a wife.”
-> force | Help him up. | glass_a2s7
+> mercy | Help him up. | glass_a2s7
 > truth | Say you are sorry again. | glass_a2s7
 > quiet | Bow. | glass_a2s7
 > mercy | Ask Lu Yan’s question: where does it hurt? | glass_a2s7
@@ -247,7 +247,7 @@ The sergeant sits on an upturned bucket while Hao Lan sews up his cheek. He winc
 “You didn’t.”
 “No?”
 “He isn’t here,” you say. “I looked.”
-> force | Offer him tea. | glass_a2s8
+> mercy | Offer him tea. | glass_a2s8
 > truth | Smile. | glass_a2s8
 > quiet | Say nothing. | glass_a2s8
 > mercy | Say thank you. | glass_a2s8

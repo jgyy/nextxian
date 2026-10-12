@@ -17,7 +17,7 @@ export const DAO_MEET: Record<Dao, [string, string, string, string]> = {
   ],
   alchemy: [
     "The stain of cinnabar on your fingers does not go unremarked. {Kname} says a pill-maker is welcome at {place}, and that the {craft} trade has never been too proud to learn from yours.",
-    "{Kname} notes the bitter-root smell on your sleeves and asks what a pill-maker wants at a {craft} bench. It is an honest question.",
+    "{Kname} notes the bitter-root smell on your sleeves and asks what a pill-maker wants at the {craft} bench. It is an honest question.",
     "A pill-maker at {place} draws curious looks. {Kname} says the {craft} trade has long envied the patience of yours.",
     "{Kname} finds the furnace-scar on your wrist and relaxes. Your trade is another fire, but it is a fire.",
   ],
@@ -37,7 +37,7 @@ export const DAO_MEET: Record<Dao, [string, string, string, string]> = {
     "You step round a chalk mark on the floor of {place} without looking at it. {Kname} sees you do it and says the array-masters always know where the lines are.",
     "{Kname} watches you count the posts, the lamps and the doors, and understands that you are checking the shape of the place. You are, and it is.",
     "An array-master at {place} reads the room before the people in it. {Kname} has met your kind and does not mind being read.",
-    "{Kname} says that you have the look of someone who sees where a wall holds. At a {craft} bench that is nearly a trade of its own.",
+    "{Kname} says that you have the look of someone who sees where a wall holds. At the {craft} bench that is nearly a trade of its own.",
   ],
   beast: [
     "A sparrow lands on your shoulder at the door of {place}, and {kname} lifts an eyebrow. The {craft} trade has never kept animals, but it respects those who do.",
@@ -49,7 +49,7 @@ export const DAO_MEET: Record<Dao, [string, string, string, string]> = {
     "{Kname} notes the way your hand rests, never quite touching and never quite away, and does not mention the blade. A swordsman at {place} is a guest to be watched.",
     "You enter {place} by the door that keeps the wall at your back. {Kname} sees that, and puts the sharp tools out of reach with great politeness.",
     "{Kname} says the {craft} trade has made a thousand edges and met three honest swordsmen. You are being counted.",
-    "A swordsman looks at a {craft} craft as at a blade: for its balance. {Kname} watches you do it and nods.",
+    "A swordsman looks at the {craft} craft as at a blade: for its balance. {Kname} watches you do it and nods.",
   ],
   healing: [
     "{Kname} sees you look at the old man by the stove, and the way you look. “You are a healer,” says {kname}. “The whole yard knows it now.”",

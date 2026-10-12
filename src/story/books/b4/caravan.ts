@@ -678,6 +678,6 @@ devoted: When this is over I should like to buy her a boat. I do not know what a
 `,
   remarks: String.raw`
 % caravan_nara_later | since:b4q_caravan>=4 | gu | Nara asked whether it is true that camels spit when they are happy. Yue told him it is when they are lying. I do not know which to believe.
-% caravan_yue_later | since:caravan_children_saved>=6 & bond:hao>=-100 | hao | Yue has asked me to keep her ledger. It lists thirty children, and sixty camels, and a boat. In the margin she has written: Not for sale.
+% caravan_yue_later | since:b4q_caravan>=6 & bond:hao>=-100 | hao | Yue has asked me to keep her ledger. It lists thirty children, and sixty camels, and a boat. In the margin she has written: Not for sale.
 `,
 };

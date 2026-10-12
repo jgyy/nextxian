@@ -5,10 +5,10 @@ export function ToneLegend() {
   return (
     <ul className="tone-legend" aria-label="What each colour means">
       {CHOICE_TONES.map((tone) => (
-        <li key={tone} data-tone={tone}>
+        <li key={tone} data-tone={tone} title={TONE_INFO[tone].meaning}>
           <span className="swatch" aria-hidden="true" />
           <span>
-            <strong>{TONE_INFO[tone].name}.</strong> {TONE_INFO[tone].meaning}
+            <strong>{TONE_INFO[tone].name}.</strong> <span className="meaning">{TONE_INFO[tone].meaning}</span>
           </span>
         </li>
       ))}

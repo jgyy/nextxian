@@ -230,7 +230,7 @@ Chimeg is on her feet. She has crossed the rise without her stick. She puts her 
 The old woman taps the stone, softly. Once. Twice. Three times. She turns her blind face to you, and her cheeks are wet. She holds out one hand. You take it. Her fingers are light and dry and very strong. She taps your wrist, twice, over and over.
 Yes. Yes. Yes. Yes.
 You do not need Bold to translate.
-> force | Hold her hand. | stones_a2s8
+> mercy | Hold her hand. | stones_a2s8
 > truth | Say thank you. | stones_a2s8
 > quiet | Stand with her. | stones_a2s8
 > mercy | Weep. | stones_a2s8
@@ -388,7 +388,7 @@ Chimeg has taken his hand. She is tapping on the back of it, over and over, gent
 “She says thank you,” says Bold.
 “I know,” says Duan. “I am quite fluent.”
 He pats her hand. “Tell her,” he says, “that I am very much obliged to have been of use.”
-> deceit | Help him sit. | stones_a3s10
+> mercy | Help him sit. | stones_a3s10
 > truth | Bow to Chimeg. | stones_a3s10
 > quiet | Look at the stone. | stones_a3s10
 > mercy | Fetch tea. | stones_a3s10

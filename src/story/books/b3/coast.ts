@@ -270,7 +270,7 @@ Tong climbs out of the coffin when the longboat is a safe distance away. He is w
 “I could hear him,” says Tong. “He was thinking about his mother.”
 Hao Lan puts her hand over her mouth. Her shoulders shake. It takes you a moment to understand that she is laughing, and a moment more to see that she has been crying as well.
 “Oh, Tong,” she says.
-> deceit | Hug him. | coast_close | +coast_funeral
+> mercy | Hug him. | coast_close | +coast_funeral
 > truth | Ask him what else he heard. | coast_close | +coast_funeral
 > mercy | Give him your water. | coast_close | +coast_funeral
 > quiet | Smile. | coast_close | +coast_funeral

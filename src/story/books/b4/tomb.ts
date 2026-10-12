@@ -264,7 +264,7 @@ He does it without warning. He takes the book from the pedestal, with both hands
 “And you believed it.”
 “Yes.” He sits down on the tiles, as if his legs had been cut. “And I have not forgiven myself for believing.”
 The wall where the book struck begins to glow.
-> force | Kneel beside him. | tomb_a2s8
+> mercy | Kneel beside him. | tomb_a2s8
 > truth | Say nothing. | tomb_a2s8
 > quiet | Watch the wall. | tomb_a2s8
 > mercy | Hold his shoulders. | tomb_a2s8
@@ -278,7 +278,7 @@ It is the wall behind the pedestal. A seam of light runs across it, like a crack
 “No. That is the only way to pass.”
 Ren Qiao wipes his face on his sleeve. He gets slowly to his feet. He crosses the room and begins, with stiff hands, to collect the loose pages. He does it with care. He lays them in a neat pile on the pedestal.
 “I will not leave them on the floor,” he says. “Whatever else.”
-> force | Help him. | tomb_a2s9 | needs:4
+> mercy | Help him. | tomb_a2s9 | needs:4
 > truth | Go through the door. | tomb_a2s9
 > quiet | Hold the lamp. | tomb_a2s9
 > mercy | Say it is enough. | tomb_a2s9

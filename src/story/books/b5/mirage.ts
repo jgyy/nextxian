@@ -304,7 +304,7 @@ The Elder is on her knees in the dust, her hands pressed to her mouth. Ren Qiao 
 “I would like to think,” says Su Wanru, “*thank you.*” She opens her eyes. “But I am afraid it was *wait.*”
 Ember rises. He lays his spear on the glass, and unbuckles his breastplate, and puts it down. The suit of mirror falls in pieces round his feet.
 He yawns, enormously.
-> force | Help him sit. | mirage_close | +mirage_broke
+> mercy | Help him sit. | mirage_close | +mirage_broke
 > truth | Hold the Elder. | mirage_close | +mirage_broke
 > quiet | Look at the sea. | mirage_close | +mirage_broke
 > mercy | Give Ember a blanket. | mirage_close | +mirage_broke
@@ -421,7 +421,7 @@ She is standing at the edge of the crowd. You do not see her come. She is a tall
 “She sat in the chair for six hours.” The Lady’s hands are very still. “I went home. When I came back she was dead. She had starved herself in my office, without a word.”
 “I’m sorry.”
 “Don’t be.” She looks up. Her face is quite clear for an instant: a lined, plain, haunted face of fifty. “It is the only reason I built the city.”
-> deceit | Take her hand. | mirage_a3s9
+> mercy | Take her hand. | mirage_a3s9
 > truth | Bow. | mirage_a3s9
 > quiet | Listen. | mirage_a3s9
 > mercy | Weep. | mirage_a3s9
