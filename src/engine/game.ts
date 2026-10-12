@@ -202,7 +202,7 @@ export function applyEffects(state: GameState, effects: Effect[] = [], speed = 1
 
 /** Lists every choice in the current scene, with locked ones marked and explained. */
 export function getChoices(scene: Scene, state: GameState): ChoiceView[] {
-  return scene.choices.map((choice) => {
+  return scene.choices.filter((choice) => !choice.hideLocked || conditionsHold(choice.requires, state)).map((choice) => {
     const available = conditionsHold(choice.requires, state);
     const gap = realmShortfall(state.realm, choice.needsRealm);
     return {

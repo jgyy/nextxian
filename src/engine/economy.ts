@@ -1,6 +1,6 @@
 import { REALMS, breakthroughNotes, heartDemonBlocks, reachedFlag } from "./cultivation";
 import { DEFAULT_HERO, type Background, type Hero, type Status } from "./hero";
-import { aidReachFor, holdingFactor, livingRebate, ORIGIN_LABEL, ORIGIN_WEALTH, originSpeed, talentSpeed, TALENT_LABEL, toolFactor, unfedFactor } from "./path";
+import { aidReachFor, attunementParts, holdingFactor, livingRebate, ORIGIN_LABEL, ORIGIN_WEALTH, originSpeed, talentSpeed, TALENT_LABEL, toolFactor, unfedFactor } from "./path";
 import type { AssetDef, GameState, ItemDef, LogEntry, Story } from "./types";
 
 /**
@@ -46,7 +46,7 @@ export const MAX_SPEED = 250;
 /** Where the breakthrough pill starts to work: a pill helps a hero within this share of the next realm's points. */
 export const AID_REACH = 0.85;
 
-type Held = Pick<GameState, "wealth" | "items" | "assets" | "realm" | "cultivation" | "stats" | "hero" | "visited">;
+type Held = Pick<GameState, "wealth" | "items" | "assets" | "realm" | "cultivation" | "stats" | "hero" | "visited" | "flags">;
 
 /** True while the hero lives on the sect's stipend: the story names the scene at which they leave. */
 export function inSect(story: Pick<Story, "leavesSect">, state: Pick<GameState, "visited">): boolean {
@@ -94,6 +94,7 @@ export function speedParts(story: Story, state: Held): SpeedPart[] {
   if (root) parts.push({ label: TALENT_LABEL[state.hero.talent], points: root });
   const began = originSpeed(state.hero.origin, state.realm);
   if (began) parts.push({ label: ORIGIN_LABEL[state.hero.origin], points: began });
+  parts.push(...attunementParts(state.flags));
   for (const { item } of carried(story, state)) {
     if (item.speed && state.realm >= (item.needsRealm ?? 0)) parts.push({ label: item.name, points: Math.round(item.speed * toolFactor(state.hero)) });
   }

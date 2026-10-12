@@ -126,6 +126,12 @@ export interface Choice {
   requires?: Condition[];
   /** Shown beside a locked choice explaining what is missing. */
   lockedHint?: string;
+  /**
+   * The choice is not shown at all while its requirements are unmet. It is for doors that open to who the hero *is* (a woman’s
+   * door, a fire root’s door), which another hero could never open and so should not be told about. It does not count toward
+   * the four choices every decision must have.
+   */
+  hideLocked?: boolean;
   effects?: Effect[];
   /** The Elder's reaction to this choice. */
   npcScenario?: string;

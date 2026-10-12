@@ -1523,6 +1523,41 @@ button.ghost[aria-expanded="true"] {
 .practice-list li[data-zero="yes"] {
   color: var(--muted);
 }
+.crossing h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+.element-row {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  font-size: 0.74rem;
+  text-align: center;
+}
+.element-row li {
+  display: grid;
+  gap: 2px;
+  padding: 6px 2px;
+  border: 1px solid var(--panel-edge);
+  border-radius: 6px;
+  color: var(--muted);
+}
+.element-row li[data-level="1"] {
+  color: var(--text);
+  border-style: dashed;
+}
+.element-row li[data-level="2"] {
+  color: var(--text);
+  border-color: var(--gilt);
+  background: rgba(217, 179, 90, 0.12);
+}
+.element-row strong {
+  font-weight: 600;
+  font-size: 0.7rem;
+}
 .cusp {
   margin: 8px 0 0;
   padding: 6px 10px;
