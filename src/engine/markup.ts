@@ -105,6 +105,7 @@ export function parseConditions(source: string, where: string): Condition[] {
       else if ((METRICS as string[]).includes(name)) out.push({ kind: "npc", metric: name as NpcMetric, ...rest });
       else if (name === "realm") out.push({ kind: "realm", ...rest });
       else if (name === "roads") out.push({ kind: "roads", ...rest });
+      else if (name === "progress") out.push({ kind: "progress", ...rest });
       else if (name === "decisions") out.push({ kind: "decisions", ...rest });
       else if (name === "standing") out.push({ kind: "standing", ...rest });
       else if (name === "wealth") out.push({ kind: "wealth", ...rest });

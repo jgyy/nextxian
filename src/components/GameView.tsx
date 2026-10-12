@@ -16,6 +16,7 @@ import { NpcPanel } from "./NpcPanel";
 import { PursePanel } from "./PursePanel";
 import { priceTag } from "@/engine/economy";
 import { StatsPanel } from "./StatsPanel";
+import { PracticePanel } from "./PracticePanel";
 import { WitnessPanel } from "./WitnessPanel";
 import { ToneLegend } from "./ToneLegend";
 
@@ -316,6 +317,7 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
           <NpcPanel profile={story.npc} npc={game.npc} lastLine={lastNpcLine} manner={mannerOf(game.tones)} />
           <CultivationPanel game={game} />
           <PursePanel story={story} game={game} />
+          <PracticePanel game={game} />
           <WitnessPanel game={game} />
           <section className="card side-legend" aria-label="What each choice colour means">
             <p className="eyebrow">Colours of choice</p>

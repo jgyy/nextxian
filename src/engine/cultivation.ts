@@ -79,6 +79,10 @@ export const TONE_GAIN: Record<ChoiceTone, number> = {
 export const HEART_DEMON_FROM = 3;
 export const HEART_DEMON_KARMA = -30;
 
+/** The flag the engine sets on the decision a hero enters a realm, so that a scene can tell a hero who has just broken through from one who has long stood there. */
+export const reachedFlag = (realm: number) => `reached_realm_${realm}`;
+export const REACHED_PREFIX = "reached_realm_";
+
 /** The highest realm whose threshold the points reach, ignoring the heart demon. */
 export function realmForPoints(points: number): number {
   let index = 0;
@@ -123,6 +127,8 @@ export function gainCultivation(state: GameState, amount: number): GameState {
   return {
     ...gained,
     realm: next,
+    flags: { ...gained.flags, [reachedFlag(next)]: true },
+    flagAt: { ...gained.flagAt, [reachedFlag(next)]: gained.decisions },
     log: [
       ...gained.log,
       { kind: "realm", text: `Breakthrough: ${REALMS[next].name}. ${REALMS[next].arrival}${breakthroughNotes(gained, next)}` },

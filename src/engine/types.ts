@@ -32,6 +32,8 @@ export type Condition =
   | { kind: "tone"; tone: ChoiceTone; min?: number; within?: number }
   /** The player's cultivation realm, as an index into `REALMS`. 0 is Mortal. */
   | { kind: "realm"; min?: number; max?: number }
+  /** How far through the current realm the hero is, in percent of the way to the next threshold. 100 at the top of the ladder. */
+  | { kind: "progress"; min?: number; max?: number }
   /** How many side roads the player has finished (flags starting `road_done_`). */
   | { kind: "roads"; min?: number; max?: number }
   /** How a companion feels about the player. Companions are listed in `Story.companions`. */
@@ -75,6 +77,8 @@ export type Effect =
   | { kind: "addNpc"; metric: NpcMetric; amount: number }
   /** Cultivation points on top of the small gain every decision already brings. */
   | { kind: "addCultivation"; amount: number }
+  /** Raises the hero’s points to the threshold of the next realm, if they are short of it. A heart demon still holds the door: the points gather, and the realm waits. */
+  | { kind: "reachGate" }
   /** Changes how a companion feels about the player. An amount of 0 introduces them. */
   | { kind: "addBond"; npc: string; amount: number }
   /** Spirit stones into or out of the purse. The purse never goes below zero, so a choice that spends needs a `wealth` requirement. */

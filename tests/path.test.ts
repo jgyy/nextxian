@@ -35,8 +35,8 @@ const TIERS: Tier[] = ["hostile", "wary", "neutral", "warm", "devoted"];
 const fresh = (h: Hero = DEFAULT_HERO): GameState => createGame(story, h);
 
 describe("the new parts of the character", () => {
-  it("offers six origins, eight talents and nine Daos, each with a label and a line for the creation screen", () => {
-    expect(ORIGINS).toHaveLength(6);
+  it("offers twelve origins, eight talents and nine Daos, each with a label and a line for the creation screen", () => {
+    expect(ORIGINS).toHaveLength(12);
     expect(TALENTS).toHaveLength(8);
     expect(DAOS).toHaveLength(9);
     for (const field of ["origin", "talent", "dao"] as const) {
@@ -258,14 +258,14 @@ describe("starting points", () => {
       expect(story.scenes[g.sceneId], o.value).toBeDefined();
       expect(g.log.length, o.value).toBeGreaterThan(1);
     }
-    expect(startScenes(story)).toHaveLength(6);
+    expect(startScenes(story)).toHaveLength(12);
   });
 
-  it("write five prologues of seven scenes, each within the cap, with four choices and a heading of its own", () => {
-    expect(Object.keys(prologues)).toHaveLength(5);
-    expect(prologueScenes).toHaveLength(35);
+  it("write eleven prologues, five of seven scenes and six of nine, each within the cap, with four choices and a heading of its own", () => {
+    expect(Object.keys(prologues)).toHaveLength(11);
+    expect(prologueScenes).toHaveLength(5 * 7 + 6 * 9);
     for (const [origin, scenes] of Object.entries(prologues)) {
-      expect(scenes, origin).toHaveLength(7);
+      expect(scenes, origin).toHaveLength(["cave", "furnace", "lamp", "listener", "struck", "dream"].includes(origin) ? 9 : 7);
       for (const s of scenes) {
         expect(s.choices.length, s.id).toBeGreaterThanOrEqual(4);
         expect(JSON.stringify(s), s.id).not.toMatch(/\{\w+\}/);
@@ -279,7 +279,7 @@ describe("starting points", () => {
       const seen = new Set<string>([start]);
       const queue = [start];
       while (queue.length) for (const c of story.scenes[queue.pop()!].choices) if (!seen.has(c.next) && c.next !== "law_hall") { seen.add(c.next); queue.push(c.next); }
-      expect([...seen].filter((id) => id.startsWith(`o_${o.value}_`)).length, o.value).toBe(7);
+      expect([...seen].filter((id) => id.startsWith(`o_${o.value}_`)).length, o.value).toBe(prologues[o.value as keyof typeof prologues].length);
       expect([...seen].some((id) => story.scenes[id].choices.some((c) => c.next === "o_" + o.value + "_hall" || c.next === "law_hall")), o.value).toBe(true);
     }
     let g = fresh(hero({ origin: "exile" }));
@@ -310,7 +310,7 @@ describe("starting points", () => {
     }
   });
 
-  it("keeps the whole story sound with six starts: nothing unreachable, no flag left unread", () => {
+  it("keeps the whole story sound with twelve starts: nothing unreachable, no flag left unread", () => {
     expect(validateStory(story)).toEqual([]);
     expect(auditStory(story)).toEqual([]);
   });

@@ -1,4 +1,4 @@
-import { REALMS } from "./cultivation";
+import { REALMS, realmProgress } from "./cultivation";
 import { standingOf } from "./hero";
 import { affinityOf, daoRankOf } from "./path";
 import { CHOICE_TONES } from "./tone";
@@ -211,7 +211,7 @@ export function reactToScenario(
 
 /** What a condition may read. Everything past the first five fields is optional so older callers and saves still work. */
 export type ConditionState = Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones"> &
-  Partial<Pick<GameState, "daoPoints" | "realm" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero" | "wealth" | "items" | "assets" | "speed" | "unfed">>;
+  Partial<Pick<GameState, "daoPoints" | "realm" | "cultivation" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero" | "wealth" | "items" | "assets" | "speed" | "unfed">>;
 
 /** True when every condition holds. An empty or missing list always holds. */
 export function conditionsHold(conditions: Condition[] | undefined, state: ConditionState): boolean {
@@ -239,6 +239,10 @@ export function conditionsHold(conditions: Condition[] | undefined, state: Condi
       }
       case "realm": {
         const v = state.realm ?? 0;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "progress": {
+        const v = Math.round(realmProgress({ cultivation: state.cultivation ?? 0, realm: state.realm ?? 0 }) * 100);
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
       }
       case "roads": {

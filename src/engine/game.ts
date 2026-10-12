@@ -1,7 +1,7 @@
 import { DEFAULT_HERO, HERO_FIELDS, personalise, realmBandFor, startFor, startingPoints, type Hero } from "./hero";
 import { DAO_NAME, DAO_RANKS, daoRankOf, karmaChange, masteryGapFor, ORIGIN_START, toneBonus } from "./path";
 import { applyAid, cultivationSpeed, giveItem, isUnfed, payday, PAYDAY_EVERY, scaled, startingWealth, takeItem, tidy } from "./economy";
-import { applyStrain, gainCultivation, MASTERY_GAIN, MASTERY_GAP, realmForPoints, realmShortfall, realmSurplus, TONE_GAIN } from "./cultivation";
+import { applyStrain, gainCultivation, MASTERY_GAIN, REALMS, MASTERY_GAP, realmForPoints, realmShortfall, realmSurplus, TONE_GAIN } from "./cultivation";
 import {
   conditionsHold,
   mannerShiftLine,
@@ -178,6 +178,10 @@ export function applyEffects(state: GameState, effects: Effect[] = [], speed = 1
       }
       case "addCultivation":
         return { ...s, cultivation: tidy(s.cultivation + scaled(effect.amount, speed)) };
+      case "reachGate": {
+        const next = REALMS[s.realm + 1];
+        return next ? { ...s, cultivation: Math.max(s.cultivation, next.threshold) } : s;
+      }
       case "addWealth":
         return { ...s, wealth: Math.max(0, s.wealth + effect.amount) };
       case "giveItem":

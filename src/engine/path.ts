@@ -131,7 +131,7 @@ export const DAO_PASSIVE: Record<Dao, string> = {
 
 // ───────────── what a talent or a Dao changes in the rules
 
-type Path = Pick<Hero, "talent" | "dao">;
+type Path = Pick<Hero, "talent" | "dao"> & Partial<Pick<Hero, "origin">>;
 
 /** Where a pill starts to work, as a share of the next realm’s points. */
 export const aidReachFor = (hero: Path): number => (hero.dao === "alchemy" ? 0.7 : 0.85);
@@ -156,6 +156,7 @@ export function heartDemonKarmaFor(hero: Path, base = -30): number {
   let karma = base;
   if (hero.dao === "healing") karma -= 20;
   if (hero.talent === "earth") karma -= 10;
+  if (hero.origin === "listener") karma -= 5;
   if (hero.talent === "heaven") karma += 10;
   return karma;
 }
@@ -174,7 +175,7 @@ export function karmaChange(hero: Path, amount: number): number {
 // ───────────── origin
 
 /** Spirit stones a hero begins with from where they came from, on top of papers and trade. */
-export const ORIGIN_WEALTH: Record<Origin, number> = { river: 0, porter: 4, rogue: 2, heir: 10, courier: 6, exile: 1 };
+export const ORIGIN_WEALTH: Record<Origin, number> = { river: 0, porter: 4, rogue: 2, heir: 10, courier: 6, exile: 1, cave: 0, furnace: 8, lamp: 1, listener: 3, struck: 2, dream: 2 };
 
 /** The scene each origin begins in. The river village starts at the gate, as the story always has. */
 export const ORIGIN_START: Record<Origin, string> = {
@@ -184,4 +185,46 @@ export const ORIGIN_START: Record<Origin, string> = {
   heir: "o_heir_0",
   courier: "o_courier_0",
   exile: "o_exile_0",
+  cave: "o_cave_0",
+  furnace: "o_furnace_0",
+  lamp: "o_lamp_0",
+  listener: "o_listener_0",
+  struck: "o_struck_0",
+  dream: "o_dream_0",
+};
+
+/** What the way a hero began adds to their cultivation speed at a realm, in percentage points. Most beginnings add nothing; the six that start in cultivation do. */
+export function originSpeed(origin: Origin, realm: number): number {
+  switch (origin) {
+    case "cave":
+      return realm <= 2 ? 10 : 4;
+    case "furnace":
+      return 6;
+    case "lamp":
+      return 8;
+    case "listener":
+      return realm >= 3 ? 10 : 5;
+    case "struck":
+      return realm <= 1 ? 16 : 4;
+    case "dream":
+      return realm <= 2 ? 22 : realm <= 4 ? 10 : 0;
+    default:
+      return 0;
+  }
+}
+
+/** The name of the speed line for a beginning. */
+export const ORIGIN_LABEL: Record<Origin, string> = {
+  river: "The river village",
+  porter: "A porter’s years",
+  rogue: "A rogue’s road",
+  heir: "A ruined house",
+  courier: "A courier’s round",
+  exile: "A sect’s breath-art",
+  cave: "The dead cultivator’s seat",
+  furnace: "The pill-house furnaces",
+  lamp: "Seven winters of the lamp",
+  listener: "A listener’s ear",
+  struck: "Heaven’s own spark",
+  dream: "A stranger’s breath-art",
 };

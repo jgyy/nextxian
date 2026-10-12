@@ -1,3 +1,4 @@
+import { REACHED_PREFIX } from "./cultivation";
 import { ORIGIN_START } from "./path";
 import type { Condition, Effect, Story } from "./types";
 
@@ -13,6 +14,9 @@ export interface AuditIssue {
 export function startScenes(story: Story): string[] {
   return [story.startSceneId, ...Object.values(ORIGIN_START).filter((id) => id !== story.startSceneId && story.scenes[id])];
 }
+
+/** Flags the engine itself sets, when a hero enters a realm. They need no choice to set them. */
+const isEngineFlag = (flag: string) => flag.startsWith(REACHED_PREFIX);
 
 const isFlag = (c: Condition): c is Extract<Condition, { kind: "flag" }> => c.kind === "flag";
 
@@ -201,10 +205,10 @@ export function auditStory(story: Story): AuditIssue[] {
       if (c.kind === "said" && !possible[scene].has(`said:${c.scenario}`)) {
         issues.push({ kind: "dead-condition", where, message: `${where} needs the Elder to have heard "${c.scenario}", which no path to "${scene}" can trigger` });
       }
-      if (c.kind === "since" && !possible[scene].has(c.flag)) {
+      if (c.kind === "since" && !isEngineFlag(c.flag) && !possible[scene].has(c.flag)) {
         issues.push({ kind: "dead-condition", where, message: `${where} counts decisions since "${c.flag}", which no path to "${scene}" can set` });
       }
-      if (isFlag(c) && c.is !== false && !possible[scene].has(c.flag)) {
+      if (isFlag(c) && c.is !== false && !isEngineFlag(c.flag) && !possible[scene].has(c.flag)) {
         issues.push({ kind: "dead-condition", where, message: `${where} needs flag "${c.flag}", which no path to "${scene}" can set` });
       }
     }
@@ -229,7 +233,7 @@ export function auditStory(story: Story): AuditIssue[] {
     }
   }
   const never = (c: Condition): string | undefined => {
-    if ((isFlag(c) && c.is !== false) || c.kind === "since") return set.has(c.flag) ? undefined : `flag "${c.flag}", which nothing ever sets`;
+    if ((isFlag(c) && c.is !== false) || c.kind === "since") return set.has(c.flag) || isEngineFlag(c.flag) ? undefined : `flag "${c.flag}", which nothing ever sets`;
     if (c.kind === "count") {
       const can = [...set].filter((f) => f.startsWith(c.prefix)).length;
       return (c.min ?? 0) > can ? `${c.min} flags starting "${c.prefix}", of which only ${can} can ever be set` : undefined;
