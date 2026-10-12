@@ -96,8 +96,8 @@ The sect gate rises out of the mist like a sword in a sheath. A gate disciple in
 === o_listener_hall | The Law Hall Door
 Elder Su Wanru’s eyes rest on your face, and on the way your head is tilted, a little to one side, as if you were hearing the lamps. “A listener,” she says. “The Concord has a notice out for the sort of person who stands like that. I am the Law, and I have read it, and I have not yet decided whether to enforce it.”
 The hall is colder than the rain outside. Lamps hang from iron chains, and her hands rest on a folded ledger. She waits for you to come the rest of the way in.
-> truth | Meet her eyes and wait for her to speak. | law_hall | npc:LH_ENTER_LISTENER | |
-> quiet | Keep your eyes down, as someone who has come to be judged. | ^ | | |
-> inquiry | Look past her at the ledger on her knee, and read what you can of its spine. | ^ | insight+2 | |
-> deceit | Put on the face of someone with nothing to hide. | ^ | karma-1 | |
+> truth | Meet her eyes and wait for her to speak. | law_hall | +og_hall_met npc:LH_ENTER_LISTENER |  | 
+> quiet | Keep your eyes down, as someone who has come to be judged. | ^ | +og_hall_met |  | 
+> inquiry | Look past her at the ledger on her knee, and read what you can of its spine. | ^ | +og_hall_met insight+2 |  | 
+> deceit | Put on the face of someone with nothing to hide. | ^ | +og_hall_met karma-1 |  | 
 `;

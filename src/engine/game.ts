@@ -139,7 +139,7 @@ export function enterScene(story: Story, state: GameState, scene: Scene): GameSt
     .map((x) => ({ kind: "npc" as const, speaker: speakerName(story, x.speaker), text: personalise(x.line, state.hero) }));
   const log = [
     ...state.log,
-    { kind: "heading" as const, text: scene.title },
+    { kind: "heading" as const, text: personalise(scene.title, state.hero) },
     ...[...scene.paragraphs, ...extra].map((text) => ({ kind: "narration" as const, text: personalise(text, state.hero) })),
     ...interjections,
   ];

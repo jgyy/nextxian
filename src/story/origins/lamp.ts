@@ -73,10 +73,10 @@ The sect keeps a post at the second switchback, a hut with a bench and a bell, a
 === o_lamp_6 | The Stair in the Dark
 ${talentExtras(2)}
 The stair above the post is steeper and has no lamps, and the blue flame is the only light for a mile. You climb with your eyes on the step in front. Behind you the valley goes dark, and one by one the shrines along the road go out, as they do every night, and you catch yourself counting them. It is the first time in seven winters you have been on the other side of the light.
-+[stair] og_lamp_opened | The letter lies open in your pack, and you have read it so many times that the words have begun to climb alongside you.
++[stair] og_lamp_opened | The letter lies open in your pack. It is four lines long, and the last says: whoever carries this light has kept a promise the Law forgot. Ask the Elder what it was.
 +[stair] og_lamp_sealed | The letter is a stiff weight against your ribs, still sealed, and you know exactly where its edges are.
 +[stair] og_lamp_denied | You told the warden it was not meant for you, and he did not argue. That is the part that stays.
-+[stair] og_lamp_master | The warden told you what the master said. It is the sort of thing a person says at the end of a long breath.
++[stair] og_lamp_master | The warden told you what the master wrote: that a lamp is a promise kept for the dark, and that someone on the mountain made it once.
 > quiet | Climb at the pace of your breath, and let the flame set the rhythm. | + | +og_lamp_pace qi+3 cult+2 |
 > mercy | Stop at each dark shrine on the way and say a word for the one who kept it. | ^ | +og_lamp_words karma+3 |
 > inquiry | Hold the lantern low and read the stair, for the marks of those who have climbed it before. | ^ | +og_lamp_marks insight+3 |
@@ -97,8 +97,8 @@ The sect gate rises out of the mist like a sword in a sheath. A gate disciple in
 === o_lamp_hall | The Law Hall Door
 Elder Su Wanru’s eyes rest on the lantern in your hand, and on the blue flame that does not move in the draught. “When I was a girl,” she says, “a woman at a crossroads showed me a lamp that burned that colour. I have not seen her since. I did not think I would be shown it twice.”
 The hall is colder than the rain outside. Lamps hang from iron chains, and her hands rest on a folded ledger. She waits for you to come the rest of the way in.
-> truth | Meet her eyes and wait for her to speak. | law_hall | npc:LH_ENTER_LAMP | |
-> quiet | Keep your eyes down, as someone who has come to be judged. | ^ | | |
-> inquiry | Look past her at the ledger on her knee, and read what you can of its spine. | ^ | insight+2 | |
-> deceit | Put on the face of someone with nothing to hide. | ^ | karma-1 | |
+> truth | Meet her eyes and wait for her to speak. | law_hall | +og_hall_met npc:LH_ENTER_LAMP |  | 
+> quiet | Keep your eyes down, as someone who has come to be judged. | ^ | +og_hall_met |  | 
+> inquiry | Look past her at the ledger on her knee, and read what you can of its spine. | ^ | +og_hall_met insight+2 |  | 
+> deceit | Put on the face of someone with nothing to hide. | ^ | +og_hall_met karma-1 |  | 
 `;

@@ -264,7 +264,7 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
           {ended ? (
             <div className="ending card">
               <p className="eyebrow">The End</p>
-              <p className="ending-title">{scene.ending}</p>
+              <p className="ending-title">{personalise(scene.ending ?? "", game.hero)}</p>
               <button type="button" onClick={restart}>
                 Play again
               </button>

@@ -13,7 +13,7 @@ import { METHOD_READ } from "@/story/cultivation/lexicon";
 import { DAO_NAME } from "@/engine/path";
 import type { GameState, Tier } from "@/engine/types";
 
-const NEW: Origin[] = ["cave", "furnace", "lamp", "listener", "struck", "dream"];
+const NEW: Exclude<Origin, "river">[] = ["cave", "furnace", "lamp", "listener", "struck", "dream"];
 const TIERS: Tier[] = ["hostile", "wary", "neutral", "warm", "devoted"];
 const hero = (patch: Partial<Hero> = {}): Hero => ({ ...DEFAULT_HERO, ...patch });
 const fresh = (h: Hero): GameState => createGame(story, h);

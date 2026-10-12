@@ -25,7 +25,6 @@ const at = (sceneId: string, h: Hero = DEFAULT_HERO, patch: Partial<GameState> =
 const text = (state: GameState, sceneId: string) => enterScene(story, { ...state, log: [] }, getScene(story, sceneId)).log.map((e) => e.text).join("\n");
 const view = (state: GameState, choiceId: string) => getChoices(getScene(story, state.sceneId), state).find((v) => v.choice.id === choiceId)!;
 const road = "cr_roof_dawn";
-const spec = SPECS6.find((s) => s.id === road)!;
 const entry = (id: string, a: number) => `${id}_a${a}s0`;
 /** Points that put a hero `percent` of the way through `realm`. */
 const along = (realm: number, percent: number): Partial<GameState> => {

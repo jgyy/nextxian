@@ -97,8 +97,8 @@ The sect gate rises out of the mist like a sword in a sheath. A gate disciple in
 === o_cave_hall | The Law Hall Door
 Elder Su Wanru’s eyes rest on your hands, and then on the faint grey haze about your shoulders, which no one else in the hall can see. “Qi gathered in a place with no teacher,” she says, “and no register to hold it. I have not been so interested in a petitioner in some years.”
 The hall is colder than the rain outside. Lamps hang from iron chains, and her hands rest on a folded ledger. She waits for you to come the rest of the way in.
-> truth | Meet her eyes and wait for her to speak. | law_hall | npc:LH_ENTER_CAVE | |
-> quiet | Keep your eyes down, as someone who has come to be judged. | ^ | | |
-> inquiry | Look past her at the ledger on her knee, and read what you can of its spine. | ^ | insight+2 | |
-> deceit | Put on the face of someone with nothing to hide. | ^ | karma-1 | |
+> truth | Meet her eyes and wait for her to speak. | law_hall | +og_hall_met npc:LH_ENTER_CAVE |  | 
+> quiet | Keep your eyes down, as someone who has come to be judged. | ^ | +og_hall_met |  | 
+> inquiry | Look past her at the ledger on her knee, and read what you can of its spine. | ^ | +og_hall_met insight+2 |  | 
+> deceit | Put on the face of someone with nothing to hide. | ^ | +og_hall_met karma-1 |  | 
 `;

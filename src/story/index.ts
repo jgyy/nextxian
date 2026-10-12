@@ -1,6 +1,7 @@
 import type { Scene, Story } from "@/engine/types";
 import { prologueScenes } from "./origins";
 import { beginningItems, beginningScenarios } from "./origins/entries";
+import { originHallEchoes } from "./origins/echoes";
 import { chapterOne } from "./chapter-1";
 import { chapterTwo } from "./chapter-2";
 import { chapterThree } from "./chapter-3";
@@ -147,7 +148,7 @@ function patch(groups: { name: string; scenes: Scene[] }[]): { name: string; sce
       byId.set(from, { ...scene, choices: scene.choices.map((c) => (c.next === to ? { ...c, next: flow.id } : c)) });
     }
   }
-  const echoed = applyEchoes([...byId.values()], [...parseEchoes(echoesOne, "echoes-1"), ...parseEchoes(heroEchoes, "hero/echoes"), ...parseEchoes(pathEchoes, "path/echoes")]);
+  const echoed = applyEchoes([...byId.values()], [...parseEchoes(echoesOne, "echoes-1"), ...parseEchoes(heroEchoes, "hero/echoes"), ...parseEchoes(pathEchoes, "path/echoes"), ...parseEchoes(originHallEchoes, "origins/echoes")]);
   const patched = new Map(echoed.map((s) => [s.id, withBonds(s)]));
   return groups.map((g) => ({ ...g, scenes: g.scenes.map((s) => patched.get(s.id)!) }));
 }

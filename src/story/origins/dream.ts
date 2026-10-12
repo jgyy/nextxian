@@ -60,7 +60,7 @@ You leave the inn at dawn, and a mile down the river road you find that the art 
 > deceit | Tell the next traveller you meet that you learned the art from a master, and let them think it. | ^ | +og_dream_posed karma-2 |
 
 === o_dream_5 | A Master at a Milestone
-A cultivator of the Azure Cloud Sect sits on a milestone, eating a pear, and watches you walk past with your hand on your sternum. “That is the Hollow Roof breath,” she says, with her mouth full, “run by someone who has never been taught it. I have not seen it done in sixty years.” She tells you that the art is one of the sect’s own, and old, and that the last disciple who could breathe it past the ninth line is dead.
+A cultivator of the Azure Cloud Sect sits on a milestone, eating a pear, and watches you walk past with your hand on your sternum. “That is the Hollow Roof breath,” she says, with her mouth full, “run by someone who has never been taught it. I have not seen it done in fifty years.” She tells you that the art is one of the sect’s own, and old, and that the last disciple who could breathe it past the ninth line is dead.
 +[master] og_dream_own | You walked on in your own breath, and she watched the join and did not comment.
 +[master] og_dream_drew | You drew the art on the milestone with a stick, and she corrected a stroke without looking.
 +[master] og_dream_vowed | She heard you vow to the empty road, and she did not laugh, which was a courtesy.
@@ -97,8 +97,8 @@ The sect gate rises out of the mist like a sword in a sheath. A gate disciple in
 === o_dream_hall | The Law Hall Door
 Elder Su Wanru’s eyes rest on your chest, which is rising and falling with a rhythm that does not belong to the hall. “That is the Hollow Roof breath,” she says, very quietly. “I did not think anyone had it any more. Close the door behind you. Slowly. I should like to hear it to the end.”
 The hall is colder than the rain outside. Lamps hang from iron chains, and her hands rest on a folded ledger. She waits for you to come the rest of the way in.
-> truth | Meet her eyes and wait for her to speak. | law_hall | npc:LH_ENTER_DREAM | |
-> quiet | Keep your eyes down, as someone who has come to be judged. | ^ | | |
-> inquiry | Look past her at the ledger on her knee, and read what you can of its spine. | ^ | insight+2 | |
-> deceit | Put on the face of someone with nothing to hide. | ^ | karma-1 | |
+> truth | Meet her eyes and wait for her to speak. | law_hall | +og_hall_met npc:LH_ENTER_DREAM |  | 
+> quiet | Keep your eyes down, as someone who has come to be judged. | ^ | +og_hall_met |  | 
+> inquiry | Look past her at the ledger on her knee, and read what you can of its spine. | ^ | +og_hall_met insight+2 |  | 
+> deceit | Put on the face of someone with nothing to hide. | ^ | +og_hall_met karma-1 |  | 
 `;

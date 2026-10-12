@@ -27,7 +27,7 @@ const SCENE_REMARKS: Record<string, { when: Condition[]; line: string }[]> = {
   law_hall: [
     {
       when: [{ kind: "realm", max: 0 }],
-      line: "You have no qi gathered, only a trained mortal’s breath. A mortal climbed my steps in the rain with mud to the knee, and I have nothing in this hall that will keep that safe. Be quick, and be careful.",
+      line: "You have no qi gathered, only a trained mortal’s breath. I have nothing in this hall that will keep a mortal safe. Be quick, and be careful.",
     },
   ],
   abyss_truth: [

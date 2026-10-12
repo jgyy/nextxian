@@ -37,7 +37,8 @@ warm: You gave the pilgrim your light and sat in the dark. I heard of it before 
 devoted: Seven winters of steady breath, and you came up the stair without once hurrying. This mountain has a great many fast cultivators. It has been waiting a long while for a slow one.
 ? og_lamp_m_feed | You fed the flame everything you had. I can see the cost in the colour of your hands. The flame is brighter than the lamp. I would prefer it were the other way about.
 ? og_lamp_m_share | You taught a child to breathe at your lamp before you left. I wonder how many people on this mountain have ever done that for anyone.
-? og_lamp_opened | You opened the master’s letter in front of the warden. I have the warden’s account of what it said. I should like yours.
+? og_lamp_opened | The letter told you to ask me what the promise was. I was nine, and a woman at a crossroads lit a lamp and asked me to come back and keep it. I did not. Sit down.
+? og_lamp_sealed | You carry a sealed letter in a dead master’s hand and did not open it. Do not open it in my hall. Open it by a light that is your own.
 
 $ LH_ENTER_LISTENER | trust+0 respect+0 | elder | The hedge-listener’s ward meets Elder Su’s eyes.
 hostile: A listener, and unregistered, on my threshold, with a Concord notice for company. The Law can be generous. It is rarely generous to people who walk in unannounced and listening.
