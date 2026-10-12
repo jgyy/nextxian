@@ -34,6 +34,8 @@ import { daoAssets, daoEntrances, daoGroups, daoItems, daoScenarios, waysideBack
 import { parsedWitnessRemarks } from "./witness/remarks";
 import { parsedCultivationRemarks } from "./cultivation/remarks";
 import { cultivationAssets, cultivationEntrances, cultivationGroups, cultivationItems, cultivationScenarios, waysideBack6 } from "./cultivation";
+import { parsedGenderedRemarks } from "./gendered/remarks";
+import { genderedBack, genderedEntrances, genderedGroup, genderedItems, genderedScenariosParsed, GENDERED_ORIGIN } from "./gendered";
 import { accountsReadThePath } from "./crossing/accounts";
 import { parsedCrossingRemarks } from "./crossing/remarks";
 import { crossingAssets, crossingEntrances, crossingGroups, crossingItems, crossingScenarios, waysideBack7 } from "./crossing";
@@ -102,7 +104,8 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
     const witness = witnessEntrances[scene.id];
     const cultivation = cultivationEntrances[scene.id];
     const crossing = crossingEntrances[scene.id];
-    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : []), ...(dao ? [dao] : []), ...(witness ? [witness] : []), ...(cultivation ? [cultivation] : []), ...(crossing ? [crossing] : [])] };
+    const doors = scene.id === GENDERED_ORIGIN ? genderedEntrances : [];
+    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : []), ...(dao ? [dao] : []), ...(witness ? [witness] : []), ...(cultivation ? [cultivation] : []), ...(crossing ? [crossing] : []), ...doors] };
   });
   const groups = chapter ? roadGroups.filter((g) => g.chapter === Number(chapter[1])) : [];
   const fortunes = fortuneGroups
@@ -120,6 +123,9 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
   const crossings = crossingGroups
     .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
     .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack7(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+  const gendered = scenes.some((x) => x.id === GENDERED_ORIGIN)
+    ? [{ name: genderedGroup.name, scenes: [...genderedGroup.scenes, genderedBack(scenes.find((x) => x.id === GENDERED_ORIGIN)!)] }]
+    : [];
   return [
     { ...c, scenes },
     ...groups.map(({ name, scenes: roads, wayside }) => {
@@ -132,6 +138,7 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
     ...witnesses,
     ...cultivations,
     ...crossings,
+    ...gendered,
   ];
 });
 
@@ -223,13 +230,14 @@ export const story: Story = {
     ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios, ...realmRoadScenarios, ...fortuneScenarios, ...daoScenarios, ...witnessScenarios, ...cultivationScenarios, ...crossingScenarios }),
     ...Object.fromEntries(parseScenarios(scenariosOne, "scenarios-1").map((x) => [x.id, x])),
     ...Object.fromEntries(parseScenarios(pathScenarios, "path/scenarios").map((x) => [x.id, x])),
+    ...Object.fromEntries(genderedScenariosParsed.map((x) => [x.id, x])),
     ...Object.fromEntries(parseScenarios(beginningScenarios, "origins/entries").map((x) => [x.id, x])),
     ...Object.fromEntries(
       books.flatMap((book) => book.arcs.flatMap((arc) => (arc.scenarios ? parseScenarios(arc.scenarios, `${book.id}/${arc.id}/scenarios`) : []))).map((x) => [x.id, x]),
     ),
   },
   companions,
-  items: { ...fortuneItems, ...daoItems, ...witnessItems, ...cultivationItems, ...crossingItems, ...beginningItems },
+  items: { ...fortuneItems, ...daoItems, ...witnessItems, ...cultivationItems, ...crossingItems, ...genderedItems, ...beginningItems },
   assets: { ...fortuneAssets, ...daoAssets, ...witnessAssets, ...cultivationAssets, ...crossingAssets },
   leavesSect: "departure_dawn",
   asides: heroAsides,
@@ -239,6 +247,7 @@ export const story: Story = {
     ...parsedWitnessRemarks(),
     ...parsedCultivationRemarks(),
     ...parsedCrossingRemarks(),
+    ...parsedGenderedRemarks(),
     ...parseRemarks(heroRemarks, "hero/remarks"),
     ...books.flatMap((book) => book.arcs.flatMap((arc) => (arc.remarks ? parseRemarks(arc.remarks, `${book.id}/${arc.id}/remarks`) : []))),
   ],
