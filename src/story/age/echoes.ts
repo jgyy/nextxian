@@ -31,4 +31,9 @@ export const ageBookEchoes = String.raw`
 // ---- The river steps: the barge leaves and the stipend stops
 >> departure_dawn | ag_river | years<=10 | The barge will not wait for your years, and the river is long. You count the span your realm gives you against the water, and do not like the sum.
 >> departure_dawn | ag_river | age<=19 | You step aboard with the luggage of a child and the face of an adult, and nobody on the barge is quite sure which of you to speak to.
+// ---- The register says twenty: the seed spends the years of the body it wakes in
+>> reserve_b1 | ag_seed | hero:age=youth | “The register says you were five that night, and are twenty,” she says, and looks at the face in front of her. “The seed has been slow in you. It spends years where it wakes, and has spent very few.”
+>> reserve_b1 | ag_seed | hero:age=prime | “The register says you are twenty,” she says, and looks at the lines at your eyes. “The seed does not read the register. It spends the years of the body it wakes in, and it has spent some of yours.”
+>> reserve_b1 | ag_seed | hero:age=mature | “The register says you are twenty,” she says, and looks at the grey. “The seed does not read the register. It spends the years of the body it wakes in, and it has spent a great many of yours.”
+>> reserve_b1 | ag_seed | hero:age=elder | “The register says you are twenty,” she says, and looks at your hands. “The seed does not read the register. It spends the years of the body it wakes in. It has spent nearly all of yours, and I did not know it.”
 `;

@@ -1,7 +1,8 @@
 import type { Age, Hero } from "./hero";
 
 /**
- * Age. The hero begins at a number of years, and the story keeps count: a year goes by every few decisions. A realm is also a span of
+ * Age. The hero begins at a number of years, and the story keeps count: a year is spent every few decisions. (The register says the Wanderer is twenty; the black
+ * seed spends years where it wakes, so the years are the body’s, and they go by with the work the body does, not with the days the scenes name.) A realm is also a span of
  * years, so a cultivator who stays in a low realm grows old and one who breaks through is given back their time. Age sets the opening
  * numbers, the rate of cultivation, how the Elder and the keepers read the hero, and which doors on the Age Roads are theirs.
  */
@@ -125,7 +126,7 @@ export function lifespanNote(realm: number, bonus = 0): string {
 export function birthdayLine(hero: Aged, state: Years): string {
   const age = ageOf(hero, state.decisions);
   const left = lifeLeft(hero, state);
-  const base = `A year has gone by. You are ${age}.`;
+  const base = `Another year is spent in the body. You are ${age}.`;
   if (left <= 0) return `${base} You are past the years your realm allows, and the body knows it.`;
   if (left <= WANING_YEARS) return `${base} Your realm allows you ${left} more. Break through, or find years elsewhere.`;
   if (left <= 10) return `${base} Your realm allows you ${left} more.`;

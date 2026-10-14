@@ -146,7 +146,7 @@ export const HERO_FIELDS: readonly HeroField[] = ["origin", "age", "talent", "da
 
 export const FIELD_TITLE: Record<HeroField, string> = {
   origin: "Where your story begins",
-  age: "How many years you carry",
+  age: "How many years your body carries",
   talent: "The roots you were born with",
   dao: "The Dao you cultivate beside your qi",
   gender: "How they will speak of you",

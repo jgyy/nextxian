@@ -123,7 +123,7 @@ describe("years pass and a realm is a span of them", () => {
     const g = at("law_hall", hero({ age: "elder" }), { decisions: DECISIONS_PER_YEAR - 1 });
     const after = choose(story, g, "honest_account");
     const ledger = after.log.filter((e) => e.kind === "ledger").map((e) => e.text);
-    expect(ledger.some((t) => t.startsWith("A year has gone by. You are 69."))).toBe(true);
+    expect(ledger.some((t) => t.startsWith("Another year is spent in the body. You are 69."))).toBe(true);
     expect(ledger.some((t) => t.includes("Your realm allows you 7 more"))).toBe(true);
     const broke = at("law_hall", hero({ age: "elder" }), { cultivation: 14, decisions: 1 });
     const through = choose(story, broke, "honest_account");
