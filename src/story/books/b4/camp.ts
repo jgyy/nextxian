@@ -272,7 +272,7 @@ He looks sidelong at you.
 
 === camp_a3s3 | A Small Conspiracy
 She is waiting for you in a tent at the edge of the ring, in the dark, with the flap closed. She is small and hard-faced and leathery, in a plain brown coat. She is sitting very upright on a stool with a mask in her lap. Her hands are knotted together. She does not rise.
-“You are the girl,” she says.
+“You are the one who came up the mountain in the rain,” she says.
 “I am.”
 “He is a good man.” She says it without preface. “I have watched him. For six years. From a long way. I stood on a ridge above the Ash Bridge, in the rain, and watched him walk to his post.” Her voice is rough. “He did not see me.”
 “Why did you not speak?”

@@ -1,4 +1,5 @@
-import { REACHED_PREFIX } from "./cultivation";
+import { REACHED_PREFIX, REALMS } from "./cultivation";
+import { BOND_RANGE, NPC_RANGE, STAT_RANGE } from "./game";
 import { ORIGIN_START } from "./path";
 import type { Condition, Effect, Story } from "./types";
 
@@ -240,6 +241,20 @@ export function auditStory(story: Story): AuditIssue[] {
     }
     if (c.kind === "item" && (c.min ?? (c.max === undefined ? 1 : 0)) > 0 && !given.has(c.item)) return `item "${c.item}", which nobody is ever given`;
     if (c.kind === "asset" && c.is !== false && !granted.has(c.asset)) return `holding "${c.asset}", which nobody is ever granted`;
+    // The realms run from Mortal to Ascendant, so a bound below the first or above the last, or a minimum over the maximum, is held by no one.
+    if (c.kind === "realm") {
+      const top = REALMS.length - 1;
+      const min = c.min ?? 0;
+      const max = c.max ?? top;
+      if (min > top || max < 0 || min > max) return `a realm from ${c.min ?? "the first"} to ${c.max ?? "the last"}, which no hero can have`;
+    }
+    // A stat, a feeling or a bond that is held between fixed limits cannot be asked for beyond them.
+    const limits: [number, number] | undefined = c.kind === "stat" ? STAT_RANGE[c.stat] : c.kind === "npc" ? NPC_RANGE[c.metric] : c.kind === "bond" ? BOND_RANGE : c.kind === "progress" ? [0, 100] : undefined;
+    if (limits && c.kind !== "realm") {
+      const lo = (c as { min?: number }).min ?? limits[0];
+      const hi = (c as { max?: number }).max ?? limits[1];
+      if (lo > limits[1] || hi < limits[0] || lo > hi) return `${c.kind === "stat" ? c.stat : c.kind === "npc" ? c.metric : c.kind} from ${(c as { min?: number }).min ?? "the least"} to ${(c as { max?: number }).max ?? "the most"}, which lies outside what it can be`;
+    }
     return undefined;
   };
   const impossible = (where: string, conditions: Condition[] | undefined, skipFlags = false) => {

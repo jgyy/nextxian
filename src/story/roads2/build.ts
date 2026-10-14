@@ -6,7 +6,7 @@ import { approachModes, fill, roadFlag, walkBase } from "../roads/build";
 import { BEAT_EXTRA, CHOICE_EXTRA, spread } from "../roads/lexicon-extra";
 import { focusKind, pickFit } from "../roads/kinds";
 import { ATTIRES, BACKGROUNDS, GENDERS, LOOKS, STATUSES } from "@/engine/hero";
-import { BIRTH, bandBounds, DRESS, FACE, MANNER, REALM_REACT, SEND_OFF, TRADE, type RealmKind, type RelBand } from "./hero-lex";
+import { BIRTH, bandBounds, bandHeld, DRESS, FACE, MANNER, REALM_REACT, SEND_OFF, TRADE, type RealmKind, type RelBand } from "./hero-lex";
 import { CRISIS, DEEP, HUMBLED, PULLED_RANK, REACHED, USED_QI } from "./lexicon-state";
 import {
   APPROACH_LABEL2,
@@ -93,7 +93,7 @@ export function heroGroup<V extends string>(
 
 /** One extra per band of the hero’s realm against the road’s, in one group. */
 export function realmGroup(kind: RealmKind, road: number, seed: number, slots: Record<string, string>, group: string): Extra[] {
-  return BANDS.map((band) => {
+  return BANDS.filter((band) => bandHeld(band, road)).map((band) => {
     const { min, max } = bandBounds(band, road);
     return {
       when: [{ kind: "realm" as const, ...(min !== undefined ? { min } : {}), ...(max !== undefined ? { max } : {}) }],
@@ -284,7 +284,7 @@ export function buildRoad2(spec: RoadSpec2, ctx: RoadContext2): Scene[] {
       id: `${id}_h${n}`,
       title: `${spec.title}: ${title}`,
       paragraphs: [fill(spec.deep[n], slots)],
-      ...(n === 2 ? { extras: BANDS.map((band) => ({ when: [{ kind: "realm" as const, ...bandBounds(band, R) }], paragraphs: [fill(pick(DEEP[band], ctx.index), slots)], group: "read" })) } : {}),
+      ...(n === 2 ? { extras: BANDS.filter((band) => bandHeld(band, R)).map((band) => ({ when: [{ kind: "realm" as const, ...bandBounds(band, R) }], paragraphs: [fill(pick(DEEP[band], ctx.index), slots)], group: "read" })) } : {}),
       choices: sceneTones(modes[2], n, 2).map((tone, c) => ({
         id: tone,
         label: fill(pickFit([...CHOICE_LABEL2[tone], ...CHOICE_EXTRA[tone]], walkBase(ctx.index, 2, tone) + 5 + n, slots.focus), labelSlots(slots, tone, ctx.index + n + c)),
@@ -359,7 +359,8 @@ export function buildReport2(spec: RoadSpec2, ctx: RoadContext2): NpcScenario {
       { when: [{ kind: "flag", flag: roadFlag(id, "pulled_rank") }], line: fill(REPORT_MEMORY2.rank, slots) },
       { when: [{ kind: "flag", flag: roadFlag(id, "kept_relic") }], line: fill(REPORT_MEMORY2.relic, slots) },
       { when: [{ kind: "tone", tone: "deceit", min: 3, within: 6 }], line: fill(REPORT_MEMORY2.deceit, slots) },
-      { when: [{ kind: "realm", min: R + 2 }], line: fill(REPORT_MEMORY2.over, slots) },
+      // Two realms above the last realm is no one, so the line starts where a hero can be.
+      ...(R + 2 <= REALMS.length - 1 ? [{ when: [{ kind: "realm" as const, min: R + 2 }], line: fill(REPORT_MEMORY2.over, slots) }] : []),
       // Two realms below a road at the second realm is Mortal, which a hero in the later books almost never is, so the line starts at the third realm.
       ...(R >= 3 ? [{ when: [{ kind: "realm" as const, min: 1, max: R - 2 }], line: fill(REPORT_MEMORY2.under, slots) }] : []),
     ],

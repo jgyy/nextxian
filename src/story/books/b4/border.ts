@@ -293,7 +293,7 @@ You tie the red cloth round your wrist. It is soft, and it smells of milk and sm
 // ---------------------------------------------------------------- a3: the letter
 === border_a3s1 | The Letter
 The letter is in a leather tube, sealed with black wax. You break the seal. It is a single sheet of grey paper, folded in three, written in a small clear hand that has the faint tremor of a very careful writer. It is eleven years old, and has been carried so long that the creases are white.
-It says: To the woman who will decide. I am writing this knowing you may never read it. I am Hui Niang, once a Censor, now a seller of paper. I ask nothing for myself. I ask hearing for the bearer of the ninth card, if she should come. She will be a stranger to you. She will be afraid. Let her ask.
+It says: To the woman who will decide. I am writing this knowing you may never read it. I am Hui Niang, once a Censor, now a seller of paper. I ask nothing for myself. I ask hearing for the bearer of the ninth card, if {they} should come. {They} will be a stranger to you. {They} will be afraid. Let {them} ask.
 It stops there. There is a signature, and a drop of what might once have been wine.
 “That is rather good,” says Hao Lan. “It is simple. It makes no demands.”
 “It is a very honest letter,” says the Elder.

@@ -14,6 +14,7 @@ flowchart LR
     CR["cultivation/<br/>forty Cultivation Roads, 1,020 scenes,<br/>four practices the Elder answers at once"]
     XR["crossing/<br/>forty Crossing Roads, 1,380 scenes:<br/>gender, root and craft doors, attunement"]
     AR["age/<br/>forty Age Roads, 1,136 scenes:<br/>five ages meet eight realms, a door of years,<br/>seven turning points, endings that read the years"]
+    CS["custom/<br/>forty Custom Roads, 1,490 scenes:<br/>ten customs, four keepers, a door for a woman,<br/>a man or no answer, seven gender turning points"]
     GD["gendered/<br/>Left Cloister, Right Yard, Third Door"]
     OG["origins/<br/>twelve beginnings, eleven prologues"]
     EC["economy/<br/>five reckonings, seven ending epilogues,<br/>remarks on the purse and the pack"]
@@ -35,6 +36,7 @@ flowchart LR
     T["types.ts"]
     WI["witness.ts<br/>deeds, repute bands, counts"]
     PR["practice.ts<br/>four practices, the cusp, counts"]
+    CUS["custom.ts<br/>customSummary: kept, bent, broken, stood for"]
   end
   subgraph UI["src/components + app/"]
     CR["Creation.tsx<br/>who climbs the mountain"]
@@ -47,8 +49,9 @@ flowchart LR
     XP["CrossingPanel.tsx<br/>elements attuned, doors taken"]
     AP["AgePanel.tsx<br/>years against the span of the realm"]
     PP["PursePanel.tsx<br/>stones, speed by part, pack, holdings"]
+    CUP["CustomPanel.tsx<br/>the tally of the doors of custom"]
   end
-  C & SD & RD & R2 & FR & WR & CR & XR & AR & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
   G --> AG
@@ -57,6 +60,8 @@ flowchart LR
   N --> WI
   WR --> WI
   CR --> PR
+  CS --> CUS
+  CUS --> CUP
   G --> N
   G --> TN
   G --> CU
@@ -69,7 +74,7 @@ flowchart LR
   GV --> SV
   GV --> CR
   CR -->|Hero| G
-  GV --> NP & SP & CP & HP & PP & XP & AP
+  GV --> NP & SP & CP & HP & PP & XP & AP & CUP
   GV -->|localStorage save| Storage[("Browser storage")]
 ```
 
@@ -767,3 +772,25 @@ flowchart TD
 ```
 
 Seven turning points of the main line (the gate, the Law Hall, the abyss path, the archive, the sutra door, the second descent, the sealing night) offer a hero of nineteen or less, of thirty-two to sixty-two, or of sixty-three or more one hidden way of meeting the scene. Six endings read the hero’s years. The hero panel shows age and the years the realm allows; the Age panel shows the years against the span, the roads walked and the years the roads gave.
+
+## Custom Roads and gender in the main line
+
+Ten customs of the sect that sort people by gender meet four keepers each (a woman who holds the custom, a man who holds it, a woman who bends it, a man who bends it): forty roads in `src/story/custom/`, built by `buildRoad9` over the same road skeleton as the others (entry, four approaches of five scenes, three hidden scenes, return) plus **the door of custom**. The door sits in the middle of every approach. It opens by `hero:gender` to a scene for a woman, a man or someone who gives no answer, and four picks lie behind it: keep, bend, break in the open, stand for the one passed over. The picks do not cost alike: a woman breaks a barred door with Insight, a man turns down his place with qi and needs a clean name for his word to stand for anyone, and someone who gives no answer pays in qi to stay in the middle of the room.
+
+```mermaid
+flowchart TD
+  H["wayside hub: 10, one custom each"] --> R["road: custom x keeper, 37 scenes"]
+  R --> A["entry, greeting, notes, costs and goodbye<br/>each read by the hero’s gender"]
+  R --> D["door of custom (one scene per gender)"]
+  D --> P{"keep / bend / break / stand"}
+  P --> E["DOOR_REPLY: Elder answers at once<br/>gender x pick x trust tier = 60 lines"]
+  P --> F["cs_pick_way_ cs_door_ cs_clash_ cs_ease_"]
+  F --> RP["report: clash or ease memory first"]
+  F --> CUS["customSummary -> CustomPanel"]
+  F --> RM["remarks: Elder and 15 companions"]
+  F --> EN["endings: lastseal_choice reads gender and way"]
+```
+
+The seven main-line turning points (`custom/main.ts`) add hidden `custom_<gender>` choices to the gate, Law Hall, abyss entry, archive gate, tribunal testimony, descent return and sealing night; each sets `cs_main_<gender>_<scene>` and is answered by a scenario of five trust lines. A scenario with memory would override its tier lines, so the Elder’s answers to the doors are one scenario per (gender, pick) with five tiers, and the memories live in the report scene instead.
+
+**Audit.** `auditStory` now also fails on conditions no hero can meet: a realm outside the ladder, or a stat, NPC, bond or progress bound outside its limits. Roads that offered a band above Ascendant, or a memory needing a realm above the ladder, are filtered by `bandHeld` and the cultivation builder.

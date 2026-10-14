@@ -380,28 +380,28 @@ Ning bursts into tears. She sits down on the floor and weeps, with the notice in
 > mercy | Fetch a bun. | crib_a3s6
 
 === crib_a3s6 | The Masters’ Answer
-It comes the next morning, and it is not what you hoped: twenty men in black, led by a tall pale man in a long coat. He reads the notice. He folds it in four. He puts it in his sleeve.
-“This is a forgery,” he says, in a pleasant voice.
+It comes the next morning, and it is not what you hoped: twenty men in black, led by a tall woman in an ash-grey coat. She reads the notice. She folds it in four. She puts it in her sleeve.
+“This is a forgery,” she says, in a pleasant voice.
 Ning stands in front of the nursery door with her arms folded. “It is stamped.”
-“The stamp is genuine.” He smiles. “The signature is a clever imitation. I know the hand. It is that of a Registrar I once knew.” His pale eyes find yours. “She is, I am told, in the camp.”
+“The stamp is genuine.” She smiles. “The signature is a clever imitation. I know the hand. It is that of a Registrar I once knew.” Her slate eyes find yours. “She is, I am told, in the camp.”
 Nobody speaks. The children, in the doorway behind the Matron, have gone silent.
-“I do not propose to cause a scene,” the man says. “I am Lian Sheng. Master of the Law of Azure Cloud.” He bows slightly. “I propose that the nine be returned to the Reserve. That the Matron be reassigned. And that the Registrar of Azure Cloud present herself to me at noon, for a conversation.”
-Behind you, very softly, the Elder says: “He has not changed in fifteen years.”
+“I do not propose to cause a scene,” the woman says. “You know me. Master of the Law of Azure Cloud.” She bows slightly. “I propose that the nine be returned to the Reserve. That the Matron be reassigned. And that the Registrar of Azure Cloud present herself to me at noon, for a conversation.”
+Behind you, very softly, the Elder says: “She has not changed in fifteen years.”
 > deceit | Step forward. | crib_a3s7
 > truth | Wait. | crib_a3s7
 > quiet | Look at the Elder. | crib_a3s7
 > mercy | Stand with Ning. | crib_a3s7
 
 === crib_a3s7 | Lian Sheng
-He is forty-eight, and he looks thirty. Tall, spare, with a dead-white face, black hair swept back, and eyes the colour of slate. He moves with the precision of a man who has never had to hurry. He is the hard one. You can feel it in the way the Matron’s apron shakes.
-“Wanru,” he says, as she steps out of the shadow. “You have grown thin.”
+She is sixty, and looks it. Tall, spare, with a face like carved walnut, white at the temples, and eyes the colour of slate. She moves with the precision of a woman who has never had to hurry. She is the hard one. You can feel it in the way the Matron’s apron shakes.
+“Wanru,” she says, as the Elder steps out of the shadow. “You have grown thin.”
 “Lian.”
-“I had thought you retired. In quiet disgrace.” His voice is gentle. “It was the kindest outcome.”
+“I had thought you retired. In quiet disgrace.” Her voice is gentle. “It was the kindest outcome.”
 “It was a lie.”
-“It was a courtesy.” He smiles. “I had understood that you had taken to the road with a child. I had hoped to avoid a confrontation.”
+“It was a courtesy.” She smiles. “I had understood that you had taken to the road with a child. I had hoped to avoid a confrontation.”
 “So had I.”
-“Then we agree.” He gestures. “Give me the nine, and we may all go home.”
-The Elder looks at him. She looks at the doorway where nine small faces peer round the Matron’s skirts. She looks at the green form in his sleeve.
+“Then we agree.” She gestures. “Give me the nine, and we may all go home.”
+The Elder looks at her. She looks at the doorway where nine small faces peer round the Matron’s skirts. She looks at the green form in her sleeve.
 “I signed that exemption,” she says, “as the Registrar of the Second Class.”
 “Which you no longer are.”
 “I am, until the Assembly says otherwise.” Her voice is dry as bone. “You may check the Charter.”
@@ -411,25 +411,25 @@ The Elder looks at him. She looks at the doorway where nine small faces peer rou
 > mercy | Look at the children. | crib_a3s8
 
 === crib_a3s8 | The Charter
-He checks it. He is a scrupulous man. He takes a small blue book from his sleeve and finds a page. He reads for a full minute with the faintest smile. The Elder stands motionless, with her hands folded. Behind her, Duan Wuyi, who has arrived at the double with his seal and a pocket Charter, is mouthing a clause.
-“Article forty-one,” says Lian Sheng, at length. “A Registrar may be removed only by vote of the Assembly of Peaks, on a charge of dereliction or fraud.” He closes the book. “There has been no vote.”
+She checks it. She is a scrupulous woman. She takes a small blue book from her sleeve and finds a page. She reads for a full minute with the faintest smile. The Elder stands motionless, with her hands folded. Behind her, Duan Wuyi, who has arrived at the double with his seal and a pocket Charter, is mouthing a clause.
+“Article forty-one,” says Lian Sheng, at length. “A Registrar may be removed only by vote of the Assembly of Peaks, on a charge of dereliction or fraud.” She closes the book. “There has been no vote.”
 “No.”
 “Nor, so far as I know, a charge.”
 “Not yet,” says Duan Wuyi, cheerfully, “but I would be glad to bring one. Against any person who interferes with an act of the Registrar.”
-Lian turns. His pale eyes rest on Duan for a long moment. “Censor-General,” he says. “I did not know you were here.”
+Lian turns. Her slate eyes rest on Duan for a long moment. “Censor-General,” she says. “I did not know you were here.”
 “It is the great advantage of my office. One is so rarely expected.”
-For a moment, you think Lian will draw his sword. His hand twitches. His nostrils flare. Then he lets out a slow breath, and smiles.
-“Very well,” he says. “A postponement.”
+For a moment, you think Lian will draw her sword. Her hand twitches. Her nostrils flare. Then she lets out a slow breath, and smiles.
+“Very well,” she says. “A postponement.”
 > deceit | Breathe. | crib_a3s9
 > truth | Nod. | crib_a3s9
 > quiet | Hold still. | crib_a3s9
 > mercy | Hug Ning. | crib_a3s9
 
 === crib_a3s9 | A Year
-“A postponement,” repeats Lian Sheng. He puts the blue book in his sleeve. “Of one year. To the next ninth night. The nine will be exempt. A fresh nine will be chosen.” He looks at the Elder. His voice is silky. “You have bought your Reserve a year, Wanru. I commend you.”
+“A postponement,” repeats Lian Sheng. She puts the blue book in her sleeve. “Of one year. To the next ninth night. The nine will be exempt. A fresh nine will be chosen.” She looks at the Elder. Her voice is silky. “You have bought your Reserve a year, Wanru. I commend you.”
 “Thank you.”
-“I would not rely on it.” He bows, a shade ironically. “It is amazing what can happen in twelve months.”
-He goes out. His men follow, in a double file, with their eyes lowered. The dust of their boots hangs in the doorway.
+“I would not rely on it.” She bows, a shade ironically. “It is amazing what can happen in twelve months.”
+She goes out. Her men follow, in a double file, with their eyes lowered. The dust of their boots hangs in the doorway.
 There is a silence. Then Matron Ning, with a small wondering sound, sits down on the step.
 “A year,” she says. “They’re mine for a year.”
 “Yours,” says the Elder.
@@ -660,8 +660,8 @@ The Elder sits at the tent door with her knees together. She is looking at the s
 
 === crib_close2 | What the Cribs Meant
 She tells you at three in the morning, when the others are asleep and the lamp has burned low. She has not slept. She sits with the tread in her lap, running her thumb along the edge, and she speaks in the voice she uses for the second ledger.
-“Lian Sheng wanted the nine,” she says. “He did not ask where they were. He came at once, on the second morning, with twenty men. He knew.”
-“He had been told.”
+“Lian Sheng wanted the nine,” she says. “She did not ask where they were. She came at once, on the second morning, with twenty men. She knew.”
+“She had been told.”
 “By whom?” She looks up. “Someone in this camp is carrying messages to the masters. Someone who knew about the form within a day.” Her face is grave. “I have been thinking who.”
 “Who?”
 “I do not know.” She shakes her head. “It is someone who sees everything. Who is trusted. Who has walked with us from the Steppe.”

@@ -108,3 +108,9 @@
 {"cat": "panel", "where": "src/components/CultivationPanel.tsx", "note": "The panel gave −30 as the heart demon’s line for every hero; it now reads the hero’s own.", "n": 1}
 {"cat": "preview", "where": "src/engine/hero.ts", "note": "The creation preview said “someone who gives no answer of 68”.", "n": 1}
 {"cat": "dead-condition", "where": "src/story/age/build.ts", "note": "The eight Mortal roads offered a lesser way to a traveller below Mortal and carried a flag and two memories that nothing could set.", "n": 5}
+{"cat": "dead-condition", "where": "src/story/roads2, fortune", "note": "Conditional paragraphs behind a realm outside the ladder; bands filtered by bandHeld.", "n": 662}
+{"cat": "dead-condition", "where": "src/story/roads2, fortune, cultivation", "note": "Report memories needing a realm no hero can reach.", "n": 42}
+{"cat": "hero-gender", "where": "src/story/books/b2..b5", "note": "Lines that told every hero they were a girl, a lady, a madam or “she”.", "n": 22}
+{"cat": "npc-gender", "where": "src/story/books/b5, b6", "note": "Lian Sheng changed gender between books; now a woman throughout.", "n": 40}
+{"cat": "npc-gender", "where": "src/story/books/b5, b6", "note": "Old Lin changed gender between books; now a woman throughout.", "n": 5}
+{"cat": "tone", "where": "src/story/books/b3..b5", "note": "A hug or embrace tagged as truth; now mercy.", "n": 6}

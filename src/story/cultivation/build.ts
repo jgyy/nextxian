@@ -241,7 +241,10 @@ export function buildPracticeScenario(practice: Practice, spec: RoadSpec6, ctx: 
     summary: `The player ${summary[practice]} at ${spec.place}.`,
     delta: PRACTICE_DELTA[practice],
     lines: { hostile: line("hostile"), wary: line("wary"), neutral: line("neutral"), warm: line("warm"), devoted: line("devoted") },
-    memory: PRACTICE_MEMORY[practice].map((variants, n) => ({ when: table[practice][n], line: fill(`${pick(variants, ctx.index + n)} ${tail("memory", n)}`, slots) })),
+    // A memory for a hero two realms above the last realm is no one's, so a road at the top asks nothing of it.
+    memory: PRACTICE_MEMORY[practice]
+      .map((variants, n) => ({ when: table[practice][n], line: fill(`${pick(variants, ctx.index + n)} ${tail("memory", n)}`, slots) }))
+      .filter((m) => !m.when.some((c) => c.kind === "realm" && (c.min ?? 0) > REALMS.length - 1)),
   };
 }
 

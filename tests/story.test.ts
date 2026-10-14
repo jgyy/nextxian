@@ -397,10 +397,12 @@ describe("reactive NPC", () => {
 });
 
 describe("player choices", () => {
-  it("starts at the gate with the four first options and the road down to the pilgrims", () => {
+  it("starts at the gate with the four first options, the road down to the pilgrims, and the way of someone who gives no answer", () => {
     const game = createGame(story);
     expect(game.sceneId).toBe("gate");
-    expect(getChoices(getScene(story, "gate"), game)).toHaveLength(5);
+    // The opening hero gives no answer, so the gate also offers the way only that hero has of giving a name.
+    expect(getChoices(getScene(story, "gate"), game)).toHaveLength(6);
+    expect(getChoices(getScene(story, "gate"), { ...game, hero: { ...game.hero, gender: "woman" } })).toHaveLength(6);
   });
 
   it("reaches the close of Book One through the sealing choice, with Mengjiao freed", () => {
@@ -978,6 +980,8 @@ function locate(scenarioId: string): {
   let progress = 0;
   const hero: Partial<Hero> = {};
   for (const c of choice.requires ?? []) {
+    // A choice that opens only to a woman, a man or someone who gives no answer is found as that hero.
+    if (c.kind === "hero" && c.field === "gender" && c.is?.length) hero.gender = c.is[0] as Hero["gender"];
     if (c.kind === "age") hero.age = c.max !== undefined && c.max < 24 ? "youth" : (c.min ?? 0) >= 63 ? "elder" : "mature";
     if (c.kind === "realm" && c.min !== undefined) realm = Math.max(realm, c.min);
     if (c.kind === "stat" && c.min !== undefined) stats[c.stat] = c.min;

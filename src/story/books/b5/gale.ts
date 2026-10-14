@@ -412,9 +412,9 @@ It becomes a joke. He builds another, that afternoon, from a barrel and a spar a
 “It’s a barrel.”
 “It’s a very *lucky* barrel.” Temur has regained his equilibrium. “Every voyage should have one. A small boat for the wind to follow.” He nods wisely. “It prevents sulks.”
 Ren Qiao, watching, makes a noise in his throat. It might be a laugh.
-“There was a man on the Ash Bridge,” he says. “Old Lin. He kept a cat. He said every bridge needs one thing for the wind to look at.” He shrugs. “I thought it was nonsense. It always kept the draught off the ropes.”
+“There was a woman on the Ash Bridge,” he says. “Old Lin. She kept a cat. She said every bridge needs one thing for the wind to look at.” He shrugs. “I thought it was nonsense. It always kept the draught off the ropes.”
 “What happened to the cat?”
-“It died. He got another.” His voice is quiet. “Old Lin said you’re not looking after the cat. You’re looking after the habit of kindness.”
+“It died. She got another.” His voice is quiet. “Old Lin said you’re not looking after the cat. You’re looking after the habit of kindness.”
 He watches the barrel dwindle across the plain.
 “I’d forgotten that,” he says.
 > deceit | Smile. | gale_a3s9

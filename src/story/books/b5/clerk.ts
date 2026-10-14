@@ -391,23 +391,23 @@ They notice on the third day. The wage fails to arrive. The first of the month c
 “Which Masters?”
 “The nine.” The young man swallows. “They will not like it.”
 “I am quite sure they won’t,” says Duan, mildly.
-Behind him, in the shadow of the tent, a tall pale man in a long grey coat has appeared. He is standing quite still, with his hands behind him, listening. He has the face of a drawn blade.
+Behind him, in the shadow of the tent, a tall woman in a long ash-grey coat has appeared. She is standing quite still, with her hands behind her, listening. She has the face of a drawn blade.
 > deceit | Step forward. | clerk_a3s7
 > truth | Hold still. | clerk_a3s7
 > quiet | Watch Lian Sheng. | clerk_a3s7
 > mercy | Look at the Clerk. | clerk_a3s7
 
 === clerk_a3s7 | Lian Sheng Reads It
-He reads the instrument standing in the aisle of the Office, in the grey light, with a thousand pens turning to watch him. He holds it at arm’s length. His slate eyes move over it line by line. He reads the whole of it twice. At the end he folds it carefully, and hands it back to Duan.
-“It is a very good quitclaim,” he says.
+She reads the instrument standing in the aisle of the Office, in the grey light, with a thousand pens turning to watch her. She holds it at arm’s length. Her slate eyes move over it line by line. She reads the whole of it twice. At the end she folds it carefully, and hands it back to Duan.
+“It is a very good quitclaim,” she says.
 “Thank you.”
-“I would not have thought of the rider.” He smiles faintly. “*Present or future.* It is a clever stroke.” He folds his hands. “I congratulate whoever drafted it.”
+“I would not have thought of the rider.” She smiles faintly. “*Present or future.* It is a clever stroke.” She folds her hands. “I congratulate whoever drafted it.”
 “A junior clerk.”
-“She has a future.” His pale gaze rests on Hao Lan for a moment, and she goes stiff. “However.” He turns. “It is, I am afraid, void.”
+“She has a future.” Her slate gaze rests on Hao Lan for a moment, and she goes stiff. “However.” She turns. “It is, I am afraid, void.”
 “Why?”
 “The Clerk is not a legal person.”
 Duan’s face falls.
-“It cannot sign,” says Lian Sheng, gently. “It cannot contract. It cannot release. An instrument is a nullity if one party is an instrument.” He bows slightly. “The Treasury will resume payment on the first. I trust the Clerk will accept it.”
+“It cannot sign,” says Lian Sheng, gently. “It cannot contract. It cannot release. An instrument is a nullity if one party is an instrument.” She bows slightly. “The Treasury will resume payment on the first. I trust the Clerk will accept it.”
 In the silence a thousand pens tremble.
 > deceit | Look at the Clerk. | clerk_a3s8
 > truth | Look at Duan. | clerk_a3s8
@@ -415,16 +415,16 @@ In the silence a thousand pens tremble.
 > mercy | Step forward. | clerk_a3s8
 
 === clerk_a3s8 | Not a Person
-“I am not a person,” says the Clerk. Its voice is small. “That is what he said.”
-Lian Sheng inclines his head. “It is a regrettable fact.”
+“I am not a person,” says the Clerk. Its voice is small. “That is what she said.”
+Lian Sheng inclines her head. “It is a regrettable fact.”
 “Then who was it signing?”
-“A fiction. An administrative convenience.” He sounds almost kind. “I am sorry. It is nobody’s fault.”
+“A fiction. An administrative convenience.” She sounds almost kind. “I am sorry. It is nobody’s fault.”
 The black pen hangs quite still over the great desk. The tent is silent. Hao Lan has her fist pressed to her mouth. Duan Wuyi has gone grey.
 “I thought,” says the Clerk, “I had done something.”
 “You have done nothing, I am afraid.”
 “I see.” A long pause. “It was only a gesture.”
 “It was a *lovely* gesture,” says Lian Sheng, and turns to go.
-You step forward. You do not know what you will say. You have your hand out, as if to stop him, and your mouth open.
+You step forward. You do not know what you will say. You have your hand out, as if to stop her, and your mouth open.
 “Wait,” says a voice from the doorway.
 It is Tsering. He is in the doorway, in his white robe, with his hearing-trumpet and his stamp. He is trembling so that the trumpet rattles. “Master Lian. I beg your pardon.”
 > deceit | Turn. | clerk_a3s9

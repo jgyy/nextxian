@@ -258,7 +258,7 @@ Your mouth is dry.
 She lays the album on the counter and folds her hands over it.
 “The year before the Sealing, I drafted a rota. A very dull paper. It assigned the east dormitory of the Law Hall to the Concord’s care, for the reserve. It listed nine cots. I wrote the number myself. I had no idea what I was writing. I thought it was a boarding school.”
 She lifts her eyes.
-“I walked out of the fire with seven children, and a number I had written on every one of their rails.” She smiles, but it is a small and broken smile. “Do you wish to cancel the order, madam? I will understand if you do.”
+“I walked out of the fire with seven children, and a number I had written on every one of their rails.” She smiles, but it is a small and broken smile. “Do you wish to cancel the order, {honorific}? I will understand if you do.”
 > deceit | Say you wish to continue. | mourning_a3s6
 > truth | Say that you are not a customer. | mourning_a3s6
 > quiet | Say nothing. | mourning_a3s6

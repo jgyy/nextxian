@@ -185,3 +185,10 @@ Ten more waysides, one from each hub of the later books, each with four roads of
 - **The door of years.** On each road, in the middle of the second approach, a door opens to a hero by how far their years stand from the keeper’s: the same stretch of life, older, younger, and for the road of a youth or of an elder, far older or far younger. A hero sees one scene behind it. One of its four picks gives years to a hero who has twenty or fewer left, a realm near the road’s, and the qi to pay.
 - **Seven turning points** (the gate, the Law Hall, the abyss path, the archive, the sutra door, the second descent, the sealing night) offer a hero of nineteen or less, of thirty-two to sixty-two, or of sixty-three or more a way of meeting the scene that only their years allow.
 
+## Customs, gender and the people who carry them
+
+- **Lian Sheng and Old Lin are women** in every book. Lian Sheng (the crib, the clerk, the festival, the summit, the archive) was a man in some lines of Books Five and Six; Old Lin (the gale, the bridge, the archive) was a man in five lines. Both are “she”.
+- **Ten customs** of the sect, one wayside each: lineage (the memorial), mats (the hermit hut), ledgers (the archive index), names (the second sutra inscriptions), matches (the jade eye letter), council (the assembly hub back), mourning, hands (the ward entry), arms (the coast close) and kin (the pilgrims’ close). A keeper either holds the custom as it was handed down or bends it; none of them is a villain.
+- **The Elder** is a woman of forty-three who has kept the Law twelve years. She says what it cost her to be read as one thing in a hall that expected another, and does not claim any gender has it easier. She answers a woman, a man or someone who gives no answer differently.
+- **A hero is never “a girl”, “a lady”, “madam” or “she” to the whole cast.** Lines about the hero use the pronoun, honorific and person slots.
+- **A hug is mercy, not truth.** The chain, the mill, the festival and the singing scenes tag the embrace as mercy.

@@ -91,7 +91,7 @@ You read the first line. You know it.
 
 === nine_a1s8 | Master Gui Smiles
 The old man is still sitting on the step when you come down, with his cup of tea gone cold. He raises his face to you.
-“You were let in by four,” he says. “I was told you would be.” He smiles with half his mouth. “The fifth door is mine. I put the note. I put it there fifty years ago, and I have been waiting for the person who would read it. I did not think it would be a Wanderer with a seed in her chest.”
+“You were let in by four,” he says. “I was told you would be.” He smiles with half his mouth. “The fifth door is mine. I put the note. I put it there fifty years ago, and I have been waiting for the person who would read it. I did not think it would be a Wanderer with a seed in {their} chest.”
 He sets the cup down.
 “I have been blind for forty years,” he says. “I read the Ledger too long. It does that to some people. I did not mind. I have never seen so clearly.”
 > truth | Thank him, and ask what he wants. | nine_close | +nine_gui_ally
@@ -348,7 +348,7 @@ It reads: To the Keeper of the Ninth Door, if I am dead. The nine are listed on 
 > inquiry | Look at the corner of the paper. | ^
 
 === nine_h3 | The Other Side
-There are nine lines. They are numbered, one to nine. Beside each number is an initial, not a name. Beside number nine, a smudge, as of a thumb. And in the margin, in the neat hand of the Elder: Nine was the youngest. She had a hand that would not stop reaching for the lamp.
+There are nine lines. They are numbered, one to nine. Beside each number is an initial, not a name. Beside number nine, a smudge, as of a thumb. And in the margin, in the neat hand of the Elder: Nine was the youngest. The child had a hand that would not stop reaching for the lamp.
 You read it standing. The skylight is white. The cold seed in your chest has gone very quiet, the way a sleeper does when a hand is laid on its brow.
 The door is open behind you. The light is on the stair. Somewhere below, a deaf woman is sweeping a floor, and a blind man is drinking tea in the sun.
 > truth | Take the list to the Elder, tonight. | nine_close | +nine_gui_ally +nine_list

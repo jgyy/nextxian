@@ -464,7 +464,7 @@ Each one weighs the same as the first.
 === ladder_a4s1 | Old Wen
 He is eighty if a day, and bent almost double. He leans on a staff, with a bundle on his back as big as himself, wrapped in a faded blanket. His white beard hangs to his knees. He has stood in the queue for nine days, in his turn; the people behind have been kind, and passed him ahead; and still he has not reached the pan. He shuffles. He stops. He gets his breath. He shuffles on.
 You come alongside him. “Grandfather.”
-“Eh?” His eyes are watery and bright. “Ah. Young lady. Did you want my place? I’m very slow.”
+“Eh?” His eyes are watery and bright. “Ah. Young {person}. Did you want my place? I’m very slow.”
 “No. May I help?”
 “Help?” He looks astonished. “I’m going to the top. I’ve been going for sixty years. It’s very kind of you, but I must do it myself.”
 “What’s in the bundle?”

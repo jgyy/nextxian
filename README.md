@@ -6,6 +6,10 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 
 ## Features
 
+- **Custom Roads: forty roads, 1,490 more scenes, where gender is the weather of the narrative.** Ten customs of the sect that sort people by gender (the lineage tablets, the teaching mats, the account-books, the cutting of names, the go-betweens’ letters, the speaking stones, the mourning bench, the gentle hands, the weapon rack, the oaths of kin), each with four keepers: a woman who holds the custom as it was handed down, a man who does, a woman who bends it, a man who bends it. **Every approach has a door of custom that opens only to a woman, a man or someone who gives no answer**, with a scene of its own for each, and four picks behind it: keep the custom, bend it, break it in the open, or stand for someone it passes over. The price is not the same for everyone: a woman argues a barred door open with Insight, a man pays in qi for turning down his place and needs a clean name for his word to stand for anyone, someone who gives no answer pays in qi for staying in the middle of the room. The keeper reads the hero’s gender at the entry, in the greeting, twice in the middle of an approach and at the goodbye, reads what the hero did on earlier roads, and says a different parting word to a hero who broke the custom before a keeper who holds it and one who broke it before a keeper who bends it.
+- **Gender in the main line: seven turning points and the last choice.** At the gate, the Law Hall, the abyss ledge, the archive bridge, the tribunal’s testimony, the second descent and the sealing night, a woman, a man and someone who gives no answer are each offered a way of meeting the scene that only their own allows, hidden from the others, and the Elder answers at once, in a line by gender and by trust. Eight scenes of Books One to Six echo the hero’s gender (the memorial’s column and margin, what Mengjiao says on the ledge, how the abyss hears the last answer), and the last choice of the story reads the way the hero took the customs most.
+- **The Elder and the company react more.** 480 new answers by the Elder (twelve for every Custom Road: a woman, a man or someone who gives no answer, keeping, bending, breaking or standing for another, each in five lines by her trust), 21 more for the turning points, 66 new unprompted remarks (the Elder, and Ren Qiao, Gu, Lin Yuan, Duan, Hao Lan, Mei Qiu, Bao Er, Lu Yan, Shu Ning, Mengjiao, Ah Zhi, Tian, Qiu, Yue and Odval, each on what the hero has done behind the doors), and a **Customs panel** that keeps the tally: kept, bent, broken, stood for, keepers pressed, turnings met as yourself.
+- **A ninth plot-hole pass: 777 fixed.** 704 lines and memories nobody could ever see (a realm below Mortal or above Ascendant), 22 lines that told every hero they were a girl, a lady or a madam, or spoke of them as “she”, 45 lines in which two named people changed gender between books (Lian Sheng a woman in Books One to Three and a man in Five and Six; Old Lin a woman and a man) and 6 hugs counted as truth. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md). The audit now fails on a condition no hero can meet.
 - **Age: where the story starts, and a clock that runs.** Before the first scene you choose how many years your body carries: **sixteen, twenty-four, thirty-six, fifty-two or sixty-eight**. The years set your opening qi, insight, karma and purse, how quick or patient your cultivation is, how steady you stand against a heart demon, and how the Elder and every keeper read you. The story counts on from there, a year for every ten decisions, and **every realm is a span of years** (Mortal 76, Qi Condensation 110, Foundation 160, Core 250, Nascent Soul 400, Spirit Severing 620, Dao Seeking 950, Ascendant 1,500). A hero within three years of the end of their span is slowed and the Elder says so; a hero past it is slowed more; a breakthrough lengthens the span and says so. An elder who starts at a mortal’s sixty-eight has eight years to find a realm, a youth has sixty and the energy to waste them. The register says the Wanderer is twenty: in canon the black seed spends years where it wakes, so the age is the body’s.
 - **Age Roads: forty roads, 1,136 more scenes, where five ages meet eight realms.** Eight waysides, one at every realm from Mortal (the Almshouse Row below the gate) to Ascendant (the Open Sill), each with five roads kept by a girl or boy of sixteen, a young adult of twenty-five, a keeper of thirty-eight, one of fifty-four and one of seventy. Every beat of a road is the keeper’s years set beside the realm’s own. On each road the middle of the second approach has a **door of years** that opens to a hero by how far their age stands from the keeper’s (the same stretch of life, older, younger, or for a youth’s road and an elder’s, far older or far younger), and behind it four picks the Elder answers at once. One of them gives **years back** to a hero with twenty or fewer left, at a realm near the road’s, who can pay in qi; two more (outlast, hasten) ask the realm of the road. Seven turning points of the main line, from the gate to the sealing night, offer one hidden way to a youth, to a hero of middle years and to an elder, six endings read the years, and the hero panel and a new Age panel keep the count.
 - **An eighth plot-hole pass: 84 fixed.** One was a canon contradiction the new ages opened (the Wanderer was five on the Sealing Night). 52 were lines in which the Elder told a hero of any age what she did “at your age”. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md).
@@ -44,6 +48,51 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 - **Saves in your browser.** Progress is written to `localStorage` after every choice. Storage errors never stop play. Saves from before the Elder kept a reaction history, or before decisions had tones, still load.
 
 ![Scene with no Continue](docs/screenshots/02-no-continue-desktop.png)
+
+### Custom Roads, and gender in the main line
+
+![A wayside of four keepers: the tablet rooms behind the Memorial Hall](docs/screenshots/140-custom-roads-wayside-tablet-rooms-desktop.png)
+![The keeper reads a woman at the entry](docs/screenshots/141-keeper-reads-a-woman-desktop.png)
+![The same keeper reads a man](docs/screenshots/142-keeper-reads-a-man-desktop.png)
+![The door of custom, shown to a woman and no one else](docs/screenshots/143-door-of-custom-woman-desktop.png)
+![The same door, a man’s scene](docs/screenshots/144-door-of-custom-man-desktop.png)
+![The same door, for someone who gives no answer](docs/screenshots/145-door-of-custom-unspoken-desktop.png)
+![The Elder answers a woman who breaks the custom, at once](docs/screenshots/146-elder-answers-a-woman-who-breaks-the-custom-desktop.png)
+![A man breaks the custom before a keeper who bends it](docs/screenshots/147-elder-answers-a-man-before-a-keeper-who-bends-desktop.png)
+![The Customs panel keeps the tally](docs/screenshots/148-customs-panel-desktop.png)
+![The gate: a way only a woman is offered](docs/screenshots/149-gate-a-way-only-a-woman-is-offered-desktop.png)
+![The Elder answers at once](docs/screenshots/150-gate-the-elder-answers-desktop.png)
+![The Law Hall: the Elder answers someone who gives no answer](docs/screenshots/151-law-hall-the-elder-answers-someone-who-gives-no-answer-desktop.png)
+![The last choice reads who the hero has been](docs/screenshots/152-the-last-choice-reads-who-you-have-been-desktop.png)
+![A child no longer says “bad lady” to every hero](docs/screenshots/153-bad-person-no-longer-bad-lady-desktop.png)
+![A line that said “madam” to every hero now says “sir” to a man](docs/screenshots/154-sir-for-a-man-where-the-line-said-madam-desktop.png)
+![The door of custom on a phone](docs/screenshots/155-door-of-custom-on-a-phone-mobile.png)
+
+```mermaid
+flowchart TD
+  W["wayside hub: 10 of them, one custom each"] --> R["road: one custom x one keeper, 37 scenes"]
+  K["four keepers: woman holds, man holds, woman bends, man bends"] --> R
+  R --> D["door of custom, middle of every approach"]
+  D --> DW["woman’s scene"] & DM["man’s scene"] & DU["scene for someone who gives no answer"]
+  DW & DM & DU --> P{"four picks"}
+  P --> KE["keep"] & BE["bend"] & BR["break in the open"] & ST["stand for the passed-over"]
+  KE & BE & BR & ST --> E["Elder answers at once: 12 scenarios x 5 lines by trust"]
+  KE & BE & BR & ST --> F["flags: cs_pick_<way>_, cs_door_, cs_clash_, cs_ease_"]
+  F --> CP["Customs panel"]
+  F --> RM["66 remarks: Elder and company"]
+  F --> KW["keepers on later roads read the word of you"]
+  F --> LS["last choice of the story reads the way taken most"]
+  KE & BE & BR & ST --> RP["report: clash or ease first, then the door"]
+```
+
+```mermaid
+flowchart LR
+  G["gate"] --> L["law hall"] --> A["abyss ledge"] --> B["archive bridge"] --> T["tribunal testimony"] --> D["second descent"] --> S["sealing night"]
+  G & L & A & B & T & D & S --> H["hidden way for a woman, a man or someone who gives no answer"]
+  H --> E["Elder answers: 3 genders x 5 trust lines + a tail for the room"]
+  H --> C["flag cs_main_<gender>_<scene>: counted for two remarks"]
+  S --> LS["last choice: reads gender and the way taken most"]
+```
 
 ### Age, years and the Age Roads
 

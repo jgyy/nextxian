@@ -6,6 +6,7 @@ import { reachedFlag, REALMS } from "@/engine/cultivation";
 import type { Element } from "@/engine/path";
 import { rootKindOf } from "@/story/crossing/build";
 import { WAYSIDES7 } from "@/story/crossing";
+import { WAYSIDES9 } from "@/story/custom";
 
 /** A small, repeatable generator, so every run of the suite walks the same walks. */
 function rng(seed: number): () => number {
@@ -120,6 +121,54 @@ describe("a long walk through the Crossing Roads", () => {
     }
     expect(steps).toBeGreaterThan(3000);
     expect([...scenesSeen].filter((s) => /_(gw|gm|gu|rk|rp|rf|so|sx|sn)$/.test(s)).length).toBeGreaterThan(40);
+    expect([...new Set(problems)]).toEqual([]);
+  });
+});
+
+describe("a long walk through the Custom Roads", () => {
+  it("shows each hero only the scenes behind the doors that are theirs, and keeps the numbers sound, for every gender and every wayside", () => {
+    const problems: string[] = [];
+    const doorsSeen = new Set<string>();
+    let steps = 0;
+    let n = 0;
+    for (const gender of ["woman", "man", "unspoken"] as const) {
+      for (const talent of TALENTS) {
+        const dao = DAOS[(n++ * 3) % DAOS.length];
+        const hero: Hero = { ...DEFAULT_HERO, gender, talent: talent.value, dao: dao.value, name: n % 2 ? "Mo Lan" : DEFAULT_HERO.name };
+        const r = rng(n * 19 + 7);
+        let g = createGame(story, hero);
+        // Every hero begins at a different wayside, so the walks between them cover all ten.
+        g = { ...g, sceneId: WAYSIDES9[n % WAYSIDES9.length].id, realm: 3, cultivation: REALMS[3].threshold + 5, wealth: 200, stats: { qi: 60, karma: 0, insight: 40 } };
+        for (let i = 0; i < 500; i++) {
+          const scene = getScene(story, g.sceneId);
+          if (scene.ending && scene.choices.length === 0) break;
+          const options = getChoices(scene, g).filter((v) => v.available);
+          if (!options.length) {
+            problems.push(`${gender}/${talent.value} is stuck in ${g.sceneId}`);
+            break;
+          }
+          // Stay on the roads: take a door whenever one is shown, then an approach, then a road from the hub; leave a wayside only when every road on it is done.
+          const staying = options.filter((v) => v.choice.id !== "back_to_road");
+          const doors = staying.filter((v) => /^door_[wmu]$/.test(v.choice.id) || /^go_cs_/.test(v.choice.id));
+          const pool = doors.length ? doors : /^cs_[a-z]+_[a-z]{2}_entry$/.test(g.sceneId) ? staying.filter((v) => /^approach_/.test(v.choice.id)) : staying.length ? staying : options;
+          const before = g;
+          g = choose(story, g, pool[Math.floor(r() * pool.length)].choice.id);
+          steps++;
+          const door = /_d\d([wmu])$/.exec(g.sceneId);
+          if (door) {
+            doorsSeen.add(g.sceneId);
+            if (door[1] !== gender[0]) problems.push(`a ${gender} stands in ${g.sceneId}`);
+          }
+          if (g.wealth < 0 || Number.isNaN(g.cultivation) || Object.values(g.stats).some(Number.isNaN)) problems.push(`bad number in ${g.sceneId}`);
+          for (const e of g.log.slice(before.log.length)) {
+            if (/undefined|\{\w+\}|NaN/.test(e.text)) problems.push(`${g.sceneId}: ${e.text.slice(0, 60)}`);
+            if (hero.name !== DEFAULT_HERO.name && /\bWanderer\b/.test(e.text)) problems.push(`${g.sceneId} still says Wanderer`);
+          }
+        }
+      }
+    }
+    expect(steps).toBeGreaterThan(3000);
+    expect(doorsSeen.size).toBeGreaterThan(40);
     expect([...new Set(problems)]).toEqual([]);
   });
 });

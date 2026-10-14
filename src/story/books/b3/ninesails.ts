@@ -112,7 +112,7 @@ There is a pause. The boat rocks. Duan Wuyi has gone entirely still.
 > inquiry | Ask how. | ninesails_a1s8
 
 === ninesails_a1s8 | I Know
-“I have read it,” says Fang. His voice is soft. “I read it on the Well stair, by lamplight, while you were arranging your counter-stroke. I read it in my cabin, last night.” He takes off his spectacles. Without them his face is naked and tired and curiously young. “I am not a fool, madam. I have audited the Concord for twenty-two years. I know what it is.”
+“I have read it,” says Fang. His voice is soft. “I read it on the Well stair, by lamplight, while you were arranging your counter-stroke. I read it in my cabin, last night.” He takes off his spectacles. Without them his face is naked and tired and curiously young. “I am not a fool, {honorific}. I have audited the Concord for twenty-two years. I know what it is.”
 He rubs the bridge of his nose.
 “It is built on an injustice. Of course it is. Everything is. The question is not whether there was a crime. The question is whether we can do any better than to carry on.” He puts the spectacles back. “I believe we can. I believe that by copying the record exactly, I will make it honest. It will say plainly, on every page: we began in fear.”
 He looks at you.
