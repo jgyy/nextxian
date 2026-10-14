@@ -112,6 +112,8 @@ export function parseConditions(source: string, where: string): Condition[] {
       else if (name === "holdings") out.push({ kind: "holdings", ...rest });
       else if (name === "speed") out.push({ kind: "speed", ...rest });
       else if (name === "mastery") out.push({ kind: "mastery", ...rest });
+      else if (name === "age") out.push({ kind: "age", ...rest });
+      else if (name === "years") out.push({ kind: "years", ...rest });
       else throw new MarkupError(where, `unknown condition "${t}"`);
     }
   }
@@ -142,6 +144,7 @@ export function parseEffects(source: string, where: string): ParsedEffects {
     else if ((m = /^bond:([a-z0-9_]+)([+-]\d+)$/.exec(t))) effects.push({ kind: "addBond", npc: m[1], amount: Number(m[2]) });
     else if ((m = /^cult([+-]\d+)$/.exec(t))) effects.push({ kind: "addCultivation", amount: Number(m[1]) });
     else if ((m = /^dao([+-]\d+)$/.exec(t))) effects.push({ kind: "addDao", amount: Number(m[1]) });
+    else if ((m = /^years([+-]\d+)$/.exec(t))) effects.push({ kind: "addYears", amount: Number(m[1]) });
     else if ((m = /^stones([+-]\d+)$/.exec(t))) effects.push({ kind: "addWealth", amount: Number(m[1]) });
     else if ((m = /^item([+-])([a-z0-9_]+)$/.exec(t))) effects.push(m[1] === "+" ? { kind: "giveItem", item: m[2] } : { kind: "takeItem", item: m[2] });
     else if ((m = /^asset([+-])([a-z0-9_]+)$/.exec(t))) effects.push(m[1] === "+" ? { kind: "grantAsset", asset: m[2] } : { kind: "loseAsset", asset: m[2] });

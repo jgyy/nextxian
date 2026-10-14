@@ -1,3 +1,4 @@
+import { AGE_START } from "./age";
 import type { NpcState, PlayerStats } from "./types";
 
 /**
@@ -10,6 +11,8 @@ export type Looks = "plain" | "striking" | "scarred" | "frail";
 export type Background = "orphan" | "scholar" | "soldier" | "merchant" | "farmer" | "healer";
 export type Attire = "rags" | "traveller" | "scholar" | "silk" | "armour";
 export type Status = "outcast" | "commoner" | "gentry" | "noble";
+/** How many years the hero has when the story begins. The story counts on from there, so a youth grows up and an elder runs short of time. */
+export type Age = "youth" | "young" | "prime" | "mature" | "elder";
 /** Where the story finds the hero: each origin has a prologue of its own that ends on the same mountain. */
 export type Origin = "river" | "porter" | "rogue" | "heir" | "courier" | "exile" | "cave" | "furnace" | "lamp" | "listener" | "struck" | "dream";
 /** The hero’s cultivation talent: the roots and the nature of the body that qi has to pass through. */
@@ -26,6 +29,7 @@ export interface Hero {
   attire: Attire;
   status: Status;
   origin: Origin;
+  age: Age;
   talent: Talent;
   dao: Dao;
 }
@@ -94,6 +98,14 @@ export const ORIGINS: readonly HeroOption<Origin>[] = [
   { value: "dream", label: "The dreamer of a stranger’s breath", blurb: "Every night since you left the river village you have dreamed another person’s breath-art, and every morning you know a little more of it. It carries you fast through the first realms, and slows where it ends." },
 ];
 
+export const AGE_OPTIONS: readonly HeroOption<Age>[] = [
+  { value: "youth", label: "Sixteen", blurb: "A youth. Quick in the body, short of patience and of money, and the sect wonders whose child you are. You have the most years, and the least to spend them on." },
+  { value: "young", label: "Twenty-four", blurb: "A young adult. Nothing is asked of your years, and nothing is forgiven them. The plain way up the mountain." },
+  { value: "prime", label: "Thirty-six", blurb: "In your prime. A little less quick, a little more sure, with some savings and a name that has started to be known." },
+  { value: "mature", label: "Fifty-two", blurb: "Grey at the temples. You read faster than you move, and your realm decides how long you have. A mortal’s span is seventy-six." },
+  { value: "elder", label: "Sixty-eight", blurb: "Old, steady and short of time. Eight years of a mortal’s span are left to you. Break through, or find years elsewhere." },
+];
+
 export const TALENTS: readonly HeroOption<Talent>[] = [
   { value: "wood", label: "Verdant root", blurb: "Qi comes to you like sap. Herbs lean toward your hand, and healing and growing things answer." },
   { value: "fire", label: "Cinnabar root", blurb: "Quick and hot. Furnaces, kilns and forges feel you before you speak, and so does your temper." },
@@ -119,6 +131,7 @@ export const DAOS: readonly HeroOption<Dao>[] = [
 
 export const HERO_OPTIONS: Record<HeroField, readonly HeroOption[]> = {
   origin: ORIGINS,
+  age: AGE_OPTIONS,
   talent: TALENTS,
   dao: DAOS,
   gender: GENDERS,
@@ -129,10 +142,11 @@ export const HERO_OPTIONS: Record<HeroField, readonly HeroOption[]> = {
 };
 
 /** The order the fields are asked in, and the order the NPCs' asides cycle through them. */
-export const HERO_FIELDS: readonly HeroField[] = ["origin", "talent", "dao", "status", "attire", "looks", "background", "gender"];
+export const HERO_FIELDS: readonly HeroField[] = ["origin", "age", "talent", "dao", "status", "attire", "looks", "background", "gender"];
 
 export const FIELD_TITLE: Record<HeroField, string> = {
   origin: "Where your story begins",
+  age: "How many years your body carries",
   talent: "The roots you were born with",
   dao: "The Dao you cultivate beside your qi",
   gender: "How they will speak of you",
@@ -150,6 +164,7 @@ export const DEFAULT_HERO: Hero = {
   attire: "traveller",
   status: "commoner",
   origin: "river",
+  age: "young",
   talent: "mixed",
   dao: "none",
 };
@@ -241,8 +256,9 @@ export function describeHero(hero: Hero): string {
     heaven: "a heaven-marked root",
     late: "a late-blooming root",
   };
+  const years = AGE_START[hero.age] ?? AGE_START.young;
   const craft = hero.dao === "none" ? "no Dao yet" : `the ${DAOS.find((d) => d.value === hero.dao)?.label ?? ""}`;
-  return `${hero.name} is ${who[hero.gender]}, ${looks[hero.looks]}, once ${trade[hero.background]}, ${dress[hero.attire]}, ${rank[hero.status]}, ${where[hero.origin]}, with ${roots[hero.talent]} and ${craft}.`;
+  return `${hero.name} is ${who[hero.gender]}, ${years} years old, ${looks[hero.looks]}, once ${trade[hero.background]}, ${dress[hero.attire]}, ${rank[hero.status]}, ${where[hero.origin]}, with ${roots[hero.talent]} and ${craft}.`;
 }
 
 // ───────────── pronouns and names
@@ -289,6 +305,8 @@ export function personalise(text: string, hero: Hero): string {
   out = out
     .replace(/\b([Yy])our boot(s?)\b/g, (_m, y: string, s: string) => `${y}our ${FOOTWEAR[hero.attire]}${s}`)
     .replace(/\b([Yy])our hat\b/g, (_m, y: string) => `${y}our ${HEADGEAR[hero.attire]}`);
+  // The Elder was never the age of a hero who begins past fifty, so what she did “at your age” she did at their stage.
+  if (hero.age === "mature" || hero.age === "elder") out = out.replace(/\bat your age\b/g, "at your stage");
   if (hero.name !== DEFAULT_NAME) {
     out = out.replace(/\b(?:the|The) Wanderer\b/g, hero.name).replace(/\b([Aa]) Wanderer\b/g, "$1 wanderer").replace(/\bWanderer\b/g, hero.name);
   }
@@ -342,6 +360,26 @@ const ORIGIN_START: Record<Origin, { stats: Partial<PlayerStats>; npc: Partial<N
   dream: { stats: { insight: 8 }, npc: { suspicion: 6, respect: 1 } },
 };
 
+/** What the years you carry add to the opening numbers. The young bring qi and no judgment; the old bring both of those the other way round. */
+const AGE_STATS: Record<Age, Partial<PlayerStats>> = {
+  youth: { qi: 6, insight: -3 },
+  young: {},
+  prime: { insight: 3, qi: -1 },
+  mature: { insight: 7, qi: -4, karma: 2 },
+  elder: { insight: 10, qi: -8, karma: 3 },
+};
+
+const AGE_NPC: Record<Age, Partial<NpcState>> = {
+  youth: { trust: 3, respect: -3, suspicion: -3 },
+  young: {},
+  prime: { respect: 2 },
+  mature: { respect: 4, suspicion: 2 },
+  elder: { respect: 5, suspicion: 4, fear: -2 },
+};
+
+/** Spirit stones the years have saved or cost: a youth has had no time to earn, an elder has had a lifetime. */
+export const AGE_WEALTH: Record<Age, number> = { youth: -2, young: 0, prime: 4, mature: 9, elder: 12 };
+
 const TALENT_START: Record<Talent, { stats: Partial<PlayerStats>; npc: Partial<NpcState> }> = {
   wood: { stats: { karma: 2 }, npc: {} },
   fire: { stats: { qi: 5 }, npc: { fear: 2 } },
@@ -381,8 +419,8 @@ export function startFor(hero: Hero): Start {
     return out;
   };
   return {
-    stats: stats(BACKGROUND_START[hero.background], ORIGIN_START[hero.origin].stats, TALENT_START[hero.talent].stats, DAO_START[hero.dao]),
-    npc: sum(STATUS_START[hero.status], ATTIRE_START[hero.attire], ORIGIN_START[hero.origin].npc, TALENT_START[hero.talent].npc),
+    stats: stats(BACKGROUND_START[hero.background], ORIGIN_START[hero.origin].stats, TALENT_START[hero.talent].stats, DAO_START[hero.dao], AGE_STATS[hero.age] ?? {}),
+    npc: sum(STATUS_START[hero.status], ATTIRE_START[hero.attire], ORIGIN_START[hero.origin].npc, TALENT_START[hero.talent].npc, AGE_NPC[hero.age] ?? {}),
   };
 }
 
@@ -391,6 +429,8 @@ export function startFor(hero: Hero): Start {
 /** How much the world below defers to a birth. Realm adds to it faster than any birth can. */
 export const STATUS_RANK: Record<Status, number> = { outcast: 0, commoner: 1, gentry: 2, noble: 3 };
 const ATTIRE_RANK: Record<Attire, number> = { rags: -1, traveller: 0, scholar: 0, silk: 1, armour: 1 };
+/** The world bows a little to grey hair. */
+const AGE_RANK: Record<Age, number> = { youth: 0, young: 0, prime: 0, mature: 1, elder: 1 };
 export const STANDING_PER_REALM = 2;
 
 export type StandingTier = "despised" | "unremarked" | "regarded" | "honoured" | "revered";
@@ -400,7 +440,7 @@ export type StandingTier = "despised" | "unremarked" | "regarded" | "honoured" |
  * realm adds two, so a Foundation Builder born an outcast already stands above a mortal prince, and by Core Formation nobody asks.
  */
 export function standingOf(hero: Hero, realm: number): number {
-  return Math.max(0, STATUS_RANK[hero.status] + ATTIRE_RANK[hero.attire] + realm * STANDING_PER_REALM);
+  return Math.max(0, STATUS_RANK[hero.status] + ATTIRE_RANK[hero.attire] + (AGE_RANK[hero.age] ?? 0) + realm * STANDING_PER_REALM);
 }
 
 export function standingTierFor(standing: number): StandingTier {

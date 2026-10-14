@@ -16,7 +16,7 @@ neutral: Sit. Whoever left that seat left it for a reason, and the reason is usu
 warm: You straightened a stranger’s hands, I think, before you read a word. A person who does that first is the sort the dead like to leave things to.
 devoted: You went into the mountain and came out kind. I have known masters of this sect who could not manage the second half. Sit down, please, and tell me everything.
 ? og_cave_m_break | You took the Breaking half and ran it past the sixth line. The dead one stopped there. You are standing, which is more than I expected. Sit before you are not.
-? og_cave_m_buried | You buried the Breaking half with the one who left it. I know what that costs a young cultivator. I could not have done it at your age.
+? og_cave_m_buried | You buried the Breaking half with the one who left it. I know what that costs a cultivator who has only just begun. I could not have done it at your stage.
 ? hero:talent=heaven | A heaven-marked root, and a seat in a sealed cave. The mountain does not usually put those two things so close together without meaning something by it.
 
 $ LH_ENTER_FURNACE | trust+1 respect+2 | elder | The pill-house apprentice meets Elder Su’s eyes.

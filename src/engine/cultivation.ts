@@ -1,3 +1,4 @@
+import { lifespanNote } from "./age";
 import { DEFAULT_HERO } from "./hero";
 import { heartDemonKarmaFor, strainFactor } from "./path";
 import { daoArrival, talentArrival } from "./path-text";
@@ -137,9 +138,9 @@ export function gainCultivation(state: GameState, amount: number): GameState {
 }
 
 /** What the hero’s roots, and their Dao, add to the breakthrough line when they enter a realm: a sentence for each, with a leading space. */
-export function breakthroughNotes(state: Pick<GameState, "hero">, realm: number): string {
+export function breakthroughNotes(state: Pick<GameState, "hero"> & Partial<Pick<GameState, "years">>, realm: number): string {
   const hero = state.hero ?? DEFAULT_HERO;
-  return [talentArrival(hero.talent, realm), daoArrival(hero.dao, realm)].filter(Boolean).map((t) => ` ${t}`).join("");
+  return [talentArrival(hero.talent, realm), daoArrival(hero.dao, realm), lifespanNote(realm, state.years)].filter(Boolean).map((t) => ` ${t}`).join("");
 }
 
 /**

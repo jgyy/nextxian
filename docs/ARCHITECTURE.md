@@ -13,6 +13,7 @@ flowchart LR
     WR["witness/<br/>forty Witness Roads, 1,020 scenes,<br/>four deeds the Elder answers at once"]
     CR["cultivation/<br/>forty Cultivation Roads, 1,020 scenes,<br/>four practices the Elder answers at once"]
     XR["crossing/<br/>forty Crossing Roads, 1,380 scenes:<br/>gender, root and craft doors, attunement"]
+    AR["age/<br/>forty Age Roads, 1,136 scenes:<br/>five ages meet eight realms, a door of years,<br/>seven turning points, endings that read the years"]
     GD["gendered/<br/>Left Cloister, Right Yard, Third Door"]
     OG["origins/<br/>twelve beginnings, eleven prologues"]
     EC["economy/<br/>five reckonings, seven ending epilogues,<br/>remarks on the purse and the pack"]
@@ -27,6 +28,7 @@ flowchart LR
     CU["cultivation.ts<br/>eight realms, gains, heart demon"]
     EO["economy.ts<br/>purse, pack, holdings, speed,<br/>payday, breakthrough pills"]
     HR["hero.ts<br/>the character, pronouns, starting numbers, standing"]
+    AG["age.ts<br/>years, lifespan by realm, waning,<br/>the door of years"]
     V["validate.ts<br/>validateStory: 200-word scene cap, four choices, headings"]
     SV["save.ts<br/>restoreGame"]
     W["words.ts<br/>countWords"]
@@ -43,11 +45,15 @@ flowchart LR
     SP["StatsPanel.tsx<br/>stats and recent decisions"]
     CP["CultivationPanel.tsx<br/>realm, progress, ladder"]
     XP["CrossingPanel.tsx<br/>elements attuned, doors taken"]
+    AP["AgePanel.tsx<br/>years against the span of the realm"]
     PP["PursePanel.tsx<br/>stones, speed by part, pack, holdings"]
   end
-  C & SD & RD & R2 & FR & WR & CR & XR & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & WR & CR & XR & AR & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
+  G --> AG
+  EO --> AG
+  HR --> AG
   N --> WI
   WR --> WI
   CR --> PR
@@ -63,7 +69,7 @@ flowchart LR
   GV --> SV
   GV --> CR
   CR -->|Hero| G
-  GV --> NP & SP & CP & HP & PP & XP
+  GV --> NP & SP & CP & HP & PP & XP & AP
   GV -->|localStorage save| Storage[("Browser storage")]
 ```
 
@@ -723,3 +729,41 @@ flowchart LR
   AT --> SP["speedParts: +6 kin, +3 partial"]
   P --> EL["Elder answers at once"]
 ```
+
+## Age, years and the Age Roads
+
+The hero begins at one of five ages (sixteen, twenty-four, thirty-six, fifty-two, sixty-eight) and the story keeps count: a year is spent for every ten decisions. A realm is also a span of years, so cultivation is a clock as well as a ladder. The register says the Wanderer is twenty; the age is the body’s, and the black seed spends years where it wakes (see CANON.md).
+
+```mermaid
+flowchart TD
+  A["age chosen at creation<br/>16 · 24 · 36 · 52 · 68"] --> S["opening numbers<br/>qi, insight, karma, stones, Elder’s respect"]
+  A --> Q["cultivation speed<br/>+10 youth ... −10 elder"]
+  A --> H["heart-demon line<br/>youth −24 ... elder −38"]
+  D["decisions made"] -->|"one year per ten"| N["age now"]
+  R["realm"] --> L["span: 76 · 110 · 160 · 250 · 400 · 620 · 950 · 1,500<br/>plus years given by roads"]
+  N --> W{"years left = span − age"}
+  L --> W
+  W -->|"more than 3"| OK["no penalty"]
+  W -->|"3 or fewer"| SH["−10 speed, the Elder and the keepers say so"]
+  W -->|"none"| PA["−25 speed: past the years the realm allows"]
+  B["a breakthrough"] -->|"lengthens the span, and says so"| L
+  Y["a road gives years<br/>to a hero with ≤ 20 left, at the road’s realm"] --> L
+```
+
+### The Age Roads
+
+Five ages of keeper meet eight realms at forty places. Each wayside is one realm (Mortal to Ascendant) with five roads; each road is the 25 scenes of a Fortune Road with the keeper’s years and the realm in every beat, plus three scenes behind a door of years. The door opens to a hero by how far their age stands from the keeper’s.
+
+```mermaid
+flowchart TD
+  W["wayside: one realm, five roads<br/>8 hubs opened from the main line"] --> RD["road: one keeper age x one realm<br/>25 scenes + 3 behind the door"]
+  RD --> G["keeper reads the hero’s years on arrival"]
+  RD --> M["middle of approach two: the door of years"]
+  M --> K["same stretch of life"] & O["older than the keeper"] & Y["younger than the keeper"]
+  K & O & Y --> P["four picks, the Elder answers at once"]
+  P --> T["years: only to a hero with 20 or fewer left,<br/>the realm of the road, and the qi"]
+  P --> U["outlast, hasten: ask the realm of the road"]
+  G --> E["a hero near the end of their span<br/>is read by the keeper too"]
+```
+
+Seven turning points of the main line (the gate, the Law Hall, the abyss path, the archive, the sutra door, the second descent, the sealing night) offer a hero of nineteen or less, of thirty-two to sixty-two, or of sixty-three or more one hidden way of meeting the scene. Six endings read the hero’s years. The hero panel shows age and the years the realm allows; the Age panel shows the years against the span, the roads walked and the years the roads gave.

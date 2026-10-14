@@ -67,7 +67,11 @@ export type Condition =
   /** How strongly the hero’s roots answer an element: 0 none, 1 partial, 2 kindred. */
   | { kind: "affinity"; element: Element; min?: number; max?: number }
   /** Whether the hero is Unfed: away from the sect with a purse too light for the cost of living. `is` defaults to true. */
-  | { kind: "unfed"; is?: boolean };
+  | { kind: "unfed"; is?: boolean }
+  /** How old the hero is now: the years they began with, and a year for every stretch of decisions. */
+  | { kind: "age"; min?: number; max?: number }
+  /** How many years the hero has left at their realm, with any years they have been given. Zero or less means they are past them. */
+  | { kind: "years"; min?: number; max?: number };
 
 export type Effect =
   | { kind: "setFlag"; flag: string; value?: boolean }
@@ -90,7 +94,9 @@ export type Effect =
   /** The hero comes to hold an asset. It pays and costs on every payday, and may add to cultivation speed. */
   | { kind: "grantAsset"; asset: string }
   /** The hero stops holding an asset, by sale, loss or seizure. */
-  | { kind: "loseAsset"; asset: string };
+  | { kind: "loseAsset"; asset: string }
+  /** Years added to the span the hero’s realm allows: an elixir, a debt of life paid, a road’s gift. */
+  | { kind: "addYears"; amount: number };
 
 /** The NPC reaction tiers, derived from trust. */
 export type Tier = "hostile" | "wary" | "neutral" | "warm" | "devoted";
@@ -293,6 +299,8 @@ export interface GameState {
   items: Record<string, number>;
   /** What the hero holds, by asset id, in the order they came to hold it. */
   assets: string[];
+  /** Years given to the hero’s span on top of what their realm allows. */
+  years: number;
   /** The hero’s cultivation speed in percent, worked out after every choice from their trade, pack and holdings. */
   speed: number;
   /** True while the hero is away from the sect and cannot pay the cost of living. */

@@ -1,3 +1,4 @@
+import { ageOf, lifeLeft } from "./age";
 import { REALMS, realmProgress } from "./cultivation";
 import { standingOf } from "./hero";
 import { affinityOf, daoRankOf } from "./path";
@@ -211,7 +212,7 @@ export function reactToScenario(
 
 /** What a condition may read. Everything past the first five fields is optional so older callers and saves still work. */
 export type ConditionState = Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones"> &
-  Partial<Pick<GameState, "daoPoints" | "realm" | "cultivation" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero" | "wealth" | "items" | "assets" | "speed" | "unfed">>;
+  Partial<Pick<GameState, "daoPoints" | "realm" | "cultivation" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero" | "wealth" | "items" | "assets" | "speed" | "unfed" | "years">>;
 
 /** True when every condition holds. An empty or missing list always holds. */
 export function conditionsHold(conditions: Condition[] | undefined, state: ConditionState): boolean {
@@ -306,6 +307,14 @@ export function conditionsHold(conditions: Condition[] | undefined, state: Condi
       }
       case "unfed":
         return (state.unfed ?? false) === (c.is ?? true);
+      case "age": {
+        const v = state.hero ? ageOf(state.hero, state.decisions ?? 0) : 24;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "years": {
+        const v = state.hero ? lifeLeft(state.hero, { decisions: state.decisions, realm: state.realm, years: state.years }) : 999;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
       case "count": {
         const v = Object.entries(state.flags).filter(([flag, on]) => on && flag.startsWith(c.prefix)).length;
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);

@@ -25,6 +25,7 @@ export function restoreGame(saved: unknown, story: Story): GameState | null {
     wealth: typeof game.wealth === "number" && game.wealth >= 0 ? game.wealth : startingWealth(hero),
     items: Object.fromEntries(Object.entries(items).filter(([, n]) => typeof n === "number" && n > 0)),
     assets: Array.isArray(game.assets) ? game.assets.filter((a) => typeof a === "string") : [],
+    years: typeof game.years === "number" && game.years >= 0 ? game.years : 0,
     speed: typeof game.speed === "number" ? game.speed : 100,
     unfed: game.unfed === true,
     lastAside: typeof game.lastAside === "number" ? game.lastAside : -3,

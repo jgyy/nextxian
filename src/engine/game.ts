@@ -1,3 +1,4 @@
+import { ageMastery, ageOf, birthdayLine } from "./age";
 import { DEFAULT_HERO, HERO_FIELDS, personalise, realmBandFor, startFor, startingPoints, type Hero } from "./hero";
 import { DAO_NAME, DAO_RANKS, daoRankOf, karmaChange, masteryGapFor, ORIGIN_START, toneBonus } from "./path";
 import { applyAid, cultivationSpeed, giveItem, isUnfed, payday, PAYDAY_EVERY, scaled, startingWealth, takeItem, tidy } from "./economy";
@@ -96,6 +97,7 @@ export function createGame(story: Story, hero: Hero = DEFAULT_HERO): GameState {
     bonds: {},
     daoPoints: 0,
     wealth: startingWealth(hero),
+    years: 0,
     items: {},
     assets: [],
     speed: 100,
@@ -170,7 +172,7 @@ export function applyEffects(state: GameState, effects: Effect[] = [], speed = 1
       }
       case "addDao": {
         if (s.hero.dao === "none") return s;
-        const daoPoints = s.daoPoints + Math.max(0, effect.amount);
+        const daoPoints = s.daoPoints + Math.max(0, effect.amount) + ageMastery(s.hero.age, effect.amount);
         const was = daoRankOf(s.daoPoints);
         const now = daoRankOf(daoPoints);
         const log = now > was ? [...s.log, { kind: "realm" as const, text: `Your ${DAO_NAME[s.hero.dao]} reaches ${DAO_RANKS[now].name}. What your hands knew, your mind now knows too.` }] : s.log;
@@ -184,6 +186,8 @@ export function applyEffects(state: GameState, effects: Effect[] = [], speed = 1
       }
       case "addWealth":
         return { ...s, wealth: Math.max(0, s.wealth + effect.amount) };
+      case "addYears":
+        return { ...s, years: Math.max(0, (s.years ?? 0) + effect.amount) };
       case "giveItem":
         return { ...s, items: giveItem(s.items, effect.item, effect.count) };
       case "takeItem":
@@ -253,12 +257,19 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
   next = gainCultivation(next, scaled((fresh ? TONE_GAIN[choice.tone] + toneBonus(state.hero, choice.tone) : 0) + mastery, speed));
   next = applyAid(story, next);
   if (next.decisions % PAYDAY_EVERY === 0) next = payday(story, next);
+  next = noticeYear(state, next);
   next = noticeSpeed(state, next, story);
   const beforeAttitude = next.log.length;
   next = noticeAttitude(story, state, next);
   spoke = spoke || next.log.length > beforeAttitude;
   const entered = enterScene(story, settle(story, next), getScene(story, choice.next));
   return spoke ? entered : remark(story, entered);
+}
+
+/** When a year of the story has gone by, the log says so, and says how many years the hero's realm still allows them. */
+function noticeYear(before: GameState, after: GameState): GameState {
+  if (ageOf(after.hero, after.decisions) === ageOf(before.hero, before.decisions)) return after;
+  return { ...after, log: [...after.log, { kind: "ledger", text: birthdayLine(after.hero, after) }] };
 }
 
 /** When a purchase, a lease, a breakthrough or a lean payday changes how fast the hero cultivates, the log says so. */

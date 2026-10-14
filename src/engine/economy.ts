@@ -1,5 +1,6 @@
 import { REALMS, breakthroughNotes, heartDemonBlocks, reachedFlag } from "./cultivation";
-import { DEFAULT_HERO, type Background, type Hero, type Status } from "./hero";
+import { ageSpeed, AGE_LABEL, lifeLeft, waningSpeed } from "./age";
+import { AGE_WEALTH, DEFAULT_HERO, type Background, type Hero, type Status } from "./hero";
 import { aidReachFor, attunementParts, holdingFactor, livingRebate, ORIGIN_LABEL, ORIGIN_WEALTH, originSpeed, talentSpeed, TALENT_LABEL, toolFactor, unfedFactor } from "./path";
 import type { AssetDef, GameState, ItemDef, LogEntry, Story } from "./types";
 
@@ -17,7 +18,7 @@ const STATUS_WEALTH: Record<Status, number> = { outcast: 3, commoner: 8, gentry:
 const BACKGROUND_WEALTH: Record<Background, number> = { orphan: 0, scholar: 2, soldier: 4, merchant: 12, farmer: 3, healer: 4 };
 
 export function startingWealth(hero: Hero): number {
-  return STATUS_WEALTH[hero.status] + BACKGROUND_WEALTH[hero.background] + ORIGIN_WEALTH[hero.origin];
+  return Math.max(0, STATUS_WEALTH[hero.status] + BACKGROUND_WEALTH[hero.background] + ORIGIN_WEALTH[hero.origin] + (AGE_WEALTH[hero.age] ?? 0));
 }
 
 /**
@@ -46,7 +47,7 @@ export const MAX_SPEED = 250;
 /** Where the breakthrough pill starts to work: a pill helps a hero within this share of the next realm's points. */
 export const AID_REACH = 0.85;
 
-type Held = Pick<GameState, "wealth" | "items" | "assets" | "realm" | "cultivation" | "stats" | "hero" | "visited" | "flags">;
+type Held = Pick<GameState, "wealth" | "items" | "assets" | "realm" | "cultivation" | "stats" | "hero" | "visited" | "flags"> & Partial<Pick<GameState, "decisions" | "years">>;
 
 /** True while the hero lives on the sect's stipend: the story names the scene at which they leave. */
 export function inSect(story: Pick<Story, "leavesSect">, state: Pick<GameState, "visited">): boolean {
@@ -90,6 +91,10 @@ export function speedParts(story: Story, state: Held): SpeedPart[] {
   const parts: SpeedPart[] = [{ label: "Plain rate", points: BASE_SPEED }];
   const aptitude = aptitudeFor(state.hero);
   if (aptitude) parts.push({ label: "Aptitude of your trade", points: aptitude });
+  const years = ageSpeed(state.hero.age, state.realm);
+  if (years) parts.push({ label: AGE_LABEL[state.hero.age], points: years });
+  const waning = waningSpeed(lifeLeft(state.hero, state));
+  if (waning) parts.push(waning);
   const root = talentSpeed(state.hero.talent, state.realm);
   if (root) parts.push({ label: TALENT_LABEL[state.hero.talent], points: root });
   const began = originSpeed(state.hero.origin, state.realm);

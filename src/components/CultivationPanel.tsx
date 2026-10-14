@@ -1,5 +1,5 @@
 import { heartDemonBlocks, pointsToNext, realmProgress, REALMS, HEART_DEMON_KARMA } from "@/engine/cultivation";
-import { DAO_NAME, DAO_PASSIVE, DAO_RANKS, daoRankOf, daoToNext, TALENT_LABEL } from "@/engine/path";
+import { DAO_NAME, DAO_PASSIVE, DAO_RANKS, daoRankOf, daoToNext, heartDemonKarmaFor, TALENT_LABEL } from "@/engine/path";
 import { CUSP } from "@/engine/practice";
 import type { GameState } from "@/engine/types";
 
@@ -59,7 +59,7 @@ export function CultivationPanel({ game }: { game: Cultivation }) {
       )}
       {blocked && (
         <p className="heart-demon" role="status">
-          A heart demon holds you at the threshold. Your karma is below {HEART_DEMON_KARMA}.
+          A heart demon holds you at the threshold. Your karma is below {heartDemonKarmaFor(game.hero, HEART_DEMON_KARMA)}.
         </p>
       )}
       <p className="muted talent-note">

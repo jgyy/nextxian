@@ -37,7 +37,7 @@ You have kept the lamp through seven winters, and each has taught you something 
 
 === o_lamp_3 | The Method
 ${daoExtras(0)}
-There are four ways to hold a flame by breath, and Pei taught you all four, one a decade, in the manner of an old woman who does not intend to repeat herself. The Holding Breath keeps a flame as it is. The Feeding Breath gives it your own warmth. The Sharing Breath splits it with whoever sits beside you. The Dimming Breath lets it go down, to a bead, and teaches the dark to hold a light. Tonight you choose which one is yours.
+There are four ways to hold a flame by breath, and Pei taught you all four, one a winter, in the manner of an old woman who does not intend to repeat herself. The Holding Breath keeps a flame as it is. The Feeding Breath gives it your own warmth. The Sharing Breath splits it with whoever sits beside you. The Dimming Breath lets it go down, to a bead, and teaches the dark to hold a light. Tonight you choose which one is yours.
 +[ways] og_lamp_taught | The child’s breathing went in and out beside yours, a quarter-beat late, and the flame did not mind.
 +[ways] og_lamp_sat | A day of sitting has made the lamp a part of you, as a hand is a part of an arm.
 +[ways] og_lamp_stone | The stone has no hollow in it. Whatever the blue flame is hiding, it is not in the lamp.

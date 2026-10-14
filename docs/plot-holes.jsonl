@@ -99,3 +99,12 @@
 {"cat": "preview", "where": "src/engine/hero.ts", "note": "The creation preview said “a mixed roots” and “a heaven-marked and Pill Dao”.", "n": 2}
 {"cat": "repeated-state-line", "where": "src/story/roads2/lexicon-state.ts", "note": "Ten sentences of a way back (the hidden room’s reading, the reach past your realm, the standing that worked, the lease, the debt) were shown word for word in up to 200 roads each, 114 to 200 times a walk. Each now has six wordings.", "n": 10}
 {"cat": "repeated-trait-line", "where": "src/story/roads2/hero-lex-more.ts", "note": "Every dress, birth, face, trade, manner, send-off and realm reading had three or four wordings, shared by 200 roads. 254 more lines; the same sentence now returns after twelve roads, not four.", "n": 254}
+{"cat": "canon", "where": "docs/CANON.md, src/story/age/echoes.ts", "note": "The Wanderer was five on the Sealing Night and so twenty now, which contradicted a starting age of sixteen, thirty-six, fifty-two or sixty-eight. The age is now the body’s; the black seed spends years where it wakes, and the Elder says so in the Reserve.", "n": 1}
+{"cat": "hero-address", "where": "src/engine/hero.ts", "note": "52 shown lines had the Elder say what she did “at your age” to a hero of any age. A hero who begins at fifty-two or sixty-eight is now told “at your stage”.", "n": 52}
+{"cat": "timeline", "where": "src/story/books/b2/reserve.ts", "note": "The Elder had decided for the Wanderer for “twenty years”; she took them in fifteen years before.", "n": 1}
+{"cat": "timeline", "where": "src/story/origins/lamp.ts", "note": "Four ways taught “one a decade” to a lamp-keeper of seven winters.", "n": 1}
+{"cat": "hero-address", "where": "src/story/hero/asides.ts, src/story/origins/entries.ts", "note": "“a young man” and “a young cultivator” said of a hero of any age or gender.", "n": 2}
+{"cat": "hero-address", "where": "src/story/hero/remarks.ts", "note": "A companion who thought a man would be older, said to a man of sixty-eight; now only to a hero of forty or under.", "n": 1}
+{"cat": "panel", "where": "src/components/CultivationPanel.tsx", "note": "The panel gave −30 as the heart demon’s line for every hero; it now reads the hero’s own.", "n": 1}
+{"cat": "preview", "where": "src/engine/hero.ts", "note": "The creation preview said “someone who gives no answer of 68”.", "n": 1}
+{"cat": "dead-condition", "where": "src/story/age/build.ts", "note": "The eight Mortal roads offered a lesser way to a traveller below Mortal and carried a flag and two memories that nothing could set.", "n": 5}

@@ -1,6 +1,6 @@
 # Plot-hole and continuity ledger
 
-Seven passes, three asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
+Eight passes, three asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
 
 | Pass | Fixed | Of what kind |
 | --- | ---: | --- |
@@ -11,9 +11,35 @@ Seven passes, three asked to fix more than 1,000 and the fourth asked again. Thi
 
 | Fifth pass | 42 | 31 choices whose tone contradicted the act, 9 lines of broken wording, 2 remarks that could never be said |
 | Sixth pass | 283 | 11 origin door scenes the Elder never played, 10 sentences read in up to 200 roads, 254 trait lines shared by 200 roads, and 8 smaller slips |
-| **Seventh pass (this branch)** | **72** | 2 hero-address lines and 1 simile that assumed a gender, 11 wet words on the Glass Sea, 6 places against canon, 28 generated-text slips, 8 plural places, 4 early spoilers, 10 name clashes, 2 wayside origins |
+| Seventh pass | 72 | 2 hero-address lines and 1 simile that assumed a gender, 11 wet words on the Glass Sea, 6 places against canon, 28 generated-text slips, 8 plural places, 4 early spoilers, 10 name clashes, 2 wayside origins |
+| **Eighth pass (this branch)** | **84** | 1 canon contradiction opened by the new starting ages (the Wanderer was five fifteen years ago), 52 shown lines that told a hero of any age what the Elder did “at your age”, 1 timeline slip (twenty years against fifteen), 1 beginning that contradicted itself (four ways taught “one a decade” in seven winters), 3 lines that assumed a young hero, 1 panel that showed the wrong heart-demon line, 1 preview that misread, and 24 slips in the new content (5 dead lesser ways, 4 name clashes, 6 repeated lines, 9 echoes over the cap) |
 
-## Seventh pass (this branch): what was looked for, found and fixed
+## Eighth pass (this branch): what was looked for, found and fixed
+
+This branch added age and 1,136 scenes, so the pass went after what age could expose: a story written for one twenty-year-old, now read by someone of sixteen and someone of sixty-eight. Counted only what a script or a test could prove, and the number is smaller than the earlier passes because the rest is not a number of lines.
+
+| Class | Count | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| **Canon: the Wanderer was five on the Sealing Night, fifteen years ago, so twenty now.** Books Two to Six say it in a dozen places (the basket, the tag, “you have had it since you were five”). A starting age of sixteen, thirty-six, fifty-two or sixty-eight contradicts all of them | 1 | reading the Ages and years canon against the new starting ages | `docs/CANON.md`, `age/echoes.ts` (four lines in the Reserve), `engine/age.ts`: the age is the body’s, and the black seed spends years where it wakes |
+| Shown lines in which the Elder says what she did “at your age”, said alike to a hero of sixteen and of sixty-eight (she is forty-three) | 52 | scanning every scene, extra, interjection, scenario line, memory, remark and aside for the phrase | `engine/hero.ts` (`personalise` says “at your stage” to a hero who begins at fifty-two or sixty-eight) |
+| “I have decided for you for twenty years”, said of a child she took in fifteen years ago | 1 | reading the Reserve against the timeline | `books/b2/reserve.ts` |
+| A lamp-keeper “taught all four ways, one a decade”, after seven winters | 1 | reading the beginnings against their own first scene | `origins/lamp.ts` |
+| “a rare courtesy in a young man”, “what it costs a young cultivator”, said of a hero of any age | 2 | grepping lines about the hero’s youth | `hero/asides.ts`, `origins/entries.ts` |
+| A companion who “thought you were going to be older”, said to a hero of sixty-eight | 1 | the same | `hero/remarks.ts` (now only to a hero of forty or under) |
+| The cultivation panel always said a heart demon holds a hero below karma −30, though the line moves with Dao, roots, beginning and now age (a youth −24, an elder −38, a healer −50) | 1 | reading the panel against `heartDemonKarmaFor` | `components/CultivationPanel.tsx` |
+| The creation preview read “Wanderer is someone who gives no answer of 68” | 1 | reading the preview for every age | `engine/hero.ts` |
+| A lesser way offered to a hero “below Mortal” on the eight roads that begin at Mortal, with a flag nothing could set and two memories that could never be said | 5 | the audit, on the first build of the Age Roads | `age/build.ts` |
+| Name clashes between the new keepers and earlier ones | 4 | the name tests of earlier waves | `age/specs-2.ts` to `specs-4.ts` |
+| Lines of the Elder repeated word for word across the roads’ door scenarios | 6 | the repetition test | `age/lexicon-read.ts` |
+| Echoes that took scenes over the 200-word cap | 9 | the validator | `age/echoes.ts` (the gate and the sutra door have no room, so their age is read by the Elder’s asides and the turning points instead) |
+
+Tests now fail on each class: `tests/age.test.ts` (the “at your age” sweep over every shown string, the companion’s age, the door of years for every age from sixteen to ninety, the span words in each realm’s beats, a 900-step soak at every age).
+
+**Looked for and found clean.** `a`/`an` against the next sound, doubled words, spaces before punctuation, straight quotes, unfilled slots and `undefined` over 173,264 shown strings; scenes no start can reach (none); hubs a hero cannot leave; choices the hero can never take; the span of years the lexicons name against the span the engine gives (it is a test now).
+
+**Not counted.** The Age Roads’ shared scaffolding is the Fortune Roads’, so a few of its situations (“a boy at the bridge”, “a ferryman’s widow”) read oddly beside a keeper of seventy. They are the same lines every earlier wave shows and were left alone.
+
+## Seventh pass: what was looked for, found and fixed
 
 This branch added 1,411 scenes, so the pass went after the holes that new content could open and the ones gender, root and Dao could expose in old content. Counted only what a script or a test could prove.
 

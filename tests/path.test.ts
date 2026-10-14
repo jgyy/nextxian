@@ -45,7 +45,7 @@ describe("the new parts of the character", () => {
         expect(o.blurb.length, `${field}:${o.value}`).toBeGreaterThan(30);
       }
     }
-    expect(HERO_FIELDS.slice(0, 3)).toEqual(["origin", "talent", "dao"]);
+    expect(HERO_FIELDS.slice(0, 4)).toEqual(["origin", "age", "talent", "dao"]);
   });
 
   it("begins as the river village, mixed roots and no Dao, so every earlier game is unchanged", () => {
@@ -319,7 +319,7 @@ describe("starting points", () => {
 describe("how the Elder speaks of the new parts", () => {
   const asides = story.asides!;
   it("has a distinct line for every origin, talent and Dao, at every attitude", () => {
-    for (const field of ["origin", "talent", "dao"] as const) {
+    for (const field of ["origin", "age", "talent", "dao"] as const) {
       for (const o of HERO_OPTIONS[field]) {
         const lines = TIERS.map((t) => asides[field]?.[o.value]?.[t]);
         expect(lines.every((l) => typeof l === "string" && l.length > 20), `${field}:${o.value}`).toBe(true);

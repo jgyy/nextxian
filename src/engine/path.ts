@@ -1,3 +1,4 @@
+import { ageHeartDemon } from "./age";
 import type { Dao, Hero, Origin, Talent } from "./hero";
 
 /**
@@ -131,7 +132,7 @@ export const DAO_PASSIVE: Record<Dao, string> = {
 
 // ───────────── what a talent or a Dao changes in the rules
 
-type Path = Pick<Hero, "talent" | "dao"> & Partial<Pick<Hero, "origin">>;
+type Path = Pick<Hero, "talent" | "dao"> & Partial<Pick<Hero, "origin" | "age">>;
 
 /** Where a pill starts to work, as a share of the next realm’s points. */
 export const aidReachFor = (hero: Path): number => (hero.dao === "alchemy" ? 0.7 : 0.85);
@@ -158,6 +159,7 @@ export function heartDemonKarmaFor(hero: Path, base = -30): number {
   if (hero.talent === "earth") karma -= 10;
   if (hero.origin === "listener") karma -= 5;
   if (hero.talent === "heaven") karma += 10;
+  karma += ageHeartDemon(hero.age);
   return karma;
 }
 
@@ -283,4 +285,20 @@ export function crossingSummary(flags: Record<string, boolean>): CrossingSummary
     crafts: countFlags(flags, "pr_fork_c_"),
     attuned: attunements(flags),
   };
+}
+
+// ───────────── years
+
+/** What the hero has done on the Age Roads, counted from the flags they set. */
+export interface AgeSummary {
+  /** Age Roads finished. */
+  roads: number;
+  /** Doors of years gone through. */
+  doors: number;
+  /** Roads that gave the hero years. */
+  given: number;
+}
+
+export function ageSummary(flags: Record<string, boolean>): AgeSummary {
+  return { roads: countFlags(flags, "ag_done_"), doors: countFlags(flags, "ag_door_"), given: countFlags(flags, "ag_pick_years_") };
 }
