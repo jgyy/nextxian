@@ -252,7 +252,7 @@ It does not break. It parts, as water parts round a stone. Wen Rui staggers. His
 > mercy | Hold out your hand. | roots_a2s8
 
 === roots_a2s8 | The Ninth
-“Hui Niang said you would come,” says Wen Rui. He sinks down on the stool outside his tent, unsteadily, like a man whose strings have been cut. “She said: wait, and one day there will be a girl with a black seed, and she will ask you to put it down.” His voice shakes with an old rage. “I told her it was nonsense.”
+“Hui Niang said you would come,” says Wen Rui. He sinks down on the stool outside his tent, unsteadily, like a man whose strings have been cut. “She said: wait, and one day there will be a {person} with a black seed, and {they} will ask you to put it down.” His voice shakes with an old rage. “I told her it was nonsense.”
 “I have not asked.”
 “You do not need to.” He passes a hand over his face. “I felt it. It does not push. It simply is.” He laughs, thin and bitter. “You do not need to fight me. You only need to be here.”
 “I do not want to fight.”

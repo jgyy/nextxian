@@ -86,7 +86,7 @@ Captain Kou’s jaw tightens.
 > inquiry | Ask what they would do instead. | lotus_a1s6
 
 === lotus_a1s6 | A Question for the Bearer
-“We have not decided,” says Elder Gan. It is the first thing he has said. His voice is a dry rustle. He opens his pale eyes. “That is why you are here. That is the whole of the court. We have a bearer, and a chain, and a fleet. We are asking the bearer what she will do.”
+“We have not decided,” says Elder Gan. It is the first thing he has said. His voice is a dry rustle. He opens his pale eyes. “That is why you are here. That is the whole of the court. We have a bearer, and a chain, and a fleet. We are asking the bearer what {they} will do.”
 “It is not a vote on you,” says Father Ma. “It is a vote on whether to trust you.”
 “It is a vote on whether to follow you,” says Mistress Ping.
 “It is a vote on whether to be used,” says Captain Kou.

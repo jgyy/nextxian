@@ -6,7 +6,7 @@ import { approachModes, fill, roadFlag, walkBase } from "../roads/build";
 import { BEAT_EXTRA, CHOICE_EXTRA, spread } from "../roads/lexicon-extra";
 import { focusKind, pickFit } from "../roads/kinds";
 import { BRIBED, DEEP, EARNED, HUMBLED, INVESTED, LEASED, PULLED_RANK, REACHED, SPENT, USED_QI, USED_WARE } from "../roads2/lexicon-state";
-import { BIRTH, bandBounds, DRESS, FACE, MANNER, SEND_OFF, TRADE } from "../roads2/hero-lex";
+import { BIRTH, bandBounds, bandHeld, DRESS, FACE, MANNER, SEND_OFF, TRADE } from "../roads2/hero-lex";
 import { BANDS, heroGroup, labelSlots, pick, realmGroup, sceneTones, TONE_EFFECTS, type Extra } from "../roads2/build";
 import {
   APPROACH_LABEL2,
@@ -518,7 +518,7 @@ export function buildRoad3(spec: RoadSpec3, ctx: RoadContext3): Scene[] {
       id: `${id}_h${n}`,
       title: `${spec.title}: ${title}`,
       paragraphs: [fill(spec.deep[n], slots)],
-      ...(last ? { extras: BANDS.map((band) => ({ when: [{ kind: "realm" as const, ...bandBounds(band, R) }], paragraphs: [fill(pick(DEEP[band], ctx.index), slots)], group: "read" })) } : {}),
+      ...(last ? { extras: BANDS.filter((band) => bandHeld(band, R)).map((band) => ({ when: [{ kind: "realm" as const, ...bandBounds(band, R) }], paragraphs: [fill(pick(DEEP[band], ctx.index), slots)], group: "read" })) } : {}),
       choices: sceneTones(modes[2], n, 2).map((tone, c) => ({
         id: tone,
         label: fill(pickFit([...choiceLabel[tone], ...CHOICE_EXTRA[tone]], walkBase(ctx.index, 2, tone) + 5 + n, slots.focus), labelSlots(slots, tone, ctx.index + n + c)),
@@ -635,7 +635,7 @@ export function buildReport3(spec: RoadSpec3, ctx: RoadContext3): NpcScenario {
       { when: [{ kind: "wealth", max: 2 }, { kind: "realm", min: 2 }], line: fill(REPORT_MEMORY3.broke, slots) },
       { when: [{ kind: "wealth", min: 120 }], line: fill(REPORT_MEMORY3.rich, slots) },
       { when: [{ kind: "tone", tone: "deceit", min: 3, within: 6 }], line: fill(REPORT_MEMORY2.deceit, slots) },
-      { when: [{ kind: "realm", min: R + 2 }], line: fill(REPORT_MEMORY2.over, slots) },
+      ...(R + 2 <= REALMS.length - 1 ? [{ when: [{ kind: "realm" as const, min: R + 2 }], line: fill(REPORT_MEMORY2.over, slots) }] : []),
       ...(R >= 3 ? [{ when: [{ kind: "realm" as const, min: 1, max: R - 2 }], line: fill(REPORT_MEMORY2.under, slots) }] : []),
     ],
     remember: [reportedFlag3(id)],

@@ -1584,6 +1584,52 @@ button.ghost[aria-expanded="true"] {
   font-weight: 600;
   font-size: 0.7rem;
 }
+.custom-card h2 {
+  margin: 4px 0 8px;
+  font-size: 1.1rem;
+}
+.way-row {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  font-size: 0.74rem;
+  text-align: center;
+}
+.way-row li {
+  display: grid;
+  gap: 2px;
+  padding: 6px 2px;
+  border: 1px solid var(--panel-edge);
+  border-radius: 6px;
+  color: var(--text);
+}
+.way-row li[data-zero="yes"] {
+  color: var(--muted);
+  border-style: dashed;
+}
+.way-row li[data-way="break"]:not([data-zero="yes"]) {
+  border-color: #b5483a;
+  background: rgba(181, 72, 58, 0.12);
+}
+.way-row li[data-way="stand"]:not([data-zero="yes"]) {
+  border-color: #7fa38c;
+  background: rgba(127, 163, 140, 0.14);
+}
+.way-row li[data-way="bend"]:not([data-zero="yes"]) {
+  border-color: var(--gilt);
+  background: rgba(217, 179, 90, 0.12);
+}
+.way-row li[data-way="keep"]:not([data-zero="yes"]) {
+  border-color: var(--muted);
+  background: rgba(150, 150, 160, 0.12);
+}
+.way-row strong {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
 .cusp {
   margin: 8px 0 0;
   padding: 6px 10px;

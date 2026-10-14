@@ -26,7 +26,7 @@ Duan Wuyi looks at you. His soft face is the colour of paper.
 === summit_ring | The Ring
 Nine masters sit on nine cushions in a ring of white jade, in grey and violet and black, each with a hand on the shoulder of the next. In the middle, on a low dais, stands a black pillar of polished stone with a single page of silver pinned to it: the Ledger Stone’s copy, the line of every name that has ever risen. Round the pillar kneel nine pilgrims in white, with their eyes shut, smiling.
 “Welcome,” says Hu Jingyan. He is sixty, round-faced, mild, with a scholar’s stoop and a reasonable voice. “I had hoped you would come. It would have been awkward to begin without you.”
-Beside him, rigid on his cushion, with a face like a drawn blade, Lian Sheng does not look up.
+Beside him, rigid on her cushion, with a face like a drawn blade, Lian Sheng does not look up.
 “The nine,” says the scholar, with a nod at the white-robed pilgrims. “They volunteered. They are happy. They have been told they will be written. It is true.” He sighs. “They simply will not be there afterward.”
 The chant swells. The silver page begins to glow.
 > truth | Break the ring with your qi. | summit_break | +summit_power | realm>=6 | Only a Dao Seeker can break nine masters’ ring.
@@ -38,7 +38,7 @@ The chant swells. The silver page begins to glow.
 === summit_break | A Dao Seeker’s Qi
 You do not draw a weapon. You simply let your qi out. It goes through the Hall in a wave you can feel in your teeth, clear and cold and enormous, the whole of your cultivation turned outward in one breath. The pressure in the doorway breaks like ice.
 The nine masters sway on their cushions. One falls over. The chant stops in the middle of a word.
-“Impossible,” says Lian Sheng, in a whisper. He is on his feet. He has his sword half-drawn. “You have not been climbing for forty years.”
+“Impossible,” says Lian Sheng, in a whisper. She is on her feet. She has her sword half-drawn. “You have not been climbing for forty years.”
 “No.”
 “You cannot have the cultivation.”
 “I have the road,” you say. Your voice rings under the dome. “It is the same thing, if you walk it with people.”
@@ -67,7 +67,7 @@ You put your shoulder to the jade. It swings. The wind comes in, cold and clean 
 They do not shout. They fill the Hall in silence, wall to wall, until the ring of masters is surrounded by ten thousand faces, and the chant dies on nine throats.
 “What is this?” says Hu Jingyan, faintly.
 “The ones you count,” says Duan Wuyi, from the door. “In the sum.”
-Lian Sheng’s sword is out. He turns it slowly, searching the crowd for someone to cut. There are too many. There is no one he can cut who is not smiling.
+Lian Sheng’s sword is out. She turns it slowly, searching the crowd for someone to cut. There are too many. There is no one she can cut who is not smiling.
 The volunteers rise, one by one, and are taken in.
 > truth | Stand with the crowd. | summit_after | cult+4
 > mercy | Go to the volunteers. | summit_after
@@ -78,8 +78,8 @@ The volunteers rise, one by one, and are taken in.
 You walk into the ring alone. Nobody stops you; the nine are too intent on the chant to look up. You kneel in the gap that has been left between Hu Jingyan and the black pillar, in a space the width of one person, and you say, quite clearly: “I will be the ninth.”
 The chant falters.
 The cold seed turns over in your chest. It has waited for fifteen years. It opens like an eye. You feel the Stone turn toward you, a vast slow listening, and the silver page leaps up the pillar and writes a single line in your own hand: your own name, the one you have never said.
-“Stop,” says Lian Sheng, hoarsely. “She is the Reserve. It is not permitted. She is the seal.”
-“Is it not?” says Hu Jingyan, reasonably. “She has volunteered.”
+“Stop,” says Lian Sheng, hoarsely. “That is the Reserve. It is not permitted. That is the seal.”
+“Is it not?” says Hu Jingyan, reasonably. “The Reserve has volunteered.”
 The Elder’s voice, from the door, is a thin high cry. “Do not let them—”
 The line on the page begins to burn.
 > truth | Hold on. | summit_offer2 | qi-40
@@ -91,7 +91,7 @@ The line on the page begins to burn.
 It is the humming that saves you. It comes up through the floor of the Hall from nine hundred miles of rock, a woman’s voice, low and tired and amused, a tune with no words. It takes your name off the page the way a hand lifts a moth off a flame.
 You fall. You are on your face on the white jade. The seed is cold and small in your chest again. The Elder is on her knees beside you, gripping your shoulders so hard it hurts, saying your name, the one you do not say.
 Above you the ring has broken. Nine masters are on their feet, staring at the silver pillar, from which every line has faded. The page is blank.
-“The seal,” whispers Hu Jingyan. “It would not take her.” He is quite white. “It has never refused.”
+“The seal,” whispers Hu Jingyan. “It would not take {them}.” He is quite white. “It has never refused.”
 “She was already written,” says the Elder, fiercely, hauling you up. “In a hand that is not yours.”
 The volunteers are waking. A man sits up and says, in a thin voice, “Is it over?”
 > truth | Get up. | summit_after | cult+2
@@ -106,7 +106,7 @@ It ends without ceremony. The silver page is dark. The nine volunteers are on th
 “The Keeper of Keys.” He looks up, and smiles. It is a kind smile, which is the worst of it. “He is in the Ash Archive, as you know. He has been there for forty days, with the doors barred, and the Archive’s wards turned inward. We shall be glad to get him out.”
 “You are not to touch him.”
 “We have no need to touch him.” The scholar rises, stiffly. “We only need to be standing in the right place when the wards fail.”
-Lian Sheng has already gone. His cushion is empty, and the door in the east wall swings.
+Lian Sheng has already gone. Her cushion is empty, and the door in the east wall swings.
 > truth | Ask how the wards will fail. | summit_after2
 > mercy | Ask about Lin Yuan. | summit_after2
 > force | Stand in the way of the east door. | summit_after2

@@ -341,7 +341,7 @@ She spends two days inside. She makes herself useful. She runs messages. She sor
 “Why fourteen?”
 “I got carried away,” says Hao Lan.
 > deceit | Smile. | mill_a3s5
-> truth | Embrace her. | mill_a3s5
+> mercy | Embrace her. | mill_a3s5
 > quiet | Check the sacks. | mill_a3s5
 > mercy | Ask if she is unhurt. | mill_a3s5
 
@@ -418,7 +418,7 @@ Hao Lan reads it out. She reads it again. She sits for a long time with the lett
 She looks at the letter. Her small face is bright and troubled.
 “I am not sure I should be pleased,” she says. “But I am.”
 > deceit | Smile. | mill_close | +mill_switched
-> truth | Embrace her. | mill_close | +mill_switched
+> mercy | Embrace her. | mill_close | +mill_switched
 > quiet | Look at the sky. | mill_close | +mill_switched
 > mercy | Hold her hand. | mill_close | +mill_switched
 

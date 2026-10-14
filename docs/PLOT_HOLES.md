@@ -1,6 +1,6 @@
 # Plot-hole and continuity ledger
 
-Eight passes, three asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
+Nine passes, four asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
 
 | Pass | Fixed | Of what kind |
 | --- | ---: | --- |
@@ -12,9 +12,29 @@ Eight passes, three asked to fix more than 1,000 and the fourth asked again. Thi
 | Fifth pass | 42 | 31 choices whose tone contradicted the act, 9 lines of broken wording, 2 remarks that could never be said |
 | Sixth pass | 283 | 11 origin door scenes the Elder never played, 10 sentences read in up to 200 roads, 254 trait lines shared by 200 roads, and 8 smaller slips |
 | Seventh pass | 72 | 2 hero-address lines and 1 simile that assumed a gender, 11 wet words on the Glass Sea, 6 places against canon, 28 generated-text slips, 8 plural places, 4 early spoilers, 10 name clashes, 2 wayside origins |
-| **Eighth pass (this branch)** | **84** | 1 canon contradiction opened by the new starting ages (the Wanderer was five fifteen years ago), 52 shown lines that told a hero of any age what the Elder did “at your age”, 1 timeline slip (twenty years against fifteen), 1 beginning that contradicted itself (four ways taught “one a decade” in seven winters), 3 lines that assumed a young hero, 1 panel that showed the wrong heart-demon line, 1 preview that misread, and 24 slips in the new content (5 dead lesser ways, 4 name clashes, 6 repeated lines, 9 echoes over the cap) |
+| Eighth pass | 84 | 1 canon contradiction opened by the new starting ages (the Wanderer was five fifteen years ago), 52 shown lines that told a hero of any age what the Elder did “at your age”, 1 timeline slip (twenty years against fifteen), 1 beginning that contradicted itself (four ways taught “one a decade” in seven winters), 3 lines that assumed a young hero, 1 panel that showed the wrong heart-demon line, 1 preview that misread, and 24 slips in the new content (5 dead lesser ways, 4 name clashes, 6 repeated lines, 9 echoes over the cap) |
+| **Ninth pass (this branch)** | **777** | 704 lines and memories no hero could ever see (662 extras and 42 memories behind a realm outside the ladder), 22 lines in 17 scenes that told every hero they were a girl, a lady or a madam, or called them “she”, 45 lines in which Lian Sheng (about 40) and Old Lin (5) changed gender between books, 6 hugs counted as truth |
 
-## Eighth pass (this branch): what was looked for, found and fixed
+## Ninth pass (this branch): what was looked for, found and fixed
+
+This branch added the Custom Roads and made gender matter in the narrative, so the pass went after what gender could expose: lines written for one hero, and named people who changed gender between books. It also added an audit check for conditions no hero can meet, which found the largest class.
+
+| Class | Count | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| Conditional paragraphs on the generated roads that need a realm below Mortal or above Ascendant | 662 | the new impossible-bounds audit, run on the base commit | `roads2/build.ts`, `roads2/index.ts`, `fortune/build.ts`, `fortune/index.ts` (bands filtered by `bandHeld`) |
+| Report memories that need a realm no hero can reach | 42 | the same | the same, and `cultivation/build.ts` |
+| Shown lines that told every hero they were a girl, a lady, a madam or “she” | 22 (17 scenes) | scanning shown text for third-person and honorific words about the hero | Books Two to Five: assembly, censors, nine, ferry, lotus, mourning, ninesails, border, camp, roots, ladder, festival, singing, summit |
+| Lian Sheng, a woman in Books One to Three, a man in Five and Six | about 40 | reading every line that names them against the first | `b5/crib`, `clerk`, `summit`, `festival`, `b6/archive` |
+| Old Lin, a woman and a man | 5 | the same | `b5/gale`, `b6/bridge`, `b6/archive` |
+| A hug or embrace tagged as truth | 6 | reading tones against acts | `b3/chain`, `b4/mill`, `b5/festival`, `b5/singing` |
+
+Tests now fail on each class: `tests/continuity.test.ts` (third-person hero lines, honorifics, the two women’s pronouns, impossible bounds in the audit, `bandHeld`, the hug tone) and `tests/custom.test.ts` (36 tests on the Custom Roads).
+
+**Looked for and found clean.** Hint numbers against requirements; origins against realms; unknown scenario, item, asset and companion references; gendered extras without a gender gate; “years ago” against the timeline.
+
+**Not counted.** 146 paragraphs of shared scaffolding repeat across the generated roads, which was already known and is left alone.
+
+## Eighth pass: what was looked for, found and fixed
 
 This branch added age and 1,136 scenes, so the pass went after what age could expose: a story written for one twenty-year-old, now read by someone of sixteen and someone of sixty-eight. Counted only what a script or a test could prove, and the number is smaller than the earlier passes because the rest is not a number of lines.
 

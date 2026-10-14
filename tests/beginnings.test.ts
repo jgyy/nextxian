@@ -161,7 +161,8 @@ describe("how the Elder and the keepers take the six beginnings", () => {
     for (const o of NEW) {
       let g = fresh(hero({ origin: o }));
       for (let i = 0; i < 9 && g.sceneId !== "law_hall"; i++) {
-        const options = getChoices(getScene(story, g.sceneId), g).filter((v) => v.available);
+        // A wayside is a detour off the road to the Law Hall, so the walk leaves it to the walkers who want it.
+        const options = getChoices(getScene(story, g.sceneId), g).filter((v) => v.available && !v.choice.id.startsWith("wayside_"));
         // Always take the last available choice, so the walk differs from the first-choice walk.
         g = choose(story, g, options[options.length - 1].choice.id);
       }

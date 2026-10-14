@@ -314,7 +314,7 @@ A rustle goes through the Censors’ bench.
 > inquiry | Ask Hao Lan what the Censors will do. | asm_wme2 | +asm_w_mei
 
 === asm_wme2 | A Sister
-“There was a clause,” says Inspector Mei. “There is a clause. It says the bearer must walk into the wound under her own power. A bearer who is carried is a poor seal.” She stops. “My sister walked. She was eleven. She was told it would be quick. She was told it would not hurt. She was told that she was saving a hundred thousand people.”
+“There was a clause,” says Inspector Mei. “There is a clause. It says the bearer must walk into the wound under {their} own power. A bearer who is carried is a poor seal.” She stops. “My sister walked. She was eleven. She was told it would be quick. She was told it would not hurt. She was told that she was saving a hundred thousand people.”
 She looks at the delegates.
 “She was a child. I held the lamp.”
 Silence. A long silence, as of a held breath. Then, at the high table, Duan Wuyi rises, and takes off his hat, and bows to her, and the Censors’ bench, one by one, are on their feet.
@@ -451,7 +451,7 @@ Lian Sheng lays the register on the table with a flat soft thump. It is a thick 
 She taps the line.
 “Withdrawn. Not struck. Not recorded. Not found.”
 She turns. She looks, not at the Elder, but at the witness’s bench.
-“She has been among us for six weeks,” says Lian Sheng. “She has read the names in the Law Hall. She has carried the Elder’s comb. She has the seed in her chest. I ask the Assembly to look at her left palm.”
+“The witness has been among us for six weeks,” says Lian Sheng. “The witness has read the names in the Law Hall, has carried the Elder’s comb, and has the seed in the chest. I ask the Assembly to look at the witness’s left palm.”
 > truth | Hold up your palm. | +
 > force | Close your hand. | ^
 > quiet | Keep it at your side. | ^
@@ -461,9 +461,9 @@ She turns. She looks, not at the Elder, but at the witness’s bench.
 There is a scar across your left palm. You have had it since childhood. It is thin and white and runs from the base of the thumb to the edge of the hand. Your teacher in the river-village said it was a burn from a lamp you reached for as a baby.
 The Assembly sees it. A hush falls across three hundred delegates. In the first row, the delegate of the Alchemy Peak leans forward, her face avid. At the high table, Duan Wuyi has closed his eyes.
 Beside you, the Elder rises. She rises as a tree rises from a field, slowly, with a kind of terrible grace.
-“I am the one who hid her,” she says. “I am the Registrar who signed a fifteenth line that was not on the page. I took two children out of the Law Hall on the night of the Sealing, and I was too late for the rest. I should like the Assembly to note that I did not do it for the sect.”
+“I am the one who hid the child,” she says. “I am the Registrar who signed a fifteenth line that was not on the page. I took two children out of the Law Hall on the night of the Sealing, and I was too late for the rest. I should like the Assembly to note that I did not do it for the sect.”
 Her voice is perfectly clear.
-“I did it because she had a hand that would not stop reaching for the lamp.”
+“I did it because the child had a hand that would not stop reaching for the lamp.”
 > truth | Stand beside her. | + | +asm_stood_beside_su
 > mercy | Take her hand. | ^
 > quiet | Say nothing. | ^

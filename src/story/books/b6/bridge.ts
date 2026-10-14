@@ -76,7 +76,7 @@ He lowers his halberd.
 === bridge_slip1 | Old Lin’s Path
 It is a ledge of wet slate under the abutment, no wider than a hand and a half, with a rope of braided hemp to hold. You go down the cliff-face in the dusk, hand under hand, with the mist rising round your boots and the span a black curve over your head. You can hear the grey men above, stamping to keep warm.
 A lantern waits at the bottom, in a niche cut in the rock. Beside it sits an old man on a stool, with a long white beard and a bowl of tea. He does not get up.
-“Late,” says Old Lin. “I expected you three days ago. The Ninth Night was the Ninth Night.” He pours a second cup. “I made the tea twice.”
+“Late,” says Old Lin. “I expected you three days ago. The Ninth Night was the Ninth Night.” She pours a second cup. “I made the tea twice.”
 “Old Lin,” says Ren Qiao, hoarsely.
 “Boy.” The old man’s face creases up in the lantern-light. “You’ve grown a scar.”
 He rises, stiffly, to embrace the swordsman. The tea slops. He does not seem to care.
@@ -137,7 +137,7 @@ Ren Qiao sits on the bed with his coat across his knees. He does not speak for a
 “It was a good post,” he says.
 “Yes.”
 “I should like to say that I would go back to it.” He looks at the cup. “I find I would not. I find I want to be somewhere that is not a bridge.”
-Old Lin puts a hand on his shoulder. He says nothing at all.
+Old Lin puts a hand on his shoulder. She says nothing at all.
 > truth | Smile. | bridge_close2 | bond:ren+3
 > mercy | Hold his arm. | bridge_close2 | bond:ren+3
 > force | Look at the mountain. | bridge_close2 | bond:ren+3

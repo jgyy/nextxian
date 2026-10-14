@@ -442,7 +442,7 @@ Signal flags go up the halyards of the Harmony: a string of coloured squares, re
 Duan Wuyi stands beside the Admiral with the chain still at his wrist. He is smiling.
 “Well,” he says. “I find I have a rule against this.”
 > quiet | Smile. | chain_close | +chain_duan_freed
-> truth | Embrace him. | chain_close | +chain_duan_freed
+> mercy | Embrace him. | chain_close | +chain_duan_freed
 > mercy | Help him with the manacles. | chain_close | +chain_duan_freed
 > inquiry | Ask about the Inspector. | chain_close | +chain_duan_freed
 

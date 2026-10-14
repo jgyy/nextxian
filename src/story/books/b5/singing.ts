@@ -125,7 +125,7 @@ There is a pause. The chimes sing on, patient, thin.
 “It would hurt,” says Odval. “I think. I don’t know how much.” She presses her palms together. “It would be like holding every name at once. For as long as it takes the sea to finish.”
 “How long?”
 “A minute. An hour.” She shrugs. “I’m sorry. I can’t say.”
-“It could kill her,” says Hao Lan. Her voice is fierce. “The seed in her chest. You told us. It lets her live in the mist, because she carries a name. If she takes a hundred thousand—”
+“It could kill you,” says Hao Lan. Her voice is fierce. “The seed in your chest. You told us. It lets you live in the mist, because you carry a name. If you take a hundred thousand—”
 “I know.”
 “Do you?” She is on her feet. “Do you know what it is to be eaten by a list?”
 You think of a hollow in a mound. A small cold hand. You think of a book with a blank page, and a line that was saved.
@@ -438,7 +438,7 @@ Temur laughs through tears. “She’s right.”
 You look at her.
 “It was only one,” you say. “That’s allowed.”
 > deceit | Smile. | singing_close | +singing_hushed
-> truth | Hug her. | singing_close | +singing_hushed
+> mercy | Hug her. | singing_close | +singing_hushed
 > quiet | Look at the stars. | singing_close | +singing_hushed
 > mercy | Sit with her. | singing_close | +singing_hushed
 

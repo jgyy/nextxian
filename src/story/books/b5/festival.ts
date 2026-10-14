@@ -120,9 +120,9 @@ The knife drops. It sticks quivering in the boards.
 === festival_a1s7 | Moth
 She stops crying when you lift her. She regards you from a height, round-faced and grave, with a thumb in her mouth. She smells of woodsmoke and boiled egg. “Moth,” she says, round the thumb. “Mine’s Moth.”
 “Hello, Moth.”
-“Tian says you’re a bad lady.” She takes the thumb out. “I don’t think you are.”
+“Tian says you’re a bad {person}.” She takes the thumb out. “I don’t think you are.”
 “Why not?”
-“You’re holding me.” She says it with the clear logic of four. “Bad ladies don’t.”
+“You’re holding me.” She says it with the clear logic of four. “Bad people don’t.”
 Tian makes a strangled noise. He sinks down onto the grass. He puts his head on his knees.
 You sit beside him, with the child in your lap. You say nothing. You simply wait. The drums beat in the distance. The lanterns sway.
 After a while he says, thickly, “I wanted to be the one.”
@@ -451,7 +451,7 @@ Tian hangs back. He has not taken off the pig. He stands with Moth on his should
 “Was she good?”
 “She was terrible.” He wipes his nose. “I’ve never had such a good time.”
 > deceit | Laugh. | festival_a3s9
-> truth | Hug him. | festival_a3s9
+> mercy | Hug him. | festival_a3s9
 > quiet | Look at Ash. | festival_a3s9
 > mercy | Hold Moth. | festival_a3s9
 
@@ -620,7 +620,7 @@ The Elder watches from the edge of the circle, in her grey coat, with a cup of t
 There is a very long silence. Then the whole ring bursts into noise: laughter, shouting, tears. Tian is on his feet. He seizes her by both hands. He looks about to speak. He opens his mouth.
 “Don’t,” says the Elder. “I shall cry.”
 > mercy | Smile. | festival_close | +festival_tian
-> truth | Hug her. | festival_close | +festival_tian
+> mercy | Hug her. | festival_close | +festival_tian
 > quiet | Look at Ash. | festival_close | +festival_tian
 > inquiry | Ask where the house will be. | festival_close | +festival_tian
 
@@ -704,7 +704,7 @@ They decide it at dawn, in a council of seventeen, sitting in a ring on the wet 
 “Of labour.” She smiles. “It is something I know. I have run a mourning-shop for fifteen years.”
 She counts. Ah Zhi and Lu Yan will stay, with Mei Qiu and the Hollow. The camp needs hands. The children need care. Bao Er will keep the Clerk company, and sing. Qiu will watch the Stair, from the lamp-tower. Shu Ning will go up with the Ninth: a seal-wright is needed. Tian will bring Moth, and refuse to be left.
 “And you?” says the Elder.
-“I shall go with Rui.” Ash glances at the tall thin man who sits beside her with his terrible hat. “To the summit. We have something to say to a man called Lian Sheng.”
+“I shall go with Rui.” Ash glances at the tall thin man who sits beside her with his terrible hat. “To the summit. We have something to say to a woman called Lian Sheng.”
 “What?”
 “That he is late,” says Hui Niang, “for our appointment.”
 > truth | Smile. | hub_b5_b | bond:tian+3

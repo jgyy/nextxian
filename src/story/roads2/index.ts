@@ -2,7 +2,7 @@ import { REALMS } from "@/engine/cultivation";
 import type { Choice, NpcScenario, Scene } from "@/engine/types";
 import { approachModes, fill } from "../roads/build";
 import { buildReport2, buildRoad2, doneFlag2, reportedFlag2, type RoadSpec2 } from "./build";
-import { bandBounds } from "./hero-lex";
+import { bandBounds, bandHeld } from "./hero-lex";
 import { WAYSIDE_AFTER2 } from "./lexicon";
 import { roadsRiver } from "./specs-1";
 import { roadsCoastSteppe } from "./specs-2";
@@ -198,7 +198,7 @@ function waysideScene2(w: Wayside2, n: number, roads: { spec: RoadSpec2; index: 
           },
         ];
       }),
-      ...(["far", "below", "at", "above"] as const).map((band) => ({
+      ...(["far", "below", "at", "above"] as const).filter((band) => bandHeld(band, w.realm)).map((band) => ({
         when: [{ kind: "realm" as const, ...bandBounds(band, w.realm) }],
         paragraphs: [HUB_REALM[band]],
         group: "realm",

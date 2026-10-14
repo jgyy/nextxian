@@ -1,3 +1,4 @@
+import { REALMS } from "@/engine/cultivation";
 import type { Attire, Background, Gender, Looks, Status } from "@/engine/hero";
 import { MORE_BIRTH, MORE_DRESS, MORE_FACE, MORE_MANNER, MORE_REALM_REACT, MORE_SEND_OFF, MORE_TRADE } from "./hero-lex-more";
 
@@ -304,6 +305,15 @@ export function bandBounds(band: RelBand, road: number): { min?: number; max?: n
     case "above":
       return { min: road + 1 };
   }
+}
+
+/**
+ * Whether any hero can be in a band of a road at realm `road`. The realms run from Mortal to Ascendant, so the band two realms below a road at the second
+ * realm, or the one a realm below a road at the first, is held by no one, and a line written for it would never be shown.
+ */
+export function bandHeld(band: RelBand, road: number): boolean {
+  const { min, max } = bandBounds(band, road);
+  return (max ?? REALMS.length - 1) >= 0 && (min ?? 0) <= REALMS.length - 1;
 }
 
 /** A table with the lines of `more` added after its own, key by key. */

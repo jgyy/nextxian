@@ -264,7 +264,7 @@ It is Under-Manager Bo. He has come up quietly, and he stands with his hands fol
 === ferry_a3s5 | A Polite Man
 “I agree,” says Bo, and the smile does not flicker. “It is monstrous. I tell myself so every night. But I have a wife, and a child, and a house with a mortgage held by Factor Gang. I have found that a clear conscience is a luxury, like a fresh egg.”
 He walks along the table, dropping a hand on a worker’s shoulder as he passes. The old man doesn’t look up.
-“I will not stop you leaving,” he says. “I could. I have two guards at the door. But I do not choose to. You have not seen anything, madam. You have taken a pleasant tour. You may have a bag of salt.”
+“I will not stop you leaving,” he says. “I could. I have two guards at the door. But I do not choose to. You have not seen anything, {honorific}. You have taken a pleasant tour. You may have a bag of salt.”
 He turns.
 “I should like to know, though,” he says, very softly, “whether you are going to do something about it. I would like to know because I would like to be on the right side. I do not think I have the courage to choose it.”
 > deceit | Say you are not. | ferry_a3s6

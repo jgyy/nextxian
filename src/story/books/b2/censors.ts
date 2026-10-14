@@ -336,8 +336,8 @@ The tag on number nine says: Reserve. Withdrawn at the Sealing.
 
 === censors_h2 | A Child’s Tally
 The drawer is empty except for a single thing. It is a tally stick no longer than a finger, notched in rows of five, and at the end of the rows someone has drawn a small, careless circle with a dot in it, the way a child draws an eye.
-Beneath the stick is a slip of paper in the Elder’s neat hand. It is dated twelve days before the Sealing. It says: Child nine will not be needed if the first seal holds. I have asked the nurse to take her to the river.
-Her. The paper does not say whom. Your left palm, closed at your side, has begun to ache.
+Beneath the stick is a slip of paper in the Elder’s neat hand. It is dated twelve days before the Sealing. It says: Child nine will not be needed if the first seal holds. I have asked the nurse to take {them} to the river.
+{Them}. The paper does not say whom. Your left palm, closed at your side, has begun to ache.
 > truth | Read the slip again, aloud, so that Lin Yuan hears it. | censors_h3 | bond:lin+2
 > inquiry | Look for a second slip, or a name, or a date after the Sealing. | censors_h3
 > quiet | Fold the slip along its old crease and put it in your robe. | censors_h3 | +censors_took_slip

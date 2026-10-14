@@ -135,7 +135,7 @@ It is a round hall as big as a barn, ringed with shelves of ledgers to the ceili
 He sits on a stool among the ledgers, in his grey coat, with a cup of cold tea, and listens to the Elder tell it. She tells it plainly. She does not spare herself. When she has finished he says nothing for some time.
 “Thank you,” he says at last. “I think I knew. Not in words.”
 “How?”
-“The keys.” He lifts the ring from his belt. “I was given them at nine by Old Lin. He said: *they have been waiting for you.* I thought he meant the Archive.” His mouth trembles. “I think he meant the door.”
+“The keys.” He lifts the ring from his belt. “I was given them at nine by Old Lin. She said: *they have been waiting for you.* I thought she meant the Archive.” His mouth trembles. “I think she meant the door.”
 “What door?”
 “The one under the Law Hall.” He looks at the ring. “It has nine locks. I have eight of the keys.”
 > truth | Ask for the ninth. | archive_truth
@@ -157,7 +157,7 @@ Lin Yuan breathes out.
 > quiet | Listen. | archive_siege1
 
 === archive_siege1 | The Masters’ Men
-They come at dawn. A hundred of them, in black, in a long line across the courtyard, with Lian Sheng at their head. He has come down the mountain in the night. He stands in front of the Archive door with his sword unsheathed, and his dead-white face quite calm, and says in a pleasant voice:
+They come at dawn. A hundred of them, in black, in a long line across the courtyard, with Lian Sheng at their head. She has come down the mountain in the night. She stands in front of the Archive door with her sword unsheathed, and her face like carved walnut quite calm, and says in a pleasant voice:
 “Keeper. I will trouble you for the keys.”
 Lin Yuan is standing in the doorway. He has the ring clutched in both hands. He is shaking so that the keys ring like bells. He says in a high, formal, trembling voice: “I am afraid I must decline.”
 “You are a boy.”
@@ -165,14 +165,14 @@ Lin Yuan is standing in the doorway. He has the ring clutched in both hands. He 
 “You are meant to say what you are told.”
 “Perhaps.” The boy lifts his chin. “But I have spent forty days alone with the entire cadastre of this sect, and I have read the Charter very closely, and I find that I am not obliged.”
 Lian Sheng smiles. It is a very thin smile.
-“Then I shall have to take them,” he says.
+“Then I shall have to take them,” she says.
 > truth | Step forward. | archive_siege2 |  | realm>=5 | You would not stand against a Master of the Law and a hundred men without a Spirit Severing cultivation.
 > force | Stand in front of the boy anyway. | archive_siege2 | needs:5
 > mercy | Stand beside him. | archive_siege2
 > quiet | Look at the Elder. | archive_siege2
 
 === archive_siege2 | The Standoff
-It is Captain Dur who ends it. He has followed you from the bridge with eleven men, panting, in the grey livery of the sect, and he comes into the courtyard at a heavy trot with his halberd on his shoulder. He halts. He looks at the black line, and the thin pale boy, and the Master with his drawn sword.
+It is Captain Dur who ends it. He has followed you from the bridge with eleven men, panting, in the grey livery of the sect, and he comes into the courtyard at a heavy trot with his halberd on his shoulder. He halts. He looks at the black line, and the thin pale boy, and the Master with her drawn sword.
 “Master Lian,” he says, hoarsely. “I have an order to withdraw from the Archive.”
 “From whom?”
 “From the Warden of the Ash Bridge,” says the captain. “He says that if the sect’s own men raise a hand against the Keeper, he will not open the bridge again.”
@@ -180,7 +180,7 @@ It is Captain Dur who ends it. He has followed you from the bridge with eleven m
 “He has the post.” Dur plants the halberd. “And I have a bad knee. I cannot stand all day.”
 Behind him, one by one, the eleven men of the bridge lower their points. One of them, a boy with a gap in his teeth, steps out of the ranks and walks across to stand beside the Keeper.
 Lian Sheng’s eyes are like slate.
-“You will all regret this,” he says, softly. He sheathes his sword. “I shall be at the Law Hall.”
+“You will all regret this,” she says, softly. She sheathes her sword. “I shall be at the Law Hall.”
 > truth | Let him go. | archive_close | cult+4
 > mercy | Thank the captain. | archive_close
 > force | Watch him leave. | archive_close
