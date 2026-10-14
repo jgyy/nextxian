@@ -1321,10 +1321,12 @@ button.ghost[aria-expanded="true"] {
   background: var(--ink-soft);
 }
 
+.years,
 .standing {
   margin: 6px 0;
 }
 
+.years .sep,
 .standing .sep {
   margin: 0 8px;
   color: var(--gilt-soft);

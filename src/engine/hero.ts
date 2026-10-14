@@ -258,7 +258,7 @@ export function describeHero(hero: Hero): string {
   };
   const years = AGE_START[hero.age] ?? AGE_START.young;
   const craft = hero.dao === "none" ? "no Dao yet" : `the ${DAOS.find((d) => d.value === hero.dao)?.label ?? ""}`;
-  return `${hero.name} is ${who[hero.gender]} of ${years}, ${looks[hero.looks]}, once ${trade[hero.background]}, ${dress[hero.attire]}, ${rank[hero.status]}, ${where[hero.origin]}, with ${roots[hero.talent]} and ${craft}.`;
+  return `${hero.name} is ${who[hero.gender]}, ${years} years old, ${looks[hero.looks]}, once ${trade[hero.background]}, ${dress[hero.attire]}, ${rank[hero.status]}, ${where[hero.origin]}, with ${roots[hero.talent]} and ${craft}.`;
 }
 
 // ───────────── pronouns and names

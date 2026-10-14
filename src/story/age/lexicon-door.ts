@@ -19,31 +19,31 @@ export const GAP_TITLE: Record<Gap, string[]> = {
 export const GAP_DOOR: Record<Gap, string[]> = {
   kin: [
     "Sit down at {place} among those of your own years, where {kname} keeps a bench for people who are at the same hour of life as {kthem}.",
-    "Take the bench at {focus} that {kname} keeps for people of an age with {kthem}, and see what is said on it.",
+    "Take the bench at {place} that {kname} keeps for people of an age with {kthem}, and see what is said on it.",
     "Follow {kname} to the corner of {place} where the cultivators of {ktheir} years sit together, and sit among them.",
     "Answer {kname} when {kthey} asks, quietly, how many years you carry, and be shown to the seat that fits the number.",
   ],
   older: [
     "Let {kname} see your grey beside {ktheir} youth, and be shown to the guest’s chair at {place}, where the older are seated.",
-    "Take the seat at {focus} that {kname} sets aside for the elder guest, and let the younger cultivators gather round it.",
+    "Take the seat at {place} that {kname} sets aside for the elder guest, and let the younger cultivators gather round it.",
     "Tell {kname} the years you carry, and be led to the long bench at {place}, where the senior are given the sun.",
     "Go where the older cultivators of {place} sit, by the south wall, and learn what the young have been told to ask them.",
   ],
   younger: [
     "Tell {kname} your age, and take the junior’s place at {place}, a step below the bench where {kthey} teaches.",
-    "Sit on the lower step at {focus}, where {kname} seats those who have fewer years than {kthey} has, and wait to be taught.",
+    "Sit on the lower step at {place}, where {kname} seats those who have fewer years than {kthey} has, and wait to be taught.",
     "Go where the younger cultivators of {place} gather, by the north door, and ask them what {kname} says to the young.",
     "Admit to {kname} that you are the junior here by years, and be shown to the bench kept for those who are.",
   ],
   farOlder: [
     "Let {kname} look at the years you carry, which are very many more than {ktheir} own, and be led, with some ceremony, to the old people’s chair at {place}.",
-    "Take the chair at {focus} that {kname} keeps for the very old, and watch the young ones go quiet as you sit.",
+    "Take the chair at {place} that {kname} keeps for the very old, and watch the young ones go quiet as you sit.",
     "Tell {kname} how long you have lived, and be taken, wide-eyed, to the seat by the stove where the oldest at {place} are asked their opinion.",
     "Go to the chair at {place} that has never been sat in, kept for the day a very old guest should come, and let {kname} see that it was kept for you.",
   ],
   farYounger: [
     "Let {kname} look at how few years you carry beside {ktheir} many, and be led, not unkindly, to the child’s stool at {place}.",
-    "Take the low stool at {focus} that {kname} keeps for the very young, and let the old hands at {place} gather round to look.",
+    "Take the low stool at {place} that {kname} keeps for the very young, and let the old hands at {place} gather round to look.",
     "Tell {kname} how young you are, and be taken to the place by the stove where the youngest at {place} are given the warmest spot.",
     "Go to the little bench at {place} kept for the child who comes only once in a lifetime, and let {kname} see that you have come.",
   ],

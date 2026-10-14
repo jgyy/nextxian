@@ -6,6 +6,9 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 
 ## Features
 
+- **Age: where the story starts, and a clock that runs.** Before the first scene you choose how many years your body carries: **sixteen, twenty-four, thirty-six, fifty-two or sixty-eight**. The years set your opening qi, insight, karma and purse, how quick or patient your cultivation is, how steady you stand against a heart demon, and how the Elder and every keeper read you. The story counts on from there, a year for every ten decisions, and **every realm is a span of years** (Mortal 76, Qi Condensation 110, Foundation 160, Core 250, Nascent Soul 400, Spirit Severing 620, Dao Seeking 950, Ascendant 1,500). A hero within three years of the end of their span is slowed and the Elder says so; a hero past it is slowed more; a breakthrough lengthens the span and says so. An elder who starts at a mortal’s sixty-eight has eight years to find a realm, a youth has sixty and the energy to waste them. The register says the Wanderer is twenty: in canon the black seed spends years where it wakes, so the age is the body’s.
+- **Age Roads: forty roads, 1,136 more scenes, where five ages meet eight realms.** Eight waysides, one at every realm from Mortal (the Almshouse Row below the gate) to Ascendant (the Open Sill), each with five roads kept by a girl or boy of sixteen, a young adult of twenty-five, a keeper of thirty-eight, one of fifty-four and one of seventy. Every beat of a road is the keeper’s years set beside the realm’s own. On each road the middle of the second approach has a **door of years** that opens to a hero by how far their age stands from the keeper’s (the same stretch of life, older, younger, or for a youth’s road and an elder’s, far older or far younger), and behind it four picks the Elder answers at once. One of them gives **years back** to a hero with twenty or fewer left, at a realm near the road’s, who can pay in qi; two more (outlast, hasten) ask the realm of the road. Seven turning points of the main line, from the gate to the sealing night, offer one hidden way to a youth, to a hero of middle years and to an elder, six endings read the years, and the hero panel and a new Age panel keep the count.
+- **An eighth plot-hole pass: 84 fixed.** One was a canon contradiction the new ages opened (the Wanderer was five on the Sealing Night). 52 were lines in which the Elder told a hero of any age what she did “at your age”. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md).
 - **Crossing Roads: forty roads, 1,380 more scenes, where element and craft decide the story.** Five elements meet eight crafts (pill, forge, talisman, array, beast, sword, healing, fate) at forty places, each kept by a keeper who is a woman or a man. Every road has **three doors that open only to who the hero is**: a gender door (a woman’s Sisters’ Bench, a man’s Brothers’ Hall, the Middle Seat of someone who gives no answer), a root door (a kindred, a partial or a deaf root meets the road’s element) and a craft door (the keeper’s own Dao, another Dao, or an open hand). A door is hidden from everyone else. Each pick behind a door has its own price: a woman argues a barred door open with Insight, a man pays the yard’s test in qi, the middle seat asks to be explained, the master’s piece asks Adept mastery. A kindred root **attunes** the hero to an element for good (+6% cultivation speed, +3% for half), the Elder answers every door at once, 69 remarks read the pattern, and the Elder’s five accounts read the hero’s craft, roots and gender.
 - **Three gendered side paths (31 scenes).** Behind the Elder’s confession at the memorial: the Left Cloister for a woman, the Right Yard for a man and the Third Door for someone who gives no answer. The same fourteen names are kept three ways, in lullabies, in lanterns and in a Door-book.
 - **A seventh plot-hole pass.** See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md).
@@ -41,6 +44,38 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 - **Saves in your browser.** Progress is written to `localStorage` after every choice. Storage errors never stop play. Saves from before the Elder kept a reaction history, or before decisions had tones, still load.
 
 ![Scene with no Continue](docs/screenshots/02-no-continue-desktop.png)
+
+### Age, years and the Age Roads
+
+![Twelve beginnings and now five ages: the creation screen](docs/screenshots/120-creation-age-desktop.png)
+![What sixty-eight years begin with: preview and notes](docs/screenshots/121-creation-age-preview-desktop.png)
+![An elder at the gate: eight years left at a mortal’s span, and a way of meeting the gate only the old are offered](docs/screenshots/122-elder-gate-turning-point-desktop.png)
+![A youth at the gate: the other way](docs/screenshots/123-youth-gate-turning-point-desktop.png)
+![The Age Roads’ wayside: five keepers of five ages](docs/screenshots/124-age-roads-wayside-desktop.png)
+![The keeper reads a hero many years older than they are](docs/screenshots/125-keeper-reads-your-years-desktop.png)
+![The door of years: the same stretch of life, with the years left read aloud](docs/screenshots/126-door-of-years-elder-desktop.png)
+![The Age panel: years against the span the realm allows](docs/screenshots/131-years-panel-desktop.png)
+![Past the years the realm allows: the keeper says so, and the hero panel turns amber](docs/screenshots/127-past-your-years-desktop.png)
+![A breakthrough lengthens the span](docs/screenshots/128-breakthrough-lengthens-years-desktop.png)
+![A youth at the keeper of seventy](docs/screenshots/129-youth-at-the-elder-keeper-desktop.png)
+![The door of years on a phone](docs/screenshots/130-door-of-years-mobile.png)
+
+```mermaid
+flowchart TD
+  A["age: 16 · 24 · 36 · 52 · 68"] --> S["opening numbers and speed"]
+  A --> C["clock: a year for every ten decisions"]
+  R["realm"] --> L["span of years: 76 ... 1,500"]
+  C --> W{"years left"}
+  L --> W
+  W -->|"3 or fewer"| SL["slowed, the Elder and keepers say so"]
+  W -->|"none"| PA["past the years: slowed more"]
+  B["breakthrough"] -->|"lengthens the span"| L
+  A --> AR["Age Roads: 8 waysides, 40 roads, 1,136 scenes"]
+  AR --> D["door of years: same age, older, younger"]
+  D --> Y["picks: years given, outlast, hasten ask the realm"]
+  Y -->|"years"| L
+  A --> T["seven turning points of the main line"]
+```
 
 ### Crossing Roads, gender and the roots
 
