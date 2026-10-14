@@ -25,7 +25,7 @@ export const heroRemarks = String.raw`
 % hr_lin_scholarrobe | bond:lin>=-100 & hero:attire=scholar | lin | Ink on both cuffs. Sorry, I should not look. It is only that nobody comes into the archive with real ink on them. They come with silk.
 % hr_lin_orphan | bond:lin>=-100 & hero:background=orphan | lin | I was raised by the archive, so I am not an orphan, exactly. I think. I would be grateful if you told me, if you know the difference.
 % hr_lin_gentry | bond:lin>=-100 & hero:status=gentry | lin | Gentry families have wanted copies of the sealing orders for years. I have always said no. I am saying it now in advance, so you will not have to ask.
-% hr_lin_man | bond:lin>=-100 & hero:gender=man | lin | I am sorry. I thought you were going to be older. Clerks in the archive are all older. It is probably a prejudice I should look into.
+% hr_lin_man | bond:lin>=-100 & hero:gender=man & age<=40 | lin | I am sorry. I thought you were going to be older. Clerks in the archive are all older. It is probably a prejudice I should look into.
 % hr_lin_realm | bond:lin>=-100 & realm>=3 | lin | The wards in the lower stacks bend away from you. I measured it twice. I am sorry. I will stop measuring if it bothers you.
 // ---- Duan Wuyi and Hao Lan: the Censors
 % hr_duan_noble | bond:duan>=-100 & hero:status=noble | duan | A noble house, and a name that will be on my docket within the year, whatever you do. I tell you now so that you will not take my courtesy for a favour.

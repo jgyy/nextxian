@@ -169,7 +169,7 @@ export const heroAsides: Record<HeroField | "realm", Record<string, Lines>> = {
       hostile: "I have buried men who thought their voice was an argument. It is a short list, but I do not intend to lengthen it.",
       wary: "A man in this hall is believed more quickly than a woman, and I distrust the speed. Show me you have earned it.",
       neutral: "The Masters will hear you before they hear me. I wish it were not so. I will be careful not to hide behind it.",
-      warm: "You hold your voice down when you speak, as though you knew how far it carries. It is a rare courtesy in a young man, and I note it.",
+      warm: "You hold your voice down when you speak, as though you knew how far it carries. It is a rare courtesy in a man, and I note it.",
       devoted: "I have taught many men to be judges. You are the first who made me feel the lesson ran both ways.",
     },
     unspoken: {

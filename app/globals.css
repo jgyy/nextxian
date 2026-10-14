@@ -1523,6 +1523,30 @@ button.ghost[aria-expanded="true"] {
 .practice-list li[data-zero="yes"] {
   color: var(--muted);
 }
+.age-card h2 {
+  margin: 4px 0 8px;
+  font-size: 1.1rem;
+}
+.age-card .fill-age {
+  background: linear-gradient(90deg, #7fa38c, #d9b35a);
+}
+.age-card[data-waning="short"] .fill-age {
+  background: linear-gradient(90deg, #d9b35a, #c97b3a);
+}
+.age-card[data-waning="past"] .fill-age {
+  background: #b5483a;
+}
+.age-card .waning {
+  margin: 8px 0;
+  padding: 6px 10px;
+  border-left: 3px solid #c97b3a;
+  background: rgba(201, 123, 58, 0.12);
+  font-size: 0.86rem;
+}
+.hero-card .years[data-waning="short"],
+.hero-card .years[data-waning="past"] {
+  color: #e0a35a;
+}
 .crossing h2 {
   margin: 0 0 8px;
   font-size: 1.1rem;

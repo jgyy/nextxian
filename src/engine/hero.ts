@@ -305,6 +305,8 @@ export function personalise(text: string, hero: Hero): string {
   out = out
     .replace(/\b([Yy])our boot(s?)\b/g, (_m, y: string, s: string) => `${y}our ${FOOTWEAR[hero.attire]}${s}`)
     .replace(/\b([Yy])our hat\b/g, (_m, y: string) => `${y}our ${HEADGEAR[hero.attire]}`);
+  // The Elder was never the age of a hero who begins past fifty, so what she did “at your age” she did at their stage.
+  if (hero.age === "mature" || hero.age === "elder") out = out.replace(/\bat your age\b/g, "at your stage");
   if (hero.name !== DEFAULT_NAME) {
     out = out.replace(/\b(?:the|The) Wanderer\b/g, hero.name).replace(/\b([Aa]) Wanderer\b/g, "$1 wanderer").replace(/\bWanderer\b/g, hero.name);
   }

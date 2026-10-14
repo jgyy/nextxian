@@ -24,7 +24,7 @@ export const AGE_BOUNDS: Record<Age, [number, number]> = {
 };
 
 /** Decisions the hero makes in a year of the story. The seasons go by on the roads, not in the scenes. */
-export const DECISIONS_PER_YEAR = 25;
+export const DECISIONS_PER_YEAR = 10;
 
 /** The years a body can last at each realm. A breakthrough is also a lengthening of life. */
 export const LIFESPAN: readonly number[] = [76, 110, 160, 250, 400, 620, 950, 1500];

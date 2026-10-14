@@ -286,3 +286,19 @@ export function crossingSummary(flags: Record<string, boolean>): CrossingSummary
     attuned: attunements(flags),
   };
 }
+
+// ───────────── years
+
+/** What the hero has done on the Age Roads, counted from the flags they set. */
+export interface AgeSummary {
+  /** Age Roads finished. */
+  roads: number;
+  /** Doors of years gone through. */
+  doors: number;
+  /** Roads that gave the hero years. */
+  given: number;
+}
+
+export function ageSummary(flags: Record<string, boolean>): AgeSummary {
+  return { roads: countFlags(flags, "ag_done_"), doors: countFlags(flags, "ag_door_"), given: countFlags(flags, "ag_pick_years_") };
+}
