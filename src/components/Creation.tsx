@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AGE_START, ageSpeed, lifespanOf } from "@/engine/age";
 import { aptitudeFor, startingWealth } from "@/engine/economy";
 import { DAO_NAME, DAO_PASSIVE, ORIGIN_LABEL, originSpeed, TALENT_LABEL, talentSpeed } from "@/engine/path";
 import {
@@ -23,6 +24,10 @@ function startNotes(hero: Hero): string[] {
   const notes: string[] = [];
   const label = { qi: "qi", karma: "karma", insight: "insight", trust: "trust", respect: "respect", fear: "fear", suspicion: "suspicion" } as const;
   notes.push(`${startingWealth(hero)} spirit stones`);
+  const left = lifespanOf(0) - AGE_START[hero.age];
+  notes.push(`${AGE_START[hero.age]} years old, with ${left} left to a mortal (a breakthrough lengthens them)`);
+  const quick = ageSpeed(hero.age, 0);
+  if (quick) notes.push(`${quick > 0 ? "+" : "−"}${Math.abs(quick)}% from your years`);
   if (aptitudeFor(hero) > 0) notes.push(`+${aptitudeFor(hero)}% cultivation speed from your trade`);
   const root = talentSpeed(hero.talent, 0);
   if (root) notes.push(`${root > 0 ? "+" : "−"}${Math.abs(root)}% from your ${TALENT_LABEL[hero.talent].toLowerCase()}`);
@@ -40,6 +45,7 @@ export function Creation({ onBegin, onLoad }: { onBegin: (hero: Hero) => void; o
   const [name, setName] = useState("");
   const [picks, setPicks] = useState<Record<HeroField, string>>({
     origin: DEFAULT_HERO.origin,
+    age: DEFAULT_HERO.age,
     talent: DEFAULT_HERO.talent,
     dao: DEFAULT_HERO.dao,
     gender: DEFAULT_HERO.gender,

@@ -1,3 +1,4 @@
+import { ageHeartDemon } from "./age";
 import type { Dao, Hero, Origin, Talent } from "./hero";
 
 /**
@@ -131,7 +132,7 @@ export const DAO_PASSIVE: Record<Dao, string> = {
 
 // ───────────── what a talent or a Dao changes in the rules
 
-type Path = Pick<Hero, "talent" | "dao"> & Partial<Pick<Hero, "origin">>;
+type Path = Pick<Hero, "talent" | "dao"> & Partial<Pick<Hero, "origin" | "age">>;
 
 /** Where a pill starts to work, as a share of the next realm’s points. */
 export const aidReachFor = (hero: Path): number => (hero.dao === "alchemy" ? 0.7 : 0.85);
@@ -158,6 +159,7 @@ export function heartDemonKarmaFor(hero: Path, base = -30): number {
   if (hero.talent === "earth") karma -= 10;
   if (hero.origin === "listener") karma -= 5;
   if (hero.talent === "heaven") karma += 10;
+  karma += ageHeartDemon(hero.age);
   return karma;
 }
 

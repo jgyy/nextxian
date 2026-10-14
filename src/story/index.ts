@@ -36,9 +36,11 @@ import { parsedCultivationRemarks } from "./cultivation/remarks";
 import { cultivationAssets, cultivationEntrances, cultivationGroups, cultivationItems, cultivationScenarios, waysideBack6 } from "./cultivation";
 import { parsedGenderedRemarks } from "./gendered/remarks";
 import { genderedBack, genderedEntrances, genderedGroup, genderedItems, genderedScenariosParsed, GENDERED_ORIGIN } from "./gendered";
+import { parsedAgeRemarks } from "./age/remarks";
 import { accountsReadThePath } from "./crossing/accounts";
 import { parsedCrossingRemarks } from "./crossing/remarks";
 import { crossingAssets, crossingEntrances, crossingGroups, crossingItems, crossingScenarios, waysideBack7 } from "./crossing";
+import { ageAssets, ageEntrances, ageGroups, ageItems, ageScenarios, waysideBack8 } from "./age";
 import { witnessAssets, witnessEntrances, witnessGroups, witnessItems, witnessScenarios, waysideBack5 } from "./witness";
 import { fortuneAssets, fortuneEntrances, fortuneGroups, fortuneItems, fortuneScenarios, waysideBack3 } from "./fortune";
 import { elderSuRealm, elderSuRealmScenes } from "./npc/elder-su-realm";
@@ -104,8 +106,9 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
     const witness = witnessEntrances[scene.id];
     const cultivation = cultivationEntrances[scene.id];
     const crossing = crossingEntrances[scene.id];
+    const age = ageEntrances[scene.id];
     const doors = scene.id === GENDERED_ORIGIN ? genderedEntrances : [];
-    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : []), ...(dao ? [dao] : []), ...(witness ? [witness] : []), ...(cultivation ? [cultivation] : []), ...(crossing ? [crossing] : []), ...doors] };
+    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : []), ...(dao ? [dao] : []), ...(witness ? [witness] : []), ...(cultivation ? [cultivation] : []), ...(crossing ? [crossing] : []), ...(age ? [age] : []), ...doors] };
   });
   const groups = chapter ? roadGroups.filter((g) => g.chapter === Number(chapter[1])) : [];
   const fortunes = fortuneGroups
@@ -123,6 +126,9 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
   const crossings = crossingGroups
     .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
     .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack7(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+  const ages = ageGroups
+    .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+    .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack8(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
   const gendered = scenes.some((x) => x.id === GENDERED_ORIGIN)
     ? [{ name: genderedGroup.name, scenes: [...genderedGroup.scenes, genderedBack(scenes.find((x) => x.id === GENDERED_ORIGIN)!)] }]
     : [];
@@ -138,6 +144,7 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
     ...witnesses,
     ...cultivations,
     ...crossings,
+    ...ages,
     ...gendered,
   ];
 });
@@ -181,7 +188,8 @@ const bookGroups = books.flatMap((book) =>
       .map((scene) => (daoEntrances[scene.id] ? { ...scene, choices: [...scene.choices, daoEntrances[scene.id]] } : scene))
       .map((scene) => (witnessEntrances[scene.id] ? { ...scene, choices: [...scene.choices, witnessEntrances[scene.id]] } : scene))
       .map((scene) => (cultivationEntrances[scene.id] ? { ...scene, choices: [...scene.choices, cultivationEntrances[scene.id]] } : scene))
-      .map((scene) => (crossingEntrances[scene.id] ? { ...scene, choices: [...scene.choices, crossingEntrances[scene.id]] } : scene));
+      .map((scene) => (crossingEntrances[scene.id] ? { ...scene, choices: [...scene.choices, crossingEntrances[scene.id]] } : scene))
+      .map((scene) => (ageEntrances[scene.id] ? { ...scene, choices: [...scene.choices, ageEntrances[scene.id]] } : scene));
     const roads = realmRoadGroups
       .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
       .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack2(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
@@ -200,7 +208,10 @@ const bookGroups = books.flatMap((book) =>
     const crossings = crossingGroups
       .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
       .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack7(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
-    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes, ...daos, ...witnesses, ...cultivations, ...crossings];
+    const ages = ageGroups
+      .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+      .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack8(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes, ...daos, ...witnesses, ...cultivations, ...crossings, ...ages];
   }),
 );
 
@@ -227,7 +238,7 @@ export const story: Story = {
   npc: elderSu,
   scenes: Object.fromEntries(scenes.map((s) => [s.id, s])),
   scenarios: {
-    ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios, ...realmRoadScenarios, ...fortuneScenarios, ...daoScenarios, ...witnessScenarios, ...cultivationScenarios, ...crossingScenarios }),
+    ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios, ...realmRoadScenarios, ...fortuneScenarios, ...daoScenarios, ...witnessScenarios, ...cultivationScenarios, ...crossingScenarios, ...ageScenarios }),
     ...Object.fromEntries(parseScenarios(scenariosOne, "scenarios-1").map((x) => [x.id, x])),
     ...Object.fromEntries(parseScenarios(pathScenarios, "path/scenarios").map((x) => [x.id, x])),
     ...Object.fromEntries(genderedScenariosParsed.map((x) => [x.id, x])),
@@ -237,16 +248,17 @@ export const story: Story = {
     ),
   },
   companions,
-  items: { ...fortuneItems, ...daoItems, ...witnessItems, ...cultivationItems, ...crossingItems, ...genderedItems, ...beginningItems },
-  assets: { ...fortuneAssets, ...daoAssets, ...witnessAssets, ...cultivationAssets, ...crossingAssets },
+  items: { ...fortuneItems, ...daoItems, ...witnessItems, ...cultivationItems, ...crossingItems, ...ageItems, ...genderedItems, ...beginningItems },
+  assets: { ...fortuneAssets, ...daoAssets, ...witnessAssets, ...cultivationAssets, ...crossingAssets, ...ageAssets },
   leavesSect: "departure_dawn",
   asides: heroAsides,
   remarks: [
     ...parseRemarks(remarksOne, "remarks-1"),
-    ...economyRemarks({ ...fortuneItems, ...daoItems, ...witnessItems, ...cultivationItems, ...crossingItems }),
+    ...economyRemarks({ ...fortuneItems, ...daoItems, ...witnessItems, ...cultivationItems, ...crossingItems, ...ageItems }),
     ...parsedWitnessRemarks(),
     ...parsedCultivationRemarks(),
     ...parsedCrossingRemarks(),
+    ...parsedAgeRemarks(),
     ...parsedGenderedRemarks(),
     ...parseRemarks(heroRemarks, "hero/remarks"),
     ...books.flatMap((book) => book.arcs.flatMap((arc) => (arc.remarks ? parseRemarks(arc.remarks, `${book.id}/${arc.id}/remarks`) : []))),

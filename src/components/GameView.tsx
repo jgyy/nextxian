@@ -314,7 +314,7 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
         </main>
 
         <aside className="side" aria-label="Characters and stats">
-          <HeroPanel hero={game.hero} realm={game.realm} />
+          <HeroPanel hero={game.hero} realm={game.realm} decisions={game.decisions} years={game.years} />
           <NpcPanel profile={story.npc} npc={game.npc} lastLine={lastNpcLine} manner={mannerOf(game.tones)} />
           <CultivationPanel game={game} />
           <PursePanel story={story} game={game} />

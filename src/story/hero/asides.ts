@@ -2,6 +2,7 @@ import type { HeroField } from "@/engine/hero";
 import type { Tier } from "@/engine/types";
 import { beginningAsides } from "../origins/entries";
 import { daoAsides, originAsides, talentAsides } from "./asides-path";
+import { ageAsides } from "./asides-age";
 
 type Lines = Record<Tier, string>;
 
@@ -12,6 +13,7 @@ type Lines = Record<Tier, string>;
  */
 export const heroAsides: Record<HeroField | "realm", Record<string, Lines>> = {
   origin: { ...originAsides, ...beginningAsides },
+  age: ageAsides,
   talent: talentAsides,
   dao: daoAsides,
   status: {
