@@ -76,6 +76,6 @@ export const heroRemarks = String.raw`
 % hr_odval_plain | bond:odval>=-100 & hero:looks=plain | odval | I sat on a hill for four days to listen to you before you arrived. You sound like nobody I have heard. It is the best compliment I know.
 % hr_odval_healer | bond:odval>=-100 & hero:background=healer | odval | You listen with your hands. It is rarer than listening with ears. I have asked the Ninth how you do it, and the Ninth does not know.
 // ---- The cast on realm
-% hr_realm_gu_core | bond:gu>=-100 & realm>=4 | gu | You are a Nascent Soul and you still wait for me at the bottom of every stair. I do not know why that makes me want to cry.
+% hr_realm_gu_core | bond:gu>=-100 & realm>=4 | gu | You are a Nascent Soul at the least, and you still wait for me at the bottom of every stair. I do not know why that makes me want to cry.
 % hr_realm_ren_sage | bond:ren>=-100 & realm>=5 | ren | I do not salute cultivators. I am saluting now. Do not look at me.
 `;

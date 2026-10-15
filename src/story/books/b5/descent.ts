@@ -34,15 +34,22 @@ A young officer in a green tabard sits at the desk. Mo Yun, by his badge. He loo
 > quiet | Go back up and sit another night. | hub_b5_c
 
 === descent_read | Read
-The Glass clears to a clean deep amber, and for the first time since you came to the Pass the warden stands up.
-“Nascent Soul,” says Mo Yun. His voice has gone formal. “Madam. I beg your pardon. No one told me.” He bows, from the waist. “The Gate is open. May I ask your destination?”
-“The mountain.”
-“Of course.” His eyes flick to the Elder, to Duan, to the rest of the company. “Your party?”
-“My party.”
-“The Glass has no objection to a party,” he says. “If its leader is of rank.” He waves a hand. The gate swings. “I am told it is the first Nascent Soul to come through the Pass this year. I shall note it in the book.”
-The Elder, passing, murmurs: “I should like it known that I have always held that a rank is no more than what it is for.”
-“Yes, madam.”
-“Then see that it is for something.”
+The Glass clears to a clean bright colour, and for the first time since you came to the Pass the warden stands up.
++[gl] realm>=4 & realm<=4 | “Nascent Soul,” says Mo Yun. His voice has gone formal. “Honoured cultivator. I beg your pardon. No one told me.” He bows, from the waist. “The Gate is open. May I ask your destination?”
++[gl] realm>=5 & realm<=5 | “Spirit Severing,” says Mo Yun, and the formality goes out of his voice, and something smaller comes into it. “Honoured sage. I beg your pardon. No one told me.” He bows to the floor. “The Gate is open. May I ask your destination?”
++[gl] realm>=6 & realm<=6 | “Dao Seeking,” says Mo Yun, very quietly, and puts his pen down. “Honoured one. I beg your pardon. No one told me.” He kneels on one knee, as the old register requires. “The Gate is open. May I ask your destination?”
++[gl] realm>=7 | The Glass does not clear. It blazes, once, and goes dark. Mo Yun is already on his knees, forehead to the boards, and for a long moment he cannot speak. “The Gate is open,” he whispers. “Forgive me. I have no right to ask your destination.”
++ realm>=0 | “The mountain.”
++ realm>=0 | “Of course.” His eyes flick to the Elder, to Duan, to the rest of the company. “Your party?”
++ realm>=0 | “My party.”
++ realm>=0 | “The Glass has no objection to a party,” he says. “If its leader is of rank.” He waves a hand. The gate swings.
++[gl2] realm>=4 & realm<=4 | “I am told it is the first Nascent Soul to come through the Pass this year. I shall note it in the book.”
++[gl2] realm>=5 & realm<=5 | “I am told it is the first Spirit Severing sage to come through the Pass in my time. I shall note it in the book, in red.”
++[gl2] realm>=6 & realm<=6 | “I am told it is the first Dao Seeker to come through the Pass in forty years. I shall note it in the book, and then I shall ask the book to forgive me.”
++[gl2] realm>=7 | He does not look up. “There is no line in the book for it,” he says to the floor. “I shall leave the page blank, as the old rule says.”
++ realm>=0 | The Elder, passing, murmurs: “I should like it known that I have always held that a rank is no more than what it is for.”
++ realm>=0 | “Yes, madam.”
++ realm>=0 | “Then see that it is for something.”
 > truth | Go through. | descent_close
 > mercy | Thank the warden. | descent_close
 > force | Look at the barracks. | descent_close
@@ -52,8 +59,8 @@ The Elder, passing, murmurs: “I should like it known that I have always held t
 It takes two hours. The warden has a rule for every contingency, and a form for every rule. He reads Duan’s seal with his lips moving. He asks for the Office countersignature, and then for a witness, and then for the witness’s witness. He runs a finger down a long list. The Glass above him glows and clouds and glows again as each of you stands before it.
 “Mortal,” he says, wearily, of Gu. “Foundation.” Of Hao Lan. “Foundation.” Of Odval. “Core.” Of Ren. “Unreadable,” of the Elder, with a frown.
 He looks at you last. The Glass shows a thin grey cloud.
-“It cannot read her at all,” he says. “I do not know what that means.”
-“It means she is carrying more than she weighs,” says Duan Wuyi, mildly. “It happens.”
+“It cannot read you at all,” he says. “I do not know what that means.”
+“It means you are carrying more than you weigh,” says Duan Wuyi, mildly. “It happens.”
 Mo Yun hesitates. His pen hovers. At length, with the air of one who has decided to be wrong in the safest direction, he stamps the page and passes it through.
 “The Concord does not turn back a Censor-General,” he says. “I shall put it down to weather.”
 > truth | Thank him. | descent_close
@@ -76,7 +83,7 @@ The Elder takes off her hat. The wind off the mountain stirs the grey hair at he
 > quiet | Look at the dark mountain. | b6_gate | +b5q_descent
 `,
   scenarios: String.raw`
-$ SU_DESCENT_PASS | trust+3 respect+3 fear+2 | elder | The Elder looks up at the mountain she has left for the first time in thirty years.
+$ SU_DESCENT_PASS | trust+3 respect+3 fear+2 | elder | The Elder looks up at the mountain she has left for the first time in fifteen years.
 hostile: It was smaller than I remembered. This is in the nature of a thing one has feared for a long time. It was also exactly as cold.
 wary: The last time I saw it from outside I was twenty-eight, with a pen in my hand and a clean list of fourteen. I did not look back. I find I am looking back now.
 neutral: There is a lamp in a window at the foot of the road. It has been lit for fifteen years. I do not know whose it is. I should like to.

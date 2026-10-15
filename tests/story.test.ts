@@ -587,7 +587,7 @@ describe("length and structure checks", () => {
   const words = (n: number) => Array.from({ length: n }, () => "word").join(" ");
   const withGatePara = (paragraph: string) => ({
     ...story,
-    scenes: { ...story.scenes, gate_gossip: { ...story.scenes.gate_gossip, paragraphs: [paragraph] } },
+    scenes: { ...story.scenes, gate_gossip: { ...story.scenes.gate_gossip, paragraphs: [paragraph], extras: [] } },
   });
 
   it("caps every NPC line and attitude comment in the story", () => {

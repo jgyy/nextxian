@@ -28,7 +28,7 @@ The river does not hurry. For thirty-six days it carries the barge past watersid
 + b2r_barge | A boy with black hands is writing in the air on the foredeck, and no one asks him to stop.
 + b2r_fever | At Green Mill, a row of blue flowers is coming up beside the great wheel.
 + departed | The mountain is a grey tooth far behind. Qinglian Ford is still twenty days ahead.
-+[rl] realm>=3 | At Core Formation the river is a map of qi: you feel which landings are hollow, three bends ahead.
++[rl] realm>=3 | From Core Formation upward, the river is a map of qi: you feel which landings are hollow, three bends ahead.
 +[rl] realm>=2 | At Foundation Establishment the river’s qi pulls on your breath, and you can tell a lying ferryman by his boat.
 +[rl] realm<=1 | You are barely a cultivator for this water. Each crowded landing presses on your chest like a hand.
 > truth | Put in at Willow Reach, where the river is narrow and the toll is a name. | willow_entry |  | !b2r_willow | You have already crossed at Willow Reach.
@@ -54,7 +54,7 @@ The Guesthouse of Nine Moons has paper windows, and through them the city goes a
 + b2q_lanterns | A paper lantern with a name on it bobs somewhere downriver, and you know whose.
 + b2q_stairs | Your legs still ache from the Crane Stairs, and the Elder has stopped teasing you about it.
 + b2q_vault | Ink is under your nails that will not wash out, and no one has asked why.
-+[rl] realm>=3 | At Core Formation the Ford is a ledger written in qi. Every sect’s quarter hums a different note, and you can hear which doors have been opened since the morning.
++[rl] realm>=3 | From Core Formation upward, the Ford is a ledger written in qi. Every sect’s quarter hums a different note, and you can hear which doors have been opened since the morning.
 +[rl] realm>=2 | At Foundation Establishment you can read the Ford’s wards with your skin: the Censors’ brass lanterns tingle, and the dyers’ vats taste of copper.
 +[rl] realm<=1 | You are too thin in qi for a city that counts it. The Censors’ wards itch at you, and twice a clerk looks at you and then, uneasily, at his instruments.
 > truth | The Silk Quarter, where the weavers have a petition. | silk_entry |  | !b2q_silk | You have been through the quarter.

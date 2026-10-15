@@ -27,7 +27,7 @@ At night the glass begins to hum.
 +[d] b5q_wreck | A logbook in a dead man’s hand is wrapped in oilcloth in the Elder’s coat.
 +[d] b5q_mirage | You have seen a city that was not there, and you carry a name that was not yours.
 +[d] b5q_gale | There are fine glass scratches along the skiffs’ planking, bright as new silver.
-+[rl] realm>=5 | At Spirit Severing the Glass Sea is almost too bright to see. You feel the roots of every name that was ever struck here, and the plain is a long, patient, forgiving field.
++[rl] realm>=5 | From Spirit Severing upward, the Glass Sea is almost too bright to see. You feel the roots of every name that was ever struck here, and the plain is a long, patient, forgiving field.
 +[rl] realm>=4 | At Nascent Soul the glass hums with you. You steer by the song under the plate, and Yue stops checking the compass.
 +[rl] realm<=3 | The Sea is a mirror and you do not like what it shows of your cultivation. Odval’s eyes follow your hands whenever the skiffs lean.
 > truth | Put in at the shore yard to commission a skiff. | skiff_entry |  | !b5q_skiff | You already have your skiffs.
@@ -56,7 +56,7 @@ You have nine days. The ninth night is the Ceremony. Everyone knows it. Nobody s
 +[d] b5q_clerk | A page covered in tiny characters lies folded in your sleeve, and it is writing itself.
 +[d] b5q_ladder | You were weighed on a brass scale, and the pointer settled on a number you will not tell.
 +[d] b5q_festival | Someone in a black veil has tied a ribbon to your tent-pole, and the knot is a mourning-knot.
-+[rl] realm>=5 | At Spirit Severing the camp is a single weight on the world. Ten thousand tents, ten thousand small knots of want, and the Stair above them like a needle through cloth.
++[rl] realm>=5 | From Spirit Severing upward, the camp is a single weight on the world. Ten thousand tents, ten thousand small knots of want, and the Stair above them like a needle through cloth.
 +[rl] realm>=4 | At Nascent Soul you can feel the Weighing Wardens’ attention move through the crowd, and step quietly out of the way of it.
 +[rl] realm<=3 | The camp presses on you from every side. Ten thousand pilgrims and not one of them feels your equal, and the Stair leans over you like a question.
 > truth | Push through the crowd to the registration pavilion, and take a number. | pilgrims_entry |  | !b5q_pilgrims | You already have a number.
@@ -79,7 +79,7 @@ Nothing happens, and by morning something has. Your breath goes deeper than it d
 === hub_b5_c | The Nine Tiers
 The Stair is not climbed in a day, and it does not climb every pilgrim alike. At the first landing the thread of white is ten thousand strong. At the third it thins. At the sixth the air is cold and bright and the treads ring only for those who have earned the note. Above the ninth, no one has seen anything but light.
 You have nine days. On the ninth night, at the top, nine masters will begin a Ceremony that costs nine children. You are not yet at the top.
-+[rl] realm>=6 | At Dao Seeking the Stair is a direction, not a place. Every tread is a name, and you can feel which ones lean toward the door.
++[rl] realm>=6 | From Dao Seeking upward, the Stair is a direction, not a place. Every tread is a name, and you can feel which ones lean toward the door.
 +[rl] realm>=5 | At Spirit Severing the cold of the upper tiers cannot reach you. The pilgrims make a way without knowing why.
 +[rl] realm<=4 | The upper tiers are made for someone more than you are. The air is thin, and your cultivation, which was enough for the plain, is not enough for this.
 +[d] b5q_tiers | You have read the nine admissions, and you know now what the founders thought of themselves.

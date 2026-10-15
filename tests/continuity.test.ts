@@ -202,3 +202,77 @@ describe("the tenth pass: lines that were broken or told every hero what they we
     for (const t of texts) expect(t.text, t.where).not.toMatch(/nobody to tell him he cannot|where she wishes to go|does her sums|empty-handed in her mind|of her own accord/);
   });
 });
+
+describe("the eleventh pass: a realm named for every realm above it, and a hero called what they are not", () => {
+  const texts = shownText();
+  const realms = ["Mortal", "Qi Condens(?:er|ation)", "Foundation(?: Builder| Establishment)?", "Core(?: Formation)?", "Nascent Soul", "Spirit Severing", "Dao Seeking", "Ascendant"];
+  const bounds = (when: { kind: string; min?: number; max?: number }[]) => {
+    let min = 0;
+    let max = 7;
+    for (const c of when) if (c.kind === "realm") {
+      if (c.min !== undefined) min = Math.max(min, c.min);
+      if (c.max !== undefined) max = Math.min(max, c.max);
+    }
+    return [min, max] as const;
+  };
+
+  it("shows no line that opens “At <realm>” to a hero who has climbed past it, unless a higher line of its group catches them first", () => {
+    const wrong: string[] = [];
+    for (const scene of Object.values(story.scenes)) {
+      const extras = scene.extras ?? [];
+      extras.forEach((x, i) => {
+        const [min, max] = bounds(x.when);
+        if (min < 1 || min > 6 || max !== 7) return;
+        if (!new RegExp(`^(At|As an?|As the) (${realms[min]})\\b`, "i").test(x.paragraphs.join(" "))) return;
+        const caught = x.group !== undefined && extras.slice(0, i).some((y) => y.group === x.group && bounds(y.when)[0] > min);
+        if (!caught) wrong.push(`${scene.id}: ${x.paragraphs[0].slice(0, 50)}`);
+      });
+    }
+    expect(wrong).toEqual([]);
+  });
+
+  it("reads the realm-band lines of the hubs as “from … upward”, so a Dao Seeker is not told they are at Core Formation", () => {
+    for (const [id, realm, name] of [["hub_b2_road", 3, "Core Formation"], ["hub_b3_coast", 3, "Core Formation"], ["hub_b4_a", 4, "Nascent Soul"], ["hub_b4_c", 5, "Spirit Severing"], ["hub_b5_a", 5, "Spirit Severing"], ["hub_b5_c", 6, "Dao Seeking"], ["hub_b6", 6, "Dao Seeking"], ["depths_entry", 6, "Dao Seeking"], ["end_listener", 6, "Dao Seeking"]] as const) {
+      const lines = story.scenes[id].extras!.filter((x) => bounds(x.when)[0] === realm).map((x) => x.paragraphs[0]);
+      expect(lines.some((t) => t.startsWith(`From ${name} upward`)), id).toBe(true);
+    }
+    expect(texts.filter((t) => /you hold it, at Dao Seeking,/.test(t.text))).toEqual([]);
+  });
+
+  it("names the realm the Glass reads at the Pass for the hero who stands before it, and does not call the hero Madam", () => {
+    const scene = story.scenes.descent_read;
+    const names = scene.extras!.filter((x) => x.group === "gl").map((x) => x.paragraphs[0]);
+    expect(names).toHaveLength(4);
+    expect(names[0]).toContain("Nascent Soul");
+    expect(names[1]).toContain("Spirit Severing");
+    expect(names[2]).toContain("Dao Seeking");
+    expect(names[3]).toContain("blazes");
+    const all = [...scene.paragraphs, ...scene.extras!.flatMap((x) => x.paragraphs)].join(" ");
+    expect(all).not.toMatch(/Madam\. I beg|first Nascent Soul to come through the Pass this year(?!\.)/);
+    expect(scene.extras!.filter((x) => x.group === "gl2")).toHaveLength(4);
+  });
+
+  it("speaks of the unreadable hero as “you”, not as a woman, when the Glass cannot read them", () => {
+    const papers = story.scenes.descent_papers.paragraphs.join(" ");
+    expect(papers).toContain("It cannot read you at all");
+    expect(papers).toContain("you are carrying more than you weigh");
+    expect(papers).not.toMatch(/cannot read her|carrying more than she weighs/);
+  });
+
+  it("keeps the Elder to her own years: thirty years ago she was thirteen, and she left the mountain fifteen years ago", () => {
+    const bridge = story.scenes.bridge_open1.paragraphs.join(" ");
+    expect(bridge).toContain("It has never done that for me.");
+    expect(bridge).not.toContain("in thirty years");
+    expect(story.scenarios.SU_DESCENT_PASS.summary + Object.values(story.scenarios.SU_DESCENT_PASS.lines).join(" ")).not.toContain("thirty years");
+    expect(story.scenarios.SU_DESCENT_PASS.summary).toBeDefined();
+  });
+
+  it("tells every cultivator who confesses that they have a cultivator’s breath, and an old hero that their realm has given them years", () => {
+    expect(story.scenarios.HONEST_ACCOUNT.memory!.some((m) => m.line.includes("a cultivator’s steady breath"))).toBe(true);
+    expect(texts.filter((t) => /Foundation Builder’s steady breath/.test(t.text))).toEqual([]);
+    const extended = story.remarks!.find((r) => r.id === "su_ag_extended")!;
+    expect(extended.line).not.toMatch(/Foundation has given you a hundred and sixty/);
+    const gu = story.remarks!.find((r) => r.id === "hr_realm_gu_core")!;
+    expect(gu.line).toContain("Nascent Soul at the least");
+  });
+});

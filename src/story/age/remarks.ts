@@ -19,7 +19,7 @@ const SOURCE = String.raw`
 % su_ag_prime_forty | age>=42 & hero:age=prime & decisions>=20 | elder | You came to me at thirty-six and have since turned forty-two. The grey at your temples was not there at the gate, and it suits you, and I would rather it came slowly.
 % su_ag_mature_sixty | age>=60 & hero:age=mature & decisions>=20 | elder | Fifty-two at the gate, and sixty now. A mortal span is seventy-six, and you are well past the middle of it. If you are not a cultivator of more than one realm, I would take it as a reason to hurry.
 % su_ag_elder_seventy | age>=72 & hero:age=elder & decisions>=20 | elder | You came up at sixty-eight and are seventy-two now. You are still here, and so is the mountain, and one of you is surprised.
-% su_ag_extended | realm>=2 & hero:age=elder & years>=60 | elder | You were told eight years at my gate. Foundation has given you a hundred and sixty in all, and you are not yet seventy-five. That is a different life, and I hope you are using it as one.
+% su_ag_extended | realm>=2 & hero:age=elder & years>=60 | elder | You were told eight years at my gate. Your realm has given you far more than that, and you are not yet seventy-five. That is a different life, and I hope you are using it as one.
 % su_ag_youth_core | realm>=3 & hero:age=youth | elder | A youth at Core Formation. You will outlive every cultivator who taught you, and most of those who feared you. Learn to be kind to them while they are still here.
 // ---- The Elder: a pattern of doors
 % su_ag_door_one | count:ag_door_>=1 | elder | You have let a road read your years against its keeper’s. It is a harmless thing to do once. It becomes a habit, and then a kind of mirror, and a cultivator should be careful of mirrors.

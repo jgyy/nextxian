@@ -15,7 +15,7 @@ The Law Hall is empty. Lian Sheng’s men have gone up the mountain to hold the 
 “Carry. Mend. Sing,” reads Lin Yuan, holding the lamp. “Light. Seal. Write. Keep. Open.” He stops at the last door, and does not say the ninth.
 “Answer,” says the Elder, from behind you.
 Cold comes up the stair. It is not the cold of the ward. It is slower, and wetter, and it has a rhythm. It is breathing.
-+[rl] realm>=6 | At Dao Seeking you feel each door as a held breath, and the mist behind them as one long note held too long.
++[rl] realm>=6 | From Dao Seeking upward, you feel each door as a held breath, and the mist behind them as one long note held too long.
 +[rl] realm<=3 | The cold seeps through your robe and settles in your chest like a stone.
 > truth | Stand before the doors, and let them be read. | depths_read1 | +depths_read | realm>=6 | The doors answer only a Dao Seeking cultivator who can feel what stands behind them.
 > quiet | Sit before the doors with the First-Plate Shard in your hands, and let them read the glass. | depths_read1 | +depths_read item-plate_stall_ware | realm>=5 & item:plate_stall_ware>=1 | The doors answer a Dao Seeking cultivator, or a Spirit Severing one who carries glass the Sea once sang through.
