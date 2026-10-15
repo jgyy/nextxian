@@ -298,7 +298,7 @@ She looks at you, with her head on one side.
 > mercy | Ask if it is safe. | bone_a3s2
 
 === bone_a3s2 | The Idea
- says Hao Lan. “A name. A perfectly forged one. With a hook in it.” “He will take it back to the fort. He will file it. And in a week, when he looks, there will be a very strange thing in his files.”
+“We give Qadan what he came to buy,” says Hao Lan. “A name. A perfectly forged one. With a hook in it. He will take it back to the fort. He will file it. And in a week, when the Colonel looks, there will be a very strange thing in his files.”
 “What thing?”
 “A name,” she says, “that does not exist. But that exists in his own handwriting.”
 You frown. “I do not follow.”
@@ -581,7 +581,7 @@ Madam Uzun looks at it. Her small bright eyes do not move. The pipe falls from h
 “From the woman who sold it to me for a penny.”
 “Hui Niang.” She whispers it. “She’s alive.” She lifts a trembling hand to her mouth. “She’s alive.” She sinks onto the salt-block throne. It creaks. “Oh, my girl. My girl.”
 You wait. The beads click in the wind.
- says Madam Uzun, in a voice stripped of all its richness. “She found me when I was a nobody. A runaway. She said: you have a head for figures. She taught me to read. She set me up.” She wipes her eyes with a vast sleeve. “She said: one day you’ll repay me. And when you do, I want it to be with the market.”
+Madam Uzun says, in a voice stripped of all its richness, “She found me when I was a nobody. A runaway. She said: you have a head for figures. She taught me to read. She set me up.” She wipes her eyes with a vast sleeve. “She said: one day you’ll repay me. And when you do, I want it to be with the market.”
 > inquiry | Wait. | bone_h2
 > truth | Ask what she means. | bone_h2
 > mercy | Hold her hand. | bone_h2

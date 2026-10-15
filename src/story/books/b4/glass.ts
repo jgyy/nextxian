@@ -69,7 +69,7 @@ Neither moves. Neither speaks. They stand ten paces apart in the roar of the fur
 “You’re tall,” says Hanming.
 “You’re not.”
 “I used to be.” He gives a short cracked laugh. “I got shrunk. In the levy.” He rubs the back of his neck. “You came a long way.”
-“I came with an Elder. And a Censor. And a girl with a seed.” Gu’s voice is shaking. “They said we were going to the Steppe. I didn’t know you were on it.”
+“I came with an Elder. And a Censor. And someone with a seed.” Gu’s voice is shaking. “They said we were going to the Steppe. I didn’t know you were on it.”
 “I didn’t either.”
 “Mother told me you’d been taken to the north.”
 “I was.” The scar on Hanming’s cheek whitens. “And then I came back.”

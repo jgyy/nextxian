@@ -518,7 +518,7 @@ She has ridden up on her dun pony. You did not hear her come. She sits there in 
 “How far?”
 “A day and a half.” She dismounts. “The caravan can reach it by tomorrow night, if you ride hard. The children will have to be carried.”
 Yue looks up. “You came for us?”
-“I came because the grass said there was a girl at the Four Bones who gave her last cup to a boy.” She turns her level eyes on you. “It was most upset.”
+“I came because the grass said there was someone at the Four Bones who gave {their} last cup to a boy.” She turns her level eyes on you. “It was most upset.”
 “I didn’t—”
 “It heard you,” says Odval. “You weren’t quiet.”
 She puts her pipe to her lips and plays three notes, soft and high. Far away, over the dark plain, a deep hum answers.

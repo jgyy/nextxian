@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { story } from "@/story";
-import { auditStory } from "@/engine/audit";
+import { auditStory, clash } from "@/engine/audit";
 import { personalise, type Hero, DEFAULT_HERO } from "@/engine/hero";
+import { MANNER_SHIFT, REALM_SHIFT } from "@/engine/npc";
 import { bandBounds, bandHeld } from "@/story/roads2/hero-lex";
 
 /** Everything the player can be shown as text, with where it sits. */
@@ -118,5 +119,84 @@ describe("a kind act is not counted as a lie or a threat", () => {
     const wrong: string[] = [];
     for (const s of Object.values(story.scenes)) for (const c of s.choices) if (/^(Hug|Embrace)\b/.test(c.label) && c.tone !== "mercy") wrong.push(`${s.id}>${c.id} [${c.tone}] ${c.label}`);
     expect(wrong).toEqual([]);
+  });
+});
+
+describe("conditions that cannot hold together", () => {
+  it("are found by the audit: two conditions in one list that ask opposite things", () => {
+    const scene = story.scenes.gate;
+    const broken = (when: NonNullable<typeof scene.extras>[number]["when"]) => auditStory({ ...story, scenes: { ...story.scenes, gate: { ...scene, extras: [...(scene.extras ?? []), { when, paragraphs: ["x"] }] } } }).map((i) => i.message).join("\n");
+    // Each of these is a fine condition alone.
+    expect(broken([{ kind: "realm", min: 5 }, { kind: "realm", max: 2 }])).toContain("which no hero can hold at once");
+    expect(broken([{ kind: "stat", stat: "qi", min: 50 }, { kind: "stat", stat: "qi", max: 10 }])).toContain("stat qi");
+    expect(broken([{ kind: "flag", flag: "gate_x" }, { kind: "flag", flag: "gate_x", is: false }])).toContain("both set and not set");
+    expect(broken([{ kind: "hero", field: "gender", is: ["woman"] }, { kind: "hero", field: "gender", is: ["man"] }])).toContain("hero gender");
+    expect(broken([{ kind: "hero", field: "gender", is: ["woman"] }, { kind: "hero", field: "gender", not: ["woman"] }])).toContain("hero gender");
+    expect(broken([{ kind: "mood", is: "furious" }, { kind: "mood", is: "tender" }])).toContain("face");
+    expect(broken([{ kind: "scene", prefix: "gate" }, { kind: "scene", prefix: "law_hall" }])).toContain("scene starting both");
+    expect(broken([{ kind: "item", item: "x", max: 0 }, { kind: "item", item: "x" }])).toContain("item");
+    // And these are held by someone.
+    expect(broken([{ kind: "realm", min: 2 }, { kind: "realm", max: 5 }, { kind: "hero", field: "gender", is: ["woman", "man"] }, { kind: "hero", field: "gender", not: ["man"] }])).not.toContain("no hero can hold at once");
+    expect(broken([{ kind: "scene", prefix: "gate" }, { kind: "scene", prefix: "gate_go" }])).not.toContain("scene starting both");
+    expect(clash([])).toBeUndefined();
+  });
+
+  it("are not in the story: no scene, line, memory or remark asks for a rung and its opposite", () => {
+    expect(auditStory(story).filter((i) => i.message.includes("at once"))).toEqual([]);
+  });
+});
+
+describe("the tenth pass: lines that were broken or told every hero what they were", () => {
+  const texts = shownText();
+  const at = (where: string) => texts.find((t) => t.where === where)!.text;
+
+  it("starts no paragraph in the middle of a sentence, and glues no two speeches together", () => {
+    const body = texts.filter((t) => t.where.includes("#p"));
+    expect(body.filter((t) => /^[\sa-z]/.test(t.text)).map((t) => t.where)).toEqual([]);
+    expect(body.filter((t) => /”\s+“/.test(t.text)).map((t) => t.where)).toEqual([]);
+  });
+
+  it("gives the lines that lost their speaker back to who said them", () => {
+    expect(at("court_a4s9#p3")).toMatch(/^“It is a sentence,” he says, hoarsely\./);
+    expect(at("court_a4s7#p0")).toMatch(/^“I did not need you to be sorry,” she says\./);
+    expect(at("court_close2#p1")).toMatch(/^“It occurs to me,” he says, “that I have been signing/);
+    expect(at("bone_a3s2#p0")).toMatch(/^“We give Qadan what he came to buy,” says Hao Lan\./);
+    expect(at("bone_h1#p6")).toMatch(/^Madam Uzun says, in a voice stripped of all its richness, “She found me/);
+  });
+
+  it("calls the hero someone, and not a girl, wherever others speak of the one who carries the seed, the cards or the cup", () => {
+    expect(at("glass_a1s4#p4")).toContain("And someone with a seed.");
+    expect(at("court_a4s2#p3")).toContain("The one in the mountain.");
+    for (const t of texts) expect(t.text, t.where).not.toMatch(/\ba girl with a seed\b|\bthe girl in the mountain\b/);
+    const cup = personalise(at("caravan_a4s5#p5"), hero({ gender: "man" }));
+    expect(cup).toContain("someone at the Four Bones who gave his last cup to a boy");
+    expect(personalise(at("caravan_a4s5#p5"), hero({ gender: "unspoken" }))).toContain("gave their last cup");
+  });
+
+  it("does not tell every soldier, of any gender, that they are a man who has stood a post, or a levy man", () => {
+    for (const t of texts) {
+      expect(t.text, t.where).not.toMatch(/as one does for a man who has stood a post|a levy man by how he drinks/);
+    }
+    const posts = texts.filter((t) => /as one does for someone who has stood a post/.test(t.text));
+    const levies = texts.filter((t) => /a levy veteran by how they drink/.test(t.text));
+    expect(posts.length).toBeGreaterThanOrEqual(100);
+    expect(levies.length).toBeGreaterThanOrEqual(100);
+    expect(texts.filter((t) => /calls you young master behind your back/.test(t.text))).toEqual([]);
+  });
+
+  it("speaks of the hero by the hero’s own pronouns where the Elder, a trait line or a beginning once said her, his, he or men to every hero", () => {
+    expect(MANNER_SHIFT.force).not.toMatch(/\bmen\b|\bhe\b|\bhis\b|\bhim\b/);
+    const pillMaker = texts.filter((t) => /A pill-maker never travels empty-handed/.test(t.text));
+    expect(pillMaker.length).toBeGreaterThanOrEqual(6);
+    for (const [gender, their, they] of [["woman", "her", "she"], ["man", "his", "he"], ["unspoken", "their", "they"]] as const) {
+      const h = hero({ gender });
+      expect(personalise(REALM_SHIFT[5], h), gender).toContain(`borrowed ${their} shoes`);
+      expect(story.asides!.origin.listener.devoted, gender).toContain("Law Hall unasked.");
+      expect(personalise(story.scenarios.LH_ENTER_LISTENER.lines.neutral, h), gender).toContain("if they try");
+      expect(personalise(story.scenarios.AGE_TURN_SLOW_GATE.lines.neutral, h), gender).toContain(`does ${their} sums`);
+      expect(personalise(story.scenarios.OFFER_TO_FETCH_GU.memory![0].line, h), gender).toContain(`a name ${they} heard an hour ago`);
+      for (const t of pillMaker) expect(personalise(t.text, h), `${t.where} ${gender}`).toContain("empty-handed, even in the mind");
+    }
+    for (const t of texts) expect(t.text, t.where).not.toMatch(/nobody to tell him he cannot|where she wishes to go|does her sums|empty-handed in her mind|of her own accord/);
   });
 });

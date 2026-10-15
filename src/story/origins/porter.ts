@@ -6,7 +6,7 @@ export const porterScenes = String.raw`
 For six years you have carried lamp-oil up the stair of the Azure Cloud Sect, and the steward chose the week the Sealing Jade was taken to send you down to the foothill farms with forty empty jars to be refilled. You are crossing the second ridge when a rider goes past at a gallop in Law Hall grey, and does not look at you. Behind him, three days of rain are coming up the valley.
 +[start] hero:status=outcast | The steward’s clerk has not struck your name from the porters’ roll, which is more than the registers did. You are not sure it is a kindness.
 +[start] hero:status=commoner | A porter’s papers are a commoner’s papers, and nobody has ever asked to see yours twice. That is most of what the job is worth.
-+[start] hero:status=gentry | The steward calls you young master behind your back, and means it as a joke. You have never been able to tell him why you carry the jars.
++[start] hero:status=gentry | The steward calls you ‘your honour’ behind your back, and means it as a joke. You have never been able to tell him why you carry the jars.
 +[start] hero:status=noble | Nobody on the mountain knows what banner your papers name. They know that you carry oil, and they have decided that is the whole of you.
 > quiet | Deliver the jars as ordered, and ask no questions. | + | +og_porter_dutiful stones+2 | !og_porter_dutiful | You have already been paid for this. 
 > inquiry | Stop the next traveller on the road and ask what has happened on the mountain. | ^ | +og_porter_heard | |

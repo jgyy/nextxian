@@ -37,7 +37,7 @@ They come at noon in two blue coats, a senior and a junior, with a ledger that i
 
 === o_furnace_3 | The Method
 ${daoExtras(0)}
-The senior is gone, the junior is writing, and the house is yours for an hour. In that hour you do what an apprentice does when there is nobody to tell him he cannot. You light the small furnace and ask what four years of watching have taught you. A pill cultivates the one who eats it, and the one who makes it, if they are careful, and you are about to find out how careful you were.
+The senior is gone, the junior is writing, and the house is yours for an hour. In that hour you do what an apprentice does when there is nobody to say no. You light the small furnace and ask what four years of watching have taught you. A pill cultivates the one who eats it, and the one who makes it, if they are careful, and you are about to find out how careful you were.
 +[ways] og_furnace_apprentice | The honest answer you gave the inspectors is still in your mouth, and it has made the furnace-room feel smaller.
 +[ways] og_furnace_customer | You have called yourself a customer, and the furnace-room has not been told.
 +[ways] og_furnace_sister | The master’s sister will hear of him from a stranger who was gentle, and you take a quiet pride in it.

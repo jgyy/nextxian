@@ -7,6 +7,8 @@ import type { Element } from "@/engine/path";
 import { rootKindOf } from "@/story/crossing/build";
 import { WAYSIDES7 } from "@/story/crossing";
 import { WAYSIDES9 } from "@/story/custom";
+import { WAYSIDES10 } from "@/story/rank";
+import { bandOf } from "@/engine/rank";
 
 /** A small, repeatable generator, so every run of the suite walks the same walks. */
 function rng(seed: number): () => number {
@@ -169,6 +171,60 @@ describe("a long walk through the Custom Roads", () => {
     }
     expect(steps).toBeGreaterThan(3000);
     expect(doorsSeen.size).toBeGreaterThan(40);
+    expect([...new Set(problems)]).toEqual([]);
+  });
+});
+
+describe("a long walk through the Rank Roads", () => {
+  it("shows each hero only the scenes behind the doors that are theirs, lets no hero below a road claim its rung, and keeps the numbers sound, for every gender, at every realm and every wayside", () => {
+    const problems: string[] = [];
+    const doorsSeen = new Set<string>();
+    const bandsSeen = new Set<string>();
+    let steps = 0;
+    let n = 0;
+    for (const gender of ["woman", "man", "unspoken"] as const) {
+      for (const talent of TALENTS) {
+        const dao = DAOS[(n++ * 3) % DAOS.length];
+        const hero: Hero = { ...DEFAULT_HERO, gender, talent: talent.value, dao: dao.value, name: n % 2 ? "Mo Lan" : DEFAULT_HERO.name };
+        const r = rng(n * 23 + 11);
+        // Every hero begins at a different wayside and a different realm, so the walks between them meet every band of every rung.
+        const realm = (n * 3) % REALMS.length;
+        let g = createGame(story, hero);
+        g = { ...g, sceneId: WAYSIDES10[n % WAYSIDES10.length].id, realm, cultivation: REALMS[realm].threshold + 5, wealth: 200, stats: { qi: 60, karma: 0, insight: 40 } };
+        for (let i = 0; i < 500; i++) {
+          const scene = getScene(story, g.sceneId);
+          if (scene.ending && scene.choices.length === 0) break;
+          const options = getChoices(scene, g).filter((v) => v.available);
+          if (!options.length) {
+            problems.push(`${gender}/${talent.value} is stuck in ${g.sceneId}`);
+            break;
+          }
+          const staying = options.filter((v) => v.choice.id !== "back_to_road");
+          const doors = staying.filter((v) => /^door_[wmu]$/.test(v.choice.id) || /^go_rk_/.test(v.choice.id));
+          const pool = doors.length ? doors : /^rk_[a-z]+_[a-z]{2}_entry$/.test(g.sceneId) ? staying.filter((v) => /^approach_/.test(v.choice.id)) : staying.length ? staying : options;
+          const before = g;
+          const picked = pool[Math.floor(r() * pool.length)].choice;
+          g = choose(story, g, picked.id);
+          steps++;
+          const door = /^rk_([a-z]+)_[a-z]{2}_d\d([wmu])$/.exec(g.sceneId);
+          if (door) {
+            doorsSeen.add(g.sceneId);
+            const road = WAYSIDES10.find((w) => w.rung === door[1])!.realm;
+            bandsSeen.add(bandOf(g.realm, road));
+            if (door[2] !== gender[0]) problems.push(`a ${gender} stands in ${g.sceneId}`);
+          }
+          if (picked.id === "claim" && before.realm < WAYSIDES10.find((w) => before.sceneId.includes(`rk_${w.rung}_`))!.realm) problems.push(`a hero below the rung claimed it in ${before.sceneId}`);
+          if (g.wealth < 0 || Number.isNaN(g.cultivation) || Object.values(g.stats).some(Number.isNaN)) problems.push(`bad number in ${g.sceneId}`);
+          for (const e of g.log.slice(before.log.length)) {
+            if (/undefined|\{\w+\}|NaN/.test(e.text)) problems.push(`${g.sceneId}: ${e.text.slice(0, 60)}`);
+            if (hero.name !== DEFAULT_HERO.name && /\bWanderer\b/.test(e.text)) problems.push(`${g.sceneId} still says Wanderer`);
+          }
+        }
+      }
+    }
+    expect(steps).toBeGreaterThan(3000);
+    expect(doorsSeen.size).toBeGreaterThan(40);
+    expect(bandsSeen).toEqual(new Set(["below", "at", "above"]));
     expect([...new Set(problems)]).toEqual([]);
   });
 });

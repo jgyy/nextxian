@@ -431,7 +431,7 @@ You have no idea what you will say. You go anyway. You sit down on the grass at 
 It takes an hour before she speaks. You do not count it. You watch the clouds, and the hawk, and the slow shadow of the stones on the grass. Wind combs the silver of the feather-grass. A lamb bleats, far off.
 “You are the one with the cards,” she says.
 “Yes.”
-“The girl in the mountain. The one who asks.” She does not turn her head. “They say you carry nine. I was told one is a verb.”
+“The one in the mountain. The one who asks.” She does not turn her head. “They say you carry nine. I was told one is a verb.”
 “Keep what is small.”
 “That is mine.” She says it flatly. “That is the one I keep. Before the burning, I kept a lamb. A bottle lamb. A dull little thing that followed my son. After, it was all I had left. I still have it.”
 “Does it follow you?”
@@ -502,7 +502,7 @@ Saran leans back. Her face has changed.
 > inquiry | Ask what she needed. | court_a4s7
 
 === court_a4s7 | What She Needed
- she says. “Not that you had been sorry. I could not have used that. A man can be sorry in a warm office. I needed to know you had been in my tent.” She nods. “It was a real thing. It happened. I did not dream it.”
+“I did not need you to be sorry,” she says. “I could not have used that. A man can be sorry in a warm office. I needed to know you had been in my tent.” She nods. “It was a real thing. It happened. I did not dream it.”
 “It happened,” says Qadan.
 “And I fed you.” She turns to you. “Do you understand? I have gone over it a thousand times. Did I do wrong, to feed him? Was there something I should have seen? I thought, if I could only find the place where it began—”
 “It began in the office,” you say.
@@ -534,7 +534,7 @@ The ribbons are a whirl.
 They agree. The nine elders raise their bowls, one by one, and tap them against their stones, and it makes a sound like a soft bell. The grey woman on the third stone is the last. She bows her head. She taps twice.
 “It is the heaviest debt I have ever heard named,” says Barsbold. He speaks with difficulty. “It is also the kindest.”
 Duan Wuyi has risen from the tenth stone. He stands with his hands open. He looks at the widow, who is still standing at the rope in her black coat, with her face turned to the grass.
- he says, hoarsely. “In forty years I have not heard a better sentence. It would not have occurred to me. He wipes his eyes. “It is not law. It is something one gives.”
+“It is a sentence,” he says, hoarsely. “In forty years I have not heard a better one. It would not have occurred to me.” He wipes his eyes. “It is not law. It is something one gives.”
 “It is the same,” says Saran.
 “Is it?”
 “If you do it right.” She looks at him, and at you. “Are you finished with me? I have a lamb to feed.”
@@ -611,7 +611,7 @@ The Wind-Speaker is there. He has set a single white ribbon on a stick at the he
 
 === court_close2 | What Duan Kept
 He finds you at the fire that night, with a tin cup in his hand and a blanket round his shoulders. He looks ten years older, and somehow lighter. He has taken the Censor-General’s seal from his sash. He is turning it over in his fingers.
- he says. “It occurs to me that I have been signing my name to other people’s grief for forty years. And I called it order.” “I would like to be of use. I do not know what that means.”
+“It occurs to me,” he says, “that I have been signing my name to other people’s grief for forty years. And I called it order. I would like to be of use. I do not know what that means.”
 “You sat the tenth stone.”
 “I was a guest. I did not do anything but read.” His soft clever face is rueful. “I do not think I have any right to a verdict.”
 “You gave them the Law of Liens to throw away.”

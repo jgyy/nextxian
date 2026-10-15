@@ -15,6 +15,7 @@ flowchart LR
     XR["crossing/<br/>forty Crossing Roads, 1,380 scenes:<br/>gender, root and craft doors, attunement"]
     AR["age/<br/>forty Age Roads, 1,136 scenes:<br/>five ages meet eight realms, a door of years,<br/>seven turning points, endings that read the years"]
     CS["custom/<br/>forty Custom Roads, 1,490 scenes:<br/>ten customs, four keepers, a door for a woman,<br/>a man or no answer, seven gender turning points"]
+    RK["rank/<br/>thirty-two Rank Roads, 1,200 scenes:<br/>eight rungs, four keepers who read rank or sex first,<br/>a door of rank by gender and by where the realm stands,<br/>eight realm-and-gender turning points"]
     GD["gendered/<br/>Left Cloister, Right Yard, Third Door"]
     OG["origins/<br/>twelve beginnings, eleven prologues"]
     EC["economy/<br/>five reckonings, seven ending epilogues,<br/>remarks on the purse and the pack"]
@@ -37,6 +38,7 @@ flowchart LR
     WI["witness.ts<br/>deeds, repute bands, counts"]
     PR["practice.ts<br/>four practices, the cusp, counts"]
     CUS["custom.ts<br/>customSummary: kept, bent, broken, stood for"]
+    RKE["rank.ts<br/>bandOf, bandsAt, rankSummary:<br/>yielded, claimed, veiled, lifted"]
   end
   subgraph UI["src/components + app/"]
     CR["Creation.tsx<br/>who climbs the mountain"]
@@ -50,8 +52,9 @@ flowchart LR
     AP["AgePanel.tsx<br/>years against the span of the realm"]
     PP["PursePanel.tsx<br/>stones, speed by part, pack, holdings"]
     CUP["CustomPanel.tsx<br/>the tally of the doors of custom"]
+    RKP["RankPanel.tsx<br/>rank roads at each rung, the ways taken"]
   end
-  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
   G --> AG
@@ -62,6 +65,8 @@ flowchart LR
   CR --> PR
   CS --> CUS
   CUS --> CUP
+  RK --> RKE
+  RKE --> RKP
   G --> N
   G --> TN
   G --> CU
@@ -74,7 +79,7 @@ flowchart LR
   GV --> SV
   GV --> CR
   CR -->|Hero| G
-  GV --> NP & SP & CP & HP & PP & XP & AP & CUP
+  GV --> NP & SP & CP & HP & PP & XP & AP & CUP & RKP
   GV -->|localStorage save| Storage[("Browser storage")]
 ```
 
@@ -794,3 +799,35 @@ flowchart TD
 The seven main-line turning points (`custom/main.ts`) add hidden `custom_<gender>` choices to the gate, Law Hall, abyss entry, archive gate, tribunal testimony, descent return and sealing night; each sets `cs_main_<gender>_<scene>` and is answered by a scenario of five trust lines. A scenario with memory would override its tier lines, so the Elder’s answers to the doors are one scenario per (gender, pick) with five tiers, and the memories live in the report scene instead.
 
 **Audit.** `auditStory` now also fails on conditions no hero can meet: a realm outside the ladder, or a stat, NPC, bond or progress bound outside its limits. Roads that offered a band above Ascendant, or a memory needing a realm above the ladder, are filtered by `bandHeld` and the cultivation builder.
+
+## Rank Roads: realm and gender read together
+
+Eight rungs of the sect, one for every realm, meet four keepers each: a woman and a man who read a stranger’s **rank before their sex**, and a woman and a man who read their **sex before their rank**. Thirty-two roads in `src/story/rank/`, built by `buildRoad10` over the same road skeleton as the others (entry, four approaches of five scenes, three hidden scenes, return) plus **the door of rank** in the middle of every approach. Where the Custom Roads ask only who the hero is, the Rank Roads ask who the hero is and **where their realm stands against the road’s**: `bandOf(realm, road)` puts every hero **below** it, **at** it or **above** it, `bandsAt(road)` says which bands anyone can be in (nobody is below Mortal or above Ascendant, so the first and last wayside have two), and `bandCondition` turns a band into a realm condition the audit can check.
+
+```mermaid
+flowchart TD
+  H["hero: realm + gender"] --> B{"bandOf(realm, road): below / at / above"}
+  B --> E["entry: glance reads band x gender (9 readings)"]
+  B --> G["a#s0 greeting and a#s3 line read the band"]
+  H --> N["a#s1 note and a#s2 cost read the gender at this rung"]
+  H --> D["door of rank (3 scenes per approach, by gender)"]
+  B --> D
+  D --> KD["keeper meets the hero at the door:<br/>reads rank first or sex first, by band and gender"]
+  D --> EL["Elder’s word as the door opens:<br/>by band and gender, three wordings"]
+  KD --> P{"yield / claim / veil / lift"}
+  P --> CK["claim: needs realm >= road,<br/>then Insight (woman), qi (man), qi (no answer)"]
+  P --> LF["lift: needsRealm = road, strain below it"]
+  CK & LF --> FL["flags: rk_pick_, rk_door_, rk_clash_ (sex-first keeper), rk_ease_ (rank-first keeper)"]
+```
+
+**The keeper’s reading.** A road’s beats are a beat of its rung (`RUNG_BEATS`, shared by four roads) and a beat of its keeper’s reading (`STANCE_BEATS`, shared by sixteen), in turn, so each road is written once by hand, in its place, keeper, hook and four openings. The keeper’s own gender only sets the pronouns (`slotsOf`); the reading (`rank` or `sex`) sets the voice. Every extra a road adds is one short line in its own group (`rglance`, `rgreet`, `rnote`, `rcost`, `rband`, `rbye`, `rword`, `rdoor`), because the road’s scenes already sit near the 200-word cap.
+
+**What the picks cost.** `pickDef(gender, way, realm, reading)` is the whole price list. A claim is locked below the road’s realm; at it, a woman must have Insight `8 + 2 x realm`, a man 10 qi (and pays 6), someone who gives no answer 8 qi (and pays 4). A lift carries `needsRealm`, so the engine’s own strain applies (a hero below the road loses cultivation, qi and the Elder’s respect, and one two realms above it gains mastery); a man’s lift needs karma −5 or better. A keeper who reads rank first is pleased to be claimed to (+1 karma), and one who reads sex first is made anxious by a claim or a lift (the `rk_clash_` flag).
+
+**The Elder.** `buildDoorScenarios` writes twelve scenarios a road (gender x pick), five lines each by her trust, every line naming the road’s own place because no two scenarios may share a line; `buildReport10` puts a memory for a clash or an ease first, then the door. Nobody’s answer depends on the band except through the interjection the door scene opens with, since a scenario’s memory would override its tier lines.
+
+### Eight turning points of the main line
+
+`src/story/rank/main.ts` adds hidden `rank_<gender>_<standing>` choices to eight scenes, one for every realm: `scroll_theft` (1), `sutra_door` (2), `tribunal_masters` (2), `asm_entry` (3), `ninesails_entry` (4), `court_entry` (5), `summit_entry` (6), `bridge_entry` (7). The number is the realm a hero is expected to hold there: a hero at or above it is **ahead** (the way asks that realm, and pays more cultivation and a little Dao), one below it is **behind** (Insight for reading the room from below). Each sets `rk_main_<gender>_<scene>` and is answered by one of 48 scenarios of five lines plus a tail for the room. Seven echoes (`rank/echoes.ts`) read rank and gender together in the Law Hall, the memorial, the red mist, the Round Hall, the Stone-Singers’ fire, the Ring and on the span, and `rank/endings.ts` puts the hero’s gender against the last rung, and the way they took the ranks, on the scene before the last choice.
+
+**Audit.** `auditStory` now also fails on a list of conditions that contradict each other (`clash`): a realm that must be both above the first bound and below the second, a stat that must be high and low, a flag set and unset, a hero gender no value fits, two Elder faces, two scenes with no id in common. Each of those may be fine alone, and the single-condition checks could not see it.

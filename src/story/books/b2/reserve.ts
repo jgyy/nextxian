@@ -144,7 +144,7 @@ The boat drifts. The fork is coming.
 > inquiry | Go to the hills, and ask the mender what he knows. | reserve_c3 | +reserve_chose_hills
 
 === reserve_c3 | The Elder Decides
-“I am not going to decide,” says the Elder. “I have decided for you for fifteen years. I find it is not an improvement.” She takes a breath. “But I will say that a person who is asked where she wishes to go, and says nowhere, is in a worse state than one who goes the wrong way. I should like you to choose, and to be wrong if you must.”
+“I am not going to decide,” says the Elder. “I have decided for you for fifteen years. I find it is not an improvement.” She takes a breath. “But I will say that a person who is asked where to go, and says nowhere, is in a worse state than one who goes the wrong way. I should like you to choose, and to be wrong if you must.”
 She smiles at you.
 “You have the voice for it. I heard you in the Round Hall.”
 Nobody argues. It is as if the whole boat has been waiting to be permitted to stop being brave.

@@ -114,3 +114,22 @@
 {"cat": "npc-gender", "where": "src/story/books/b5, b6", "note": "Lian Sheng changed gender between books; now a woman throughout.", "n": 40}
 {"cat": "npc-gender", "where": "src/story/books/b5, b6", "note": "Old Lin changed gender between books; now a woman throughout.", "n": 5}
 {"cat": "tone", "where": "src/story/books/b3..b5", "note": "A hug or embrace tagged as truth; now mercy.", "n": 6}
+{"cat": "hero-gender", "where": "src/story/roads2/hero-lex-more.ts", "note": "Soldier trait line said “as one does for a man who has stood a post” to every soldier hero; now “someone who has stood a post” (shown in 117 scenes).", "n": 117}
+{"cat": "hero-gender", "where": "src/story/roads2/hero-lex-more.ts", "note": "Soldier trait line said “you can tell a levy man by how he drinks” to every soldier hero; now “a levy veteran by how they drink” (shown in 117 scenes).", "n": 117}
+{"cat": "hero-gender", "where": "src/story/origins/porter.ts", "note": "The steward called every gentry hero “young master”; now “your honour”.", "n": 1}
+{"cat": "hero-gender", "where": "src/story/books/b3/lotus.ts", "note": "“A girl with a seed” said of the hero; now “Someone with a seed”.", "n": 1}
+{"cat": "hero-gender", "where": "src/story/books/b4/glass.ts", "note": "Gu said the hero was “a girl with a seed”; now “someone with a seed”.", "n": 1}
+{"cat": "hero-gender", "where": "src/story/books/b4/caravan.ts", "note": "The hero was “a girl at the Four Bones who gave her last cup”; now “someone … who gave {their} last cup”.", "n": 1}
+{"cat": "hero-gender", "where": "src/story/books/b4/court.ts", "note": "The hero was “the girl in the mountain”; now “the one in the mountain”.", "n": 1}
+{"cat": "markup", "where": "src/story/books/b4/bone.ts", "note": "Two paragraphs began mid-sentence (“says Hao Lan.”, “says Madam Uzun, …”) with the speaker and first line of the speech lost; restored.", "n": 2}
+{"cat": "markup", "where": "src/story/books/b4/court.ts", "note": "Three paragraphs began mid-sentence (“she says.”, “he says, hoarsely.”, “he says.”) with the first line of the speech lost, one of them with a closing quote missing; restored.", "n": 3}
+{"cat": "markup", "where": "src/story/books/b4/voice.ts, b5/gale.ts, b5/furnace.ts", "note": "One speaker’s two lines glued with a closing and an opening quote and no attribution; joined into one speech.", "n": 3}
+{"cat": "audit", "where": "src/engine/audit.ts", "note": "New audit check: a list of conditions that contradict each other (realm bounds, stat bounds, a flag on and off, a gender no value fits, two Elder faces, two scenes with no common id). Found none in the existing story.", "n": 0}
+{"cat": "hero-gender", "where": "src/story/path/lex.ts", "note": "“A pill-maker never travels empty-handed in her mind” was shown to every hero of the alchemy Dao; now “{their} mind” (9 scenes).", "n": 9}
+{"cat": "hero-gender", "where": "src/story/age/main.ts", "note": "“I respect a hero who does her sums” was said to every hero at the slow gate; now “{their} sums” (7 turning scenarios).", "n": 7}
+{"cat": "hero-gender", "where": "src/engine/npc.ts", "note": "The Elder’s word to a hero who forces said “many men … what he wanted”; now “many people … what they wanted”.", "n": 1}
+{"cat": "hero-gender", "where": "src/engine/npc.ts", "note": "The Spirit Severing line said “something that borrowed her shoes” to every hero; now “{their} shoes”.", "n": 1}
+{"cat": "hero-gender", "where": "src/story/origins/entries.ts", "note": "The hedge-listener’s Elder lines said “of her own accord” and “if she tries” to every hero; now “{their}” and “they”.", "n": 2}
+{"cat": "hero-gender", "where": "src/story/npc/elder-su-reactions.ts", "note": "“A stranger who would die for a name he heard an hour ago” was said of the hero; now “{they} heard”.", "n": 1}
+{"cat": "hero-gender", "where": "src/story/origins/furnace.ts", "note": "“what an apprentice does when there is nobody to tell him he cannot” was said of every pill-house apprentice; now “nobody to say no”.", "n": 1}
+{"cat": "hero-gender", "where": "src/story/books/b2/reserve.ts", "note": "The Elder said “a person who is asked where she wishes to go” to every hero; now “where to go”.", "n": 1}

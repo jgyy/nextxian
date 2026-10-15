@@ -43,7 +43,7 @@ devoted: Seven winters of steady breath, and you came up the stair without once 
 $ LH_ENTER_LISTENER | trust+0 respect+0 | elder | The hedge-listener’s ward meets Elder Su’s eyes.
 hostile: A listener, and unregistered, on my threshold, with a Concord notice for company. The Law can be generous. It is rarely generous to people who walk in unannounced and listening.
 wary: The wind is full of my name this month, and you have the look of someone who has heard it. I should like to know in whose voice, and how often.
-neutral: Sit. Do not close your ear on my hall. I would rather you heard what I am than what you imagine I am. A listener can tell the difference, if she tries.
+neutral: Sit. Do not close your ear on my hall. I would rather you heard what I am than what you imagine I am. A listener can tell the difference, if they try.
 warm: You hummed a child’s three notes at the foot of my mountain, and the child told the warden. I find I would very much like to hear them.
 devoted: Aunt Sedge told you to come to me. I did not know her, but I have been waiting for someone to say that name in this hall for nine years. Sit down, and say it again.
 ? og_listener_m_answer | You spoke back to the wind. Aunt Sedge told you never to, and the wind has been very loud about it since. Sit. I will shut the shutters.
@@ -99,7 +99,7 @@ export const beginningAsides: Record<string, Lines> = {
     wary: "Names in the wind, from a hedge-listener’s mouth. I have a few of my own, and I do not like to hear them from strangers. Keep your voice down in this hall.",
     neutral: "You hear what others only fear. I find it restful, in a way. Few people tell me the truth because they are too far from the wind to know it.",
     warm: "Aunt Sedge taught you to hear before she taught you to speak. It is the right order. I wish more of my disciples had been taught it.",
-    devoted: "A listener who came to the Law Hall of her own accord. Do you know how long it has been since anyone listened to me? Sit, and let me tell you.",
+    devoted: "A listener who came to the Law Hall unasked. Do you know how long it has been since anyone listened to me? Sit, and let me tell you.",
   },
   struck: {
     hostile: "Heaven’s own spark in a petitioner. I have iron in every chain of this hall. I would prefer, if you please, that you did not touch any of it.",
