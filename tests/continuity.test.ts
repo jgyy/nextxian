@@ -124,21 +124,23 @@ describe("a kind act is not counted as a lie or a threat", () => {
 
 describe("conditions that cannot hold together", () => {
   it("are found by the audit: two conditions in one list that ask opposite things", () => {
-    const scene = story.scenes.gate;
-    const broken = (when: NonNullable<typeof scene.extras>[number]["when"]) => auditStory({ ...story, scenes: { ...story.scenes, gate: { ...scene, extras: [...(scene.extras ?? []), { when, paragraphs: ["x"] }] } } }).map((i) => i.message).join("\n");
     // Each of these is a fine condition alone.
-    expect(broken([{ kind: "realm", min: 5 }, { kind: "realm", max: 2 }])).toContain("which no hero can hold at once");
-    expect(broken([{ kind: "stat", stat: "qi", min: 50 }, { kind: "stat", stat: "qi", max: 10 }])).toContain("stat qi");
-    expect(broken([{ kind: "flag", flag: "gate_x" }, { kind: "flag", flag: "gate_x", is: false }])).toContain("both set and not set");
-    expect(broken([{ kind: "hero", field: "gender", is: ["woman"] }, { kind: "hero", field: "gender", is: ["man"] }])).toContain("hero gender");
-    expect(broken([{ kind: "hero", field: "gender", is: ["woman"] }, { kind: "hero", field: "gender", not: ["woman"] }])).toContain("hero gender");
-    expect(broken([{ kind: "mood", is: "furious" }, { kind: "mood", is: "tender" }])).toContain("face");
-    expect(broken([{ kind: "scene", prefix: "gate" }, { kind: "scene", prefix: "law_hall" }])).toContain("scene starting both");
-    expect(broken([{ kind: "item", item: "x", max: 0 }, { kind: "item", item: "x" }])).toContain("item");
+    expect(clash([{ kind: "realm", min: 5 }, { kind: "realm", max: 2 }])).toContain("realm");
+    expect(clash([{ kind: "stat", stat: "qi", min: 50 }, { kind: "stat", stat: "qi", max: 10 }])).toContain("stat qi");
+    expect(clash([{ kind: "flag", flag: "gate_x" }, { kind: "flag", flag: "gate_x", is: false }])).toContain("both set and not set");
+    expect(clash([{ kind: "hero", field: "gender", is: ["woman"] }, { kind: "hero", field: "gender", is: ["man"] }])).toContain("hero gender");
+    expect(clash([{ kind: "hero", field: "gender", is: ["woman"] }, { kind: "hero", field: "gender", not: ["woman"] }])).toContain("hero gender");
+    expect(clash([{ kind: "mood", is: "furious" }, { kind: "mood", is: "tender" }])).toContain("face");
+    expect(clash([{ kind: "scene", prefix: "gate" }, { kind: "scene", prefix: "law_hall" }])).toContain("scene starting both");
+    expect(clash([{ kind: "item", item: "x", max: 0 }, { kind: "item", item: "x" }])).toContain("item");
     // And these are held by someone.
-    expect(broken([{ kind: "realm", min: 2 }, { kind: "realm", max: 5 }, { kind: "hero", field: "gender", is: ["woman", "man"] }, { kind: "hero", field: "gender", not: ["man"] }])).not.toContain("no hero can hold at once");
-    expect(broken([{ kind: "scene", prefix: "gate" }, { kind: "scene", prefix: "gate_go" }])).not.toContain("scene starting both");
+    expect(clash([{ kind: "realm", min: 2 }, { kind: "realm", max: 5 }, { kind: "hero", field: "gender", is: ["woman", "man"] }, { kind: "hero", field: "gender", not: ["man"] }])).toBeUndefined();
+    expect(clash([{ kind: "scene", prefix: "gate" }, { kind: "scene", prefix: "gate_go" }])).toBeUndefined();
     expect(clash([])).toBeUndefined();
+    // The audit itself reports one, once.
+    const scene = story.scenes.gate;
+    const broken = { ...story, scenes: { ...story.scenes, gate: { ...scene, extras: [...(scene.extras ?? []), { when: [{ kind: "realm" as const, min: 5 }, { kind: "realm" as const, max: 2 }], paragraphs: ["x"] }] } } };
+    expect(auditStory(broken).map((i) => i.message).join("\n")).toContain("which no hero can hold at once");
   });
 
   it("are not in the story: no scene, line, memory or remark asks for a rung and its opposite", () => {
