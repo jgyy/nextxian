@@ -91,7 +91,7 @@ The Elder makes a sound. It is a thin high crack. It is the beginning of a laugh
 > inquiry | Ask which comb. | voice_a1s5
 
 === voice_a1s5 | The Comb
-“The silver one,” says the Elder, when you ask. “It was our mother’s. She gave it to Mengjiao on her fourteenth birthday. I wanted it very much.” “I took it, once, and she cried for a week, and I was told to give it back. I gave it back. I thought: she does not deserve it.”
+“The silver one,” says the Elder, when you ask. “It was our mother’s. She gave it to Mengjiao on her fourteenth birthday. I wanted it very much. I took it, once, and she cried for a week, and I was told to give it back. I gave it back. I thought: she does not deserve it.”
 “Did you?”
 “I thought it for years.” Her voice is brittle. “When they sealed her, I thought: well. She will not need a comb.”
 The answer comes at dusk, in the girl’s trembling voice. It is a long one.

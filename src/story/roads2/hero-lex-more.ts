@@ -129,11 +129,11 @@ export const MORE_TRADE: Record<Background, string[]> = {
   soldier: [
     "You sit where you can see the room, and {kname} notes it without comment. The same thing keeps a levy alive and an innkeeper in business.",
     "A veteran at {place} nods to you across the room, the small, flat nod soldiers give one another, and goes back to his cup.",
-    "{Kname} says that at {place} you can tell a levy man by how he drinks: fast, and watching. You have just proved it.",
+    "{Kname} says that at {place} you can tell a levy veteran by how they drink: fast, and watching. You have just proved it.",
     "You wipe your hands on your thighs where a sword-belt would have been. {Kname} sees the gesture and pretends not to.",
     "Your knees bend a fraction at the sound of a distant horn. {Kname} says that never leaves a person either.",
     "An old drill-sergeant’s bark would make you straighten, and {kname} would bet money on it. So, quietly, would the rest of {place}.",
-    "{Kname} offers you the bench by the wall and the first helping, as one does for a man who has stood a post.",
+    "{Kname} offers you the bench by the wall and the first helping, as one does for someone who has stood a post.",
     "You count the people at {place} from habit, and come to the same number {kname} did. They exchange a look.",
   ],
   merchant: [

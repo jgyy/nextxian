@@ -20,6 +20,7 @@ import { PracticePanel } from "./PracticePanel";
 import { AgePanel } from "./AgePanel";
 import { CrossingPanel } from "./CrossingPanel";
 import { CustomPanel } from "./CustomPanel";
+import { RankPanel } from "./RankPanel";
 import { WitnessPanel } from "./WitnessPanel";
 import { ToneLegend } from "./ToneLegend";
 
@@ -324,6 +325,7 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
           <PracticePanel game={game} />
           <CrossingPanel game={game} />
           <CustomPanel game={game} />
+          <RankPanel game={game} />
           <WitnessPanel game={game} />
           <section className="card side-legend" aria-label="What each choice colour means">
             <p className="eyebrow">Colours of choice</p>

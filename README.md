@@ -6,6 +6,10 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 
 ## Features
 
+- **Rank Roads: thirty-two roads, 1,200 more scenes, where the realm and the gender are read together.** Eight rungs of the sect, one for every realm from Mortal to Ascendant (the roll of hands, the novices’ halls, the pairing board, the council seats, the soul-portraits, the severing day, the companions’ table, the last column), each with four keepers: a woman and a man who **read a stranger’s rank before their sex**, and a woman and a man who **read their sex before their rank**. A hero meets each place from **below** the realm it asks, **at** it or **above** it, and the same keeper greets, charges and answers them differently by band: the glance at the entry reads rank and gender together (nine readings on a road that has all three bands), the greeting and the fourth beat of every approach read the band, the second and third read the gender. **The door of rank** opens in the middle of every approach to a woman, a man or someone who gives no answer, and the keeper meets whoever walks through it by where their rung stands against the road’s. Four picks lie behind it: **yield** to the place the rung gives, **claim** the rung held against the room, **veil** it, or **lift** another with it. A claim needs the realm of the road and then a price each gender pays differently (a woman argues it with Insight, a man pays in qi for the quiet he breaks, someone who gives no answer pays in qi to be read by the rung alone); a lift spends the rung, so a hero below the road pays strain for it and one two realms above it gains mastery. Claiming or lifting before a keeper who reads sex first crosses them; keeping low before a keeper who reads rank first lets them down. The Elder answers every pick at once, in five lines by her trust, and says a word at every door that depends on where the hero’s rung stands.
+- **Realm and gender in the main line: eight turning points, one for every realm.** At the scroll-room, the sutra door, the masters’ dais, the Round Hall, the fleet at Tidewall, the Ring of Nine Stones, the doors of the Ninth Night and the span of the Ash Bridge, a woman, a man and someone who gives no answer are each offered a way that only their own gender allows, and **which way depends on whether the hero has climbed as far as the story expects of them there**: 48 hidden choices, one for each gender and for a hero ahead of or behind the realm. A hero ahead gains more cultivation and a little Dao and the way asks the realm; a hero behind gains Insight for reading the room from below. The Elder answers each at once (48 scenarios of five lines), seven more scenes of Books One to Six read rank and gender together in a line, and the scene before the last choice reads the hero’s gender against the last rung and the way they took the ranks.
+- **The cast keeps up.** 62 new unprompted remarks (the Elder reads the doors by gender and by how far the hero has climbed, and Ren Qiao, Gu, Lin Yuan, Duan, Hao Lan, Mei Qiu, Bao Er, Lu Yan, Shu Ning, Mengjiao, Ah Zhi, Tian, Qiu, Yue and Odval each say what the ranks have meant to them), a **Ranks panel** that shows the Rank Roads walked at each rung, what the hero yielded, claimed, veiled and lifted, keepers crossed and turnings met, and Elder reports that remember a rung pressed before a keeper who reads sex first.
+- **A tenth plot-hole pass: 270 fixed.** 262 shown lines that told every hero something about themselves (117 told every soldier they were “a man who has stood a post”, 117 that they could “tell a levy man by how he drinks”, one called every gentry hero “young master”, four called the hero “a girl”, and 23 lines of the Elder, a trait or a beginning said her, his, he or men to every hero), 5 speeches that began mid-sentence with the speaker lost, and 3 that glued two speeches together. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md). The audit now also fails on conditions that contradict each other.
 - **Custom Roads: forty roads, 1,490 more scenes, where gender is the weather of the narrative.** Ten customs of the sect that sort people by gender (the lineage tablets, the teaching mats, the account-books, the cutting of names, the go-betweens’ letters, the speaking stones, the mourning bench, the gentle hands, the weapon rack, the oaths of kin), each with four keepers: a woman who holds the custom as it was handed down, a man who does, a woman who bends it, a man who bends it. **Every approach has a door of custom that opens only to a woman, a man or someone who gives no answer**, with a scene of its own for each, and four picks behind it: keep the custom, bend it, break it in the open, or stand for someone it passes over. The price is not the same for everyone: a woman argues a barred door open with Insight, a man pays in qi for turning down his place and needs a clean name for his word to stand for anyone, someone who gives no answer pays in qi for staying in the middle of the room. The keeper reads the hero’s gender at the entry, in the greeting, twice in the middle of an approach and at the goodbye, reads what the hero did on earlier roads, and says a different parting word to a hero who broke the custom before a keeper who holds it and one who broke it before a keeper who bends it.
 - **Gender in the main line: seven turning points and the last choice.** At the gate, the Law Hall, the abyss ledge, the archive bridge, the tribunal’s testimony, the second descent and the sealing night, a woman, a man and someone who gives no answer are each offered a way of meeting the scene that only their own allows, hidden from the others, and the Elder answers at once, in a line by gender and by trust. Eight scenes of Books One to Six echo the hero’s gender (the memorial’s column and margin, what Mengjiao says on the ledge, how the abyss hears the last answer), and the last choice of the story reads the way the hero took the customs most.
 - **The Elder and the company react more.** 480 new answers by the Elder (twelve for every Custom Road: a woman, a man or someone who gives no answer, keeping, bending, breaking or standing for another, each in five lines by her trust), 21 more for the turning points, 66 new unprompted remarks (the Elder, and Ren Qiao, Gu, Lin Yuan, Duan, Hao Lan, Mei Qiu, Bao Er, Lu Yan, Shu Ning, Mengjiao, Ah Zhi, Tian, Qiu, Yue and Odval, each on what the hero has done behind the doors), and a **Customs panel** that keeps the tally: kept, bent, broken, stood for, keepers pressed, turnings met as yourself.
@@ -48,6 +52,50 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 - **Saves in your browser.** Progress is written to `localStorage` after every choice. Storage errors never stop play. Saves from before the Elder kept a reaction history, or before decisions had tones, still load.
 
 ![Scene with no Continue](docs/screenshots/02-no-continue-desktop.png)
+
+### Rank Roads, and realm and gender in the main line
+
+![A wayside of four keepers: the roll-yard behind the scroll-room](docs/screenshots/160-roll-yard-wayside-desktop.png)
+![The door of rank, shown to a woman below the rung: the keeper reads her rung first, and the Elder says her word](docs/screenshots/161-door-of-rank-woman-below-the-rung-desktop.png)
+![The same kind of door, a man at the rung](docs/screenshots/162-door-of-rank-man-at-the-rung-desktop.png)
+![The same kind of door, for someone who gives no answer, above the rung](docs/screenshots/163-door-of-rank-someone-above-the-rung-desktop.png)
+![A keeper who reads rank first meets a woman above the road’s rung](docs/screenshots/164-keeper-reads-rank-first-desktop.png)
+![A keeper who reads sex first meets the same woman at the same road](docs/screenshots/165-keeper-reads-sex-first-desktop.png)
+![A claim is locked below the rung and the lift is marked as beyond the hero](docs/screenshots/166-claim-locked-below-the-rung-desktop.png)
+![The Elder answers a woman who claims her rung, at once](docs/screenshots/167-elder-answers-a-woman-who-claims-her-rung-desktop.png)
+![The scroll-room: a way only a woman ahead of the story is offered](docs/screenshots/168-main-line-turning-a-woman-ahead-of-the-story-desktop.png)
+![The masters’ dais: a way only a man behind the story is offered](docs/screenshots/169-main-line-turning-a-man-behind-the-story-desktop.png)
+![The Ranks panel keeps the tally](docs/screenshots/170-ranks-panel-desktop.png)
+![The door of rank on a phone](docs/screenshots/171-door-of-rank-on-a-phone-mobile.png)
+![The scene before the last choice reads who the hero has been](docs/screenshots/172-the-last-rung-reads-who-you-have-been-desktop.png)
+
+```mermaid
+flowchart TD
+  W["wayside hub: 8 of them, one rung each, Mortal to Ascendant"] --> R["road: one rung x one keeper, 37 scenes"]
+  K["four keepers: woman reads rank first, man reads rank first,<br/>woman reads sex first, man reads sex first"] --> R
+  R --> B["hero below, at or above the road’s realm:<br/>glance, greeting and fourth beat read the band"]
+  R --> D["door of rank, middle of every approach"]
+  D --> DW["woman’s scene"] & DM["man’s scene"] & DU["scene for someone who gives no answer"]
+  DW & DM & DU --> X["keeper meets the hero by band<br/>(rank-first and sex-first read the same hero two ways)"]
+  X --> P{"four picks"}
+  P --> YI["yield"] & CL["claim: realm of the road + price by gender"] & VE["veil"] & LI["lift: strain below the road"]
+  YI & CL & VE & LI --> E["Elder answers at once: 12 scenarios x 5 lines by trust"]
+  YI & CL & VE & LI --> F["flags: rk_pick_<way>_, rk_door_, rk_clash_, rk_ease_"]
+  F --> RP["Ranks panel"]
+  F --> RM["62 remarks: Elder and company"]
+  F --> LS["scene before the last choice reads the way taken most"]
+  CL & LI --> RR["report: clash or ease first, then the door"]
+```
+
+```mermaid
+flowchart LR
+  T1["scroll-room"] --> T2["sutra door"] --> T3["masters’ dais"] --> T4["Round Hall"] --> T5["fleet at the Wall"] --> T6["Ring of Nine Stones"] --> T7["doors of the Ninth Night"] --> T8["span of the Ash Bridge"]
+  T1 & T2 & T3 & T4 & T5 & T6 & T7 & T8 --> H{"hero ahead of the story’s realm, or behind it?"}
+  H -->|ahead| HA["hidden way for a woman, a man or no answer:<br/>asks the realm, more cultivation, a little Dao"]
+  H -->|behind| HB["hidden way for a woman, a man or no answer:<br/>reads the room from below, Insight"]
+  HA & HB --> E["Elder answers: 3 genders x 2 standings x 5 trust lines + a tail for the room"]
+  HA & HB --> C["flag rk_main_<gender>_<scene>: counted for two remarks and the Ranks panel"]
+```
 
 ### Custom Roads, and gender in the main line
 
@@ -404,6 +452,6 @@ scripts/         word count, story check, simulator
 
 The engine, NPC system, cultivation realms, visual novel UI, six books and their endings are in place and playable from the first scene to seven endings. Every scene stands on its own: no page turns, a heading on every scene, four or more tone-tagged choices at every decision, and a 200-word cap on every scene body.
 
-The story has 6,936 scenes and about 30,000 choices, with 256 NPC scenarios and 262 unprompted remarks. The word count is 1,848,317, which is **184.8%** of the 1,000,000-word goal. The count adds up every variant of a line that can be shown (every dress, birth and realm a keeper can react to), so it overstates what one playthrough reads. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md): this pass fixed 1,743 inconsistencies, of which 64 contradict the setting, the hero or the purse and 1,678 are lines a player read twice, and the ledger says plainly which is which.
+The story has 14,277 scenes and about 71,000 choices, with 1,979 NPC scenarios and 625 unprompted remarks. The word count is 4,914,495, which is **491.4%** of the 1,000,000-word goal. The count adds up every variant of a line that can be shown (every dress, birth, realm and gender a keeper can react to), so it overstates what one playthrough reads. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md): the tenth pass fixed 270 lines, of which 262 told every hero something about themselves that only some heroes are, and the ledger says plainly which is which and that it is well short of 1,000.
 
 The side roads of Book One are assembled from templates and read more uniformly than the hand-written chapters. The Book V finale and Book VI are compact (about 8,000 words) next to the sixteen-arc hubs before them, and are the obvious place to add more. The books and the canon are described in [docs/CANON.md](docs/CANON.md). Adding content means adding an arc under `src/story/books/<book>/`, registering it in `src/story/books/index.ts`, and running `npm run check`.

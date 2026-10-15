@@ -192,3 +192,20 @@ Ten more waysides, one from each hub of the later books, each with four roads of
 - **The Elder** is a woman of forty-three who has kept the Law twelve years. She says what it cost her to be read as one thing in a hall that expected another, and does not claim any gender has it easier. She answers a woman, a man or someone who gives no answer differently.
 - **A hero is never “a girl”, “a lady”, “madam” or “she” to the whole cast.** Lines about the hero use the pronoun, honorific and person slots.
 - **A hug is mercy, not truth.** The chain, the mill, the festival and the singing scenes tag the embrace as mercy.
+
+## The ranks of the sect (fixed in the Rank Roads)
+
+The sect says it reads a stranger’s rank, and it reads their sex as well. **The higher the rung, the less the sect admits to reading either, and the more it leans on both.** There is one rung for every realm, and the same eight places hold on every road that meets them:
+
+| Realm | Rung | What it does with rank and gender |
+| --- | --- | --- |
+| Mortal | the roll of hands | Three columns: water (women), loads (men), spare (everyone else, the longest and the lowest paid). A sleeve outranks every apron of either sex. |
+| Qi Condensation | the novices’ halls | A white hall, a grey hall and a passage between. Novices are ranked by days since the first breath; the bath hours were set by the bath-keeper to keep a girl from bathing before a boy was awake, and the sect took them for a rule about qi. |
+| Foundation Establishment | the pairing board | Pairs are drawn by realm first, sex second and fee third. A cross-pair costs a fee, which was a kindness before it was a principle. A column for ‘other’ has been empty for sixty years. |
+| Core Formation | the council seats | A ring of twelve chairs and a stool: hearth chairs (women), door chairs (men), the thirteenth place for whoever gives no answer. Rank gets a chair, sex decides which, and the minute-clerk writes every word of a door chair and every third of a hearth chair. |
+| Nascent Soul | the soul-portraits | The soul has no sex. The ledger paints it a robe anyway. Sixty frames hang: forty-one men, nineteen women, one in progress. |
+| Spirit Severing | the severing day | Three cords: a household, a name, a debt. A woman is asked to cut the household first and a man the name; someone who gives no answer is asked what they will cut. A severed woman signs her own seal; a severed man is not asked to carry his house. |
+| Dao Seeking | the companions’ table | A sun end and a moon end and a stool at the head. The seekers’ proverb: the Dao has no side, but the table has two. |
+| Ascendant | the last column | The copy of the Ledger’s last page has two columns and a margin line, ‘and the rest’. No sect has had an Ascendant in two hundred years, and the copyists say it is because of the question. |
+
+A **keeper** at a rung reads a stranger either rank first or sex first, and each way has its own kindness and its own blind spot: the keeper who reads rank first never counts a sex (so the sect cannot say how many of its sleeves are women), and the keeper who reads sex first puts people where they will be safe (and has not asked whether safe is where they wished to be). Nobody on the roads is a villain.

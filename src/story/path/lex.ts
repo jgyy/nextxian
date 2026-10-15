@@ -54,7 +54,7 @@ export const DAO_ROAD: Record<Dao, [string, string, string]> = {
     "You look at each craftsman’s work as at a door in a long corridor, wondering which of them is yours.",
   ],
   alchemy: [
-    "You smell the wet bark and the three kinds of moss, and begin against your will to compound them in your head. A pill-maker never travels empty-handed in her mind.",
+    "You smell the wet bark and the three kinds of moss, and begin against your will to compound them in your head. A pill-maker never travels empty-handed, even in the mind.",
     "In a ditch you spot a root your Pill Dao calls bitter-bright, and pocket it with the care of a thief. It will be a month before it matters.",
     "A farmer’s cough remedy is wrong in two of its five herbs. You hold your tongue. Your Pill Dao is itching to say which.",
   ],

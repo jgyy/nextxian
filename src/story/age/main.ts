@@ -138,7 +138,7 @@ const LINES: Record<Turn, Record<Tier, string>> = {
   slow: {
     hostile: "You are old, and slow, and you ask the mountain to wait. The mountain has never once waited for anyone. Hurry.",
     wary: "A slow answer from an old throat. It tells me you have counted the cost, and I should like to know what the cost came to.",
-    neutral: "You take your years at the pace they allow. It is not weakness. It is arithmetic, and I respect a hero who does her sums.",
+    neutral: "You take your years at the pace they allow. It is not weakness. It is arithmetic, and I respect a hero who does {their} sums.",
     warm: "You go slowly, and you arrive. I have noticed that the two are not quite so far apart as the young suppose.",
     devoted: "I will wait for you at every turning. I have all the patience of a woman who also has fewer years than she would like.",
   },

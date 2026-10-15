@@ -99,7 +99,7 @@ Odval has collapsed. She lies on the deck with her cheek on the glass, quite sti
 > inquiry | Ask Yue how long. | gale_a1s6
 
 === gale_a1s6 | Ninety Minutes
-“Ninety,” says Yue, flat on her back. “Ninety minutes. It moves a mile every ten. We’ll be in the eye until it reaches the edge of the plate, and then the wall comes back.” “That’s enough to patch the sails.”
+“Ninety,” says Yue, flat on her back. “Ninety minutes. It moves a mile every ten. We’ll be in the eye until it reaches the edge of the plate, and then the wall comes back. That’s enough to patch the sails.”
 “And the runner?”
 “We’ll splint it.” She sits up. “Temur! Rope!”
  You work in the round blue light, in absolute silence, surrounded by the roar of the whirling grey wall, as if you had set up shop in a bell. Hanming and Gu rig a spare spar. Hao Lan, in the shadow of the mast, sews a patch of spare canvas with a needle as long as her hand.

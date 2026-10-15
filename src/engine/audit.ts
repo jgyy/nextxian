@@ -16,6 +16,84 @@ export function startScenes(story: Story): string[] {
   return [story.startSceneId, ...Object.values(ORIGIN_START).filter((id) => id !== story.startSceneId && story.scenes[id])];
 }
 
+/**
+ * Why a list of conditions cannot all hold at once, when two of them ask for opposite things: a realm above the first bound and below the second, a stat
+ * that must be both high and low, a flag that must be on and off, a gender in no value both ask for, two moods, two scenes that share no id. Each
+ * condition alone may be possible while the list is held by no hero, and the single-condition checks cannot see it.
+ */
+export function clash(conditions: Condition[]): string | undefined {
+  const bounds = new Map<string, { min: number; max: number }>();
+  const flags = new Map<string, boolean>();
+  const only = new Map<string, Set<string>>();
+  const not = new Map<string, Set<string>>();
+  const moods = new Set<string>();
+  const scenes: string[] = [];
+  const assets = new Map<string, boolean>();
+  const unfed = new Set<boolean>();
+  const rangeKey = (c: Condition): string | undefined => {
+    switch (c.kind) {
+      case "stat": return `stat ${c.stat}`;
+      case "npc": return `${c.metric}`;
+      case "bond": return `bond with ${c.npc}`;
+      case "since": return `decisions since ${c.flag}`;
+      case "count": return `flags starting "${c.prefix}"`;
+      case "item": return `item "${c.item}"`;
+      case "affinity": return `${c.element} affinity`;
+      case "realm": case "progress": case "roads": case "decisions": case "standing": case "wealth": case "holdings": case "speed": case "mastery": case "age": case "years": return c.kind;
+      default: return undefined;
+    }
+  };
+  for (const c of conditions) {
+    const key = rangeKey(c);
+    if (key) {
+      const { min, max } = c as { min?: number; max?: number };
+      const now = bounds.get(key) ?? { min: -Infinity, max: Infinity };
+      // An item asked for with no number means at least one, unless only a maximum is given.
+      const lo = c.kind === "item" ? (min ?? (max === undefined ? 1 : 0)) : min;
+      if (lo !== undefined) now.min = Math.max(now.min, lo);
+      if (max !== undefined) now.max = Math.min(now.max, max);
+      bounds.set(key, now);
+      if (now.min > now.max) return `${key} of at least ${now.min} and at most ${now.max}`;
+    } else if (c.kind === "flag") {
+      const want = c.is !== false;
+      if (flags.has(c.flag) && flags.get(c.flag) !== want) return `flag "${c.flag}" both set and not set`;
+      flags.set(c.flag, want);
+    } else if (c.kind === "hero") {
+      if (c.is) {
+        const had = only.get(c.field);
+        const next = new Set(c.is);
+        only.set(c.field, had ? new Set([...had].filter((v) => next.has(v))) : next);
+      }
+      if (c.not) {
+        const had = not.get(c.field) ?? new Set<string>();
+        c.not.forEach((v) => had.add(v));
+        not.set(c.field, had);
+      }
+    } else if (c.kind === "mood") {
+      moods.add(c.is);
+      if (moods.size > 1) return `the Elder’s face to be ${[...moods].join(" and ")}`;
+    } else if (c.kind === "scene") {
+      scenes.push(c.prefix);
+    } else if (c.kind === "asset") {
+      const want = c.is !== false;
+      if (assets.has(c.asset) && assets.get(c.asset) !== want) return `holding "${c.asset}" both held and not held`;
+      assets.set(c.asset, want);
+    } else if (c.kind === "unfed") {
+      unfed.add(c.is !== false);
+      if (unfed.size > 1) return "the hero both Unfed and fed";
+    }
+  }
+  for (const [field, values] of only) {
+    if ([...values].every((v) => not.get(field)?.has(v))) return `a hero ${field} that no value fits`;
+  }
+  for (let i = 0; i < scenes.length; i++) {
+    for (let j = i + 1; j < scenes.length; j++) {
+      if (!scenes[i].startsWith(scenes[j]) && !scenes[j].startsWith(scenes[i])) return `a scene starting both "${scenes[i]}" and "${scenes[j]}"`;
+    }
+  }
+  return undefined;
+}
+
 /** Flags the engine itself sets, when a hero enters a realm. They need no choice to set them. */
 const isEngineFlag = (flag: string) => flag.startsWith(REACHED_PREFIX);
 
@@ -258,6 +336,8 @@ export function auditStory(story: Story): AuditIssue[] {
     return undefined;
   };
   const impossible = (where: string, conditions: Condition[] | undefined, skipFlags = false) => {
+    const opposed = clash(conditions ?? []);
+    if (opposed) issues.push({ kind: "dead-condition", where, message: `${where} needs ${opposed}, which no hero can hold at once` });
     for (const c of conditions ?? []) {
       if (skipFlags && (isFlag(c) || c.kind === "since")) continue;
       const reason = never(c);

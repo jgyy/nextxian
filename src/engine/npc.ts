@@ -83,7 +83,7 @@ export const MANNER_SHIFT: Record<ChoiceTone, string> = {
   mercy: "Most of your recent answers have been kindnesses, or pleas for them. The Law calls that softness, and I am not yet sure the Law is right about everything. Be careful, Wanderer, that mercy does not become the only tool you own.",
   inquiry: "You have been asking, reading and searching in most of your answers lately. A person who questions so much is either preparing to judge someone or preparing to be judged. I would like to know which of the two you are becoming.",
   deceit: "Three of your last four answers were lies, or close kin to lies. I have stopped asking whether a thing you say is true. I have begun asking why you need it to be false, and that question is worse for both of us.",
-  force: "Three of your last four answers reached for threat or force. The Law Hall has watched many men do that. It has never once watched one of them get what he wanted without paying for it later, with interest.",
+  force: "Three of your last four answers reached for threat or force. The Law Hall has watched many people do that. It has never once watched one of them get what they wanted without paying for it later, with interest.",
   quiet: "Most of your recent answers have been silence, waiting or quiet departures. Silence is not innocence, Wanderer. I notice when a person waits for me to decide a thing on their behalf, and I notice that you have been doing it often.",
 };
 
@@ -127,7 +127,7 @@ export const REALM_SHIFT: Record<number, string> = {
   2: "A foundation. Most of my disciples spend years on that floor, and you laid it between one bell and the next. Do not mistake speed for depth. Depth is what holds when the mist comes up.",
   3: "A core, and a bright one. The hall’s lamps leaned toward you when it formed. Power of that kind is not a gift, Wanderer. It is a debt that has not yet been named.",
   4: "A nascent soul. I have met four people who could say that in my lifetime, and I buried two of them. Walk carefully. Everything that lives longer than it should is hunted by what has already died.",
-  5: "You have severed your spirit from your own name. I cannot tell any longer whether I am speaking to the person who climbed my steps or to something that borrowed her shoes. I choose to believe it is still you.",
+  5: "You have severed your spirit from your own name. I cannot tell any longer whether I am speaking to the person who climbed my steps or to something that borrowed {their} shoes. I choose to believe it is still you.",
   6: "You are seeking the Dao. I am only an elder of a small sect with a locked hall and a missing seal, and I have nothing left to teach you. I can only ask that you remember who held the door.",
   7: "Ascendant. The Azure Cloud Sect will write your name on a tablet no one will be able to reach. I would rather have kept the mortal who stood dripping at my gate. I did not know I would say so.",
 };

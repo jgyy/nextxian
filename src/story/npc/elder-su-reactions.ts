@@ -39,7 +39,7 @@ export const elderSuReactions: Record<string, NpcScenario> = {
     memory: [
       {
         when: [{ kind: "flag", flag: "knows_gu_name" }],
-        line: "You have his name from my gate disciple, and already you offer your own life to bring him back. A stranger who would die for a name he heard an hour ago. I do not know whether that is courage or foolishness, and I suspect you do not either.",
+        line: "You have his name from my gate disciple, and already you offer your own life to bring him back. A stranger who would die for a name {they} heard an hour ago. I do not know whether that is courage or foolishness, and I suspect you do not either.",
       },
     ],
   },

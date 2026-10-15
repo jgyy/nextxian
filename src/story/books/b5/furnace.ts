@@ -429,7 +429,7 @@ He looks at her for a very long time.
 “Burial?” says Kwan.
 “It is what one does with bad ash.” Rao looks at the sea. “At sea. In the usual manner. I trust it has been seen to.”
 “It has,” says the Elder.
-“I thought it might have.” “Good day, Madam. I hope we meet again, at the Stair. It will be most interesting.”
+“I thought it might have. Good day, Madam. I hope we meet again, at the Stair. It will be most interesting.”
 He mounts. He rides out of the yard at a stately trot, with his retinue behind.
 The Elder watches him go. She does not move until he is out of sight. Then she sags against the gantry, and puts her hands over her face, and trembles all over.
 Tuhin lets out a squeak.

@@ -1,6 +1,6 @@
 # Plot-hole and continuity ledger
 
-Nine passes, four asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
+Ten passes, four asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
 
 | Pass | Fixed | Of what kind |
 | --- | ---: | --- |
@@ -13,9 +13,32 @@ Nine passes, four asked to fix more than 1,000 and the fourth asked again. This 
 | Sixth pass | 283 | 11 origin door scenes the Elder never played, 10 sentences read in up to 200 roads, 254 trait lines shared by 200 roads, and 8 smaller slips |
 | Seventh pass | 72 | 2 hero-address lines and 1 simile that assumed a gender, 11 wet words on the Glass Sea, 6 places against canon, 28 generated-text slips, 8 plural places, 4 early spoilers, 10 name clashes, 2 wayside origins |
 | Eighth pass | 84 | 1 canon contradiction opened by the new starting ages (the Wanderer was five fifteen years ago), 52 shown lines that told a hero of any age what the Elder did “at your age”, 1 timeline slip (twenty years against fifteen), 1 beginning that contradicted itself (four ways taught “one a decade” in seven winters), 3 lines that assumed a young hero, 1 panel that showed the wrong heart-demon line, 1 preview that misread, and 24 slips in the new content (5 dead lesser ways, 4 name clashes, 6 repeated lines, 9 echoes over the cap) |
-| **Ninth pass (this branch)** | **777** | 704 lines and memories no hero could ever see (662 extras and 42 memories behind a realm outside the ladder), 22 lines in 17 scenes that told every hero they were a girl, a lady or a madam, or called them “she”, 45 lines in which Lian Sheng (about 40) and Old Lin (5) changed gender between books, 6 hugs counted as truth |
+| Ninth pass | 777 | 704 lines and memories no hero could ever see (662 extras and 42 memories behind a realm outside the ladder), 22 lines in 17 scenes that told every hero they were a girl, a lady or a madam, or called them “she”, 45 lines in which Lian Sheng (about 40) and Old Lin (5) changed gender between books, 6 hugs counted as truth |
+| **Tenth pass (this branch)** | **270** | 262 shown lines that told every hero something about themselves (117 told every soldier they were “a man who has stood a post”, 117 that they could “tell a levy man by how he drinks”, 1 called every gentry hero “young master”, 4 called the hero “a girl”, 23 lines of the Elder, a trait or a beginning said her, his, he or men to every hero), 5 speeches that began mid-sentence with the speaker lost, 3 that glued two speeches together. Short of the 1,000 asked for: see below |
 
-## Ninth pass (this branch): what was looked for, found and fixed
+## Tenth pass (this branch): what was looked for, found and fixed
+
+This branch added the Rank Roads and made the realm matter beside gender, so the pass went after what the two together could expose: lines that tell every hero something about themselves that only some heroes are, and speech the markup broke. It counts only what a script or a test could prove. **It is well short of the 1,000 asked for**: the nine passes before it have read this text closely, and what is left that a script can see is small. The number is 270, and the first two rows are one defect in a generated list, shown in 234 scenes.
+
+| Class | Count | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| Hero-trait lines that told every soldier, of any gender, “as one does for a man who has stood a post” | 117 scenes | reading every hero-trait list (dress, birth, trade, face) for gendered words, then counting the scenes that show the line | `roads2/hero-lex-more.ts` (“someone who has stood a post”) |
+| The same lists, a keeper saying “you can tell a levy man by how he drinks”, then “you have just proved it” | 117 scenes | the same | `roads2/hero-lex-more.ts` (“a levy veteran by how they drink”) |
+| “The steward calls you young master behind your back”, shown to every gentry hero | 1 | grepping honorifics that no gender gate guards | `origins/porter.ts` (“your honour”) |
+| Others speaking of the hero as “a girl with a seed” (twice), “a girl at the Four Bones who gave her last cup”, “the girl in the mountain” | 4 | reading third-person talk about the hero in Books Three and Four | `b3/lotus`, `b4/glass`, `b4/caravan` (now “{their} last cup”), `b4/court` |
+| Lines of the Elder, a trait or a beginning that said *her*, *his*, *he* or *men* to every hero: “a pill-maker never travels empty-handed in her mind” (9 scenes), “I respect a hero who does her sums” (7 turning scenarios), the Elder’s word to a hero who forces (“many men … what he wanted”), the Spirit Severing line (“something that borrowed her shoes”), the hedge-listener’s two lines (“of her own accord”, “if she tries”), “a name he heard an hour ago”, “nobody to tell him he cannot”, “where she wishes to go” | 23 | scanning the Elder’s lines, the asides and every generated trait line for a gendered pronoun whose only antecedent is the hero | `engine/npc.ts` (2), `origins/entries.ts` (2), `origins/furnace.ts`, `path/lex.ts`, `age/main.ts`, `npc/elder-su-reactions.ts`, `books/b2/reserve.ts` (now `{their}`, `{they}`, “people”, “unasked”, or no pronoun) |
+| Paragraphs that began in the middle of a sentence, with the speaker and the first line of the speech lost | 5 | scanning every shown paragraph for a lowercase or blank first character | `b4/bone` (2), `b4/court` (3) |
+| Paragraphs that glued two speeches together with no attribution between them | 3 | scanning for a closing quote followed by an opening quote | `b4/voice`, `b5/gale`, `b5/furnace` |
+
+Tests now fail on each class: `tests/continuity.test.ts` (no paragraph starts lowercase, no two speeches glued, the four “girl” lines, the soldier similes and the honorific, the Elder’s lines in each gender’s own pronouns, and the audit’s new check for conditions that contradict each other).
+
+**The audit now also fails on a list of conditions that contradict each other**, as the ninth pass made it fail on a single condition no hero could meet: a realm above the first bound and below the second, a stat that must be high and low, a flag set and unset, a gender no value fits, two faces of the Elder, two scenes with no id in common. It found none in the existing story, which is worth saying, because it is a class the earlier passes never looked for.
+
+**Looked for and found clean.** Conditions that contradict each other (none, in any choice, scene extra, interjection, memory or remark); scenes no path reaches (0 of 14,277); scenes with no choice open to every hero (0); a or an before the wrong sound, doubled punctuation, a stray slot, unbalanced quotes (0, apart from long speeches that run over several paragraphs by convention); a realm stated of the hero in text no realm gate guards (0); “your mother”, “your husband” and the like said of the hero (none, apart from heroes whose beginning gives them one); named people changing gender (a scan of 50 names, where every hit was a second person in the same sentence).
+
+**Not counted: 46 slips found in the new content before it shipped.** 24 collisions with earlier roads (14 keeper names, 4 places, 2 titles, 4 goods or holdings, found by the consistency tests), 8 scenes over the 200-word cap, 11 hub lines over fourteen words, a clerk who was “he” in the road of a woman keeper, a keeper’s secret that called a novice neither hall’s and then said which she was, and a parting word that a woman and a man hero were given alike. They are not part of the 270 because they were never in the story a player could read.
+
+## Ninth pass: what was looked for, found and fixed
 
 This branch added the Custom Roads and made gender matter in the narrative, so the pass went after what gender could expose: lines written for one hero, and named people who changed gender between books. It also added an audit check for conditions no hero can meet, which found the largest class.
 

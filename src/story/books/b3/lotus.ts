@@ -51,7 +51,7 @@ Madam Ash, at the door, makes a small sound that might be a laugh.
 “It is the true one.”
 “It is the one for the minutes.” The big man swings his boots to the floor. “The harder version is that the Concord has been poisoning a coast for eleven years, and sealing children in walls for a hundred, and that a court of clerks is not going to stop it.”
 He leans forward. His one ear twitches.
-“My version is that someone has a weapon. A girl with a seed. And that it is a sin not to use it.”
+“My version is that someone has a weapon. Someone with a seed. And that it is a sin not to use it.”
 The cellar is perfectly quiet. Qiu, at the door, stops writing.
 > truth | Ask him what he would use it for. | lotus_a1s4
 > mercy | Say you are not a weapon. | lotus_a1s4
