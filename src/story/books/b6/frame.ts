@@ -22,7 +22,7 @@ It is a while before anyone eats. When they do, Yunxia tells it between mouthful
 === hub_b6 | The Mountain Road
 The road to Azure Cloud climbs in a long rising spiral round the shoulder of the mountain, past terraces of tea, a shrine to the river, the foot of the sutra stair. Above it the cloud lies in tiers. In the high one a single light burns: the Ash Archive, lit from within.
 It is a four-day climb for a Mortal. For a cultivator, a day. For one who has made the road a direction, an hour. The mountain knows which you are.
-+[rl] realm>=6 | At Dao Seeking the mountain is a held note. You feel the Archive’s ward as a fist inside a glove, and the abyss under the Law Hall as a long breath not yet let go.
++[rl] realm>=6 | From Dao Seeking upward, the mountain is a held note. You feel the Archive’s ward as a fist inside a glove, and the abyss under the Law Hall as a long breath not yet let go.
 +[rl] realm>=5 | At Spirit Severing the cloud parts for you. You feel the mountain’s wards one by one, and they let you by.
 +[rl] realm<=4 | The mountain is vast, and you are small in it. Every ward you pass lays a hand on your chest.
 +[d] b6q_bridge | The Ash Bridge is behind you, and the lantern on its post is lit again.

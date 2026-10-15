@@ -16,6 +16,7 @@ flowchart LR
     AR["age/<br/>forty Age Roads, 1,136 scenes:<br/>five ages meet eight realms, a door of years,<br/>seven turning points, endings that read the years"]
     CS["custom/<br/>forty Custom Roads, 1,490 scenes:<br/>ten customs, four keepers, a door for a woman,<br/>a man or no answer, seven gender turning points"]
     RK["rank/<br/>thirty-two Rank Roads, 1,200 scenes:<br/>eight rungs, four keepers who read rank or sex first,<br/>a door of rank by gender and by where the realm stands,<br/>eight realm-and-gender turning points"]
+    TB["tribulation/<br/>eight Tribulation Roads, 1,008 scenes:<br/>four keepers who bow by the realm, a rehearsal of the trial,<br/>echoes where the world bows to the realm"]
     GD["gendered/<br/>Left Cloister, Right Yard, Third Door"]
     OG["origins/<br/>twelve beginnings, eleven prologues"]
     EC["economy/<br/>five reckonings, seven ending epilogues,<br/>remarks on the purse and the pack"]
@@ -38,6 +39,7 @@ flowchart LR
     WI["witness.ts<br/>deeds, repute bands, counts"]
     PR["practice.ts<br/>four practices, the cusp, counts"]
     CUS["custom.ts<br/>customSummary: kept, bent, broken, stood for"]
+    TRE["tribulation.ts<br/>eight tribulations, the bow by realm,<br/>trial needs, the sky’s line at a breakthrough"]
     RKE["rank.ts<br/>bandOf, bandsAt, rankSummary:<br/>yielded, claimed, veiled, lifted"]
   end
   subgraph UI["src/components + app/"]
@@ -52,9 +54,10 @@ flowchart LR
     AP["AgePanel.tsx<br/>years against the span of the realm"]
     PP["PursePanel.tsx<br/>stones, speed by part, pack, holdings"]
     CUP["CustomPanel.tsx<br/>the tally of the doors of custom"]
+    TRP["TribulationPanel.tsx<br/>the eight trials, how the sect bows"]
     RKP["RankPanel.tsx<br/>rank roads at each rung, the ways taken"]
   end
-  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & TB & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
   G --> AG
@@ -66,6 +69,9 @@ flowchart LR
   CS --> CUS
   CUS --> CUP
   RK --> RKE
+  TB --> TRE
+  TRE --> CU
+  TRE --> TRP
   RKE --> RKP
   G --> N
   G --> TN
@@ -79,7 +85,7 @@ flowchart LR
   GV --> SV
   GV --> CR
   CR -->|Hero| G
-  GV --> NP & SP & CP & HP & PP & XP & AP & CUP & RKP
+  GV --> NP & SP & CP & HP & PP & XP & AP & CUP & RKP & TRP
   GV -->|localStorage save| Storage[("Browser storage")]
 ```
 
@@ -831,3 +837,24 @@ flowchart TD
 `src/story/rank/main.ts` adds hidden `rank_<gender>_<standing>` choices to eight scenes, one for every realm: `scroll_theft` (1), `sutra_door` (2), `tribunal_masters` (2), `asm_entry` (3), `ninesails_entry` (4), `court_entry` (5), `summit_entry` (6), `bridge_entry` (7). The number is the realm a hero is expected to hold there: a hero at or above it is **ahead** (the way asks that realm, and pays more cultivation and a little Dao), one below it is **behind** (Insight for reading the room from below). Each sets `rk_main_<gender>_<scene>` and is answered by one of 48 scenarios of five lines plus a tail for the room. Seven echoes (`rank/echoes.ts`) read rank and gender together in the Law Hall, the memorial, the red mist, the Round Hall, the Stone-Singers’ fire, the Ring and on the span, and `rank/endings.ts` puts the hero’s gender against the last rung, and the way they took the ranks, on the scene before the last choice.
 
 **Audit.** `auditStory` now also fails on a list of conditions that contradict each other (`clash`): a realm that must be both above the first bound and below the second, a stat that must be high and low, a flag set and unset, a hero gender no value fits, two Elder faces, two scenes with no id in common. Each of those may be fine alone, and the single-condition checks could not see it.
+
+## Tribulations
+
+Every realm ends in a trial. The engine (`src/engine/tribulation.ts`) knows eight of them, one for each realm, and what a hero did at each is read from the flags the Tribulation Roads set (`tb_won_`, `tb_lost_`, `tb_fled_`, `tb_done_`), so a save from before them reads as nothing tried. Three things hang from them.
+
+```mermaid
+flowchart TD
+  F["flags: tb_won_w{n}_road, tb_lost_, tb_fled_, tb_done_"] --> P{"preparedFor(flags, realm entered):<br/>a rehearsal of the realm before it was weathered?"}
+  P -->|yes| S["skyLine: the trial meets a hero who knows it<br/>qi +5, Elder’s respect + realm + 2"]
+  P -->|no| U["skyLine: the trial finds a hero unready<br/>qi - (2 + realm), Elder’s respect + realm"]
+  S & U --> G["gainCultivation: the breakthrough log line carries the sky’s line"]
+  F --> PN["TribulationPanel: eight marks, the bow at the hero’s realm"]
+  F --> EN["depths_floor: the abyss reads trials stood, burned and turned back from"]
+  F --> EL["Elder’s report: memory by outcome and by where the hero stood"]
+```
+
+**The rehearsal.** A road’s entry offers it once. A gate (four ways to come to it, and the way out), three blows and a verdict make six scenes. At a blow the hero may *stand* (qi at least `6 + 3 × realm`, costing `3 + realm`, and strain if below the realm of the trial), *read* (Insight at least `8 + 2 × realm`), be *sheltered* (karma at least `2 × realm − 4`) or *yield*. Two yields shut the last blow to everything but a third. Standing, reading or being sheltered at the last blow weathers the trial, yielding scorches it, and the verdict scene’s four choices carry the gains or the costs.
+
+**The bow.** A keeper’s glance at the entry, greeting at the start of an approach and parting at its end are chosen by the hero’s realm *exactly* (an extra for each of the eight, in one group), in the keeper’s own way: a warden bows by the register, a witness by what the hero has survived, a rival by how much it costs, a pilgrim by how high the eyes go. The same rule is used in four scenes of the main line and the books (`tribulation/echoes.ts`), and `deferenceOf(realm)` names how the sect receives the hero for the panel.
+
+**The sky’s line.** Every breakthrough is tried. `gainCultivation` adds the line for the realm entered, steadied or scorched, and changes the hero’s qi and the Elder’s respect by `breakthroughQi` and `breakthroughRespect`. Pacing is unchanged (`npm run simulate` still puts a diligent hero at Foundation by the end of Book One and Core in Book Two), because the trial costs qi, never cultivation.

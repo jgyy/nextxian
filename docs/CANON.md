@@ -63,6 +63,10 @@ Each book after the first is a region and a hub. The player chooses which arcs t
 
 Mortal, Qi Condensation, Foundation Establishment, Core Formation, Nascent Soul, Spirit Severing, Dao Seeking, Ascendant. The ward on the Ash Bridge bows only to Spirit Severing (realm 5) and above; the doors of the abyss read only Dao Seeking (realm 6); no sect has had an Ascendant (realm 7) for two hundred years. A cultivator who tries a deed beyond their realm pays for it (see strain in ARCHITECTURE.md).
 
+### Tribulations in canon
+
+Every realm ends in a trial the sky sets before the next one opens, and every cultivator who has risen has sat all of those below them. Mortal: the **cold thread**, felt in a night of fasting, which the qi stays for. Qi Condensation: the **wayward breath**, which runs backward through the meridians once. Foundation Establishment: the **nine bells**, nine strokes of heavenly thunder. Core Formation: the **soul-fire**, which burns what the core has hidden. Nascent Soul: the **severing gale**, which cuts every cord to the dust of old names. Spirit Severing: the **Ledger’s audit**, in which whatever writes the Ledger reads a sage’s page aloud. Dao Seeking: the **nine gates**, each asking one thing and taking it. Ascendant: the **silence after**, in which the sky sends nothing, and which no sect has had a living witness of for two hundred years. A keeper may run a *rehearsal* of any of them; the sky does not rehearse. The sect bows by realm and the bow rises with it: a mortal is not looked at, a Condenser is nodded to, a Core is seated, a Dao Seeker is received, an Ascendant is kneeled to, and nobody in the sect breaks that order by accident. The Elder, Su Wanru, left the mountain fifteen years ago at twenty-eight; the Ash Bridge ward has never bowed to her.
+
 ### The seven endings
 
 | Ending | What it asks |

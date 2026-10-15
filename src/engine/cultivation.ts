@@ -2,6 +2,7 @@ import { lifespanNote } from "./age";
 import { DEFAULT_HERO } from "./hero";
 import { heartDemonKarmaFor, strainFactor } from "./path";
 import { daoArrival, talentArrival } from "./path-text";
+import { breakthroughQi, breakthroughRespect, skyLine } from "./tribulation";
 import type { ChoiceTone, GameState } from "./types";
 
 export interface Realm {
@@ -125,14 +126,18 @@ export function gainCultivation(state: GameState, amount: number): GameState {
   if (next >= REALMS.length || cultivation < REALMS[next].threshold || heartDemonBlocks(gained)) {
     return gained;
   }
+  // The sky tries every breakthrough. A hero who sat its trial on the road comes through steadied and respected; one who did not is scorched.
+  const sky = skyLine(gained.flags, next);
   return {
     ...gained,
     realm: next,
+    stats: { ...gained.stats, qi: Math.min(100, Math.max(0, gained.stats.qi + breakthroughQi(gained.flags, next))) },
+    npc: { ...gained.npc, respect: Math.min(100, gained.npc.respect + breakthroughRespect(gained.flags, next)) },
     flags: { ...gained.flags, [reachedFlag(next)]: true },
     flagAt: { ...gained.flagAt, [reachedFlag(next)]: gained.decisions },
     log: [
       ...gained.log,
-      { kind: "realm", text: `Breakthrough: ${REALMS[next].name}. ${REALMS[next].arrival}${breakthroughNotes(gained, next)}` },
+      { kind: "realm", text: `Breakthrough: ${REALMS[next].name}. ${REALMS[next].arrival}${sky ? ` ${sky}` : ""}${breakthroughNotes(gained, next)}` },
     ],
   };
 }

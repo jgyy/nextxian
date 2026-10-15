@@ -6,6 +6,10 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 
 ## Features
 
+- **Tribulation Roads: thirty-two roads, 1,008 more scenes, where the whole story is about the climb.** Every realm ends in a trial the sky sets before the next one opens, and there is a wayside for each: **the cold thread** a mortal must feel before any qi will stay, **the wayward breath** of the Qi Condenser, **the nine bells** of the Foundation, **the soul-fire** of the Core, **the severing gale** of the Nascent Soul, **the Ledger’s audit** of the Spirit Severing, **the nine gates** of the Dao Seeker and **the silence after** that every Ascendant meets alone. Each has four keepers (a **warden** who bows by the register, a **witness** who bows to what the hero has survived, a **rival** who bows when it hurts, and a **pilgrim** who is awed by anyone who has climbed), and **every keeper reads the hero’s realm exactly, at the entry, at the start of every approach and at its end**: eight postures a keeper, from a warden who does not look up from the register for a mortal to one who kneels in the road for an Ascendant. The higher the realm, the lower the bow.
+- **The trial itself, and a breakthrough that is tried.** On every road a keeper will run a **rehearsal** of the tribulation: a gate (fast, study, make accounts, or go in as you are), then three blows. A hero meets each blow by **standing** in it (qi), **reading** it (Insight) or being **sheltered** by what they have done (karma), and each costs more at every higher realm. A hero below the realm of the trial pays strain for standing; a hero who gives way twice has no footing left for the last blow. Weathered or scorched, the Elder answers at once, in five lines by her trust. And **every breakthrough in the game is now tried by the sky**: a hero who weathered the rehearsal of the realm before comes through steadied (+5 qi) and respected (the Elder’s respect rises by the realm and two more), one who did not is scorched (qi lost, more at every higher realm), and the log says which trial it was.
+- **The world bows to the realm.** Echoes in the main line and the books show the gate disciple, the Archive warden, the tribunal’s terraces and the fishing families on the Tidewall quay each receiving the same hero from four realms higher, a **Tribulations panel** that shows the eight trials (weathered, scorched or turned back from) and how the sect bows at the hero’s height (Unnoticed, Tolerated, Greeted, Heard, Seated, Waited on, Received, Kneeled to), and 30 unprompted remarks from the Elder and the company.
+- **An eleventh plot-hole pass: 24 fixed.** A realm named for every realm above it (12 hub and ending lines that told a Dao Seeker or an Ascendant they stood “At Core Formation”, one ending that did the same, and three remarks), a Glass Gate that read a Dao Seeker as a Nascent Soul and called the hero “Madam”, two lines that called the unreadable hero “her” and “she”, two breaks in the Elder’s own years, and a breakthrough that happened with nothing tried. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md).
 - **Rank Roads: thirty-two roads, 1,200 more scenes, where the realm and the gender are read together.** Eight rungs of the sect, one for every realm from Mortal to Ascendant (the roll of hands, the novices’ halls, the pairing board, the council seats, the soul-portraits, the severing day, the companions’ table, the last column), each with four keepers: a woman and a man who **read a stranger’s rank before their sex**, and a woman and a man who **read their sex before their rank**. A hero meets each place from **below** the realm it asks, **at** it or **above** it, and the same keeper greets, charges and answers them differently by band: the glance at the entry reads rank and gender together (nine readings on a road that has all three bands), the greeting and the fourth beat of every approach read the band, the second and third read the gender. **The door of rank** opens in the middle of every approach to a woman, a man or someone who gives no answer, and the keeper meets whoever walks through it by where their rung stands against the road’s. Four picks lie behind it: **yield** to the place the rung gives, **claim** the rung held against the room, **veil** it, or **lift** another with it. A claim needs the realm of the road and then a price each gender pays differently (a woman argues it with Insight, a man pays in qi for the quiet he breaks, someone who gives no answer pays in qi to be read by the rung alone); a lift spends the rung, so a hero below the road pays strain for it and one two realms above it gains mastery. Claiming or lifting before a keeper who reads sex first crosses them; keeping low before a keeper who reads rank first lets them down. The Elder answers every pick at once, in five lines by her trust, and says a word at every door that depends on where the hero’s rung stands.
 - **Realm and gender in the main line: eight turning points, one for every realm.** At the scroll-room, the sutra door, the masters’ dais, the Round Hall, the fleet at Tidewall, the Ring of Nine Stones, the doors of the Ninth Night and the span of the Ash Bridge, a woman, a man and someone who gives no answer are each offered a way that only their own gender allows, and **which way depends on whether the hero has climbed as far as the story expects of them there**: 48 hidden choices, one for each gender and for a hero ahead of or behind the realm. A hero ahead gains more cultivation and a little Dao and the way asks the realm; a hero behind gains Insight for reading the room from below. The Elder answers each at once (48 scenarios of five lines), seven more scenes of Books One to Six read rank and gender together in a line, and the scene before the last choice reads the hero’s gender against the last rung and the way they took the ranks.
 - **The cast keeps up.** 62 new unprompted remarks (the Elder reads the doors by gender and by how far the hero has climbed, and Ren Qiao, Gu, Lin Yuan, Duan, Hao Lan, Mei Qiu, Bao Er, Lu Yan, Shu Ning, Mengjiao, Ah Zhi, Tian, Qiu, Yue and Odval each say what the ranks have meant to them), a **Ranks panel** that shows the Rank Roads walked at each rung, what the hero yielded, claimed, veiled and lifted, keepers crossed and turnings met, and Elder reports that remember a rung pressed before a keeper who reads sex first.
@@ -52,6 +56,52 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 - **Saves in your browser.** Progress is written to `localStorage` after every choice. Storage errors never stop play. Saves from before the Elder kept a reaction history, or before decisions had tones, still load.
 
 ![Scene with no Continue](docs/screenshots/02-no-continue-desktop.png)
+
+### Tribulation Roads, the trial and the bow
+
+![A wayside of four keepers: the bell-tower of the tribunal](docs/screenshots/173-bell-tower-wayside-desktop.png)
+![The fasting-warden receives a mortal](docs/screenshots/174-warden-passes-over-a-mortal-desktop.png)
+![The same warden, the same road, for an Ascendant](docs/screenshots/175-the-same-warden-kneels-to-an-ascendant-desktop.png)
+![A pilgrim bows to a Core cultivator](docs/screenshots/176-pilgrim-bows-to-a-core-desktop.png)
+![A rival bows to a Nascent Soul, and it costs](docs/screenshots/177-rival-bows-and-it-costs-desktop.png)
+![The gate of the rehearsal](docs/screenshots/178-the-rehearsal-gate-desktop.png)
+![A hero with no qi, Insight or karma is shut out of every way but giving way](docs/screenshots/179-first-blow-locked-for-a-weak-hero-desktop.png)
+![Two yields shut the last blow](docs/screenshots/180-two-yields-shut-the-last-blow-desktop.png)
+![The trial weathered](docs/screenshots/181-weathered-desktop.png)
+![The Elder answers at once](docs/screenshots/182-the-elder-answers-the-weathered-trial-desktop.png)
+![The trial scorches a hero who gives way](docs/screenshots/183-scorched-desktop.png)
+![A breakthrough, tried by the sky: the hero sat the trial first](docs/screenshots/184-breakthrough-tried-by-the-sky-desktop.png)
+![The Tribulations panel keeps the tally](docs/screenshots/185-tribulations-panel-desktop.png)
+![The Glass Gate now reads a Dao Seeker as one (a plot hole fixed)](docs/screenshots/186-glass-gate-reads-a-dao-seeker-desktop.png)
+![The gate disciple tips the umbrella to a Core cultivator](docs/screenshots/187-gate-disciple-bows-the-umbrella-desktop.png)
+![A blow on a phone](docs/screenshots/188-blow-on-a-phone-mobile.png)
+
+```mermaid
+flowchart TD
+  W["wayside hub: 8 of them, one tribulation each, Mortal to Ascendant"] --> R["road: one tribulation x one keeper, 31 scenes"]
+  K["four keepers: warden, witness, rival, pilgrim<br/>(two women and two men a wayside)"] --> R
+  R --> B["keeper reads the hero's realm exactly:<br/>glance at the entry, greeting and parting of every approach"]
+  B --> L["eight postures a keeper: the higher the realm, the lower the bow"]
+  R --> T["rehearsal: gate, three blows, verdict"]
+  T --> G{"gate: fast, study, accounts, as you are, or turn back"}
+  G --> X{"each blow: stand (qi), read (Insight), shelter (karma), or yield"}
+  X --> V1["two yields: the last blow is shut"]
+  X --> WON["weathered: tb_won, gains, Elder answers"]
+  X --> LOST["scorched: tb_lost, qi and respect lost, Elder answers"]
+  G --> FLED["turned back: tb_fled, Elder answers"]
+  WON --> BT["breakthrough to the next realm: steadied (+5 qi, more respect)"]
+  LOST --> BR["breakthrough unprepared: scorched (qi lost)"]
+  WON & LOST & FLED --> RP["Tribulations panel, 30 remarks, endings that read the trials"]
+```
+
+```mermaid
+flowchart LR
+  T0["Cold Thread<br/>Mortal"] --> T1["Wayward Breath<br/>Qi Condensation"] --> T2["Nine Bells<br/>Foundation"] --> T3["Soul-Fire<br/>Core"] --> T4["Severing Gale<br/>Nascent Soul"] --> T5["Ledger's Audit<br/>Spirit Severing"] --> T6["Nine Gates<br/>Dao Seeking"] --> T7["Silence After<br/>Ascendant"]
+  T0 & T1 & T2 & T3 & T4 & T5 & T6 & T7 --> H{"hero below, at or above the trial's realm?"}
+  H -->|below| HB["strain for standing; the gate warns"]
+  H -->|at| HA["as hard as it was made to be"]
+  H -->|above| HU["sits it as a teacher; mastery two realms up"]
+```
 
 ### Rank Roads, and realm and gender in the main line
 

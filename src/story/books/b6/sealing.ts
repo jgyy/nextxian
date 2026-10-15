@@ -65,7 +65,7 @@ You answer her. You do not stop. You take Mengjiao’s place on the ledge, cross
 It is not a sacrifice. That is what you learn on the first night. It is an office, like Keeper of Keys, and it has hours. The Elder brings you tea. Lin Yuan reads you the cadastre. You answer the dark, night after night, and the dark, bit by bit, begins to answer you.
 +[who] bond:mengjiao>=12 | Mengjiao comes down the stair once a season, and sits with you for an hour, and says nothing at all, and goes up refreshed.
 +[who] bond:gu>=10 | Gu comes every day, and does not know what to say, and says it anyway.
-+[rl] realm>=6 | At Dao Seeking you hear the thing in the mist and the thing in yourself as the same note.
++[rl] realm>=6 | From Dao Seeking upward, you hear the thing in the mist and the thing in yourself as the same note.
 The sect reopens its gates on the fortieth day. Nobody sends anyone down the abyss path again.
 
 === end_ascendant | The Ascendant
@@ -80,7 +80,7 @@ The Elder watches from the doorway of the Law Hall, with her second ledger under
 
 === end_warden | The Warden of the Mist
 #end Ending: The Warden of the Mist
-You plant yourself in the mouth of the ledge with your qi open and your feet on the stone, and the abyss comes up at you like a flood. You hold it. The stair behind you shivers; the doors above you ring; the Elder cries out; and you hold it, at Dao Seeking, with everything you have trained, and the flood slows, and stops.
+You plant yourself in the mouth of the ledge with your qi open and your feet on the stone, and the abyss comes up at you like a flood. You hold it. The stair behind you shivers; the doors above you ring; the Elder cries out; and you hold it, at your height, with everything you have trained, and the flood slows, and stops.
 It does not leave. It lies against your guard like a tide against a sea-wall. But it lies quietly.
 +[who] bond:ren>=8 | Ren Qiao takes the post at your shoulder and does not leave it.
 +[who] bond:gu>=8 | Gu builds a small stall at the top of the stair, and sells tea to the guard.

@@ -1678,6 +1678,25 @@ button.ghost[aria-expanded="true"] {
   font-weight: 600;
   font-size: 0.82rem;
 }
+.trib-bow {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.trib-row li[data-state="won"] {
+  border-color: #7fa38c;
+  background: rgba(127, 163, 140, 0.16);
+}
+.trib-row li[data-state="lost"] {
+  border-color: #b5483a;
+  background: rgba(181, 72, 58, 0.14);
+}
+.trib-row li[data-state="fled"] {
+  border-color: var(--muted);
+  background: rgba(150, 150, 160, 0.12);
+}
 .cusp {
   margin: 8px 0 0;
   padding: 6px 10px;

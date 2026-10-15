@@ -28,7 +28,7 @@ The Listeners are everywhere, and nowhere. A rider on a distant rise. A thread o
 +[d] b4q_glass | A man with a limp and a scar rides at the tail of the column beside your friend, and neither says much.
 +[d] b4q_caravan | A brass compass that does not point north is wrapped in oilcloth beside the cards.
 +[d] b4q_storm | There is a yellow pebble with a green crust in your sleeve, and a gap where a flower’s name was.
-+[rl] realm>=4 | At Nascent Soul the grass is a page. Your inner figure turns its head to the wind, and the wind answers with the name of every clan within a day’s ride.
++[rl] realm>=4 | From Nascent Soul upward, the grass is a page. Your inner figure turns its head to the wind, and the wind answers with the name of every clan within a day’s ride.
 +[rl] realm>=3 | At Core Formation you feel the Steppe breathe under your core: slow, enormous, willing. A Listener at your fire nods, once, as if you had said something.
 +[rl] realm<=2 | The grass is all ears and you are all noise. Your qi is too thin to hide, and the Listeners’ children watch you from the ridges with open amusement.
 > truth | Ride to the rise where nine hundred and ninety-nine stones are humming. | stones_entry |  | !b4q_stones | You have already sat among the stones.
@@ -53,7 +53,7 @@ The Garrison’s presence is thicker. Patrols of grey riders on the skyline. A s
 +[d] b4q_bone | A grey slip of paper with a broker’s name on it is folded in your sleeve.
 +[d] b4q_vigil | A stub of candle, still warm, is in Hao Lan’s satchel beside her pencil.
 +[d] b4q_court | A black-felted widow’s lamb has taken to following the cart.
-+[rl] realm>=4 | At Nascent Soul the hills are a held breath. Your inner figure sees the Garrison’s bells before you do, and the silence they make is a shape you could walk through.
++[rl] realm>=4 | From Nascent Soul upward, the hills are a held breath. Your inner figure sees the Garrison’s bells before you do, and the silence they make is a shape you could walk through.
 +[rl] realm>=3 | At Core Formation you can feel the Hush bells as a weight on the air, and hold your own qi still against it for as long as you like.
 +[rl] realm<=2 | The Hush bells are a hand on the back of your neck. You are not strong enough to ignore them, and every noon you find that you have stopped humming.
 > truth | Turn the cart toward the howling in the northern hills. | wolves_entry |  | !b4q_wolves | You have already answered the wolves.
@@ -77,7 +77,7 @@ The Listeners are with you now. The Matriarch’s tent follows, with its nine fi
 +[d] b4q_roots | A black ribbon has been tied round the hilt of a Listener’s knife, and nobody will say who tied it.
 +[d] b4q_tomb | There is red dust in the creases of the cards that will not shake out.
 +[d] b4q_mill | A broken steel bell hangs from the tail of the cart, and the horses will not pass it without a toss of the head.
-+[rl] realm>=5 | At Spirit Severing the red hills are nearly transparent. You can feel the Stair’s foot a hundred miles off, a cold bright knot where the world was torn and mended.
++[rl] realm>=5 | From Spirit Severing upward, the red hills are nearly transparent. You can feel the Stair’s foot a hundred miles off, a cold bright knot where the world was torn and mended.
 +[rl] realm>=4 | At Nascent Soul your inner figure looks east and does not blink. Something there is looking back, and it is not hostile.
 +[rl] realm<=3 | The last week is a climb and you are short of breath for it. Odval rides at your stirrup, quiet, watching your hands.
 > truth | Go back to the Great Ring, where the clans have not yet struck their tents. | kurultai_entry |  | !b4q_kurultai | The Kurultai has already spoken.

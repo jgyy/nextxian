@@ -26,8 +26,8 @@ The mist rises and falls under the arch. The ward in the stone has been lit: you
 === bridge_open1 | A Cultivator on the Span
 The fire round the keystone brightens as you step onto the stone. It does not flare; it stills, and goes pale gold, and a faint high note comes out of the gorge like a struck bowl. The men at the far end look up.
 The ward bows. There is no other word for it. The ring of light dips toward you, an inch, as a flame dips before a breath, and the mist under the arch parts in a clean path to the far side. It is a courtesy older than the sect. It is the bridge’s way of saying that it knows what you are.
-Behind you the Elder says, very dryly: “It has not done that for me in thirty years.”
-“It never did for me,” says Ren Qiao.
+Behind you the Elder says, very dryly: “It has never done that for me.”
+“Nor for me,” says Ren Qiao.
 You walk. Forty paces. The halberds at the far gate do not move, but the men holding them have gone quite still, and one of them, a boy of nineteen, has begun, without noticing, to lower the point.
 > truth | Keep walking. | bridge_open2 | cult+4
 > mercy | Hold out a hand to Ren. | bridge_open2

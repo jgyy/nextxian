@@ -55,7 +55,7 @@ The Elder has taken rooms at the Ferryman’s Rest. The Censors who came with yo
 +[d] b3q_mourning | There is a black ribbon in your sleeve, and a woman’s voice that said nothing you could answer.
 +[d] b3q_ferry | The ferryman’s rope is still wound on your wrist, two turns, a knot you cannot undo.
 +[d] b3q_lamp | The lighthouse blinks twice on the horizon, in a pattern you now know.
-+[rl] realm>=3 | At Core Formation the Tidewall hums, and you can tell the struck from the living by whether the hum has an owner.
++[rl] realm>=3 | From Core Formation upward, the Tidewall hums, and you can tell the struck from the living by whether the hum has an owner.
 +[rl] realm>=2 | At Foundation Establishment you feel the sea behind the wall, a slow cold pull in your dantian.
 +[rl] realm<=1 | The Salt Coast is too much qi for a body like yours. The tide drags at your breathing.
 > truth | Walk the length of the Wall, and read what is carved there. | harbour_entry |  | !b3q_harbour & !b3q_sails | You have read the Wall.

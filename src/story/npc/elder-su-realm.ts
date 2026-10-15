@@ -8,7 +8,7 @@ type Memory = NonNullable<NpcScenario["memory"]>[number];
  * scenario’s memory list, so a flag the player set or a pattern in their choices still wins.
  */
 const CULTIVATOR: Record<string, string> = {
-  HONEST_ACCOUNT: "You tell me the truth with a Foundation Builder’s steady breath. A mortal who confesses is brave. A cultivator who confesses is choosing, and I notice the difference.",
+  HONEST_ACCOUNT: "You tell me the truth with a cultivator’s steady breath. A mortal who confesses is brave. A cultivator who confesses is choosing, and I notice the difference.",
   LIE_ABOUT_SEAL: "A cultivator lies with a voice that carries, and I can feel yours in my teeth. Do you think qi makes a falsehood heavier, or only louder?",
   THREATEN: "You threaten me with a cultivator’s calm, which is worse than a mortal’s rage. A mortal can be forgiven for fear. You have no such excuse.",
   SHOW_MERCY: "Mercy from a mortal is a gesture. Mercy from someone who could have crushed him is a decision. I am glad it was the second.",
