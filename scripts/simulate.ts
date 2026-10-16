@@ -4,7 +4,7 @@
  */
 import { story } from "../src/story";
 import { choose, createGame, getChoices, getScene } from "../src/engine/game";
-import { REALMS } from "../src/engine/cultivation";
+import { layerTitle, levelNow } from "../src/engine/stages";
 import { cultivationSpeed } from "../src/engine/economy";
 import type { GameState } from "../src/engine/types";
 
@@ -26,7 +26,7 @@ function run(seed: number, policy: Policy): { seen: Record<string, [number, numb
   const seen: Record<string, [number, number, number]> = {};
   for (let i = 0; i < 20000; i++) {
     const id = state.sceneId;
-    if (GATES.includes(id) && !seen[id]) seen[id] = [state.decisions, state.cultivation, state.realm];
+    if (GATES.includes(id) && !seen[id]) seen[id] = [state.decisions, state.cultivation, levelNow(state)];
     let scene;
     try {
       scene = getScene(story, id);
@@ -69,7 +69,7 @@ const policy = (process.argv[3] ?? "thorough") as Policy;
 for (let r = 1; r <= runs; r++) {
   const { seen, end, state } = run(r, policy);
   const gates = Object.entries(seen)
-    .map(([k, [d, c, rl]]) => `${k}: d${d} c${c} ${REALMS[rl].name}`)
+    .map(([k, [d, c, rl]]) => `${k}: d${d} c${c} ${layerTitle(rl)}`)
     .join(" | ");
-  console.log(`${policy} ${r}: ${gates} | end=${end} d${state.decisions} c${state.cultivation} ${REALMS[state.realm].name} karma ${state.stats.karma} | purse ${state.wealth} speed ${cultivationSpeed(story, state)}% pack ${Object.keys(state.items).length} holdings ${state.assets.length}`);
+  console.log(`${policy} ${r}: ${gates} | end=${end} d${state.decisions} c${state.cultivation} ${layerTitle(levelNow(state))} karma ${state.stats.karma} | purse ${state.wealth} speed ${cultivationSpeed(story, state)}% pack ${Object.keys(state.items).length} holdings ${state.assets.length}`);
 }

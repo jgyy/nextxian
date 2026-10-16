@@ -178,6 +178,6 @@ export const BAND_LINE: Record<TribId, Record<"below" | "at" | "above", string>>
   silence: {
     below: "You have not yet risen so far that the sky has nothing to send. {Kname} says that this is the last thing a hero should hurry toward, and that most do.",
     at: "You are the Ascendant, and the silence is yours. {Kname} does not say it. {Kthey} only stops talking, and lets you hear what that sounds like.",
-    above: "You have passed the last trial, and the sect has no word for it. {Kname} is quiet, and then quieter, and understands that quiet is the word.",
+    above: "You have passed the silence, and the sect has no word for what lies beyond it. {Kname} is quiet, and then quieter, and understands that quiet is the word.",
   },
 };

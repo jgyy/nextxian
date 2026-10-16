@@ -167,7 +167,7 @@ export const REALM_LEX: readonly RealmLex[] = [
     counsel: "At the Tempering Yard the body is the only teacher, and it teaches by repetition and by pain. Choose which pain you will repeat.",
     press: "Press the body, and the body will answer. It may answer with a bruise. That is an answer too.",
     report: "A mortal who tempers the body honestly has done more than most cultivators ever bother to. I will remember it.",
-    thrown: "Beaten by the yard more than once, and still you come to say so. A mortal who tells me when he has failed is worth three who do not.",
+    thrown: "Beaten by the yard more than once, and still you come to say so. A mortal who tells me when they have failed is worth three who do not.",
   },
   {
     place: "the Thread-House",

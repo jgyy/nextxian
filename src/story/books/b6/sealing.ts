@@ -16,7 +16,7 @@ She comes up out of the mist as a woman rises from a bath, slowly, with the red 
 The Elder makes a sound that is not a word. Mengjiao looks at her for a long time.
 “Wanru,” she says. “You’ve grown a grey streak. It suits you.”
 Behind her the mist is a lake at evening, and the thing in it has turned its whole slow attention to the ledge.
-+[rl] realm>=7 | At Ascendant the abyss is quiet in your presence, as a river is quiet before a dam.
++[rl] realm>=7 | At Ascendant, or beyond it, the abyss is quiet in your presence, as a river is quiet before a dam.
 +[rl] realm<=3 | You are very much out of your depth, and feel it in your knees.
 > truth | Say who you are. | lastseal_a | npc:SU_SEALING_VOICE
 > mercy | Go to the Elder’s side. | lastseal_a | npc:SU_SEALING_VOICE
@@ -41,7 +41,7 @@ The ledge is silent. The whole company has come to stand behind you, Gu, Ren, Ha
 There are many answers, and each is made of something you have been. The abyss will hear which.
 > truth | Perform all nine verbs: carry, mend, sing, light, seal, write, keep, open, answer. | end_nine | | count:card_>=9 & realm>=6 | The nine verbs need all nine cards, and a cultivation deep enough to perform them.
 > mercy | Answer her, and keep listening, as Mengjiao has done. | end_listener | | bond:mengjiao>=6 & realm>=5 | The Listener hears only someone she trusts, and one who can bear the question.
-> force | Take the seal into yourself, as an Ascendant can. | end_ascendant | | realm>=7 | Only an Ascendant is wide enough to hold the seal in their own dantian.
+> force | Take the seal into yourself, as an Ascendant or one beyond can. | end_ascendant | | realm>=7 | Only an Ascendant, or one beyond, is wide enough to hold the seal in their own dantian.
 > force | Hold the line with your own body. | end_warden | needs:6 | realm>=6 | The line takes a Dao Seeking cultivator at the least.
 > force | Hold the line with your own body, whatever it costs. | end_spent | needs:6 | realm<=5 | You are strong enough to do better than this.
 > deceit | Offer the black seed to the abyss, and take its seat. | end_hollow | | karma<=-30 & realm>=3 | A seat in the abyss is only offered to someone the abyss recognises, and someone with a core strong enough to sit.
@@ -84,7 +84,7 @@ You plant yourself in the mouth of the ledge with your qi open and your feet on 
 It does not leave. It lies against your guard like a tide against a sea-wall. But it lies quietly.
 +[who] bond:ren>=8 | Ren Qiao takes the post at your shoulder and does not leave it.
 +[who] bond:gu>=8 | Gu builds a small stall at the top of the stair, and sells tea to the guard.
-+[rl] realm>=7 | At Ascendant you do it without strain, and are free to go; you stay out of choice.
++[rl] realm>=7 | At Ascendant, or beyond it, you do it without strain, and are free to go; you stay out of choice.
 They call you the Warden. You do not go up the mountain again for a very long time. Spring comes to Azure Cloud. Every evening you stand on the ledge and look at the mist, and feel it look back.
 It is, you think, not at all a bad life.
 

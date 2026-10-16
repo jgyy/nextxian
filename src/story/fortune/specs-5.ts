@@ -377,7 +377,7 @@ export const roadsHome: RoadSpec3[] = [
     beats: [
       [
         "The flask catches the afternoon light, and a thread of gold coils inside it like a living thing. Wuxia says that the elixir is not medicine. It is a question, and that the answer is the cultivator’s alone.",
-        "She sets a small jar on the shelf before you, stoppered in red wax. It is the last-stair elixir, she says, brewed for those at the threshold of the final realm, and its price is fair for a drink that has never been drunk twice.",
+        "She sets a small jar on the shelf before you, stoppered in red wax. It is the last-stair elixir, she says, brewed for those at the threshold of the Ascendant’s door, and its price is fair for a drink that has never been drunk twice.",
         "You hold the jar to the light and see a faint shimmer within, like the surface of a lake at dawn. Wuxia says that the shimmer is the only part of the elixir she does not understand, and the only part that matters.",
         "A pilgrim demands a cheaper medicine for the road and is sold a plain tonic. He drinks it, shrugs and goes. Wuxia says that most people do not need the elixir, and she is glad.",
         "As the sun lowers, the row glows. Wuxia sets a lamp in the cart’s window and says that the last stair is the one you only climb when you have forgotten that you are climbing.",

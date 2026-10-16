@@ -17,7 +17,7 @@ export const ascentEchoes = String.raw`
 >> sutra_hall | as_hall | level>=30 | The red water gives back a figure with a core in it, and the bronze petals turn all the way, like sunflowers at a window. The hall has been waiting for a layer this high.
 >> jade_eye_bell_2 | as_bell | count:bwf_>=3 | The disciples fall silent as you cross the square. One of them stares at your hands, which have the look of someone who has been thrown at a wall more than once and has come back to it.
 >> jade_eye_bell_2 | as_bell | level>=20 | The disciples fall silent as you cross the square, and some of it is fear. A hero who has laid a foundation has a way of walking that people step aside for before they know why.
->> tribunal_summons_3 | as_trib | level<=19 | In the third row someone counts your layers under his breath and gets to a number that makes him sit back down.
+>> tribunal_summons_3 | as_trib | level<=19 | In the third row someone counts your layers under their breath and gets to a number that makes him sit back down.
 >> tribunal_summons_3 | as_trib | level>=20 & level<=29 | The older disciples look at the foundation under your robe and count the courses. The younger ones look at the bell. Neither group counts for long.
 >> tribunal_summons_3 | as_trib | level>=30 | The rows go quiet in the order of their rank, and the quiet reaches the third row last. A core, at this height of layers, is a thing a tribunal does not like to be reminded of.
 >> descent_mist_3 | as_desc | level<=29 | The mist presses at you in proportion, and there is not much of you for it to press. You feel every layer you lack in the cold at the back of the knees.

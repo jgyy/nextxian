@@ -1,8 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { chapters, story } from "@/story";
-import { choose, createGame, enterScene, getChoices, getScene, settle } from "@/engine/game";
+import { choose, createGame, enterScene, getChoices, getScene } from "@/engine/game";
 import { gainCultivation, LAYER_PREFIX, REALMS, reachedFlag } from "@/engine/cultivation";
-import { DEFAULT_HERO, type Hero } from "@/engine/hero";
 import { conditionsHold } from "@/engine/npc";
 import { parseConditions } from "@/engine/markup";
 import { restoreGame } from "@/engine/save";
@@ -40,7 +39,6 @@ import type { GameState, Scene } from "@/engine/types";
 const scenes: Scene[] = ascentGroups.flatMap((g) => g.scenes);
 const walls = scenes.filter((s) => /^bw\d\d_/.test(s.id));
 const strong = { qi: 100, karma: 0, insight: 100 };
-const at = (sceneId: string, patch: Partial<GameState> = {}, h: Hero = DEFAULT_HERO): GameState => settle(story, { ...createGame(story, h), sceneId, log: [], ...patch });
 /** A hero standing on a level with the points that level asks. */
 const standing = (level: number, patch: Partial<GameState> = {}): GameState => ({
   ...createGame(story),

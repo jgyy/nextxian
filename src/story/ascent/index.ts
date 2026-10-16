@@ -115,7 +115,7 @@ export const WAYSIDES13: Wayside13[] = [
     origin: "mill_close",
     label: "Climb the switchback stair beyond the mill, where ten landings teach a Dao Seeker whether they are walking toward the Dao.",
     realm: 6,
-    remark: "The Switchback Stair. I turned back at the fifth landing and have been climbing it in my sleep ever since. You have been to the top. What did you hear at the fog-saddle?",
+    remark: "The Switchback Stair. I reached the top landing twice, and wanted the door so badly that it stayed a wall. You have been to the top. What did you hear at the fog-saddle?",
   },
   {
     id: hubId(7),
@@ -128,7 +128,7 @@ export const WAYSIDES13: Wayside13[] = [
     origin: "clerk_close2",
     label: "Walk out to the open door in the field beyond the clerks’ yard, where ten stations teach an Ascendant how to go through.",
     realm: 7,
-    remark: "The Open Door. I have stood at it eleven times and walked through none. You have been to every station. I should like very much to know what is on the other side, and I should like even more not to be told.",
+    remark: "The Open Door. I have seen it twice, from the head of the stair, and both times I stood at the sill of my own wanting and did not go in. You have been to every station. I should like very much to know what is on the other side, and I should like even more not to be told.",
   },
   {
     id: hubId(8),

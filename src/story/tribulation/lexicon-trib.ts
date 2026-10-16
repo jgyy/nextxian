@@ -164,7 +164,7 @@ export const TRIB_BEATS: Record<TribId, Sixteen> = {
     "They say the gates are older than the sect, older than the Ledger, and that the Ledger was written to explain them. The Ledger does not explain them.",
   ],
   silence: [
-    "The silence after is told to nobody. There is no Ascendant to tell it, and the sect has only a rumour: that a hero rises, and the sky sends nothing, and the nothing is the trial.",
+    "The silence after is told to nobody. No Ascendant tells it, and the sect has only a rumour: that a hero rises, and the sky sends nothing, and the nothing is the trial.",
     "At {focus} the sect rehearses it by leaving a person alone in a room for a day with no task and no visitor. Nobody has yet come out saying they have mastered it.",
     "The silence is paid for in company. An Ascendant loses, in the first month, every person who cannot look at them, and in the second, every person who can, and what remains is very small.",
     "The oldest account is that an Ascendant, two hundred years gone, sat in her house for a year and did not speak, and when asked why she said that there had been no one left to answer.",
