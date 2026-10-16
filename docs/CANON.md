@@ -219,3 +219,25 @@ The sect says it reads a stranger’s rank, and it reads their sex as well. **Th
 | Ascendant | the last column | The copy of the Ledger’s last page has two columns and a margin line, ‘and the rest’. No sect has had an Ascendant in two hundred years, and the copyists say it is because of the question. |
 
 A **keeper** at a rung reads a stranger either rank first or sex first, and each way has its own kindness and its own blind spot: the keeper who reads rank first never counts a sex (so the sect cannot say how many of its sleeves are women), and the keeper who reads sex first puts people where they will be safe (and has not asked whether safe is where they wished to be). Nobody on the roads is a villain.
+
+
+## The ladder: ten realms of ten layers
+
+The ladder has **ten major realms**, each of **ten layers** (minor realms): a hundred levels, written `realm * 10 + layer`, from level 0 (Mortal, First Layer) to level 99 (Dao Sovereign, Tenth Layer). The thresholds of the realms are fixed: 0, 15, 120, 400, 850, 1,300, 1,850, 2,350, 2,950 and 3,700 points. The layers sit between them, narrow at the bottom of a realm and wide at the top, so the Tenth Layer is a long climb.
+
+| Realm | Its ten layers | What the wall at the top of it asks |
+| --- | --- | --- |
+| Mortal | Skin, Flesh, Sinew, Bone, Marrow, Blood, Breath, Organ, Spirit-Gate, Qi-Sensing | that the qi of heaven and earth be asked to stay |
+| Qi Condensation | First Thread, Cord, Skein, Braid, Rope, Rill, Stream, Pool, Tide, Brimming | that scattered qi be pressed into a floor |
+| Foundation Establishment | Footing, Course, Lintel, Pillar, Beam, Floor, Wall, Roof, Hearth, Keystone | that a house be crushed into a jewel |
+| Core Formation | Seed, Spark, Ember, Kernel, Gilding, Anvil, Quench, Temper, Lustre, Round | that the core break to let the person out |
+| Nascent Soul | Quickening, Seed-Eye, First Breath, Cradle, Crawl, First Step, First Word, Wander, Youth, Majority | that the grown soul cut its cords |
+| Spirit Severing | Names, Kin, Debts, Grudges, Vows, Faces, Home, Years, Self, Last Cord | that nothing be turned toward but the Dao |
+| Dao Seeking | Hearing, Bearing, Fork, Ford, Switchback, Pass, Glimpse, Lost Road, Blind Walk, Threshold | that the seeker stop seeking |
+| Ascendant | Lintel, Latch, Sill, Draught, Stair, Light, Hush, Ajar, Hinge, Doorway | that the empty doorway be stepped through |
+| True Immortal | Stepping, Footfall, Weightless, Long Day, Garden, Seasons, Witness, Remembering, Lending, Lastness | that the Dao be lifted as a keeper, not a pilgrim |
+| Dao Sovereign | Name, Seat, Law, Scale, Court, Mercy, Weather, Tide, Silence, Apex | none: the Apex has no wall above it |
+
+- **Walls.** Every step up is a wall. To push at it the hero needs the points, `4 + n/2` qi and `n/3` insight (`n` the level entered). Whether it gives depends on steadiness against a difficulty of `(2(n−10))/9`, plus two for a major wall, with nothing asked of the first ten. A hero lacking qi or insight is held (once told, in the log); one not steady enough is thrown back, loses `3 + n/6` qi and half the way to the wall, and gains three points of steadiness at that wall for each fall (up to eight), so no wall keeps a hero out for ever. A layer taken without having practised against the wall costs `1 + n/12` qi; one taken after practising gives two.
+- **The Elder** stopped at the top of Dao Seeking. She reached the head of the Switchback Stair twice and wanted the door so badly that it stayed a wall; she has seen the Open Door from the head of the stair, and not gone in. She cut nine cords at the Cutting Hall and kept one, and does not say which. She cracked a core at the Gold Forge long ago. She has never been to the Long Garden or the Seat of the Mountain.
+- **Ascendant is no longer the top.** The sect has had no Ascendant in two hundred years, so a hero who becomes one is the first, and a True Immortal or a Dao Sovereign is something the sect has no word for. The older roads, written for the eight realms from Mortal to Ascendant, receive a True Immortal or a Sovereign as an Ascendant is received.
