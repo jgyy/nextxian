@@ -1,4 +1,4 @@
-import { HERO_FIELDS, HERO_OPTIONS, type HeroField } from "./hero";
+import { ATTIRES, HERO_FIELDS, HERO_OPTIONS, type Attire, type HeroField } from "./hero";
 import { ELEMENTS, type Element } from "./path";
 import { isTone } from "./tone";
 import type { Choice, ChoiceTone, Condition, Effect, Mood, NpcMetric, NpcScenario, NpcState, PlayerStat, Remark, Scene } from "./types";
@@ -15,6 +15,7 @@ import type { Choice, ChoiceTone, Condition, Effect, Mood, NpcMetric, NpcScenari
  *     #end Heading of an ending scene (such a scene has no choices)
  *     // a comment
  *
+ * A choice can change what the hero wears (`wear:silk`, `gain:silk`, `lose:silk`), and a condition can ask whether they own it (`wardrobe:silk`, `!wardrobe:silk`, `garments>=2`).
  * Conditions are joined with `&`: `flag`, `!flag`, `insight>=12`, `karma<=-10`, `trust>=20`, `realm>=2`, `roads>=3`,
  * `standing>=4`, `hero:attire=silk|armour`, `hero:status!=outcast`, `bond:ren>=10`, `since:flag>=4`, `decisions>=30`, `mood:afraid`, `scene:prefix`, `count:flag_prefix>=3`, `said:SCENARIO`, `tone:deceit>=3/6`.
  * Effects are separated by spaces: `+flag`, `-flag`, `karma+3`, `cult+4`, `trust-2`, `bond:ren+5`, `npc:ID`, `ally:ID`,
@@ -79,6 +80,10 @@ export function parseConditions(source: string, where: string): Condition[] {
         if (!HERO_OPTIONS[m[1] as HeroField].some((o) => o.value === v)) throw new MarkupError(where, `"${v}" is not a ${m[1]}`);
       }
       out.push(m[2] === "=" ? { kind: "hero", field: m[1] as HeroField, is: values } : { kind: "hero", field: m[1] as HeroField, not: values });
+    } else if (t.startsWith("wardrobe:") || t.startsWith("!wardrobe:")) {
+      const value = t.replace(/^!?wardrobe:/, "");
+      if (!ATTIRES.some((a) => a.value === value)) throw new MarkupError(where, `"${value}" is not a dress`);
+      out.push({ kind: "wardrobe", attire: value as Attire, ...(t.startsWith("!") ? { is: false } : {}) });
     } else if (t.startsWith("affinity:")) {
       const { name, ...rest } = bounds(t.slice(9), where);
       if (!(ELEMENTS as readonly string[]).includes(name)) throw new MarkupError(where, `unknown element "${name}"`);
@@ -114,6 +119,7 @@ export function parseConditions(source: string, where: string): Condition[] {
       else if (name === "mastery") out.push({ kind: "mastery", ...rest });
       else if (name === "age") out.push({ kind: "age", ...rest });
       else if (name === "years") out.push({ kind: "years", ...rest });
+      else if (name === "garments") out.push({ kind: "garments", ...rest });
       else throw new MarkupError(where, `unknown condition "${t}"`);
     }
   }
@@ -146,7 +152,10 @@ export function parseEffects(source: string, where: string): ParsedEffects {
     else if ((m = /^dao([+-]\d+)$/.exec(t))) effects.push({ kind: "addDao", amount: Number(m[1]) });
     else if ((m = /^years([+-]\d+)$/.exec(t))) effects.push({ kind: "addYears", amount: Number(m[1]) });
     else if ((m = /^stones([+-]\d+)$/.exec(t))) effects.push({ kind: "addWealth", amount: Number(m[1]) });
-    else if ((m = /^item([+-])([a-z0-9_]+)$/.exec(t))) effects.push(m[1] === "+" ? { kind: "giveItem", item: m[2] } : { kind: "takeItem", item: m[2] });
+    else if ((m = /^(wear|gain|lose):([a-z]+)$/.exec(t))) {
+      if (!ATTIRES.some((a) => a.value === m![2])) throw new MarkupError(where, `"${m[2]}" is not a dress`);
+      effects.push({ kind: m[1] === "wear" ? "wear" : m[1] === "gain" ? "gainAttire" : "loseAttire", attire: m[2] as Attire });
+    } else if ((m = /^item([+-])([a-z0-9_]+)$/.exec(t))) effects.push(m[1] === "+" ? { kind: "giveItem", item: m[2] } : { kind: "takeItem", item: m[2] });
     else if ((m = /^asset([+-])([a-z0-9_]+)$/.exec(t))) effects.push(m[1] === "+" ? { kind: "grantAsset", asset: m[2] } : { kind: "loseAsset", asset: m[2] });
     else if ((m = /^([a-z]+)([+-]\d+)$/.exec(t)) && (STATS as string[]).includes(m[1])) {
       effects.push({ kind: "addStat", stat: m[1] as PlayerStat, amount: Number(m[2]) });

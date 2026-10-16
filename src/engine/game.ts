@@ -1,6 +1,7 @@
 import { ageMastery, ageOf, birthdayLine } from "./age";
 import { DEFAULT_HERO, HERO_FIELDS, personalise, realmBandFor, startFor, startingPoints, type Hero } from "./hero";
 import { DAO_NAME, DAO_RANKS, daoRankOf, karmaChange, masteryGapFor, ORIGIN_START, toneBonus } from "./path";
+import { gainGarment, loseGarment, putOn } from "./wardrobe";
 import { applyAid, cultivationSpeed, giveItem, isUnfed, payday, PAYDAY_EVERY, scaled, startingWealth, takeItem, tidy } from "./economy";
 import { applyStrain, gainCultivation, MASTERY_GAIN, REALMS, MASTERY_GAP, realmForPoints, realmShortfall, realmSurplus, TONE_GAIN } from "./cultivation";
 import {
@@ -99,6 +100,9 @@ export function createGame(story: Story, hero: Hero = DEFAULT_HERO): GameState {
     wealth: startingWealth(hero),
     years: 0,
     items: {},
+    usedAt: {},
+    wardrobe: [hero.attire],
+    began: hero.attire,
     assets: [],
     speed: 100,
     unfed: false,
@@ -196,6 +200,12 @@ export function applyEffects(state: GameState, effects: Effect[] = [], speed = 1
         return s.assets.includes(effect.asset) ? s : { ...s, assets: [...s.assets, effect.asset] };
       case "loseAsset":
         return { ...s, assets: s.assets.filter((a) => a !== effect.asset) };
+      case "gainAttire":
+        return gainGarment(s, effect.attire);
+      case "wear":
+        return putOn(s, effect.attire);
+      case "loseAttire":
+        return loseGarment(s, effect.attire);
       case "addNpc": {
         const value = clamp(s.npc[effect.metric] + effect.amount, NPC_RANGE[effect.metric]);
         return { ...s, npc: { ...s.npc, [effect.metric]: value } };
@@ -283,7 +293,7 @@ function noticeSpeed(before: GameState, after: GameState, story: Story): GameSta
 }
 
 /** One NPC scenario: the line, the change in feeling, and what they remember. A companion's scenario moves their bond. */
-function react(story: Story, state: GameState, scenario: NpcScenario): GameState {
+export function react(story: Story, state: GameState, scenario: NpcScenario): GameState {
   const reaction = reactToScenario(scenario, state);
   const entry = { kind: "npc" as const, speaker: speakerName(story, scenario.npc), text: personalise(reaction.line, state.hero) };
   const remembered = (scenario.remember ?? []).filter((f) => state.flags[f] !== true);

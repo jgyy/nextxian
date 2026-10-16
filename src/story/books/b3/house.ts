@@ -19,7 +19,7 @@ The House of Gentle Hands stands alone on the hill above the town, a long white 
 There are forty windows. In none of them is a face.
 > truth | Walk up to the front gate and ring the bell. | house_a1s1 | npc:SU_HOUSE_CHILDREN
 > force | Go and find Sergeant Hok, and ask for the men who put down their rifles. | house_a2s1 | needs:3
-> deceit | Put on the Chancery sash, and call as a benefactress of the foundation. | house_a3s1
+> deceit | Put on the Chancery sash, and call as a patron of the foundation. | house_a3s1
 > quiet | Ask Lu Yan where the old drains of the hill run out. | house_a4s1
 > inquiry | Take Lu Yan’s list of forty names up the hill, and read it at the gate. | house_h1 |  | ward_took_shift | You have not seen Lu Yan’s list.
 

@@ -14,6 +14,7 @@ import { HeroPanel } from "./HeroPanel";
 import { REALMS } from "@/engine/cultivation";
 import { NpcPanel } from "./NpcPanel";
 import { PursePanel } from "./PursePanel";
+import { WardrobePanel } from "./WardrobePanel";
 import { priceTag } from "@/engine/economy";
 import { StatsPanel } from "./StatsPanel";
 import { PracticePanel } from "./PracticePanel";
@@ -205,9 +206,14 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
     setNotice(writeSave(next) ? null : "Progress is not being saved in this browser.");
   }
 
+  function act(next: GameState) {
+    setGame(next);
+    setNotice(writeSave(next) ? null : "Progress is not being saved in this browser.");
+  }
+
   function restart() {
     // The same character begins again from the gate.
-    const fresh = createGame(story, game.hero);
+    const fresh = createGame(story, { ...game.hero, attire: game.began ?? game.hero.attire });
     setGame(fresh);
     setShowBacklog(false);
     setNotice(writeSave(fresh) ? null : "Progress is not being saved in this browser.");
@@ -322,7 +328,8 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
           <NpcPanel profile={story.npc} npc={game.npc} lastLine={lastNpcLine} manner={mannerOf(game.tones)} />
           <CultivationPanel game={game} />
           <AgePanel game={game} />
-          <PursePanel story={story} game={game} />
+          <PursePanel story={story} game={game} onAct={act} locked={ended} />
+          <WardrobePanel story={story} game={game} onAct={act} locked={ended} />
           <PracticePanel game={game} />
           <CrossingPanel game={game} />
           <CustomPanel game={game} />

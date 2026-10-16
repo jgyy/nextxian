@@ -17,6 +17,7 @@ flowchart LR
     CS["custom/<br/>forty Custom Roads, 1,490 scenes:<br/>ten customs, four keepers, a door for a woman,<br/>a man or no answer, seven gender turning points"]
     RK["rank/<br/>thirty-two Rank Roads, 1,200 scenes:<br/>eight rungs, four keepers who read rank or sex first,<br/>a door of rank by gender and by where the realm stands,<br/>eight realm-and-gender turning points"]
     TB["tribulation/<br/>eight Tribulation Roads, 1,008 scenes:<br/>four keepers who bow by the realm, a rehearsal of the trial,<br/>echoes where the world bows to the realm"]
+    WD["wardrobe/<br/>eight Wardrobe Roads, 1,008 scenes:<br/>four keepers who read the dress, a six-scene fitting<br/>(counter, rack, verdict, commission, hatch, mirror),<br/>echoes, endings and the Elder’s remarks on a change of dress"]
     GD["gendered/<br/>Left Cloister, Right Yard, Third Door"]
     OG["origins/<br/>twelve beginnings, eleven prologues"]
     EC["economy/<br/>five reckonings, seven ending epilogues,<br/>remarks on the purse and the pack"]
@@ -40,6 +41,8 @@ flowchart LR
     PR["practice.ts<br/>four practices, the cusp, counts"]
     CUS["custom.ts<br/>customSummary: kept, bent, broken, stood for"]
     TRE["tribulation.ts<br/>eight tribulations, the bow by realm,<br/>trial needs, the sky’s line at a breakthrough"]
+    WE["wardrobe.ts<br/>five garments, wear, gain, lose, price, pawn,<br/>what a dress pays and costs on a payday"]
+    PK["pack.ts<br/>use, sell and give an item,<br/>dress changes from the panel"]
     RKE["rank.ts<br/>bandOf, bandsAt, rankSummary:<br/>yielded, claimed, veiled, lifted"]
   end
   subgraph UI["src/components + app/"]
@@ -55,9 +58,10 @@ flowchart LR
     PP["PursePanel.tsx<br/>stones, speed by part, pack, holdings"]
     CUP["CustomPanel.tsx<br/>the tally of the doors of custom"]
     TRP["TribulationPanel.tsx<br/>the eight trials, how the sect bows"]
+    WP["WardrobePanel.tsx<br/>the dress worn, the dresses owned, Wear"]
     RKP["RankPanel.tsx<br/>rank roads at each rung, the ways taken"]
   end
-  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & TB & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & TB & WD & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
   G --> AG
@@ -70,6 +74,14 @@ flowchart LR
   CUS --> CUP
   RK --> RKE
   TB --> TRE
+  WD --> WE
+  WE --> HR
+  WE --> EO
+  G --> WE
+  PK --> G
+  PK --> WE
+  PK --> EO
+  PK --> WP
   TRE --> CU
   TRE --> TRP
   RKE --> RKP
@@ -85,7 +97,7 @@ flowchart LR
   GV --> SV
   GV --> CR
   CR -->|Hero| G
-  GV --> NP & SP & CP & HP & PP & XP & AP & CUP & RKP & TRP
+  GV --> NP & SP & CP & HP & PP & XP & AP & CUP & RKP & TRP & WP
   GV -->|localStorage save| Storage[("Browser storage")]
 ```
 
@@ -858,3 +870,39 @@ flowchart TD
 **The bow.** A keeper’s glance at the entry, greeting at the start of an approach and parting at its end are chosen by the hero’s realm *exactly* (an extra for each of the eight, in one group), in the keeper’s own way: a warden bows by the register, a witness by what the hero has survived, a rival by how much it costs, a pilgrim by how high the eyes go. The same rule is used in four scenes of the main line and the books (`tribulation/echoes.ts`), and `deferenceOf(realm)` names how the sect receives the hero for the panel.
 
 **The sky’s line.** Every breakthrough is tried. `gainCultivation` adds the line for the realm entered, steadied or scorched, and changes the hero’s qi and the Elder’s respect by `breakthroughQi` and `breakthroughRespect`. Pacing is unchanged (`npm run simulate` still puts a diligent hero at Foundation by the end of Book One and Core in Book Two), because the trial costs qi, never cultivation.
+
+## Wardrobe, dress and the pack
+
+A hero begins in one of five dresses and may come to own all five. `hero.attire` is the dress they have on now, so every line of the story that reads dress (the Elder’s asides, the gate, every road’s keeper, the standing the world gives, the boots and hat the story names) reads the dress the hero has on at that moment. `state.wardrobe` lists the dresses they own and `state.began` the one they were made in, which a Restart returns to. Three effects change it (`wear`, `gainAttire`, `loseAttire`), two conditions read it (`wardrobe`, `garments`), and the markup has `wear:silk`, `wardrobe:silk` and `garments>=2`.
+
+```mermaid
+flowchart TD
+  B["rack: Buy the garment<br/>costs garmentPrice(dress, realm of the road)"] --> W
+  P["panel: Wear<br/>takes no decision"] --> W
+  S["a scene’s wear effect<br/>the scribe’s sleeves, the pilgrim’s cloak"] --> W
+  W["putOn: hero.attire changes, the wardrobe grows,<br/>flags wore_X, dressing_from_Y, dressing_to_X"] --> L["a ledger line in the log"]
+  W --> R["every keeper, echo, standing and aside reads the new dress"]
+  W --> E["the Elder’s remark, a few decisions later:<br/>what was taken off, and what was put on<br/>20 remarks, one for each way to change"]
+  W --> M["payday: dressTrade(dress, realm, away from the sect)<br/>patched hemp +1 alms, ink-stained robe +1 copying,<br/>scale jerkin +2 hire and -1 oil, silk -1 pressing<br/>all scaled by 1 + floor(realm / 3)"]
+  H["hatch: Pawn a spare garment<br/>half the price, never the one worn"] --> X["loseAttire: the last garment is never lost,<br/>a worn one gives way to the first still owned"]
+```
+
+**The fitting.** Every Wardrobe Road has an extra choice at its entry that opens six scenes: the counter (browse, work, pawn, or only the glass), the rack (five garments, one price each, shut if owned or unaffordable), the fitting (the keeper’s verdict on the new dress, and a tip or a slip), the commission, the hatch and the mirror. All of them end at the road’s way back, so a fitting is one more way through a road, like the trial of a Tribulation Road, and no loop replays a scene. The commission pays the plain wage (`3 + 2 × realm`) to anyone, twice that to a hero in a dress of the house (silk, scale or ink-stained robe for the window; hemp or an oiled cloak for the street), three times to a hero in the dress the craft was cut for, and three times for a forged pattern at the cost of karma 3 and Insight 14. Every choice that earns is once-only.
+
+**The keepers.** Each road’s keeper has one of four ways with dress. The appraiser prices cloth, the warden keeps the sumptuary rules, the masker lends faces and the mender looks for the tear. The glance at the entry, the greeting at the start of an approach and the parting at its end are chosen by the dress the hero has on *exactly*: an extra for each of the five dresses, in one group, so the same road reads the same hero differently in silk and in hemp.
+
+```mermaid
+flowchart LR
+  subgraph Pack["pack.ts: what a hero can do with an item"]
+    U["Use<br/>a pill steadies qi and quickens cultivation, a tool is worked,<br/>a scripture is read, a relic is sat with,<br/>a material is ground into a tonic, a token is called in"]
+    SE["Sell<br/>value × the market rate of the dress worn:<br/>silk 65%, scholar 55%, oiled cloak 50%, scale 45%, hemp 40%"]
+    GV["Give<br/>the Elder answers in her own words, by her trust and the kind;<br/>one gift in a payday"]
+  end
+  K{"keepsake?"} -- yes --> N["can be used, never sold or given"]
+  K -- no --> U & SE & GV
+  U --> C["pill, material, token: used up<br/>tool, relic, scripture: rest a payday"]
+```
+
+**Using an item.** `effectOf(item)` is the item’s own `use`, or what its kind does at its height (`tierOf`: the realm it pays off at, or the realm its pill opens). Effects land at the hero’s own cultivation speed, a used item is recorded in `usedAt` so it rests a payday, and the flags `pack_used`, `pack_sold` and `pack_gifted` let the Elder remark on it. A pill kept for a threshold still does more than the same pill swallowed early.
+
+**Where the stones come from and go.** In: the sect’s stipend, holdings, the roads’ own wages, the wages of the fitting, a dress that pays on the road, selling from the pack, pawning a garment, and a forged pattern. Out: living away from the sect, a holding’s upkeep, a dress that costs to keep, a garment bought at the rack, a tip, and every price the roads already had. The audit knows the flags the engine sets (a change of dress, and the pack’s own), so a remark that reads them is not called dead.
