@@ -2,7 +2,7 @@ import type { Dao, Talent } from "./hero";
 
 /**
  * What the hero’s roots and Dao add when they break through into a realm. A talent has a line for every realm from
- * Qi Condensation up. A Dao speaks at Foundation Establishment, Nascent Soul and Dao Seeking, the three realms where a craft changes shape.
+ * Qi Condensation up. A Dao speaks at Foundation Establishment, Nascent Soul, Dao Seeking and True Immortal, the four realms where a craft changes shape.
  */
 const TALENT_ARRIVAL: Record<Talent, Record<number, string>> = {
   wood: {
@@ -13,6 +13,8 @@ const TALENT_ARRIVAL: Record<Talent, Record<number, string>> = {
     5: "You cut the cords as a gardener prunes: cleanly, above a bud. Something grows where the cut was.",
     6: "The Dao comes to you as a season, not a road. You are in the spring of it, and it is a long one.",
     7: "A mountain of green rises in you, and the sky is only the next canopy.",
+    8: "You step through and the first thing you do is kneel and touch the ground. It is soil, and green things are already coming up in your footprints.",
+    9: "You are not a tree now but a forest, patient and many-handed, and the Dao is the weather you have always been growing in.",
   },
   fire: {
     1: "The first thread of qi arrives hot. For a breath you smell your own sleeve scorch, and then the heat finds its place.",
@@ -22,6 +24,8 @@ const TALENT_ARRIVAL: Record<Talent, Record<number, string>> = {
     5: "You burn the last cords through. It does not hurt, and you are astonished that it does not.",
     6: "The Dao is a hearth, and you walk toward it with your hands open and your coat on fire.",
     7: "The sky is a furnace door, and you are what it has been waiting to cook.",
+    8: "The door was a hearth, and you walk out of it still burning. The sky has stopped being a furnace and is only a warm room.",
+    9: "You are the fire that does not need fuel, the one old stories call the first. The Dao leans in to warm its hands.",
   },
   earth: {
     1: "The qi comes slowly, as water comes to a well, and settles, and stays. You feel the floor take an interest.",
@@ -31,6 +35,8 @@ const TALENT_ARRIVAL: Record<Talent, Record<number, string>> = {
     5: "You shed the cords as a mountain sheds snow: all at once, and without moving.",
     6: "The Dao is the ground, and you are the part of the ground that has learned to walk.",
     7: "You do not rise so much as the sky is brought down to the height of your hand.",
+    8: "You do not step through the door. You find it was a doorstep, and the house is the ground, and you have always been home.",
+    9: "The Dao rests its whole weight on you, and you do not shift. It has not been held so steadily in an age.",
   },
   metal: {
     1: "The qi arrives clean and cold, a bright line down the spine. Your teeth ring with it.",
@@ -40,6 +46,8 @@ const TALENT_ARRIVAL: Record<Talent, Record<number, string>> = {
     5: "You cut the last cords with a single clean stroke. Nothing is left that could fray.",
     6: "The Dao is a line drawn straight through everything, and you can feel which way it runs.",
     7: "The sky is a lid of bright metal, and you have found the seam.",
+    8: "The blade goes through the door so cleanly that the door does not notice. You follow, and the other side is bright and exact.",
+    9: "You are a line drawn through every world at once, thin as the first light, and everything the line touches is cut true.",
   },
   water: {
     1: "Qi enters you as water enters a field, finding every low place first. You are cold in the arms and warm at the chest.",
@@ -49,6 +57,8 @@ const TALENT_ARRIVAL: Record<Talent, Record<number, string>> = {
     5: "You do not cut the cords. You let them run off, and find you were never tied to them.",
     6: "The Dao is a current, and you find you have always been in it and never once had to swim.",
     7: "The sky is the surface of a deeper water, and you are coming up for air.",
+    8: "The door was a surface, and you are coming up through it into a lighter water that no fish has ever described.",
+    9: "You are the sea the rivers were always going to, and the Dao is the shore that was waiting. Neither of you has to hurry.",
   },
   mixed: {
     1: "Five threads of qi come to you, thin as hairs, one of each kind. None of them is strong and all of them are yours.",
@@ -58,6 +68,8 @@ const TALENT_ARRIVAL: Record<Talent, Record<number, string>> = {
     5: "You sever the cords one element at a time, and each comes away a little differently.",
     6: "The Dao reaches you by five roads at once. You never had to choose between them, and now you need not.",
     7: "The sky opens along five seams at once. You go through whichever one is nearest.",
+    8: "Five seams close behind you into one, and the stitching shows. It is the best-looking mend in the sky.",
+    9: "Five roots, one tree, and a Dao that never had to choose among them. Every season comes through you in its turn.",
   },
   heaven: {
     1: "Qi does not come to you. It falls, a bolt of it, white and loud, and the room smells of storm. A lamp goes out three courtyards away.",
@@ -67,6 +79,8 @@ const TALENT_ARRIVAL: Record<Talent, Record<number, string>> = {
     5: "You sever the cords, and the sky takes notice: one clear stroke of thunder over the mountain, and then a waiting quiet.",
     6: "The Dao and the lightning are the same road. You walk it with the whole sky leaning in to see.",
     7: "Heaven opens a door because it has been waiting for you to knock. It has waited a long time.",
+    8: "Heaven is on both sides of the door now, and for the first time it is not looking down. It looks across, and it is a little shy.",
+    9: "The lightning and the one who throws it stand side by side, and neither is sure which is which. It is the first friendship the sky has had.",
   },
   late: {
     1: "The qi comes in and nothing else happens. You wait for more, and it does not come yet. That, you were told, is the sign.",
@@ -76,6 +90,8 @@ const TALENT_ARRIVAL: Record<Talent, Record<number, string>> = {
     5: "You sever the cords with the ease of someone who has had a long time to study the knots.",
     6: "You are not behind any more. You are not sure you ever were.",
     7: "You open like a night flower at the end of a very long day. The sky is the sun, and it is yours.",
+    8: "You are nobody’s late bloomer here. The long day has no morning to be late for, and you walk into it unhurried, as you always did.",
+    9: "You were told, once, that you were behind. You look back along the road and cannot find the ones who said it, only the road, and the road is yours.",
   },
 };
 
@@ -85,41 +101,49 @@ const DAO_ARRIVAL: Record<Dao, Record<number, string>> = {
     2: "Your foundation steadies the way a good pill does, from the inside out. You could name its ingredients.",
     4: "Your soul keeps a small furnace of its own now, and it is already refining something.",
     6: "You cease to be the pill and become the fire under it.",
+    8: "You are the elixir and the one who drinks it, and the long day is a good steeping.",
   },
   forging: {
     2: "Your foundation is a good anvil: flat, hard and quiet until it is struck.",
     4: "The soul is a hammer that remembers every blow it has taken, and counts them as lessons.",
     6: "You are no longer the smith. You are the metal, and the Dao is the hand that shapes it.",
+    8: "The anvil is the world, the hammer is the Dao, and you are glad to be the thing between them.",
   },
   talisman: {
     2: "A line of script draws itself along your foundation, and holds. A good ward is a promise that needs no witness.",
     4: "Your soul is written over in a script you never learned, and you can read all of it.",
     6: "The last stroke of the Dao is a character you have not written yet, and your brush is steady.",
+    8: "The last character is written, and it is your name, and it is not the end of the page.",
   },
   formation: {
     2: "Your foundation lays itself out like the first ring of an array, and the lines between its points hold.",
     4: "The soul is a formation of one: closed, self-feeding, and aware of every point it touches.",
     6: "You see the pattern under the world, and you are one of its points.",
+    8: "The pattern is complete, and you see that it was always one point larger than you thought.",
   },
   beast: {
     2: "Something in you, hunter or prey, steadies. Every animal on the mountain turns its head.",
     4: "Your soul has a second shadow, and it belongs to whatever follows you.",
     6: "The Dao has a warm, feral smell, and you know it from a long way back.",
+    8: "Every creature of the long day knows your step. Some of them are older than the sky was.",
   },
   sword: {
     2: "Your foundation takes the shape of a scabbard, and the qi in it is what rests there.",
     4: "Your soul carries a sword it has never drawn, and everyone near you knows it.",
     6: "There is only one stroke, and the Dao is the space after it.",
+    8: "You sheathe it, and the day grows quiet, and the edge goes on cutting nothing, perfectly.",
   },
   healing: {
     2: "Your foundation mends itself as you lay it, and you feel the pulse of every living thing in the courtyard.",
     4: "The soul is a quiet hand laid on a hot forehead. It knows how long to stay.",
     6: "You are the wound and the mending both, and you have forgiven the difference.",
+    8: "You walk the long day with a hand free for anyone who needs it. Nobody is hurt, and still they come.",
   },
   fate: {
     2: "A thread you cannot see goes taut, and you know which of the tomorrows it is tied to.",
     4: "The soul has a second pair of eyes, turned toward what has not happened. They are not frightened.",
     6: "You read the Dao as a page already written, and find your own hand in the margin.",
+    8: "The page you read turns, on its own, and there is a line on the next one that you have not been told.",
   },
 };
 

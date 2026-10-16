@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { startScenes } from "@/engine/audit";
 import { REALMS } from "@/engine/cultivation";
+import { levelThreshold } from "@/engine/stages";
 import { story, chapters } from "@/story";
 import { auditStory } from "@/engine/audit";
 import { validateStory, MAX_LINE_WORDS, MAX_SCENE_WORDS, MIN_CHOICES, MIN_NPC_SCENARIOS, sceneBodyWords } from "@/engine/validate";
@@ -300,14 +301,16 @@ describe("reactive NPC", () => {
     for (const scenario of Object.values(story.scenarios)) {
       // A gift is answered from the pack, not from a scene: the pack tests read those.
       if (scenario.id.startsWith("GIFT_")) continue;
-      const { sceneId, choiceId, flags, stats, npc, realm, wealth, decisions, progress, hero } = locate(scenario.id);
+      const { sceneId, choiceId, flags, stats, npc, realm: wanted, wealth, decisions, progress, level, hero } = locate(scenario.id);
+      // A choice that asks for a layer is found as a hero standing exactly on it.
+      const realm = level === undefined ? wanted : Math.floor(level / 10);
       const reached = new Set<Tier>();
       const replies = new Set<string>();
       for (const trust of [-60, -20, 0, 30, 70]) {
         const base = withNpc(trust, flags);
         // A companion's scenario is answered by how they feel, which is their bond, not the Elder's trust.
         const bonds = scenario.npc ? { [scenario.npc]: trust } : base.bonds;
-        const state: GameState = { ...base, hero: { ...base.hero, ...hero }, bonds, sceneId, realm, cultivation: cultivationAt(realm, progress), wealth: Math.max(base.wealth, wealth), decisions: Math.max(base.decisions, decisions), stats: { ...base.stats, ...stats }, npc: { ...base.npc, ...npc, trust } };
+        const state: GameState = { ...base, hero: { ...base.hero, ...hero }, bonds, sceneId, realm, level, cultivation: level === undefined ? cultivationAt(realm, progress) : levelThreshold(level), wealth: Math.max(base.wealth, wealth), decisions: Math.max(base.decisions, decisions), stats: { ...base.stats, ...stats }, npc: { ...base.npc, ...npc, trust } };
         const view = getChoices(getScene(story, sceneId), state).find((v) => v.choice.id === choiceId);
         if (!view?.available) continue; // a choice with a trust requirement is closed to the colder tiers
         reached.add(tierFor(trust));
@@ -968,6 +971,8 @@ function locate(scenarioId: string): {
   decisions: number;
   /** Percent through the realm that the choice asks for, or zero. */
   progress: number;
+  /** The level on the full ladder that the choice asks for, if it asks for one. */
+  level?: number;
   /** The age a choice that is hidden from other ages asks of the hero. */
   hero: Partial<Hero>;
 } {
@@ -980,6 +985,7 @@ function locate(scenarioId: string): {
   let wealth = 0;
   let decisions = 0;
   let progress = 0;
+  let level: number | undefined;
   const hero: Partial<Hero> = {};
   for (const c of choice.requires ?? []) {
     // A choice that opens only to a woman, a man or someone who gives no answer is found as that hero.
@@ -992,8 +998,9 @@ function locate(scenarioId: string): {
     if (c.kind === "wealth" && c.min !== undefined) wealth = Math.max(wealth, c.min);
     if (c.kind === "decisions" && c.min !== undefined) decisions = Math.max(decisions, c.min);
     if (c.kind === "progress" && c.min !== undefined) progress = Math.max(progress, c.min);
+    if (c.kind === "level" && c.min !== undefined) level = Math.max(level ?? 0, c.min);
   }
-  return { sceneId: scene.id, choiceId: choice.id, flags: flagsFor(choice), stats, npc, realm, wealth, decisions, progress, hero };
+  return { sceneId: scene.id, choiceId: choice.id, flags: flagsFor(choice), stats, npc, realm, wealth, decisions, progress, level, hero };
 }
 
 /** The cultivation points that put a hero `progress` percent of the way through `realm`. */

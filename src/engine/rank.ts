@@ -1,4 +1,4 @@
-import { REALMS } from "./cultivation";
+import { ROAD_TOP } from "./realms";
 import type { Condition } from "./types";
 
 /**
@@ -16,15 +16,15 @@ export const RANK_BANDS: readonly RankBand[] = ["below", "at", "above"];
 
 /** The band a hero of one realm is in at a road of another. */
 export function bandOf(realm: number, road: number): RankBand {
-  return realm < road ? "below" : realm === road ? "at" : "above";
+  return realm < road ? "below" : realm === road || road >= ROAD_TOP ? "at" : "above";
 }
 
-/** The realms that put a hero in a band at a road: an index into the ladder, and null where the band has no one in it (nobody is below Mortal or above Ascendant). */
+/** The realms that put a hero in a band at a road: an index into the ladder, and null where the band has no one in it (nobody is below Mortal, and the top road is met from its own realm upward). */
 export function bandRange(band: RankBand, road: number): { min?: number; max?: number } | null {
-  const top = REALMS.length - 1;
   if (band === "below") return road <= 0 ? null : { max: road - 1 };
-  if (band === "at") return { min: road, max: road };
-  return road >= top ? null : { min: road + 1 };
+  // The top road is met by everyone who has reached it, True Immortals and Sovereigns among them.
+  if (band === "at") return road >= ROAD_TOP ? { min: road } : { min: road, max: road };
+  return road >= ROAD_TOP ? null : { min: road + 1 };
 }
 
 /** The bands a hero can actually be in at a road. */
@@ -70,7 +70,7 @@ export function rankSummary(flags: Record<string, boolean>): RankSummary {
 }
 
 /** How many Rank Roads the hero has finished at each rung, from Mortal to Ascendant. A wayside is numbered from one. */
-export const rungProgress = (flags: Record<string, boolean>): number[] => REALMS.map((_, n) => countFlags(flags, `${RANK_DONE_PREFIX}w${n + 1}_`));
+export const rungProgress = (flags: Record<string, boolean>): number[] => Array.from({ length: ROAD_TOP + 1 }, (_, n) => countFlags(flags, `${RANK_DONE_PREFIX}w${n + 1}_`));
 
 /** What a hero’s way with rank has been so far: the way they have taken most, or nothing in particular when none leads. */
 export function rankLean(summary: RankSummary): RankWay | "none" {

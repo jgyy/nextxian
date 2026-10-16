@@ -3,6 +3,7 @@ import { REALMS, realmProgress } from "./cultivation";
 import { standingOf } from "./hero";
 import { ownedGarments } from "./wardrobe";
 import { affinityOf, daoRankOf } from "./path";
+import { levelNow } from "./stages";
 import { CHOICE_TONES } from "./tone";
 import { reputeOf, type Repute } from "./witness";
 import type { ChoiceTone, Condition, GameState, Mood, NpcScenario, NpcState, RespectTier, Tier } from "./types";
@@ -131,6 +132,8 @@ export const REALM_SHIFT: Record<number, string> = {
   5: "You have severed your spirit from your own name. I cannot tell any longer whether I am speaking to the person who climbed my steps or to something that borrowed {their} shoes. I choose to believe it is still you.",
   6: "You are seeking the Dao. I am only an elder of a small sect with a locked hall and a missing seal, and I have nothing left to teach you. I can only ask that you remember who held the door.",
   7: "Ascendant. The Azure Cloud Sect will write your name on a tablet no one will be able to reach. I would rather have kept the mortal who stood dripping at my gate. I did not know I would say so.",
+  8: "You walked through the door. I did not think the sect would live to see it, and I find I do not know where to look. If you can hear me, True Immortal, I would ask only that you leave the lamp in the gate-house lit.",
+  9: "There is no higher rung, and I have nothing to say that you do not already know. I will say it anyway. I am glad it was you who came up the steps in the rain, and I am glad I was the one who opened the door.",
 };
 
 /** The line for a breakthrough to a higher realm, or undefined when the realm did not change. */
@@ -213,7 +216,7 @@ export function reactToScenario(
 
 /** What a condition may read. Everything past the first five fields is optional so older callers and saves still work. */
 export type ConditionState = Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones"> &
-  Partial<Pick<GameState, "daoPoints" | "realm" | "cultivation" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero" | "wealth" | "items" | "assets" | "speed" | "unfed" | "years" | "wardrobe">>;
+  Partial<Pick<GameState, "daoPoints" | "realm" | "level" | "cultivation" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero" | "wealth" | "items" | "assets" | "speed" | "unfed" | "years" | "wardrobe">>;
 
 /** True when every condition holds. An empty or missing list always holds. */
 export function conditionsHold(conditions: Condition[] | undefined, state: ConditionState): boolean {
@@ -241,6 +244,10 @@ export function conditionsHold(conditions: Condition[] | undefined, state: Condi
       }
       case "realm": {
         const v = state.realm ?? 0;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "level": {
+        const v = levelNow({ realm: state.realm ?? 0, cultivation: state.cultivation ?? 0, level: state.level });
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
       }
       case "progress": {

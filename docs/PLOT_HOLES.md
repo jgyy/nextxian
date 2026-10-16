@@ -1,6 +1,6 @@
 # Plot-hole and continuity ledger
 
-Twelve passes, four asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
+Thirteen passes, four asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
 
 | Pass | Fixed | Of what kind |
 | --- | ---: | --- |
@@ -16,9 +16,30 @@ Twelve passes, four asked to fix more than 1,000 and the fourth asked again. Thi
 | Ninth pass | 777 | 704 lines and memories no hero could ever see (662 extras and 42 memories behind a realm outside the ladder), 22 lines in 17 scenes that told every hero they were a girl, a lady or a madam, or called them “she”, 45 lines in which Lian Sheng (about 40) and Old Lin (5) changed gender between books, 6 hugs counted as truth |
 | Tenth pass | 270 | 262 shown lines that told every hero something about themselves (117 told every soldier they were “a man who has stood a post”, 117 that they could “tell a levy man by how he drinks”, 1 called every gentry hero “young master”, 4 called the hero “a girl”, 23 lines of the Elder, a trait or a beginning said her, his, he or men to every hero), 5 speeches that began mid-sentence with the speaker lost, 3 that glued two speeches together. Short of the 1,000 asked for: see below |
 | Eleventh pass | 24 | 12 realm-band lines that named one realm and were shown to every hero above it, 1 ending that did the same, 3 lines of the Elder, Gu and the age remarks that named a realm for every realm above it, 3 defects in one scene (a Spirit Severing, Dao Seeking or Ascendant hero read as a Nascent Soul, called “Madam”, and told they were “the first Nascent Soul this year”), 2 lines that called the unreadable hero “her” and “she”, 2 breaks in the Elder’s own years, 1 breakthrough with no trial before it. Short of the 1,000 asked for: see below |
-| **Twelfth pass (this branch)** | **11** | 2 lines of the Elder that said what the hero wore on arriving (once the hero can change dress, the dress they have on is not the one they came in), 2 choices that told the hero they put on a garment and changed nothing, 1 “second pair of straw sandals” for every hero, 1 “benefactress” for every gender, 4 keepsakes of a hero’s own story that the new Sell and Give buttons would have let a hero trade away, 1 Restart that began the hero again in the last dress they put on. Short of the 1,000 asked for: see below |
+| Twelfth pass | **11** | 2 lines of the Elder that said what the hero wore on arriving (once the hero can change dress, the dress they have on is not the one they came in), 2 choices that told the hero they put on a garment and changed nothing, 1 “second pair of straw sandals” for every hero, 1 “benefactress” for every gender, 4 keepsakes of a hero’s own story that the new Sell and Give buttons would have let a hero trade away, 1 Restart that began the hero again in the last dress they put on. Short of the 1,000 asked for: see below |
+| **Thirteenth pass (this branch)** | **11** | 3 lines that called the Ascendant’s silence “the last trial” or said no Ascendant could tell it, 1 elixir brewed for “the final realm”, 4 lines that made the seal a thing “only an Ascendant” could hold, 1 band of the older roads that nobody above the top road could be in, 1 practice that carried a hero over the layers they had left without saying so and 1 strain that could have added points |
 
-## Twelfth pass (this branch): what was looked for, found and fixed
+## Thirteenth pass (this branch): what was looked for, found and fixed
+
+This branch made the ladder ten realms of ten layers, put a wall at every step and added the Breakthrough Roads, so the pass went after what a ladder that no longer ends at Ascendant could expose: text that says the ladder ends, a hero who stands above a road written for the old top, and a hero who can now climb without anyone saying how.
+
+| Class | Count | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| The silence after, called “the last trial” and said to be told by no Ascendant, in a world with True Immortals, and in the same lexicon told by an Ascendant two hundred years gone | 3 | searching every line for “last trial”, “final realm”, “highest realm”, “no higher”, “top of the ladder” and “beyond Ascendant” | `story/tribulation/lexicon-bow.ts`, `lexicon-trib.ts`, `engine/tribulation.ts` |
+| An elixir “brewed for those at the threshold of the final realm” | 1 | the same search | `story/fortune/specs-5.ts` |
+| The seal that “only an Ascendant” could take into themselves, with the abyss quiet “at Ascendant”, shown to Immortals and Sovereigns as if they were not there | 4 | scanning every `realm>=7` line for a realm named as if it were the last | `story/books/b6/sealing.ts` |
+| A band of the older roads that nobody could be in (above the top road), and so an Immortal who got no line at an Ascendant road | 1 | the rank and continuity tests that stand a hero of every realm at every road | `story/roads2/hero-lex.ts`, `engine/rank.ts` |
+| A practice that carried a hero over the layers they had left to the gate without saying so | 1 | reading every effect that sets points | `engine/game.ts` |
+| A strain that could add points to a hero who stood below the floor of their layer | 1 | reading the strain with the layers’ floors | `engine/cultivation.ts` |
+| The Elder’s own history, written for the roads: she could not have turned back at the fifth landing of the stair and stood at the Open Door eleven times | 0 | caught in review of the new content, before it shipped; not counted | `story/ascent/index.ts`, `docs/CANON.md` |
+
+Tests now fail on each class: `tests/ascent.test.ts` (the ladder, the walls, the thousand scenes, a random walk of every road) and the existing suites for the older roads.
+
+**Looked for and found clean.** The audit over the new thousand scenes (dangling flags, dead conditions, loops, speakers who have not been met): 0. Scenes over the 200-word cap: 0. Walls no hero can pass: 0 of 99 (a hero at their worst, with the wall’s eight lessons, is steady enough at every wall). Walls no scene walks to: 0 of 100. Roads no scene opens: 0 of 10. Gendered similes and unqualified claims about the hero’s family in the new text: 7 found and fixed before shipping (“like a plait down a girl’s back”, “your mother’s lullaby”, “a man carries a bowl of oil”), so not counted. Typographic slips and doubled words in the new text: 0 (the existing sentence and spacing tests pass over it).
+
+**Short of 1,000.** The pass found 11. The ledger says so, as it did for the fourth pass. A thousand more were not found, and none is claimed.
+
+## Twelfth pass: what was looked for, found and fixed
 
 This branch let a hero change dress, put every item in the pack to use and sell or give it away, and added the Wardrobe Roads, so the pass went after what a changeable dress and a pack that moves could expose: lines that tell the hero what they wore *when they arrived*, choices that say a garment was put on and change nothing, and story goods that the new buttons would let a hero throw away. It counts only what a script or a test could prove. **It is well short of the 1,000 asked for**: the eleven passes before it have read this text closely, and what is left that a script can see is small. The number is 11.
 

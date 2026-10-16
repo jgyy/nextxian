@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { ROAD_TOP } from "@/engine/realms";
 import { describe, expect, it } from "vitest";
 import { chapters, story } from "@/story";
 import { choose, createGame, enterScene, getChoices, getScene, settle } from "@/engine/game";
@@ -68,8 +69,8 @@ describe("the Witness Roads", () => {
     WAYSIDES5.forEach((w, n) => {
       const pills = SPECS5.slice(n * 4, n * 4 + 4).filter((s) => s.ware.kind === "pill");
       expect(pills, w.id).toHaveLength(1);
-      expect(story.items![`${pills[0].id}_ware`].aid, w.id).toBe(Math.min(w.realm + 1, REALMS.length - 1));
-      expect(pills[0].ware.blurb, w.id).toContain(REALMS[Math.min(w.realm + 1, REALMS.length - 1)].name);
+      expect(story.items![`${pills[0].id}_ware`].aid, w.id).toBe(Math.min(w.realm + 1, ROAD_TOP));
+      expect(pills[0].ware.blurb, w.id).toContain(REALMS[Math.min(w.realm + 1, ROAD_TOP)].name);
     });
     for (const spec of SPECS5) {
       const asset = story.assets![`${spec.id}_hold`];

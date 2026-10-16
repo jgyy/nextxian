@@ -96,7 +96,7 @@ describe("a condition that no hero can meet", () => {
     const scene = story.scenes.gate;
     const broken = (when: NonNullable<typeof scene.extras>[number]["when"]) => ({ ...story, scenes: { ...story.scenes, gate: { ...scene, extras: [...(scene.extras ?? []), { when, paragraphs: ["x"] }] } } });
     expect(auditStory(broken([{ kind: "realm", max: -1 }])).map((i) => i.message).join("\n")).toContain("no hero can have");
-    expect(auditStory(broken([{ kind: "realm", min: 8 }])).length).toBeGreaterThan(0);
+    expect(auditStory(broken([{ kind: "realm", min: 10 }])).length).toBeGreaterThan(0);
     expect(auditStory(broken([{ kind: "realm", min: 3, max: 2 }])).length).toBeGreaterThan(0);
     expect(auditStory(broken([{ kind: "stat", stat: "insight", min: 101 }])).map((i) => i.message).join("\n")).toContain("outside what it can be");
     expect(auditStory(broken([{ kind: "realm", min: 2, max: 2 }]))).toEqual([]);

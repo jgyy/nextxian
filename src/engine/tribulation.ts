@@ -23,7 +23,9 @@ export const TRIBULATIONS: readonly Tribulation[] = [
   { realm: 4, name: "The Severing Gale", short: "Gale", sends: "a wind that cuts every cord the Nascent Soul still ties to the dust of old names" },
   { realm: 5, name: "The Ledger’s Audit", short: "Audit", sends: "a reading of the Ledger, line by line, by whatever writes it" },
   { realm: 6, name: "The Nine Gates", short: "Gates", sends: "nine gates of the sky, each of which asks a different thing and takes it" },
-  { realm: 7, name: "The Silence After", short: "Silence", sends: "nothing at all, which is the last trial and the hardest, and which every Ascendant meets alone" },
+  { realm: 7, name: "The Silence After", short: "Silence", sends: "nothing at all, which is the hardest trial of the Ascendant, and which every Ascendant meets alone" },
+  { realm: 8, name: "The Weight of the Door", short: "Weight", sends: "the weight of the door the True Immortal has walked through, laid on them all at once, as though the sky wished to know what it had let out" },
+  { realm: 9, name: "The Name Unwritten", short: "Name", sends: "a page with no name on it, and the question of whether a Sovereign needs to be written anywhere at all" },
 ];
 
 /** Flags the Tribulation Roads set. A wayside is numbered from one, and a road is told by its id. */
@@ -106,6 +108,8 @@ export const DEFERENCE: readonly Deference[] = [
   { name: "Waited on", gesture: "elders rise, and the cup is poured for you first" },
   { name: "Received", gesture: "the room stands, and the host bows first" },
   { name: "Kneeled to", gesture: "the hall kneels, and nobody dares look up" },
+  { name: "Not looked for", gesture: "nobody kneels, because nobody knows when you have come; the lamps simply burn a little steadier" },
+  { name: "Remembered", gesture: "the sect speaks of you in the past tense, with love, as of weather that was kind" },
 ];
 
 export const deferenceOf = (realm: number): Deference => DEFERENCE[Math.min(Math.max(realm, 0), DEFERENCE.length - 1)];
@@ -122,6 +126,8 @@ const SKY_READY: Record<number, string> = {
   5: "The severing gale comes, and you have chosen your cords. It takes the ones you gave it and leaves the rest.",
   6: "The Ledger is read to you, line by line, and you have heard your own lines before. It is a long reading, and not a surprise.",
   7: "The nine gates open one after another, and you know the question behind each. The last stays open behind you.",
+  8: "The silence comes, and you have sat in it before. It does not ask anything. You walk through it as through a hall you know, and on the far side the sky is waiting, and it is not a stranger.",
+  9: "The weight of the door comes down on you, and you have carried a door before. You bend, and hold, and the weight finds that it is a thing you can bear. Behind you the sky exhales.",
 };
 
 const SKY_RAW: Record<number, string> = {
@@ -132,6 +138,8 @@ const SKY_RAW: Record<number, string> = {
   5: "The gale comes, and you have not chosen your cords. It chooses for you, and the ones it takes are not the ones you would have given.",
   6: "The Ledger is read to you, and every line is new. You are not sure which of them you agree with, and it does not ask.",
   7: "The gates open, and you do not know the question behind any of them. You answer the last by standing in it.",
+  8: "The silence comes, and nobody warned you that it would be so large. You are a long time in it, and come out the far side older than you went in and not at all sure who counted.",
+  9: "The weight of the door comes down and flattens you, and you lie under it a long while before it lifts. Whatever it was weighing, it found you light, and you are not sure whether to be hurt.",
 };
 
 /** The line the log carries after a breakthrough, or an empty string for a realm with no trial before it. */

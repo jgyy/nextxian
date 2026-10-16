@@ -13,6 +13,7 @@ import {
 } from "@/engine/cultivation";
 import { conditionsHold, REALM_SHIFT, realmShiftLine, reactToScenario, styleFor } from "@/engine/npc";
 import { restoreGame } from "@/engine/save";
+import { levelThreshold } from "@/engine/stages";
 import { CHOICE_TONES } from "@/engine/tone";
 import type { GameState } from "@/engine/types";
 
@@ -27,8 +28,8 @@ describe("cultivation realms", () => {
     expect(REALMS[game.realm].name).toBe("Mortal");
   });
 
-  it("lists eight realms, in rising order, each with its own words", () => {
-    expect(REALMS).toHaveLength(8);
+  it("lists ten realms, in rising order, each with its own words", () => {
+    expect(REALMS).toHaveLength(10);
     REALMS.forEach((r, i) => {
       if (i > 0) expect(r.threshold, r.name).toBeGreaterThan(REALMS[i - 1].threshold);
       expect(r.arrival.length, r.name).toBeGreaterThan(20);
@@ -62,14 +63,23 @@ describe("cultivation realms", () => {
     expect(npcLines(chosen).at(-1)).toBe(REALM_SHIFT[1]);
   });
 
-  it("breaks through only one realm at a time", () => {
+  it("breaks through only one layer at a time, and never gathers more than a wall beyond the one in front", () => {
     const after = gainCultivation(fresh(), 5000);
-    expect(after.realm).toBe(1);
-    expect(gainCultivation(after, 0).realm).toBe(2);
+    expect(after.realm).toBe(0);
+    expect(after.level).toBe(1);
+    expect(after.cultivation).toBeLessThan(levelThreshold(3));
+    expect(gainCultivation(after, 0).level).toBe(2);
+  });
+
+  it("breaks through a realm only from the Tenth Layer, and only one realm at a time", () => {
+    let g: GameState = { ...fresh(), stats: { ...fresh().stats, qi: 100, insight: 100 } };
+    for (let i = 0; i < 10; i++) g = gainCultivation(g, 5000);
+    expect(g.realm).toBe(1);
+    expect(g.level).toBe(10);
   });
 
   it("holds a heart demon over anyone whose karma is too low for Core Formation, and lets them through after", () => {
-    const base: GameState = { ...fresh(), realm: 2, cultivation: REALMS[3].threshold - 1 };
+    const base: GameState = { ...fresh(), realm: 2, cultivation: REALMS[3].threshold - 1, stats: { qi: 100, karma: 0, insight: 100 } };
     const dark = { ...base, stats: { ...base.stats, karma: HEART_DEMON_KARMA - 1 } };
     const held = gainCultivation(dark, 5);
     expect(held.realm).toBe(2);
@@ -231,7 +241,7 @@ describe("the endings of Book Six", () => {
   const nine = Object.fromEntries([1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => [`card_${n}`, true]));
 
   it("lets a Mortal do nothing but step back or close the ledger", () => {
-    expect(open(stand({ realm: 0 }))).toEqual(["end_ledger", "end_spent", "hub_b6"].sort());
+    expect(open(stand({ realm: 0 }))).toEqual(["end_ledger", "end_spent", "hub_b6", "wayside_bw_9"].sort());
   });
 
   it("opens the nine verbs only to a Dao Seeking cultivator who holds all nine cards", () => {

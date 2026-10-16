@@ -117,7 +117,7 @@ describe("talents", () => {
         expect(line, `${t.value} ${realm}`).toBeTruthy();
         expect(countWords(line)).toBeLessThanOrEqual(30);
       }
-      expect(new Set(Object.values(ALL_TALENT_ARRIVALS[t.value])).size).toBe(7);
+      expect(new Set(Object.values(ALL_TALENT_ARRIVALS[t.value])).size).toBe(9);
     }
     const near = (h: Hero): GameState => ({ ...fresh(h), cultivation: REALMS[1].threshold - 1 });
     const fire = gainCultivation(near(hero({ talent: "fire" })), 2);
@@ -147,7 +147,7 @@ describe("Daos", () => {
       expect(DAO_NAME[d.value].length, d.value).toBeGreaterThan(3);
     }
     for (const d of DAOS.filter((x) => x.value !== "none")) {
-      for (const realm of [2, 4, 6]) expect(ALL_DAO_ARRIVALS[d.value][realm], `${d.value} ${realm}`).toBeTruthy();
+      for (const realm of [2, 4, 6, 8]) expect(ALL_DAO_ARRIVALS[d.value][realm], `${d.value} ${realm}`).toBeTruthy();
     }
   });
 
@@ -186,9 +186,9 @@ describe("Daos", () => {
 
   it("halves what a push beyond the realm costs a talisman-maker", () => {
     expect(strainFactor(hero({ dao: "talisman" }))).toBe(0.5);
-    const push = (h: Hero) => applyStrain({ ...poor(h), cultivation: 40, realm: 1, npc: { ...fresh().npc, respect: 0 }, stats: { qi: 50, karma: 0, insight: 10 } }, 2);
-    expect(40 - push(DEFAULT_HERO).cultivation).toBe(20);
-    expect(40 - push(hero({ dao: "talisman" })).cultivation).toBe(10);
+    const push = (h: Hero) => applyStrain({ ...poor(h), cultivation: 4500, realm: 9, npc: { ...fresh().npc, respect: 0 }, stats: { qi: 50, karma: 0, insight: 10 } }, 2);
+    expect(4500 - push(DEFAULT_HERO).cultivation).toBe(20);
+    expect(4500 - push(hero({ dao: "talisman" })).cultivation).toBe(10);
     expect(push(hero({ dao: "talisman" })).cultivation).toBeGreaterThan(push(DEFAULT_HERO).cultivation);
     expect(push(hero({ dao: "talisman" })).stats.qi).toBeGreaterThan(push(DEFAULT_HERO).stats.qi);
   });

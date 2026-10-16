@@ -1,4 +1,4 @@
-import { REALMS } from "@/engine/cultivation";
+import { ROAD_TOP } from "@/engine/realms";
 import type { Attire, Background, Gender, Looks, Status } from "@/engine/hero";
 import { MORE_BIRTH, MORE_DRESS, MORE_FACE, MORE_MANNER, MORE_REALM_REACT, MORE_SEND_OFF, MORE_TRADE } from "./hero-lex-more";
 
@@ -301,7 +301,8 @@ export function bandBounds(band: RelBand, road: number): { min?: number; max?: n
     case "below":
       return { min: road - 1, max: road - 1 };
     case "at":
-      return { min: road, max: road };
+      // A road at the top of the roads’ ladder is met by everyone who has reached it, True Immortals and Sovereigns among them.
+      return road >= ROAD_TOP ? { min: road } : { min: road, max: road };
     case "above":
       return { min: road + 1 };
   }
@@ -313,7 +314,7 @@ export function bandBounds(band: RelBand, road: number): { min?: number; max?: n
  */
 export function bandHeld(band: RelBand, road: number): boolean {
   const { min, max } = bandBounds(band, road);
-  return (max ?? REALMS.length - 1) >= 0 && (min ?? 0) <= REALMS.length - 1;
+  return (max ?? ROAD_TOP) >= 0 && (min ?? 0) <= ROAD_TOP;
 }
 
 /** A table with the lines of `more` added after its own, key by key. */

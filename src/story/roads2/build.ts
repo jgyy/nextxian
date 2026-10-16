@@ -1,3 +1,4 @@
+import { ROAD_TOP } from "@/engine/realms";
 import { REALMS } from "@/engine/cultivation";
 import { standingOf, type Hero } from "@/engine/hero";
 import type { Choice, ChoiceTone, Condition, Effect, NpcScenario, Scene } from "@/engine/types";
@@ -238,7 +239,7 @@ export function buildRoad2(spec: RoadSpec2, ctx: RoadContext2): Scene[] {
           ),
           tone: "force",
           next,
-          needsRealm: Math.min(R + 1, REALMS.length - 1),
+          needsRealm: Math.min(R + 1, ROAD_TOP),
           effects: [
             { kind: "addCultivation", amount: 6 + R * 2 },
             { kind: "setFlag", flag: roadFlag(id, "reached") },
@@ -360,7 +361,7 @@ export function buildReport2(spec: RoadSpec2, ctx: RoadContext2): NpcScenario {
       { when: [{ kind: "flag", flag: roadFlag(id, "kept_relic") }], line: fill(REPORT_MEMORY2.relic, slots) },
       { when: [{ kind: "tone", tone: "deceit", min: 3, within: 6 }], line: fill(REPORT_MEMORY2.deceit, slots) },
       // Two realms above the last realm is no one, so the line starts where a hero can be.
-      ...(R + 2 <= REALMS.length - 1 ? [{ when: [{ kind: "realm" as const, min: R + 2 }], line: fill(REPORT_MEMORY2.over, slots) }] : []),
+      ...(R + 2 <= ROAD_TOP ? [{ when: [{ kind: "realm" as const, min: R + 2 }], line: fill(REPORT_MEMORY2.over, slots) }] : []),
       // Two realms below a road at the second realm is Mortal, which a hero in the later books almost never is, so the line starts at the third realm.
       ...(R >= 3 ? [{ when: [{ kind: "realm" as const, min: 1, max: R - 2 }], line: fill(REPORT_MEMORY2.under, slots) }] : []),
     ],

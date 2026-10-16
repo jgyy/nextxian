@@ -61,15 +61,15 @@ function sit(id: string, picks: [string, string, string], patch: Partial<GameSta
 }
 
 describe("the engine reads the tribulations", () => {
-  it("names eight tribulations, one for each realm, and a bow for each realm that rises with it", () => {
-    expect(TRIBULATIONS).toHaveLength(8);
-    expect(TRIBULATIONS.map((t) => t.realm)).toEqual([0, 1, 2, 3, 4, 5, 6, 7]);
-    expect(new Set(TRIBULATIONS.map((t) => t.name)).size).toBe(8);
+  it("names ten tribulations, one for each realm, and a bow for each realm that rises with it", () => {
+    expect(TRIBULATIONS).toHaveLength(10);
+    expect(TRIBULATIONS.map((t) => t.realm)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(new Set(TRIBULATIONS.map((t) => t.name)).size).toBe(10);
     expect(DEFERENCE).toHaveLength(REALMS.length);
-    expect(new Set(DEFERENCE.map((d) => d.name)).size).toBe(8);
+    expect(new Set(DEFERENCE.map((d) => d.name)).size).toBe(10);
     expect(deferenceOf(0).name).toBe("Unnoticed");
     expect(deferenceOf(7).name).toBe("Kneeled to");
-    expect(deferenceOf(99)).toEqual(DEFERENCE[7]);
+    expect(deferenceOf(99)).toEqual(DEFERENCE[9]);
   });
 
   it("asks more of a hero at every higher trial", () => {
@@ -93,14 +93,19 @@ describe("the engine reads the tribulations", () => {
 });
 
 describe("a breakthrough is tried by the sky", () => {
+  // A hero who has practised against the wall (four methods) is steady enough to be tried by the sky at any realm.
+  const practised = (entering: number) => Object.fromEntries([...[1, 2, 3, 4].map((m) => [`bwp_${entering * 10}_${m}`, true]), [`bwf_${entering * 10}_1`, true]]);
+  const raw = (entering: number, qi = 90): GameState => {
+    const base = at("gate", DEFAULT_HERO, { realm: entering - 1, cultivation: REALMS[entering].threshold - 1, stats: { qi, karma: 0, insight: 100 } });
+    return { ...base, flags: { ...base.flags, ...practised(entering) } };
+  };
   const ready = (entering: number): GameState => {
-    const base = at("gate", DEFAULT_HERO, { realm: entering - 1, cultivation: REALMS[entering].threshold - 1, stats: { qi: 50, karma: 0, insight: 10 } });
+    const base = raw(entering);
     return { ...base, flags: { ...base.flags, [`tb_won_w${entering}_x`]: true } };
   };
-  const raw = (entering: number): GameState => at("gate", DEFAULT_HERO, { realm: entering - 1, cultivation: REALMS[entering].threshold - 1, stats: { qi: 50, karma: 0, insight: 10 } });
 
   it("steadies a hero who sat the trial before it, and scorches one who did not, more so the higher the realm", () => {
-    for (let n = 1; n < 8; n++) {
+    for (let n = 1; n < 10; n++) {
       expect(breakthroughQi({ [`tb_won_w${n}_x`]: true }, n)).toBeGreaterThan(0);
       expect(breakthroughQi({}, n)).toBeLessThan(0);
       expect(breakthroughRespect({ [`tb_won_w${n}_x`]: true }, n)).toBeGreaterThan(breakthroughRespect({}, n));
@@ -115,16 +120,16 @@ describe("a breakthrough is tried by the sky", () => {
     const b = gainCultivation(raw(3), 5);
     expect(a.realm).toBe(3);
     expect(b.realm).toBe(3);
-    expect(a.stats.qi).toBe(55);
-    expect(b.stats.qi).toBe(50 - 5);
+    expect(a.stats.qi).toBe(95);
+    expect(b.stats.qi).toBe(90 - 5);
     expect(a.npc.respect - b.npc.respect).toBe(2);
     expect(a.log.at(-1)!.text).toMatch(/nine bells/);
     expect(b.log.at(-1)!.text).toMatch(/nobody taught you to count them/);
   });
 
   it("gives the Elder more respect for every realm a hero climbs", () => {
-    const gains = [1, 2, 3, 4, 5, 6, 7].map((n) => gainCultivation(raw(n), 5).npc.respect - raw(n).npc.respect);
-    expect(gains).toEqual([1, 2, 3, 4, 5, 6, 7]);
+    const gains = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => gainCultivation(raw(n, 100), 5).npc.respect - raw(n, 100).npc.respect);
+    expect(gains).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
 });
 

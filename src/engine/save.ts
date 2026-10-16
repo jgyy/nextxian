@@ -36,6 +36,7 @@ export function restoreGame(saved: unknown, story: Story): GameState | null {
     lastAside: typeof game.lastAside === "number" ? game.lastAside : -3,
     cultivation,
     realm: typeof game.realm === "number" ? game.realm : realmForPoints(cultivation),
+    level: typeof game.level === "number" ? game.level : undefined,
     bonds: game.bonds && typeof game.bonds === "object" ? game.bonds : {},
     decisions: typeof game.decisions === "number" ? game.decisions : game.tones?.length ?? 0,
     flagAt: game.flagAt && typeof game.flagAt === "object" ? game.flagAt : {},

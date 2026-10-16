@@ -6,6 +6,9 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 
 ## Features
 
+- **Ten realms of ten layers, and a wall at every step.** The ladder is now ten major realms (Mortal, Qi Condensation, Foundation Establishment, Core Formation, Nascent Soul, Spirit Severing, Dao Seeking, Ascendant, **True Immortal** and **Dao Sovereign**), each of ten layers, a hundred levels from the First Layer of Mortal to the Tenth Layer of Dao Sovereign. Every step up is a **wall**: the hero needs the points, then the qi and insight to push at it at all, then a **steadiness** (qi and insight to spare, Dao mastery, the methods practised against this very wall, what earlier falls taught, the Elder’s trust, a clean heart, and for a major wall the rehearsed trial) that beats the wall’s difficulty. A hero short of qi or insight is *held*; one not steady enough is *thrown back*, loses qi and half the way to the wall, and is steadier next time. Each of the 99 walls has its own words for the wall, for coming through and for being thrown, and the log tells them in the colour of the wall. The Cultivation panel shows the layer, the wall, what it asks, how steady the hero is and how often it has thrown them.
+- **Breakthrough Roads: ten roads, 1,000 more scenes, where the story is the wall.** One road for each major realm (**the Tempering Yard**, **the Thread-House**, **the Mason’s Court**, **the Gold Forge**, **the Cradle Gardens**, **the Cutting Hall**, **the Switchback Stair**, **the Open Door**, **the Long Garden** and **the Seat of the Mountain**), each with ten stations, one for each layer. Every wall is ten scenes: the wall, **four ways of going at it** (the hard way, the teaching, a borrowed word, the long sitting; each practised once and each worth two points of steadiness), **the hour** (press with force or steadily, wait, or turn aside), what follows (it gave, it threw you, or it only held), the settling, **the Elder’s counsel for that wall** (a hundred lines, one for each) and what the wall leaves. Pressing is a real attempt: the engine reads the hero and the wall, and the scene afterwards says which happened.
+- **The layers in the main line.** The gate warden, the sutra bell, the tribunal rows, the mist, the Concord’s clerks, the glass, the stair and the last seal read the hero’s layer, and a hero who has been thrown carries it in how they stand. The Elder and the company speak of the middle and the top of every realm, of the first fall, the third and the eighth, of a wall that held the hero for want of qi, and of the methods practised.
 - **Wardrobe Roads: thirty-two roads, 1,008 more scenes, where the story is about what you wear.** Eight crafts of dress, one for each realm, each with a wayside: **the washing stair** where hemp is beaten and turned, **the cloak-sheds** where oilcloth is proofed, **the dye-house** where scholars are inked and sized, **the embroiderers’ court** where silk is stitched in a breath, **the lacing yard** where scale armour is proved, **the robing hall** of the Weighing, **the pilgrims’ hostel** of dust-cloths and **the Seamless Hall** where the last robe is worn once. Each has four keepers (an **appraiser** who prices the cloth, a **warden** of the sumptuary rules, a **masker** who lends faces and a **mender** who keeps what cloth remembers), and **every keeper reads the dress the hero has on now, at the entry, at the start of every approach and at its end**: five dresses for each of four keepers, so the same road reads a hero in patched hemp one way and the same hero in silk another.
 - **Change your dress.** A hero is no longer fixed in the clothes they were made in. A **Wardrobe panel** lists the five dresses (patched hemp, oiled cloak, ink-stained robe, embroidered silk, scale jerkin) with a **Wear** button for each one the hero owns; a change takes no decision, and the world reads it at the next door. Dress is read by everything that already read it (the standing a hero commands, the boots and hat the story names, the gate, the Elder’s asides, every road’s keeper), so a hero who changes is met differently at once. A few choices in the main line now put a hero in what the text says they put on (the scribe’s sleeves at the Archive, the pilgrim’s cloak at the pagoda). The Elder reads each change from what was taken off and what was put on: **twenty remarks**, one for each way to change, said a few decisions after.
 - **A counter at every road.** Each Wardrobe Road has a six-scene fitting: **the counter**, **the rack** (every dress, priced by the road’s realm), **the fitting** (the keeper’s verdict on the new dress, and a tip or a slip), **the commission** (a wage that is better in the right dress: three times the plain rate for the dress the work was cut for, twice for the dress of the house, and a forged pattern for the best pay and the worst karma), **the hatch** (pawn a spare garment for half its price) and **the mirror**. Every earning choice is once-only.
@@ -62,6 +65,23 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 - **Saves in your browser.** Progress is written to `localStorage` after every choice. Storage errors never stop play. Saves from before the Elder kept a reaction history, or before decisions had tones, still load.
 
 ![Scene with no Continue](docs/screenshots/02-no-continue-desktop.png)
+
+### Ten realms, ten layers and the Breakthrough Roads
+
+![The Cultivation panel: Core Formation, Fifth Layer, the wall above it, and what it asks](docs/screenshots/200-layer-panel-and-wall-desktop.png)
+![A layer given, in the log](docs/screenshots/201-a-layer-given-desktop.png)
+![A wall throws the hero back](docs/screenshots/202-the-wall-throws-the-hero-back-desktop.png)
+![A wall holds a hero who lacks the qi](docs/screenshots/203-the-wall-holds-for-want-of-qi-desktop.png)
+![The Gold Forge: ten stations, one for each layer of Core Formation](docs/screenshots/204-the-gold-forge-ten-stations-desktop.png)
+![The wall above the Gilding](docs/screenshots/205-the-wall-above-the-gilding-desktop.png)
+![The hour: press with force or steadily, wait, or turn aside](docs/screenshots/206-the-hour-desktop.png)
+![Pressed, and thrown back](docs/screenshots/207-pressed-and-thrown-desktop.png)
+![Pressed, and through](docs/screenshots/208-pressed-and-through-desktop.png)
+![The Elder’s counsel for this wall](docs/screenshots/209-the-elders-counsel-for-this-wall-desktop.png)
+![The last height: no wall above it](docs/screenshots/210-the-last-height-desktop.png)
+![The first yard, at the bottom of the ladder](docs/screenshots/211-the-first-yard-desktop.png)
+![The layer panel on a phone](docs/screenshots/212-layer-panel-on-a-phone-mobile.png)
+![A wall on a phone](docs/screenshots/213-a-wall-on-a-phone-mobile.png)
 
 ### Wardrobe Roads, dress and the pack
 
@@ -511,7 +531,7 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for diagrams of the engine, tur
 
 ```
 src/engine/      pure story logic: state, tones, cultivation realms, the purse, pack, wardrobe, holdings and speed, NPC reactions and memory, validation, saves, word counting
-src/story/       chapters, side paths, the generated side roads, the realm roads, the Fortune Roads, the Wardrobe Roads, the accounts on the road, and the Elder’s scenarios (content lives here)
+src/story/       chapters, side paths, the generated side roads, the realm roads, the Fortune Roads, the Wardrobe Roads, the Breakthrough Roads, the accounts on the road, and the Elder’s scenarios (content lives here)
 src/components/  React UI: the stage, the tone legend, the NPC, cultivation, purse and stats panels
 app/             Next.js routes, layout and styles
 tests/           vitest suites
@@ -522,6 +542,6 @@ scripts/         word count, story check, simulator
 
 The engine, NPC system, cultivation realms, visual novel UI, six books and their endings are in place and playable from the first scene to seven endings. Every scene stands on its own: no page turns, a heading on every scene, four or more tone-tagged choices at every decision, and a 200-word cap on every scene body.
 
-The story has 16,293 scenes and about 81,800 choices, with 2,146 NPC scenarios and 707 unprompted remarks. The word count is 5,709,634, which is **571.0%** of the 1,000,000-word goal. The count adds up every variant of a line that can be shown (every dress, birth, realm and gender a keeper can react to), so it overstates what one playthrough reads. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md): the twelfth pass fixed 11 defects that a change of dress and a usable pack could expose (the tenth fixed 270 lines, of which 262 told every hero something about themselves that only some heroes are, and the ledger says plainly which is which and that it is well short of 1,000).
+The story has 17,313 scenes and about 86,100 choices, with 2,176 NPC scenarios and 750 unprompted remarks. The word count is 5,846,316, which is **584.6%** of the 1,000,000-word goal. The count adds up every variant of a line that can be shown (every dress, birth, realm and gender a keeper can react to), so it overstates what one playthrough reads. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md): the thirteenth pass fixed 11 defects that ten realms of ten layers could expose (a ladder that no longer ended where the text said it did), the twelfth fixed 11 that a change of dress and a usable pack could expose (the tenth fixed 270 lines, of which 262 told every hero something about themselves that only some heroes are, and the ledger says plainly which is which and that it is well short of 1,000).
 
 The side roads of Book One are assembled from templates and read more uniformly than the hand-written chapters. The Book V finale and Book VI are compact (about 8,000 words) next to the sixteen-arc hubs before them, and are the obvious place to add more. The books and the canon are described in [docs/CANON.md](docs/CANON.md). Adding content means adding an arc under `src/story/books/<book>/`, registering it in `src/story/books/index.ts`, and running `npm run check`.

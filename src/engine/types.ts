@@ -34,6 +34,8 @@ export type Condition =
   | { kind: "realm"; min?: number; max?: number }
   /** How far through the current realm the hero is, in percent of the way to the next threshold. 100 at the top of the ladder. */
   | { kind: "progress"; min?: number; max?: number }
+  /** The hero’s level on the full ladder: ten realms of ten layers, so `realm * 10 + layer`, from 0 (Mortal, First Layer) to 99 (Dao Sovereign, Tenth Layer). */
+  | { kind: "level"; min?: number; max?: number }
   /** How many side roads the player has finished (flags starting `road_done_`). */
   | { kind: "roads"; min?: number; max?: number }
   /** How a companion feels about the player. Companions are listed in `Story.companions`. */
@@ -85,8 +87,10 @@ export type Effect =
   | { kind: "addNpc"; metric: NpcMetric; amount: number }
   /** Cultivation points on top of the small gain every decision already brings. */
   | { kind: "addCultivation"; amount: number }
-  /** Raises the hero’s points to the threshold of the next realm, if they are short of it. A heart demon still holds the door: the points gather, and the realm waits. */
+  /** Raises the hero’s points to the threshold of the next realm, if they are short of it, and carries them up through the layers they had left. A heart demon still holds the door: the points gather, and the realm waits. */
   | { kind: "reachGate" }
+  /** Raises the hero’s points to the wall in front of their layer, if they are short of it: they press at it this very decision, and it holds or gives. */
+  | { kind: "pushWall" }
   /** Changes how a companion feels about the player. An amount of 0 introduces them. */
   | { kind: "addBond"; npc: string; amount: number }
   /** Spirit stones into or out of the purse. The purse never goes below zero, so a choice that spends needs a `wealth` requirement. */
@@ -283,7 +287,7 @@ export interface Story {
 }
 
 export interface LogEntry {
-  kind: "narration" | "heading" | "player" | "npc" | "realm" | "strain" | "ledger";
+  kind: "narration" | "heading" | "player" | "npc" | "realm" | "strain" | "ledger" | "wall";
   text: string;
   speaker?: string;
 }
@@ -303,6 +307,8 @@ export interface GameState {
   cultivation: number;
   /** Index of the player's current realm in `REALMS`. The player starts as a Mortal (0). */
   realm: number;
+  /** The hero’s level on the full ladder (`realm * 10 + layer`). Absent in a save from before the layers; the points then say where the hero stands. */
+  level?: number;
   /** How each companion the player has met feels, from -100 to 100. */
   bonds: Record<string, number>;
   /** How many decisions the player has made. */

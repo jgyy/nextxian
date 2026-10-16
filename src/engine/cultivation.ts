@@ -2,70 +2,14 @@ import { lifespanNote } from "./age";
 import { DEFAULT_HERO } from "./hero";
 import { heartDemonKarmaFor, strainFactor } from "./path";
 import { daoArrival, talentArrival } from "./path-text";
+import { REALMS } from "./realms";
+import { failQi, failText, fallBack, failsAt, isMajor, lacking, layerName, layerOfLevel, LEVELS, levelNow, levelThreshold, MAX_FAILS, pointsCap, prepsFor, realmOfLevel, STEADY_GAIN, steadiness, toll, wallDifficulty, wallFailFlag, wallHeldFlag, wallText, winText } from "./stages";
+import { ORDINALS } from "./stage-text";
 import { breakthroughQi, breakthroughRespect, skyLine } from "./tribulation";
 import type { ChoiceTone, GameState } from "./types";
 
-export interface Realm {
-  name: string;
-  /** Cultivation points needed to enter this realm. */
-  threshold: number;
-  /** What the player feels on arrival. */
-  arrival: string;
-  /** How the Elder refers to the player while they stand here. */
-  styled: string;
-}
-
-/** The cultivation ladder, lowest first. Everyone starts as a Mortal. */
-export const REALMS: readonly Realm[] = [
-  {
-    name: "Mortal",
-    threshold: 0,
-    arrival: "You are a mortal. The qi of heaven and earth passes through you like wind through a screen.",
-    styled: "mortal",
-  },
-  {
-    name: "Qi Condensation",
-    threshold: 15,
-    arrival: "A thread of qi finds your dantian and stays. The first breath of true cultivation is cold, bright and a little frightening.",
-    styled: "Qi Condenser",
-  },
-  {
-    name: "Foundation Establishment",
-    threshold: 120,
-    arrival: "The scattered qi settles into a foundation as level as a temple floor. Your body no longer feels borrowed.",
-    styled: "Foundation Builder",
-  },
-  {
-    name: "Core Formation",
-    threshold: 400,
-    arrival: "Your qi folds in on itself and hardens into a golden core. For a moment you can hear it turning, slow as a millstone.",
-    styled: "Core Cultivator",
-  },
-  {
-    name: "Nascent Soul",
-    threshold: 850,
-    arrival: "A small, clear figure sits behind your eyes and looks back at you. It is you, and it is not afraid.",
-    styled: "Nascent Soul master",
-  },
-  {
-    name: "Spirit Severing",
-    threshold: 1300,
-    arrival: "You cut the last cords that tie your spirit to the dust of old names. The world is quieter, and wider.",
-    styled: "Spirit Severing sage",
-  },
-  {
-    name: "Dao Seeking",
-    threshold: 1850,
-    arrival: "The Dao stops being a word and becomes a direction. You can feel which way is toward it.",
-    styled: "Dao Seeker",
-  },
-  {
-    name: "Ascendant",
-    threshold: 2350,
-    arrival: "The sky above you is no longer a ceiling. It is a door, and it is open.",
-    styled: "Ascendant",
-  },
-];
+export { REALMS, STAGES_PER_REALM } from "./realms";
+export type { Realm } from "./realms";
 
 /** Cultivation points every decision brings, by tone. Patience and study cultivate; force and lies only scrape. */
 export const TONE_GAIN: Record<ChoiceTone, number> = {
@@ -115,29 +59,88 @@ export function realmProgress(state: Pick<GameState, "cultivation" | "realm">): 
   return Math.min(1, (state.cultivation - here.threshold) / (next.threshold - here.threshold));
 }
 
+/** The flag the engine sets on the decision a hero enters a layer, major or minor. `reached_realm_` flags are for the first layer of a realm only. */
+export const LAYER_PREFIX = "reached_layer_";
+export const reachedLayerFlag = (level: number) => `${LAYER_PREFIX}${level}`;
+
+const clampQi = (qi: number) => Math.min(100, Math.max(0, qi));
+
 /**
- * Adds points and breaks through at most one realm per call. A breakthrough is logged as its
- * own entry. Points keep gathering while a heart demon blocks the next realm.
+ * Adds points and breaks through at most one layer per call. The step into the next layer is a wall: the points must reach it, the hero must have the qi and insight
+ * to push at it, and their steadiness must beat the wall’s difficulty. Held by a heart demon, or short of qi or insight, the hero keeps gathering (never more than a
+ * wall beyond the one in front of them); thrown back, they lose qi and half the way to the wall and are a little steadier next time. Each outcome is its own log entry.
  */
 export function gainCultivation(state: GameState, amount: number): GameState {
-  const cultivation = Math.round((state.cultivation + Math.max(0, amount)) * 100) / 100;
-  const gained: GameState = { ...state, cultivation };
-  const next = state.realm + 1;
-  if (next >= REALMS.length || cultivation < REALMS[next].threshold || heartDemonBlocks(gained)) {
-    return gained;
+  const level = levelNow(state);
+  const points = Math.round((state.cultivation + Math.max(0, amount)) * 100) / 100;
+  const target = level + 1;
+  const base: GameState = { ...state, cultivation: points, level };
+  if (target >= LEVELS) return { ...base, cultivation: Math.min(points, pointsCap(level)) };
+  if (points < levelThreshold(target)) return base;
+  const held: GameState = { ...base, cultivation: Math.min(points, pointsCap(level)) };
+  const major = isMajor(target);
+  if (major && heartDemonBlocks(base)) return held;
+  const missing = lacking(base, target);
+  if (missing.length > 0) {
+    if (base.flags[wallHeldFlag(target)]) return held;
+    const text = `${wallText(level)} But it asks ${missing.join(" and ")} of you, and you cannot push at it yet.`;
+    return {
+      ...held,
+      flags: { ...held.flags, [wallHeldFlag(target)]: true },
+      flagAt: { ...held.flagAt, [wallHeldFlag(target)]: held.decisions },
+      log: [...held.log, { kind: "wall", text: `You come to the wall above your ${ORDINALS[layerOfLevel(level)]} Layer. ${text}` }],
+    };
   }
+  const steady = steadiness(base, target);
+  if (steady.total < wallDifficulty(target)) {
+    const attempt = Math.min(MAX_FAILS, failsAt(base.flags, target) + 1);
+    const back = fallBack(level);
+    const lostQi = Math.min(base.stats.qi, failQi(target));
+    const flag = wallFailFlag(target, attempt);
+    return {
+      ...base,
+      cultivation: Math.min(points, back),
+      stats: { ...base.stats, qi: clampQi(base.stats.qi - failQi(target)) },
+      flags: { ...base.flags, [flag]: true },
+      flagAt: { ...base.flagAt, [flag]: base.decisions },
+      log: [
+        ...base.log,
+        {
+          kind: "wall",
+          text: `The wall holds. ${failText(level)} You fall back and lose ${lostQi} qi, and the wall is a little better known to you.${attempt > 1 ? ` It has thrown you ${attempt} times.` : ""}`,
+        },
+      ],
+    };
+  }
+  const reached = reachedLayerFlag(target);
+  if (!major) {
+    const prepared = prepsFor(base.flags, target) > 0;
+    const realm = REALMS[state.realm];
+    return {
+      ...base,
+      level: target,
+      cultivation: Math.min(points, pointsCap(target)),
+      stats: { ...base.stats, qi: clampQi(base.stats.qi + (prepared ? STEADY_GAIN : -toll(target))) },
+      flags: { ...base.flags, [reached]: true },
+      flagAt: { ...base.flagAt, [reached]: base.decisions },
+      log: [...base.log, { kind: "realm", text: `Breakthrough: ${realm.name}, ${ORDINALS[layerOfLevel(target)]} Layer (${layerName(target)}). ${winText(level)}` }],
+    };
+  }
+  const next = realmOfLevel(target);
   // The sky tries every breakthrough. A hero who sat its trial on the road comes through steadied and respected; one who did not is scorched.
-  const sky = skyLine(gained.flags, next);
+  const sky = skyLine(base.flags, next);
   return {
-    ...gained,
+    ...base,
     realm: next,
-    stats: { ...gained.stats, qi: Math.min(100, Math.max(0, gained.stats.qi + breakthroughQi(gained.flags, next))) },
-    npc: { ...gained.npc, respect: Math.min(100, gained.npc.respect + breakthroughRespect(gained.flags, next)) },
-    flags: { ...gained.flags, [reachedFlag(next)]: true },
-    flagAt: { ...gained.flagAt, [reachedFlag(next)]: gained.decisions },
+    level: target,
+    cultivation: Math.min(points, pointsCap(target)),
+    stats: { ...base.stats, qi: clampQi(base.stats.qi + breakthroughQi(base.flags, next)) },
+    npc: { ...base.npc, respect: Math.min(100, base.npc.respect + breakthroughRespect(base.flags, next)) },
+    flags: { ...base.flags, [reachedFlag(next)]: true, [reached]: true },
+    flagAt: { ...base.flagAt, [reachedFlag(next)]: base.decisions, [reached]: base.decisions },
     log: [
-      ...gained.log,
-      { kind: "realm", text: `Breakthrough: ${REALMS[next].name}. ${REALMS[next].arrival}${sky ? ` ${sky}` : ""}${breakthroughNotes(gained, next)}` },
+      ...base.log,
+      { kind: "realm", text: `Breakthrough: ${REALMS[next].name}. ${winText(level)} ${REALMS[next].arrival}${sky ? ` ${sky}` : ""}${breakthroughNotes(base, next)}` },
     ],
   };
 }
@@ -179,9 +182,9 @@ export function strainLine(needs: number, realm: number): string {
 
 /** Applies the cost of straining. Cultivation stops at the floor of the realm already won, so a failed push never undoes a breakthrough. */
 export function applyStrain(state: GameState, shortfall: number): GameState {
-  const floor = REALMS[state.realm].threshold;
+  const floor = levelThreshold(levelNow(state));
   const factor = strainFactor(state.hero ?? DEFAULT_HERO);
-  const lost = Math.min(state.cultivation - floor, Math.round(STRAIN_CULTIVATION * shortfall * factor));
+  const lost = Math.max(0, Math.min(state.cultivation - floor, Math.round(STRAIN_CULTIVATION * shortfall * factor)));
   return {
     ...state,
     cultivation: state.cultivation - lost,

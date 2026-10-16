@@ -1,3 +1,4 @@
+import { ROAD_TOP } from "@/engine/realms";
 import { describe, expect, it } from "vitest";
 import { chapters, story } from "@/story";
 import { choose, createGame, enterScene, getChoices, getScene, settle } from "@/engine/game";
@@ -65,7 +66,7 @@ describe("the engine reads where a hero stands against a rung", () => {
   });
 
   it("covers every realm with exactly one band at every road, so a hero is always read", () => {
-    for (let road = 0; road < REALMS.length; road++) {
+    for (let road = 0; road <= ROAD_TOP; road++) {
       for (let realm = 0; realm < REALMS.length; realm++) {
         const held = bandsAt(road).filter((band) => conditionsHold([bandCondition(band, road)], at("gate", DEFAULT_HERO, { realm })));
         expect(held, `road ${road} realm ${realm}`).toEqual([bandOf(realm, road)]);
@@ -156,7 +157,7 @@ describe("the Rank Roads", () => {
     WAYSIDES10.forEach((w, n) => {
       const pills = SPECS10.slice(n * 4, n * 4 + 4).filter((s) => s.ware.kind === "pill");
       expect(pills, w.id).toHaveLength(1);
-      const next = Math.min(w.realm + 1, REALMS.length - 1);
+      const next = Math.min(w.realm + 1, ROAD_TOP);
       expect(story.items![`${pills[0].id}_ware`].aid, w.id).toBe(next);
       expect(pills[0].ware.blurb, w.id).toContain(REALMS[next].name);
     });

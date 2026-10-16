@@ -18,6 +18,7 @@ flowchart LR
     RK["rank/<br/>thirty-two Rank Roads, 1,200 scenes:<br/>eight rungs, four keepers who read rank or sex first,<br/>a door of rank by gender and by where the realm stands,<br/>eight realm-and-gender turning points"]
     TB["tribulation/<br/>eight Tribulation Roads, 1,008 scenes:<br/>four keepers who bow by the realm, a rehearsal of the trial,<br/>echoes where the world bows to the realm"]
     WD["wardrobe/<br/>eight Wardrobe Roads, 1,008 scenes:<br/>four keepers who read the dress, a six-scene fitting<br/>(counter, rack, verdict, commission, hatch, mirror),<br/>echoes, endings and the Elder’s remarks on a change of dress"]
+    AS["ascent/<br/>ten Breakthrough Roads, 1,000 scenes:<br/>a hundred walls of ten scenes (the wall, four ways,<br/>the hour, after, rest, the Elder, what it leaves),<br/>layer echoes and remarks"]
     GD["gendered/<br/>Left Cloister, Right Yard, Third Door"]
     OG["origins/<br/>twelve beginnings, eleven prologues"]
     EC["economy/<br/>five reckonings, seven ending epilogues,<br/>remarks on the purse and the pack"]
@@ -29,7 +30,8 @@ flowchart LR
     G["game.ts<br/>createGame / choose / getChoices"]
     N["npc.ts<br/>tierFor / moodFor / respectTierFor / mannerOf / reactToScenario"]
     TN["tone.ts<br/>six tones and their names"]
-    CU["cultivation.ts<br/>eight realms, gains, heart demon"]
+    CU["cultivation.ts<br/>ten realms, gains, heart demon,<br/>the wall at every layer"]
+    ST["stages.ts / stage-text.ts / realms.ts<br/>a hundred levels, thresholds, walls,<br/>steadiness, falls, the words of each layer"]
     EO["economy.ts<br/>purse, pack, holdings, speed,<br/>payday, breakthrough pills"]
     HR["hero.ts<br/>the character, pronouns, starting numbers, standing"]
     AG["age.ts<br/>years, lifespan by realm, waning,<br/>the door of years"]
@@ -40,7 +42,7 @@ flowchart LR
     WI["witness.ts<br/>deeds, repute bands, counts"]
     PR["practice.ts<br/>four practices, the cusp, counts"]
     CUS["custom.ts<br/>customSummary: kept, bent, broken, stood for"]
-    TRE["tribulation.ts<br/>eight tribulations, the bow by realm,<br/>trial needs, the sky’s line at a breakthrough"]
+    TRE["tribulation.ts<br/>ten tribulations, the bow by realm,<br/>trial needs, the sky’s line at a breakthrough"]
     WE["wardrobe.ts<br/>five garments, wear, gain, lose, price, pawn,<br/>what a dress pays and costs on a payday"]
     PK["pack.ts<br/>use, sell and give an item,<br/>dress changes from the panel"]
     RKE["rank.ts<br/>bandOf, bandsAt, rankSummary:<br/>yielded, claimed, veiled, lifted"]
@@ -61,7 +63,7 @@ flowchart LR
     WP["WardrobePanel.tsx<br/>the dress worn, the dresses owned, Wear"]
     RKP["RankPanel.tsx<br/>rank roads at each rung, the ways taken"]
   end
-  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & TB & WD & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & TB & WD & AS & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
   G --> AG
@@ -74,6 +76,9 @@ flowchart LR
   CUS --> CUP
   RK --> RKE
   TB --> TRE
+  AS --> ST
+  CU --> ST
+  G --> CU
   WD --> WE
   WE --> HR
   WE --> EO
@@ -906,3 +911,42 @@ flowchart LR
 **Using an item.** `effectOf(item)` is the item’s own `use`, or what its kind does at its height (`tierOf`: the realm it pays off at, or the realm its pill opens). Effects land at the hero’s own cultivation speed, a used item is recorded in `usedAt` so it rests a payday, and the flags `pack_used`, `pack_sold` and `pack_gifted` let the Elder remark on it. A pill kept for a threshold still does more than the same pill swallowed early.
 
 **Where the stones come from and go.** In: the sect’s stipend, holdings, the roads’ own wages, the wages of the fitting, a dress that pays on the road, selling from the pack, pawning a garment, and a forged pattern. Out: living away from the sect, a holding’s upkeep, a dress that costs to keep, a garment bought at the rack, a tip, and every price the roads already had. The audit knows the flags the engine sets (a change of dress, and the pack’s own), so a remark that reads them is not called dead.
+
+## Realms, layers and walls
+
+The ladder is ten major realms of ten layers. A hero stands at a **level** (`realm * 10 + layer`, 0 to 99). The game writes the level down, and reads it from the points when a save or a test has left the two apart. The step up from any level is a **wall**, and `gainCultivation` meets it at the end of every decision.
+
+```mermaid
+flowchart TD
+  P["decision ends:<br/>points gathered"] --> T{"points reach<br/>the next layer?"}
+  T -- no --> K["points kept<br/>(never a wall beyond)"]
+  T -- yes --> D{"major wall and<br/>heart demon?"}
+  D -- yes --> H0["held: karma too low<br/>points keep gathering"]
+  D -- no --> R{"qi and insight<br/>enough to push?"}
+  R -- no --> H["held, told once in the log:<br/>what is missing"]
+  R -- yes --> S{"steadiness ≥<br/>difficulty?"}
+  S -- no --> F["thrown back:<br/>lose qi and half the way,<br/>+3 steadiness at this wall"]
+  S -- yes --> M{"major wall?"}
+  M -- no --> L["next layer:<br/>qi toll, or +2 if practised"]
+  M -- yes --> W["next realm:<br/>the sky tries it,<br/>the Elder speaks"]
+```
+
+Steadiness is the sum of what the hero brings: qi and insight to spare (one point for every ten and twelve above what the wall asks), Dao mastery, two for each of the four methods practised against this very wall, three for each earlier fall at it, one for the Elder’s trust, one or minus two for the heart, and three for a rehearsed trial at a major wall.
+
+```mermaid
+flowchart LR
+  H["wayside_bw_N<br/>the hub: ten stations"] -->|"level ≥ L"| A["bwLL_a<br/>the wall"]
+  A --> M0["m0 the hard way"] & M1["m1 the teaching"] & M2["m2 a borrowed word"] & M3["m3 the long sitting"]
+  M0 & M1 & M2 & M3 --> O["hour<br/>press (force or steady), wait, turn aside"]
+  O -->|"pushWall"| AF["after<br/>gave / threw you / only held"]
+  O -->|wait| RE["rest"]
+  AF --> RE & V["voice<br/>the Elder’s counsel for this wall"]
+  RE --> V & C["close<br/>what the wall leaves"]
+  AF --> C
+  V --> C
+  C --> H
+```
+
+The press is a real attempt. The `pushWall` effect raises the points to the wall, and `gainCultivation` runs the same decision, so the scene after reads `level` to say what happened. A method is practised once for each wall (`bwp_<n>_<k>`); the engine sets `bwf_<n>_<k>` for each fall and `bwh_<n>` when a wall holds a hero, and the audit knows these as the engine’s own flags.
+
+The older road families were written for eight realms and keep their ladder: `ROAD_TOP` is Ascendant, and a True Immortal or a Dao Sovereign who walks into one of them is met as an Ascendant is.
