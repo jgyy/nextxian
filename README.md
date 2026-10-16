@@ -66,6 +66,23 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 
 ![Scene with no Continue](docs/screenshots/02-no-continue-desktop.png)
 
+### Ten realms, ten layers and the Breakthrough Roads
+
+![The Cultivation panel: Core Formation, Fifth Layer, the wall above it, and what it asks](docs/screenshots/200-layer-panel-and-wall-desktop.png)
+![A layer given, in the log](docs/screenshots/201-a-layer-given-desktop.png)
+![A wall throws the hero back](docs/screenshots/202-the-wall-throws-the-hero-back-desktop.png)
+![A wall holds a hero who lacks the qi](docs/screenshots/203-the-wall-holds-for-want-of-qi-desktop.png)
+![The Gold Forge: ten stations, one for each layer of Core Formation](docs/screenshots/204-the-gold-forge-ten-stations-desktop.png)
+![The wall above the Gilding](docs/screenshots/205-the-wall-above-the-gilding-desktop.png)
+![The hour: press with force or steadily, wait, or turn aside](docs/screenshots/206-the-hour-desktop.png)
+![Pressed, and thrown back](docs/screenshots/207-pressed-and-thrown-desktop.png)
+![Pressed, and through](docs/screenshots/208-pressed-and-through-desktop.png)
+![The Elder’s counsel for this wall](docs/screenshots/209-the-elders-counsel-for-this-wall-desktop.png)
+![The last height: no wall above it](docs/screenshots/210-the-last-height-desktop.png)
+![The first yard, at the bottom of the ladder](docs/screenshots/211-the-first-yard-desktop.png)
+![The layer panel on a phone](docs/screenshots/212-layer-panel-on-a-phone-mobile.png)
+![A wall on a phone](docs/screenshots/213-a-wall-on-a-phone-mobile.png)
+
 ### Wardrobe Roads, dress and the pack
 
 ![A wayside of four keepers: the embroiderers’ court](docs/screenshots/189-wardrobe-wayside-desktop.png)
