@@ -1,4 +1,5 @@
 import { REALMS } from "./cultivation";
+import { giftScenarioId } from "./pack";
 import { isTone } from "./tone";
 import { countWords } from "./words";
 import type { Condition, Scene, Story, Tier } from "./types";
@@ -167,9 +168,11 @@ export function validateStory(story: Story): string[] {
 
   problems.push(...validateEconomy(story));
 
-  const used = new Set(
-    Object.values(scenes).flatMap((s) => s.choices.flatMap((c) => [c.npcScenario, c.allyScenario]).filter(Boolean)),
-  );
+  // A gift to the Elder is answered by a scenario the pack triggers, one for each kind of item, so a kind that exists in the story has its answer.
+  const used = new Set<string | undefined>([
+    ...Object.values(scenes).flatMap((s) => s.choices.flatMap((c) => [c.npcScenario, c.allyScenario]).filter(Boolean)),
+    ...Object.values(story.items ?? {}).map((item) => giftScenarioId(item.kind)),
+  ]);
   if (Object.keys(scenarios).length < MIN_NPC_SCENARIOS) {
     problems.push(`story defines ${Object.keys(scenarios).length} NPC scenarios; needs ${MIN_NPC_SCENARIOS}`);
   }

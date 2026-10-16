@@ -1826,3 +1826,25 @@ button.ghost[aria-expanded="true"] {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* ── The pack's own buttons and the wardrobe ─────────────── */
+
+.pack li.pack-item {
+  flex-wrap: wrap;
+}
+.pack-actions {
+  display: flex;
+  gap: 6px;
+  flex-basis: 100%;
+}
+.pack-actions button,
+.wardrobe-list button {
+  font-size: 0.72rem;
+  padding: 2px 10px;
+}
+.wardrobe-list li[data-worn="yes"] span {
+  color: var(--gilt);
+}
+.wardrobe-list li[data-owned="no"] span {
+  color: var(--muted);
+}

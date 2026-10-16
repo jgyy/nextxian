@@ -59,7 +59,7 @@ export const heroAsides: Record<HeroField | "realm", Record<string, Lines>> = {
       wary: "A road-worn cloak, a bamboo hat, a pack that has seen rain. A traveller can hide anything, and you have a good place to hide it.",
       neutral: "Your cloak has the wear of the river provinces on it. I recognise the salt in the seams. You have come further than you said.",
       warm: "You travel light and you travel well. I envy the pack more than I envy the robes. A person with so little to carry has nothing to defend.",
-      devoted: "You came up my mountain in a cloak the rain had already ruined. I think of it when I write the ledger, in the column where I keep what moved me.",
+      devoted: "You wear a cloak the rain has already ruined, and you have not once complained of it. I think of it when I write the ledger, in the column where I keep what moved me.",
     },
     scholar: {
       hostile: "Ink on both cuffs, and I will wager the ink is the only honest thing about you. Copyists forge as easily as they read.",
@@ -73,7 +73,7 @@ export const heroAsides: Record<HeroField | "realm", Record<string, Lines>> = {
       wary: "Cloud-pattern silk. I count the cost of it and I count the cost of the story that goes with it. Neither sum is small.",
       neutral: "Fine silk. It will not survive the abyss path. I mention it in the way a person mentions a window that is about to be broken.",
       warm: "You wear silk as though someone told you it was armour. I will not tell you it is not. I will only say that I would take hemp.",
-      devoted: "You wore silk up my stair and let the mud have it. I have rarely been given so clear a sign of what a person thinks a robe is worth.",
+      devoted: "You wear silk on my stair and let the mud have it. I have rarely been given so clear a sign of what a person thinks a robe is worth.",
     },
     armour: {
       hostile: "Lacquered scales and a sword-belt in the Law Hall. We hang the armed here, not out of cruelty, but because it is faster.",

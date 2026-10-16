@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { story } from "@/story";
+import { createGame } from "@/engine/game";
+import { restoreGame } from "@/engine/save";
+import { giftBlock, sellBlock } from "@/engine/pack";
+import { gainGarment, putOn } from "@/engine/wardrobe";
 import { auditStory, clash } from "@/engine/audit";
 import { personalise, type Hero, DEFAULT_HERO } from "@/engine/hero";
 import { MANNER_SHIFT, REALM_SHIFT } from "@/engine/npc";
@@ -274,5 +278,48 @@ describe("the eleventh pass: a realm named for every realm above it, and a hero 
     expect(extended.line).not.toMatch(/Foundation has given you a hundred and sixty/);
     const gu = story.remarks!.find((r) => r.id === "hr_realm_gu_core")!;
     expect(gu.line).toContain("Nascent Soul at the least");
+  });
+});
+
+describe("the twelfth pass: what a change of dress and a pack that can be used could expose", () => {
+  const texts = shownText();
+
+  it("never tells the Elder’s favourite hero what they wore when they arrived, since the dress they wear is the one they have on now", () => {
+    expect(texts.filter((t) => /came up my mountain in a cloak|wore silk up my stair/.test(t.text))).toEqual([]);
+    const devoted = (v: "traveller" | "silk") => story.asides!.attire[v].devoted;
+    expect(devoted("traveller")).toMatch(/You wear a cloak/);
+    expect(devoted("silk")).toMatch(/You wear silk on my stair/);
+  });
+
+  it("changes the dress of a hero who is told they put on a cloak or the sleeves of a scribe, and puts no one in straw sandals who is not in rags", () => {
+    expect(story.scenes.archive_front_3.choices.find((c) => c.id === "pose_as_scribe")!.effects).toContainEqual({ kind: "wear", attire: "scholar" });
+    const pilgrim = story.scenes.pagoda_entry.choices.find((c) => c.label.startsWith("Put on a pilgrim"))!;
+    expect(pilgrim.effects).toContainEqual({ kind: "wear", attire: "traveller" });
+    expect(texts.filter((t) => /second pair of straw sandals/.test(t.text))).toEqual([]);
+  });
+
+  it("calls no hero a benefactress, whatever their gender", () => {
+    expect(texts.filter((t) => /benefactress/i.test(t.text))).toEqual([]);
+  });
+
+  it("keeps the keepsakes of a hero’s own story out of the market and off the Elder’s sill", () => {
+    const keepsakes = Object.values(story.items!).filter((i) => i.keepsake);
+    expect(keepsakes.map((i) => i.id).sort()).toEqual(["lc_sisters_book", "og_furnace_pill", "ry_wardens_tally", "td_blank_leaf"]);
+    for (const item of keepsakes) {
+      const g = { ...createGame(story), items: { [item.id]: 1 }, decisions: 30 };
+      expect(sellBlock(story, g, item.id), item.id).toMatch(/keepsake/);
+      expect(giftBlock(story, g, item.id), item.id).toMatch(/keepsake/);
+    }
+  });
+
+  it("begins a restarted game in the dress the hero was made in, not the one they last put on", () => {
+    const made = createGame(story, hero({ attire: "rags" }));
+    const changed = putOn(gainGarment(made, "armour"), "armour");
+    expect(changed.hero.attire).toBe("armour");
+    expect(changed.began).toBe("rags");
+    expect(createGame(story, { ...changed.hero, attire: changed.began }).hero.attire).toBe("rags");
+    const old = JSON.parse(JSON.stringify(changed)) as Record<string, unknown>;
+    delete old.began;
+    expect(restoreGame(old, story)!.began).toBe("armour");
   });
 });

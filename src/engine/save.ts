@@ -1,7 +1,8 @@
 import { realmForPoints } from "./cultivation";
 import { settle } from "./game";
 import { startingWealth } from "./economy";
-import { restoreHero } from "./hero";
+import { ATTIRES, restoreHero } from "./hero";
+import { ownedGarments } from "./wardrobe";
 import type { GameState, Story } from "./types";
 
 /**
@@ -24,6 +25,10 @@ export function restoreGame(saved: unknown, story: Story): GameState | null {
     daoPoints: typeof game.daoPoints === "number" && game.daoPoints >= 0 ? game.daoPoints : 0,
     wealth: typeof game.wealth === "number" && game.wealth >= 0 ? game.wealth : startingWealth(hero),
     items: Object.fromEntries(Object.entries(items).filter(([, n]) => typeof n === "number" && n > 0)),
+    // A save from before the wardrobe owns only what the hero began in.
+    wardrobe: ownedGarments({ hero, wardrobe: Array.isArray(game.wardrobe) ? game.wardrobe.filter((a) => ATTIRES.some((o) => o.value === a)) : [] }),
+    began: ATTIRES.some((o) => o.value === game.began) ? game.began : hero.attire,
+    usedAt: game.usedAt && typeof game.usedAt === "object" && !Array.isArray(game.usedAt) ? game.usedAt : {},
     assets: Array.isArray(game.assets) ? game.assets.filter((a) => typeof a === "string") : [],
     years: typeof game.years === "number" && game.years >= 0 ? game.years : 0,
     speed: typeof game.speed === "number" ? game.speed : 100,

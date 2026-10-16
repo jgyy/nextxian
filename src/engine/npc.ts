@@ -1,6 +1,7 @@
 import { ageOf, lifeLeft } from "./age";
 import { REALMS, realmProgress } from "./cultivation";
 import { standingOf } from "./hero";
+import { ownedGarments } from "./wardrobe";
 import { affinityOf, daoRankOf } from "./path";
 import { CHOICE_TONES } from "./tone";
 import { reputeOf, type Repute } from "./witness";
@@ -212,7 +213,7 @@ export function reactToScenario(
 
 /** What a condition may read. Everything past the first five fields is optional so older callers and saves still work. */
 export type ConditionState = Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones"> &
-  Partial<Pick<GameState, "daoPoints" | "realm" | "cultivation" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero" | "wealth" | "items" | "assets" | "speed" | "unfed" | "years">>;
+  Partial<Pick<GameState, "daoPoints" | "realm" | "cultivation" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero" | "wealth" | "items" | "assets" | "speed" | "unfed" | "years" | "wardrobe">>;
 
 /** True when every condition holds. An empty or missing list always holds. */
 export function conditionsHold(conditions: Condition[] | undefined, state: ConditionState): boolean {
@@ -313,6 +314,12 @@ export function conditionsHold(conditions: Condition[] | undefined, state: Condi
       }
       case "years": {
         const v = state.hero ? lifeLeft(state.hero, { decisions: state.decisions, realm: state.realm, years: state.years }) : 999;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "wardrobe":
+        return (state.hero ? ownedGarments({ hero: state.hero, wardrobe: state.wardrobe }) : (state.wardrobe ?? [])).includes(c.attire) === (c.is ?? true);
+      case "garments": {
+        const v = state.hero ? ownedGarments({ hero: state.hero, wardrobe: state.wardrobe }).length : 0;
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
       }
       case "count": {

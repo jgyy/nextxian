@@ -44,7 +44,7 @@ const RECKONINGS: Reckoning[] = [
     },
     buy: [
       { label: "Buy dried rice and tea for the road", price: 4 },
-      { label: "Buy a second pair of straw sandals and a rain-cape", price: 6 },
+      { label: "Buy a second pair of sandals and a rain-cape", price: 6 },
     ],
     hand: "Leave a share of your purse in the almoner’s tin, for the next pupil who goes down without one",
   },

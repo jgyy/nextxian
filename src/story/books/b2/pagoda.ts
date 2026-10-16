@@ -18,7 +18,7 @@ It carries no seal, no name. Underneath, drawn in a single ink-stroke, is a smal
 The barge-pilot looks at it, and crosses himself in the old way, with two fingers.
 > truth | Take the skiff openly, with Gu and Ren, and tell the Elder where you are going. | pagoda_a1s1 | +pagoda_a1
 > force | Send Ren ahead in the dark to take the stair before you climb it. | pagoda_a2s1 | +pagoda_a2 needs:2
-> deceit | Put on a pilgrim’s cloak and go up as someone the host is not expecting. | pagoda_a3s1 | +pagoda_a3
+> deceit | Put on a pilgrim’s cloak and go up as someone the host is not expecting. | pagoda_a3s1 | +pagoda_a3 wear:traveller
 > quiet | Row to the drowned floors, below the tea house, and learn the building before you enter it. | pagoda_a4s1 | +pagoda_a4
 > inquiry | Take Old Lin’s wicks down to the black water below the third floor, and go in by their light. | pagoda_h1 |  | dep_wicks | You carry no wicks from the stair.
 

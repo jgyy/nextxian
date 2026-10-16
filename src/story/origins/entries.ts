@@ -166,5 +166,6 @@ export const beginningItems: Record<string, ItemDef> = {
     blurb: "A grey bead with a seam of green, finished on banked coals as the note said. It carries you over the threshold of Qi Condensation when you are close enough.",
     value: 8,
     aid: 1,
+    keepsake: true,
   },
 };

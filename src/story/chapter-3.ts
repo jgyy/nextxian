@@ -207,7 +207,7 @@ export const chapterThree: Scene[] = [
         label: "Pick up a brush, put on the grey sleeves of a scribe, and copy the Index by hand.",
         tone: "deceit",
         next: "archive_index",
-        effects: [{ kind: "setFlag", flag: "posed_as_scribe" }],
+        effects: [{ kind: "setFlag", flag: "posed_as_scribe" }, { kind: "wear", attire: "scholar" }],
       },
       {
         id: "back_out_for_roof",

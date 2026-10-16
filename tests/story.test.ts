@@ -298,6 +298,8 @@ describe("reactive NPC", () => {
 
   it("answers the same scenario differently across the trust tiers its choice can reach", () => {
     for (const scenario of Object.values(story.scenarios)) {
+      // A gift is answered from the pack, not from a scene: the pack tests read those.
+      if (scenario.id.startsWith("GIFT_")) continue;
       const { sceneId, choiceId, flags, stats, npc, realm, wealth, decisions, progress, hero } = locate(scenario.id);
       const reached = new Set<Tier>();
       const replies = new Set<string>();

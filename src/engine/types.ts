@@ -1,4 +1,4 @@
-import type { Hero, HeroField } from "./hero";
+import type { Attire, Hero, HeroField } from "./hero";
 import type { Element } from "./path";
 
 /** Player-facing numeric stats. `karma` may go negative; the others stay in 0..100. */
@@ -71,7 +71,11 @@ export type Condition =
   /** How old the hero is now: the years they began with, and a year for every stretch of decisions. */
   | { kind: "age"; min?: number; max?: number }
   /** How many years the hero has left at their realm, with any years they have been given. Zero or less means they are past them. */
-  | { kind: "years"; min?: number; max?: number };
+  | { kind: "years"; min?: number; max?: number }
+  /** Whether the hero owns a garment (worn or not). `is` defaults to true. What they wear now is read with the `hero` condition. */
+  | { kind: "wardrobe"; attire: Attire; is?: boolean }
+  /** How many garments the hero owns. */
+  | { kind: "garments"; min?: number; max?: number };
 
 export type Effect =
   | { kind: "setFlag"; flag: string; value?: boolean }
@@ -96,7 +100,13 @@ export type Effect =
   /** The hero stops holding an asset, by sale, loss or seizure. */
   | { kind: "loseAsset"; asset: string }
   /** Years added to the span the hero’s realm allows: an elixir, a debt of life paid, a road’s gift. */
-  | { kind: "addYears"; amount: number };
+  | { kind: "addYears"; amount: number }
+  /** The hero comes to own a garment, without putting it on. */
+  | { kind: "gainAttire"; attire: Attire }
+  /** The hero puts on a garment, owning it first if they did not. What they wear changes how the world reads them. */
+  | { kind: "wear"; attire: Attire }
+  /** The hero parts with a garment by sale, loss or gift. The last garment is never lost, and one that is worn gives way to the first they still own. */
+  | { kind: "loseAttire"; attire: Attire };
 
 /** The NPC reaction tiers, derived from trust. */
 export type Tier = "hostile" | "wary" | "neutral" | "warm" | "devoted";
@@ -218,6 +228,20 @@ export interface ItemDef {
   needsRealm?: number;
   /** A pill: the realm it helps its eater into. Eaten when the hero is within reach of that realm. */
   aid?: number;
+  /** What the hero can do with it from the pack. When absent, the kind decides: see `useOf` in the pack module. */
+  use?: ItemUse;
+  /** A keepsake belongs to the hero’s story: it can be carried and used, but not sold and not given away. */
+  keepsake?: boolean;
+}
+
+/** What using an item does: a verb for the button, the effects, whether it is used up, and how many decisions must pass before it can be used again. */
+export interface ItemUse {
+  verb: string;
+  /** What the log says, after the item’s name: “steadies your qi”. */
+  line: string;
+  effects: Effect[];
+  consume?: boolean;
+  cooldown?: number;
 }
 
 /** Something the hero holds that pays and costs on every payday: a stall, a plot, a share, a cave. */
@@ -301,6 +325,12 @@ export interface GameState {
   assets: string[];
   /** Years given to the hero’s span on top of what their realm allows. */
   years: number;
+  /** The garments the hero owns, in the order they came to own them. What they wear now is `hero.attire`. */
+  wardrobe: Attire[];
+  /** The dress the hero began in. A game restarted from the gate begins in it again, whatever the hero wears now. */
+  began: Attire;
+  /** The decision on which each item (by id) was last used, and on which the Elder last took a gift. */
+  usedAt: Record<string, number>;
   /** The hero’s cultivation speed in percent, worked out after every choice from their trade, pack and holdings. */
   speed: number;
   /** True while the hero is away from the sect and cannot pay the cost of living. */

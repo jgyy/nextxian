@@ -1,4 +1,6 @@
 import { REACHED_PREFIX, REALMS } from "./cultivation";
+import { ATTIRES } from "./hero";
+import { FROM_PREFIX, TO_PREFIX, WORE_PREFIX, woreFlag } from "./wardrobe";
 import { BOND_RANGE, NPC_RANGE, STAT_RANGE } from "./game";
 import { ORIGIN_START } from "./path";
 import type { Condition, Effect, Story } from "./types";
@@ -94,8 +96,8 @@ export function clash(conditions: Condition[]): string | undefined {
   return undefined;
 }
 
-/** Flags the engine itself sets, when a hero enters a realm. They need no choice to set them. */
-const isEngineFlag = (flag: string) => flag.startsWith(REACHED_PREFIX);
+/** Flags the engine itself sets: when a hero enters a realm, changes dress, or uses, sells or gives what they carry. They need no choice to set them. */
+const isEngineFlag = (flag: string) => [REACHED_PREFIX, WORE_PREFIX, FROM_PREFIX, TO_PREFIX, "pack_"].some((prefix) => flag.startsWith(prefix));
 
 const isFlag = (c: Condition): c is Extract<Condition, { kind: "flag" }> => c.kind === "flag";
 
@@ -239,7 +241,8 @@ export function metCompanions(story: Story): { atScene: Record<string, Set<strin
 
 /** Every flag that some choice or scenario sets, and every flag some condition reads. */
 export function flagUsage(story: Story): { set: Set<string>; read: Set<string> } {
-  const set = new Set<string>();
+  // A change of dress leaves a `wore_` flag for each garment the hero can put on, set by the engine whether a scene or the wardrobe panel asks.
+  const set = new Set<string>(ATTIRES.map((a) => woreFlag(a.value)));
   const read = new Set<string>();
   const prefixes = new Set<string>();
   const reads = (conditions: Condition[] | undefined) => {

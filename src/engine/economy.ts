@@ -2,6 +2,7 @@ import { REALMS, breakthroughNotes, heartDemonBlocks, reachedFlag } from "./cult
 import { ageSpeed, AGE_LABEL, lifeLeft, waningSpeed } from "./age";
 import { AGE_WEALTH, DEFAULT_HERO, type Background, type Hero, type Status } from "./hero";
 import { aidReachFor, attunementParts, holdingFactor, livingRebate, ORIGIN_LABEL, ORIGIN_WEALTH, originSpeed, talentSpeed, TALENT_LABEL, toolFactor, unfedFactor } from "./path";
+import { dressTrade } from "./wardrobe";
 import type { AssetDef, GameState, ItemDef, LogEntry, Story } from "./types";
 
 /**
@@ -125,14 +126,15 @@ export function scaled(amount: number, speed: number): number {
 export const tidy = (points: number): number => Math.round(points * 100) / 100;
 
 /** What one payday brings and costs the hero now, for the panel: stipend, income, upkeep and living. */
-export function ledgerOf(story: Story, state: Held): { stipend: number; income: number; upkeep: number; living: number; net: number } {
+export function ledgerOf(story: Story, state: Held): { stipend: number; income: number; upkeep: number; living: number; dress: number; dressCost: number; net: number } {
   const sect = inSect(story, state);
   const stipend = sect ? stipendFor(state.realm) : 0;
   const assets = held(story, state);
   const income = assets.reduce((n, a) => n + a.income, 0);
   const upkeep = assets.reduce((n, a) => n + a.upkeep, 0);
   const living = sect ? 0 : livingCostFor(state.realm, state.hero);
-  return { stipend, income, upkeep, living, net: stipend + income - upkeep - living };
+  const dressed = dressTrade(state.hero.attire, state.realm, !sect);
+  return { stipend, income, upkeep, living, dress: dressed.income, dressCost: dressed.upkeep, net: stipend + income - upkeep - living + dressed.income - dressed.upkeep };
 }
 
 const note = (text: string): LogEntry => ({ kind: "ledger", text });
@@ -160,6 +162,13 @@ export function payday(story: Story, state: GameState): GameState {
     } else {
       log.push(note(`Payday: you cannot meet the upkeep of ${asset.name}. Its keepers take it back.`));
     }
+  }
+  const dressed = dressTrade(state.hero.attire, state.realm, !sect);
+  wealth += dressed.income;
+  const dressPaid = Math.min(wealth, dressed.upkeep);
+  wealth -= dressPaid;
+  if (dressed.income > 0 || dressPaid > 0) {
+    log.push(note(`Payday: your dress brings in ${dressed.income} and costs ${dressPaid}.`));
   }
   const living = sect ? 0 : livingCostFor(state.realm, state.hero);
   const eaten = Math.min(wealth, living);
