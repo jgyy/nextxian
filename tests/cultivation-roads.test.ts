@@ -1,3 +1,4 @@
+import { ROAD_TOP } from "@/engine/realms";
 import { describe, expect, it } from "vitest";
 import { chapters, story } from "@/story";
 import { choose, createGame, enterScene, getChoices, getScene, settle } from "@/engine/game";
@@ -80,7 +81,7 @@ describe("the Cultivation Roads", () => {
     WAYSIDES6.forEach((w, n) => {
       const pills = SPECS6.slice(n * 4, n * 4 + 4).filter((s) => s.ware.kind === "pill");
       expect(pills, w.id).toHaveLength(1);
-      const next = Math.min(w.realm + 1, REALMS.length - 1);
+      const next = Math.min(w.realm + 1, ROAD_TOP);
       expect(story.items![`${pills[0].id}_ware`].aid, w.id).toBe(next);
       expect(pills[0].ware.blurb, w.id).toContain(REALMS[next].name);
     });
@@ -182,7 +183,7 @@ describe("the four practices", () => {
       return after.cultivation - s.cultivation;
     };
     const shallow = gain("cr_roof_dawn", 1, 40);
-    const deep = gain("cr_thresh_lintel", 5, 1900);
+    const deep = gain("cr_thresh_lintel", 5, 1800);
     expect(deep).toBeGreaterThan(shallow);
     expect(Math.round(shallow)).toBeGreaterThanOrEqual(3 + 2 * 1);
   });
@@ -205,7 +206,7 @@ describe("the four practices", () => {
     expect(view(ready(3, along(1, 10)), "push").available).toBe(false);
     expect(view(ready(3, along(1, 10)), "push").hint).toContain("three-quarters");
     expect(view(ready(3, along(1, CUSP)), "push").available).toBe(true);
-    const near = ready(3, along(1, 85));
+    const near = ready(3, { ...along(1, 85), stats: { qi: 100, karma: 0, insight: 100 } });
     const after = choose(story, near, "push");
     expect(after.cultivation).toBeGreaterThan(near.cultivation);
     expect(after.realm).toBe(2);
@@ -363,7 +364,7 @@ describe("the engine that reads cultivation", () => {
     expect(conditionsHold(parseConditions("progress>=50", "t"), at50)).toBe(true);
     expect(conditionsHold(parseConditions("progress>=60", "t"), at50)).toBe(false);
     expect(conditionsHold(parseConditions("progress<=55", "t"), at50)).toBe(true);
-    const top = state({ realm: 7, cultivation: REALMS[7].threshold });
+    const top = state({ realm: 9, cultivation: REALMS[9].threshold });
     expect(realmProgress(top)).toBe(1);
     expect(conditionsHold(parseConditions("progress>=100", "t"), top)).toBe(true);
     expect(conditionsHold(parseConditions("progress>=1", "t"), state({ realm: 0, cultivation: 0 }))).toBe(false);

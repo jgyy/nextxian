@@ -70,6 +70,12 @@ function Entry({ entry }: { entry: LogEntry }) {
           {entry.text}
         </p>
       );
+    case "wall":
+      return (
+        <p className="wall-line" role="status">
+          {entry.text}
+        </p>
+      );
     case "strain":
       return (
         <p className="strain-line" role="status">

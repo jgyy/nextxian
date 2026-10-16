@@ -296,7 +296,8 @@ describe("counting on the road", () => {
     const first = reckoningScenes[0];
     const s = choose(story, at(first.id, { wealth: 20, stats: { qi: 10, karma: 0, insight: 10 } }), "buy_0");
     expect(s.wealth).toBe(16);
-    expect(s.stats.qi).toBe(16);
+    // The meal gives six qi; the First Layer gives way on the same decision and takes one.
+    expect(s.stats.qi).toBe(15);
     expect(s.sceneId).toBe("departure_dawn");
     const shared = choose(story, at(first.id, { wealth: 20 }), "share");
     expect(shared.wealth).toBe(10);

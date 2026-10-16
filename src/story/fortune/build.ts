@@ -1,3 +1,4 @@
+import { ROAD_TOP } from "@/engine/realms";
 import { REALMS } from "@/engine/cultivation";
 import type { AssetDef, Choice, Condition, Effect, ItemDef, ItemKind, NpcScenario, Scene } from "@/engine/types";
 import { ATTIRES, BACKGROUNDS, GENDERS, LOOKS, STATUSES } from "@/engine/hero";
@@ -152,7 +153,7 @@ export function wareItem(spec: RoadSpec3, ctx: RoadContext3): ItemDef {
     kind: spec.ware.kind,
     blurb: spec.ware.blurb,
     value: p.value,
-    ...(spec.ware.kind === "pill" ? { aid: Math.min(ctx.realm + 1, REALMS.length - 1) } : { speed, needsRealm: Math.max(0, ctx.realm - 1) }),
+    ...(spec.ware.kind === "pill" ? { aid: Math.min(ctx.realm + 1, ROAD_TOP) } : { speed, needsRealm: Math.max(0, ctx.realm - 1) }),
   };
 }
 
@@ -400,7 +401,7 @@ export function buildRoad3(spec: RoadSpec3, ctx: RoadContext3): Scene[] {
           ),
           tone: "force",
           next,
-          needsRealm: Math.min(R + 1, REALMS.length - 1),
+          needsRealm: Math.min(R + 1, ROAD_TOP),
           effects: [{ kind: "addCultivation", amount: 6 + R * 2 }, { kind: "setFlag", flag: flag("reached") }],
         });
         eco({
@@ -635,7 +636,7 @@ export function buildReport3(spec: RoadSpec3, ctx: RoadContext3): NpcScenario {
       { when: [{ kind: "wealth", max: 2 }, { kind: "realm", min: 2 }], line: fill(REPORT_MEMORY3.broke, slots) },
       { when: [{ kind: "wealth", min: 120 }], line: fill(REPORT_MEMORY3.rich, slots) },
       { when: [{ kind: "tone", tone: "deceit", min: 3, within: 6 }], line: fill(REPORT_MEMORY2.deceit, slots) },
-      ...(R + 2 <= REALMS.length - 1 ? [{ when: [{ kind: "realm" as const, min: R + 2 }], line: fill(REPORT_MEMORY2.over, slots) }] : []),
+      ...(R + 2 <= ROAD_TOP ? [{ when: [{ kind: "realm" as const, min: R + 2 }], line: fill(REPORT_MEMORY2.over, slots) }] : []),
       ...(R >= 3 ? [{ when: [{ kind: "realm" as const, min: 1, max: R - 2 }], line: fill(REPORT_MEMORY2.under, slots) }] : []),
     ],
     remember: [reportedFlag3(id)],

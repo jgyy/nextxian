@@ -4,6 +4,8 @@ import { DAO_NAME, DAO_RANKS, daoRankOf, karmaChange, masteryGapFor, ORIGIN_STAR
 import { gainGarment, loseGarment, putOn } from "./wardrobe";
 import { applyAid, cultivationSpeed, giveItem, isUnfed, payday, PAYDAY_EVERY, scaled, startingWealth, takeItem, tidy } from "./economy";
 import { applyStrain, gainCultivation, MASTERY_GAIN, REALMS, MASTERY_GAP, realmForPoints, realmShortfall, realmSurplus, TONE_GAIN } from "./cultivation";
+import { layerForPoints, levelNow, levelOf, levelThreshold, TOP_LEVEL } from "./stages";
+import { STAGES_PER_REALM } from "./realms";
 import {
   conditionsHold,
   mannerShiftLine,
@@ -95,6 +97,7 @@ export function createGame(story: Story, hero: Hero = DEFAULT_HERO): GameState {
     tones: [],
     cultivation: points,
     realm: realmForPoints(points),
+    level: levelOf(realmForPoints(points), layerForPoints(realmForPoints(points), points)),
     bonds: {},
     daoPoints: 0,
     wealth: startingWealth(hero),
@@ -186,7 +189,21 @@ export function applyEffects(state: GameState, effects: Effect[] = [], speed = 1
         return { ...s, cultivation: tidy(s.cultivation + scaled(effect.amount, speed)) };
       case "reachGate": {
         const next = REALMS[s.realm + 1];
-        return next ? { ...s, cultivation: Math.max(s.cultivation, next.threshold) } : s;
+        if (!next) return s;
+        // The practice carries the hero up through the layers they had left, to the Tenth, where the next realm waits.
+        const top = levelOf(s.realm, STAGES_PER_REALM - 1);
+        const climbed = levelNow(s) < top;
+        return {
+          ...s,
+          cultivation: Math.max(s.cultivation, next.threshold),
+          level: top,
+          log: climbed ? [...s.log, { kind: "realm" as const, text: "The practice carries you up through the layers you had left, one after another, to the Tenth. The next realm stands at the end of it." }] : s.log,
+        };
+      }
+      case "pushWall": {
+        const here = levelNow(s);
+        if (here >= TOP_LEVEL) return s;
+        return { ...s, level: here, cultivation: Math.max(s.cultivation, levelThreshold(here + 1)) };
       }
       case "addWealth":
         return { ...s, wealth: Math.max(0, s.wealth + effect.amount) };

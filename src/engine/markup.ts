@@ -109,6 +109,7 @@ export function parseConditions(source: string, where: string): Condition[] {
       if ((STATS as string[]).includes(name)) out.push({ kind: "stat", stat: name as PlayerStat, ...rest });
       else if ((METRICS as string[]).includes(name)) out.push({ kind: "npc", metric: name as NpcMetric, ...rest });
       else if (name === "realm") out.push({ kind: "realm", ...rest });
+      else if (name === "level") out.push({ kind: "level", ...rest });
       else if (name === "roads") out.push({ kind: "roads", ...rest });
       else if (name === "progress") out.push({ kind: "progress", ...rest });
       else if (name === "decisions") out.push({ kind: "decisions", ...rest });

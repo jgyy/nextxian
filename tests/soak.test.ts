@@ -188,7 +188,7 @@ describe("a long walk through the Rank Roads", () => {
         const hero: Hero = { ...DEFAULT_HERO, gender, talent: talent.value, dao: dao.value, name: n % 2 ? "Mo Lan" : DEFAULT_HERO.name };
         const r = rng(n * 23 + 11);
         // Every hero begins at a different wayside and a different realm, so the walks between them meet every band of every rung.
-        const realm = (n * 3) % REALMS.length;
+        const realm = (n * 3) % 8;
         let g = createGame(story, hero);
         g = { ...g, sceneId: WAYSIDES10[n % WAYSIDES10.length].id, realm, cultivation: REALMS[realm].threshold + 5, wealth: 200, stats: { qi: 60, karma: 0, insight: 40 } };
         for (let i = 0; i < 500; i++) {

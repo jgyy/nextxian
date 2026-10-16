@@ -15,7 +15,7 @@ export function RankPanel({ game }: { game: GameState }) {
       <p className="eyebrow">Ranks</p>
       <h2 id="rank-title">{RANK_LEAN_LABEL[lean]}</h2>
       <ol className="rung-row" aria-label="Rank Roads walked at each rung">
-        {REALMS.map((realm, n) => (
+        {REALMS.slice(0, SHORT.length).map((realm, n) => (
           <li key={realm.name} data-here={game.realm === n ? "yes" : "no"} data-zero={rungs[n] === 0 ? "yes" : "no"} title={`${realm.name}: ${rungs[n]} of 4 roads`}>
             <span>{SHORT[n]}</span>
             <strong>{rungs[n]}</strong>

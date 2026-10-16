@@ -49,6 +49,7 @@ import { rankAssets, rankEntrances, rankGroups, rankItems, rankScenarios, waysid
 import { tribulationAssets, tribulationEntrances, tribulationGroups, tribulationItems, tribulationScenarios, waysideBack11 } from "./tribulation";
 import { wardrobeAssets, wardrobeEntrances, wardrobeGroups, wardrobeItems, wardrobeReports, waysideBack12 } from "./wardrobe";
 import { wardrobeScenarios } from "./wardrobe/scenarios";
+import { ascentEntrances, ascentGroups, ascentScenarios, waysideBack13 } from "./ascent";
 import { wardrobeEchoes } from "./wardrobe/echoes";
 import { wardrobeEndings } from "./wardrobe/endings";
 import { parsedWardrobeRemarks } from "./wardrobe/remarks";
@@ -133,9 +134,10 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
     const rank = rankEntrances[scene.id];
     const tribulation = tribulationEntrances[scene.id];
     const wardrobe = wardrobeEntrances[scene.id];
+    const ascent = ascentEntrances[scene.id];
     const doors = scene.id === GENDERED_ORIGIN ? genderedEntrances : [];
     const turns = chapter ? gateForce({ ...scene, choices: [...turnChoices(scene), ...customTurnChoices(scene), ...turnChoices10(scene)] }, Number(chapter[1])).choices : [...turnChoices(scene), ...customTurnChoices(scene), ...turnChoices10(scene)];
-    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : []), ...(dao ? [dao] : []), ...(witness ? [witness] : []), ...(cultivation ? [cultivation] : []), ...(crossing ? [crossing] : []), ...(age ? [age] : []), ...(custom ? [custom] : []), ...(rank ? [rank] : []), ...(tribulation ? [tribulation] : []), ...(wardrobe ? [wardrobe] : []), ...turns, ...doors] };
+    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : []), ...(dao ? [dao] : []), ...(witness ? [witness] : []), ...(cultivation ? [cultivation] : []), ...(crossing ? [crossing] : []), ...(age ? [age] : []), ...(custom ? [custom] : []), ...(rank ? [rank] : []), ...(tribulation ? [tribulation] : []), ...(wardrobe ? [wardrobe] : []), ...(ascent ? [ascent] : []), ...turns, ...doors] };
   });
   const groups = chapter ? roadGroups.filter((g) => g.chapter === Number(chapter[1])) : [];
   const fortunes = fortuneGroups
@@ -168,6 +170,9 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
   const wardrobes = wardrobeGroups
     .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
     .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack12(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+  const ascents = ascentGroups
+    .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+    .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack13(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
   const gendered = scenes.some((x) => x.id === GENDERED_ORIGIN)
     ? [{ name: genderedGroup.name, scenes: [...genderedGroup.scenes, genderedBack(scenes.find((x) => x.id === GENDERED_ORIGIN)!)] }]
     : [];
@@ -188,6 +193,7 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
     ...ranks,
     ...tribulations,
     ...wardrobes,
+    ...ascents,
     ...gendered,
   ];
 });
@@ -237,6 +243,7 @@ const bookGroups = books.flatMap((book) =>
       .map((scene) => (rankEntrances[scene.id] ? { ...scene, choices: [...scene.choices, rankEntrances[scene.id]] } : scene))
       .map((scene) => (tribulationEntrances[scene.id] ? { ...scene, choices: [...scene.choices, tribulationEntrances[scene.id]] } : scene))
       .map((scene) => (wardrobeEntrances[scene.id] ? { ...scene, choices: [...scene.choices, wardrobeEntrances[scene.id]] } : scene))
+      .map((scene) => (ascentEntrances[scene.id] ? { ...scene, choices: [...scene.choices, ascentEntrances[scene.id]] } : scene))
       .map((scene) => (turnChoices10(scene).length ? { ...scene, choices: [...scene.choices, ...turnChoices10(scene)] } : scene));
     const roads = realmRoadGroups
       .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
@@ -271,7 +278,10 @@ const bookGroups = books.flatMap((book) =>
     const wardrobes = wardrobeGroups
       .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
       .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack12(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
-    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes, ...daos, ...witnesses, ...cultivations, ...crossings, ...ages, ...customs, ...ranks, ...tribulations, ...wardrobes];
+    const ascents = ascentGroups
+      .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+      .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack13(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes, ...daos, ...witnesses, ...cultivations, ...crossings, ...ages, ...customs, ...ranks, ...tribulations, ...wardrobes, ...ascents];
   }),
 );
 
@@ -300,6 +310,7 @@ export const story: Story = {
   scenarios: {
     ...elderSuRealm({ ...elderSuScenarios, ...elderSuReactions, ...elderSuSidePaths, ...roadScenarios, ...realmRoadScenarios, ...fortuneScenarios, ...daoScenarios, ...witnessScenarios, ...cultivationScenarios, ...crossingScenarios, ...ageScenarios, ...customScenarios, ...rankScenarios, ...tribulationScenarios, ...wardrobeReports }),
     ...wardrobeScenarios,
+    ...ascentScenarios,
     ...Object.fromEntries(parseScenarios(scenariosOne, "scenarios-1").map((x) => [x.id, x])),
     ...Object.fromEntries(parseScenarios(pathScenarios, "path/scenarios").map((x) => [x.id, x])),
     ...turnScenarios(),

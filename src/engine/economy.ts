@@ -35,7 +35,7 @@ export const aptitudeFor = (hero: Hero): number => BACKGROUND_APTITUDE[hero.back
 export const stipendFor = (realm: number): number => 1 + realm;
 
 /** What it costs to live and cultivate away from the sect, per payday. A Mortal and a Qi Condenser live on rice; higher realms eat spirit stones. */
-const LIVING: readonly number[] = [0, 0, 1, 1, 2, 2, 3, 3];
+const LIVING: readonly number[] = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4];
 export const livingCostFor = (realm: number, hero: Hero = DEFAULT_HERO): number =>
   Math.max(0, LIVING[Math.min(Math.max(0, realm), LIVING.length - 1)] - livingRebate(hero));
 
@@ -212,6 +212,7 @@ export function applyAid(story: Story, state: GameState): GameState {
   return {
     ...raised,
     realm: next,
+    level: next * 10,
     flags: { ...raised.flags, [reachedFlag(next)]: true },
     flagAt: { ...raised.flagAt, [reachedFlag(next)]: raised.decisions },
     items: takeItem(state.items, pill.id),

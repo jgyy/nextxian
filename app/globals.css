@@ -1848,3 +1848,116 @@ button.ghost[aria-expanded="true"] {
 .wardrobe-list li[data-owned="no"] span {
   color: var(--muted);
 }
+
+/* ── Layers and walls ─────────────────────────────────────── */
+
+.layer-title {
+  margin: -4px 0 8px;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.layer-title em {
+  color: var(--gilt);
+}
+
+.layer-pips {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+}
+
+.layer-pips li {
+  height: 8px;
+  border-radius: 3px;
+  border: 1px solid var(--panel-edge);
+}
+
+.layer-pips li[data-state="passed"] {
+  background: var(--gilt-soft);
+  border-color: var(--gilt-soft);
+}
+
+.layer-pips li[data-state="current"] {
+  background: var(--gilt);
+  border-color: var(--gilt);
+  box-shadow: 0 0 8px var(--gilt);
+}
+
+.layer-bar {
+  display: block;
+  flex: none;
+  width: 100%;
+  height: 6px;
+  margin-bottom: 12px;
+}
+
+.fill-layer {
+  background: linear-gradient(90deg, var(--panel-edge), var(--gilt-soft));
+}
+
+.wall-card {
+  margin: 4px 0 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--panel-edge);
+  border-left: 3px solid var(--cinnabar);
+  border-radius: 0 10px 10px 0;
+  background: rgba(209, 73, 61, 0.06);
+}
+
+.wall-card[data-ready="yes"] {
+  border-left-color: var(--gilt);
+  background: rgba(217, 181, 106, 0.08);
+}
+
+.wall-card .eyebrow {
+  margin: 0 0 4px;
+}
+
+.wall-text {
+  margin: 0 0 8px;
+  font-size: 0.86rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.wall-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px 12px;
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.wall-stats div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.wall-stats dt {
+  color: var(--muted);
+}
+
+.wall-stats dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.wall-stats dd[data-enough="no"] {
+  color: var(--ember, #d9795a);
+}
+
+/* A wall that holds, or throws the hero back, is told in the log in the colour of the wall. */
+.wall-line {
+  margin: 14px 0;
+  padding: 10px 14px;
+  color: var(--text);
+  border-left: 3px solid var(--cinnabar);
+  background: rgba(209, 73, 61, 0.1);
+  border-radius: 0 10px 10px 0;
+  animation: ink-in 0.6s ease both;
+}

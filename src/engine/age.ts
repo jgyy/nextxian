@@ -28,7 +28,7 @@ export const AGE_BOUNDS: Record<Age, [number, number]> = {
 export const DECISIONS_PER_YEAR = 10;
 
 /** The years a body can last at each realm. A breakthrough is also a lengthening of life. */
-export const LIFESPAN: readonly number[] = [76, 110, 160, 250, 400, 620, 950, 1500];
+export const LIFESPAN: readonly number[] = [76, 110, 160, 250, 400, 620, 950, 1500, 2600, 4400];
 
 /** Years left at which a hero feels the end coming, and the point at which they are past it. */
 export const WANING_YEARS = 3;

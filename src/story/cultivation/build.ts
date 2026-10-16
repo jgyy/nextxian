@@ -1,3 +1,4 @@
+import { ROAD_TOP } from "@/engine/realms";
 import type { Choice, ChoiceTone, Condition, Effect, NpcScenario, Scene } from "@/engine/types";
 import { REALMS, REACHED_PREFIX, reachedFlag } from "@/engine/cultivation";
 import { CULTIVATION_DONE_ANY, CUSP, EARLY, PRACTICES, practicePrefix, type Practice, type Stretch } from "@/engine/practice";
@@ -244,7 +245,7 @@ export function buildPracticeScenario(practice: Practice, spec: RoadSpec6, ctx: 
     // A memory for a hero two realms above the last realm is no one's, so a road at the top asks nothing of it.
     memory: PRACTICE_MEMORY[practice]
       .map((variants, n) => ({ when: table[practice][n], line: fill(`${pick(variants, ctx.index + n)} ${tail("memory", n)}`, slots) }))
-      .filter((m) => !m.when.some((c) => c.kind === "realm" && (c.min ?? 0) > REALMS.length - 1)),
+      .filter((m) => !m.when.some((c) => c.kind === "realm" && (c.min ?? 0) > ROAD_TOP)),
   };
 }
 

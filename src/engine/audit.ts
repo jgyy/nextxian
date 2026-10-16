@@ -1,4 +1,5 @@
-import { REACHED_PREFIX, REALMS } from "./cultivation";
+import { LAYER_PREFIX, REACHED_PREFIX, REALMS } from "./cultivation";
+import { engineWallFlags, LEVELS, WALL_FAIL_PREFIX, WALL_HELD_PREFIX } from "./stages";
 import { ATTIRES } from "./hero";
 import { FROM_PREFIX, TO_PREFIX, WORE_PREFIX, woreFlag } from "./wardrobe";
 import { BOND_RANGE, NPC_RANGE, STAT_RANGE } from "./game";
@@ -41,7 +42,7 @@ export function clash(conditions: Condition[]): string | undefined {
       case "count": return `flags starting "${c.prefix}"`;
       case "item": return `item "${c.item}"`;
       case "affinity": return `${c.element} affinity`;
-      case "realm": case "progress": case "roads": case "decisions": case "standing": case "wealth": case "holdings": case "speed": case "mastery": case "age": case "years": return c.kind;
+      case "realm": case "level": case "progress": case "roads": case "decisions": case "standing": case "wealth": case "holdings": case "speed": case "mastery": case "age": case "years": return c.kind;
       default: return undefined;
     }
   };
@@ -97,7 +98,7 @@ export function clash(conditions: Condition[]): string | undefined {
 }
 
 /** Flags the engine itself sets: when a hero enters a realm, changes dress, or uses, sells or gives what they carry. They need no choice to set them. */
-const isEngineFlag = (flag: string) => [REACHED_PREFIX, WORE_PREFIX, FROM_PREFIX, TO_PREFIX, "pack_"].some((prefix) => flag.startsWith(prefix));
+const isEngineFlag = (flag: string) => [REACHED_PREFIX, LAYER_PREFIX, WORE_PREFIX, FROM_PREFIX, TO_PREFIX, "pack_"].some((prefix) => flag.startsWith(prefix));
 
 const isFlag = (c: Condition): c is Extract<Condition, { kind: "flag" }> => c.kind === "flag";
 
@@ -242,7 +243,7 @@ export function metCompanions(story: Story): { atScene: Record<string, Set<strin
 /** Every flag that some choice or scenario sets, and every flag some condition reads. */
 export function flagUsage(story: Story): { set: Set<string>; read: Set<string> } {
   // A change of dress leaves a `wore_` flag for each garment the hero can put on, set by the engine whether a scene or the wardrobe panel asks.
-  const set = new Set<string>(ATTIRES.map((a) => woreFlag(a.value)));
+  const set = new Set<string>([...ATTIRES.map((a) => woreFlag(a.value)), ...engineWallFlags()]);
   const read = new Set<string>();
   const prefixes = new Set<string>();
   const reads = (conditions: Condition[] | undefined) => {
@@ -278,7 +279,8 @@ export function auditStory(story: Story): AuditIssue[] {
   const issues: AuditIssue[] = [];
   const { set, read } = flagUsage(story);
   for (const flag of [...set].sort()) {
-    if (!read.has(flag)) issues.push({ kind: "dangling-flag", where: flag, message: `flag "${flag}" is set but nothing ever reads it` });
+    // The wall flags are the engine’s own record; the engine reads them when it weighs the next attempt.
+    if (!read.has(flag) && !flag.startsWith(WALL_FAIL_PREFIX) && !flag.startsWith(WALL_HELD_PREFIX)) issues.push({ kind: "dangling-flag", where: flag, message: `flag "${flag}" is set but nothing ever reads it` });
   }
 
   const possible = possibleFlags(story);
@@ -323,6 +325,11 @@ export function auditStory(story: Story): AuditIssue[] {
     if (c.kind === "item" && (c.min ?? (c.max === undefined ? 1 : 0)) > 0 && !given.has(c.item)) return `item "${c.item}", which nobody is ever given`;
     if (c.kind === "asset" && c.is !== false && !granted.has(c.asset)) return `holding "${c.asset}", which nobody is ever granted`;
     // The realms run from Mortal to Ascendant, so a bound below the first or above the last, or a minimum over the maximum, is held by no one.
+    if (c.kind === "level") {
+      const min = c.min ?? 0;
+      const max = c.max ?? LEVELS - 1;
+      if (min > LEVELS - 1 || max < 0 || min > max) return `a level from ${c.min ?? "the first"} to ${c.max ?? "the last"}, which no hero can have`;
+    }
     if (c.kind === "realm") {
       const top = REALMS.length - 1;
       const min = c.min ?? 0;

@@ -1,3 +1,4 @@
+import { ROAD_TOP } from "@/engine/realms";
 import { describe, expect, it } from "vitest";
 import { chapters, story } from "@/story";
 import { choose, createGame, enterScene, getChoices, getScene, settle } from "@/engine/game";
@@ -102,9 +103,9 @@ describe("the Crossing Roads", () => {
     WAYSIDES7.forEach((w, n) => {
       const pills = SPECS7.slice(n * 4, n * 4 + 4).filter((s) => s.ware.kind === "pill");
       expect(pills, w.id).toHaveLength(1);
-      const next = Math.min(w.realm + 1, REALMS.length - 1);
+      const next = Math.min(w.realm + 1, ROAD_TOP);
       expect(story.items![`${pills[0].id}_ware`].aid, w.id).toBe(next);
-      expect(pills[0].ware.blurb, w.id).toContain(next === REALMS.length - 1 ? "Ascendant" : REALMS[next].name);
+      expect(pills[0].ware.blurb, w.id).toContain(next === ROAD_TOP ? "Ascendant" : REALMS[next].name);
     });
     for (const s of SPECS7) {
       // A good is “the” and its name, so a keeper’s name in front of it reads “the Dongzhong’s Cracked Bell”.
