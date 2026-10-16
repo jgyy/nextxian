@@ -369,3 +369,38 @@ describe("the Breakthrough Roads", () => {
     expect(story.scenarios.BW_PRESS_3).toBeDefined();
   });
 });
+
+describe("walking the Breakthrough Roads at random", () => {
+  const rng = (seed: number) => {
+    let s = seed;
+    return () => {
+      s = (s * 1664525 + 1013904223) % 4294967296;
+      return s / 4294967296;
+    };
+  };
+
+  it("never leaves the ladder in a state it cannot read, whichever way a hero wanders, falls and climbs", () => {
+    for (let r = 0; r < 10; r++) {
+      const rand = rng(r * 131 + 7);
+      let g: GameState = { ...standing(r * 10 + 3, { stats: { qi: 80, karma: 10, insight: 60 } }), sceneId: hubId(r), wealth: 100 };
+      for (let i = 0; i < 700; i++) {
+        const scene = getScene(story, g.sceneId);
+        const open = getChoices(scene, g).filter((v) => v.available);
+        expect(open.length, g.sceneId).toBeGreaterThan(0);
+        // Keep the wander on the road: a leave-the-road choice sends the walk back to its start.
+        const onRoad = open.filter((v) => !v.choice.next.startsWith("back13_"));
+        const pool = onRoad.length ? onRoad : open;
+        g = choose(story, g, pool[Math.floor(rand() * pool.length)].choice.id);
+        // Time on the road lets the stations teach: a hero who rests regains the qi the walls took.
+        if (i % 40 === 39) g = { ...g, stats: { ...g.stats, qi: Math.min(100, g.stats.qi + 40), insight: Math.min(100, g.stats.insight + 10) } };
+        const level = levelNow(g);
+        expect(Math.floor(level / 10), `realm and level agree in ${g.sceneId}`).toBe(g.realm);
+        expect(g.cultivation, g.sceneId).toBeGreaterThanOrEqual(levelThreshold(level) - 0.01);
+        expect(g.cultivation, g.sceneId).toBeLessThanOrEqual(pointsCap(level) + 0.01);
+        expect(g.stats.qi).toBeGreaterThanOrEqual(0);
+        expect(g.stats.qi).toBeLessThanOrEqual(100);
+      }
+      expect(levelNow(g), `road ${r} lifts a hero`).toBeGreaterThan(r * 10 + 3);
+    }
+  });
+});

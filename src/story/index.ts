@@ -50,6 +50,8 @@ import { tribulationAssets, tribulationEntrances, tribulationGroups, tribulation
 import { wardrobeAssets, wardrobeEntrances, wardrobeGroups, wardrobeItems, wardrobeReports, waysideBack12 } from "./wardrobe";
 import { wardrobeScenarios } from "./wardrobe/scenarios";
 import { ascentEntrances, ascentGroups, ascentScenarios, waysideBack13 } from "./ascent";
+import { ascentEchoes } from "./ascent/echoes";
+import { parsedAscentRemarks } from "./ascent/remarks";
 import { wardrobeEchoes } from "./wardrobe/echoes";
 import { wardrobeEndings } from "./wardrobe/endings";
 import { parsedWardrobeRemarks } from "./wardrobe/remarks";
@@ -293,7 +295,7 @@ const rawChapters: { name: string; scenes: Scene[] }[] = [
 ].map((g) => ({ ...g, scenes: wardrobeEndings(tribulationEndings(rankEndings(customEndings(ageEndings(economyEndings(routeThroughReckonings(g.scenes))))))) }));
 
 /** Echoes written inside the books can land on any scene, including those of Book One. */
-const bookEchoes = books.flatMap((book) => book.arcs.flatMap((arc) => (arc.echoes ? parseEchoes(arc.echoes, `${book.id}/${arc.id}/echoes`) : []))).concat(parseEchoes(ageBookEchoes, "age/book-echoes"), parseEchoes(customBookEchoes, "custom/book-echoes"), parseEchoes(rankEchoes, "rank/echoes"), parseEchoes(tribulationEchoes, "tribulation/echoes"), parseEchoes(wardrobeEchoes, "wardrobe/echoes"));
+const bookEchoes = books.flatMap((book) => book.arcs.flatMap((arc) => (arc.echoes ? parseEchoes(arc.echoes, `${book.id}/${arc.id}/echoes`) : []))).concat(parseEchoes(ageBookEchoes, "age/book-echoes"), parseEchoes(customBookEchoes, "custom/book-echoes"), parseEchoes(rankEchoes, "rank/echoes"), parseEchoes(tribulationEchoes, "tribulation/echoes"), parseEchoes(wardrobeEchoes, "wardrobe/echoes"), parseEchoes(ascentEchoes, "ascent/echoes"));
 export const chapters: { name: string; scenes: Scene[] }[] = (() => {
   if (bookEchoes.length === 0) return rawChapters;
   const echoed = new Map(applyEchoes(rawChapters.flatMap((c) => c.scenes), bookEchoes).map((s) => [s.id, s]));
@@ -344,5 +346,6 @@ export const story: Story = {
     ...parsedGenderedRemarks(),
     ...parseRemarks(heroRemarks, "hero/remarks"),
     ...books.flatMap((book) => book.arcs.flatMap((arc) => (arc.remarks ? parseRemarks(arc.remarks, `${book.id}/${arc.id}/remarks`) : []))),
+    ...parsedAscentRemarks(),
   ],
 };
