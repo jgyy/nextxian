@@ -544,7 +544,7 @@ They don’t know. That is the astonishing thing. The little girl asks what the 
 “Why?”
 “Because you like it.”
 “Why do you like it?”
-“I don’t… ” She falters. “You just do.”
+“I don’t…” She falters. “You just do.”
 A boy puts up his hand. “Can I do it now?”
 “Now?” She gapes. “Aye. If you… certainly. If you like.”
 He thinks about it. He looks at the dusty yard, the sooty sky, the huge dark furnace. He picks up a stick. He takes a few steps. He flings it, as hard as he can, into the air. It goes up in a long curve and falls in the dust.

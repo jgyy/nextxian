@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { chapters, story } from "@/story";
 import { choose, createGame, getChoices, getScene } from "@/engine/game";
+import { levelThreshold } from "@/engine/stages";
 import { conditionsHold } from "@/engine/npc";
 import { DEFAULT_HERO, GENDERS, type Hero } from "@/engine/hero";
 import { auditStory } from "@/engine/audit";
@@ -505,5 +506,48 @@ describe("the panel’s ledger", () => {
   it("gives the specs their reach order", () => {
     expect(SPECS.map((r) => r.id)).toEqual(REACH_SPECS.map((r) => r.id));
     expect(COURSES).toEqual(["broke", "ground", "mended"] as Course[]);
+  });
+});
+
+describe("a long walk through the World Roads", () => {
+  const FIRST: Record<Part, string> = { look: "inquiry", hand: "mercy", side: "truth", hinge: "force" };
+
+  it("takes every part of every affair, in every way, from the word of it to the hub, with the course and the numbers sound", () => {
+    for (const [i, a] of AFFAIRS.entries()) {
+      const c = contexts[i];
+      for (const part of PARTS) {
+        for (const method of METHODS) {
+          const start = at(sid(a.id, "sighting"), { wealth: 60, realm: 7, level: 70, cultivation: levelThreshold(70) });
+          const end = walk(start, [`part_${part}`, FIRST[part], "inquiry", method, "qi", "truth", "quiet", "quiet", method === "turned" ? "true_account" : "quiet", method === "turned" ? "report" : "silent"]);
+          const where = `${a.id}/${part}/${method}`;
+          expect(end.sceneId, where).toBe(c.reachId);
+          expect(end.flags[outFlag(c.reach, a.id, courseAfter(a.fate, part, method))], where).toBe(true);
+          expect(end.flags[doneFlag(c.reach, a.id)], where).toBe(true);
+          expect(worldMeasure(end.flags, "voices"), where).toBe(1);
+          expect(worldMeasure(end.flags, "weight"), where).toBe(PART_WEIGHT[part]);
+          expect(end.stats.qi, where).toBeGreaterThanOrEqual(0);
+          expect(end.stats.qi, where).toBeLessThanOrEqual(100);
+          expect(end.wealth, where).toBeGreaterThanOrEqual(0);
+        }
+      }
+    }
+  });
+
+  it("lets a hero take part in all forty affairs and still stand sound: forty voices, a weight of the parts taken, and nothing set twice", () => {
+    let g = at("gate", { wealth: 400, realm: 7, level: 70, cultivation: levelThreshold(70) });
+    const parts = PARTS;
+    for (const [i, a] of AFFAIRS.entries()) {
+      const part = parts[i % 4];
+      g = { ...g, sceneId: sid(a.id, "sighting") };
+      g = walk(g, [`part_${part}`, FIRST[part], "inquiry", "turned", "qi", "truth", "accept", "quiet", "true_account", "report"]);
+    }
+    expect(worldMeasure(g.flags, "voices")).toBe(40);
+    expect(worldMeasure(g.flags, "weight")).toBe(10 * (PART_WEIGHT.look + PART_WEIGHT.hand + PART_WEIGHT.side + PART_WEIGHT.hinge));
+    expect(worldMeasure(g.flags, "hinges")).toBe(10);
+    expect(worldMeasure(g.flags, "records")).toBe(40);
+    expect(worldMeasure(g.flags, "done")).toBe(40);
+    expect(Object.keys(g.items).filter((k) => /^wo_.*_token$/.test(k))).toHaveLength(40);
+    expect(roleOf(g.flags).id).toBe("hinge");
+    expect(g.stats.karma).toBeLessThanOrEqual(100);
   });
 });

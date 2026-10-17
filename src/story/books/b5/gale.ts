@@ -179,7 +179,7 @@ She is reciting a statute.
 “Then why?”
 “It is soothing.” Her eyes are tight shut. “It is full of subordinate clauses. One can hold on to them.”
 You put your arm round her shoulders. She is rigid. “Say another.”
-“Article ten. The master of a vessel in extremity shall be answerable only to the… only to… ” She breaks off. “I cannot remember article ten.”
+“Article ten. The master of a vessel in extremity shall be answerable only to the… only to…” She breaks off. “I cannot remember article ten.”
 “Make one up.”
 Her eyes open. “I beg your pardon?”
 “Invent one. Say what you wish it said.”

@@ -23,7 +23,7 @@ const SOURCE = String.raw`
 % su_as_top_5 | level>=59 | elder | Every cord but one is gone. I do not ask which. I ask only that you do not look for it with your eyes.
 % su_as_mid_6 | level>=64 | elder | You are on the road, and it is a road, and the weather is the weather. Do not stand under a roof because you are tired. Stand under it because you are wise, if you are.
 % su_as_top_6 | level>=69 | elder | The Threshold. You are at the door, and I have nothing left to teach you, only things to be silent about. I find the silence harder than the teaching.
-% su_as_mid_7 | level>=74 | elder | Five layers of the open door. The draught comes through now, and I am old, and it is the first time in forty years that I have felt my own breath leave me for someone else.
+% su_as_mid_7 | level>=74 | elder | Five layers of the open door. The draught comes through now, and I am no longer young, and it is the first time in twenty years that I have felt my own breath leave me for someone else.
 % su_as_top_7 | level>=79 | elder | The empty doorway. The next step is the one I have never taken. I will hold the lamp, and I will not watch, and I will be listening.
 % su_as_mid_8 | level>=84 | elder | The garden has a winter now, I hear, and it is yours. Be kind to it. It is the only winter in a very long noon.
 % su_as_top_8 | level>=89 | elder | Lastness. You are the last who remembers what you remember, and I am one of the things you remember. I am glad of it, and do not know whom to thank.
@@ -31,7 +31,7 @@ const SOURCE = String.raw`
 % su_as_top_9 | level>=98 | elder | One layer from the last. I think there is no wall above it. If you find that there is, come and tell me before you tell the sect.
 // ---- The Elder: the walls themselves
 % su_as_prep_1 | count:bwp_>=1 | elder | You have gone at a wall by a method and not only by hope. That is how it is done. A wall that has been practised against is a wall that has begun to know your name.
-% su_as_prep_8 | count:bwp_>=8 | elder | Eight methods practised against walls, and some of them twice over. I have trained cultivators for forty years who could not have told me eight things they did to prepare.
+% su_as_prep_8 | count:bwp_>=8 | elder | Eight methods practised against walls, and some of them twice over. I have trained cultivators for twenty years who could not have told me eight things they did to prepare.
 % su_as_held_1 | count:bwh_>=1 | elder | A wall held you for want of qi, or of insight. Do not take it as an insult. It is a ledger, and the ledger said you had not the means. Go and get them, and it will say otherwise.
 % su_as_fall_1 | count:bwf_>=1 | elder | A wall threw you back. Good. I do not mean that unkindly. The ones that never throw a hero have not been pushed at, and the ones that have are known better afterwards.
 % su_as_fall_3 | count:bwf_>=3 | elder | Three falls, and you are still on your feet. A hero who has been thrown three times either gives up or begins to know the wall. Tell me which you are.

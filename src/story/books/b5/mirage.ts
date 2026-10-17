@@ -113,7 +113,7 @@ His head goes up. The tears stop. “That’s it,” he says, in an astonished w
 
 === mirage_a1s6 | Shoes
 He remembers everything. It comes pouring out of him in a flood, there on the warm quay: a cobbler’s shop in a lane in the Southern River Provinces, a wife with a sharp tongue, a son who wanted to be a sailor. A debt. A forged signature. A knock on the door in the night. A man in green who said, *There is a place you can go.*
-“I wanted to,” he says. His voice cracks. “I was so tired. I thought, if I just go, they can’t take the shop. They can’t… ” He looks at his hands. “I left them. My wife. My boy. I left them in the shop.”
+“I wanted to,” he says. His voice cracks. “I was so tired. I thought, if I just go, they can’t take the shop. They can’t…” He looks at his hands. “I left them. My wife. My boy. I left them in the shop.”
 “How long ago?”
 “I don’t know.”
 “Eight years,” says Hao Lan. She is holding a battered ledger she has taken from the harbour-master’s office. “It’s in the register. Tao Tao. Struck on the fourth of the sixth month. Arrived on the sixth.”
@@ -660,7 +660,7 @@ She stares. “What do you mean?”
   scenarios: String.raw`
 $ SU_MIRAGE_NAME | trust+3 respect+3 fear+4 | elder | The Elder is offered a name in a city that has no records.
 hostile: They gave me a card. It said ‘Wanru, Registrar of Nothing.’ It was a joke. It was the cruellest accurate thing anyone has said to me. I put it in my pocket, and I have it still.
-wary: A woman in white asked what I would like to be called. I said I did not know. She said that was the usual answer, and that it generally took a week. I thought: I have been the Registrar for thirty years and never once been asked.
+wary: A woman in white asked what I would like to be called. I said I did not know. She said that was the usual answer, and that it generally took a week. I thought: I have signed the Law’s orders for eighteen years and never once been asked.
 neutral: The city has no ledger. I looked for one. I looked in every tower. It was the first place in my life that I have been in without being written down, and I found, unexpectedly, that I slept.
 warm: Hanzhen was offered a name. It was a good one. It had no history. He held the card for a very long time and then said, ‘I think I’ll stay Gu.’ I was proud of him, and did not say so, because he would have been embarrassed.
 devoted: I should like to remember it as the city where I was not afraid. I know that it was only a refuge. I know that what it offered was the loss of everything. But I was not afraid. I shall keep that.

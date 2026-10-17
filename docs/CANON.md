@@ -73,7 +73,7 @@ What a person wears is read before they are spoken to, and the mountain keeps ei
 
 A hero begins in one of five dresses (patched hemp, an oiled cloak, an ink-stained robe, embroidered silk, a scale jerkin) and may come to own all five. The sect reads whichever the hero has on: the standing it gives, what a keeper prices, what a warden rules, what a masker lends and what a mender finds torn. A hero’s change of dress is something the Elder, Su Wanru, notices before the hero has said a word, and she says so a few decisions later. The keepsakes of a hero’s own story (the Sisters’ Book, the Wardens’ Iron Tally, the message fifteen years late, the Master’s Last Pill) are not goods, and no buyer is offered them.
 
-### The seven endings
+### The nine endings
 
 | Ending | What it asks |
 | --- | --- |
@@ -83,7 +83,22 @@ A hero begins in one of five dresses (patched hemp, an oiled cloak, an ink-stain
 | The Warden of the Mist | Dao Seeking |
 | The Price of the Hand | forcing it below Dao Seeking |
 | The Hollow Seat | karma below −30 and Core Formation |
+| The Many Hands | the Gathering, and enough of the world that answers: ten reaches, three or more of them heard from by many voices |
+| A Hinge of the Age | the Gathering, and the hero was the hinge of enough of the forty affairs that the age turned on them |
 | The Closed Ledger | always open |
+
+## The world (fixed in the World Roads)
+
+The mountain is not the world. Below and around it lie **ten reaches**, each a place the story already passes and each with **four affairs** going on that the Concord counts as one line in a report: the terraces below the mountain, the Pilgrim Stairs, the quarry country, the neighbour sects of the Cloud Gap, the river provinces, the Salt Coast, the Ash Steppe, the shore and camps of the Glass Sea, the Nine Tiers, and the foot of the Shut Sect. That is **forty affairs** (the Lower Granary, the Spring Levy, the Bitter Well, the Borrowed Peak, the Audit of Heron County, the Brine Quarrel, the Remount Levy, the Cage of the Descent, the Masters’ Quarrel, the Fourteen Names, and thirty more).
+
+- **Fate.** Every affair has a fate, what it does if nobody touches it: it **mends**, it **grinds on**, or it **breaks**. Time passes in the affair whether or not the hero visits.
+- **Part.** The hero may take no part (they only hear), or a small one (**look**, **hand**), or a large one (**side**, **hinge**). A look moves the affair a little; a hinge may change its course. A hero who takes only small parts across forty affairs still matters, and is told so.
+- **Method.** An affair is turned by finding its lever (a flag from elsewhere in the story), forced by realm, bargained, or paid for.
+- **Course.** The result is that the affair is mended, ground on, or broken, and is remembered by the people in it. The Elder hears of each (she has an opinion on the neighbour sects and on the terraces; she was Registrar for six years and has been Elder for twelve).
+- **The Gathering.** Before the Last Sealing the world comes up the road. Each reach sends a voice that speaks for its four affairs, touched or not, and a reach with two voices or more **answers**. A hero who touched nothing is met by the world’s silence, and the Gathering says so.
+- **Roles.** From the sum, the hero is **unseen**, a **witness**, a **hand**, one of **many** hands, or a **hinge**.
+
+Voices in the world are not all new: Qiu (a young woman who keeps the dark Salt Lamp and writes on slates), Lian Sheng (a woman), the matron Ye Qing of the Orphans’ Terrace, Carver Sun of the Wall of Names, and the cage on glass cables that carries the descent keep the roles the earlier books gave them.
 
 ## Conventions for writers
 
