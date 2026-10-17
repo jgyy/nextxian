@@ -8,7 +8,8 @@ import { ELEMENTS, type Element } from "@/engine/path";
 import { levelThreshold } from "@/engine/stages";
 import { validateEconomy, validateStory, MAX_SCENE_WORDS, sceneBodyWords } from "@/engine/validate";
 import { auditStory } from "@/engine/audit";
-import { FOES, WAYSIDES14, huntContexts, huntGroups, huntItems, huntScenarios } from "@/story/hunts";
+import { FOES, WAYSIDES14, foeAt, huntContexts, huntGroups, huntItems, huntRecord, huntScenarios } from "@/story/hunts";
+import { KEY_STANCES, STANCE_SCENES, stanceFlag } from "@/story/hunts/stances";
 import { donePrefix14, doneFlag14, foeLevel, holdFlag, reportId14, spoilId, spoilValue } from "@/story/hunts/build";
 import { CRAFTS } from "@/story/hunts/lexicon-dao";
 import { DAO_TURNS, GENDER_TURNS, daoTurnFlag, daoTurnScenarioId, genderTurnFlag, genderTurnScenarioId, turnChoices14, turnScenarios14 } from "@/story/hunts/main";
@@ -366,6 +367,105 @@ describe("the Dao and gender turns in the main line", () => {
     const remarks = (story.remarks ?? []).filter((r) => r.id.startsWith("su_dt_") || r.id.startsWith("su_gt_"));
     expect(remarks.map((r) => r.id).sort()).toEqual(["su_dt_3", "su_dt_6", "su_dt_9", "su_gt_3", "su_gt_6", "su_gt_9"]);
     for (const r of remarks) expect(r.when.some((c) => c.kind === "count"), r.id).toBe(true);
+  });
+});
+
+describe("where the hero stood at the Sealing Night", () => {
+  const shownAt = (id: string, flags: Record<string, boolean>) => text(enterScene(story, { ...standing(30, id), flags }, getScene(story, id)));
+
+  it("marks every choice of the memory’s scenes with the tone it was made in, and the choices that matter most by name", () => {
+    expect(STANCE_SCENES.length).toBeGreaterThanOrEqual(20);
+    for (const id of STANCE_SCENES) {
+      const scene = story.scenes[id];
+      expect(scene, id).toBeDefined();
+      for (const c of scene.choices) expect(c.effects, `${id}>${c.id}`).toContainEqual({ kind: "setFlag", flag: stanceFlag(c.tone, id) });
+    }
+    for (const [id, keys] of Object.entries(KEY_STANCES)) {
+      for (const [choice, flag] of Object.entries(keys)) {
+        expect(story.scenes[id].choices.find((c) => c.id === choice)!.effects, `${id}>${choice}`).toContainEqual({ kind: "setFlag", flag });
+      }
+    }
+  });
+
+  it("walks a hero through the cleft and has the next morning, the Listener and the Hall remember what they did", () => {
+    let g = standing(30, "sealing_choice_2", {}, {});
+    g = walk(g, ["cut_chains"]);
+    expect(g.flags.sn_chains_cut).toBe(true);
+    expect(g.flags[stanceFlag("force", "sealing_choice_2")] || g.flags[stanceFlag("mercy", "sealing_choice_2")] || g.flags[stanceFlag("truth", "sealing_choice_2")]).toBe(true);
+    expect(shownAt("rumours_21", { sn_chains_cut: true })).toMatch(/cut the chains/);
+    expect(shownAt("rumours_21", { sn_took_jade: true })).toMatch(/took the jade/);
+    expect(shownAt("rumours_21", { sn_chains_cut: true, sn_elder_refused: true })).toMatch(/took the brush from the young Registrar/);
+    expect(shownAt("lastseal_entry", { sn_sang: true })).toMatch(/You hummed/);
+    expect(shownAt("rumours_21", {})).not.toMatch(/cut the chains|took the jade/);
+  });
+
+  it("has the Hall read the whole night, one way for each tone, once a hero has stood in it often enough", () => {
+    expect(shownAt("rumours_22", { st_mercy_a: true, st_mercy_b: true, st_mercy_c: true })).toMatch(/open hands/);
+    expect(shownAt("rumours_22", { st_force_a: true, st_force_b: true, st_force_c: true })).toMatch(/tore, shouted and seized/);
+    expect(shownAt("rumours_22", { st_deceit_a: true, st_deceit_b: true })).toMatch(/reached for a lie/);
+    expect(shownAt("rumours_22", { st_mercy_a: true })).not.toMatch(/open hands/);
+  });
+
+  it("keeps every scene that reads it within the cap, with both stances shown at once", () => {
+    for (const id of ["rumours_21", "rumours_22", "lastseal_entry", "archive_front_3", "descent_return_2", "tribunal_summons_3", "mist_remembers_3"]) {
+      expect(sceneBodyWords(story.scenes[id]), id).toBeLessThanOrEqual(MAX_SCENE_WORDS);
+    }
+  });
+});
+
+describe("the fight panel’s facts", () => {
+  it("knows which foe a scene belongs to, and none for a scene outside the hunts", () => {
+    expect(foeAt("hu_tuskboar_a2s3")?.spec.name).toBe("the tusk-boar");
+    expect(foeAt("hu_tuskboar_a2s3")?.ctx.realm).toBe(0);
+    expect(foeAt("hu_paperwyrm_return")?.ctx.realm).toBe(6);
+    expect(foeAt("gate")).toBeUndefined();
+    expect(foeAt("wayside_hunt_barley")).toBeUndefined();
+  });
+
+  it("counts the foes dealt with at each hub, ten hubs of four", () => {
+    const flags = { [doneFlag14(1, "hu_tuskboar")]: true, [doneFlag14(1, "hu_voicefox")]: true, [doneFlag14(10, "hu_paperwyrm")]: true };
+    const record = huntRecord(flags);
+    expect(record).toHaveLength(10);
+    expect(record.map((r) => r.done)).toEqual([2, 0, 0, 0, 0, 0, 0, 0, 0, 1]);
+    expect(huntRecord({}).every((r) => r.done === 0)).toBe(true);
+  });
+});
+
+describe("the balance of the forty fights", () => {
+  /** A plain hero (mixed roots, no Dao, middling qi and insight) a few levels up the hub’s realm, who has taken the way of reading the foe and chosen in its soft tone at every turn. */
+  const readAt = (i: number, plus: number) => {
+    const f = FOES[i];
+    const ctx = huntContexts[i];
+    const g = standing(ctx.realm * 10 + plus, `${f.id}_sighting`, {}, { talent: "mixed", dao: "none" });
+    return walk(g, ["approach_2", f.soft, f.soft, f.soft]);
+  };
+  /** The same hero at the crisis with no foothold at all: they have not read the foe, and chose nothing in particular. */
+  const blindAt = (i: number, plus: number) => {
+    const f = FOES[i];
+    return standing(huntContexts[i].realm * 10 + plus, `${f.id}_a2s3`, {}, { talent: "mixed", dao: "none" });
+  };
+
+  it("lets a plain hero a few layers up the realm end every fight, by strength if they read the foe and by guile if they did not", () => {
+    for (let i = 0; i < 40; i++) {
+      const f = FOES[i];
+      const ends = open(readAt(i, 2));
+      expect(ends.includes("finish") || ends.includes("ruse"), `${f.id} read`).toBe(true);
+      expect(ends, f.id).toContain("off");
+      const blind = open(blindAt(i, 5));
+      expect(blind.includes("finish") || blind.includes("ruse"), `${f.id} blind`).toBe(true);
+    }
+  });
+
+  it("keeps the strongest stroke out of reach of a hero far below the foe, who is always shown a way out", () => {
+    for (let i = 0; i < 40; i += 5) {
+      const f = FOES[i];
+      const ctx = huntContexts[i];
+      const weak = standing(Math.max(0, ctx.realm * 10 - 6), `${f.id}_a0s3`, { stats: { qi: 8, karma: 0, insight: 5 } }, { talent: "wood", dao: "none" });
+      const ids = open(weak);
+      expect(ids, f.id).not.toContain("finish");
+      expect(ids, f.id).not.toContain("craft");
+      expect(ids, f.id).toContain("off");
+    }
   });
 });
 

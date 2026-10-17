@@ -19,6 +19,7 @@ flowchart LR
     TB["tribulation/<br/>eight Tribulation Roads, 1,008 scenes:<br/>four keepers who bow by the realm, a rehearsal of the trial,<br/>echoes where the world bows to the realm"]
     WD["wardrobe/<br/>eight Wardrobe Roads, 1,008 scenes:<br/>four keepers who read the dress, a six-scene fitting<br/>(counter, rack, verdict, commission, hatch, mirror),<br/>echoes, endings and the Elder’s remarks on a change of dress"]
     AS["ascent/<br/>ten Breakthrough Roads, 1,000 scenes:<br/>a hundred walls of ten scenes (the wall, four ways,<br/>the hour, after, rest, the Elder, what it leaves),<br/>layer echoes and remarks"]
+    HU["hunts/<br/>ten Hunt Roads, forty fights, 1,010 scenes:<br/>the edge, a Dao stroke and a gender stroke at every turn,<br/>twelve Dao turns and ten gender turns in the main line,<br/>the Sealing Night’s stances"]
     GD["gendered/<br/>Left Cloister, Right Yard, Third Door"]
     OG["origins/<br/>twelve beginnings, eleven prologues"]
     EC["economy/<br/>five reckonings, seven ending epilogues,<br/>remarks on the purse and the pack"]
@@ -46,9 +47,10 @@ flowchart LR
     WE["wardrobe.ts<br/>five garments, wear, gain, lose, price, pawn,<br/>what a dress pays and costs on a payday"]
     PK["pack.ts<br/>use, sell and give an item,<br/>dress changes from the panel"]
     RKE["rank.ts<br/>bandOf, bandsAt, rankSummary:<br/>yielded, claimed, veiled, lifted"]
+    FI["fight.ts<br/>edgeParts, edgeOf: level, craft, root,<br/>bane, qi, footholds"]
   end
   subgraph UI["src/components + app/"]
-    CR["Creation.tsx<br/>who climbs the mountain"]
+    CR["Creation.tsx<br/>who climbs the mountain,<br/>every choice drawn at random"]
     HP["HeroPanel.tsx<br/>name, traits, standing"]
     GV["GameView.tsx<br/>VN stage, choices, backlog"]
     TL["ToneLegend.tsx<br/>what each colour means"]
@@ -62,8 +64,9 @@ flowchart LR
     TRP["TribulationPanel.tsx<br/>the eight trials, how the sect bows"]
     WP["WardrobePanel.tsx<br/>the dress worn, the dresses owned, Wear"]
     RKP["RankPanel.tsx<br/>rank roads at each rung, the ways taken"]
+    FP["FightPanel.tsx<br/>the edge part by part, the forty foes"]
   end
-  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & TB & WD & AS & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & TB & WD & AS & HU & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
   G --> AG
@@ -90,6 +93,10 @@ flowchart LR
   TRE --> CU
   TRE --> TRP
   RKE --> RKP
+  HU --> FI
+  FI --> N
+  FI --> FP
+  HR --> FI
   G --> N
   G --> TN
   G --> CU
@@ -102,7 +109,7 @@ flowchart LR
   GV --> SV
   GV --> CR
   CR -->|Hero| G
-  GV --> NP & SP & CP & HP & PP & XP & AP & CUP & RKP & TRP & WP
+  GV --> NP & SP & CP & HP & PP & XP & AP & CUP & RKP & TRP & WP & FP
   GV -->|localStorage save| Storage[("Browser storage")]
 ```
 
@@ -950,3 +957,30 @@ flowchart LR
 The press is a real attempt. The `pushWall` effect raises the points to the wall, and `gainCultivation` runs the same decision, so the scene after reads `level` to say what happened. A method is practised once for each wall (`bwp_<n>_<k>`); the engine sets `bwf_<n>_<k>` for each fall and `bwh_<n>` when a wall holds a hero, and the audit knows these as the engine’s own flags.
 
 The older road families were written for eight realms and keep their ladder: `ROAD_TOP` is Ascendant, and a True Immortal or a Dao Sovereign who walks into one of them is met as an Ascendant is.
+
+## Hunt Roads and the edge
+
+The ladder says how far a hero has climbed. A fight asks something else: how they stand against *this* foe. `src/engine/fight.ts` answers with a number, the **edge**, from the level, the Dao’s rank, the roots against the element the foe fears, a foe’s bane Dao, the hero’s qi, and the footholds won earlier in the fight. It is a pure function of the state, exposed to scenes as the `edge` condition (`{ kind: "edge", foe, weak, bane?, boost?, min?, max? }`), so a scene can show a stroke only to a hero who could make it, and the validator and the audit see it like any other condition. The footholds are flags the hunt itself sets, named in `boost`, so the audit reads them as read.
+
+```mermaid
+flowchart TD
+  F["spec: foes-N.ts<br/>name, kind, element, weak, bane, soft tone,<br/>sight, tell, strike, wound, hide, lore,<br/>a sentence for each gender, eight beats"] --> B["hunts/build.ts<br/>buildHunt: 25 scenes<br/>buildReport14: the Elder’s report<br/>spoilItem: what it leaves"]
+  L["lexicon.ts, lexicon-dao.ts,<br/>lexicon-gender.ts, lexicon-end.ts<br/>shared wording, three or four variants each"] --> B
+  B --> I["hunts/index.ts<br/>ten hubs, entrances, groups, scenarios, items"]
+  I --> S["story/index.ts<br/>an entrance on a scene of the story<br/>and one on a book hub; the back scene"]
+  FI["engine/fight.ts: edgeOf"] --> N["npc.ts: conditionsHold, case edge"]
+  N --> S
+  M["hunts/main.ts: 12 Dao turns, 10 gender turns<br/>turnChoices14, turnScenarios14, remarks"] --> S
+  ST["hunts/stances.ts: withStance<br/>24 scenes, 112 choices, 8 named"] --> S
+  EC["hunts/echoes.ts<br/>the morning after, the Listener,<br/>the Judgment, the tribunal, the mist"] --> S
+```
+
+**One hunt.** The sighting reads the hero (a sentence from the foe for a woman, a man or someone with no answer; the hero’s Dao sees the foe, or sees its bane; the edge reads as behind, even or ahead). Four ways of five scenes follow: *head-on*, *stalking*, *reading it* and *drawing it off*. Each way has an opening, a first exchange (written for the foe, then read by the edge), a **turn**, a crisis (written for the foe, then read by the edge) and a stroke. At the turn the hero may take the stroke their Dao allows (eight hidden choices, one for each craft; it is a foothold and a step in the Dao) and the stroke their gender allows (three hidden choices; a foothold, and the crisis and the report remember it). At the crisis four strokes are shown to every hero and a fifth, *press on*, only to a hero whose edge is 2 or less. Three endings: won (the spoil, told by gender, read by Dao), driven off, and thrown down (qi lost; the hunt stays open; a hero who comes back is told the place remembers).
+
+**Footholds.** A reading way tells the hero, in the first scene, what the foe gives ground to (`soft`, one of the six tones). A choice in that tone at the opening, the first exchange or the turn sets `<foe>_hold0`, `_hold1` or `_hold2`. A hero who did not read it can still win by guile.
+
+**The main line.** `turnChoices14(scene)` adds to a scene of the main line the hidden way of every Dao (12 scenes) or gender (10 scenes). A way is offered once, leaves `dt_<dao>_<scene>` or `gt_<gender>_<scene>`, and is answered at once by one of 138 scenarios of five lines each. Remarks at 3, 6 and 9 turns, and echoes at the tribunal, the mist, the archive and the abyss path, read them by `count`.
+
+**Stances.** `withStance(scene)` marks every choice of the 24 scenes of the Sealing Night’s memory with `st_<tone>_<scene>`, and eight with a name (`sn_chains_cut`, `sn_let_push`, `sn_took_jade`, `sn_sang`, `sn_elder_signed`, `sn_elder_refused`, `sn_offered`, `sn_brush_struck`). The morning after, the Listener on the ledge, the scene before the Judgment and six of the Elder’s remarks read them.
+
+**The random hero.** `randomPicks(random)` in `engine/hero.ts` draws one option for every field, from a `random` that may be seeded. The creation screen paints the plain default first, so the server and the browser agree, and draws once the page is up, and again on the button.

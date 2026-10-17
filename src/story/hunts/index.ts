@@ -219,3 +219,18 @@ export const huntEntrances: Record<string, Choice> = Object.fromEntries(
 
 export const huntRoadRealms = WAYSIDES14.map((w) => ({ id: w.id, realm: REALMS[w.realm].name }));
 export { FOES, contexts as huntContexts };
+
+/** The foe a scene belongs to, if the hero is standing in a hunt. */
+export function foeAt(sceneId: string): { spec: FoeSpec; ctx: HuntContext } | undefined {
+  const i = FOES.findIndex((f) => sceneId.startsWith(`${f.id}_`));
+  return i < 0 ? undefined : { spec: FOES[i], ctx: contexts[i] };
+}
+
+/** How many foes of each hub the hero has dealt with, in the order of the hubs. */
+export function huntRecord(flags: Record<string, boolean>): { hub: string; short: string; done: number }[] {
+  return WAYSIDES14.map((w, n) => ({
+    hub: w.title.replace("Hunt Roads: ", ""),
+    short: w.title.replace("Hunt Roads: The ", "").split(" ")[0],
+    done: Object.entries(flags).filter(([f, on]) => on && f.startsWith(donePrefix14(n + 1))).length,
+  }));
+}

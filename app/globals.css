@@ -1961,3 +1961,27 @@ button.ghost[aria-expanded="true"] {
   border-radius: 0 10px 10px 0;
   animation: ink-in 0.6s ease both;
 }
+
+/* ── The fight: how the hero stands against the foe, and the hunts finished ── */
+
+.fight-reading {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+}
+.fight-card[data-reading="behind"] .fight-reading {
+  color: #c97b6b;
+}
+.fight-card[data-reading="ahead"] .fight-reading {
+  color: #7fa38c;
+}
+.fight-note {
+  margin: 8px 0 10px;
+  font-size: 0.76rem;
+}
+.hunt-row {
+  grid-template-columns: repeat(10, 1fr);
+}
+.hunt-row li[data-state="won"] {
+  border-color: #7fa38c;
+  background: rgba(127, 163, 140, 0.16);
+}

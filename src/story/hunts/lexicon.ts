@@ -178,20 +178,20 @@ export const STROKE: Record<"force" | "craft" | "ruse", string[]> = {
 /** After the stroke: the four closes. */
 export const AFTERMATH = [
   "The quiet afterward is the loudest part. {Place} lets out its breath, and the first bird in an hour tries a note.",
-  "Your hands shake once, and then stop. {Corpse} lies where it fell, and the light has changed in {place} in a way you can feel and not name.",
+  "Your hands shake once, and then stop. {Corpse} is all that is left, and the light has changed in {place} in a way you can feel and not name.",
 ];
 
 /** Where the hunt ends. */
 export const WON_OPEN = [
-  "{Name} is finished. {Corpse} lies in {place}, and the thing the hunters will want is easy to see: {hide}.",
+  "{Name} is finished. In {place} there is {corpse}, and the thing the hunters will want is easy to see: {hide}.",
   "It is over, and {place} is a different place. There is {hide} to take from {corpse}, and a story to take back, and you are not sure which is heavier.",
 ];
 export const DRIVEN_OPEN = [
-  "{Name} breaks off. It goes back toward its {lair} with its {body} low, and you do not follow. It will be back, but not tonight, and not for the same reasons.",
-  "It will not be killed today, and you are glad enough not to have tried. The {cry} dies away in the direction of the {lair}, and {place} is quiet.",
+  "{Name} breaks off. It draws back toward its {lair}, {body} low, and you do not follow. It will be back, but not tonight, and not for the same reasons.",
+  "It will not be killed today, and you are glad enough not to have tried. The {cry} dies away toward the {lair}, and {place} is quiet.",
 ];
 export const BEATEN_OPEN = [
-  "You hit the ground, and the breath goes out of you. {Name} {wound}, and by the time you have your feet again, it has gone back to its {lair}. It does not need to chase you.",
+  "You hit the ground, and the breath goes out of you. {Name} {wound}, and by the time you have your feet again, it has drawn back to its {lair}. It does not need to chase you.",
   "You were not ready, and it was. It {wound}, and when your head clears you are a long way from where you stood, and bleeding in two places, and alive.",
 ];
 
@@ -213,7 +213,7 @@ export const LABELS: Record<number, Record<ChoiceTone, string[]>> = {
     inquiry: ["Look for what the ground has to say about how it moves.", "Watch which way its {body} turns when it is startled.", "Test it once, lightly, to learn what it does."],
     mercy: ["Give it a way out you are not sure you want it to take.", "Call to it, low, as to a thing that has been hurt.", "Keep between it and the road, and hold there."],
     quiet: ["Wait for it to make the first mistake.", "Slow your breath until you are almost not there.", "Stand still, and let it come to a decision."],
-    truth: ["Say aloud what you mean to do, and do it.", "Let it see your face and your hands, and no tricks.", "Tell it, to its {body}, that you are here to end this."],
+    truth: ["Say aloud what you mean to do, and do it.", "Let it see your face and your hands, and no tricks.", "Tell it plainly that you are here to end this."],
   },
   1: {
     force: ["Hit it where it is hardest, and keep hitting.", "Drive into the gap before it closes.", "Answer the blow with a heavier one."],

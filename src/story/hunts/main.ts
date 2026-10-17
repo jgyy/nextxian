@@ -539,6 +539,16 @@ const SOURCE = String.raw`
 % su_dt_9 | count:dt_>=9 | elder | Nine times you have met the mountain as your craft would. I have a notion that the Dao is not what you practise but how you are allowed to see, and that the Law was built to forbid it.
 % su_gt_3 | count:gt_>=3 | elder | Three times the mountain has put a danger in front of you, and three times it asked who you were before it asked what you would do. I should like to see the mountain answer for that.
 % su_gt_6 | count:gt_>=6 | elder | Six dangers, and in each you met them as who you are. I used to think courage had no sex. I begin to think it has, and that it is not the same in everyone, and that this is the point.
+% su_hu_4 | count:hu_done_>=4 | elder | Four of the creatures the valleys gave up on, dealt with and reported. The wardens would have written four lines. I have, I find, written two pages, and I do not know what they are for.
+% su_hu_12 | count:hu_done_>=12 | elder | Twelve hunts. The hunters of three provinces have started to say the sect sends someone now. It is the first time in my life I have heard the sect spoken of as something that arrives.
+% su_hu_24 | count:hu_done_>=24 | elder | Twenty-four. I have started to keep a map of the places you have been, and to colour them in. The hunters would call it superstition. I call it, for want of a better word, gratitude.
+% su_hu_40 | count:hu_done_>=40 | elder | Forty. There is no hunt left in this country that you have not walked. I have no more places to send you, and you have no more reasons to come back. I would ask you to come back anyway.
+% su_st_deceit | count:st_deceit_>=2 | elder | I saw you reach for the lie, in the memory of the Sealing Night, and I saw you do it twice. I should like to say I did not mind. I minded, and I understood it, and the two did not cancel.
+% su_st_force | count:st_force_>=8 | elder | In the Sealing Night you reached with your hands, again and again. The mirror showed me. I do not say it was wrong. I say that I recognise it, and that I am the last person to ask you to be gentler.
+% su_st_mercy | count:st_mercy_>=8 | elder | In the Sealing Night you reached out more often than you struck. The mirror showed me. I have never been able to tell the difference between gentleness and a refusal to choose, and I have begun to think it is you who can.
+% su_st_truth | count:st_truth_>=8 | elder | In the Sealing Night you said the plain thing, again and again. The mirror showed me. I do not know how you do it. I have said the plain thing four times in my life and I remember each.
+% su_st_inquiry | count:st_inquiry_>=8 | elder | In the Sealing Night you asked, and asked. The mirror showed me. I never asked, that night, and I have been asking in my sleep for fifteen years.
+% su_st_quiet | count:st_quiet_>=8 | elder | In the Sealing Night you held still, again and again. The mirror showed me. I have always called that cowardice in myself. I find I cannot call it that in you.
 % su_gt_9 | count:gt_>=9 | elder | Nine times. I have not met a single danger in my life as only what I was. You have done it nine times in a season, and I cannot decide whether to be envious or to put it in the Law.
 `;
 export const parsedTurnRemarks14 = () => parseRemarks(SOURCE, "hunts/main");

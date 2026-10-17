@@ -59,7 +59,7 @@ export const foes1: FoeSpec[] = [
     lore: "the shrine’s keeper died last winter with no one to tend the lamp, and the fox, who had been fed there, kept calling for the one voice that fed it",
     sees: {
       woman: "It calls in a man’s voice, low and tired, the voice of somebody who was supposed to come home and did not. You do not ask whose.",
-      man: "It calls in a woman’s voice, your mother’s or a sister’s, saying your name the way she said it when you were small and had been out too long.",
+      man: "It calls in a woman’s voice, the one you would have chosen for a mother, saying your name the way you have always imagined it said by someone waiting up.",
       unspoken: "It tries one voice after another, and none of them fits. Man, woman, child: it cycles through the voices of everyone you have lost, and cannot find the one you answer to.",
     },
     beats: [

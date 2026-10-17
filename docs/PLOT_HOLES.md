@@ -19,7 +19,32 @@ Thirteen passes, four asked to fix more than 1,000 and the fourth asked again. T
 | Twelfth pass | **11** | 2 lines of the Elder that said what the hero wore on arriving (once the hero can change dress, the dress they have on is not the one they came in), 2 choices that told the hero they put on a garment and changed nothing, 1 “second pair of straw sandals” for every hero, 1 “benefactress” for every gender, 4 keepsakes of a hero’s own story that the new Sell and Give buttons would have let a hero trade away, 1 Restart that began the hero again in the last dress they put on. Short of the 1,000 asked for: see below |
 | **Thirteenth pass (this branch)** | **11** | 3 lines that called the Ascendant’s silence “the last trial” or said no Ascendant could tell it, 1 elixir brewed for “the final realm”, 4 lines that made the seal a thing “only an Ascendant” could hold, 1 band of the older roads that nobody above the top road could be in, 1 practice that carried a hero over the layers they had left without saying so and 1 strain that could have added points |
 
-## Thirteenth pass (this branch): what was looked for, found and fixed
+## Fourteenth pass (this branch): what was looked for, found and fixed
+
+This branch added forty fights, a condition that reads the hero against a foe, twelve Dao turns and ten gender turns in the main line, and marks on the Sealing Night’s memory. The pass went after what those could expose: a hinge of the story whose choices changed nothing, an audit that could not see how the new condition reads a flag, text that invents canon, and text that gives the hero a family.
+
+| Class | Count | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| The memory of the Sealing Night: 24 scenes and 112 choices at the hinge of Book One, ten of the scenes with four choices that differed only in words and no consequence at all. A hero who cut the chains, let the masters push, took the jade or sang was the same hero to the next morning’s servants, to Mengjiao on the ledge and to the Elder at the Judgment | 1 class, 10 scenes, 40 choices | a scan for scenes whose every choice has the same next scene, no effect and no reaction (86 in the story; 76 remain, see below) | `story/hunts/stances.ts`, `story/hunts/echoes.ts`, `story/index.ts` |
+| The audit read a flag only in a `flag`, `since` or `count` condition, so the footholds that a fight reads through `edge.boost` were reported as 120 dangling flags and would have hidden a real one | 1 | the first run of `npm run check` on the new roads | `engine/audit.ts` |
+| The story test that finds the choice and the hero for an Elder scenario knew a hero by gender and age but not by Dao, so a scenario behind a Dao’s hidden way was “never reached” | 1 | `tests/story.test.ts` failing on the first Dao turn | `tests/story.test.ts` |
+
+**Caught in review of the new text** (these never reached the merged story and are not counted; they are the reason for the review):
+
+- **Invented canon about the fourteen.** The first draft of the ash-stag said nine of the fourteen were girls, and of the struck-out that its name was “a man sent down after the fourteenth”. Canon says fourteen disciples, the last a girl of fifteen, and nothing more. Both lines are rewritten, and `CANON.md` says what the hunts may and may not say of them.
+- **Invented canon about the bell.** The hollow bell was “the Tribunal’s bell, fallen in the year of the Sealing”. Nothing in the canon drops a bell. It is now a bell the sect never rang.
+- **The Elder at the cleft.** A tail line had her “stand on that lip as a Registrar”. Mengjiao was sealed by the masters alone. The line now says she was Registrar that night.
+- **A mother for a foundling.** The voice-fox called “your mother’s or a sister’s” voice. The Wanderer is a foundling. It now calls in the voice the hero would have chosen.
+- **A line copied into forty reports.** One of the Elder’s report lines had no name or place in it, so all forty hunts shared it word for word (168 repeats). The reports now name the foe in every line, and `tests/consistency.test.ts` still fails if two share one.
+- **Spelling and quotes.** One “gray” and one straight apostrophe, caught by the British-spelling and curly-quote tests.
+
+**Looked for and found clean.** The audit over the new thousand scenes and the new turns: 0 dangling flags, 0 dead conditions, 0 loops, 0 unmet speakers. Scenes over the 200-word cap: 0 (five scenes that had no room for an echo were passed over for the ones beside them that did). Fights a plain hero cannot end: 0 of 40, by strength if they read the foe and by guile if they did not. A scene where every choice is locked for some hero: 0 in the hunts (the 32 wardrobe commissions whose choices all read “not yet paid” are entered once, because their hub shuts the road when it is done). Items nobody is given: 0. Holdings nobody is granted: 0. Scenes no choice reaches: 0 of 18,333. Items or holdings that share a name: 0. A foe named after a person of the story: 0.
+
+**Left as they are, and said so.** 76 scenes of the old story (the foothill village, the healer’s hall, the eastern peak, the quarry, the bridge, the archive, the lantern stair) still offer four choices that differ in wording and tone. Tone is counted, and the Elder reads the manner a hero settles into, so those choices are not nothing, but none is remembered by name. They are pacing scenes, and the pass leaves them.
+
+**Short of 1,000.** The pass counts 3. A thousand more were not found, and none is claimed.
+
+## Thirteenth pass: what was looked for, found and fixed
 
 This branch made the ladder ten realms of ten layers, put a wall at every step and added the Breakthrough Roads, so the pass went after what a ladder that no longer ends at Ascendant could expose: text that says the ladder ends, a hero who stands above a road written for the old top, and a hero who can now climb without anyone saying how.
 

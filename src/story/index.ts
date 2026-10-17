@@ -53,6 +53,8 @@ import { ascentEntrances, ascentGroups, ascentScenarios, waysideBack13 } from ".
 import { ascentEchoes } from "./ascent/echoes";
 import { huntEntrances, huntGroups, huntItems, huntScenarios, waysideBack14 } from "./hunts";
 import { parsedTurnRemarks14, turnChoices14, turnScenarios14 } from "./hunts/main";
+import { huntEchoes } from "./hunts/echoes";
+import { withStance } from "./hunts/stances";
 import { parsedAscentRemarks } from "./ascent/remarks";
 import { wardrobeEchoes } from "./wardrobe/echoes";
 import { wardrobeEndings } from "./wardrobe/endings";
@@ -304,10 +306,10 @@ const rawChapters: { name: string; scenes: Scene[] }[] = [
   { name: "Interludes: What the Sect Says", scenes: interludes.map(withBonds) },
   ...bookGroups,
   { name: "Interludes: The Accounts on the Road", scenes: accountsReadThePath(reckoningScenes) },
-].map((g) => ({ ...g, scenes: wardrobeEndings(tribulationEndings(rankEndings(customEndings(ageEndings(economyEndings(routeThroughReckonings(g.scenes))))))) }));
+].map((g) => ({ ...g, scenes: wardrobeEndings(tribulationEndings(rankEndings(customEndings(ageEndings(economyEndings(routeThroughReckonings(g.scenes))))))).map(withStance) }));
 
 /** Echoes written inside the books can land on any scene, including those of Book One. */
-const bookEchoes = books.flatMap((book) => book.arcs.flatMap((arc) => (arc.echoes ? parseEchoes(arc.echoes, `${book.id}/${arc.id}/echoes`) : []))).concat(parseEchoes(ageBookEchoes, "age/book-echoes"), parseEchoes(customBookEchoes, "custom/book-echoes"), parseEchoes(rankEchoes, "rank/echoes"), parseEchoes(tribulationEchoes, "tribulation/echoes"), parseEchoes(wardrobeEchoes, "wardrobe/echoes"), parseEchoes(ascentEchoes, "ascent/echoes"));
+const bookEchoes = books.flatMap((book) => book.arcs.flatMap((arc) => (arc.echoes ? parseEchoes(arc.echoes, `${book.id}/${arc.id}/echoes`) : []))).concat(parseEchoes(ageBookEchoes, "age/book-echoes"), parseEchoes(customBookEchoes, "custom/book-echoes"), parseEchoes(rankEchoes, "rank/echoes"), parseEchoes(tribulationEchoes, "tribulation/echoes"), parseEchoes(wardrobeEchoes, "wardrobe/echoes"), parseEchoes(ascentEchoes, "ascent/echoes"), parseEchoes(huntEchoes, "hunts/echoes"));
 export const chapters: { name: string; scenes: Scene[] }[] = (() => {
   if (bookEchoes.length === 0) return rawChapters;
   const echoed = new Map(applyEchoes(rawChapters.flatMap((c) => c.scenes), bookEchoes).map((s) => [s.id, s]));
