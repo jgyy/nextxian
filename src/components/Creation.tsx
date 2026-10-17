@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AGE_START, ageSpeed, lifespanOf } from "@/engine/age";
 import { aptitudeFor, startingWealth } from "@/engine/economy";
 import { DAO_NAME, DAO_PASSIVE, ORIGIN_LABEL, originSpeed, TALENT_LABEL, talentSpeed } from "@/engine/path";
@@ -12,6 +12,7 @@ import {
   HERO_FIELDS,
   HERO_OPTIONS,
   MAX_NAME_LENGTH,
+  randomPicks,
   startFor,
   startingPoints,
   type Hero,
@@ -54,6 +55,11 @@ export function Creation({ onBegin, onLoad }: { onBegin: (hero: Hero) => void; o
     attire: DEFAULT_HERO.attire,
     status: DEFAULT_HERO.status,
   });
+  // The server and the first paint show the plain default, so the page hydrates cleanly; once it is on screen every choice is drawn at random.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- a one-off draw after mount, not derived state
+    setPicks(randomPicks());
+  }, []);
   const hero = { name: cleanName(name), ...picks } as Hero;
   const notes = startNotes(hero);
 
@@ -71,6 +77,7 @@ export function Creation({ onBegin, onLoad }: { onBegin: (hero: Hero) => void; o
         <p className="muted">
           The sect reads you before you speak. Where you begin, the roots you were born with and the Dao you practise change how fast you cultivate and what the roads offer you.
           Your dress, birth, face and trade change how Elder Su, her wardens and everyone on the roads treat you.
+          Every choice below has been drawn at random for you. Change any of them, or draw again.
         </p>
 
         <div className="field">
@@ -115,6 +122,9 @@ export function Creation({ onBegin, onLoad }: { onBegin: (hero: Hero) => void; o
 
         <div className="creation-actions">
           <button type="submit">Climb the mountain</button>
+          <button type="button" className="ghost" onClick={() => setPicks(randomPicks())}>
+            Draw again at random
+          </button>
           <button type="button" className="ghost" onClick={onLoad}>
             Load save
           </button>

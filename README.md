@@ -6,6 +6,13 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 
 ## Features
 
+- **Hunt Roads: ten hubs, forty fights, 1,010 more scenes, where the Dao and the gender are the weapon.** Ten places the story already stops, from the barley terraces below the foothill village to the road to the Ash Bridge on the last night, each with four foes the people there cannot be rid of: a tusk-boar, a voice-fox that calls in the voice you miss, a milk-adder in the well house, grave-moths that eat the offerings; a slag-toad, a counting wight, ink-leeches, a hauling engine that will not stop; an ape on the long stair, a pine-hag who keeps her guests, a thunder-ram, a wind-owl; and so on through the Cloud Gap, the abyss ledges, the Salt Coast, the Debt Reach, the Wolf Year, the Wreck Fleet and the Ash Bridge. **Every fight is 25 scenes**: the sighting, four ways of going at it of five scenes each (head-on, by stalking, by reading, by drawing it off) and three endings (it falls, it is driven off, or it throws the hero down) and the way back. Each foe has **an element it is made of, the element it fears, a Dao that is its bane, and a tone of decision it gives ground to**; each says one thing to a woman, one to a man and one to someone who gives no answer; each leaves a spoil to carry, sell or leave where it lies; and the Elder reports on each in five lines by her trust and nine memories of how it went.
+- **The edge: a fight that is read, not rolled.** A new condition, `edge`, adds up how the hero stands against the foe: a point for every three levels above its level (or against, for every three below), their rank in their own Dao, how their roots answer the element it fears, two for a Dao that is its bane, a point for qi to spare (minus one for none) and a **foothold** for each of the three turns of the fight at which they chose in the foe’s own tone. **Strength ends a fight from +3, a craft from +1, a ruse from −1 with a clear head; below that the hero may press on regardless and be thrown down (losing qi, and the hunt stays open), or break off and drive it away.** Nothing is random, so a hero who is beaten can see why. A new **fight panel** shows each part of the edge while the fight lasts, and the record of the forty foes after it.
+- **The Dao in the main line: twelve turning points.** At the herb market, the stone wagers, the healer’s racks, the vein in the quarry, the archive stacks, the sutra gate, the sparring court, the bell hall, the hermit’s board, the Sealing Night’s brush, the Salt Works forge and the Furnace Towns, a hero of each of the nine Daos (and an open hand) is offered **a way of meeting the scene that only their craft allows**, hidden from everyone else, and the Elder answers it at once in five lines by her trust (108 scenarios). Later scenes notice: the benches of the tribunal talk of a pill-maker or a forger, and the mist learns the smell, the ring or the edge of the hero’s trade.
+- **Gender in the main line: ten dangers.** At a search of a widow’s house, a loaded tile, a purse of silver, a rockfall, the warden’s lantern, a boy frozen on the bridge, the fourteen voices, a vote of stones, the masters breaking and the top of the cleft, a woman, a man and someone who gives no answer are each offered **a way of meeting the danger that only their own allows** (30 hidden choices, 30 scenarios). The archive clerk and the warden at the abyss path notice what a woman, a man or someone with no answer has done on this mountain in a season.
+- **The Sealing Night remembers.** The memory of the Sealing Night is the hinge of Book One, and ten of its scenes offered four choices that changed nothing but the wording. Now **every choice of its 24 scenes (112 in all) leaves a mark** (`st_<tone>_<scene>`), the eight that matter most leave a mark of their own (cut the chains, let the masters push, take the jade, sing; sign, refuse, offer to go, strike the brush), and the next morning’s servants, the Listener on the ledge, the scene before the Judgment and the Elder herself say how the hero stood.
+- **A hero drawn at random at the gate.** The creation screen now begins with **every choice drawn at random** (where your story begins, your years, your roots, your Dao, your papers, dress, face, trade and gender), and a **Draw again at random** button redraws them all. You can change any of it. The first paint is the plain default so the page hydrates cleanly, and the draw is made once the page is up.
+- **A fourteenth plot-hole pass.** Three defects in the old story, the engine and the tests that this branch exposed (a hinge scene whose choices changed nothing, an audit that could not see a flag read by the new condition, and a test helper that could find a hero by gender but not by Dao), and six slips caught in review of the new text before they shipped (invented canon about the fourteen, the bell and the cleft; a mother for a foundling). See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md).
 - **Ten realms of ten layers, and a wall at every step.** The ladder is now ten major realms (Mortal, Qi Condensation, Foundation Establishment, Core Formation, Nascent Soul, Spirit Severing, Dao Seeking, Ascendant, **True Immortal** and **Dao Sovereign**), each of ten layers, a hundred levels from the First Layer of Mortal to the Tenth Layer of Dao Sovereign. Every step up is a **wall**: the hero needs the points, then the qi and insight to push at it at all, then a **steadiness** (qi and insight to spare, Dao mastery, the methods practised against this very wall, what earlier falls taught, the Elder’s trust, a clean heart, and for a major wall the rehearsed trial) that beats the wall’s difficulty. A hero short of qi or insight is *held*; one not steady enough is *thrown back*, loses qi and half the way to the wall, and is steadier next time. Each of the 99 walls has its own words for the wall, for coming through and for being thrown, and the log tells them in the colour of the wall. The Cultivation panel shows the layer, the wall, what it asks, how steady the hero is and how often it has thrown them.
 - **Breakthrough Roads: ten roads, 1,000 more scenes, where the story is the wall.** One road for each major realm (**the Tempering Yard**, **the Thread-House**, **the Mason’s Court**, **the Gold Forge**, **the Cradle Gardens**, **the Cutting Hall**, **the Switchback Stair**, **the Open Door**, **the Long Garden** and **the Seat of the Mountain**), each with ten stations, one for each layer. Every wall is ten scenes: the wall, **four ways of going at it** (the hard way, the teaching, a borrowed word, the long sitting; each practised once and each worth two points of steadiness), **the hour** (press with force or steadily, wait, or turn aside), what follows (it gave, it threw you, or it only held), the settling, **the Elder’s counsel for that wall** (a hundred lines, one for each) and what the wall leaves. Pressing is a real attempt: the engine reads the hero and the wall, and the scene afterwards says which happened.
 - **The layers in the main line.** The gate warden, the sutra bell, the tribunal rows, the mist, the Concord’s clerks, the glass, the stair and the last seal read the hero’s layer, and a hero who has been thrown carries it in how they stand. The Elder and the company speak of the middle and the top of every realm, of the first fall, the third and the eighth, of a wall that held the hero for want of qi, and of the methods practised.
@@ -65,6 +72,74 @@ A text adventure built with Next.js and TypeScript. You arrive at the Azure Clou
 - **Saves in your browser.** Progress is written to `localStorage` after every choice. Storage errors never stop play. Saves from before the Elder kept a reaction history, or before decisions had tones, still load.
 
 ![Scene with no Continue](docs/screenshots/02-no-continue-desktop.png)
+
+### Hunt Roads, the edge and the Dao
+
+![Creation begins with every choice drawn at random](docs/screenshots/214-creation-drawn-at-random-desktop.png)
+![A wayside of four foes: the barley terraces](docs/screenshots/215-hunt-roads-barley-terraces-desktop.png)
+![The tusk-boar sighted: what it does before it strikes, and what it says to a woman](docs/screenshots/216-the-tusk-boar-sighted-desktop.png)
+![The turn: the stroke of the hero’s Dao and the stroke of the hero’s gender, hidden from everyone else](docs/screenshots/217-the-turn-craft-and-gender-strokes-desktop.png)
+![The crisis: the stroke of a craft, open from an edge of +1](docs/screenshots/218-the-crisis-finish-by-craft-desktop.png)
+![The spoil, and the way the villagers will tell it](docs/screenshots/219-the-spoil-and-the-telling-desktop.png)
+![Outmatched: no stroke that ends it, and the way out](docs/screenshots/220-outmatched-the-way-out-desktop.png)
+![A foe whose bane is the hero’s own Dao](docs/screenshots/221-a-foes-bane-is-the-heros-dao-desktop.png)
+![The fight panel: where the edge comes from, part by part](docs/screenshots/229-the-fight-panel-desktop.png)
+![The herb market offers an alchemist a way of its own](docs/screenshots/222-the-herb-market-offers-an-alchemist-a-way-desktop.png)
+![The Elder answers the craft](docs/screenshots/223-the-elder-answers-the-craft-desktop.png)
+![The rockfall offers a woman a way of her own](docs/screenshots/224-the-rockfall-offers-a-woman-a-way-desktop.png)
+![The Elder answers the danger](docs/screenshots/225-the-elder-answers-the-danger-desktop.png)
+![The Hall remembers how the hero stood at the cleft](docs/screenshots/226-the-hall-remembers-the-cleft-desktop.png)
+![A turn of a fight on a phone](docs/screenshots/227-the-turn-on-a-phone-mobile.png)
+![Creation on a phone](docs/screenshots/228-creation-on-a-phone-mobile.png)
+
+How a hunt is laid out. Every foe is 25 scenes, built from one short spec (`src/story/hunts/foes-*.ts`) and the shared wording (`src/story/hunts/lexicon*.ts`):
+
+```mermaid
+flowchart TD
+  H["wayside_hunt_N: the hub, four foes,<br/>opens from a scene of the story"] --> S["sighting<br/>its omen, its tell, what it says to a woman,<br/>a man or no answer; the hero’s Dao sees it<br/>(or sees its bane)"]
+  S --> A0["head-on"] & A1["stalking"] & A2["reading it<br/>(hints what it gives ground to)"] & A3["drawing it off"]
+  A0 & A1 & A2 & A3 --> W0["s0 the opening"] --> W1["s1 the first exchange<br/>(edge: behind, even, ahead)"] --> W2["s2 the turn<br/>+ the hero’s Dao stroke<br/>+ the hero’s gender stroke"] --> W3["s3 the crisis"]
+  W3 -->|"finish: edge ≥ 3"| W4["s4 the stroke"]
+  W3 -->|"craft: a Dao and edge ≥ 1"| W4
+  W3 -->|"ruse: insight 20 and edge ≥ −1"| W4
+  W3 -->|"press on: edge ≤ 2"| B["beaten<br/>qi lost, hunt stays open"]
+  W3 -->|"break off"| D["driven off"]
+  W4 --> WON["won: the spoil, how it is told"]
+  WON --> R["the way back:<br/>report, say nothing, rest, sell the spoil"]
+  D --> R
+  R --> H
+  B --> H
+```
+
+How the edge is read. Each stage is a foothold only if the hero chose in the tone the foe gives ground to, which the reading approach tells them:
+
+```mermaid
+flowchart LR
+  L["level against the foe’s<br/>1 per 3 levels, ±4"] --> E(("edge"))
+  C["rank in the hero’s own Dao<br/>0 to 4, none for no Dao"] --> E
+  R["roots against the element it fears<br/>0, 1 partial, 2 kindred"] --> E
+  B["the Dao that is its bane<br/>+2"] --> E
+  Q["qi to spare +1, none −1"] --> E
+  F["footholds won at the three turns<br/>(the foe’s soft tone) up to +3"] --> E
+  E --> X{"what the crisis shows"}
+  X -->|"≥ 3"| FF["end it by strength"]
+  X -->|"≥ 1 with a Dao"| CC["end it by craft"]
+  X -->|"≥ −1 and Insight 20"| RR["end it by a ruse"]
+  X -->|"≤ 2"| PP["press on regardless (hidden above)"]
+  X --> OO["always: break off"]
+```
+
+How the main line carries the Dao, the gender and the Sealing Night:
+
+```mermaid
+flowchart LR
+  M["a scene of the main line<br/>that everyone reads"] -->|"hero:dao = X, once"| D["a hidden way for the Dao X<br/>(12 scenes, 9 ways each)"]
+  M -->|"hero:gender = G, once"| G["a hidden way for the gender G<br/>(10 scenes, 3 ways each)"]
+  D --> EL["the Elder answers in five lines by her trust<br/>flag dt_dao_scene"]
+  G --> EL2["the Elder answers in five lines by her trust<br/>flag gt_gender_scene"]
+  EL & EL2 --> LATER["echoes in later scenes,<br/>remarks at 3, 6 and 9 turns"]
+  SN["the Sealing Night, 24 scenes"] -->|"every choice: st_tone_scene<br/>eight choices: a name of their own"| ST["the next morning, the Listener,<br/>the scene before the Judgment, the Elder"]
+```
 
 ### Ten realms, ten layers and the Breakthrough Roads
 
@@ -517,7 +592,7 @@ npm run dev        # http://localhost:3000
 | --- | --- |
 | `npm run dev` | Start the dev server |
 | `npm run build` / `npm start` | Production build and server |
-| `npm test` | Story integrity, choice tones, scene and line caps, respect and NPC reactions, side paths, the 3,000 road scenes, cultivation realms, the purse, pack, holdings and speed, all 120 roads walked for repeats and the 40 Fortune Roads walked in full, saves |
+| `npm test` | Story integrity, choice tones, scene and line caps, respect and NPC reactions, side paths, the 3,000 road scenes, the forty fights (the edge, every Dao’s stroke, the balance, a random walk of every hub), the Sealing Night’s stances, the random hero, cultivation realms, the purse, pack, holdings and speed, all 120 roads walked for repeats and the 40 Fortune Roads walked in full, saves |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint (Next.js rules) |
 | `npm run word-count` | Words written so far, by chapter and side path, against the 1,000,000-word goal |
@@ -531,7 +606,7 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for diagrams of the engine, tur
 
 ```
 src/engine/      pure story logic: state, tones, cultivation realms, the purse, pack, wardrobe, holdings and speed, NPC reactions and memory, validation, saves, word counting
-src/story/       chapters, side paths, the generated side roads, the realm roads, the Fortune Roads, the Wardrobe Roads, the Breakthrough Roads, the accounts on the road, and the Elder’s scenarios (content lives here)
+src/story/       chapters, side paths, the generated side roads, the realm roads, the Fortune Roads, the Wardrobe Roads, the Breakthrough Roads, the Hunt Roads, the accounts on the road, and the Elder’s scenarios (content lives here)
 src/components/  React UI: the stage, the tone legend, the NPC, cultivation, purse and stats panels
 app/             Next.js routes, layout and styles
 tests/           vitest suites
@@ -542,6 +617,6 @@ scripts/         word count, story check, simulator
 
 The engine, NPC system, cultivation realms, visual novel UI, six books and their endings are in place and playable from the first scene to seven endings. Every scene stands on its own: no page turns, a heading on every scene, four or more tone-tagged choices at every decision, and a 200-word cap on every scene body.
 
-The story has 17,313 scenes and about 86,100 choices, with 2,176 NPC scenarios and 750 unprompted remarks. The word count is 5,846,316, which is **584.6%** of the 1,000,000-word goal. The count adds up every variant of a line that can be shown (every dress, birth, realm and gender a keeper can react to), so it overstates what one playthrough reads. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md): the thirteenth pass fixed 11 defects that ten realms of ten layers could expose (a ladder that no longer ended where the text said it did), the twelfth fixed 11 that a change of dress and a usable pack could expose (the tenth fixed 270 lines, of which 262 told every hero something about themselves that only some heroes are, and the ledger says plainly which is which and that it is well short of 1,000).
+The story has 18,333 scenes and about 92,300 choices, with 2,354 NPC scenarios and 766 unprompted remarks. The word count is 6,242,715, which is **624.3%** of the 1,000,000-word goal. The count adds up every variant of a line that can be shown (every dress, birth, realm and gender a keeper can react to), so it overstates what one playthrough reads. See [docs/PLOT_HOLES.md](docs/PLOT_HOLES.md): the fourteenth pass fixed 3 defects that the hunts, the stances and the new condition could expose and caught 6 slips in the new text before they shipped, the thirteenth pass fixed 11 defects that ten realms of ten layers could expose (a ladder that no longer ended where the text said it did), the twelfth fixed 11 that a change of dress and a usable pack could expose (the tenth fixed 270 lines, of which 262 told every hero something about themselves that only some heroes are, and the ledger says plainly which is which and that it is well short of 1,000).
 
 The side roads of Book One are assembled from templates and read more uniformly than the hand-written chapters. The Book V finale and Book VI are compact (about 8,000 words) next to the sixteen-arc hubs before them, and are the obvious place to add more. The books and the canon are described in [docs/CANON.md](docs/CANON.md). Adding content means adding an arc under `src/story/books/<book>/`, registering it in `src/story/books/index.ts`, and running `npm run check`.

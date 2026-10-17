@@ -251,6 +251,8 @@ export function flagUsage(story: Story): { set: Set<string>; read: Set<string> }
       if (isFlag(c)) read.add(c.flag);
       else if (c.kind === "since") read.add(c.flag);
       else if (c.kind === "count") prefixes.add(c.prefix);
+      // A fight reads the footholds the hero has won: each flag in `boost` counts for them when it is on.
+      else if (c.kind === "edge") c.boost?.forEach((f) => read.add(f));
     }
   };
   for (const scene of Object.values(story.scenes)) {

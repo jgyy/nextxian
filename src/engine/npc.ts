@@ -1,5 +1,6 @@
 import { ageOf, lifeLeft } from "./age";
 import { REALMS, realmProgress } from "./cultivation";
+import { edgeOf } from "./fight";
 import { standingOf } from "./hero";
 import { ownedGarments } from "./wardrobe";
 import { affinityOf, daoRankOf } from "./path";
@@ -327,6 +328,10 @@ export function conditionsHold(conditions: Condition[] | undefined, state: Condi
         return (state.hero ? ownedGarments({ hero: state.hero, wardrobe: state.wardrobe }) : (state.wardrobe ?? [])).includes(c.attire) === (c.is ?? true);
       case "garments": {
         const v = state.hero ? ownedGarments({ hero: state.hero, wardrobe: state.wardrobe }).length : 0;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "edge": {
+        const v = edgeOf(state, { level: c.foe, weak: c.weak, bane: c.bane, boost: c.boost });
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
       }
       case "count": {

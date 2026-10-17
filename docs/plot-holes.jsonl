@@ -160,3 +160,6 @@
 {"cat": "structure", "where": "src/story/roads2/hero-lex.ts, src/engine/rank.ts", "note": "The band above the top road was held by no one; a True Immortal or a Sovereign at an Ascendant road is now in its top band.", "n": 1}
 {"cat": "logic", "where": "src/engine/game.ts", "note": "A practice that reached the gate carried a hero over their remaining layers silently; the log now says so.", "n": 1}
 {"cat": "logic", "where": "src/engine/cultivation.ts", "note": "A strain below the floor of the hero’s layer could add points; it now subtracts nothing below zero.", "n": 1}
+{"cat": "structure", "where": "src/story/hunts/stances.ts, src/story/hunts/echoes.ts", "note": "The memory of the Sealing Night changed nothing: ten scenes of four choices that differed only in words. Every choice of 24 scenes now leaves a mark, eight leave a named one, and the morning after, the Listener and the Judgment read them.", "n": 1}
+{"cat": "logic", "where": "src/engine/audit.ts", "note": "The audit could not see a flag read through a fight’s footholds (`edge.boost`), so it reported 120 dangling flags and would have hidden a real one.", "n": 1}
+{"cat": "logic", "where": "tests/story.test.ts", "note": "The helper that finds the hero for an Elder scenario knew a gender and an age but not a Dao, so a scenario behind a Dao’s hidden way was never reached.", "n": 1}

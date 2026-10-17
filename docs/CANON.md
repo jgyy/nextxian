@@ -241,3 +241,65 @@ The ladder has **ten major realms**, each of **ten layers** (minor realms): a hu
 - **Walls.** Every step up is a wall. To push at it the hero needs the points, `4 + n/2` qi and `n/3` insight (`n` the level entered). Whether it gives depends on steadiness against a difficulty of `(2(n−10))/9`, plus two for a major wall, with nothing asked of the first ten. A hero lacking qi or insight is held (once told, in the log); one not steady enough is thrown back, loses `3 + n/6` qi and half the way to the wall, and gains three points of steadiness at that wall for each fall (up to eight), so no wall keeps a hero out for ever. A layer taken without having practised against the wall costs `1 + n/12` qi; one taken after practising gives two.
 - **The Elder** stopped at the top of Dao Seeking. She reached the head of the Switchback Stair twice and wanted the door so badly that it stayed a wall; she has seen the Open Door from the head of the stair, and not gone in. She cut nine cords at the Cutting Hall and kept one, and does not say which. She cracked a core at the Gold Forge long ago. She has never been to the Long Garden or the Seat of the Mountain.
 - **Ascendant is no longer the top.** The sect has had no Ascendant in two hundred years, so a hero who becomes one is the first, and a True Immortal or a Dao Sovereign is something the sect has no word for. The older roads, written for the eight realms from Mortal to Ascendant, receive a True Immortal or a Sovereign as an Ascendant is received.
+
+## Beasts, spirits and machines (fixed in the Hunt Roads)
+
+The creatures of the roads are the sect’s old leftovers, and each is here because of something people did. None is a villain, and each has a reason (`lore` in its spec) that a hero who searches its lair learns. **A foe is never a person of the story**, and no foe is named after one (a test checks it). The facts the hunts commit to:
+
+- **The fourteen and the fifteenth.** The ash-stag walks the dead path every dawn because the last of the fourteen, a girl of fifteen, looked back, and the path has waited for her to turn forward. The struck-out is a name from the ledger of the sealed with no person left. The sealed one under the Ash Bridge is *one of the sealed whom the Law’s ledger records as gone, who was only kneeling and listening*, which is canon for the fourteenth. The hunts say nothing of how many of the fourteen were girls, boys, or what any of them were called.
+- **The bell.** The hollow bell is a bell the sect never rang, fallen into the abyss long ago. The Tribunal’s own bell is not in it.
+- **The Sealing Night.** The Elder was Registrar, she signed, and Mengjiao was sealed by the masters alone. No line of the new text has the Elder standing on the lip of the cleft. The memory in the mirror shows the hero at the altar and at the cleft; the hero’s choices there are marked (`st_<tone>_<scene>`) and eight are named (`sn_*`).
+- **The Glass Sea has no water.** The wreck fleet’s mirage is a reflection that has lost its lake; its scorpion hunts by the thrum of the glass.
+- **The Wanderer is a foundling.** A voice-fox that calls in “a mother’s voice” calls in the one the hero would have chosen, never one they had.
+- **Gender and the hunt.** Every hub’s hunters have a rule about who hunts and who guards the door. The rule is old, and kept from habit. A woman, a man and someone who gives no answer each have a stroke of their own in every fight, and a sentence of their own from every foe.
+
+### The forty
+
+| Hub | Realm | Foe | Kind | Made of | Fears | Bane Dao | Gives ground to |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Barley Terraces | Mortal | The tusk-boar | beast | earth | wood | sword | force |
+| Barley Terraces | Mortal | The voice-fox | spirit | fire | water | beast | truth |
+| Barley Terraces | Mortal | The milk-adder | serpent | water | earth | healing | quiet |
+| Barley Terraces | Mortal | The grave-moths | swarm | wood | metal | talisman | inquiry |
+| Slag Heaps | Qi Condensation | The slag-toad | beast | fire | water | forging | force |
+| Slag Heaps | Qi Condensation | The cairn-wight | wraith | earth | wood | formation | inquiry |
+| Slag Heaps | Qi Condensation | The ink-leeches | swarm | water | earth | alchemy | deceit |
+| Slag Heaps | Qi Condensation | The foreman’s hauler | construct | metal | fire | talisman | deceit |
+| Hermit’s Pines | Qi Condensation | The mist-ape | beast | wood | metal | alchemy | mercy |
+| Hermit’s Pines | Qi Condensation | The pine-hag | plant | wood | metal | forging | mercy |
+| Hermit’s Pines | Qi Condensation | The thunder-ram | beast | metal | fire | formation | force |
+| Hermit’s Pines | Qi Condensation | The wind-owl | beast | water | earth | fate | quiet |
+| Cloud Gap Ropes | Foundation Establishment | The rope-spiders | swarm | wood | metal | forging | quiet |
+| Cloud Gap Ropes | Foundation Establishment | The gap-roc | drake | metal | fire | sword | force |
+| Cloud Gap Ropes | Foundation Establishment | The span-gargoyle | construct | earth | wood | talisman | inquiry |
+| Cloud Gap Ropes | Foundation Establishment | The cloud-eel | serpent | water | earth | beast | mercy |
+| Abyss Ledges | Foundation Establishment | The ledge-crawler | serpent | earth | wood | healing | quiet |
+| Abyss Ledges | Foundation Establishment | The hollow bell | spirit | metal | fire | fate | inquiry |
+| Abyss Ledges | Foundation Establishment | The ash-stag | beast | fire | water | beast | mercy |
+| Abyss Ledges | Foundation Establishment | The struck-out | wraith | water | earth | talisman | truth |
+| Picket Line | Core Formation | The salt-crab | beast | earth | wood | forging | force |
+| Picket Line | Core Formation | The brine-wraith | wraith | water | earth | formation | truth |
+| Picket Line | Core Formation | The tide-drake | drake | water | earth | sword | force |
+| Picket Line | Core Formation | The wreck-hag | spirit | wood | metal | healing | mercy |
+| Debt Reach | Core Formation | The toll-turtle | beast | water | earth | alchemy | quiet |
+| Debt Reach | Core Formation | The debt-ghost | wraith | earth | wood | fate | truth |
+| Debt Reach | Core Formation | The willow-weeper | plant | wood | metal | forging | mercy |
+| Debt Reach | Core Formation | The barge-rats | swarm | fire | water | healing | deceit |
+| Wolf Year | Nascent Soul | The grey wolf | beast | metal | fire | beast | quiet |
+| Wolf Year | Nascent Soul | The dust-devil | spirit | earth | wood | formation | inquiry |
+| Wolf Year | Nascent Soul | The grass-wyrm | serpent | wood | metal | sword | deceit |
+| Wolf Year | Nascent Soul | The kurgan-guard | construct | metal | fire | talisman | truth |
+| Wreck Fleet | Spirit Severing | The glass-scorpion | beast | metal | fire | alchemy | inquiry |
+| Wreck Fleet | Spirit Severing | The mirage-stalker | spirit | water | earth | fate | truth |
+| Wreck Fleet | Spirit Severing | The hulk | construct | wood | metal | formation | force |
+| Wreck Fleet | Spirit Severing | The night-singer | wraith | fire | water | healing | mercy |
+| Ash Bridge Road | Dao Seeking | The ash-hound | beast | fire | water | beast | force |
+| Ash Bridge Road | Dao Seeking | The sealed one | wraith | earth | wood | fate | mercy |
+| Ash Bridge Road | Dao Seeking | The paper-wyrm | serpent | wood | metal | alchemy | inquiry |
+| Ash Bridge Road | Dao Seeking | The drake of the deep | drake | earth | wood | sword | force |
+
+Every Dao is the bane of exactly five foes, and every tone is the soft tone of at least four. A foe is made of the element the table gives and fears the element that **overcomes** it (wood overcomes earth, earth water, water fire, fire metal, metal wood); a test checks the rule for all forty.
+
+### The edge
+
+A fight reads the hero against the foe (`src/engine/fight.ts`): a point for every three levels above the foe’s level (below, against; at most four either way), the hero’s rank in their own Dao (0 to 4, none without a Dao), how their roots answer the element it fears (0, 1 or 2), two if the foe’s bane is their Dao, one for qi of 60 or more and minus one for 10 or less, and a foothold (up to three) for each of the three turns of the fight at which the hero chose in the foe’s soft tone. The range is −8 to 14. **A stroke by strength is open from +3, a craft from +1 (with a Dao), a ruse from −1 (with Insight 20); below +3 the hero may press on and be thrown down, and a hero may always break off.** A plain hero three layers up the realm can end every one of the forty by strength if they read the foe, and by guile if they did not; a test checks both.
