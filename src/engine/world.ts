@@ -193,13 +193,15 @@ export function roleOf(flags: Record<string, boolean>): RoleInfo {
   const weight = worldMeasure(flags, "weight");
   if (voices === 0) return ROLES.unseen;
   if (hinges >= 5) return ROLES.hinge;
-  if (voices >= 16 && hinges <= 2) return ROLES.many;
-  if (weight >= 12) return ROLES.hand;
+  if (voices >= MANY_VOICES && hinges < HINGES_FOR_AGE) return ROLES.many;
+  if (weight >= HAND_WEIGHT) return ROLES.hand;
   return ROLES.witness;
 }
 
-/** Whether a hero is the kind the two new endings ask for. */
+/** What the two new endings and the roles ask for: sixteen voices and no more than two hinges is the Many Hands; five hinges and four affairs mended is a Hinge of the Age. */
 export const MANY_VOICES = 16;
 export const MANY_HINGE_MAX = 2;
 export const HINGES_FOR_AGE = 5;
 export const HINGE_MENDED = 4;
+/** The weight at which a hero is a hand in the work and not only a pair of eyes. */
+export const HAND_WEIGHT = 12;

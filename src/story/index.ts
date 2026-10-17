@@ -53,6 +53,8 @@ import { ascentEntrances, ascentGroups, ascentScenarios, waysideBack13 } from ".
 import { ascentEchoes } from "./ascent/echoes";
 import { huntEntrances, huntGroups, huntItems, huntScenarios, waysideBack14 } from "./hunts";
 import { waysideBack15, worldEntrances, worldGroups, worldItems, worldScenarios } from "./world";
+import { gatherScenario, gatherScenes, parsedWorldRemarks, worldChoices, worldEndings } from "./world/main";
+import { worldEchoes } from "./world/echoes";
 import { parsedTurnRemarks14, turnChoices14, turnScenarios14 } from "./hunts/main";
 import { huntEchoes } from "./hunts/echoes";
 import { withStance } from "./hunts/stances";
@@ -264,7 +266,8 @@ const bookGroups = books.flatMap((book) =>
       .map((scene) => (huntEntrances[scene.id] ? { ...scene, choices: [...scene.choices, huntEntrances[scene.id]] } : scene))
       .map((scene) => (worldEntrances[scene.id] ? { ...scene, choices: [...scene.choices, worldEntrances[scene.id]] } : scene))
       .map((scene) => (turnChoices10(scene).length ? { ...scene, choices: [...scene.choices, ...turnChoices10(scene)] } : scene))
-      .map((scene) => (turnChoices14(scene).length ? { ...scene, choices: [...scene.choices, ...turnChoices14(scene)] } : scene));
+      .map((scene) => (turnChoices14(scene).length ? { ...scene, choices: [...scene.choices, ...turnChoices14(scene)] } : scene))
+      .map((scene) => (worldChoices(scene).length ? { ...scene, choices: [...scene.choices, ...worldChoices(scene)] } : scene));
     const roads = realmRoadGroups
       .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
       .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack2(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
@@ -307,7 +310,9 @@ const bookGroups = books.flatMap((book) =>
     const worlds = worldGroups
       .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
       .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack15(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
-    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes, ...daos, ...witnesses, ...cultivations, ...crossings, ...ages, ...customs, ...ranks, ...tribulations, ...wardrobes, ...ascents, ...hunts, ...worlds];
+    // The world comes up the road before the Last Sealing: its scenes sit in the arc that holds the hub it opens from.
+    const gathering = scenes.some((s) => s.id === "hub_b6") ? [{ name: "World Roads: The Gathering", scenes: gatherScenes() }] : [];
+    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes, ...daos, ...witnesses, ...cultivations, ...crossings, ...ages, ...customs, ...ranks, ...tribulations, ...wardrobes, ...ascents, ...hunts, ...worlds, ...gathering];
   }),
 );
 
@@ -316,10 +321,10 @@ const rawChapters: { name: string; scenes: Scene[] }[] = [
   { name: "Interludes: What the Sect Says", scenes: interludes.map(withBonds) },
   ...bookGroups,
   { name: "Interludes: The Accounts on the Road", scenes: accountsReadThePath(reckoningScenes) },
-].map((g) => ({ ...g, scenes: wardrobeEndings(tribulationEndings(rankEndings(customEndings(ageEndings(economyEndings(routeThroughReckonings(g.scenes))))))).map(withStance) }));
+].map((g) => ({ ...g, scenes: worldEndings(wardrobeEndings(tribulationEndings(rankEndings(customEndings(ageEndings(economyEndings(routeThroughReckonings(g.scenes)))))))).map(withStance) }));
 
 /** Echoes written inside the books can land on any scene, including those of Book One. */
-const bookEchoes = books.flatMap((book) => book.arcs.flatMap((arc) => (arc.echoes ? parseEchoes(arc.echoes, `${book.id}/${arc.id}/echoes`) : []))).concat(parseEchoes(ageBookEchoes, "age/book-echoes"), parseEchoes(customBookEchoes, "custom/book-echoes"), parseEchoes(rankEchoes, "rank/echoes"), parseEchoes(tribulationEchoes, "tribulation/echoes"), parseEchoes(wardrobeEchoes, "wardrobe/echoes"), parseEchoes(ascentEchoes, "ascent/echoes"), parseEchoes(huntEchoes, "hunts/echoes"));
+const bookEchoes = books.flatMap((book) => book.arcs.flatMap((arc) => (arc.echoes ? parseEchoes(arc.echoes, `${book.id}/${arc.id}/echoes`) : []))).concat(parseEchoes(ageBookEchoes, "age/book-echoes"), parseEchoes(customBookEchoes, "custom/book-echoes"), parseEchoes(rankEchoes, "rank/echoes"), parseEchoes(tribulationEchoes, "tribulation/echoes"), parseEchoes(wardrobeEchoes, "wardrobe/echoes"), parseEchoes(ascentEchoes, "ascent/echoes"), parseEchoes(huntEchoes, "hunts/echoes"), parseEchoes(worldEchoes, "world/echoes"));
 export const chapters: { name: string; scenes: Scene[] }[] = (() => {
   if (bookEchoes.length === 0) return rawChapters;
   const echoed = new Map(applyEchoes(rawChapters.flatMap((c) => c.scenes), bookEchoes).map((s) => [s.id, s]));
@@ -339,6 +344,7 @@ export const story: Story = {
     ...ascentScenarios,
     ...huntScenarios,
     ...worldScenarios,
+    [gatherScenario.id]: gatherScenario,
     ...Object.fromEntries(parseScenarios(scenariosOne, "scenarios-1").map((x) => [x.id, x])),
     ...Object.fromEntries(parseScenarios(pathScenarios, "path/scenarios").map((x) => [x.id, x])),
     ...turnScenarios(),
@@ -375,5 +381,6 @@ export const story: Story = {
     ...books.flatMap((book) => book.arcs.flatMap((arc) => (arc.remarks ? parseRemarks(arc.remarks, `${book.id}/${arc.id}/remarks`) : []))),
     ...parsedAscentRemarks(),
     ...parsedTurnRemarks14(),
+    ...parsedWorldRemarks(),
   ],
 };

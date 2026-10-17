@@ -62,7 +62,7 @@ function reachScene(w: ReachSpec, n: number, here: { spec: AffairSpec; ctx: Affa
 export function waysideBack15(w: ReachSpec, origin: Scene): Scene {
   return {
     id: BACK15(w.origin),
-    title: `Back from ${w.title.replace("World Roads: ", "")}`,
+    title: `Back from ${w.title.replace("World Roads: The ", "the ")}`,
     paragraphs: [w.back],
     choices: origin.choices.map((c) => ({ ...c })),
   };

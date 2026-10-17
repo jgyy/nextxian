@@ -1985,3 +1985,59 @@ button.ghost[aria-expanded="true"] {
   border-color: #7fa38c;
   background: rgba(127, 163, 140, 0.16);
 }
+
+/* The wider world: ten reaches of four affairs, each a pip. */
+.world-row {
+  grid-template-columns: repeat(5, 1fr);
+}
+.world-row li[data-open="no"] {
+  opacity: 0.55;
+}
+.world-row .pips {
+  display: grid;
+  grid-template-columns: repeat(2, 0.55rem);
+  gap: 0.2rem;
+  margin-top: 0.25rem;
+  justify-content: center;
+}
+.world-row .pips i {
+  display: block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  opacity: 0.45;
+}
+.world-row .pips i[data-state="mended"] {
+  background: #7fa38c;
+  border-color: #7fa38c;
+  opacity: 1;
+}
+.world-row .pips i[data-state="ground"] {
+  background: #c9a24d;
+  border-color: #c9a24d;
+  opacity: 1;
+}
+.world-row .pips i[data-state="broke"] {
+  background: #b5564c;
+  border-color: #b5564c;
+  opacity: 1;
+}
+.world-row .pips i[data-state="open-mended"] {
+  border-color: #7fa38c;
+  opacity: 1;
+}
+.world-row .pips i[data-state="open-ground"] {
+  border-color: #c9a24d;
+  opacity: 1;
+}
+.world-row .pips i[data-state="open-broke"] {
+  border-color: #b5564c;
+  opacity: 1;
+}
+.world-here[data-fate="mended"] {
+  color: #7fa38c;
+}
+.world-here[data-fate="broke"] {
+  color: #b5564c;
+}

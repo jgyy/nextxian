@@ -291,6 +291,8 @@ export function buildAffair(spec: AffairSpec, ctx: AffairContext): Scene[] {
       label: fillAll(LEDGER_LABELS[tone], slots, seed + c),
       tone,
       next: own("return"),
+      // Selling the telling pays once: the ledger is written once, before the way back sets the affair done.
+      ...(tone === "deceit" ? { requires: [flagOff(doneFlag(ctx.reach, id))] } : {}),
       effects: [...TONE_EFFECTS[tone], ...(tone === "truth" ? [set(recFlag(ctx.reach, id))] : []), ...(tone === "deceit" ? [{ kind: "addWealth", amount: 2 + R } as Effect] : [])],
     })),
   });
@@ -342,8 +344,8 @@ export function buildReport(spec: AffairSpec, ctx: AffairContext): NpcScenario {
       memory.push({ when: [flagOn(partFlag(ctx.reach, spec.id, part)), flagOn(outFlag(ctx.reach, spec.id, c))], line: `${REPORT_MEMORY[part][c]} ${tail}` });
     }
   }
-  memory.push({ when: [flagOn(recFlag(ctx.reach, spec.id))], line: REPORT_RECORD });
-  for (const method of METHODS) memory.push({ when: [flagOn(howFlag(ctx.reach, spec.id, method))], line: REPORT_METHOD[method] });
+  memory.push({ when: [flagOn(recFlag(ctx.reach, spec.id))], line: fill(pick(REPORT_RECORD, seed), slots) });
+  for (const method of METHODS) memory.push({ when: [flagOn(howFlag(ctx.reach, spec.id, method))], line: fill(pick(REPORT_METHOD[method], seed), slots) });
   return {
     id: reportId(spec.id),
     summary: `The player reports on ${spec.title.toLowerCase()}.`,

@@ -186,12 +186,12 @@ export const REPORT_LINES: Record<"hostile" | "wary" | "neutral" | "warm" | "dev
   warm: [
     "You went to {place}, and you came back and told me, which is the part I cannot teach. Sit. Tell it from the beginning, and do not leave out {foe}.",
     "{Place}. I wondered where you had got to. I am glad it was somewhere that mattered. Sit down, and take your time, and I will not interrupt more than I must.",
-    "I have been waiting to be told something like this by someone who was there. It is a rare thing. Go on.",
+    "I have been waiting to be told of {place} by someone who was there. It is a rare thing. Go on.",
   ],
   devoted: [
     "You went to {place} without being asked, and came home, and told me. I have a ledger for what I feel when I sign, and I am going to open it, and I would like you to be here when I do.",
     "{Place}. Of course you did. I think, now, that I would have been disappointed if you had not. Sit, and tell me everything, and I will pour us both something warm.",
-    "That is the whole world you have just described to me, in one sitting, and I did not know it was there. I am afraid I have been asleep for twelve years. Thank you for waking me.",
+    "That is the whole of {place} you have just described to me, in one sitting, and I did not know it was there. I am afraid I have been asleep for twelve years. Thank you for waking me.",
   ],
 };
 
@@ -219,12 +219,29 @@ export const REPORT_MEMORY: Record<Part, Record<"mended" | "ground" | "broke", s
   },
 };
 
-export const REPORT_RECORD = "You wrote the true account of it. I have a copy of the ledger you wrote in, now, in my own keeping. I am told it is the only one that does not flatter the sect.";
-export const REPORT_METHOD: Record<Method, string> = {
-  turned: "You found where it gave, and used it. That is the whole of the art, and I have only ever seen it done by people who listened first.",
-  forced: "You forced it. I am not scolding. Force is sometimes the only argument that is not heard to the end by someone else, and there are days when that is the point.",
-  bargained: "You bargained. I know what a bargain is. I have signed several, with the same hand that signs sentences, and the hand does not know the difference.",
-  gave: "You gave way. There is a courage in that, which no one tells the young. It is the courage of the one who will have to live with what follows.",
+export const REPORT_RECORD = [
+  "You wrote the true account of {place}. I have a copy of the ledger you wrote it in, now, in my own keeping. I am told it is the only one that does not flatter the sect.",
+  "The account of {place} that you set down is the true one. I have read it twice, and compared it to my second ledger, and found them agree, which has not happened before.",
+  "You told the truth of {place} in the ledger, with your name under it. The Hall will not thank you, and the Hall will read it, and that is the point of a ledger.",
+  "I have seen what you wrote of {place}. It does not spare you, or the sect, or me. I have put it with the papers I mean to be buried with.",
+];
+export const REPORT_METHOD: Record<Method, string[]> = {
+  turned: [
+    "At {place} you found where it gave, and used it. That is the whole of the art, and I have only ever seen it done by people who listened first.",
+    "You found {lever}, at {place}, and it held. I have been looking for such a thing in this sect for twelve years, and not found one.",
+  ],
+  forced: [
+    "At {place} you forced it. I am not scolding. Force is sometimes the only argument that is not heard to the end by someone else, and there are days when that is the point.",
+    "You went at {place} with strength, and strength did what strength does. I shall not tell you it was wrong. I shall tell you what it cost, if you wish to know.",
+  ],
+  bargained: [
+    "At {place} you bargained. I know what a bargain is. I have signed several, with the same hand that signs sentences, and the hand does not know the difference.",
+    "You made a deal over {place}, and the deal stands. Deals do, until someone reads them. I have read yours. I have decided to be a poor reader.",
+  ],
+  gave: [
+    "At {place} you gave way. There is a courage in that, which no one tells the young. It is the courage of the one who will have to live with what follows.",
+    "You drew back from {place}. I will not call it cowardice; I have drawn back myself, and called it prudence for fifteen years, and I know the difference is mostly in the telling.",
+  ],
 };
 
 /** At the turn: what the hero knows of where it gives. */

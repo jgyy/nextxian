@@ -26,9 +26,9 @@ export const affairs3: AffairSpec[] = [
         "At the end of the day a hundred and eleven are struck, and the hall empties with the quiet of a house after a death. Wei Sui rinses his brush. You could ask him what the margin is for. You could ask Pan. You could write the names, so that someone has them, in a hand that is not the Censor’s.",
       ],
       hand: [
-        "A woman called Zhen has come to the register-house with a bundle of papers and a baby. Her husband’s name was struck for want of a witness, and her husband is dead, and the witness to his birth was the midwife, who lives on the far side of the county. Zhen does not know the road. She looks at the papers and at you.",
+        "A woman called Anli has come to the register-house with a bundle of papers and a baby. Her husband’s name was struck for want of a witness, and her husband is dead, and the witness to his birth was the midwife, who lives on the far side of the county. Anli does not know the road. She looks at the papers and at you.",
         "You walk the county with her. It takes four days. The midwife has gone to her daughter in the next district, and the daughter to a fair. The witness to the midwife’s witness is an old man who sells needles. You gather what you can, and at each house the people ask the same thing, in the same low voice: has the Censor been there yet.",
-        "Back at the register-house, Zhen lays her papers on the rail. They are four days of other people’s memories. Wei Sui reads them with great care and says, without unkindness, that a witness must be present. Old Pan, behind him, is looking at the margin of the page with an expression you cannot read.",
+        "Back at the register-house, Anli lays her papers on the rail. They are four days of other people’s memories. Wei Sui reads them with great care and says, without unkindness, that a witness must be present. Old Pan, behind him, is looking at the margin of the page with an expression you cannot read.",
       ],
       side: [
         "The struck have come into the yard in the cold, three hundred of them, with their papers in their hands. They stand in the rain. They have not made a noise. A child is crying somewhere at the back, and a woman is holding a lamp up to the register-house window, as though to show the Censor what a name looks like.",
@@ -52,7 +52,7 @@ export const affairs3: AffairSpec[] = [
       broke: "Four hundred and thirty names were struck at Willow County, and a hundred and forty families are on the roads. Old Pan died at his desk.",
     },
     sees: {
-      woman: "Zhen takes your hand across the rail and does not let go for a long while. Wei Sui observes it and notes that it is irregular.",
+      woman: "Anli takes your hand across the rail and does not let go for a long while. Wei Sui observes it and notes that it is irregular.",
       man: "Wei Sui addresses you as a gentleman of the county, correctly, and keeps his eyes on your hands.",
       unspoken: "The auditor cannot enter you in his book without a name or a station, and it troubles him enormously.",
     },
@@ -211,7 +211,7 @@ export const affairs3: AffairSpec[] = [
     },
     leaves: {
       mended: "Shen reads the clause and the books, and says in a small voice that the red is exempt. The bolts go in under the arch, one by one, and the crowd parts for them. By noon every stall in the fair has a red banner. The embargo is lifted before winter, and it is said that Shen bought a scarf.",
-      ground: "A third of the red is allowed in, on the strength of the loom-books, and the rest is held for inspection. It is a quiet fair. The red that sells sells for twice what it would have, and the grey sells for half, and the street makes up the difference by the second month.",
+      ground: "A third of the red is allowed in, on the strength of the loom-books, and the rest is held for inspection. It is a quiet fair. The red that is sold goes for twice what it would have, and the grey for half, and the street makes up the difference by the second month.",
       broke: "The guards close the arch. The red is seized and burned in the fair-ground in a long bright heap, and the weavers watch in silence. Ning does not weave again. The Silk Quarter’s looms go grey, and the street is quiet for a year.",
     },
     after: {

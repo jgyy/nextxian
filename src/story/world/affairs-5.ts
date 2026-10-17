@@ -252,7 +252,7 @@ export const affairs5: AffairSpec[] = [
       hand: [
         "The old back path leaves the tea stall behind the privy, goes through a stand of bamboo and comes out under the sutra stair, where a slab of rock hides a gap in the wall. Shorty Bo has used it for six months to carry sweets in. He says he has never carried rice. He has a basket on a strap. Yunxia has a sack ready, tied with twine.",
         "You carry it up in the dark. The path is steep and slippery, the bamboo clatters, and Bo, ahead of you with a lantern shaded by his hand, whistles a thin tuneless tune that he says is for the guards. You hear them, once, at the turn: boots on stone, the clink of a spear-butt. You stand against the rock and do not breathe.",
-        "At the gap you pass the sack through, and Bo’s arms take it. In the kitchens, behind the wall, a hundred hands are waiting. They carry it away silently. Bo says that was the sixth sack. He says that was the sixth night. He says in a voice that does not shake that if Lian Sheng’s men find the gap, he will be the first to be punished.",
+        "At the gap you pass the sack through, and Bo’s arms take it. In the kitchens, behind the wall, a hundred hands are waiting. They carry it away silently. Bo says that was the sixth sack. He says that was the sixth night. He says in a voice that does not shake that if the guard find the gap, he will be the first to be punished.",
       ],
       side: [
         "Qin’s door is a heavy oak one at the end of the kitchen passage, and he has locked it. The disciples have come in a body, sixty of them, and stand in the passage in silence. There is an enormous quietness to it. A girl at the front holds a bowl and nothing else. Behind the door, you can hear the quartermaster’s breathing, hurried and light.",
@@ -323,7 +323,7 @@ export const affairs5: AffairSpec[] = [
     },
     leaves: {
       mended: "Cai reads the book twice and sets his hand on the wicket. The doors open outward, slowly, for the first time in three weeks, and the two hundred go in singing the gate’s song, flat and low. Old Zhi shuts the doors behind them with a gentle thump. He shuts his book. He has a look on his face that you would not call happy, and would not call otherwise.",
-      ground: "The gate is opened for the sick and the youngest, a hundred and twenty. The rest wait in the camp until the sect opens. Cai writes a note to Lian Sheng in his own hand. Zhi shuts the wicket, and the song is sung on both sides of the wall.",
+      ground: "The gate is opened for the sick and the youngest, a hundred and twenty. The rest wait in the camp until the sect opens. Cai writes to Lian Sheng in a hand that shakes only a little. Zhi shuts the wicket, and the song is sung on both sides of the wall.",
       broke: "The gate stays shut, and the black-coated men on the wall come down with staves. The camp is broken up in the night. The outer disciples scatter down the mountain in small groups, and some go home, and some go to the Hollow Lotus, who are waiting at the foot with an open hand.",
     },
     after: {
@@ -333,7 +333,7 @@ export const affairs5: AffairSpec[] = [
     },
     sees: {
       woman: "Meiling looks at you with shy hope and says that she has never seen a woman come to the camp who was not a mother.",
-      man: "Cai looks at you and hears Lian Sheng in his own head, and answers him instead.",
+      man: "Cai looks at you and answers the order he was given, not the question you asked.",
       unspoken: "Zhang says it is better that nobody knows what you are, and that the gate-lieutenant cannot arrest what he cannot name.",
     },
     token: { name: "A Porter’s Brush", blurb: "A small brush with a worn bamboo handle, stained black. Old Zhi gave it to you through the wicket, and said it has written the right of every disciple for forty years, and may write the next." },
@@ -359,7 +359,7 @@ export const affairs5: AffairSpec[] = [
       look: [
         "The Masters’ Hall is a long dim room with seven seats along one wall and a table before them. Lian Sheng sits at the head, a hard broad figure in black. Hu Jingyan sits at the foot, slight and pale, with a slim book open before him. Between them the five juniors sit in a row, looking at their hands. Nobody has raised a voice. Everyone has raised something else.",
         "They vote by laying a stick on the table. Lian Sheng’s is black. Hu Jingyan’s is white. The juniors’ are grey, and they have not been laid. Little Du, in the corner with his writing-board, scratches out the tally. He says three to two to none, and none is five. His brush shakes. He says the Sealing needs a majority, and a majority is four.",
-        "At the end of the afternoon the masters rise, one by one, and leave. Lian Sheng goes last. He pauses at your bench, and looks at you for the first time, a long flat look, like a man weighing a stone. Then he goes. Du lets out a breath. He says that is the first time in fifteen years the juniors have not laid a stick.",
+        "At the end of the afternoon the masters rise, one by one, and leave. Lian Sheng goes last. She pauses at your bench, and looks at you for the first time, a long flat look, like a woman weighing a stone. Then she goes. Du lets out a breath. He says that is the first time in fifteen years the juniors have not laid a stick.",
       ],
       hand: [
         "The founders’ rule-book is a thin volume in an iron case, and Little Du has been copying it by hand for a week. He has seven copies, one for each master. He has delivered four, and the other three he cannot. The doors of the three are watched. He puts them in your hands, bound in blue cloth, and asks, in a whisper, if you would mind.",
@@ -368,13 +368,13 @@ export const affairs5: AffairSpec[] = [
       ],
       side: [
         "The five junior masters have gathered in the Hall’s anteroom, in their grey robes, and are holding a council among themselves. They are afraid, and they know it. The eldest, a lean woman, is turning a ring on her finger. She says they have not laid a stick since the Sealing, and that she is ashamed of it.",
-        "She says Lian Sheng wants a sacrifice. She says it plainly, like a bill. He wants it done on the night, by the old method. The old method is a person, and the person is chosen by lot among the disciples. She says she has voted for it before, once, fifteen years ago, and has not slept properly since.",
+        "The eldest says Lian Sheng wants a sacrifice, plainly, like a bill: it is to be done on the night, by the old method. The old method is a person, chosen by lot among the disciples. She voted for it once, fifteen years ago, and has not slept properly since.",
         "They look at you. If you stand with them, the five will lay a stick at last, and Lian Sheng will know whose. If you do not, they will lay none, and the three to two will stand, and the Sealing will proceed on a hard master’s majority. A lamp gutters. The eldest junior’s ring has stopped turning.",
       ],
       hinge: [
         "The founders’ rule is in the iron case, on the Masters’ table, under a lamp, and Little Du has turned it to the right page. It is eight lines long. It says that no sealing may be done by the sect unless nine voices agree. It does not say nine masters. It says voices. The founders were not fools. They knew that a sect is not only its masters.",
-        "Lian Sheng reads it standing, with one hand on the table, and his face does not change. Hu Jingyan reads it with a small bitter smile. The five juniors read it together, over each other’s shoulders. Nine voices, it says. There are seven masters. The other two are the Elder of the Law Hall and the Keeper of Keys.",
-        "You read the rule aloud. The hall is perfectly still. Lian Sheng looks at you across the table, at the lamp, and at the iron case. When he speaks, his voice is even. He says the rule is old. He says rules are for those who have time for them. Hu Jingyan, at the foot of the table, has begun, very softly, to laugh.",
+        "Lian Sheng reads it standing, with one hand on the table, and her face does not change. Hu Jingyan reads it with a small bitter smile. The five juniors read it together, over each other’s shoulders. Nine voices, it says. There are seven masters. The other two are the Elder of the Law Hall and the Keeper of Keys.",
+        "You read the rule aloud. The hall is perfectly still. Lian Sheng looks at you across the table, at the lamp, and at the iron case. When she speaks, her voice is even. The rule is old, she says. Rules are for those who have time for them. Hu Jingyan, at the foot of the table, has begun, very softly, to laugh.",
       ],
     },
     leaves: {
@@ -389,7 +389,7 @@ export const affairs5: AffairSpec[] = [
     },
     sees: {
       woman: "The eldest junior looks at you with sudden, startled recognition and says that in this hall it has been fifteen years since a woman spoke to the masters uninvited, and she is glad you have remembered how.",
-      man: "Lian Sheng regards you as he regards all men: as a potential subordinate or a potential problem, and has not yet decided.",
+      man: "Lian Sheng regards you as she regards all men: as a potential subordinate or a potential problem, and has not yet decided.",
       unspoken: "Hu Jingyan murmurs that the Hall’s forms have no place for you, and that this is probably an improvement.",
     },
     token: { name: "A Grey Stick", blurb: "A short grey stick, the kind the juniors lay on the table to vote. The eldest junior kept one back, and gave it to you, and said it was the first she had laid in fifteen years." },
