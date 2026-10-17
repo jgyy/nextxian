@@ -990,6 +990,8 @@ function locate(scenarioId: string): {
   for (const c of choice.requires ?? []) {
     // A choice that opens only to a woman, a man or someone who gives no answer is found as that hero.
     if (c.kind === "hero" && c.field === "gender" && c.is?.length) hero.gender = c.is[0] as Hero["gender"];
+    // So is a choice that opens only to a hero of one Dao.
+    if (c.kind === "hero" && c.field === "dao" && c.is?.length) hero.dao = c.is[0] as Hero["dao"];
     if (c.kind === "age") hero.age = c.max !== undefined && c.max < 24 ? "youth" : (c.min ?? 0) >= 63 ? "elder" : "mature";
     if (c.kind === "realm" && c.min !== undefined) realm = Math.max(realm, c.min);
     if (c.kind === "stat" && c.min !== undefined) stats[c.stat] = c.min;

@@ -171,6 +171,20 @@ export const DEFAULT_HERO: Hero = {
 
 export const MAX_NAME_LENGTH = 24;
 
+/**
+ * A hero with every choice drawn at random, for the creation screen to start from: the player can change any of it, or draw again.
+ * `random` returns a number from 0 up to but not including 1, as `Math.random` does; a seeded one makes the draw repeatable. The name is
+ * left to the player.
+ */
+export function randomPicks(random: () => number = Math.random): Record<HeroField, string> {
+  const picks = {} as Record<HeroField, string>;
+  for (const field of HERO_FIELDS) {
+    const options = HERO_OPTIONS[field];
+    picks[field] = options[Math.min(options.length - 1, Math.floor(random() * options.length))].value;
+  }
+  return picks;
+}
+
 /** A name the story can say aloud: letters, spaces, apostrophes and hyphens, trimmed. An unusable name falls back to the default. */
 export function cleanName(raw: string): string {
   const name = raw
