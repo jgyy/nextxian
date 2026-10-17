@@ -19,7 +19,7 @@ export const GATHERED = "wo_gathered";
 export const metFlag = (reach: number) => `wo_met_${reach}`;
 export const giftFlag = (reach: number) => `wo_gift_${reach}`;
 
-const NAMES = ["the Terraces", "the Pilgrim Stairs", "the Quarry Country", "the Neighbour Sects", "the River Provinces", "the Salt Coast", "the Ash Steppe", "the Glass Sea", "the Nine Tiers", "the Foot of the Sect"];
+const NAMES = ["the Terraces", "the Pilgrim Stairs", "the Quarry Country", "the Neighbour Sects", "the River Provinces", "the Salt Coast", "the Ash Steppe", "the Shore and the Camps", "the Nine Tiers", "the Foot of the Sect"];
 export const gatherNames = NAMES;
 
 const flag = (f: string, is?: boolean): Condition => ({ kind: "flag", flag: f, ...(is === false ? { is: false } : {}) });

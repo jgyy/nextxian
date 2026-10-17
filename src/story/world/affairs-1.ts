@@ -78,7 +78,7 @@ export const affairs1: AffairSpec[] = [
     tracks: {
       look: [
         "The levy-stone has a hollow worn in the top of it where fifteen years of sitting boys have waited. Captain Pei calls a name, and the boy walks to the table, and a mother makes a sound at the back of the crowd that is not a word. The gong follows each name, as if to cover it.",
-        "The schoolmaster sits beside you with his chalk-box, ticking names, and says it low. The Concord’s own rule exempts any house that has already given a son. The Sealing year took ten of them, Gu Hanming among them. Pei has the list, and the quota, and does not read rolls.",
+        "The schoolmaster sits beside you with his chalk-box, ticking names, and says it low. The Concord’s own rule exempts any house that has already given a son. The Sealing year took fourteen of them, Gu Hanming among them. Pei has the list, and the quota, and does not read rolls.",
         "You could write down the names as they are called, so that someone has them. You could count how many of the twenty-three are the last son of a house. Or you could look at your hands. Watching is a part too, and the boys know who is watching.",
       ],
       hand: [
@@ -98,12 +98,12 @@ export const affairs1: AffairSpec[] = [
       ],
     },
     leaves: {
-      mended: "The old roll is read to the end, name by name, and Pei sets down his stylus. Ten houses are struck from his list. He takes eleven boys instead of twenty-three, from the houses that never gave, and the gong is not sounded when he leaves.",
+      mended: "The old roll is read to the end, name by name, and Pei sets down his stylus. Fourteen houses are struck from his list. He takes nine boys instead of twenty-three, from the houses that never gave, and the gong is not sounded when he leaves.",
       ground: "The list is cut to sixteen. The captain takes the sixteen and the quota is called met. Nobody is satisfied, and nobody is surprised, and the valley goes on boiling water for the boys who walk out in a line.",
       broke: "Twenty-three go, and eleven more run for the hills the first night, and are written down as deserters. By midsummer the hills have a camp, and the camp has a man who offers each runaway a name nobody has struck out.",
     },
     after: {
-      mended: "The Sealing-year roll was read at the levy-stone, ten houses were struck from the list, and Captain Pei left with eleven boys and a note of apology to the Concord.",
+      mended: "The Sealing-year roll was read at the levy-stone, fourteen houses were struck from the list, and Captain Pei left with nine boys and a note of apology to the Concord.",
       ground: "The levy took sixteen sons for the pickets, not twenty-three. The schoolmaster keeps a copy of the old roll under his floor and teaches nothing else.",
       broke: "The levy took twenty-three sons, and eleven more ran. A camp of deserters now holds the hills above the terraces, and it is recruiting.",
     },

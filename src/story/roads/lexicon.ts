@@ -132,6 +132,10 @@ export const CHOICE_LABEL: Record<ChoiceTone, string[]> = {
     "Admit to {ally} that you do not yet know whom to trust in {place}.",
     "[ptw] Say aloud what you believe about {focus}, and accept whatever comes of saying it.",
     "Give {kname} your true name and your true errand, and ask for the same in return.",
+    "Ask {kname} to tell you, honestly, what {place} fears most.",
+    "Say to {ally} what you would want said to you, in their place.",
+    "Tell {kname} where your information came from, though you would rather not.",
+    "Give {ally} a plain account of what you have done since you arrived.",
   ],
   mercy: [
     "Offer {ally} what food and coin you can spare, and ask for nothing.",
@@ -139,6 +143,10 @@ export const CHOICE_LABEL: Record<ChoiceTone, string[]> = {
     "Take on a small task for {ally} before you press for answers.",
     "Speak gently of those who have suffered in {place}, and mean it.",
     "[p] Leave something at {focus} for the people who cannot come back for it.",
+    "Share your water with {ally}, and talk about something else.",
+    "Help {kname} with the day’s work before you ask anything of {place}.",
+    "Listen to {ally} tell the same grief a second time, and do not hurry it.",
+    "Offer to carry {kname}’s burden as far as the next turning.",
   ],
   inquiry: [
     "[pt] Study {focus} a little longer, and write down what does not fit.",
@@ -146,6 +154,10 @@ export const CHOICE_LABEL: Record<ChoiceTone, string[]> = {
     "[pt] Compare what {kname} told you with what {focus} shows.",
     "[t] Search the margins of {focus} for marks that someone tried to remove.",
     "Trace {obstacle} back to whoever put it there.",
+    "Ask {kname} what {place} used to be, before the trouble.",
+    "Keep a count of who comes and goes at {place}, and see what the count says.",
+    "Follow {ally}’s eyes to the thing they will not look at directly.",
+    "Read the wear on the ground around {obstacle}, and learn who goes there.",
   ],
   deceit: [
     "Claim an errand from the Law Hall that you do not have.",
@@ -153,6 +165,10 @@ export const CHOICE_LABEL: Record<ChoiceTone, string[]> = {
     "[t] Slip a small piece of {focus} into your sleeve while {kname} looks away.",
     "Let {kname} believe you already know more than you do.",
     "Use a borrowed name to get past {obstacle}.",
+    "Say you are inspecting {place} for someone who is not here.",
+    "Praise {kname} for something they did not do, and watch their face.",
+    "Pretend to be tired and a little stupid, and let {ally} talk.",
+    "Give {kname} a second reason for being here, and a third in case it is needed.",
   ],
   force: [
     "Press past {obstacle} before it can be explained away.",
@@ -160,6 +176,10 @@ export const CHOICE_LABEL: Record<ChoiceTone, string[]> = {
     "[pw] Break the quiet around {focus} with a demand no one can ignore.",
     "Shoulder {ally} aside and take what you came for.",
     "Warn {kname} that the Law Hall will hear of any lie told here today.",
+    "Put your hand flat on the table and tell {kname} you will wait until you hear it.",
+    "Stand between {ally} and the door until the question is answered.",
+    "Tell {kname} what you will do if the answer is another silence.",
+    "Cut the pleasantries short and name {obstacle} aloud.",
   ],
   quiet: [
     "[ptw] Wait in the shadow of {focus} until the street empties.",
@@ -167,6 +187,10 @@ export const CHOICE_LABEL: Record<ChoiceTone, string[]> = {
     "Rest a while and let {place} show you its ordinary face.",
     "Move on at the pace of the slowest person here, and watch.",
     "Step back from {obstacle} and see who comes to it next.",
+    "Sit with a cup of tea at {place} and let the afternoon do the asking.",
+    "Take a long way round {place}, and see what it shows you of itself.",
+    "Let {ally} finish whatever they are doing before you speak.",
+    "Mend something small while you wait, and see who comes to watch.",
   ],
 };
 

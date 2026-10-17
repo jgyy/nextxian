@@ -397,14 +397,14 @@ export const affairs2: AffairSpec[] = [
   {
     id: "ropedues",
     title: "The Bridge-Keepers’ Dues",
-    place: "the Cloud Gap bridge-head",
+    place: "the carters’ bridge-head at Windfall Crossing",
     people: "the bridge-keepers and the carters",
     stake: "the toll and the ropes’ upkeep",
     fate: "mended",
     foe: "the toll-master Hang",
     ally: "Auntie Sai, the keeper’s wife",
     lever: "the rope-ledger, in which every rope’s age is written",
-    news: "The Cloud Gap bridge is kept by one family, in ropes older than the family. The toll has been raised, and the carters will not pay it, and the ropes have not been paid for. Auntie Sai, the keeper’s wife, says the next rope to go will go with someone on it, and that her husband has stopped sleeping.",
+    news: "The carters’ bridge at Windfall Crossing is kept by one family, in ropes older than the family. The toll has been raised, and the carters will not pay it, and the ropes have not been paid for. Auntie Sai, the keeper’s wife, says the next rope to go will go with someone on it, and that her husband has stopped sleeping.",
     deed: {
       look: "stand at the bridge-head through a morning and watch the carters pay, and refuse, and pay",
       hand: "splice the oldest of the bridge-ropes with the keeper’s son, in the cold at dawn",
@@ -439,9 +439,9 @@ export const affairs2: AffairSpec[] = [
       broke: "The carters go the long way round, all but a few, and the toll falls to nothing. In the autumn gales the oldest rope goes, and a wagon with it. The Concord takes the bridge over by writ, and the keeper’s family is paid off with a sum that is less than the debt.",
     },
     after: {
-      mended: "The carters of the Cloud Gap formed a guild to pay for the ropes, with a share for the keeper’s family. All forty ropes are spliced, and the bridge sings clear.",
+      mended: "The carters of Windfall Crossing formed a guild to pay for the ropes, with a share for the keeper’s family. All forty ropes are spliced, and the bridge sings clear.",
       ground: "The toll is paid and grumbled over, and the bridge’s ropes are mended a few at a time. The keeper’s family still sells a field a year.",
-      broke: "The oldest rope of the Cloud Gap bridge parted in the autumn gale, with a wagon on it. The Concord now keeps the bridge by writ.",
+      broke: "The oldest rope of the Windfall bridge parted in the autumn gale, with a wagon on it. The Concord now keeps the bridge by writ.",
     },
     sees: {
       woman: "Sai takes your hands in hers and turns them over to see the blisters, and says that the bridge has always known a woman’s hands.",
