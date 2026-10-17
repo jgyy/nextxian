@@ -1,6 +1,7 @@
 import { ATTIRES, HERO_FIELDS, HERO_OPTIONS, type Attire, type HeroField } from "./hero";
 import { ELEMENTS, type Element } from "./path";
 import { isTone } from "./tone";
+import { MEASURES, type WorldMeasure } from "./world";
 import type { Choice, ChoiceTone, Condition, Effect, Mood, NpcMetric, NpcScenario, NpcState, PlayerStat, Remark, Scene } from "./types";
 
 /**
@@ -17,7 +18,7 @@ import type { Choice, ChoiceTone, Condition, Effect, Mood, NpcMetric, NpcScenari
  *
  * A choice can change what the hero wears (`wear:silk`, `gain:silk`, `lose:silk`), and a condition can ask whether they own it (`wardrobe:silk`, `!wardrobe:silk`, `garments>=2`).
  * Conditions are joined with `&`: `flag`, `!flag`, `insight>=12`, `karma<=-10`, `trust>=20`, `realm>=2`, `roads>=3`,
- * `standing>=4`, `hero:attire=silk|armour`, `hero:status!=outcast`, `bond:ren>=10`, `since:flag>=4`, `decisions>=30`, `mood:afraid`, `scene:prefix`, `count:flag_prefix>=3`, `said:SCENARIO`, `tone:deceit>=3/6`.
+ * `standing>=4`, `world:voices>=12`, `world:mended@3>=2`, `hero:attire=silk|armour`, `hero:status!=outcast`, `bond:ren>=10`, `since:flag>=4`, `decisions>=30`, `mood:afraid`, `scene:prefix`, `count:flag_prefix>=3`, `said:SCENARIO`, `tone:deceit>=3/6`.
  * Effects are separated by spaces: `+flag`, `-flag`, `karma+3`, `cult+4`, `trust-2`, `bond:ren+5`, `npc:ID`, `ally:ID`,
  * and `needs:3`, which asks a realm (an index into the ladder) of anyone who tries the choice.
  * Unless the effects start with `=`, a choice also gets the small stat drift that goes with its tone.
@@ -93,6 +94,12 @@ export function parseConditions(source: string, where: string): Condition[] {
       out.push({ kind: "item", item: name, ...rest });
     } else if (t.startsWith("asset:") || t.startsWith("!asset:")) {
       out.push({ kind: "asset", asset: t.replace(/^!?asset:/, ""), ...(t.startsWith("!") ? { is: false } : {}) });
+    } else if (t.startsWith("world:")) {
+      // `world:weight>=20` over the whole world, or `world:mended@3>=2` over one reach.
+      const { name, ...rest } = bounds(t.slice(6), where);
+      const [measure, reach] = name.split("@");
+      if (!(MEASURES as string[]).includes(measure) || (reach !== undefined && !/^(?:[1-9]|10)$/.test(reach))) throw new MarkupError(where, `bad world condition "${t}"`);
+      out.push({ kind: "world", measure: measure as WorldMeasure, ...(reach ? { reach: Number(reach) } : {}), ...rest });
     } else if (t.startsWith("scene:")) {
       out.push({ kind: "scene", prefix: t.slice(6) });
     } else if (t.startsWith("said:")) {

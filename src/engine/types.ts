@@ -1,5 +1,6 @@
 import type { Attire, Dao, Hero, HeroField } from "./hero";
 import type { Element } from "./path";
+import type { WorldMeasure } from "./world";
 
 /** Player-facing numeric stats. `karma` may go negative; the others stay in 0..100. */
 export type PlayerStat = "qi" | "karma" | "insight";
@@ -82,7 +83,12 @@ export type Condition =
    * How the hero stands against a foe: their level against the foe's, their rank in their Dao, how their roots answer the element the foe fears, the Dao that
    * is the foe's bane, their qi, and the footholds (the `boost` flags) won earlier in the fight. See `edgeOf`. Zero is an even fight.
    */
-  | { kind: "edge"; foe: number; weak: Element; bane?: Dao; boost?: string[]; min?: number; max?: number };
+  | { kind: "edge"; foe: number; weak: Element; bane?: Dao; boost?: string[]; min?: number; max?: number }
+  /**
+   * How the hero stands in the wider world: the weight of the parts they have taken in its affairs, how many voices answer them, how many affairs their part
+   * left mended, ground on or broke, over all ten reaches or over one (`reach`, 1 to 10). See `worldMeasure`.
+   */
+  | { kind: "world"; measure: WorldMeasure; reach?: number; min?: number; max?: number };
 
 export type Effect =
   | { kind: "setFlag"; flag: string; value?: boolean }

@@ -643,7 +643,7 @@ She looks at the fire.
   scenarios: String.raw`
 $ SU_TOMB_VOICES | trust+4 respect+4 fear+4 | elder | The Elder enters the empty grave of the woman who wrote the cards.
 hostile: There is nothing in the tomb. I had expected a body, a relic, a weapon. There is only a very long inscription and a draught. I found that I could not leave until I had read it all, and that I wished very much that I had not.
-wary: Seven hundred years ago nine people wrote down what they had done, in a language they hoped nobody would understand. I understood it. I have been a Registrar for twenty years. I have always known the language of things that are done so that they may not be seen.
+wary: Seven hundred years ago nine people wrote down what they had done, in a language they hoped nobody would understand. I understood it. I have read the Law’s ledgers for eighteen years. I have always known the language of things that are done so that they may not be seen.
 neutral: I have read the founders’ confession. It is neither as terrible nor as clean as I had feared. It is only a list. They wrote it as I would have written it, with sums.
 warm: I think Yu Ling wrote that confession to be read by a bureaucrat. Someone who would not flinch at the sums. I think she wrote it to be read by me.
 devoted: I have been trying to decide whether I forgive them. It occurs to me that it is not mine to forgive. It is the child’s. I should like very much to ask her.

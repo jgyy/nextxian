@@ -3,8 +3,10 @@ import type { Arc } from "../types";
 /**
  * Book Six, arc four: the Last Sealing. Su Mengjiao rises out of the mist and asks the one question the abyss has been asking for fifteen
  * years. What the player can answer depends on what they have become: the realm they reached, the cards they gathered, the friends they
- * kept and the karma they carry. Seven endings (the nine verbs, the listener, the ascendant, the hollow seat, the warden, the spent hand,
- * the closed ledger); every one of them is reachable, and the cheapest of them (the closed ledger) always is.
+ * kept and the karma they carry, and now on the part they have taken in the wide world. Nine endings (the nine verbs, the listener, the ascendant, the
+ * hollow seat, the warden, the spent hand, the closed ledger, the many hands, the hinge of the age); every one of them is reachable, and the cheapest of
+ * them (the closed ledger) always is. The two that read the world ask for no realm at all: a hero who listened to enough of it can answer *who is listening?*
+ * with a thousand small voices, or with the one hand that turned a great many things.
  */
 export const sealing: Arc = {
   id: "sealing",
@@ -46,6 +48,8 @@ There are many answers, and each is made of something you have been. The abyss w
 > force | Hold the line with your own body, whatever it costs. | end_spent | needs:6 | realm<=5 | You are strong enough to do better than this.
 > deceit | Offer the black seed to the abyss, and take its seat. | end_hollow | | karma<=-30 & realm>=3 | A seat in the abyss is only offered to someone the abyss recognises, and someone with a core strong enough to sit.
 > quiet | Step back, and let Mengjiao answer one last night. | end_ledger |
+> mercy | Turn round, and let the ones you sat beside answer for you. | end_many | | world:voices>=16 & world:hinges<=2 | The roll-call needs sixteen affairs of the world in which you took some part, and no more than two in which things turned on you alone.
+> force | Put your hand where the stone is thinnest, and turn the whole of it. | end_hinge | | world:hinges>=5 & world:mended>=4 | A hinge needs five affairs of the world that turned on you, and four of them mended.
 > mercy | Step back from the ledge, and think. | hub_b6 | bond:gu+1
 
 === end_nine | The Nine Verbs
@@ -105,6 +109,24 @@ The red enters you through the seed. It is not painful. It is a vast, kind, appa
 +[who] bond:lin>=6 | Lin Yuan says *please*, and then, in a smaller voice, *please*.
 You rise from the ledge. You are very calm. The sect’s gates open to you without a key. Elder Su kneels in the Law Hall and does not ask why you have changed; she does not need to.
 The mountain is quiet. It is yours. It will be quiet for a very long time.
+
+=== end_many | The Many Hands
+#end Ending: The Many Hands
+You do not answer. You turn round.
+Behind you on the ledge there are more people than the ledge can hold, and they are still coming: a cooper with a lame leg, a hostel-keeper, a hoist-girl with an oil-can, a woman with a cart-rope on her shoulder, a boy with a cake of salt. They have not come by the stair. They have come by the roads, and they stand on the dark thinly, as the faithful do, and each holds a very small light.
+*Who is listening?* asks the abyss, and the lights say, raggedly, all together: *We are. You sat with us.*
+It is not an act of power. It is a roll-call. The mist, which in fifteen years has been answered by one voice, is answered by a thousand, each there because someone once sat down beside it and heard it out. The red goes out of the mist slowly, like a stain in the wash.
+Mengjiao laughs until she cries. The Elder, for the first time in fifteen years, asks for no ledger.
++[who] bond:ren>=8 | Ren Qiao puts out the lantern he has held since he was seventeen, and nobody tells him to light it again.
+
+=== end_hinge | A Hinge of the Age
+#end Ending: A Hinge of the Age
+You do not hold the line, and you do not take the seal. You walk to the edge of the ledge and put your hand where the stone is thinnest, and the abyss, which has waited fifteen years for something to push against, finds it.
+It is what you have done before, in a granary yard, at a spring-gate, on a landing of the Stair. You put your hand where it gives, and you turn.
+The mist swings. It is enormous, and it is a door, and the door has been held shut from the wrong side for fifteen years. It comes round on its hinge with a long grinding sound, and the fourteen go through it, one by one, into the light.
+When it is over the ledge is bare and your arm is numb to the shoulder. The company looks at you like people who have watched something turn. You do not look down the road. You can feel it. It will want you again.
+“Well,” says the Elder, at last. “I suppose that is what a hinge is for.”
++[who] bond:mengjiao>=8 | Mengjiao says, very quietly, that she has never been so glad to be wrong about a door.
 
 === end_ledger | The Closed Ledger
 #end Ending: The Closed Ledger

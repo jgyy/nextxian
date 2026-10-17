@@ -1,6 +1,6 @@
 # Plot-hole and continuity ledger
 
-Thirteen passes, four asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
+Fifteen passes, four asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
 
 | Pass | Fixed | Of what kind |
 | --- | ---: | --- |
@@ -18,6 +18,23 @@ Thirteen passes, four asked to fix more than 1,000 and the fourth asked again. T
 | Eleventh pass | 24 | 12 realm-band lines that named one realm and were shown to every hero above it, 1 ending that did the same, 3 lines of the Elder, Gu and the age remarks that named a realm for every realm above it, 3 defects in one scene (a Spirit Severing, Dao Seeking or Ascendant hero read as a Nascent Soul, called “Madam”, and told they were “the first Nascent Soul this year”), 2 lines that called the unreadable hero “her” and “she”, 2 breaks in the Elder’s own years, 1 breakthrough with no trial before it. Short of the 1,000 asked for: see below |
 | Twelfth pass | **11** | 2 lines of the Elder that said what the hero wore on arriving (once the hero can change dress, the dress they have on is not the one they came in), 2 choices that told the hero they put on a garment and changed nothing, 1 “second pair of straw sandals” for every hero, 1 “benefactress” for every gender, 4 keepsakes of a hero’s own story that the new Sell and Give buttons would have let a hero trade away, 1 Restart that began the hero again in the last dress they put on. Short of the 1,000 asked for: see below |
 | **Thirteenth pass (this branch)** | **11** | 3 lines that called the Ascendant’s silence “the last trial” or said no Ascendant could tell it, 1 elixir brewed for “the final realm”, 4 lines that made the seal a thing “only an Ascendant” could hold, 1 band of the older roads that nobody above the top road could be in, 1 practice that carried a hero over the layers they had left without saying so and 1 strain that could have added points |
+| **Fifteenth pass (this branch)** | **178** | 9 lines of the Elder that gave her career or age the wrong way round (she is 43, Registrar for 6 years and Elder for 12), 5 typographic slips in Book Five, and 164 lines of text a player met again and again in one walk (16 purse reactions, 60 road labels, 64 realm-fit hero lines, 24 ascent prompts) given variants so that the same sentence is no longer the only choice |
+
+## Fifteenth pass (this branch): what was looked for, found and fixed
+
+This branch added the World Roads: forty affairs across ten reaches, the part the hero plays in each, the Gathering before the Last Sealing, and two new endings. The pass looked for what a world of that size could expose: a part that changed nothing, a reach nobody could hear from, a line the new roads copied word for word, and canon the new text contradicted.
+
+| Class | Count | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| Elder Su’s career told wrongly in older scenes (Registrar for 6 years, Elder for 12, age 43): lines that made her Elder at the Sealing, or older than 43 | 9 | a search for every year count attached to her name, checked against `docs/CANON.md` | `books/b2/censors.ts`, `b4/court.ts`, `b4/wolves.ts`, `b4/border.ts`, `b4/tomb.ts`, `b5/mirage.ts`, `ascent/lexicon.ts`, `ascent/remarks.ts` |
+| Typographic slips (doubled spacing, straight quotes, a dash used as a pause) in Book Five | 5 | the continuity tests on the first full run | `books/b5` ladder, mirage, furnace, gale, festival |
+| Lines that repeat across a walk of a road: purse reactions, road labels, realm-fit hero lines and the ascent’s prompts had one wording each | 164 | counting repeated sentences across the roads a hero walks | `fortune/lexicon.ts`, `roads/lexicon.ts`, `roads2/lexicon.ts`, `roads2/hero-lex-more.ts`, `ascent/build.ts` |
+| A hub in the new roads that the word-count test put over the cap | 1 | `npm run word-count` | `story/world` |
+
+**Caught in review of the new text** (these never reached the branch’s final content and are not counted): about eight affairs written first with canon wrong (a Lian Sheng called “he”, a Qiu who spoke aloud when she writes on slates, a Registrar who was Elder for the wrong span, a lift described as a rope), which the continuity tests and a read against `docs/CANON.md` caught, and which were rewritten or renamed before the first commit of the roads.
+
+**Looked for and not found:** a part of an affair that changed no flag, no cost and no course (every part from look to hinge shifts at least one of the three); an ending reachable by a hero with no realm that the engine does not guard (the new endings need none, by design, and are tested); a reach whose voices could not reach the “answer” threshold.
+
 
 ## Fourteenth pass (this branch): what was looked for, found and fixed
 

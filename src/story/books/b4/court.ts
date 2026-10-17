@@ -627,7 +627,7 @@ The fire burns low. Somewhere out in the dark, a horse whinnies.
 `,
   scenarios: String.raw`
 $ SU_COURT_WIND | trust+3 respect+4 fear+2 | elder | The Elder sits in the circle of a court that has no books.
-hostile: Nine stones, one pole, a ribbon that moves when a man tells the truth. I have spent forty years building a system that could be made to say what I wished. I find this one rather harder to bribe.
+hostile: Nine stones, one pole, a ribbon that moves when a man tells the truth. I have spent twenty years building a system that could be made to say what I wished. I find this one rather harder to bribe.
 wary: They asked Duan to sit. They did not ask me. I was grateful. I should not have known what to say. I have signed thirty-one sentences in my life without once hearing the accused. I heard this one.
 neutral: The ribbons moved for the widow and did not move for the defendant until the third day. It was the first time in my life I had watched a verdict arrive slowly.
 warm: I have an idea that a court should be a place where the loudest voice in it is the quietest truth. It is not a thing we do in the Chancery. I should like to find out whether it can be done.

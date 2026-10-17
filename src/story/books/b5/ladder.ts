@@ -17,7 +17,7 @@ It stands in an open courtyard at the foot of the first tier, between two pillar
 The number shows on a dial. A clerk reads it aloud, and writes it on the pilgrim’s slip.
 “Eleven,” calls the clerk. A farmer in a patched coat steps down, pale. “Forty. Three. Nine hundred and six.” A rich merchant in silk, red-faced, is escorted away by two guards. The crowd behind murmurs.
 “What do they mean?” you whisper.
-“Children,” says Duan Wuyi. His voice is thin. “It is the cost. How many names must be struck, to carry each of them up.” He swallows. “The poor are cheap. They go up with a few. The great… ”
+“Children,” says Duan Wuyi. His voice is thin. “It is the cost. How many names must be struck, to carry each of them up.” He swallows. “The poor are cheap. They go up with a few. The great…”
 “Nine hundred and six.”
 “It is their weight,” says Duan. “Not in pounds.”
 At the head of the queue the clerk lifts his eyes. He sees your armbands.

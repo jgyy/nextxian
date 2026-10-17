@@ -268,7 +268,7 @@ describe("the endings of Book Six", () => {
 
   it("ends every ending scene without choices", () => {
     const endings = Object.values(story.scenes).filter((s) => s.id.startsWith("end_"));
-    expect(endings.map((s) => s.id).sort()).toEqual(["end_ascendant", "end_hollow", "end_ledger", "end_listener", "end_nine", "end_spent", "end_warden"]);
+    expect(endings.map((s) => s.id).sort()).toEqual(["end_ascendant", "end_hinge", "end_hollow", "end_ledger", "end_listener", "end_many", "end_nine", "end_spent", "end_warden"]);
     for (const ending of endings) expect(ending.choices).toHaveLength(0);
   });
 });

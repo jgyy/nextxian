@@ -24,6 +24,7 @@ import { CustomPanel } from "./CustomPanel";
 import { RankPanel } from "./RankPanel";
 import { TribulationPanel } from "./TribulationPanel";
 import { FightPanel } from "./FightPanel";
+import { WorldPanel } from "./WorldPanel";
 import { WitnessPanel } from "./WitnessPanel";
 import { ToneLegend } from "./ToneLegend";
 
@@ -343,6 +344,7 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
           <RankPanel game={game} />
           <TribulationPanel game={game} />
           <FightPanel game={game} />
+          <WorldPanel game={game} />
           <WitnessPanel game={game} />
           <section className="card side-legend" aria-label="What each choice colour means">
             <p className="eyebrow">Colours of choice</p>

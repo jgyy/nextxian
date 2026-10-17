@@ -653,7 +653,7 @@ hostile: I have never been so afraid of a sound. I stood in a tent, in the dark,
 wary: Odval said the wolves came to tell us something. I said: what? She said: they do not know either. They only know that it must be said.
 neutral: I used to think of wolves as the Law Hall thinks of them: a statistic on a tax return. I find I have changed my mind.
 warm: They sing in a chord. I could hear it. A fifth and an octave, rising. Pao’s door, I think. Did you hear it? I should not like to be mistaken.
-devoted: If there is anything out there that wants to tell me something, I should like to be told. I am sixty years behind on my correspondence.
+devoted: If there is anything out there that wants to tell me something, I should like to be told. I am fifteen years behind on my correspondence.
 `,
   remarks: String.raw`
 % wolves_nergui_later | since:b4q_wolves>=4 | gu | Nergui keeps a wolf-tooth on a thong. She says the Grey Mother gave it. Odval says wolves do not give things. Nergui says this one did.

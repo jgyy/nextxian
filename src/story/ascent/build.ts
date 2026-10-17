@@ -2,6 +2,40 @@ import { REALMS } from "@/engine/cultivation";
 import { LAYERS, ORDINALS } from "@/engine/stage-text";
 import { isMajor, layerName, layerOfLevel, realmOfLevel, TOP_LEVEL, wallPrepFlag, WALL_FAIL_PREFIX, WALL_PREP_PREFIX } from "@/engine/stages";
 import type { Choice, Condition, Effect, NpcScenario, Scene, Tier } from "@/engine/types";
+
+/** How a wall is gone at again, asked about, pressed on to and left. A wall is one of a hundred, so each of these has several wordings and a wall reads one of them. */
+const REMEMBER = [
+  "You have gone at the wall this way before, and the work remembers you.",
+  "This way of going at the wall is not new to you; your hands know the first third of it.",
+  "You have tried this road at the wall already, and the wall has kept a note of it.",
+  "The wall has seen this approach from you before. It does not hold it against you, and it does not forget.",
+  "You have worked the wall like this once, and the stone is a little wiser than it was.",
+  "Your last attempt this way is still in the grain of the wall, and you feel it as you begin.",
+];
+const CONSULT = [
+  "Ask Elder Su what she makes of the wall.",
+  "Put the wall to Elder Su, and listen to what she says.",
+  "Ask the Elder how she would go at it, if it were hers.",
+  "Take the wall to Elder Su, and ask her to be plain.",
+  "Ask Elder Su whether she has ever stood at a wall like this.",
+  "Tell Elder Su where you are stuck, and wait.",
+];
+const PRESS = [
+  "Go on to the hour as you are.",
+  "Take the hour as it comes, with what you have.",
+  "Skip the preparation and meet the hour.",
+  "Let the work wait, and go on into the hour.",
+  "Go on without further trying, and see what the hour makes of you.",
+  "Go in to the hour as you stand.",
+];
+const LEAVE = [
+  "Leave the work and go back to the stations.",
+  "Put the work down and return to the stations.",
+  "Walk away from the wall, for now, to the stations.",
+  "Leave it for another day and go back to the stations.",
+  "Give the wall its peace, and go back to the stations.",
+  "Turn back from the wall, and rejoin the stations.",
+];
 import {
   AFTER_OPENING,
   CLOSE_OPENING,
@@ -117,16 +151,16 @@ export function buildWall(level: number, origin: string): Scene[] {
       id: id(`m${k}`),
       title: `${METHOD_TITLE[k]}: ${slots.name}`,
       paragraphs: [fill(lex.methods[k], slots), fill(pick(METHOD_ASK, level + k), slots)],
-      extras: [{ when: [flagIs(flag)], paragraphs: ["You have gone at the wall this way before, and the work remembers you."] }],
+      extras: [{ when: [flagIs(flag)], paragraphs: [pick(REMEMBER, level + k)] }],
       choices: [
         go("work", w.label, METHOD_TONE[m], id("hour"), {
           requires: [levelIs(level), flagIs(flag, false), ...(w.need ?? [])],
           lockedHint: apex ? "There is no wall left to work against." : w.hint ?? "You have already gone at this wall this way, or have passed it.",
           effects: [{ kind: "setFlag", flag }, { kind: "addCultivation", amount: 1 + Math.floor(r / 2) }, ...w.effects],
         }),
-        go("consult", "Ask Elder Su what she makes of the wall.", "inquiry", id("hour"), { npcScenario: scenarioId("COUNSEL", r) }),
-        go("press_on", "Go on to the hour as you are.", "quiet", id("hour")),
-        leave("Leave the work and go back to the stations."),
+        go("consult", pick(CONSULT, level + k), "inquiry", id("hour"), { npcScenario: scenarioId("COUNSEL", r) }),
+        go("press_on", pick(PRESS, level + k), "quiet", id("hour")),
+        leave(pick(LEAVE, level + k)),
       ],
     };
   });

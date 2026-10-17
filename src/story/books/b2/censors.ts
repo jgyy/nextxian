@@ -429,7 +429,7 @@ $ SU_CENSOR_BAR | trust-1 respect+4 fear+3 | elder | The player barred the gate 
 hostile: You barred a Censor’s gate in my name, and now I must answer for it in a larger room than this. I do not thank you for the honour of being your reason. Do not do it again.
 wary: You were right, and you were a fool, and you drew a seed of black thread out in front of a Censor. I will not pretend that is not a thing to be afraid of. I am afraid of it. I am also afraid for you.
 neutral: You stopped a Censor’s rod with a thread I did not know you carried. I ought to ask what it is. I find I would rather ask what it needs, and I do not yet have the courage for either question.
-warm: I have taught wardens to stand in doorways for forty years. You did it better than any of them, and for the wrong reason, and I would not have you do it differently. Come inside. You are wet.
+warm: I have taught wardens to stand in doorways for twenty years. You did it better than any of them, and for the wrong reason, and I would not have you do it differently. Come inside. You are wet.
 devoted: You stood in my gate for me. No one has done that since my sister, and she did it with a stolen lamp, and was just as foolish. Come in out of the rain, and let me look at your hands.
 ? censors_seed_seen | The whole courtyard saw the thread, and now you stand before me with your hands closed. I will not ask you to open them. I will only say that I have seen worse things in a child’s palm, and loved them.
 

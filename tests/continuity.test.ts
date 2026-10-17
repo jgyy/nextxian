@@ -304,7 +304,9 @@ describe("the twelfth pass: what a change of dress and a pack that can be used c
 
   it("keeps the keepsakes of a hero’s own story out of the market and off the Elder’s sill", () => {
     const keepsakes = Object.values(story.items!).filter((i) => i.keepsake);
-    expect(keepsakes.map((i) => i.id).sort()).toEqual(["lc_sisters_book", "og_furnace_pill", "ry_wardens_tally", "td_blank_leaf"]);
+    // The keepsakes of a hero’s own story, and the forty tokens the people of the world press on a hero who took a part in their affairs.
+    expect(keepsakes.filter((i) => !/^wo_[a-z0-9]+_token$/.test(i.id)).map((i) => i.id).sort()).toEqual(["lc_sisters_book", "og_furnace_pill", "ry_wardens_tally", "td_blank_leaf"]);
+    expect(keepsakes.filter((i) => /^wo_[a-z0-9]+_token$/.test(i.id))).toHaveLength(40);
     for (const item of keepsakes) {
       const g = { ...createGame(story), items: { [item.id]: 1 }, decisions: 30 };
       expect(sellBlock(story, g, item.id), item.id).toMatch(/keepsake/);

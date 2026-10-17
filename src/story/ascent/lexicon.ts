@@ -265,7 +265,7 @@ export const REALM_LEX: readonly RealmLex[] = [
     counsel: "The door is open. The wall is that you must still choose to walk through it, with no one to see whether you did.",
     press: "Lift the latch. If it is open, you have lost nothing. If it is not, you will know.",
     report: "I have stood at doors. Some I walked through and some I did not. I am telling you only that I remember all of them.",
-    thrown: "The door has not let you through more than once, and you tell me so without flinching. I have been telling it to myself for sixty years, and never so plainly.",
+    thrown: "The door has not let you through more than once, and you tell me so without flinching. I have been telling it to myself for thirty years, and never so plainly.",
   },
   {
     place: "the Long Garden",

@@ -20,9 +20,10 @@ flowchart LR
     WD["wardrobe/<br/>eight Wardrobe Roads, 1,008 scenes:<br/>four keepers who read the dress, a six-scene fitting<br/>(counter, rack, verdict, commission, hatch, mirror),<br/>echoes, endings and the Elder’s remarks on a change of dress"]
     AS["ascent/<br/>ten Breakthrough Roads, 1,000 scenes:<br/>a hundred walls of ten scenes (the wall, four ways,<br/>the hour, after, rest, the Elder, what it leaves),<br/>layer echoes and remarks"]
     HU["hunts/<br/>ten Hunt Roads, forty fights, 1,010 scenes:<br/>the edge, a Dao stroke and a gender stroke at every turn,<br/>twelve Dao turns and ten gender turns in the main line,<br/>the Sealing Night’s stances"]
+    WO["world/<br/>ten reaches, forty affairs, 1,044 scenes:<br/>a part in each (look, hand, side, hinge), the Gathering,<br/>two endings that need no realm"]
     GD["gendered/<br/>Left Cloister, Right Yard, Third Door"]
     OG["origins/<br/>twelve beginnings, eleven prologues"]
-    EC["economy/<br/>five reckonings, seven ending epilogues,<br/>remarks on the purse and the pack"]
+    EC["economy/<br/>five reckonings, nine ending epilogues,<br/>remarks on the purse and the pack"]
     HE["hero/<br/>Elder’s asides, gate echoes, companion remarks"]
     RG["realm-gates.ts<br/>force asks a realm in Book One"]
     NPC["npc/elder-su*.ts<br/>98 scenarios, realm memories"]
@@ -47,6 +48,7 @@ flowchart LR
     WE["wardrobe.ts<br/>five garments, wear, gain, lose, price, pawn,<br/>what a dress pays and costs on a payday"]
     PK["pack.ts<br/>use, sell and give an item,<br/>dress changes from the panel"]
     RKE["rank.ts<br/>bandOf, bandsAt, rankSummary:<br/>yielded, claimed, veiled, lifted"]
+    WM["world.ts<br/>fate, part, method, course;<br/>affairsOf, worldMeasure, roleOf"]
     FI["fight.ts<br/>edgeParts, edgeOf: level, craft, root,<br/>bane, qi, footholds"]
   end
   subgraph UI["src/components + app/"]
@@ -65,8 +67,9 @@ flowchart LR
     WP["WardrobePanel.tsx<br/>the dress worn, the dresses owned, Wear"]
     RKP["RankPanel.tsx<br/>rank roads at each rung, the ways taken"]
     FP["FightPanel.tsx<br/>the edge part by part, the forty foes"]
+    WLP["WorldPanel.tsx<br/>ten reaches, pips for each affair,<br/>your role in the world"]
   end
-  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & TB & WD & AS & HU & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & TB & WD & AS & HU & WO & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
   G --> AG
@@ -94,6 +97,9 @@ flowchart LR
   TRE --> TRP
   RKE --> RKP
   HU --> FI
+  WO --> WM
+  WM --> G
+  WM --> WLP
   FI --> N
   FI --> FP
   HR --> FI
@@ -109,9 +115,69 @@ flowchart LR
   GV --> SV
   GV --> CR
   CR -->|Hero| G
-  GV --> NP & SP & CP & HP & PP & XP & AP & CUP & RKP & TRP & WP & FP
+  GV --> NP & SP & CP & HP & PP & XP & AP & CUP & RKP & TRP & WP & FP & WLP
   GV -->|localStorage save| Storage[("Browser storage")]
 ```
+
+## The world
+
+`src/engine/world.ts` is the whole model, and every rule in it is a pure function of the hero’s flags. The content is in `src/story/world`: forty affairs in `affairs-1..5.ts`, ten reaches in `reaches.ts`, and the Gathering in `main.ts`.
+
+### One affair
+
+Every affair has the same shape. The hero hears of it, takes a part (or none), tries a method, and the affair ends in a course the world remembers.
+
+```mermaid
+flowchart TD
+  S[Sighting: the word of the affair] --> P{Take a part?}
+  P -->|no| H[Heard only: the affair follows its fate]
+  P -->|look| PL[small part, small cost]
+  P -->|hand| PH[small part, a little more]
+  P -->|side| PS[large part]
+  P -->|hinge| PG[largest part, largest cost]
+  PL & PH & PS & PG --> M{Method}
+  M -->|turned: lever flag found elsewhere| T[turned]
+  M -->|forced: needs a realm| F[forced]
+  M -->|bargained| B[bargained]
+  M -->|gave| GV[gave: a hinge’s cost falls by two]
+  T & F & B & GV --> C{courseAfter: fate x part x method}
+  H --> C
+  C --> MD[mended]
+  C --> GR[ground on]
+  C --> BR[broke]
+  MD & GR & BR --> L[What it leaves: the keepsake, the Elder’s answer, wo_* flags]
+```
+
+### Part and fate
+
+```mermaid
+flowchart LR
+  subgraph Weights["part weight"]
+    W1["look 1"] --- W2["hand 2"] --- W3["side 3"] --- W5["hinge 5"]
+  end
+  FATE["fate unaided:<br/>mended / grinds on / broke"] --> CA["courseAfter"]
+  Weights --> CA
+  METHOD["method:<br/>turned needs the lever;<br/>forced needs a realm"] --> CA
+  CA --> OUT["mended / ground on / broke"]
+  OUT --> MEAS["worldMeasure per reach:<br/>touched, mended, voices"]
+  MEAS --> ROLE["roleOf: unseen, witness, hand,<br/>many hands, hinge"]
+```
+
+### The Gathering
+
+```mermaid
+flowchart TD
+  HUB[hub_b6] --> GH[hub_world_gather: the world comes up the road]
+  GH --> R1[ten reaches, one voice each]
+  R1 -->|two or more voices| AN[the reach answers]
+  R1 -->|fewer| UN[the reach does not answer]
+  AN & UN --> GE[world_gather_end: the Elder reads the forty]
+  GE --> LS[lastseal_choice]
+  LS -->|many hands| EM[end_many]
+  LS -->|a hinge| EH[end_hinge]
+```
+
+The two new endings need no realm. A hero who has climbed nowhere can still be one of many hands.
 
 ## Turn flow
 
@@ -242,7 +308,7 @@ flowchart LR
 
 ### The endings
 
-Book VI ends at `lastseal_choice`. Each of seven endings has its own gate, and the cheapest is always open, so the story never soft-locks.
+Book VI ends at `lastseal_choice`. Each of nine endings has its own gate, and the cheapest is always open, so the story never soft-locks.
 
 ```mermaid
 flowchart TD
@@ -253,6 +319,8 @@ flowchart TD
   L -->|Dao Seeking| W[The Warden of the Mist]
   L -->|below Dao Seeking, forcing it| SP[The Price of the Hand]
   L -->|karma below -30 and Core Formation| H[The Hollow Seat]
+  L -->|the Gathering, and many hands in the world| MH[The Many Hands]
+  L -->|the Gathering, and a hinge of the age| HG[A Hinge of the Age]
   L -->|always open| LE[The Closed Ledger]
   L -->|step back| HUB[hub_b6]
 ```
