@@ -4,6 +4,7 @@ import { ATTIRES } from "./hero";
 import { FROM_PREFIX, TO_PREFIX, WORE_PREFIX, woreFlag } from "./wardrobe";
 import { BOND_RANGE, NPC_RANGE, STAT_RANGE } from "./game";
 import { ORIGIN_START } from "./path";
+import { MEASURE_PREFIXES } from "./world";
 import type { Condition, Effect, Story } from "./types";
 
 /** One continuity problem the audit found in a story. */
@@ -42,6 +43,7 @@ export function clash(conditions: Condition[]): string | undefined {
       case "count": return `flags starting "${c.prefix}"`;
       case "item": return `item "${c.item}"`;
       case "affinity": return `${c.element} affinity`;
+      case "world": return `world ${c.measure}${c.reach === undefined ? "" : ` of reach ${c.reach}`}`;
       case "realm": case "level": case "progress": case "roads": case "decisions": case "standing": case "wealth": case "holdings": case "speed": case "mastery": case "age": case "years": return c.kind;
       default: return undefined;
     }
@@ -253,6 +255,8 @@ export function flagUsage(story: Story): { set: Set<string>; read: Set<string> }
       else if (c.kind === "count") prefixes.add(c.prefix);
       // A fight reads the footholds the hero has won: each flag in `boost` counts for them when it is on.
       else if (c.kind === "edge") c.boost?.forEach((f) => read.add(f));
+      // A measure of the world reads the flags its parts are written in: the parts taken, the courses they left, the accounts written, the affairs finished.
+      else if (c.kind === "world") MEASURE_PREFIXES[c.measure].forEach((p) => prefixes.add(p));
     }
   };
   for (const scene of Object.values(story.scenes)) {

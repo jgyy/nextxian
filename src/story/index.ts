@@ -52,6 +52,7 @@ import { wardrobeScenarios } from "./wardrobe/scenarios";
 import { ascentEntrances, ascentGroups, ascentScenarios, waysideBack13 } from "./ascent";
 import { ascentEchoes } from "./ascent/echoes";
 import { huntEntrances, huntGroups, huntItems, huntScenarios, waysideBack14 } from "./hunts";
+import { waysideBack15, worldEntrances, worldGroups, worldItems, worldScenarios } from "./world";
 import { parsedTurnRemarks14, turnChoices14, turnScenarios14 } from "./hunts/main";
 import { huntEchoes } from "./hunts/echoes";
 import { withStance } from "./hunts/stances";
@@ -142,9 +143,10 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
     const wardrobe = wardrobeEntrances[scene.id];
     const ascent = ascentEntrances[scene.id];
     const hunt = huntEntrances[scene.id];
+    const world = worldEntrances[scene.id];
     const doors = scene.id === GENDERED_ORIGIN ? genderedEntrances : [];
     const turns = chapter ? gateForce({ ...scene, choices: [...turnChoices(scene), ...customTurnChoices(scene), ...turnChoices10(scene), ...turnChoices14(scene)] }, Number(chapter[1])).choices : [...turnChoices(scene), ...customTurnChoices(scene), ...turnChoices10(scene), ...turnChoices14(scene)];
-    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : []), ...(dao ? [dao] : []), ...(witness ? [witness] : []), ...(cultivation ? [cultivation] : []), ...(crossing ? [crossing] : []), ...(age ? [age] : []), ...(custom ? [custom] : []), ...(rank ? [rank] : []), ...(tribulation ? [tribulation] : []), ...(wardrobe ? [wardrobe] : []), ...(ascent ? [ascent] : []), ...(hunt ? [hunt] : []), ...turns, ...doors] };
+    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : []), ...(dao ? [dao] : []), ...(witness ? [witness] : []), ...(cultivation ? [cultivation] : []), ...(crossing ? [crossing] : []), ...(age ? [age] : []), ...(custom ? [custom] : []), ...(rank ? [rank] : []), ...(tribulation ? [tribulation] : []), ...(wardrobe ? [wardrobe] : []), ...(ascent ? [ascent] : []), ...(hunt ? [hunt] : []), ...(world ? [world] : []), ...turns, ...doors] };
   });
   const groups = chapter ? roadGroups.filter((g) => g.chapter === Number(chapter[1])) : [];
   const fortunes = fortuneGroups
@@ -183,6 +185,9 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
   const hunts = huntGroups
     .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
     .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack14(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+  const worlds = worldGroups
+    .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+    .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack15(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
   const gendered = scenes.some((x) => x.id === GENDERED_ORIGIN)
     ? [{ name: genderedGroup.name, scenes: [...genderedGroup.scenes, genderedBack(scenes.find((x) => x.id === GENDERED_ORIGIN)!)] }]
     : [];
@@ -205,6 +210,7 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
     ...wardrobes,
     ...ascents,
     ...hunts,
+    ...worlds,
     ...gendered,
   ];
 });
@@ -256,6 +262,7 @@ const bookGroups = books.flatMap((book) =>
       .map((scene) => (wardrobeEntrances[scene.id] ? { ...scene, choices: [...scene.choices, wardrobeEntrances[scene.id]] } : scene))
       .map((scene) => (ascentEntrances[scene.id] ? { ...scene, choices: [...scene.choices, ascentEntrances[scene.id]] } : scene))
       .map((scene) => (huntEntrances[scene.id] ? { ...scene, choices: [...scene.choices, huntEntrances[scene.id]] } : scene))
+      .map((scene) => (worldEntrances[scene.id] ? { ...scene, choices: [...scene.choices, worldEntrances[scene.id]] } : scene))
       .map((scene) => (turnChoices10(scene).length ? { ...scene, choices: [...scene.choices, ...turnChoices10(scene)] } : scene))
       .map((scene) => (turnChoices14(scene).length ? { ...scene, choices: [...scene.choices, ...turnChoices14(scene)] } : scene));
     const roads = realmRoadGroups
@@ -297,7 +304,10 @@ const bookGroups = books.flatMap((book) =>
     const hunts = huntGroups
       .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
       .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack14(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
-    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes, ...daos, ...witnesses, ...cultivations, ...crossings, ...ages, ...customs, ...ranks, ...tribulations, ...wardrobes, ...ascents, ...hunts];
+    const worlds = worldGroups
+      .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+      .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack15(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes, ...daos, ...witnesses, ...cultivations, ...crossings, ...ages, ...customs, ...ranks, ...tribulations, ...wardrobes, ...ascents, ...hunts, ...worlds];
   }),
 );
 
@@ -328,6 +338,7 @@ export const story: Story = {
     ...wardrobeScenarios,
     ...ascentScenarios,
     ...huntScenarios,
+    ...worldScenarios,
     ...Object.fromEntries(parseScenarios(scenariosOne, "scenarios-1").map((x) => [x.id, x])),
     ...Object.fromEntries(parseScenarios(pathScenarios, "path/scenarios").map((x) => [x.id, x])),
     ...turnScenarios(),
@@ -341,7 +352,7 @@ export const story: Story = {
     ),
   },
   companions,
-  items: { ...fortuneItems, ...daoItems, ...witnessItems, ...cultivationItems, ...crossingItems, ...ageItems, ...customItems, ...rankItems, ...tribulationItems, ...wardrobeItems, ...genderedItems, ...huntItems, ...beginningItems },
+  items: { ...fortuneItems, ...daoItems, ...witnessItems, ...cultivationItems, ...crossingItems, ...ageItems, ...customItems, ...rankItems, ...tribulationItems, ...wardrobeItems, ...genderedItems, ...huntItems, ...worldItems, ...beginningItems },
   assets: { ...fortuneAssets, ...daoAssets, ...witnessAssets, ...cultivationAssets, ...crossingAssets, ...ageAssets, ...customAssets, ...rankAssets, ...tribulationAssets, ...wardrobeAssets },
   leavesSect: "departure_dawn",
   asides: heroAsides,

@@ -1,6 +1,7 @@
 import { ageOf, lifeLeft } from "./age";
 import { REALMS, realmProgress } from "./cultivation";
 import { edgeOf } from "./fight";
+import { worldMeasure } from "./world";
 import { standingOf } from "./hero";
 import { ownedGarments } from "./wardrobe";
 import { affinityOf, daoRankOf } from "./path";
@@ -332,6 +333,10 @@ export function conditionsHold(conditions: Condition[] | undefined, state: Condi
       }
       case "edge": {
         const v = edgeOf(state, { level: c.foe, weak: c.weak, bane: c.bane, boost: c.boost });
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "world": {
+        const v = worldMeasure(state.flags, c.measure, c.reach);
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
       }
       case "count": {
