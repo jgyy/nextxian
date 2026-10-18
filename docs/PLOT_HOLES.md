@@ -1,6 +1,6 @@
 # Plot-hole and continuity ledger
 
-Fifteen passes, four asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
+Sixteen passes, four asked to fix more than 1,000 and the fourth asked again. This ledger says exactly what was counted, what each number means, and what was looked for and not found.
 
 | Pass | Fixed | Of what kind |
 | --- | ---: | --- |
@@ -18,7 +18,36 @@ Fifteen passes, four asked to fix more than 1,000 and the fourth asked again. Th
 | Eleventh pass | 24 | 12 realm-band lines that named one realm and were shown to every hero above it, 1 ending that did the same, 3 lines of the Elder, Gu and the age remarks that named a realm for every realm above it, 3 defects in one scene (a Spirit Severing, Dao Seeking or Ascendant hero read as a Nascent Soul, called “Madam”, and told they were “the first Nascent Soul this year”), 2 lines that called the unreadable hero “her” and “she”, 2 breaks in the Elder’s own years, 1 breakthrough with no trial before it. Short of the 1,000 asked for: see below |
 | Twelfth pass | **11** | 2 lines of the Elder that said what the hero wore on arriving (once the hero can change dress, the dress they have on is not the one they came in), 2 choices that told the hero they put on a garment and changed nothing, 1 “second pair of straw sandals” for every hero, 1 “benefactress” for every gender, 4 keepsakes of a hero’s own story that the new Sell and Give buttons would have let a hero trade away, 1 Restart that began the hero again in the last dress they put on. Short of the 1,000 asked for: see below |
 | **Thirteenth pass (this branch)** | **11** | 3 lines that called the Ascendant’s silence “the last trial” or said no Ascendant could tell it, 1 elixir brewed for “the final realm”, 4 lines that made the seal a thing “only an Ascendant” could hold, 1 band of the older roads that nobody above the top road could be in, 1 practice that carried a hero over the layers they had left without saying so and 1 strain that could have added points |
-| **Fifteenth pass (this branch)** | **178** | 9 lines of the Elder that gave her career or age the wrong way round (she is 43, Registrar for 6 years and Elder for 12), 5 typographic slips in Book Five, and 164 lines of text a player met again and again in one walk (16 purse reactions, 60 road labels, 64 realm-fit hero lines, 24 ascent prompts) given variants so that the same sentence is no longer the only choice |
+| Fifteenth pass | **178** | 9 lines of the Elder that gave her career or age the wrong way round (she is 43, Registrar for 6 years and Elder for 12), 5 typographic slips in Book Five, and 164 lines of text a player met again and again in one walk (16 purse reactions, 60 road labels, 64 realm-fit hero lines, 24 ascent prompts) given variants so that the same sentence is no longer the only choice |
+| **Sixteenth pass (this branch)** | **20** | 5 lines of the docs that said time runs at a year for every ten decisions, 1 line of the Elder that said a Foundation was laid “between one bell and the next”, and 14 failure lines of the walls (a day, a week) that no longer fit the days the mending now takes at their realm; and 1 test that nobody could pass in the time it was given |
+
+## Sixteenth pass (this branch): what was looked for, found and fixed
+
+This branch changed what time is. It used to be a count of decisions, a year for every ten, in every realm; it is now a calendar, told in plot time in the chapters and the books and in the stride of the realm on the roads, with retreats for breakthroughs and a Long Count of ten roads that spend a realm’s own unit of time ten times. The pass went after what that could expose: text that still said the old thing, text that named a length of time the calendar now disagreed with, and a thousand new scenes written fast enough to have canon wrong in them.
+
+| Class | Count | Found by | Fixed in |
+| --- | ---: | --- | --- |
+| Docs that said “a year for every ten decisions” | 5 | a search for the phrase, and for “ten decisions”, over the README, `ARCHITECTURE.md` and `CANON.md` | `README.md` (the Age bullet, its diagram), `docs/ARCHITECTURE.md` (the Age section, its diagram), `docs/CANON.md` (Ages and the Age Roads) |
+| The Elder said a Foundation was laid “between one bell and the next”, when a hero now takes a season at the least | 1 | reading every `REALM_SHIFT` line against the calendar | `engine/npc.ts` |
+| Failure lines of the walls that named a day or a week, where the mending now takes five strides of the realm (two and a half days for a Mortal, seven months for a Spirit Severing sage, three years and more above): Core’s “for a day” and “a week”, Nascent’s “for a day”, Spirit Severing’s “for a day”, Dao Seeking’s “a day and a night”, Ascendant’s “an hour”, “a week” and “a day and a night”, Foundation’s three weeks and a fortnight, and four more | 14 | a search of all ninety wall texts for a length of time, checked against `mendingOf` | `engine/stage-text.ts` |
+| The continuity audit, run seven times in one test, now takes more than the sixty seconds the runner gives it on a twenty-thousand-scene story | 1 | the first full run of the suite | `tests/continuity.test.ts` (a longer limit for that one test) |
+
+**What the calendar changed in the numbers, and what was done about it.** `possibleFlags` walks every flag along every path and is the audit’s cost; the new roads set only 190 flags (a beat, and four ways and four turns to a road, set one at a time so choosing one clears the other three), not the 1,100 that one flag to a way and turn would have been. The age, years-left and `age` conditions read days, not decisions, and a save from before the calendar counts the days its decisions would have taken at the realm the hero stands in.
+
+**Caught in review of the new text** (these never reached the branch’s final content and are not counted; they are the reason for the review):
+
+- **Invented canon about the Elder.** Four lines gave her a past: a girl of nine outside a window, a child at a door in the snow, a night she left the mountain at twenty-eight and “did not stay for the sealing” (she signed the orders), and a first soul-majority at an unnamed age. Canon gives her a sister, the Sealing Night, six years as Registrar and twelve as Elder, and nothing before. All four are rewritten to say less.
+- **A hero given a gender.** Four lines of the Table of Generations called the self the hero cut “he” and “him”. They are “it”, because the hero may be anyone.
+- **A mother for a foundling.** The Hall of Decades gave the hero “the little carved box that was your mother’s”. The hero may not have had one. It is a box carried since the gate.
+- **Ages that did not add up.** Smith Ding began at sixty and was eighty-one ten years on; Ye was eleven in one year and thirteen in the next. Every age on the Year-Wheel is now the beat’s year, and the old man ends at seventy.
+- **A count that assumed an order.** Every beat said “three years are spent”, though the hub let a hero walk into the third without the first two. A beat now opens only after the one before it is spent, so the count is true.
+- **A way that named the wrong tool.** The Year-Wheel’s “teaching Ye” turn put tongs in the hero’s hand in a beat that taught letters.
+- **Straight apostrophes** (1) and **a/an slips** (“a hour”, “a avalanche”), caught by the typography tests and by reading.
+- **Hubs over the cap.** Three hubs of the new roads ran to 203, 204 and 216 words with their tally and remark, and were cut to fit.
+
+**Looked for and found clean.** A scan of every shown line (scenes, extras, choices, the Elder’s tier lines) for a/an before the wrong sound, doubled words, double spaces, a space before punctuation, a sentence opening in lower case, and an unbalanced curly quote: 0 of each, apart from forty-three “an hour”, “an honest” and “an heir” (right), and the name Tao Tao. The audit over the new thousand scenes: 0 dangling flags, 0 dead conditions, 0 loops, 0 unmet speakers. Scenes over the 200-word cap: 0. Every one of the ten roads walked from hub to last beat by test, and a random walk of 400 decisions on each leaves the clock never running backward and no number unreadable. A hero who has not the years left for a beat is refused it, with a hint that says why, on every road above Foundation.
+
+**Left as they are, and said so.** The scenes of Books Two to Six still name stretches of time in their own telling (“three months”, “two winters”, “forty days”). They are told in plot time and the calendar does not contradict them, but nor does it count them: a book’s scene that says three months passed spends the few hours of the decision it sits in. That is the plot clock’s rule, and it is written in `CANON.md`.
 
 ## Fifteenth pass (this branch): what was looked for, found and fixed
 

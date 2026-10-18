@@ -53,6 +53,8 @@ import { ascentEntrances, ascentGroups, ascentScenarios, waysideBack13 } from ".
 import { ascentEchoes } from "./ascent/echoes";
 import { huntEntrances, huntGroups, huntItems, huntScenarios, waysideBack14 } from "./hunts";
 import { waysideBack15, worldEntrances, worldGroups, worldItems, worldScenarios } from "./world";
+import { countEntrances, countGroups, countScenarios, waysideBack16 } from "./count";
+import { parsedCountRemarks } from "./count/remarks";
 import { gatherScenario, gatherScenes, parsedWorldRemarks, worldChoices, worldEndings } from "./world/main";
 import { worldEchoes } from "./world/echoes";
 import { parsedTurnRemarks14, turnChoices14, turnScenarios14 } from "./hunts/main";
@@ -146,9 +148,10 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
     const ascent = ascentEntrances[scene.id];
     const hunt = huntEntrances[scene.id];
     const world = worldEntrances[scene.id];
+    const count = countEntrances[scene.id];
     const doors = scene.id === GENDERED_ORIGIN ? genderedEntrances : [];
     const turns = chapter ? gateForce({ ...scene, choices: [...turnChoices(scene), ...customTurnChoices(scene), ...turnChoices10(scene), ...turnChoices14(scene)] }, Number(chapter[1])).choices : [...turnChoices(scene), ...customTurnChoices(scene), ...turnChoices10(scene), ...turnChoices14(scene)];
-    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : []), ...(dao ? [dao] : []), ...(witness ? [witness] : []), ...(cultivation ? [cultivation] : []), ...(crossing ? [crossing] : []), ...(age ? [age] : []), ...(custom ? [custom] : []), ...(rank ? [rank] : []), ...(tribulation ? [tribulation] : []), ...(wardrobe ? [wardrobe] : []), ...(ascent ? [ascent] : []), ...(hunt ? [hunt] : []), ...(world ? [world] : []), ...turns, ...doors] };
+    return { ...scene, choices: [...scene.choices, ...(entrance ? [entrance] : []), ...(fortune ? [fortune] : []), ...(dao ? [dao] : []), ...(witness ? [witness] : []), ...(cultivation ? [cultivation] : []), ...(crossing ? [crossing] : []), ...(age ? [age] : []), ...(custom ? [custom] : []), ...(rank ? [rank] : []), ...(tribulation ? [tribulation] : []), ...(wardrobe ? [wardrobe] : []), ...(ascent ? [ascent] : []), ...(hunt ? [hunt] : []), ...(world ? [world] : []), ...(count ? [count] : []), ...turns, ...doors] };
   });
   const groups = chapter ? roadGroups.filter((g) => g.chapter === Number(chapter[1])) : [];
   const fortunes = fortuneGroups
@@ -190,6 +193,9 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
   const worlds = worldGroups
     .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
     .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack15(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+  const counts = countGroups
+    .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+    .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack16(g.road, scenes.find((s) => s.id === g.wayside.origin)!)] }));
   const gendered = scenes.some((x) => x.id === GENDERED_ORIGIN)
     ? [{ name: genderedGroup.name, scenes: [...genderedGroup.scenes, genderedBack(scenes.find((x) => x.id === GENDERED_ORIGIN)!)] }]
     : [];
@@ -213,6 +219,7 @@ const assembled: { name: string; scenes: Scene[] }[] = mainLine.flatMap((c) => {
     ...ascents,
     ...hunts,
     ...worlds,
+    ...counts,
     ...gendered,
   ];
 });
@@ -265,6 +272,7 @@ const bookGroups = books.flatMap((book) =>
       .map((scene) => (ascentEntrances[scene.id] ? { ...scene, choices: [...scene.choices, ascentEntrances[scene.id]] } : scene))
       .map((scene) => (huntEntrances[scene.id] ? { ...scene, choices: [...scene.choices, huntEntrances[scene.id]] } : scene))
       .map((scene) => (worldEntrances[scene.id] ? { ...scene, choices: [...scene.choices, worldEntrances[scene.id]] } : scene))
+      .map((scene) => (countEntrances[scene.id] ? { ...scene, choices: [...scene.choices, countEntrances[scene.id]] } : scene))
       .map((scene) => (turnChoices10(scene).length ? { ...scene, choices: [...scene.choices, ...turnChoices10(scene)] } : scene))
       .map((scene) => (turnChoices14(scene).length ? { ...scene, choices: [...scene.choices, ...turnChoices14(scene)] } : scene))
       .map((scene) => (worldChoices(scene).length ? { ...scene, choices: [...scene.choices, ...worldChoices(scene)] } : scene));
@@ -310,9 +318,12 @@ const bookGroups = books.flatMap((book) =>
     const worlds = worldGroups
       .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
       .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack15(g.wayside, scenes.find((s) => s.id === g.wayside.origin)!)] }));
+    const counts = countGroups
+      .filter((g) => scenes.some((s) => s.id === g.wayside.origin))
+      .map((g) => ({ name: g.name, scenes: [...g.scenes, waysideBack16(g.road, scenes.find((s) => s.id === g.wayside.origin)!)] }));
     // The world comes up the road before the Last Sealing: its scenes sit in the arc that holds the hub it opens from.
     const gathering = scenes.some((s) => s.id === "hub_b6") ? [{ name: "World Roads: The Gathering", scenes: gatherScenes() }] : [];
-    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes, ...daos, ...witnesses, ...cultivations, ...crossings, ...ages, ...customs, ...ranks, ...tribulations, ...wardrobes, ...ascents, ...hunts, ...worlds, ...gathering];
+    return [{ name: `${book.name} · ${arc.name}`, scenes }, ...roads, ...fortunes, ...daos, ...witnesses, ...cultivations, ...crossings, ...ages, ...customs, ...ranks, ...tribulations, ...wardrobes, ...ascents, ...hunts, ...worlds, ...counts, ...gathering];
   }),
 );
 
@@ -333,6 +344,12 @@ export const chapters: { name: string; scenes: Scene[] }[] = (() => {
 
 const scenes = chapters.flatMap((c) => c.scenes);
 
+/**
+ * The scenes of the roads, where the seasons go by. The chapters, the books, the side paths and the Gathering are told in the plot’s own time, a few hours to a decision;
+ * a decision on any road takes as long as the hero’s realm makes it.
+ */
+const roadScenes: ReadonlySet<string> = new Set(chapters.filter((c) => / Roads/.test(c.name) && !c.name.includes("The Gathering")).flatMap((c) => c.scenes.map((s) => s.id)));
+
 export const story: Story = {
   title: "The Crimson Abyss: A Xianxia Tale",
   startSceneId: "gate",
@@ -344,6 +361,7 @@ export const story: Story = {
     ...ascentScenarios,
     ...huntScenarios,
     ...worldScenarios,
+    ...countScenarios,
     [gatherScenario.id]: gatherScenario,
     ...Object.fromEntries(parseScenarios(scenariosOne, "scenarios-1").map((x) => [x.id, x])),
     ...Object.fromEntries(parseScenarios(pathScenarios, "path/scenarios").map((x) => [x.id, x])),
@@ -361,6 +379,7 @@ export const story: Story = {
   items: { ...fortuneItems, ...daoItems, ...witnessItems, ...cultivationItems, ...crossingItems, ...ageItems, ...customItems, ...rankItems, ...tribulationItems, ...wardrobeItems, ...genderedItems, ...huntItems, ...worldItems, ...beginningItems },
   assets: { ...fortuneAssets, ...daoAssets, ...witnessAssets, ...cultivationAssets, ...crossingAssets, ...ageAssets, ...customAssets, ...rankAssets, ...tribulationAssets, ...wardrobeAssets },
   leavesSect: "departure_dawn",
+  roadScenes,
   asides: heroAsides,
   remarks: [
     ...parseRemarks(remarksOne, "remarks-1"),
@@ -382,5 +401,6 @@ export const story: Story = {
     ...parsedAscentRemarks(),
     ...parsedTurnRemarks14(),
     ...parsedWorldRemarks(),
+    ...parsedCountRemarks(),
   ],
 };

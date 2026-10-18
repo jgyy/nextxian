@@ -20,6 +20,7 @@ flowchart LR
     WD["wardrobe/<br/>eight Wardrobe Roads, 1,008 scenes:<br/>four keepers who read the dress, a six-scene fitting<br/>(counter, rack, verdict, commission, hatch, mirror),<br/>echoes, endings and the Elder’s remarks on a change of dress"]
     AS["ascent/<br/>ten Breakthrough Roads, 1,000 scenes:<br/>a hundred walls of ten scenes (the wall, four ways,<br/>the hour, after, rest, the Elder, what it leaves),<br/>layer echoes and remarks"]
     HU["hunts/<br/>ten Hunt Roads, forty fights, 1,010 scenes:<br/>the edge, a Dao stroke and a gender stroke at every turn,<br/>twelve Dao turns and ten gender turns in the main line,<br/>the Sealing Night’s stances"]
+    CT["count/<br/>ten Long Count Roads, 1,020 scenes:<br/>one unit of each realm’s own time (bell, day, season, year,<br/>decade, generation, lifetime, dynasty, age, era) spent ten times"]
     WO["world/<br/>ten reaches, forty affairs, 1,044 scenes:<br/>a part in each (look, hand, side, hinge), the Gathering,<br/>two endings that need no realm"]
     GD["gendered/<br/>Left Cloister, Right Yard, Third Door"]
     OG["origins/<br/>twelve beginnings, eleven prologues"]
@@ -50,6 +51,7 @@ flowchart LR
     RKE["rank.ts<br/>bandOf, bandsAt, rankSummary:<br/>yielded, claimed, veiled, lifted"]
     WM["world.ts<br/>fate, part, method, course;<br/>affairsOf, worldMeasure, roleOf"]
     FI["fight.ts<br/>edgeParts, edgeOf: level, craft, root,<br/>bane, qi, footholds"]
+    TM["time.ts<br/>the calendar: days, plot and road strides,<br/>retreats, the clock of each realm, the seasons"]
   end
   subgraph UI["src/components + app/"]
     CR["Creation.tsx<br/>who climbs the mountain,<br/>every choice drawn at random"]
@@ -68,8 +70,9 @@ flowchart LR
     RKP["RankPanel.tsx<br/>rank roads at each rung, the ways taken"]
     FP["FightPanel.tsx<br/>the edge part by part, the forty foes"]
     WLP["WorldPanel.tsx<br/>ten reaches, pips for each affair,<br/>your role in the world"]
+    CAL["CalendarPanel.tsx<br/>the clock in the realm’s own unit,<br/>the season, ten roads of pips"]
   end
-  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & TB & WD & AS & HU & WO & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
+  C & SD & RD & R2 & FR & WR & CR & XR & AR & CS & RK & TB & WD & AS & HU & WO & CT & GD & OG & EC & HE & RG & NPC --> S["story/index.ts<br/>reading order"]
   S --> G
   G --> HR
   G --> AG
@@ -100,6 +103,11 @@ flowchart LR
   WO --> WM
   WM --> G
   WM --> WLP
+  CT --> TM
+  TM --> G
+  TM --> AG
+  TM --> CAL
+  G --> CAL
   FI --> N
   FI --> FP
   HR --> FI
@@ -115,7 +123,7 @@ flowchart LR
   GV --> SV
   GV --> CR
   CR -->|Hero| G
-  GV --> NP & SP & CP & HP & PP & XP & AP & CUP & RKP & TRP & WP & FP & WLP
+  GV --> NP & SP & CP & HP & PP & XP & AP & CUP & RKP & TRP & WP & FP & WLP & CAL
   GV -->|localStorage save| Storage[("Browser storage")]
 ```
 
@@ -838,16 +846,81 @@ flowchart LR
   P --> EL["Elder answers at once"]
 ```
 
+## Time, the calendar and the Long Count Roads
+
+Time used to be a count of decisions, a year for every ten, in every realm. A Mortal who made ten choices in a single night had aged a year, and a Dao Seeker in a day had aged no more. The story now keeps a **calendar** (`src/engine/time.ts`), and a decision spends days from it by two rules.
+
+- **The story is told in plot time.** A decision made in the chapters, the books, the side paths or the Gathering takes **0.2 of a day**, about five hours. A night in the cellar is a night, whatever the hero’s realm, and Book One as a whole is a matter of weeks.
+- **The seasons go by on the roads.** A decision made on any road (the practice roads, the Breakthrough Roads, the Long Count Roads and the rest) takes the **stride of the hero’s realm**, from half a day for a Mortal to most of a year for a Dao Sovereign. The scene set `Story.roadScenes` says which scenes those are.
+
+On top of that, **a breakthrough is a retreat with the door shut**, and the door stays shut as long as the realm it opens: two days into Qi Condensation, ten into Foundation Establishment, forty-five into Core Formation, half a year into Nascent Soul, nearly two years into Spirit Severing, six into Dao Seeking, fifteen into Ascendant, thirty-three into True Immortal and sixty-eight into Dao Sovereign. A wall that throws the hero back costs five strides of mending. The log says so, in the voice of the realm.
+
+```mermaid
+flowchart TD
+  C["choose()"] --> W{"where was it made?"}
+  W -->|"chapters, books, side paths,<br/>the Gathering"| P["+0.2 day: plot time"]
+  W -->|"any road"| S["+ the stride of the hero’s realm<br/>0.5 · 2 · 4 · 8 · 20 · 40 · 80 · 100 · 150 · 250 days"]
+  E["effect: passTime"] -->|"a Long Count beat spends<br/>a whole unit"| D
+  B["a breakthrough into a realm"] -->|"the door stays shut:<br/>2 · 10 · 45 · 180 · 700 · 2,200 · 5,500 · 12,000 · 25,000 days"| D
+  F["a wall throws the hero back"] -->|"five strides of mending"| D
+  P & S --> D["days since the story began"]
+  D --> A["age = start + days / 365"]
+  D --> DT["the date: a month of thirty days,<br/>five days out of time, four seasons"]
+  D --> CK["the clock, read in the realm’s unit"]
+  A --> L{"years left in the realm’s span"}
+  DT --> N["a year: a birthday line<br/>several years: one line for the lot<br/>a season: a line in the realm’s voice"]
+  D --> R["the Elder’s marks: a year, five, ten,<br/>a generation, a lifetime, a century, five, a thousand"]
+```
+
+Every realm keeps its own sort of time, and says so when the hero enters it:
+
+| Realm | Its unit | Days | A decision on a road | The sense of a day |
+| --- | --- | ---: | ---: | --- |
+| Mortal | the bell | 1/24 | 0.5 | the bell, and the light on the wall |
+| Qi Condensation | the day | 1 | 2 | the day, counted breath by breath |
+| Foundation Establishment | the season | 91 | 4 | the time a laid course takes to cure |
+| Core Formation | the year | 365 | 8 | the year a core is turned once round |
+| Nascent Soul | the decade | 3,650 | 20 | the soul grows a year in ten |
+| Spirit Severing | the generation | 9,125 | 40 | the time it takes for kin to become names |
+| Dao Seeking | the lifetime | 21,900 | 80 | a mortal’s lifetime, one stretch of road |
+| Ascendant | the dynasty | 36,500 | 100 | the time for a house of kings to rise and be forgotten |
+| True Immortal | the age | 54,750 | 150 | the time a mountain takes to wear to another shape |
+| Dao Sovereign | the era | 109,500 | 250 | a climate; the seasons are only weather |
+
+### The Long Count Roads
+
+Ten roads, one for each realm, 1,020 new scenes. Each is a place where **the realm’s own unit of time is spent ten times**, a beat for each layer: a working day told in ten bells at the almshouse wall; ten days of breath-counting in the Cold Thread Cloister; a house raised over ten seasons from the footing to the keystone; ten years at a wheel that turns a tooth a year, while an apprentice grows up; a soul grown through ten decades in ten rooms; ten generations at a table where a cord is cut for each; ten lifetimes along a road of ten milestones; ten dynasties watched from a tower; a pear planted in a ring of ten stones and ten ages; a court of ten eras on a mountain with a lamp on its sill.
+
+```mermaid
+flowchart TD
+  H["hub: ten units, each open to the layer it stands on"] --> A["a: the unit opens<br/>four ways to spend it, each priced"]
+  A -->|"passTime: the unit is spent"| M["m0 … m3: the way, its own scene"]
+  M --> T["t: the turn within the unit<br/>read by the way taken"]
+  T --> F["f: what is left"]
+  F --> K["k: the keeper,<br/>who ages or is replaced"]
+  F --> E["e: the Elder"]
+  F --> LV["l: what it leaves<br/>read by how the turn was met"]
+  K --> E
+  K --> LV
+  E --> LV
+  LV -->|"the next layer"| A2["a of the next unit"]
+  LV --> H
+```
+
+A beat costs what it says. The choice that spends it names the price (“an hour”, “a season”, “a decade”), moves the calendar by the whole unit, logs the years that go by in the body, and is closed to a hero who has not the years left in their span to spend. The Elder replies twice on every road, in five voices for five degrees of trust. The beats are named for the realm’s own layers and follow them in order, so the house goes up from its Footing to its Keystone, the soul grows from its Quickening to its Majority, and the last beat of the last road is the Apex, where the lamp that was lit on the sill has a keeper, and the keeper is the Elder.
+
+The Calendar panel reads the clock in the realm’s unit, names the season and the date, says how much a choice costs, and shows ten rows of pips, one for each unit spent. The Elder marks the calendar herself, once each, a year after the gate, five, ten, a generation, a lifetime, a century, five and a thousand, in the window of days each belongs to.
+
 ## Age, years and the Age Roads
 
-The hero begins at one of five ages (sixteen, twenty-four, thirty-six, fifty-two, sixty-eight) and the story keeps count: a year is spent for every ten decisions. A realm is also a span of years, so cultivation is a clock as well as a ladder. The register says the Wanderer is twenty; the age is the body’s, and the black seed spends years where it wakes (see CANON.md).
+The hero begins at one of five ages (sixteen, twenty-four, thirty-six, fifty-two, sixty-eight) and the story keeps the calendar (see [Time](#time-the-calendar-and-the-long-count-roads)): a year is spent for every 365 days, and how many days a decision takes depends on where it is made and the realm the hero stands in. A realm is also a span of years, so cultivation is a clock as well as a ladder. The register says the Wanderer is twenty; the age is the body’s, and the black seed spends years where it wakes (see CANON.md).
 
 ```mermaid
 flowchart TD
   A["age chosen at creation<br/>16 · 24 · 36 · 52 · 68"] --> S["opening numbers<br/>qi, insight, karma, stones, Elder’s respect"]
   A --> Q["cultivation speed<br/>+10 youth ... −10 elder"]
   A --> H["heart-demon line<br/>youth −24 ... elder −38"]
-  D["decisions made"] -->|"one year per ten"| N["age now"]
+  D["days on the calendar"] -->|"one year per 365"| N["age now"]
   R["realm"] --> L["span: 76 · 110 · 160 · 250 · 400 · 620 · 950 · 1,500<br/>plus years given by roads"]
   N --> W{"years left = span − age"}
   L --> W

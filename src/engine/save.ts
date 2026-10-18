@@ -1,6 +1,7 @@
 import { realmForPoints } from "./cultivation";
 import { settle } from "./game";
 import { startingWealth } from "./economy";
+import { legacyDays } from "./time";
 import { ATTIRES, restoreHero } from "./hero";
 import { ownedGarments } from "./wardrobe";
 import type { GameState, Story } from "./types";
@@ -39,6 +40,8 @@ export function restoreGame(saved: unknown, story: Story): GameState | null {
     level: typeof game.level === "number" ? game.level : undefined,
     bonds: game.bonds && typeof game.bonds === "object" ? game.bonds : {},
     decisions: typeof game.decisions === "number" ? game.decisions : game.tones?.length ?? 0,
+    // A save from before the calendar counts the days its decisions would have taken at the realm the hero stands in.
+    days: typeof game.days === "number" && game.days >= 0 ? game.days : legacyDays(typeof game.decisions === "number" ? game.decisions : game.tones?.length ?? 0, typeof game.realm === "number" ? game.realm : realmForPoints(cultivation)),
     flagAt: game.flagAt && typeof game.flagAt === "object" ? game.flagAt : {},
     remarked: Array.isArray(game.remarked) ? game.remarked : [],
     lastRemark: typeof game.lastRemark === "number" ? game.lastRemark : -3,

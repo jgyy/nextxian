@@ -7,8 +7,8 @@ const BAND_NAME = { youth: "Youth", young: "Young adult", prime: "In your prime"
 
 /** The years the hero has: their age now, what their realm allows, and what they have done on the Age Roads. */
 export function AgePanel({ game }: { game: GameState }) {
-  const span = { realm: game.realm, decisions: game.decisions, years: game.years };
-  const age = ageOf(game.hero, game.decisions);
+  const span = { realm: game.realm, days: game.days, years: game.years };
+  const age = ageOf(game.hero, game.days);
   const total = lifespanOf(game.realm, game.years);
   const left = lifeLeft(game.hero, span);
   const waning = waningOf(left);

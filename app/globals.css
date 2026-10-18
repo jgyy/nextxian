@@ -2041,3 +2041,49 @@ button.ghost[aria-expanded="true"] {
 .world-here[data-fate="broke"] {
   color: #b5564c;
 }
+
+.calendar-card h2 {
+  font-size: 1.15rem;
+}
+.calendar-card[data-season="spring"] {
+  border-top: 3px solid #7fa38c;
+}
+.calendar-card[data-season="summer"] {
+  border-top: 3px solid #c9a24d;
+}
+.calendar-card[data-season="autumn"] {
+  border-top: 3px solid #b5764c;
+}
+.calendar-card[data-season="winter"] {
+  border-top: 3px solid #7f9bb5;
+}
+.calendar-row {
+  grid-template-columns: repeat(5, 1fr);
+}
+.calendar-row li[data-open="no"] {
+  opacity: 0.55;
+}
+.calendar-row .pips {
+  display: grid;
+  grid-template-columns: repeat(5, 0.4rem);
+  gap: 0.15rem;
+  margin-top: 0.25rem;
+  justify-content: center;
+}
+.calendar-row .pips i {
+  display: block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  opacity: 0.4;
+}
+.calendar-row .pips i[data-state="spent"] {
+  background: #c9a24d;
+  border-color: #c9a24d;
+  opacity: 1;
+}
+.calendar-row .pips i[data-state="open"] {
+  border-color: #c9a24d;
+  opacity: 0.9;
+}
