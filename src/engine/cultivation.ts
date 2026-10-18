@@ -6,6 +6,7 @@ import { REALMS } from "./realms";
 import { failQi, failText, fallBack, failsAt, isMajor, lacking, layerName, layerOfLevel, LEVELS, levelNow, levelThreshold, MAX_FAILS, pointsCap, prepsFor, realmOfLevel, STEADY_GAIN, steadiness, toll, wallDifficulty, wallFailFlag, wallHeldFlag, wallText, winText } from "./stages";
 import { ORDINALS } from "./stage-text";
 import { breakthroughQi, breakthroughRespect, skyLine } from "./tribulation";
+import { mendingOf, seclusionLine, seclusionOf, spanLabel, tidyDays, unitOf } from "./time";
 import type { ChoiceTone, GameState } from "./types";
 
 export { REALMS, STAGES_PER_REALM } from "./realms";
@@ -100,6 +101,8 @@ export function gainCultivation(state: GameState, amount: number): GameState {
     return {
       ...base,
       cultivation: Math.min(points, back),
+      // The mending takes days, and the calendar counts them.
+      days: tidyDays((base.days ?? 0) + mendingOf(base.realm)),
       stats: { ...base.stats, qi: clampQi(base.stats.qi - failQi(target)) },
       flags: { ...base.flags, [flag]: true },
       flagAt: { ...base.flagAt, [flag]: base.decisions },
@@ -107,7 +110,7 @@ export function gainCultivation(state: GameState, amount: number): GameState {
         ...base.log,
         {
           kind: "wall",
-          text: `The wall holds. ${failText(level)} You fall back and lose ${lostQi} qi, and the wall is a little better known to you.${attempt > 1 ? ` It has thrown you ${attempt} times.` : ""}`,
+          text: `The wall holds. ${failText(level)} You fall back and lose ${lostQi} qi, and the wall is a little better known to you.${attempt > 1 ? ` It has thrown you ${attempt} times.` : ""} The mending takes ${spanLabel(mendingOf(base.realm))}.`,
         },
       ],
     };
@@ -133,6 +136,8 @@ export function gainCultivation(state: GameState, amount: number): GameState {
     ...base,
     realm: next,
     level: target,
+    // A breakthrough into a realm is a retreat with the door shut, and the door stays shut as long as the realm’s own retreat.
+    days: tidyDays((base.days ?? 0) + seclusionOf(next)),
     cultivation: Math.min(points, pointsCap(target)),
     stats: { ...base.stats, qi: clampQi(base.stats.qi + breakthroughQi(base.flags, next)) },
     npc: { ...base.npc, respect: Math.min(100, base.npc.respect + breakthroughRespect(base.flags, next)) },
@@ -140,7 +145,7 @@ export function gainCultivation(state: GameState, amount: number): GameState {
     flagAt: { ...base.flagAt, [reachedFlag(next)]: base.decisions, [reached]: base.decisions },
     log: [
       ...base.log,
-      { kind: "realm", text: `Breakthrough: ${REALMS[next].name}. ${winText(level)} ${REALMS[next].arrival}${sky ? ` ${sky}` : ""}${breakthroughNotes(base, next)}` },
+      { kind: "realm", text: `Breakthrough: ${REALMS[next].name}. ${winText(level)} ${REALMS[next].arrival}${sky ? ` ${sky}` : ""}${breakthroughNotes(base, next)} ${seclusionLine(next)}` },
     ],
   };
 }
@@ -148,7 +153,7 @@ export function gainCultivation(state: GameState, amount: number): GameState {
 /** What the hero’s roots, and their Dao, add to the breakthrough line when they enter a realm: a sentence for each, with a leading space. */
 export function breakthroughNotes(state: Pick<GameState, "hero"> & Partial<Pick<GameState, "years">>, realm: number): string {
   const hero = state.hero ?? DEFAULT_HERO;
-  return [talentArrival(hero.talent, realm), daoArrival(hero.dao, realm), lifespanNote(realm, state.years)].filter(Boolean).map((t) => ` ${t}`).join("");
+  return [talentArrival(hero.talent, realm), daoArrival(hero.dao, realm), lifespanNote(realm, state.years), unitOf(realm).sense].filter(Boolean).map((t) => ` ${t}`).join("");
 }
 
 /**

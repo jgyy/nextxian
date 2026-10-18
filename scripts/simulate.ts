@@ -6,6 +6,8 @@ import { story } from "../src/story";
 import { choose, createGame, getChoices, getScene } from "../src/engine/game";
 import { layerTitle, levelNow } from "../src/engine/stages";
 import { cultivationSpeed } from "../src/engine/economy";
+import { ageOf } from "../src/engine/age";
+import { spanLabel } from "../src/engine/time";
 import type { GameState } from "../src/engine/types";
 
 const GATES = ["b2_gate", "b3_gate", "b4_gate", "b5_gate", "b6_gate"];
@@ -20,13 +22,13 @@ function rng(seed: number): () => number {
 
 type Policy = "thorough" | "diligent" | "forceful" | "hasty" | "merchant";
 
-function run(seed: number, policy: Policy): { seen: Record<string, [number, number, number]>; end?: string; state: GameState } {
+function run(seed: number, policy: Policy): { seen: Record<string, [number, number, number, number]>; end?: string; state: GameState } {
   const rand = rng(seed);
   let state = createGame(story);
-  const seen: Record<string, [number, number, number]> = {};
+  const seen: Record<string, [number, number, number, number]> = {};
   for (let i = 0; i < 20000; i++) {
     const id = state.sceneId;
-    if (GATES.includes(id) && !seen[id]) seen[id] = [state.decisions, state.cultivation, levelNow(state)];
+    if (GATES.includes(id) && !seen[id]) seen[id] = [state.decisions, state.cultivation, levelNow(state), state.days];
     let scene;
     try {
       scene = getScene(story, id);
@@ -69,7 +71,7 @@ const policy = (process.argv[3] ?? "thorough") as Policy;
 for (let r = 1; r <= runs; r++) {
   const { seen, end, state } = run(r, policy);
   const gates = Object.entries(seen)
-    .map(([k, [d, c, rl]]) => `${k}: d${d} c${c} ${layerTitle(rl)}`)
+    .map(([k, [d, c, rl, days]]) => `${k}: d${d} c${c} ${layerTitle(rl)} (${spanLabel(days)})`)
     .join(" | ");
-  console.log(`${policy} ${r}: ${gates} | end=${end} d${state.decisions} c${state.cultivation} ${layerTitle(levelNow(state))} karma ${state.stats.karma} | purse ${state.wealth} speed ${cultivationSpeed(story, state)}% pack ${Object.keys(state.items).length} holdings ${state.assets.length}`);
+  console.log(`${policy} ${r}: ${gates} | end=${end} d${state.decisions} c${state.cultivation} ${layerTitle(levelNow(state))} (${spanLabel(state.days)}, age ${ageOf(state.hero, state.days)}) karma ${state.stats.karma} | purse ${state.wealth} speed ${cultivationSpeed(story, state)}% pack ${Object.keys(state.items).length} holdings ${state.assets.length}`);
 }

@@ -1,4 +1,5 @@
 import { REALMS, breakthroughNotes, heartDemonBlocks, reachedFlag } from "./cultivation";
+import { seclusionLine, seclusionOf, tidyDays } from "./time";
 import { ageSpeed, AGE_LABEL, lifeLeft, waningSpeed } from "./age";
 import { AGE_WEALTH, DEFAULT_HERO, type Background, type Hero, type Status } from "./hero";
 import { aidReachFor, attunementParts, holdingFactor, livingRebate, ORIGIN_LABEL, ORIGIN_WEALTH, originSpeed, talentSpeed, TALENT_LABEL, toolFactor, unfedFactor } from "./path";
@@ -48,7 +49,7 @@ export const MAX_SPEED = 250;
 /** Where the breakthrough pill starts to work: a pill helps a hero within this share of the next realm's points. */
 export const AID_REACH = 0.85;
 
-type Held = Pick<GameState, "wealth" | "items" | "assets" | "realm" | "cultivation" | "stats" | "hero" | "visited" | "flags"> & Partial<Pick<GameState, "decisions" | "years">>;
+type Held = Pick<GameState, "wealth" | "items" | "assets" | "realm" | "cultivation" | "stats" | "hero" | "visited" | "flags"> & Partial<Pick<GameState, "days" | "years">>;
 
 /** True while the hero lives on the sect's stipend: the story names the scene at which they leave. */
 export function inSect(story: Pick<Story, "leavesSect">, state: Pick<GameState, "visited">): boolean {
@@ -213,10 +214,11 @@ export function applyAid(story: Story, state: GameState): GameState {
     ...raised,
     realm: next,
     level: next * 10,
+    days: tidyDays((raised.days ?? 0) + seclusionOf(next)),
     flags: { ...raised.flags, [reachedFlag(next)]: true },
     flagAt: { ...raised.flagAt, [reachedFlag(next)]: raised.decisions },
     items: takeItem(state.items, pill.id),
-    log: [...state.log, { kind: "realm", text: `Breakthrough: ${realm.name}, with the help of the ${pill.name}. ${realm.arrival}${breakthroughNotes(state, next)}` }],
+    log: [...state.log, { kind: "realm", text: `Breakthrough: ${realm.name}, with the help of the ${pill.name}. ${realm.arrival}${breakthroughNotes(state, next)} ${seclusionLine(next)}` }],
   };
 }
 

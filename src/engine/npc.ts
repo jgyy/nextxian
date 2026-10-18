@@ -6,6 +6,7 @@ import { standingOf } from "./hero";
 import { ownedGarments } from "./wardrobe";
 import { affinityOf, daoRankOf } from "./path";
 import { levelNow } from "./stages";
+import { seasonOf } from "./time";
 import { CHOICE_TONES } from "./tone";
 import { reputeOf, type Repute } from "./witness";
 import type { ChoiceTone, Condition, GameState, Mood, NpcScenario, NpcState, RespectTier, Tier } from "./types";
@@ -128,7 +129,7 @@ export function reputeShiftLine(before: number, after: number): string | undefin
  */
 export const REALM_SHIFT: Record<number, string> = {
   1: "There is qi in you now. I felt it from across the hall, thin as a spider’s thread. You are no longer a mortal, Wanderer, and the Law has fewer excuses for you.",
-  2: "A foundation. Most of my disciples spend years on that floor, and you laid it between one bell and the next. Do not mistake speed for depth. Depth is what holds when the mist comes up.",
+  2: "A foundation. Most of my disciples spend years on that floor, and you laid it in a season or two. Do not mistake speed for depth. Depth is what holds when the mist comes up.",
   3: "A core, and a bright one. The hall’s lamps leaned toward you when it formed. Power of that kind is not a gift, Wanderer. It is a debt that has not yet been named.",
   4: "A nascent soul. I have met four people who could say that in my lifetime, and I buried two of them. Walk carefully. Everything that lives longer than it should is hunted by what has already died.",
   5: "You have severed your spirit from your own name. I cannot tell any longer whether I am speaking to the person who climbed my steps or to something that borrowed {their} shoes. I choose to believe it is still you.",
@@ -218,7 +219,7 @@ export function reactToScenario(
 
 /** What a condition may read. Everything past the first five fields is optional so older callers and saves still work. */
 export type ConditionState = Pick<GameState, "stats" | "npc" | "flags" | "history" | "tones"> &
-  Partial<Pick<GameState, "daoPoints" | "realm" | "level" | "cultivation" | "bonds" | "decisions" | "flagAt" | "sceneId" | "hero" | "wealth" | "items" | "assets" | "speed" | "unfed" | "years" | "wardrobe">>;
+  Partial<Pick<GameState, "daoPoints" | "realm" | "level" | "cultivation" | "bonds" | "decisions" | "flagAt" | "days" | "sceneId" | "hero" | "wealth" | "items" | "assets" | "speed" | "unfed" | "years" | "wardrobe">>;
 
 /** True when every condition holds. An empty or missing list always holds. */
 export function conditionsHold(conditions: Condition[] | undefined, state: ConditionState): boolean {
@@ -318,11 +319,17 @@ export function conditionsHold(conditions: Condition[] | undefined, state: Condi
       case "unfed":
         return (state.unfed ?? false) === (c.is ?? true);
       case "age": {
-        const v = state.hero ? ageOf(state.hero, state.decisions ?? 0) : 24;
+        const v = state.hero ? ageOf(state.hero, state.days ?? 0) : 24;
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
       }
+      case "days": {
+        const v = state.days ?? 0;
+        return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
+      }
+      case "season":
+        return seasonOf(state.days ?? 0) === c.is;
       case "years": {
-        const v = state.hero ? lifeLeft(state.hero, { decisions: state.decisions, realm: state.realm, years: state.years }) : 999;
+        const v = state.hero ? lifeLeft(state.hero, { days: state.days, realm: state.realm, years: state.years }) : 999;
         return (c.min === undefined || v >= c.min) && (c.max === undefined || v <= c.max);
       }
       case "wardrobe":

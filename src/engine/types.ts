@@ -1,5 +1,6 @@
 import type { Attire, Dao, Hero, HeroField } from "./hero";
 import type { Element } from "./path";
+import type { Season } from "./time";
 import type { WorldMeasure } from "./world";
 
 /** Player-facing numeric stats. `karma` may go negative; the others stay in 0..100. */
@@ -71,8 +72,12 @@ export type Condition =
   | { kind: "affinity"; element: Element; min?: number; max?: number }
   /** Whether the hero is Unfed: away from the sect with a purse too light for the cost of living. `is` defaults to true. */
   | { kind: "unfed"; is?: boolean }
-  /** How old the hero is now: the years they began with, and a year for every stretch of decisions. */
+  /** How old the hero is now: the years they began with, and a year for every 365 days of the calendar. */
   | { kind: "age"; min?: number; max?: number }
+  /** Days since the story began. The calendar spends them a decision at a time, by the realm the hero stands in, and the Long Count Roads spend them by the unit. */
+  | { kind: "days"; min?: number; max?: number }
+  /** The season of the year the calendar is in. */
+  | { kind: "season"; is: Season }
   /** How many years the hero has left at their realm, with any years they have been given. Zero or less means they are past them. */
   | { kind: "years"; min?: number; max?: number }
   /** Whether the hero owns a garment (worn or not). `is` defaults to true. What they wear now is read with the `hero` condition. */
@@ -116,6 +121,8 @@ export type Effect =
   | { kind: "loseAsset"; asset: string }
   /** Years added to the span the hero’s realm allows: an elixir, a debt of life paid, a road’s gift. */
   | { kind: "addYears"; amount: number }
+  /** Days that go by on the calendar, on top of the decision’s own stride: a retreat, a vigil, a road that spends a season, a year or an age. The log counts the years the body spends. */
+  | { kind: "passTime"; days: number }
   /** The hero comes to own a garment, without putting it on. */
   | { kind: "gainAttire"; attire: Attire }
   /** The hero puts on a garment, owning it first if they did not. What they wear changes how the world reads them. */
@@ -295,6 +302,11 @@ export interface Story {
   assets?: Record<string, AssetDef>;
   /** The scene from which the sect stops paying the hero a stipend and the hero starts to pay for their own living. */
   leavesSect?: string;
+  /**
+   * The scenes of the roads, where the seasons go by: a decision made in one takes as long as the hero’s realm makes it (see `decisionDays`). A decision made anywhere else is
+   * a few hours of the story’s own telling. A story that lists none treats every decision as one on a road.
+   */
+  roadScenes?: ReadonlySet<string>;
 }
 
 export interface LogEntry {
@@ -324,6 +336,8 @@ export interface GameState {
   bonds: Record<string, number>;
   /** How many decisions the player has made. */
   decisions: number;
+  /** Days since the story began. A decision spends the stride of the realm the hero stands in, a retreat the days of its door, a Long Count road the unit it names. See `time.ts`. */
+  days: number;
   /** The decision count at which each flag was last switched on. The `since` condition reads it. */
   flagAt: Record<string, number>;
   /** Ids of the remarks already said. A remark is said once. */

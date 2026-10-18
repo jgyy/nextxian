@@ -31,6 +31,7 @@ export function clash(conditions: Condition[]): string | undefined {
   const only = new Map<string, Set<string>>();
   const not = new Map<string, Set<string>>();
   const moods = new Set<string>();
+  const seasons = new Set<string>();
   const scenes: string[] = [];
   const assets = new Map<string, boolean>();
   const unfed = new Set<boolean>();
@@ -44,7 +45,7 @@ export function clash(conditions: Condition[]): string | undefined {
       case "item": return `item "${c.item}"`;
       case "affinity": return `${c.element} affinity`;
       case "world": return `world ${c.measure}${c.reach === undefined ? "" : ` of reach ${c.reach}`}`;
-      case "realm": case "level": case "progress": case "roads": case "decisions": case "standing": case "wealth": case "holdings": case "speed": case "mastery": case "age": case "years": return c.kind;
+      case "realm": case "level": case "progress": case "roads": case "decisions": case "standing": case "wealth": case "holdings": case "speed": case "mastery": case "age": case "years": case "days": return c.kind;
       default: return undefined;
     }
   };
@@ -77,6 +78,9 @@ export function clash(conditions: Condition[]): string | undefined {
     } else if (c.kind === "mood") {
       moods.add(c.is);
       if (moods.size > 1) return `the Elder’s face to be ${[...moods].join(" and ")}`;
+    } else if (c.kind === "season") {
+      seasons.add(c.is);
+      if (seasons.size > 1) return `the season to be ${[...seasons].join(" and ")}`;
     } else if (c.kind === "scene") {
       scenes.push(c.prefix);
     } else if (c.kind === "asset") {

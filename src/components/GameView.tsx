@@ -19,6 +19,7 @@ import { priceTag } from "@/engine/economy";
 import { StatsPanel } from "./StatsPanel";
 import { PracticePanel } from "./PracticePanel";
 import { AgePanel } from "./AgePanel";
+import { CalendarPanel } from "./CalendarPanel";
 import { CrossingPanel } from "./CrossingPanel";
 import { CustomPanel } from "./CustomPanel";
 import { RankPanel } from "./RankPanel";
@@ -332,9 +333,10 @@ function Play({ story, game, setGame, notice, setNotice, onLoad, onNewCharacter 
         </main>
 
         <aside className="side" aria-label="Characters and stats">
-          <HeroPanel hero={game.hero} realm={game.realm} decisions={game.decisions} years={game.years} />
+          <HeroPanel hero={game.hero} realm={game.realm} days={game.days} years={game.years} />
           <NpcPanel profile={story.npc} npc={game.npc} lastLine={lastNpcLine} manner={mannerOf(game.tones)} />
           <CultivationPanel game={game} />
+          <CalendarPanel game={game} />
           <AgePanel game={game} />
           <PursePanel story={story} game={game} onAct={act} locked={ended} />
           <WardrobePanel story={story} game={game} onAct={act} locked={ended} />

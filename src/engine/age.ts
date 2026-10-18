@@ -1,8 +1,9 @@
 import type { Age, Hero } from "./hero";
+import { DAYS_PER_YEAR } from "./time";
 
 /**
- * Age. The hero begins at a number of years, and the story keeps count: a year is spent every few decisions. (The register says the Wanderer is twenty; the black
- * seed spends years where it wakes, so the years are the body’s, and they go by with the work the body does, not with the days the scenes name.) A realm is also a span of
+ * Age. The hero begins at a number of years, and the story keeps the calendar (see `time.ts`): a year is spent every 365 days, and how many days a decision takes
+ * depends on the realm. (The register says the Wanderer is twenty; the black seed spends years where it wakes, so the years are the body’s.) A realm is also a span of
  * years, so a cultivator who stays in a low realm grows old and one who breaks through is given back their time. Age sets the opening
  * numbers, the rate of cultivation, how the Elder and the keepers read the hero, and which doors on the Age Roads are theirs.
  */
@@ -24,9 +25,6 @@ export const AGE_BOUNDS: Record<Age, [number, number]> = {
   elder: [63, 9999],
 };
 
-/** Decisions the hero makes in a year of the story. The seasons go by on the roads, not in the scenes. */
-export const DECISIONS_PER_YEAR = 10;
-
 /** The years a body can last at each realm. A breakthrough is also a lengthening of life. */
 export const LIFESPAN: readonly number[] = [76, 110, 160, 250, 400, 620, 950, 1500, 2600, 4400];
 
@@ -35,14 +33,15 @@ export const WANING_YEARS = 3;
 
 export type Aged = Pick<Hero, "age"> & Partial<Pick<Hero, "name">>;
 export interface Years {
-  decisions?: number;
+  /** Days since the story began. */
+  days?: number;
   years?: number;
   realm?: number;
 }
 
-/** How old the hero is now: the years they began with and a year for every stretch of decisions. */
-export function ageOf(hero: Aged, decisions = 0): number {
-  return (AGE_START[hero.age] ?? AGE_START.young) + Math.floor(Math.max(0, decisions) / DECISIONS_PER_YEAR);
+/** How old the hero is now: the years they began with and a year for every 365 days of the calendar. */
+export function ageOf(hero: Aged, days = 0): number {
+  return (AGE_START[hero.age] ?? AGE_START.young) + Math.floor(Math.max(0, days) / DAYS_PER_YEAR);
 }
 
 /** The age a number of years makes. */
@@ -57,7 +56,7 @@ export function lifespanOf(realm: number, bonus = 0): number {
 
 /** Years the hero has left at their realm. Zero or less means they are past it. */
 export function lifeLeft(hero: Aged, state: Years): number {
-  return lifespanOf(state.realm ?? 0, state.years) - ageOf(hero, state.decisions);
+  return lifespanOf(state.realm ?? 0, state.years) - ageOf(hero, state.days);
 }
 
 export type Waning = "none" | "short" | "past";
@@ -122,11 +121,11 @@ export function lifespanNote(realm: number, bonus = 0): string {
   return `Your span of years stretches to ${lifespanOf(realm, bonus)}.`;
 }
 
-/** The log line for a birthday, with a word about the years left when few remain. */
-export function birthdayLine(hero: Aged, state: Years): string {
-  const age = ageOf(hero, state.decisions);
+/** The log line for a birthday, with a word about the years left when few remain. When several years went by at once (a retreat, a road), the line says how many. */
+export function birthdayLine(hero: Aged, state: Years, passed = 1): string {
+  const age = ageOf(hero, state.days);
   const left = lifeLeft(hero, state);
-  const base = `Another year is spent in the body. You are ${age}.`;
+  const base = passed > 1 ? `${passed} years go by in the body. You are ${age}.` : `Another year is spent in the body. You are ${age}.`;
   if (left <= 0) return `${base} You are past the years your realm allows, and the body knows it.`;
   if (left <= WANING_YEARS) return `${base} Your realm allows you ${left} more. Break through, or find years elsewhere.`;
   if (left <= 10) return `${base} Your realm allows you ${left} more.`;
@@ -135,7 +134,7 @@ export function birthdayLine(hero: Aged, state: Years): string {
 
 /** The apparent age of a cultivator: a deep realm slows the body, so a Core Cultivator of sixty can pass for forty. */
 export function looksOf(hero: Aged, state: Years): number {
-  const real = ageOf(hero, state.decisions);
+  const real = ageOf(hero, state.days);
   const slowed = Math.floor((state.realm ?? 0) / 2) * 0.1;
   return Math.max(16, Math.round(real * (1 - Math.min(0.4, slowed))));
 }

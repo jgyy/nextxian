@@ -166,3 +166,7 @@
 {"cat": "timeline", "where": "src/story/books (b2 censors, b4 court/wolves/border/tomb, b5 mirage), src/story/ascent", "note": "Nine lines gave Elder Su Wanru the wrong career or age. Canon: 43, Registrar for 6 years, Elder for 12.", "n": 9}
 {"cat": "typography", "where": "src/story/books/b5", "note": "Five typographic slips in the ladder, mirage, furnace, gale and festival scenes.", "n": 5}
 {"cat": "repetition", "where": "src/story/fortune, roads, roads2, ascent", "note": "164 variants added so purse reactions, road labels, realm-fit hero lines and ascent prompts are no longer one wording each.", "n": 164}
+{"cat": "timeline", "where": "README.md, docs/ARCHITECTURE.md, docs/CANON.md", "note": "Five lines of the docs said time runs at a year for every ten decisions, which the calendar replaced.", "n": 5}
+{"cat": "timeline", "where": "src/engine/npc.ts", "note": "The Elder said a Foundation was laid between one bell and the next, which no hero can now do: a Foundation takes a season at the least.", "n": 1}
+{"cat": "timeline", "where": "src/engine/stage-text.ts", "note": "Fourteen failure lines of the walls named a day, a week or an hour where the mending now takes five strides of the realm.", "n": 14}
+{"cat": "logic", "where": "tests/continuity.test.ts", "note": "The continuity audit, run seven times in one test, outgrew the sixty seconds a runner gave it on a twenty-thousand-scene story.", "n": 1}

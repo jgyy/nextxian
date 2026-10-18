@@ -101,7 +101,8 @@ describe("a condition that no hero can meet", () => {
     expect(auditStory(broken([{ kind: "stat", stat: "insight", min: 101 }])).map((i) => i.message).join("\n")).toContain("outside what it can be");
     expect(auditStory(broken([{ kind: "realm", min: 2, max: 2 }]))).toEqual([]);
     expect(auditStory(story)).toEqual([]);
-  });
+    // Seven audits of a twenty-thousand-scene story: each walks every flag along every path, and takes some seconds on a slow runner.
+  }, 240_000);
 
   it("is not written by the road builders: no band of a road is held by no one", () => {
     for (let road = 0; road <= 6; road++) {

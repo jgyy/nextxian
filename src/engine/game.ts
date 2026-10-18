@@ -1,4 +1,5 @@
 import { ageMastery, ageOf, birthdayLine } from "./age";
+import { dateOf, decisionDays, seasonLine, seasonTurned, tidyDays } from "./time";
 import { DEFAULT_HERO, HERO_FIELDS, personalise, realmBandFor, startFor, startingPoints, type Hero } from "./hero";
 import { DAO_NAME, DAO_RANKS, daoRankOf, karmaChange, masteryGapFor, ORIGIN_START, toneBonus } from "./path";
 import { gainGarment, loseGarment, putOn } from "./wardrobe";
@@ -110,6 +111,7 @@ export function createGame(story: Story, hero: Hero = DEFAULT_HERO): GameState {
     speed: 100,
     unfed: false,
     decisions: 0,
+    days: 0,
     flagAt: {},
     remarked: [],
     lastRemark: -REMARK_GAP,
@@ -209,6 +211,8 @@ export function applyEffects(state: GameState, effects: Effect[] = [], speed = 1
         return { ...s, wealth: Math.max(0, s.wealth + effect.amount) };
       case "addYears":
         return { ...s, years: Math.max(0, (s.years ?? 0) + effect.amount) };
+      case "passTime":
+        return { ...s, days: tidyDays((s.days ?? 0) + Math.max(0, effect.days)) };
       case "giveItem":
         return { ...s, items: giveItem(s.items, effect.item, effect.count) };
       case "takeItem":
@@ -262,6 +266,8 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
     log: [...state.log, { kind: "player", text: personalise(choice.label, state.hero) }],
     tones: [...state.tones, choice.tone],
     decisions: state.decisions + 1,
+    // A decision in the telling of the story takes a few hours; one on a road takes as long as the realm the hero stands in makes it.
+    days: tidyDays((state.days ?? 0) + decisionDays(state.realm, story.roadScenes ? story.roadScenes.has(scene.id) : true)),
   };
 
   let spoke = false;
@@ -284,7 +290,7 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
   next = gainCultivation(next, scaled((fresh ? TONE_GAIN[choice.tone] + toneBonus(state.hero, choice.tone) : 0) + mastery, speed));
   next = applyAid(story, next);
   if (next.decisions % PAYDAY_EVERY === 0) next = payday(story, next);
-  next = noticeYear(state, next);
+  next = noticeTime(state, next);
   next = noticeSpeed(state, next, story);
   const beforeAttitude = next.log.length;
   next = noticeAttitude(story, state, next);
@@ -293,10 +299,16 @@ export function choose(story: Story, state: GameState, choiceId: string): GameSt
   return spoke ? entered : remark(story, entered);
 }
 
-/** When a year of the story has gone by, the log says so, and says how many years the hero's realm still allows them. */
-function noticeYear(before: GameState, after: GameState): GameState {
-  if (ageOf(after.hero, after.decisions) === ageOf(before.hero, before.decisions)) return after;
-  return { ...after, log: [...after.log, { kind: "ledger", text: birthdayLine(after.hero, after) }] };
+/**
+ * When the calendar turns, the log says so. A year gets a birthday line (and says how many years the hero's realm still allows them); several years at once
+ * get one line for the lot; a season gets a line in the voice of the realm the hero keeps it in.
+ */
+function noticeTime(before: GameState, after: GameState): GameState {
+  const was = ageOf(before.hero, before.days);
+  const now = ageOf(after.hero, after.days);
+  if (now !== was) return { ...after, log: [...after.log, { kind: "ledger", text: birthdayLine(after.hero, after, now - was) }] };
+  if (!seasonTurned(before.days ?? 0, after.days ?? 0)) return after;
+  return { ...after, log: [...after.log, { kind: "ledger", text: seasonLine(after.realm, dateOf(after.days).season) }] };
 }
 
 /** When a purchase, a lease, a breakthrough or a lean payday changes how fast the hero cultivates, the log says so. */

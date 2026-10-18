@@ -5,7 +5,8 @@ import { cultivationSpeed, speedParts, startingWealth } from "@/engine/economy";
 import { REALMS } from "@/engine/cultivation";
 import { conditionsHold } from "@/engine/npc";
 import { AGE_OPTIONS, DEFAULT_HERO, HERO_FIELDS, personalise, restoreHero, standingOf, startFor, type Age, type Hero } from "@/engine/hero";
-import { AGE_BOUNDS, AGE_MID, AGE_START, AGES, ageHeartDemon, ageOf, ageSpeed, bandOfYears, DECISIONS_PER_YEAR, gapBounds, gapsFor, LIFESPAN, lifeLeft, lifespanOf, looksOf, WANING_YEARS, waningOf } from "@/engine/age";
+import { DAYS_PER_YEAR } from "@/engine/time";
+import { AGE_BOUNDS, AGE_MID, AGE_START, AGES, ageHeartDemon, ageOf, ageSpeed, bandOfYears, gapBounds, gapsFor, LIFESPAN, lifeLeft, lifespanOf, looksOf, WANING_YEARS, waningOf } from "@/engine/age";
 import { heartDemonKarmaFor } from "@/engine/path";
 import { restoreGame } from "@/engine/save";
 import { MAX_SCENE_WORDS, sceneBodyWords, validateStory } from "@/engine/validate";
@@ -75,13 +76,13 @@ describe("the years a hero begins with", () => {
 });
 
 describe("years pass and a realm is a span of them", () => {
-  it("adds a year for every stretch of decisions", () => {
+  it("adds a year for every 365 days of the calendar", () => {
     const h = hero({ age: "youth" });
     expect(ageOf(h, 0)).toBe(16);
-    expect(ageOf(h, DECISIONS_PER_YEAR - 1)).toBe(16);
-    expect(ageOf(h, DECISIONS_PER_YEAR)).toBe(17);
-    expect(ageOf(h, DECISIONS_PER_YEAR * 10)).toBe(26);
-    expect(bandOfYears(ageOf(h, DECISIONS_PER_YEAR * 4))).toBe("young");
+    expect(ageOf(h, DAYS_PER_YEAR - 1)).toBe(16);
+    expect(ageOf(h, DAYS_PER_YEAR)).toBe(17);
+    expect(ageOf(h, DAYS_PER_YEAR * 10)).toBe(26);
+    expect(bandOfYears(ageOf(h, DAYS_PER_YEAR * 4))).toBe("young");
   });
 
   it("gives a longer span at every realm, and counts years given by a road", () => {
@@ -90,22 +91,22 @@ describe("years pass and a realm is a span of them", () => {
     expect(lifespanOf(0)).toBe(76);
     expect(lifespanOf(2, 5)).toBe(LIFESPAN[2] + 5);
     const h = hero({ age: "elder" });
-    expect(lifeLeft(h, { realm: 0, decisions: 0, years: 0 })).toBe(8);
-    expect(lifeLeft(h, { realm: 1, decisions: 0, years: 0 })).toBe(42);
-    expect(lifeLeft(h, { realm: 0, decisions: 0, years: 10 })).toBe(18);
+    expect(lifeLeft(h, { realm: 0, days: 0, years: 0 })).toBe(8);
+    expect(lifeLeft(h, { realm: 1, days: 0, years: 0 })).toBe(42);
+    expect(lifeLeft(h, { realm: 0, days: 0, years: 10 })).toBe(18);
   });
 
   it("slows a hero whose years are nearly spent, and more when they are past them", () => {
     const h = hero({ age: "elder" });
     const speed = (patch: Partial<GameState>) => cultivationSpeed(story, { ...createGame(story, h), ...patch });
     const fresh = speed({ realm: 1 });
-    const short = speed({ realm: 0, decisions: DECISIONS_PER_YEAR * 6 });
-    const past = speed({ realm: 0, decisions: DECISIONS_PER_YEAR * 9 });
-    expect(waningOf(lifeLeft(h, { realm: 0, decisions: DECISIONS_PER_YEAR * 6 }))).toBe("short");
+    const short = speed({ realm: 0, days: DAYS_PER_YEAR * 6 });
+    const past = speed({ realm: 0, days: DAYS_PER_YEAR * 9 });
+    expect(waningOf(lifeLeft(h, { realm: 0, days: DAYS_PER_YEAR * 6 }))).toBe("short");
     expect(short).toBeLessThan(speed({ realm: 0 }));
     expect(past).toBeLessThan(short);
     expect(fresh).toBeGreaterThan(short);
-    const labels = speedParts(story, { ...createGame(story, h), realm: 0, decisions: DECISIONS_PER_YEAR * 9 }).map((p) => p.label);
+    const labels = speedParts(story, { ...createGame(story, h), realm: 0, days: DAYS_PER_YEAR * 9 }).map((p) => p.label);
     expect(labels).toContain("Past your years");
     expect(WANING_YEARS).toBe(3);
   });
@@ -120,12 +121,12 @@ describe("years pass and a realm is a span of them", () => {
   });
 
   it("logs a year as it goes by, says how many years the realm allows when few are left, and says the span a breakthrough lengthens to", () => {
-    const g = at("law_hall", hero({ age: "elder" }), { decisions: DECISIONS_PER_YEAR - 1 });
+    const g = at("law_hall", hero({ age: "elder" }), { days: DAYS_PER_YEAR - 0.1 });
     const after = choose(story, g, "honest_account");
     const ledger = after.log.filter((e) => e.kind === "ledger").map((e) => e.text);
     expect(ledger.some((t) => t.startsWith("Another year is spent in the body. You are 69."))).toBe(true);
     expect(ledger.some((t) => t.includes("Your realm allows you 7 more"))).toBe(true);
-    const broke = at("law_hall", hero({ age: "elder" }), { cultivation: 14, decisions: 1 });
+    const broke = at("law_hall", hero({ age: "elder" }), { cultivation: 14, days: 1 });
     const through = choose(story, broke, "honest_account");
     const note = through.log.find((e) => e.kind === "realm")?.text ?? "";
     expect(note).toContain("Breakthrough: Qi Condensation");
@@ -137,7 +138,7 @@ describe("years pass and a realm is a span of them", () => {
     const youth = at("gate", hero({ age: "youth" }));
     expect(conditionsHold([{ kind: "age", max: 19 }], youth)).toBe(true);
     expect(conditionsHold([{ kind: "age", min: 20 }], youth)).toBe(false);
-    expect(conditionsHold([{ kind: "age", min: 20 }], { ...youth, decisions: DECISIONS_PER_YEAR * 4 })).toBe(true);
+    expect(conditionsHold([{ kind: "age", min: 20 }], { ...youth, days: DAYS_PER_YEAR * 4 })).toBe(true);
     const elder = at("gate", hero({ age: "elder" }));
     expect(conditionsHold([{ kind: "years", max: 10 }], elder)).toBe(true);
     expect(conditionsHold([{ kind: "years", max: 10 }], { ...elder, years: 5 })).toBe(false);
@@ -146,8 +147,8 @@ describe("years pass and a realm is a span of them", () => {
 
   it("makes a cultivator who has risen look younger than they are", () => {
     const h = hero({ age: "mature" });
-    expect(looksOf(h, { realm: 0, decisions: 0 })).toBe(52);
-    expect(looksOf(h, { realm: 4, decisions: 0 })).toBeLessThan(52);
+    expect(looksOf(h, { realm: 0, days: 0 })).toBe(52);
+    expect(looksOf(h, { realm: 4, days: 0 })).toBeLessThan(52);
     expect(looksOf(hero({ age: "youth" }), { realm: 7 })).toBeGreaterThanOrEqual(16);
   });
 });
@@ -196,8 +197,8 @@ describe("a door of years on every road: who it opens to", () => {
   it("shows a hero of any age exactly one door of years, in the middle of the second approach of every road", () => {
     for (const spec of SPECS8) {
       for (let age = 16; age <= 90; age += 1) {
-        const decisions = Math.max(0, (age - 24) * DECISIONS_PER_YEAR);
-        const state = at(`${spec.id}_a1s2`, hero({ age: "young" }), { decisions, realm: waysideOf(spec.id).realm });
+        const days = Math.max(0, (age - 24) * DAYS_PER_YEAR);
+        const state = at(`${spec.id}_a1s2`, hero({ age: "young" }), { days, realm: waysideOf(spec.id).realm });
         const doors = ids(state).filter((id) => id.startsWith("door_"));
         if (age >= 24) expect(doors, `${spec.id} at ${age}`).toHaveLength(1);
       }
@@ -229,9 +230,9 @@ describe("a door of years on every road: who it opens to", () => {
     const plenty = at(door, elder, { realm: R, ...rich });
     expect(view(plenty, "years")?.available).toBe(false);
     // The same hero, nearly past their years and at the road's realm, is given some.
-    const needy = at(door, elder, { realm: R, years: 0, decisions: DECISIONS_PER_YEAR * 20, ...rich });
+    const needy = at(door, elder, { realm: R, years: 0, days: DAYS_PER_YEAR * 20, ...rich });
     expect(lifeLeft(elder, needy)).toBeGreaterThan(0);
-    const short = { ...needy, decisions: (lifespanOf(R) - AGE_START.elder - 10) * DECISIONS_PER_YEAR };
+    const short = { ...needy, days: (lifespanOf(R) - AGE_START.elder - 10) * DAYS_PER_YEAR };
     expect(view(short, "years")?.available).toBe(true);
     const given = choose(story, short, "years");
     expect(given.years).toBe(yearsGiven(R));
@@ -421,7 +422,7 @@ describe("a long walk at every age", () => {
         if (!Number.isFinite(g.speed) || g.speed < 50 || g.speed > 250) problems.push(`${age}: speed ${g.speed} at ${g.sceneId}`);
         for (const e of g.log) if (/\{\w+\}|undefined|NaN/.test(e.text)) problems.push(`${age}: ${e.text.slice(0, 60)}`);
       }
-      expect(ageOf(g.hero, g.decisions)).toBeGreaterThanOrEqual(began);
+      expect(ageOf(g.hero, g.days)).toBeGreaterThanOrEqual(began);
     }
     expect(problems).toEqual([]);
   });

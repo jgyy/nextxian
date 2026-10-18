@@ -1,5 +1,6 @@
 import { ATTIRES, HERO_FIELDS, HERO_OPTIONS, type Attire, type HeroField } from "./hero";
 import { ELEMENTS, type Element } from "./path";
+import { SEASONS, type Season } from "./time";
 import { isTone } from "./tone";
 import { MEASURES, type WorldMeasure } from "./world";
 import type { Choice, ChoiceTone, Condition, Effect, Mood, NpcMetric, NpcScenario, NpcState, PlayerStat, Remark, Scene } from "./types";
@@ -18,9 +19,9 @@ import type { Choice, ChoiceTone, Condition, Effect, Mood, NpcMetric, NpcScenari
  *
  * A choice can change what the hero wears (`wear:silk`, `gain:silk`, `lose:silk`), and a condition can ask whether they own it (`wardrobe:silk`, `!wardrobe:silk`, `garments>=2`).
  * Conditions are joined with `&`: `flag`, `!flag`, `insight>=12`, `karma<=-10`, `trust>=20`, `realm>=2`, `roads>=3`,
- * `standing>=4`, `world:voices>=12`, `world:mended@3>=2`, `hero:attire=silk|armour`, `hero:status!=outcast`, `bond:ren>=10`, `since:flag>=4`, `decisions>=30`, `mood:afraid`, `scene:prefix`, `count:flag_prefix>=3`, `said:SCENARIO`, `tone:deceit>=3/6`.
+ * `standing>=4`, `world:voices>=12`, `world:mended@3>=2`, `hero:attire=silk|armour`, `hero:status!=outcast`, `bond:ren>=10`, `since:flag>=4`, `decisions>=30`, `days>=365`, `season:spring`, `mood:afraid`, `scene:prefix`, `count:flag_prefix>=3`, `said:SCENARIO`, `tone:deceit>=3/6`.
  * Effects are separated by spaces: `+flag`, `-flag`, `karma+3`, `cult+4`, `trust-2`, `bond:ren+5`, `npc:ID`, `ally:ID`,
- * and `needs:3`, which asks a realm (an index into the ladder) of anyone who tries the choice.
+ * `time+30` (days that go by), and `needs:3`, which asks a realm (an index into the ladder) of anyone who tries the choice.
  * Unless the effects start with `=`, a choice also gets the small stat drift that goes with its tone.
  */
 
@@ -100,6 +101,10 @@ export function parseConditions(source: string, where: string): Condition[] {
       const [measure, reach] = name.split("@");
       if (!(MEASURES as string[]).includes(measure) || (reach !== undefined && !/^(?:[1-9]|10)$/.test(reach))) throw new MarkupError(where, `bad world condition "${t}"`);
       out.push({ kind: "world", measure: measure as WorldMeasure, ...(reach ? { reach: Number(reach) } : {}), ...rest });
+    } else if (t.startsWith("season:")) {
+      const season = t.slice(7);
+      if (!(SEASONS as string[]).includes(season)) throw new MarkupError(where, `bad season "${t}"`);
+      out.push({ kind: "season", is: season as Season });
     } else if (t.startsWith("scene:")) {
       out.push({ kind: "scene", prefix: t.slice(6) });
     } else if (t.startsWith("said:")) {
@@ -127,6 +132,7 @@ export function parseConditions(source: string, where: string): Condition[] {
       else if (name === "mastery") out.push({ kind: "mastery", ...rest });
       else if (name === "age") out.push({ kind: "age", ...rest });
       else if (name === "years") out.push({ kind: "years", ...rest });
+      else if (name === "days") out.push({ kind: "days", ...rest });
       else if (name === "garments") out.push({ kind: "garments", ...rest });
       else throw new MarkupError(where, `unknown condition "${t}"`);
     }
@@ -159,6 +165,8 @@ export function parseEffects(source: string, where: string): ParsedEffects {
     else if ((m = /^cult([+-]\d+)$/.exec(t))) effects.push({ kind: "addCultivation", amount: Number(m[1]) });
     else if ((m = /^dao([+-]\d+)$/.exec(t))) effects.push({ kind: "addDao", amount: Number(m[1]) });
     else if ((m = /^years([+-]\d+)$/.exec(t))) effects.push({ kind: "addYears", amount: Number(m[1]) });
+    else if ((m = /^time\+(\d+)$/.exec(t))) effects.push({ kind: "passTime", days: Number(m[1]) });
+    else if ((m = /^time\+(\d+)$/.exec(t))) effects.push({ kind: "passTime", days: Number(m[1]) });
     else if ((m = /^stones([+-]\d+)$/.exec(t))) effects.push({ kind: "addWealth", amount: Number(m[1]) });
     else if ((m = /^(wear|gain|lose):([a-z]+)$/.exec(t))) {
       if (!ATTIRES.some((a) => a.value === m![2])) throw new MarkupError(where, `"${m[2]}" is not a dress`);
